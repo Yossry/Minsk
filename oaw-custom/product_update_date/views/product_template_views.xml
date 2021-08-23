@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="product_template_form_view" model="ir.ui.view">
+        <field name="name">product.template.common.form</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='is_product_variant']" position="before">
+                <header>
+                    <button
+                        name="update_updated_date"
+                        string="Updated"
+                        type="object"
+                        groups="sales_team.group_sale_manager"
+                    />
+                </header>
+            </xpath>
+            <xpath expr="//field[@name='currency_id']" position="after">
+                <field name="updated_date" />
+            </xpath>
+        </field>
+    </record>
+    <record id="product_template_search_view" model="ir.ui.view">
+        <field name="sequence" eval="0" />
+        <field name="name">product.template.search</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_search_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='activities_overdue']" position="before">
+                <filter
+                    name="updated_one_day"
+                    string="Updated 24H"
+                    domain="[('updated_date','&gt;=',(context_today()+datetime.timedelta(days=-1)).strftime('%Y-%m-%d'))]"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,90 @@
+<odoo>
+    <!-- Separat view for sales manager     -->
+    <record id="chono24_view_tree" model="ir.ui.view">
+        <field name="name">chono24.view.tree</field>
+        <field name="model">product.product</field>
+        <field name="arch" type="xml">
+            <tree
+                string="Chrono24 Offer"
+                default_order="id desc"
+                editable="top"
+                delete="false"
+            >
+                <field name="default_code" string="Code" readonly="1" />
+                <field
+                    name="image_medium"
+                    string="Image"
+                    widget="image"
+                    options='{"size": [64, 64]}'
+                />
+                <field name="list_price" string="Retail HKD" readonly="1" />
+                <field name="qty_reserved" string="Qty Reserved" />
+                <field name="qty_local_stock" widget="integer" string="HK Stock" />
+                <field name="qty_overseas" string="Qty Overseas" />
+                <field name="chrono24_price" string="Chrono 24 Price" />
+                <field name="chrono24_updated" />
+                <field name="chrono" />
+                <field name="chronoNote" />
+            </tree>
+        </field>
+    </record>
+    <!--    Inserting chr24 fields into master PLV-->
+    <record id="product_product_tree_view_z2" model="ir.ui.view">
+        <field name="name">product.product.tree.view.z2</field>
+        <field name="model">product.product</field>
+        <field
+            name="inherit_id"
+            ref="product_listprice_list_view.product_product_internal_tree"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_note']" position="after">
+                <field name="chrono24_price" string="Chrono 24 Price" />
+                <field name="chrono24_updated" string="UD C" />
+                <field name="chrono" string="Act 24" />
+                <field name="chronoNote" string="Note 24" />
+            </xpath>
+        </field>
+    </record>
+    <!--Search View for separat chrono24_view-->
+    <record id="chono24_view_search" model="ir.ui.view">
+        <field name="name">chono24.view.search</field>
+        <field name="model">product.product</field>
+        <field name="priority" eval="23" />
+        <field name="arch" type="xml">
+            <search>
+                <filter
+                    name="updated_chrono24"
+                    string="Chrono24 updated"
+                    domain="[('chrono24_updated','=',True)]"
+                />
+                <filter
+                    name="c24_unset"
+                    string="Chrono24"
+                    domain="[('chrono', '=', True)]"
+                />
+                <filter
+                    name="chrono_deac"
+                    string="Chrono24 deactive"
+                    domain="[('chrono24_updated','=',True),('qty_local_stock','=',0)]"
+                />
+            </search>
+        </field>
+    </record>
+    <!--The action-->
+    <record id="action_chono24_view" model="ir.actions.act_window">
+        <field name="name">Chrono24 Update</field>
+        <field name="res_model">product.product</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="chono24_view_tree" />
+        <field name="context">{}</field>
+        <field name="search_view_id" ref="chono24_view_search" />
+        <field name="limit">80</field>
+    </record>
+    <menuitem
+        id="menu_chron24_view"
+        parent="sale.product_menu_catalog"
+        action="action_chono24_view"
+        sequence="2"
+        groups=""
+    />
+</odoo>

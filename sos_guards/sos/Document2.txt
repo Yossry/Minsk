@@ -1,0 +1,120 @@
+update cms_student_payslip_line 
+set structure_id = cms_student_fee_structure.id
+from cms_student_fee_structure
+where cms_student_fee_structure.installment = cms_student_payslip_line.installment
+and cms_student_fee_structure.total = cms_student_payslip_line.amount
+and cms_student_fee_structure.student_id = cms_student_payslip_line.student_id
+and cms_student_fee_structure.batch_id = 4;
+
+
+update cms_student_payslip_line 
+set structure_line_id = cms_student_fee_structure_line.id
+from cms_student_fee_structure_line
+where cms_student_fee_structure_line.installment = cms_student_payslip_line.installment
+and cms_student_fee_structure_line.amount = cms_student_payslip_line.amount
+and cms_student_fee_structure_line.structure_id = cms_student_payslip_line.structure_id
+;
+
+
+update cms_student_fee_structure 
+set slip_id = cms_student_payslip.id, state = cms_student_payslip.state
+from cms_student_payslip,cms_student_payslip_line
+where cms_student_payslip_line.structure_id = cms_student_fee_structure.id
+and cms_student_payslip_line.slip_id = cms_student_payslip.id
+;
+
+
+
+update account_move_line 
+set name = sos_invoice.for_month || ':' || account_move_line.ref
+from sos_invoice
+where account_move_line.sos_invoice_id = sos_invoice.id and account_move_line.name='/' and account_move_line.journal_id=1 and for_month is not null;
+
+update account_move_line 
+set name = sos_invoice.for_month || ':' || account_move_line.ref
+from sos_invoice
+where account_move_line.sos_invoice_id = sos_invoice.id and account_move_line.name='////' and account_move_line.journal_id=1 and for_month is not null;
+
+
+update wkf_workitem set act_id = 90 where inst_id in (select id from wkf_instance where wkf_id = 14 and res_id in (select id from sos_invoice where state='checked'));
+
+
+
+
+
+
+UPDATE guards_payslip
+SET post_id = hr_employee.current_post  
+FROM hr_employee
+WHERE hr_employee.id = guards_payslip.employee_id
+
+
+
+update guards_payroll_advice_line
+set slip_id = guards_payslip.id
+from guards_payslip
+where guards_payslip.employee_id = guards_payroll_advice_line.employee_id
+and guards_payroll_advice_line.advice_id = 2
+
+
+
+update sos_hr_guard_attendance
+set slip_id = guards_payslip.id
+from guards_payslip
+where guards_payslip.employee_id = sos_hr_guard_attendance.employee_id
+and guards_payslip.state='done'
+
+
+
+
+
+UPDATE guards_payslip
+SET project_id = res_partner.project_id  
+FROM res_partner
+WHERE res_partner.id = guards_payslip.post_id
+
+
+UPDATE guards_payslip
+SET center_id = res_partner.center_id  
+FROM res_partner
+WHERE res_partner.id = guards_payslip.post_id
+
+
+
+
+UPDATE guards_payslip
+SET bank = hr_employee.bank  
+FROM hr_employee
+WHERE hr_employee.id = guards_payslip.employee_id
+
+UPDATE guards_payslip
+SET bankacctitle = hr_employee.bankacctitle  
+FROM hr_employee
+WHERE hr_employee.id = guards_payslip.employee_id
+
+
+UPDATE guards_payslip
+SET bankacc = hr_employee.bankacc  
+FROM hr_employee
+WHERE hr_employee.id = guards_payslip.employee_id
+
+UPDATE guards_payslip
+SET accowner = hr_employee.accowner  
+FROM hr_employee
+WHERE hr_employee.id = guards_payslip.employee_id
+
+
+
+
+
+select aml.* from account_invoice ai, account_voucher_line avl, account_move_line aml, account_voucher av where 
+ai.number = avl.name
+and avl.voucher_id = av.id
+and av.move_id = aml.move_id
+and related_account_id in (select id from account_account where type='liquidity') 
+and for_month = 'February-2014' and ai.project_id = 35
+
+
+select aml.* from account_invoice ai, account_move_line aml where 
+ai.number = aml.name
+and aml.account_id =13503 

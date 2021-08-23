@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+	<data>
+		<record id="hr_contract_view_tree" model="ir.ui.view">
+			<field name="name">hr.contract.tree.inherit</field>
+			<field name="model">hr.contract</field>
+			<field name="inherit_id" ref="hr_contract.hr_contract_view_tree"/>
+			<field name="arch" type="xml">
+				<data>
+					<xpath expr="//field[@name='employee_id']" position="after">
+						<field name="company_id"/>
+						<field name="state" invisible="1"/>						
+					</xpath>
+				</data>
+			</field>
+		</record>
+
+		<record id="hr_contract_view_search" model="ir.ui.view">
+			<field name="name">hr.contract.search.inherit</field>
+			<field name="model">hr.contract</field>
+			<field name="inherit_id" ref="hr_contract.hr_contract_view_search"/>
+			<field name="arch" type="xml">
+				<data>
+					<xpath expr="//group" position="inside">
+						 <filter string="Company" name='group_company_id' domain="[]" context="{'group_by':'company_id'}"/>	
+						 <filter string="Department" name='group_department_id' domain="[]" context="{'group_by':'department_id'}"/>
+						 <filter string="Segment" name='group_segment_id' domain="[]" context="{'group_by':'segment_id'}"/>
+						 <filter string="Sub Segment" name='group_sub_segment' domain="[]" context="{'group_by':'sub_segment_id'}"/>
+						 <filter string="Center" name='group_center_id' domain="[]" context="{'group_by':'center_id'}"/>
+						 <!-- <filter string="Status" domain="[]" context="{'group_by':'state}"/> -->	
+					</xpath>
+				</data>
+			</field>
+		</record>
+
+	
+		<record id="view_contract_form" model="ir.ui.view">
+			<field name="name">hr.contract.form.inherit</field>
+			<field name="model">hr.contract</field>
+			<field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+			<field name="arch" type="xml">
+			<data>        
+				<xpath expr="//field[@name='state']" position="before">
+				    <button name="confirm_contract" type="object" string="Confirm" groups="hr_ext.group_hr_head,hr.group_hr_user" states="draft" class="oe_highlight"/>
+					<button name="signal_open" type="workflow" string="Trial Successful" groups="hr.group_hr_manager" states="trial_ending" class="oe_highlight"/>
+				  	<!--<button name="end_contract" type="object" string="End Contract" groups="hr.group_hr_user" states="trial,trial_ending,open,contract_ending" class="oe_highlight"/> -->
+				  	<button name="contract_close" type="object" string="End Contract" groups="hr.group_hr_user" states="trial,trial_ending,open,contract_ending" class="oe_highlight"/>		
+				</xpath>
+				
+				<xpath expr="//field[@name='state']" position="replace">
+					<field name="state" widget="statusbar" statusbar_visible="draft,trial,open,done" groups="hr_ext.group_hr_head"/>
+				</xpath>
+				<group name="main_info" position="replace">
+				    <group name="main_info">
+						<group name="salary_and_advantages" string="Monthly Advantages in Cash">
+							<!-- 
+						    <label string="Basic Salary"/>
+						    -->
+						    <div class="o_row" name="wage">
+						        <field name="wage" nolabel="1"/>
+						        <span>/ month</span>
+						    </div>
+						    <field name="advantages" nolabel="1" placeholder="Advantages..." colspan="2" invisible="1"/>
+						
+						</group>	
+					</group>
+				</group>
+				
+			 	<xpath expr="//field[@name='resource_calendar_id']" position="after">
+					<field name="attendance_policy" readonly="1"/>					
+				</xpath>
+				<field name="employee_id" position="replace">
+					<field name="employee_id" required="1"/>						
+				</field>
+				<field name="job_id" position="replace">
+					<field name="employee_dept_id" invisible="1"/>
+					<field name="job_id" required="1" domain="[('department_id', '=', employee_dept_id)]" attrs="{'invisible': [('state','=','done')]}"/>
+					<field name="center_id" readonly="1"/>
+				</field>
+				<field name="struct_id" position="after">
+					<field name="segment_id" readonly="1"/>
+					<field name="sub_segment_id" readonly="1"/>							
+				</field>
+			</data>
+			</field>
+		</record>
+		
+		<record id="view_expiring_contracts_tree" model="ir.ui.view">
+			<field name="name">hr.contract.contract.expire.tree</field>
+			<field name="model">hr.contract</field>
+			<field name="arch" type="xml">
+				<tree string="Expiring Contracts">
+				    <field name="employee_id"/>
+				    <field name="department_id"/>
+				    <field name="job_id"/>
+				    <!--<field name="trial_date_end"/> -->
+				    <field name="date_end"/>
+				    <field name="state"/>
+				</tree>
+			</field>
+		</record>
+		
+		<record id="open_expiring_contracts" model="ir.actions.act_window">
+			<field name="name">Ending Trials &amp; Contracts</field>
+			<field name="res_model">hr.contract</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="view_id" ref="view_expiring_contracts_tree"/>
+			<field name="context">{'can_create':False}</field>
+			<field name="domain">['|',('state','in',['contract_ending']),('state','in',['trial_ending'])]</field>
+			<field name="help" type="html">
+			  <p>
+				There are currently no contracts or trial periods that are about to expire.
+			  </p>
+			</field>
+		</record>
+       
+		<record id="view_draft_contracts_tree" model="ir.ui.view">
+			<field name="name">hr.contract.contract.draft.tree</field>
+			<field name="model">hr.contract</field>
+			<field name="arch" type="xml">
+				<tree string="Contracts to be Approved">
+					<field name="employee_id"/>
+					<field name="company_id"/>
+					<field name="department_id"/>
+					<field name="job_id"/>
+					<field name="date_start"/>
+					<!--<field name="trial_date_end"/> -->
+					<field name="date_end"/>
+					<field name="state"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="open_draft_contracts" model="ir.actions.act_window">
+			<field name="name">Contracts to be Approved</field>
+			<field name="res_model">hr.contract</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="view_id" ref="view_draft_contracts_tree"/>
+			<field name="domain">[('state','in',['draft'])]</field>
+			<field name="help" type="html">
+			  <p>
+				There are currently no contracts that need to be approved.
+			  </p>
+			</field>
+		</record>
+
+		<!-- Change HR Contract Module View for addition of Head group in Button and removel of Current Contract Group -->
+		<record id="hr_contract.hr_hr_employee_view_form2" model="ir.ui.view">
+			<field name="name">hr.hr.employee.view.form2</field>
+			<field name="model">hr.employee</field>
+			<field name="inherit_id" ref="hr.view_employee_form"/>
+			<field name="arch" type="xml">
+				<data>
+				    <xpath expr="//div[@name='button_box']" position="inside">
+				        <button name="%(hr_contract.act_hr_employee_2_hr_contract)d"
+				            class="oe_stat_button"
+				            icon="fa-book"
+				            type="action"
+				            groups="hr_ext.group_hr_head, hr.group_hr_user">
+				            <field name="contracts_count" widget="statinfo" string="Contracts"/>
+				        </button>
+				    </xpath>            
+				    <xpath expr="//field[@name='marital']" position="after">
+				        <field name="children"/>
+				    </xpath>
+				    <xpath expr="//field[@name='birthday']" position="after">
+				        <field name="place_of_birth"/>
+				    </xpath>
+				    <xpath expr="//field[@name='bank_account_id']" position="replace">
+				        <field name="bank_account_id" context="{'display_partner':True}"/>
+				    </xpath> 
+				</data>
+			</field>
+		</record>
+
+
+	</data>
+</odoo>

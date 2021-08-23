@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+       <record id="act_checked" model="workflow.activity">
+		    <field name="wkf_id" ref="account.wkf"/>
+		    <field name="name">checked</field>
+		    <field name="action">write({'state':'checked','checked_by':env.user.id})</field>
+		    <field name="kind">function</field>
+        </record>
+    		
+        <record id="t1" model="workflow.transition">
+            <field name="act_from" ref="account.act_draft"/>
+            <field name="act_to" ref="act_checked"/>
+            <field name="signal">invoice_check</field>
+			<field name="condition">type == 'out_invoice'</field>
+        </record>
+        
+        <record id="t11" model="workflow.transition">
+            <field name="act_from" ref="account.act_draft"/>
+            <field name="act_to" ref="act_checked"/>
+            <field name="signal">invoice_check</field>
+			<field name="condition">type == 'out_refund'</field>
+        </record>
+
+        <record id="t2" model="workflow.transition">
+			<field name="act_from" ref="act_checked"/>
+			<field name="act_to" ref="account.act_open"/>
+			<field name="signal">invoice_open</field>
+        </record>
+
+		<record id="account.t4" model="workflow.transition">
+            <field name="act_from" ref="account.act_draft"/>
+            <field name="act_to" ref="account.act_open"/>
+            <field name="signal">invoice_open</field>
+			<field name="condition">type != 'out_invoice'</field>
+        </record>
+
+		 <record id="t101" model="workflow.transition">
+            <field name="act_from" ref="act_checked"/>
+            <field name="act_to" ref="account.act_draft"/>
+            <field name="signal">invoice_to_draft</field>			
+        </record>
+        
+      
+        
+    </data>
+</odoo>

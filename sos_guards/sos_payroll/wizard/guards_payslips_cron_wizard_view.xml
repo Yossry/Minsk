@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_guards_payslips_cron_wizard" model="ir.ui.view">
+            <field name="name">Guards Payslips Cron Wizard</field>
+            <field name="model">guards.payslips.cron.wizard</field>
+            <field name="arch" type="xml">
+            <form string="Guards Payslips Cron Wizard" version="7.0">
+                <label for="date_from" string="This wizard will Generate Cron Entries."/>
+                <footer>
+                    <button name="generate_cron_entry" string="Generate Slips Cron" type="object" class="oe_highlight"/>
+                    <button name="generate_post_cron_entry" string="Generate Posts Cron" type="object" class="oe_highlight"/>
+					<button name="reaudit" string="Re-Audit" type="object"/>
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+                <group>
+                    <group>
+						<field name="date_from" required="1"/>
+						<field name="date_to" required="1"/>    
+						<field name="paidon"/> 						
+                    </group>                    
+                </group>
+                
+                 <notebook tabpos="up" colspan="4">
+				                   				                    
+					<page string="Project Filters" name="projects">
+						<separator string="Generate Only" colspan="4"/>
+						<field name="project_ids"  widget="many2many_checkboxes"/>							
+					</page>
+
+					<page string="Center Filters" name="centers">
+						<separator string="Generate Only" colspan="4"/>
+						<field name="center_ids"  widget="many2many_checkboxes"/>							
+					</page>
+
+					<page string="Exclude Projects" name="exclude_projects">
+						<separator string="Exclude Projects" colspan="4"/>
+						<field name="exclude_project_ids"  widget="many2many_tags" options="{'no_quick_create':True,'no_create_edit':True}"/>							
+					</page>
+				                    
+                </notebook>
+            </form>
+            </field>
+        </record>
+
+        <record id="action_guards_payslips_cron_wizard" model="ir.actions.act_window">
+            <field name="name">Create Payslips Cron</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">guards.payslips.cron.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+		
+    </data>
+</odoo>

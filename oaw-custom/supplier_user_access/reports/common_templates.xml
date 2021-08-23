@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="external_layout_header">
+        <div class="header">
+            <div class="row">
+                <div class="col-xs-3">
+
+                </div>
+                <div
+                    class="col-xs-9 text-right"
+                    style="margin-top:20px;"
+                    t-field="res_company.rml_header1"
+                />
+            </div>
+            <div class="row zero_min_height">
+                <div class="col-xs-12">
+                    <div style="border-bottom: 1px solid black;" />
+                    <br />
+                </div>
+            </div>
+            <div class="row">
+                <div>
+                    <div class="col-xs-4">
+                        <p>TOURBILLON WATCH DISTRIBUTION</p>
+                        <p>SAIF DEK Q1-05_074B</p>
+                        <p>PO BOX 513593</p>
+                        <p>SHARJAH</p>
+                        <p>U.A.E.</p>
+                        <br />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+    <!--Just getting the footer of eHanse custom module: needs to be added as dependency -->
+    <template id="external_layout_footer">
+        <div class="footer" style="margin:auto;font-size:81.25%;">
+            <div class="text-center" style="border-top: 1px solid black;">
+                <ul class="list-inline">
+                    <li>CHF ACCOUNT NAME:
+                        <span>TOURBILLON DISTRIBUTION FZE</span>
+                    </li>
+                    <li>CHF ACCOUNT IBAN:
+                        <span>AE6961 50000 50 5753990000</span>
+                    </li>
+                    <li>CHF ACCOUNT ARY BANK:
+                        <span>BANQUE DE COMMERCE ET DE PLACEMENT- BCP
+                        </span>
+                    </li>
+                    <li>CHF ACCOUNT SWIFT:
+                        <span>BPCPAEAD</span>
+                    </li>
+                    <li>HKD ACCOUNT NAME:
+                        <span>TOURBILLON DISTRIBUTION FZE</span>
+                    </li>
+                    <li>HKD ACCOUNT IBAN:
+                        <span>AE 8561 50000 50 575399 0003</span>
+                    </li>
+                    <li>HKD ACCOUNT ARY BANK:
+                        <span>BANQUE DE COMMERCE ET DE PLACEMENT- BCP
+                        </span>
+                    </li>
+                    <li>HKD ACCOUNT SWIFT:
+                        <span>BPCPAEAD</span>
+                    </li>
+                </ul>
+                <ul class="list-inline">
+                    <li>Page:</li>
+                    <li>
+                        <span class="page" />
+                    </li>
+                    <li>/</li>
+                    <li>
+                        <span class="topage" />
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </template>
+    <template id="external_layout">
+        <t t-call="supplier_user_access.external_layout_header" />
+        <t t-raw="0" />
+        <t t-call="supplier_user_access.external_layout_footer" />
+    </template>
+</odoo>

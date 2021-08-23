@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+  	
+  	<menuitem id="menu_gms_store" name="Store" parent="sos.menu_gms_root" sequence="12" groups="base.group_user"/>
+	  	<menuitem parent="menu_gms_store" id="sos_general_approval_menu" name="General Approval" sequence="5" action="sos_general_approval_action" groups="hr.group_hr_user,sos_uniform.group_admin_approve"/>
+		<menuitem parent="menu_gms_store" id="sos_uniform_demand_menu" name="Uniform Demand" sequence="10" action="sos_uniform_demand_action" groups="sos.group_hr_master,base.group_user,sos.group_regional_manager,sos.group_coordinator,sos_uniform.group_admin_approve"/>
+		<menuitem parent="menu_gms_store" id="sos_jacket_demand_menu" name="Jacket Demand" sequence="13" action="sos_jacket_demand_action" groups="sos.group_hr_master,base.group_user,sos.group_regional_manager,sos.group_coordinator,sos_uniform.group_admin_approve"/>
+		<menuitem parent="menu_gms_store" id="sos_uniform_return_menu" name="Uniform  Returns" sequence="14" action="sos_uniform_return_action" groups="sos.group_hr_master,base.group_user,sos.group_regional_manager,sos.group_coordinator,sos_uniform.group_admin_approve"/>
+		<menuitem parent="menu_gms_store" id="sos_stationery_demand_menu" name="Stationery Demand" sequence="15" action="sos_stationery_demand_action" groups="sos.group_hr_master,base.group_user,sos.group_regional_manager,sos.group_coordinator,sos_uniform.group_admin_approve"/>
+	  	<menuitem parent="menu_gms_store" id="sos_weapon_demand_menu" name="Weapon Demand" sequence="16" action="sos_weapon_demand_action" groups="sos.group_hr_master,base.group_user,sos.group_regional_manager,sos.group_coordinator,sos_uniform.group_admin_approve"/>
+		<menuitem parent="menu_gms_store" id="sos_safety_demand_menu" name="Safety Demand" sequence="18" action="sos_safety_demand_action" groups="sos.group_hr_master,base.group_user,sos.group_regional_manager,sos.group_coordinator,sos_uniform.group_admin_approve"/>
+		<menuitem parent="menu_gms_store" id="sos_button_inventory_menu" name="RFID Card Inventory" sequence="20" action="sos_button_inventory_action" groups="sos_uniform.group_rfid_manager"/>
+		<menuitem parent="menu_gms_store" id="sos_button_tailor_issuance_menu" name="RFID Card Issuance" sequence="22" action="sos_button_tailor_issuance_action" groups="sos_uniform.group_rfid_manager"/>
+		<menuitem parent="menu_gms_store" id="sos_damage_demand_menu" name="Damage Items Stock" sequence="23" action="sos_damage_demand_action" groups="sos.group_hr_master,base.group_user,sos.group_regional_manager,sos.group_coordinator,sos_uniform.group_admin_approve"/>
+  		
+  	
+	  	<!-- Configuration -->
+		<menuitem parent="sos.menu_gms_configuration" id="sos_uniform_item_mi" name="Uniform Items" sequence="115" action="sos_uniform_items_action" />
+			<menuitem parent="sos.menu_gms_configuration" id="sos_weapon_item_mi" name="Weapon Items" sequence="116" action="sos_weapon_items_action" />
+			<menuitem parent="sos.menu_gms_configuration" id="sos_stat_item_mi" name="Stationery Items" sequence="117" action="sos_stationery_items_action" />
+	  	
+	  	<!-- Store Reports    -->
+	  	<menuitem id="menu_gms_store_reports" name="Store Reports" parent="menu_gms_store" sequence="25" groups="sos.group_hr_master,base.group_user,base.group_user"/>
+	  		<menuitem id="menu_gms_safety_reports" name="Safety Stock Reports" parent="menu_gms_store_reports" sequence="6" groups="sos.group_hr_master,base.group_user,base.group_user"/>
+	  			<menuitem action="action_sos_safety_stock_wizard" name="Safety Stock" id="menu_sos_safety_rep" parent="menu_gms_safety_reports" sequence="5" groups="sos.group_hr_master,base.group_user,base.group_user" />
+	  			<menuitem action="action_sos_uniform_safety_usage_wizard" name="Safety Stock  Usage" id="menu_sos_uniform_safety_usage" parent="menu_gms_safety_reports" sequence="6" groups="sos.group_hr_master,base.group_user,base.group_user" />
+	  		
+	  		<menuitem id="menu_gms_purchase_reports" name="Purchase Reports" parent="menu_gms_store_reports" sequence="10" groups="sos.group_hr_master,base.group_user,base.group_user"/>
+	  			<menuitem action="action_sos_purchase_report_wizard" name="Purchase Report" id="menu_sos_purchase_report" parent="menu_gms_purchase_reports" sequence="5" groups="sos.group_hr_master,base.group_user,base.group_user" />
+
+
+	  		<!-- New Stock Reports -->
+	  		<menuitem action="action_daily_stock_wizard" name="Daily Stock Report" id="menu_daily_stock_report" parent="menu_gms_store_reports" sequence="50" groups="sos.group_hr_master,base.group_user,base.group_user" />	
+	  		
+	  		<menuitem name="Uniform Reports" id="menu_uniform_main_reports" parent="menu_gms_store_reports" sequence="52" groups="sos.group_hr_master,base.group_user,base.group_user" />	  
+	  			<menuitem action="action_uniform_wizard" name="Uniform Report" id="menu_uniform_report" parent="menu_uniform_main_reports" sequence="5" groups="sos.group_hr_master,base.group_user,base.group_user" />	  	  				
+				<menuitem action="action_shoes_wizard" name="Shoes Report" id="menu_shoes_report" parent="menu_uniform_main_reports" sequence="10" groups="sos.group_hr_master,base.group_user,base.group_user" />
+				<menuitem action="action_trouser_wizard" name="Trouser Report" id="menu_trouser_report" parent="menu_uniform_main_reports" sequence="15" groups="sos.group_hr_master,base.group_user,base.group_user" />			  			
+				<menuitem action="action_tshirt_wizard" name="T-Shirt Report" id="menu_tshirt_report" parent="menu_uniform_main_reports" sequence="20" groups="sos.group_hr_master,base.group_user,base.group_user" />			  			
+				<menuitem action="action_lady_uniform_wizard" name="Lady Uniform Report" id="menu_lady_uniform_report" parent="menu_uniform_main_reports" sequence="25" groups="sos.group_hr_master,base.group_user,base.group_user" />			
+				
+			
+  			<menuitem action="action_accessories_wizard" name="Accessories Report" id="menu_accessories_report" parent="menu_gms_store_reports" sequence="57" groups="sos.group_hr_master,base.group_user,base.group_user" />
+			<menuitem action="action_weapon_wizard" name="Weapon Report" id="menu_weapon_report" parent="menu_gms_store_reports" sequence="60" groups="sos.group_hr_master,base.group_user,base.group_user" />
+			<menuitem action="action_ammunition_wizard" name="Ammunition Report" id="menu_ammunition_report" parent="menu_gms_store_reports" sequence="62" groups="sos.group_hr_master,base.group_user,base.group_user" />			
+ 			<menuitem action="action_stationary_wizard" name="Stationary Report" id="menu_stationary_report" parent="menu_gms_store_reports" sequence="65" groups="sos.group_hr_master,base.group_user,base.group_user" />		
+  </data>
+</odoo>

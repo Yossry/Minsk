@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	
+	
+	<template id="assets_backend" name="Salary Planner common assets" inherit_id="web.assets_backend">
+		<xpath expr="." position="inside">		    
+		    <script type="text/javascript" src="/hr_payroll_ext/static/src/js/web_planner_salary.js"></script>
+		</xpath>
+	</template>
+		
+    <template id="salary_planner">
+        <t t-call="wizard_planner.pages">
+        
+        
+            <t t-call="wizard_planner.page">
+                <t t-set="page_title">Welcome</t>
+                <t t-set="hide_mark_as_done" t-value="True"/>
+                <div class="o_planner_intro">
+                    <p>
+                        This Planner implements a more formal Payroll cycle. This cycle is based on payroll period schedules configured by the user. 
+                        An Planner wizard guides the HR officer or Manager through the payroll process. 
+                        For each payroll period a specific set of criteria have to be met in order to proceed to the next stage of the process. 
+                    </p>
+                    <ul>
+                        <li><strong>Reduced data entry:</strong> no need to manually create invoices, register bank statements, and send payment follow-ups.</li>
+                        <li><strong>Clean customer invoices:</strong> easy to create, beautiful and full featured invoices.</li>
+                        <li><strong>Automated documents sending:</strong> automatically send your invoices by email or snail mail.</li>
+                        <li><strong>On-the-fly payment reconciliation:</strong> automatic suggestions of outstanding payments when creating invoices.</li>
+                        <li><strong>Banking interface:</strong> with live bank feed synchronization and bank statement import.</li>
+                    </ul>
+                    
+                    <p>Enjoy your Odoo experience,</p>
+                    <div class="mt32">
+                        <!--<img class="signature mb8" src="/hr_payroll_ext/static/src/img/farooq_signature.jpg"/>-->
+                        <address>
+                            For the AARSOL Team,<br/>
+                            Muhammad Farooq Arif, ERP Consultant
+                        </address>
+                    </div>
+                </div>
+            </t> <!-- End Welcome Page -->
+            
+            <t t-call="wizard_planner.category">
+                <t t-set="menu_categorytitle">Get started</t>
+                <t t-set="menu_categoryclasses" t-value="'fa fa-flag'"/>
+                
+            	 <t t-call="wizard_planner.page">
+                    <t t-set="page_title">Contracts</t>
+	                   	<p> There <span t-esc="'were ' if period.state == 'closed' else 'are '"/><span t-esc="len(slips) or len(contracts)"/> 
+	                   		Active Contracts for the Payoll Period 
+	                   		from <span t-esc="period_start_date"/> to <span t-esc="period_end_date"/><br/></p>          
+	                    	
+	                    	<div t-if="len(companies) > 1">
+	                    		<p><strong>Comany wise Contract Details</strong></p>
+	                    		<span t-if="period.state != 'closed'">
+					            <ul t-foreach="companies" t-as="company" style="line-height:70%;">
+							         <li> <span t-esc="company_contracts[company.id]['name']"/>: <span t-esc="len(company_contracts[company.id]['contracts'])"/></li>
+								</ul>
+								</span>
+								<span t-if="period.state == 'closed'">
+					            <ul t-foreach="companies" t-as="company" style="line-height:70%;">
+							         <li> <span t-esc="company_slips[company.id]['name']"/>: <span t-esc="len(company_slips[company.id]['slips'])"/></li>
+								</ul>
+								</span>
+								
+								<!--
+								<p><strong>Detail of Employees to whom the Salary <span t-esc="'was ' if period.state == 'closed' else 'will be '"/> charged other 
+									than their Base Company</strong></p>
+								<div class="col-xs-12">
+									<div t-foreach="companies" t-as="company">
+										<div t-if="(company_slips and company_slips[company.id]['slips']) or 
+											(company_contracts and company_contracts[company.id]['contracts'])" class="col-xs-6">
+											<strong><span t-esc="company.partner_id.code"/></strong>
+											<table class="table table-condensed">
+												<thead>
+												    <tr>
+												        <th>Sr</th>										          
+												        <th>Name</th>
+												        <th>Charged To</th>
+												    </tr>
+												</thead>										    
+												<tbody>
+													<t t-set="index" t-value="1"/>
+													
+													<span t-if="period.state != 'closed'">	
+												    <tr t-foreach="company_contracts[company.id]['contracts']" t-as="contract">										          
+												      <tr t-if="contract.employee_id.company_id.id != contract.struct_id.company_id.id">
+												        <td> <span t-esc="index" /> </td>
+												        <td><span t-esc="contract.name"/></td>
+												        <td><span t-esc="contract.struct_id.company_id.partner_id.code"/></td>
+												        <t t-set="index" t-value="index+1"/>
+												      </tr>
+												    </tr>
+												    </span>
+												    <span t-if="period.state == 'closed'">	
+												    <tr t-foreach="company_slips[company.id]['slips']" t-as="slip">										          
+												      <tr t-if="slip.company_id.id &lt;&gt; slip.struct_id.company_id.id">
+												        <td> <span t-esc="index" /> </td>
+												        <td><span t-esc="slip.employee_id.name"/></td>
+												        <td><span t-esc="slip.struct_id.company_id.partner_id.code"/></td>
+												        <t t-set="index" t-value="index+1"/>
+												      </tr>
+												    </tr>
+												    </span>
+												</tbody> 
+											</table>
+										</div>
+									</div>								
+								</div>  -->
+					        </div> 
+	                    	<div t-if="period.state != 'closed'">
+			                	<p><strong>Actions</strong></p>
+			                	<p> You can View Payroll Schedule and <a href="#" id="view_contracts"> Contract Records</a>, here you will have the ability to 
+			                		add or update the contract records (if required)</p> 
+			                	<br/>
+			                	<p> You can <a href="#" id="view_contracts2">View Contract Records</a> directly, to analyze by using the groups.</p> 
+			                </div>	
+                    	
+                </t>    
+                
+		        <div t-if="attendance_policy  == 'bio_month'"> 
+                <t t-call="wizard_planner.page">
+                    <t t-set="page_title">Attendance Exceptions</t>
+                    <p>
+                        Following Attendance <strong>Exception Rules</strong> are defined for <strong>Critical</strong> and <strong>High</strong> Alerts.                        
+                    </p>
+                    
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Code</th>
+                                <th>Severity</th>
+                                <th>Resolution Hints</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="alert_rule_ids" t-as="r">
+                                <td><span t-esc="r.name"/></td>
+                                <td><span t-esc="r.code"/></td>
+                                <td><span t-esc="r.severity"/></td>
+                                <td><span t-esc="r.resolution"/></td>                                
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <p>
+                    	<p><strong>Exceptions in the Salary Period</strong></p>
+                        <ul>
+		                     <li style="color:red;"> Critical Alerts: <span t-esc="alert_critical"/></li>
+		                     <li style="color:orange;"> High Alerts: <span t-esc="alert_high"/></li>
+		                     <li> Medium Alerts: <span t-esc="alert_medium"/></li>
+		                     <li> Low Alerts: <span t-esc="alert_low"/></li>
+						</ul>
+					</p>	
+	                <p> You can <a href="#" id="alerts_view">View Crital and High Alerts</a> to resolve the problem for these, 
+	                	This resolution is required to proceed further.
+	                </p>
+	                <br/>
+	                <p> You can <a href="#" id="alerts_recalc">Recalculate Alerts</a>, so that system will consider the latest updates in Attendance and Alert Rules. 
+	                </p>
+	                <br/>
+	                <div class="alert alert-info info_icon" role="alert">
+		                    <span class="fa fa-lightbulb-o fa-lg"/>
+		                    <p>Untill you resolve all critical and high alerts; the Salary Period will not be locked, that is the necessary step for generating 
+		                    	the Salary Slips.</p>
+		                </div>
+                </t>
+                </div>
+        
+                
+		        <t t-call="wizard_planner.page">
+                    <t t-set="page_title">Public Holidays</t>
+                    <p>
+                        If there are any <strong>Public Holidays</strong> during this pay period please review the dates on which they fall. Some holidays may depend on 
+                        local conditions (such as sightings of the moon, etc.) and may therefor fall on a day different than previously scheduled.
+                    </p>
+                    <p>
+                    	<p><strong>Scheduled Public Holidays</strong></p>
+						<table class="table table-condensed">
+				            <thead>
+				                <tr>
+				                    <th>Name</th>
+				                    <th>Date</th>
+				                    <th>Variable</th>
+				                </tr>
+				            </thead>
+				            <tbody>
+				                <tr t-foreach="public_holiday_ids" t-as="r">
+				                    <td><span t-esc="r.name"/></td>
+				                    <td><span t-esc="r.date"/></td>
+				                    <td><span t-esc="r.variable"/></td>
+				                </tr>
+				            </tbody>
+				        </table>
+					</p>	
+                </t>
+		        
+		        <div t-if="attendance_policy in ('bio_month','monthly')">
+				<t t-call="wizard_planner.page">
+                    <t t-set="page_title">Monthly Attendance</t>
+                    <div t-if="len(attendance_ids) == 0">
+                    	<p> There is no monthly attendance record for the Salary Period. Please process the Montly attendance first.<br/></p>
+                    	<span t-if="attendance_policy  == 'bio_month'"> 
+                    		<p>You can <a href="#" id="daily_to_month">Calculate Attendance Records</a>, The Punched records will be counted to the monthly attendance records.</p> 
+                    	</span>
+                    	<p t-if="attendance_policy  == 'monthly'"> 
+                    		You can <a href="#" id="import_month_attendance">Import Attendance Records</a> from the Excel file. 
+                    		
+                    		<p>
+                               If you donot have the template Excel file for the Attendance, you can download the 
+                               	<a href="/hr_payroll_ext/static/csv/attendance_sheet.xlsx">Excel template</a>
+                            </p>
+                            
+                    	</p>                      	
+                    </div>
+                    <div t-if="len(attendance_ids) > 0">
+                    	<p> There <span t-esc="'were ' if period.state == 'closed' else 'are '"/><span t-esc="len(attendance_ids)"/> monthly attendance records 
+                    		for the Salary Period.<br/></p> 
+                    	<p> You can <a href="#" id="view_month_attendance">Check Attendance Records</a> 
+                    	<span t-if="period.state != 'closed'"> , and add or update the records (if required)</span></p> 
+                    	                    	
+                    </div>                                  
+                </t>
+                </div>
+                
+                
+                
+                <div t-if="period.state != 'closed'">
+				<t t-call="wizard_planner.page">
+                    <t t-set="page_title">Lock Pay Period</t>
+                    <div t-if="locked == True">
+                    	The Pay Period is Locked. The Attendance, Shift Schedules and Holidays records of the Payroll Period from <span t-esc="period_start_date"/> to 
+                    	<span t-esc="period_end_date"/> are locked.
+                    	<div t-if="can_unlock == True"><br/> You can <a href="#" id="unlock_period">Unlock Pay Period</a>, 
+                    		if some changes in that time period is required.
+                    	</div>
+                    </div>
+                    
+                    <div t-if="locked == False and (alert_critical > 0 or alert_high > 0)">
+                    	There are Critical and/or High Attendance Alerts for the Time Period, so the Pay Period can not be Locked. Please go to the Attendance Exceptions Page.<br/>
+                    	<ul>
+		                     <li> Critical Alerts: <span t-esc="alert_critical"/></li>
+		                     <li> High Alerts: <span t-esc="alert_high"/></li>		                     
+						</ul>                    	
+                    </div>
+                    
+                    <!--<div t-if="locked == False and alert_critical == 0 and alert_high == 0"> -->
+                    <div t-if="locked == False">
+                    	Please <a href="#" id="lock_period">Lock Pay Period</a>.<br/>
+                    	The Attendance, Shift Schedules and Holidays records of the Payroll Period from <span t-esc="period_start_date"/> to 
+                    	<span t-esc="period_end_date"/> will be locked.
+                    </div>              
+                </t>
+                </div>
+				
+				  <t t-call="wizard_planner.page">
+                    <t t-set="page_title">Post Overtime</t>
+                    
+                    <div t-if="period.overtime_posted == False">
+                    	<p>You can <a href="#" id="post_overtime">Post Overtime</a>, The approved overtime records will be in you salary inputs.</p>
+                    </div>
+                    
+                    <div t-if="period.overtime_posted == True">
+                    
+                    	<p> Overtime is Posted for this Period. </p>
+                    </div>    
+                                  
+                </t>
+				
+				
+				<t t-call="wizard_planner.page">
+                    <t t-set="page_title">Review Payslip Amendments</t>
+                    <p>Review pay slip amendments, if any, attached to this pay period. Here you can put any adjustmemts like incentives and fine deductions for the payslip.</p>
+                    
+                    <div t-if="len(input_ids) > 0">
+                    	<p> There <span t-esc="'were ' if period.state == 'closed' else 'are '"/><span t-esc="len(input_ids)"/> adjustment records 
+                    		for the Salary Period.<br/></p> 
+                    	<p> You can <a href="#" id="view_month_inputs">Check Adjustment Records</a> 
+                    	<span t-if="period.state != 'closed'"> , and add or update the records (if required)</span></p> 
+                    	                    	
+                    </div>     
+                    
+                    <span t-if="period.state != 'closed'"><p>You can confirm, cancel or modify amendments directly from this wizard.<br/> 
+                    	Only confirmed amendments will be processed.</p>
+                    	
+                    	<p> You can <a href="#" id="import_month_inputs">Import Adjustments/Arrears Records</a> from the Excel file.</p> 
+                    	<p>
+                            If you donot have the template Excel file for the Adjustments, you can download the 
+                           	<a href="/hr_payroll_ext/static/csv/arrears_sheet.xlsx">Excel template</a>
+                        </p>                            
+                    </span>        
+                                    
+                </t>
+                
+                
+		        
+		     </t>   <!-- Get Started --> 
+		     
+		     
+		      <t t-call="wizard_planner.category">
+                <t t-set="menu_categorytitle">Slips Generation</t>
+                <t t-set="menu_categoryclasses" t-value="'fa-cog'"/>
+                <t t-call="wizard_planner.page">
+                    <t t-set="page_title">Generate and Review Pay Slips</t>
+                    	<div t-if="payslips == False and locked == True">
+                    		<p> Now You are in a position to <a href="#" id="create_payroll_register">Generate the Payslips</a> 
+                    			for the Period from <span t-esc="period_start_date"/> 
+                    			to <span t-esc="period_end_date"/> <br/>
+                    		</p>                 	
+                    	</div>
+                    	<div t-if="payslips == True">
+                    		You can <a href="#" id="view_payroll_register">View Salary Register</a> generated by the system for the selected Pay Period 
+                    			from <span t-esc="period_start_date"/> to <span t-esc="period_end_date"/>.
+                    		<br/><br/>
+                    		You can <a href="#" id="view_payroll_batch">View Payslip Batches</a> directly for the selected Pay Period 
+                    			from <span t-esc="period_start_date"/> to <span t-esc="period_end_date"/>. 
+                    		<br/><br/>
+                    		You can <a href="#" id="view_payslips">View Generated Payslips</a> related to the Payperiod 
+                    			from <span t-esc="period_start_date"/> to <span t-esc="period_end_date"/> directly. 
+                    	</div> 
+		                
+                </t>
+                
+                <div t-if="len(companies) > 1">
+                <t t-call="wizard_planner.page">
+                    <t t-set="page_title">Inter-Company Transfer</t>
+                    	<div t-if="payslips == True and not transfers">
+                    		<p> Now You are in a position to <a href="#" id="inter_transfer_salary"> Transfer Salary between Inter Companies</a> 
+                    			for the Period from <span t-esc="period_start_date"/> 
+                    			to <span t-esc="period_end_date"/> <br/>
+                    		</p>                 	
+                    	</div>
+                    	<div t-if="transfers">
+                    		You can <a href="#" id="view_inter_transfer">View Inter Company Salary Transfers</a> generated by the system for the selected Pay Period 
+                    			from <span t-esc="period_start_date"/> to <span t-esc="period_end_date"/>.
+                    		<br/><br/>
+                    		
+                    	</div> 		                
+                </t>
+                </div>
+                
+            </t>   <!--  Slips Generation  -->     
+                
+     		<t t-call="wizard_planner.page">
+                <t t-set="page_title">End</t>
+                <t t-set="hide_title" t-value="True"/>
+                <t t-set="hide_from_menu" t-value="True"/>
+                <t t-set="hide_mark_as_done" t-value="True"/>
+                <h1 class="text-center o_planner_trophy" data-icon="&#xe006;" />
+                <div class="text-center">
+                    <h1>Congratulations, you're done!</h1>
+                    <h3>We hope this tool helped you process the Salary.</h3>
+                    <h4>Don't hesitate to <a href="mailto:farooq@aarsol.com?subject=Salary%20Planner" target="_blank">send us an email</a> to describe<br/> 
+                    	your experience or to suggest improvements !</h4>
+                    <p><strong>-AARSOL Team</strong></p>
+                    <img src="/web_planner/static/src/img/odoo_logo.png"/>
+                </div>
+            </t>
+            
+            
+            <t t-call="wizard_planner.category">
+                <t t-set="menu_categorytitle">Payment</t>
+                <t t-set="menu_categoryclasses" t-value="'fa-cog'"/>
+				
+				<div t-if="period.state != 'closed'">
+				<t t-call="wizard_planner.page">
+                    <t t-set="page_title">Start Making Payments</t>
+                    <p>Once you start making payments there is no way to go back to a previous state. <br/>Any modifications will have to be made as Pay Slip Amendments 
+                    	to the next pay period after this one is closed.
+            		</p> 
+            		
+            		<div t-if="ps_generated == True and (pex_critical > 0 or pex_high > 0)">
+                    	<div class="alert alert-info info_icon" role="alert">
+		                    <span class="fa fa-lightbulb-o fa-lg"/>
+		                    <p>There are Critical and/or High Payroll Exceptions for the generated Payslips, Please go to the Payroll Exceptions Page.</p><br/>
+		                	<ul>
+				                 <li> Critical Exceptions: <span t-esc="pex_critical"/></li>
+				                 <li> High Exceptions: <span t-esc="pex_high"/></li>		                     
+							</ul>                    							
+		                </div>  
+                    </div>
+                    
+            		<div t-if="payment_started == True">
+                    	<div class="alert alert-info info_icon" role="alert">
+		                    <span class="fa fa-lightbulb-o fa-lg"/>
+		                    <p>Payment process for the Salry Period <span t-esc="period.name"/> have been Started.</p>
+		                </div>                	
+                    </div>
+            		
+            		<div t-if="ps_generated == True and pex_critical == 0 and pex_high == 0 and payment_started == False">
+                    	<p> You can <a href="#" id="start_payments">Start Payment Process</a> Now.</p>	
+                    	<br/>
+                    	<p> You can Check <a href="#" id="summary_payslips">Summary of Payslips</a> generated by the System.</p>	              	
+                    </div>            		        
+                </t>
+                </div>
+                
+                <t t-call="wizard_planner.page">
+                    <t t-set="page_title">Print Reports</t>
+                    <p>Print out the payroll and contribution registers belonging to the Pay Period from <span t-esc="period_start_date"/> 
+                    			to <span t-esc="period_end_date"/> <br/>. 
+                    	Keeping paper-copies of these reports can be useful for record-keeping and preservation purposes.
+                	</p> 
+                	
+                	<ul t-foreach="companies" t-as="company" style="line-height:70%;">
+                		Print <a href="#" t-att-id="'print_payroll_sheet_'+str(company.id)"> <span t-esc="company.partner_id.code"/> Payroll Sheet</a>
+                	</ul>
+                	
+                	<ul t-foreach="companies" t-as="company" style="line-height:70%;">
+                		Print <a href="#" t-att-id="'make_excel_'+str(company.id)"> <span t-esc="company.partner_id.code"/> Excel Payroll Sheet</a>
+                	</ul>
+                	
+                	<p> You can also view the GL entries summary for the Payroll of Pay Period. </p>
+                	<ul t-foreach="companies" t-as="company" style="line-height:70%;">
+                		Print <a href="#" t-att-id="'print_payroll_accounts_'+str(company.id)"> <span t-esc="company.partner_id.code"/> Payroll GL Entries</a>
+                	</ul>
+                	
+                	
+                	<!--
+                	<p><a href="#" id="print_payroll_summary">Print Payroll Summary</a> for the Pay Period from <span t-esc="period.date_start[:10]"/> 
+                    			to <span t-esc="period.date_end[:10]"/>.</p>
+                	
+                	<p><a href="#" id="print_payroll_register">Print Payroll Register</a> for the Pay Period from <span t-esc="period.date_start[:10]"/> 
+                    			to <span t-esc="period.date_end[:10]"/>.</p>
+                    
+                    <p><a href="#" id="print_payslip_details">Print Payslip Details</a> for the Pay Period from <span t-esc="period.date_start[:10]"/> 
+                    			to <span t-esc="period.date_end[:10]"/>.</p>
+                    			
+                    <p><a href="#" id="print_contribution_registers">Print Contribution Register</a> for the Pay Period from <span t-esc="period.date_start[:10]"/> 
+                    			to <span t-esc="period.date_end[:10]"/>.</p>
+                    <button name="print_payroll_summary" type="object" string="Print Payroll Summary" attrs="{'invisible': [('ps_generated','=',False)]}"/>                   
+                    -->
+                    									
+                	
+                </t>
+                
+                <div t-if="period.state != 'closed'">
+                <t t-call="wizard_planner.page">
+                    <t t-set="page_title">Close Pay Period</t>
+                    <p>Once you close a pay period there is no way to alter the status of any pay slips.  Any modifications will have to be made as Pay Slip Amendments 
+                    	to the next pay period.
+            		</p>
+                </t>
+                </div>
+                
+         		<t t-call="wizard_planner.page">
+                    <t t-set="page_title">End</t>
+                    <t t-set="hide_title" t-value="True"/>
+                    <t t-set="hide_from_menu" t-value="True"/>
+                    <t t-set="hide_mark_as_done" t-value="True"/>
+                    <h1 class="text-center o_planner_trophy" data-icon="&#xe006;" />
+                    <div class="text-center">
+                        <h1>Congratulations, you're done!</h1>
+                        <h3>We hope this tool helped you process the Salary.</h3>
+                        <h4>Don't hesitate to <a href="mailto:farooq@aarsol.com?subject=Salary%20Planner" target="_blank">send us an email</a> to describe<br/> 
+                        	your experience or to suggest improvements !</h4>
+                        <p><strong>-AARSOL Team</strong></p>
+                        <img src="/web_planner/static/src/img/odoo_logo.png"/>
+                    </div>
+                </t>
+            </t>  <!-- Payments -->
+            
+            
+          
+			 
+        </t> <!-- Pages -->
+    </template>
+
+<data>
+	<!-- Salary Planner -->
+    <record id="salary_planner_action" model="ir.actions.client">
+		<field name="name">Salary Planner</field>
+		<field name="tag">wizard_planner_main</field>
+		<field name="target">main</field>
+		<field name="context">{'period_id': [active_id]}</field>
+	</record>
+
+    <!--Planner Data-->
+    <record id="planner_salary" model="wizard.planner">
+        <field name="name">Salary Planner</field>
+        <field name="view_id" ref="salary_planner"/>
+        <!--<field name="menu_id" ref="menu_finance"/> -->
+        <field name="planner_application">planner_salary</field>
+        <field name="tooltip_planner"><![CDATA[
+            Salary Processing: a step-by-step guide.]]>
+        </field>
+    </record>
+</data>
+</odoo>

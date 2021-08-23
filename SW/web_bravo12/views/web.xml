@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    Copyright 2019
+    License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
+-->
+
+<odoo>
+
+    <template id="webclient_bootstrap" inherit_id="web.webclient_bootstrap" name="App Drawer - Web Client">
+        <xpath expr="//*[hasclass('o_main')]" position="attributes">
+            <attribute name="t-attf-class">o_main o_chatter_position_{{ request.env.user.chatter_position or 'normal' }}</attribute>
+        </xpath>
+    </template>
+    
+    <record id="view_users_form_simple_modif" model="ir.ui.view">
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form_simple_modif" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='email']" position="after">
+                <field name="chatter_position" readonly="0" />
+            </xpath>
+        </field>
+    </record>
+    
+    <record id="res_users_preferences" model="ir.ui.view">
+        <field name="name">res.users.preferences</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form_simple_modif" />
+        <field name="arch" type="xml">
+            <xpath expr="//group[last()]" position="after">
+                <group name="App Sidebar">
+                    <field name="sidebar_visible" readonly="0"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+    
+    <template id="app_sidebar" inherit_id="web.webclient_bootstrap" name="Apps Sidebar">
+        <xpath expr="//div[hasclass('o_main')]//main[hasclass('o_main_content')]" position="before">
+            <div id="app-sidebar" class="app-sidebar-panel">
+<!--                <div class="app-sidebar navbar-collapse collapse"> -->
+		    <div class="app-sidebar">
+                    <ul id="sidebar" class="app-sidebar-menu">
+                        <li class="nav-item"  t-as="menu" t-foreach="menu_data['children']" >
+                            <t t-set="debug_param" t-value="''"/>
+                            <a t-att-href="'/web%s#menu_id=%s&amp;action=' % (debug_param, menu['id'])"
+                               t-att-class="'nav-link nav-toggle' if menu.get('children') else 'nav-link '"
+                               t-att-data-menu="menu['id']"
+                               t-att-data-menu-xmlid="menu.get('xmlid')"
+                               t-att-data-action-model="menu['action'] and menu['action'].split(',')[0] or None"
+                               t-att-data-action-id="menu['action'] and menu['action'].split(',')[1] or None">
+                                <img t-attf-src="/web/image/ir.ui.menu/{{ menu['id'] }}/web_icon_data" t-att-alt="menu['name']" class="app-sidebar-menuitem" t-att-title="menu['name']"/>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+</odoo>

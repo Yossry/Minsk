@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<templates>
+    <t t-extend="Menu">
+        <t t-jquery="ul.o_menu_systray" t-operation="attributes">
+            <attribute name="style">display: flex;</attribute>
+        </t>
+    </t>
+</templates>

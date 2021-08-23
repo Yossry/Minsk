@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="bill_of_lading">
+            <t t-call="web.html_container">
+
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.internal_layout">
+                    <div class="page">
+                        <h2 align="center">Bill Of Lading</h2>
+                    </div>
+                    <div class="row mt32">
+                        <div>
+                            <table width="100%" style="margin-top:25px" class="table table-bordered">
+                                <tr>
+                                    <td><strong>Shipper:</strong><br/>
+                                        <span t-esc="o.shipper_id.name"/><br/>
+                                        <span t-esc="o.shipper_id.street"/><br/>
+                                        <span t-esc="o.shipper_id.city"/><br/>
+                                        <span t-esc="o.shipper_id.state_id.name"/>
+                                        <span t-esc="o.shipper_id.country_id.name"/><br/>
+                                    </td>
+                                    <td><strong>Consignee:</strong><br/>
+                                        <span t-esc="o.consignee_id.name"/><br/>
+                                        <span t-esc="o.consignee_id.street"/><br/>
+                                        <span t-esc="o.consignee_id.city"/><br/>
+                                        <span t-esc="o.consignee_id.state_id.name"/>
+                                        <span t-esc="o.consignee_id.country_id.name"/><br/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                        <table width="100%" style="margin-top:25px" class="table table-bordered">
+                                <tr>
+                                    <td colspan="5" align="center">Order Information</td>
+                                </tr>
+                                <tr>
+                                    <th style="padding:10px;">Description</th>
+                                    <th style="padding:10px;">Packages</th>
+                                    <th style="padding:10px;">Qty</th>
+                                    <th style="padding:10px;">Volume</th>
+                                    <th style="padding:10px;">Gross Weight</th>
+                                </tr>
+                            <tbody>
+                                <tr t-foreach="o.freight_packages" t-as="aml">
+                                    <td style="padding:10px">
+                                        <span t-esc="aml.name"></span>
+                                    </td>
+                                    <td style="padding:10px">
+                                        <span t-field="aml.package.name"></span>
+                                    </td>
+                                    <td style="padding:10px">
+                                        <span t-esc="aml.qty"></span>
+                                    </td>
+                                    <td style="padding:10px">
+                                        <span t-field="aml.volume"></span>
+                                    </td>
+                                    <td style="padding:10px">
+                                        <span t-esc="aml.gross_weight"></span>
+                                    </td>
+                                </tr>
+							</tbody>
+                    </table>
+                            <span>I hereby declare that the contents of this consignment are fully and accurately described above by the proper shipping name and are classified, packaged, marked and labeled/placarded and are in all respects in proper condition
+                                for transport according to applicable international and national governmental regulations.</span>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

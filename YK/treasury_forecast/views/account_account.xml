@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo><data>
+
+  <record id="account_account_view_form_add_treasury_boolean" model="ir.ui.view">
+      <field name="name">account_account_view_form_add_treasury_boolean</field>
+      <field name="model">account.account</field>
+      <field name="inherit_id" ref="account.view_account_form"/>
+      <field name="arch" type="xml">
+          <field name="user_type_id" position="after">
+            <field name="treasury_planning"/>
+          </field>
+      </field>
+  </record>
+
+</data></odoo>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="asset_disposal_view" model="ir.ui.view">
+            <field name="name">account.asset.asset.custom.form.inherit</field>
+            <field name="model">account.asset.asset.custom</field>
+            <field name="inherit_id" ref="account_asset_disposal_ce.view_account_asset_asset_form_depriciation"/>
+            <field name="arch" type="xml">
+                <xpath expr = "//field[@name='diposal_type']" position="before">
+                    <field name="disposal_number"/>
+                    <field name="reason_disposal"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="asset_disposal_search_view" model="ir.ui.view">
+            <field name="name">account.asset.asset.custom.search.inherit</field>
+            <field name="model">account.asset.asset.custom</field>
+            <field name="inherit_id" ref="odoo_account_asset.view_account_asset_search"/>
+            <field name="arch" type="xml">
+                <xpath expr = "//search" position="inside">
+                    <field name="disposal_number"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

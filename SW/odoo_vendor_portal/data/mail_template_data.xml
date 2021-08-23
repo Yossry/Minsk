@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2015-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- "License URL : <https://store.webkul.com/license.html/>" -->
+
+<odoo>
+    <data>
+
+        <!--Email template -->
+        <record id="email_template_edi_selller_rfq" model="mail.template">
+            <field name="name">Vendor RFQ - Send by Email</field>
+            <field name="email_from">${(object.user_id.email and '%s &lt;%s&gt;' % (object.user_id.name, object.user_id.email) or '')|safe}</field>
+            <field name="email_to">${(ctx['wkemail'] and '%s &lt;%s&gt;' % (ctx['wkname'], ctx['wkemail']) or '')|safe}</field>
+            <field name="subject">RFQ Request</field>
+            <field name="model_id" ref="odoo_vendor_portal.model_vendor_rfq"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="lang"></field>
+            <field name="body_html"><![CDATA[
+<div style="padding:0px;width:600px;margin:auto;background: #FFFFFF repeat top /100%;color:#777777">
+    <table cellspacing="0" cellpadding="0" style="width:600px;border-collapse:collapse;background:inherit;color:inherit">
+        <tbody><tr>
+            <td valign="center" width="200" style="padding:10px 10px 10px 5px;font-size: 12px">
+                <img src="/logo.png" style="padding: 0px; margin: 0px; height: auto; width: 80px;" alt="${object.company_id.name}">
+            </td>
+        </tr></tbody>
+    </table>
+</div>
+<div style="padding:0px;width:600px;margin:auto;background: #FFFFFF repeat top /100%;color:#777777">
+<p>Dear ${ctx['wkname']},</p>
+    <p>
+        We would like to request a quotation <strong>${object.name}</strong>
+        of <strong>${object.prod_qty}</strong> units of the Product
+        % if object.product_id:
+            (<strong>${object.product_id.name}</strong>)
+        % endif
+        from you.
+    </p>
+    <p>
+    % if ctx['wkDate']:
+        Our expexted date of delivery is <strong>${ctx['wkDate']}</strong>.
+    % endif
+    </p>
+    <p>
+        If interested, please visit the link below and let us know the quote.
+
+    </p>
+    <div style="text-align: center; margin-top: 16px;">
+         <a href="${ctx['redirectUrl']}" style="padding: 5px 10px; font-size: 12px; line-height: 18px; color: #FFFFFF; border-color:#875A7B; text-decoration: none; display: inline-block; margin-bottom: 0px; font-weight: 400; text-align: center; vertical-align: middle; cursor: pointer; white-space: nowrap; background-image: none; background-color: #875A7B; border: 1px solid #875A7B; border-radius:3px">View RFQ Details</a>
+    </div>
+    <p>Thank you,</p>
+</div>
+<div style="padding:0px;width:600px;margin:auto; margin-top: 10px; background: #fff repeat top /100%;color:#777777">
+    ${object.user_id.signature | safe}
+    <p style="font-size: 11px; margin-top: 10px;">
+        <strong>Sent by ${object.user_id.company_id.name} using <a href="www.odoo.com" style="text-decoration:none; color: #875A7B;">Odoo</a></strong>
+    </p>
+</div>]]></field>
+        </record>
+
+        <record id="email_template_edi_rfq_done" model="mail.template">
+            <field name="name">Vendor RFQ Done - Send by Email</field>
+            <field name="email_from">${(object.user_id.email and '%s &lt;%s&gt;' % (object.user_id.name, object.user_id.email) or '')|safe}</field>
+            <field name="email_to">${(ctx['wkemail'] and '%s &lt;%s&gt;' % (ctx['wkname'], ctx['wkemail']) or '')|safe}</field>
+            <field name="subject">Proposed quotation accepted</field>
+            <field name="model_id" ref="odoo_vendor_portal.model_vendor_rfq"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="lang"></field>
+            <field name="body_html"><![CDATA[
+<div style="padding:0px;width:600px;margin:auto;background: #FFFFFF repeat top /100%;color:#777777">
+    <table cellspacing="0" cellpadding="0" style="width:600px;border-collapse:collapse;background:inherit;color:inherit">
+        <tbody><tr>
+            <td valign="center" width="200" style="padding:10px 10px 10px 5px;font-size: 12px">
+                <img src="/logo.png" style="padding: 0px; margin: 0px; height: auto; width: 80px;" alt="${object.company_id.name}">
+            </td>
+        </tr></tbody>
+    </table>
+</div>
+<div style="padding:0px;width:600px;margin:auto;background: #FFFFFF repeat top /100%;color:#777777">
+<p>Dear ${ctx['wkname']},</p>
+    <p>
+        We would like to tell you that we accept your quoted amount <strong>${object.currency_id.name}</strong> <strong>${ctx['wkprice']}</strong>
+        for the requested product <strong>${object.product_id.name}</strong>
+        % if ctx['wkDate']:
+            within your specified delivery date <strong>${ctx['wkDate']}</strong>
+        % endif
+        from you.
+    </p>
+    <p>
+        Hence, we would like to purchase <strong>${object.prod_qty}</strong> units of <strong>${object.product_id.name}</strong> from you by estimated date.
+    </p>
+    <p>
+        We will soon create a purchase order for you regarding the same.
+    </p>
+    <p>Thank you,</p>
+</div>
+<div style="padding:0px;width:600px;margin:auto; margin-top: 10px; background: #fff repeat top /100%;color:#777777">
+    ${object.user_id.signature | safe}
+    <p style="font-size: 11px; margin-top: 10px;">
+        <strong>Sent by ${object.user_id.company_id.name} using <a href="www.odoo.com" style="text-decoration:none; color: #875A7B;">Odoo</a></strong>
+    </p>
+</div>]]></field>
+        </record>
+
+    </data>
+</odoo>

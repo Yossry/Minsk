@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2018 Xavier Piernas <xavier.piernas@qubiq.es>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <template id="report_invoice_document" inherit_id="account.report_invoice_document">
+    	<xpath expr="//t[@t-set='address']" position="attributes">
+    		<attribute name="t-if">False</attribute>
+    	</xpath>
+    	<xpath expr="//t[@t-set='address']" position="after">
+    		<t t-set="address">
+                <div>
+                    <t t-if="o.partner_id.parent_id">
+                        <span t-field="o.partner_id.parent_id.name"/>,
+                    </t>
+                    <span t-field="o.partner_id.name"/>
+                </div>
+    			<address t-field="o.partner_id" t-options="{'widget': 'contact', 'fields': ['address'], 'no_marker': True}"/>
+    			<div t-if="o.partner_id.vat" class="mt16"><t t-esc="o.company_id.country_id.vat_label or 'Tax ID'"/>: <span t-field="o.partner_id.vat"/></div>
+    		</t>
+    	</xpath>
+    </template>
+</odoo>

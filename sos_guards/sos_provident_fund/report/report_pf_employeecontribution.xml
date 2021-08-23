@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>	
+		<template id ="report_pf_employeecontribution">
+			<t t-call="web.html_container">
+				<t t-call="web.basic_layout">
+					<div class="page">
+						<style>
+							table th { background-color:#d4e3e5;}
+						</style>
+					
+						 <div class="row">
+						 	 <div class="col-xs-4">
+						 	 	 <img width="40%" style="max-height:125px;" class="img img-responsive" src="/sos_provident_fund/static/src/img/logo.png"/>
+						 	 </div>
+						 	 <div class="col-xs-3">
+						 	 </div>
+						 	 
+						 	 <div class="col-xs-5" style="font-size:14px; font-weight:bold; text-align:right; align:left;margin-top:20px;">
+						 	 	SECURITY ORGANIZING SYSTEM (PVT) LIMITED
+						 	 </div>
+						 </div>
+				
+						 <div class="row" style="font-size:15px; font-weight:bold; text-align:center; align:left;">
+						 	<div class="col-xs-12">
+						 		Provident Fund Employee Contribution Report From  <span t-esc="get_date_formate(data['date_from'])"/> To <span t-esc="get_date_formate(data['date_to'])"/> 
+						 	</div>
+						 </div>
+						 
+						<table class="table table-bordered">
+							<thead style="font-size:14px;font-weight:bold;">
+								<th>SR# </th>
+								<th>ERP Ref. </th>
+								<th>Employee </th>
+								<th>CNIC </th>
+								<th>Joining Date</th>
+								<th>Termination Date</th>
+								<th>Months</th>
+								<th>Guard Status </th>
+								<th class="text-right">Balance </th>
+							</thead>
+							<tbody style="font-size:14px;">
+								<t t-foreach="recs" t-as="rec">
+									<tr style="font-size:14px;font-weight:bold;">
+										<td colspan="6"><span t-esc="rec['project']"/> </td>
+							 		</tr>
+							 		
+									<t t-foreach="rec['recs']" t-as="ln">
+										<tr>
+											<td class="text-left">
+												<span t-esc="ln_index + 1" />
+											</td>
+											<td class="text-left">
+												<span t-esc="ln['emp_code']" />
+											</td>
+											<td class="text-left">
+												<span t-esc="ln['guard_name']" />
+											</td>
+											<td class="text-left">
+												<span t-esc="ln['cnic']" />
+											</td>
+											<td class="text-left">
+												<span t-esc="ln['joining_date']" />
+											</td>
+											<td class="text-left">
+												<span t-esc="ln['termination_date']" />
+											</td>
+											<td class="text-right">
+												<span t-esc="ln['months']" />
+											</td>
+											<td class="text-left">
+												<t t-if="ln['status']">
+													Current
+												</t>
+												<t t-if="not ln['status']">
+													Inactive
+												</t>
+											</td>
+											<td class="text-right">
+												<span t-esc="'{0:,.1f}'.format(ln['amount'])" />
+											</td>
+										</tr>
+									</t>
+								
+									<tr>
+										<td colspan="8"></td>
+										<td class="text-right" style="font-size:14px;font-weight:bold;"><span t-esc="'{0:,.1f}'.format(rec['total'])" /></td>
+									</tr>
+								</t>
+								<tr>
+									<td colspan="8"  style="font-size:14px;font-weight:bold;">Grand Total</td>
+									<td class="text-right" style="font-size:14px;font-weight:bold;"><span t-esc="'{0:,.1f}'.format(grand_total)" /></td>
+								</tr>
+							</tbody>	
+						</table>
+					
+					</div>
+				</t>		 			 	
+			</t>
+		</template>
+		
+	</data>
+</odoo>
+

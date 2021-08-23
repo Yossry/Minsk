@@ -1,0 +1,1036 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* cb_hr_views
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-05-05 10:04+0000\n"
+"PO-Revision-Date: 2020-05-05 12:13+0200\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: es\n"
+"X-Generator: Poedit 2.0.6\n"
+
+#. module: cb_hr_views
+#: code:addons/cb_hr_views/models/hr_employee.py:195
+#, python-format
+msgid " and from %s to %s"
+msgstr " y de  %s a %s"
+
+#. module: cb_hr_views
+#: code:addons/cb_hr_views/models/hr_employee.py:191
+#, python-format
+msgid ", from %s to %s"
+msgstr ", de %s a %s"
+
+#. module: cb_hr_views
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.new_employee_report
+msgid "<b>Name: </b>"
+msgstr "<b>Nombre: </b>"
+
+#. module: cb_hr_views
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.new_employee_report
+msgid "<b>Observations</b><br/>"
+msgstr ""
+
+#. module: cb_hr_views
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.new_employee_report
+msgid ""
+"<br/>\n"
+"                                <span>Address: </span>"
+msgstr ""
+"<br/>\n"
+"                                <span>Dirección: </span>"
+
+#. module: cb_hr_views
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.new_employee_report
+msgid ""
+"<br/>\n"
+"                                <span>Birth date: </span>"
+msgstr ""
+"<br/>\n"
+"                                <span>Fecha de Nacimiento: </span>"
+
+#. module: cb_hr_views
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.new_employee_report
+msgid ""
+"<br/>\n"
+"                                <span>CC: </span>"
+msgstr ""
+"<br/>\n"
+"                                <span>CC: </span>"
+
+#. module: cb_hr_views
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.new_employee_report
+msgid ""
+"<br/>\n"
+"                                <span>CP: </span>"
+msgstr ""
+"<br/>\n"
+"                                <span>CP: </span>"
+
+#. module: cb_hr_views
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.new_employee_report
+msgid ""
+"<br/>\n"
+"                                <span>Center: </span>"
+msgstr ""
+"<br/>\n"
+"                                <span>Centro: </span>"
+
+#. module: cb_hr_views
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.new_employee_report
+msgid ""
+"<br/>\n"
+"                                <span>City: </span>"
+msgstr ""
+"<br/>\n"
+"                                <span>Ciudad: </span>"
+
+#. module: cb_hr_views
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.new_employee_report
+msgid ""
+"<br/>\n"
+"                                <span>Laboral Category: </span>"
+msgstr ""
+"<br/>\n"
+"                                <span>Categoría Laboral: </span>"
+
+#. module: cb_hr_views
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.new_employee_report
+msgid ""
+"<br/>\n"
+"                                <span>Mail: </span>"
+msgstr ""
+"<br/>\n"
+"                                <span>Correo electrónico: </span>"
+
+#. module: cb_hr_views
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.new_employee_report
+msgid ""
+"<br/>\n"
+"                                <span>Phone: </span>"
+msgstr ""
+"<br/>\n"
+"                                <span>Teléfono: </span>"
+
+#. module: cb_hr_views
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.new_employee_report
+msgid ""
+"<br/>\n"
+"                                <span>Province: </span>"
+msgstr ""
+"<br/>\n"
+"                                <span>Provincia: </span>"
+
+#. module: cb_hr_views
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.new_employee_report
+msgid ""
+"<br/>\n"
+"                                <span>SS: </span>"
+msgstr ""
+"<br/>\n"
+"                                <span>SS: </span>"
+
+#. module: cb_hr_views
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.new_employee_report
+msgid ""
+"<br/>\n"
+"                                <span>Turn: </span>"
+msgstr ""
+"<br/>\n"
+"                                <span>Turno: </span>"
+
+#. module: cb_hr_views
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.new_employee_report
+msgid ""
+"<br/>\n"
+"                                <span>Valid Until: </span>"
+msgstr ""
+"<br/>\n"
+"                                <span>Válido hasta: </span>"
+
+#. module: cb_hr_views
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.new_employee_report
+msgid ""
+"<br/>\n"
+"                                <span>Working Hours: </span>"
+msgstr ""
+"<br/>\n"
+"                                <span>Horario: </span>"
+
+#. module: cb_hr_views
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.new_employee_report
+msgid ""
+"<br/>\n"
+"                        <b>Company: </b>"
+msgstr ""
+"<br/>\n"
+"                        <b>Companía: </b>"
+
+#. module: cb_hr_views
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.new_employee_report
+msgid ""
+"<br/><br/>\n"
+"                        <b>Aditional data</b>"
+msgstr ""
+"<br/><br/>\n"
+"                        <b>Datos Adicionales</b>"
+
+#. module: cb_hr_views
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.view_employee_form
+msgid ""
+"<span class=\"o_stat_text\">Related</span>\n"
+"                        <span class=\"o_stat_text\">Partner</span>"
+msgstr ""
+"<span class=\"o_stat_text\">Contacto</span>\n"
+"                        <span class=\"o_stat_text\">Relacionado</span>"
+
+#. module: cb_hr_views
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.new_employee_report
+msgid "<span>DNI / NIE: </span>"
+msgstr "<span>DNI / NIE: </span>"
+
+#. module: cb_hr_views
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.new_employee_report
+msgid "<span>Start Date: </span>"
+msgstr "<span>Fecha de Inicio: </span>"
+
+#. module: cb_hr_views
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.wizard_bank_account_employee_form_view
+msgid "<strong>Note: The new account will be automatically be selected for this employee</strong>"
+msgstr "<strong>Nota: La nueva cuenta se seleccionará automáticamente para este empleado</strong>"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee__show_info
+msgid "Able to see Private Info"
+msgstr "Puede ver información Privada"
+
+#. module: cb_hr_views
+#: code:addons/cb_hr_views/models/hr_employee.py:167
+#, python-format
+msgid "Absent today because of public holidays"
+msgstr "Ausente hoy por vacaciones públicas"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_wizard_bank_account_employee__acc_number
+msgid "Account Number"
+msgstr "Número de cuenta"
+
+#. module: cb_hr_views
+#: model:ir.model,name:cb_hr_views.model_wizard_bank_account_employee
+msgid "Add a bank account to an employee"
+msgstr "Añadir Cuenta Bancaria a empleado"
+
+#. module: cb_hr_views
+#: code:addons/cb_hr_views/models/hr_employee.py:292
+#, python-format
+msgid "All employees must be practitioners"
+msgstr "Todos los empleados deben ser profesionales"
+
+#. module: cb_hr_views
+#: model:ir.model,name:cb_hr_views.model_hr_attendance
+msgid "Attendance"
+msgstr "Asistencia"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_wizard_bank_account_employee__bank_id
+msgid "Bank"
+msgstr "Banco"
+
+#. module: cb_hr_views
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.view_employee_form
+msgid "Bank Account"
+msgstr "Cuenta bancaria"
+
+#. module: cb_hr_views
+#: model:ir.ui.menu,name:cb_hr_views.menu_resource_calendar_tree
+msgid "Calendars"
+msgstr "Calendarios"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_medical_patient__can_create_employee
+#: model:ir.model.fields,field_description:cb_hr_views.field_res_partner__can_create_employee
+#: model:ir.model.fields,field_description:cb_hr_views.field_res_users__can_create_employee
+msgid "Can Create Employee"
+msgstr "Puede crear Empleado"
+
+#. module: cb_hr_views
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.wizard_bank_account_employee_form_view
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_attendance__center_id
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee__address_id
+msgid "Center"
+msgstr "Centro"
+
+#. module: cb_hr_views
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.hr_attendance_view_filter
+msgid "Chatter"
+msgstr "Chatter"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,help:cb_hr_views.field_hr_contract__substitute_contract
+#: model:ir.model.fields,help:cb_hr_views.field_hr_contract_type__substitute_contract
+msgid "Check if this is a substitution contract"
+msgstr "Marcar si es un contrato de sustitución"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,help:cb_hr_views.field_medical_patient__employee
+#: model:ir.model.fields,help:cb_hr_views.field_res_partner__employee
+#: model:ir.model.fields,help:cb_hr_views.field_res_users__employee
+msgid "Check this box if this contact is an Employee."
+msgstr "Marque si el contacto es un empleado"
+
+#. module: cb_hr_views
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.view_employee_form
+msgid "Citizenship"
+msgstr "Ciudadanía"
+
+#. module: cb_hr_views
+#: model_terms:ir.actions.act_window,help:cb_hr_views.open_module_tree_job_position
+msgid "Click to create a job position."
+msgstr "Click para crear un puesto de trabajo nuevo."
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_contract__company_id
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_department__company_id
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee__company_id
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_job__company_id
+#: model:ir.model.fields,field_description:cb_hr_views.field_resource_calendar__company_id
+msgid "Company"
+msgstr "Compañía"
+
+#. module: cb_hr_views
+#: model:ir.model,name:cb_hr_views.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: cb_hr_views
+#: model:ir.model,name:cb_hr_views.model_hr_contract
+msgid "Contract"
+msgstr "Contrato"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee__contract_notes
+msgid "Contract Notes"
+msgstr "Notas de Contrato"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_contract__name
+msgid "Contract Reference"
+msgstr "Referencia del contrato"
+
+#. module: cb_hr_views
+#: model:ir.model,name:cb_hr_views.model_hr_contract_type
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee__contract_type_id
+msgid "Contract Type"
+msgstr "Tipo de contrato"
+
+#. module: cb_hr_views
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.wizard_bank_account_employee_form_view
+msgid "Create Account"
+msgstr "Crear Cuenta Bancaria"
+
+#. module: cb_hr_views
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.res_partner_view_form
+msgid "Create employee"
+msgstr "Crear Empleado"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee_prl__create_uid
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_laboral_category__create_uid
+#: model:ir.model.fields,field_description:cb_hr_views.field_wizard_bank_account_employee__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee_prl__create_date
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_laboral_category__create_date
+#: model:ir.model.fields,field_description:cb_hr_views.field_wizard_bank_account_employee__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee__contract_id
+msgid "Current Contract"
+msgstr "Contrato Actual"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee__identification_id
+msgid "DNI/NIE"
+msgstr "DNI/NIE"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee_prl__prl_date
+msgid "Date"
+msgstr "Fecha"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee__birthday
+msgid "Date of Birth"
+msgstr "Fecha de nacimiento"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_attendance__department_id
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_attendance_theoretical_time_report__department_id
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_contract__department_id
+msgid "Department"
+msgstr "Departamento"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee_prl__display_name
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_laboral_category__display_name
+#: model:ir.model.fields,field_description:cb_hr_views.field_wizard_bank_account_employee__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: cb_hr_views
+#: selection:hr.employee,marital:0
+msgid "Divorced"
+msgstr "Divorciado"
+
+#. module: cb_hr_views
+#: model:ir.model,name:cb_hr_views.model_hr_employee
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_contract__employee_id
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee_prl__employee_id
+#: model:ir.model.fields,field_description:cb_hr_views.field_medical_patient__employee_ids
+#: model:ir.model.fields,field_description:cb_hr_views.field_res_partner__employee_ids
+#: model:ir.model.fields,field_description:cb_hr_views.field_wizard_bank_account_employee__employee_id
+msgid "Employee"
+msgstr "Empleado"
+
+#. module: cb_hr_views
+#: model:ir.model,name:cb_hr_views.model_hr_employee_calendar
+msgid "Employee Calendar"
+msgstr "Horario del Empleado"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_contract__type_id
+msgid "Employee Category"
+msgstr "Categoría de empleado"
+
+#. module: cb_hr_views
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.hr_department_view_kanban
+msgid "Employees"
+msgstr "Empleados"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_contract__date_end
+msgid "End Date"
+msgstr "Fecha finalización"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,help:cb_hr_views.field_hr_contract__date_end
+msgid "End date of the contract (if it's a fixed-term contract)."
+msgstr "fecha de finalización del contrato (si es un contrato por tiempo determinado)."
+
+#. module: cb_hr_views
+#: model:ir.model.fields,help:cb_hr_views.field_hr_contract__trial_date_end
+msgid "End date of the trial period (if there is one)."
+msgstr "Fecha de finalización del periodo de prueba (si existe)."
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_contract__trial_date_end
+msgid "End of Trial Period"
+msgstr "Fin del periodo de prueba"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,help:cb_hr_views.field_hr_employee__address_home_id
+msgid "Enter here the private address of the employee, not the one linked to your company."
+msgstr "Registrar aquí la dirección privada del empleado, no la asociada a la compañía"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_job__no_of_recruitment
+msgid "Expected New Employees"
+msgstr "Nuevos empleados esperados"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee__identification_id_expiration
+msgid "Expiration Date"
+msgstr "Fecha de caducidad"
+
+#. module: cb_hr_views
+#: selection:hr.employee,gender:0
+msgid "Female"
+msgstr "Mujer"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee__firstname
+msgid "First name"
+msgstr "Nombre"
+
+#. module: cb_hr_views
+#: selection:hr.attendance.theoretical.time.report,week_day:0
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.hr_attendance_theoretical_view_filter
+msgid "Friday"
+msgstr "Viernes"
+
+#. module: cb_hr_views
+#: selection:hr.contract,working_hours_type:0
+msgid "Full Time"
+msgstr "Jornada Completa"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee__gender
+msgid "Gender"
+msgstr "Sexo"
+
+#. module: cb_hr_views
+#: model:ir.model,name:cb_hr_views.model_hr_department
+msgid "HR Department"
+msgstr "Departamento Recursos Humanos"
+
+#. module: cb_hr_views
+#: selection:res.users,notification_type:0
+msgid "Handle by Emails"
+msgstr "Manejar por correos electrónicos"
+
+#. module: cb_hr_views
+#: selection:res.users,notification_type:0
+msgid "Handle in Odoo"
+msgstr "Manejar en Odoo"
+
+#. module: cb_hr_views
+#: model:ir.model,name:cb_hr_views.model_hr_employee_prl
+msgid "Hr Employee Prl"
+msgstr "Hr Employee Prl"
+
+#. module: cb_hr_views
+#: model:ir.model,name:cb_hr_views.model_hr_laboral_category
+msgid "Hr Laboral Category"
+msgstr "Hr Laboral Category"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee_prl__id
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_laboral_category__id
+#: model:ir.model.fields,field_description:cb_hr_views.field_wizard_bank_account_employee__id
+msgid "ID"
+msgstr "Hr Laboral Category"
+
+#. module: cb_hr_views
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.view_employee_filter
+msgid "ID Expired"
+msgstr "Nº de identificación Caducado"
+
+#. module: cb_hr_views
+#: code:addons/cb_hr_views/models/res_partner.py:72
+#, python-format
+msgid "In order to be an employee, is required to be a practitioner"
+msgstr "Para ser un empleado, hace falta ser un profesional"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_medical_patient__employee
+#: model:ir.model.fields,field_description:cb_hr_views.field_res_partner__employee
+#: model:ir.model.fields,field_description:cb_hr_views.field_res_users__employee
+msgid "Is Employee"
+msgstr "Es Empleado"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_attendance_theoretical_time_report__is_public_holiday
+msgid "Is Public Holiday"
+msgstr "Es festivo"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee__manager
+msgid "Is a Manager"
+msgstr "Es un director"
+
+#. module: cb_hr_views
+#: model:ir.model,name:cb_hr_views.model_hr_job
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_contract__job_id
+msgid "Job Position"
+msgstr "Puesto de trabajo"
+
+#. module: cb_hr_views
+#: model:ir.actions.act_window,name:cb_hr_views.open_module_tree_job_position
+#: model:ir.ui.menu,name:cb_hr_views.menu_hr_job_root
+msgid "Job Positions"
+msgstr "Puestos de Empleo"
+
+#. module: cb_hr_views
+#: model:ir.ui.menu,name:cb_hr_views.hr_laboral_category_menu
+msgid "Laboral Categories"
+msgstr "Categorías Laborales"
+
+#. module: cb_hr_views
+#: model:ir.actions.act_window,name:cb_hr_views.hr_laboral_category_act_window
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_contract__laboral_category_id
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee__laboral_category_id
+msgid "Laboral Category"
+msgstr "Categoría Laboral"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee_prl____last_update
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_laboral_category____last_update
+#: model:ir.model.fields,field_description:cb_hr_views.field_wizard_bank_account_employee____last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee_prl__write_uid
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_laboral_category__write_uid
+#: model:ir.model.fields,field_description:cb_hr_views.field_wizard_bank_account_employee__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee_prl__write_date
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_laboral_category__write_date
+#: model:ir.model.fields,field_description:cb_hr_views.field_wizard_bank_account_employee__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee__lastname
+msgid "Last name"
+msgstr "Apellido"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,help:cb_hr_views.field_hr_employee__contract_id
+msgid "Latest contract of the employee"
+msgstr "Último contrato del empleado."
+
+#. module: cb_hr_views
+#: selection:hr.employee,marital:0
+msgid "Legal Cohabitant"
+msgstr "Cohabitante legal"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee__work_location
+msgid "Location"
+msgstr "Ubicación"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee__locker
+msgid "Locker"
+msgstr "Taquilla"
+
+#. module: cb_hr_views
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.new_employee_report
+msgid "Logo"
+msgstr "Logo"
+
+#. module: cb_hr_views
+#: selection:hr.employee,gender:0
+msgid "Male"
+msgstr "Hombre"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee__parent_id
+msgid "Manager"
+msgstr "Responsable"
+
+#. module: cb_hr_views
+#: model:res.groups,name:cb_hr_views.manual_attendance_group
+msgid "Manual Attendance Menu"
+msgstr "Menú de Asistencia Manual"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee__marital
+msgid "Marital Status"
+msgstr "Estado civil"
+
+#. module: cb_hr_views
+#: selection:hr.employee,marital:0
+msgid "Married"
+msgstr "Casado (a)"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee__personal_mobile
+msgid "Mobile"
+msgstr "Móvil"
+
+#. module: cb_hr_views
+#: selection:hr.attendance.theoretical.time.report,week_day:0
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.hr_attendance_theoretical_view_filter
+msgid "Monday"
+msgstr "Lunes"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee__name
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee_prl__name
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_laboral_category__name
+#: model:ir.model.fields,field_description:cb_hr_views.field_wizard_bank_account_employee__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee__country_id
+msgid "Nationality (Country)"
+msgstr "Nacionalidad (País)"
+
+#. module: cb_hr_views
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.view_employee_form
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.wizard_bank_account_employee_form_view
+msgid "New Bank Account"
+msgstr "Nueva Cuenta Bancaria"
+
+#. module: cb_hr_views
+#: model:ir.actions.report,name:cb_hr_views.hr_employee_print_badge
+msgid "New Employee Report"
+msgstr "Informe de alta de Empleado"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_resource_calendar__not_archived
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.view_resource_calendar_search
+msgid "Not Archived"
+msgstr "No archivados"
+
+#. module: cb_hr_views
+#: selection:hr.job,state:0
+msgid "Not Recruiting"
+msgstr "No seleccionando"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee_prl__notes
+msgid "Notes"
+msgstr "Notas"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_res_users__notification_type
+msgid "Notification Management"
+msgstr "Gestión de notificación"
+
+#. module: cb_hr_views
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.new_employee_report
+msgid "Nuevas contrataciones - Datos personales / Gestoría"
+msgstr "Nuevas contrataciones - Datos personales / Gestoría"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee__children
+msgid "Number of Children"
+msgstr "Número de hijos"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,help:cb_hr_views.field_hr_job__no_of_recruitment
+msgid "Number of new employees you expect to recruit."
+msgstr "Número de empleados que espera contratar."
+
+#. module: cb_hr_views
+#: code:addons/cb_hr_views/models/res_partner.py:79
+#, python-format
+msgid "Only one employee for a partner is allowed"
+msgstr "Solo se permite un empleado por partner"
+
+#. module: cb_hr_views
+#: selection:hr.employee,gender:0
+msgid "Other"
+msgstr "Otro"
+
+#. module: cb_hr_views
+#: code:addons/cb_hr_views/models/hr_employee.py:164
+#, python-format
+msgid "Out of office since %s"
+msgstr "Fuera de la oficina desde %s"
+
+#. module: cb_hr_views
+#: selection:hr.contract,working_hours_type:0
+msgid "Part time"
+msgstr "Jornada Parcial"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee__passport_id
+msgid "Passport No"
+msgstr "Nº Pasaporte"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_contract__percentage_of_reduction
+msgid "Percentage of Reduction"
+msgstr "Porcentaje de Reducción"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee__percentage_of_reduction
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.hr_contract_view_form
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.view_employee_form
+msgid "Percentage of reduction"
+msgstr "Porcentaje de Reducción"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee__personal_email
+msgid "Personal Email"
+msgstr "Correo Personal"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee__personal_phone
+msgid "Phone"
+msgstr "Teléfono"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,help:cb_hr_views.field_res_users__notification_type
+msgid ""
+"Policy on how to handle Chatter notifications:\n"
+"- Handle by Emails: notifications are sent to your email address\n"
+"- Handle in Odoo: notifications appear in your Odoo Inbox"
+msgstr ""
+"Política de gestión de las notificaciones:\n"
+"- Manejar por correos electrónicos: las notificaciones son enviadas a su dirección de correo\n"
+"- Manejar en Odoo: las notificaciones aparecen en su bandeja de entrada de Odoo"
+
+#. module: cb_hr_views
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.view_employee_form
+msgid "Prevention of Occupational Hazards"
+msgstr "Prevencion de riesgos laborales"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee__address_home_id
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.view_employee_form
+msgid "Private Address"
+msgstr "Dirección Privada"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee__prl_ids
+msgid "Prl"
+msgstr "Prl"
+
+#. module: cb_hr_views
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.hr_attendance_theoretical_view_filter
+msgid "Public Holiday"
+msgstr "Festivo"
+
+#. module: cb_hr_views
+#: selection:hr.job,state:0
+msgid "Recruitment in Progress"
+msgstr "Contratación en curso"
+
+#. module: cb_hr_views
+#: selection:hr.contract,working_hours_type:0
+msgid "Reduced"
+msgstr "Reducida"
+
+#. module: cb_hr_views
+#: model:ir.actions.act_window,name:cb_hr_views.action_open_related_employee
+msgid "Related Employee"
+msgstr "Empleado asociado"
+
+#. module: cb_hr_views
+#: model:ir.actions.act_window,name:cb_hr_views.action_open_related_partner
+msgid "Related Partner"
+msgstr "Partner asociado"
+
+#. module: cb_hr_views
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.res_partner_view_form
+msgid "Related employee"
+msgstr "Empleado Relacionado"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee__partner_id
+msgid "Related partner"
+msgstr "Contacto Relacionado"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,help:cb_hr_views.field_hr_employee__user_id
+msgid "Related user name for the resource to manage its access."
+msgstr "Usuario relacionado con el recurso para gestionar su acceso."
+
+#. module: cb_hr_views
+#: model:ir.model,name:cb_hr_views.model_hr_attendance_theoretical_time_report
+msgid "Report of theoretical time vs attendance time"
+msgstr "Informe de tiempo teórico frente a tiempo trabajado"
+
+#. module: cb_hr_views
+#: model:ir.model,name:cb_hr_views.model_resource_calendar
+msgid "Resource Working Time"
+msgstr "Tiempo de Trabajo de Recursos"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee__sinid
+msgid "SIN No"
+msgstr "Núm. SIN"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee__ssnid
+msgid "SSN No"
+msgstr "Nº Seguridad Social"
+
+#. module: cb_hr_views
+#: selection:hr.attendance.theoretical.time.report,week_day:0
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.hr_attendance_theoretical_view_filter
+msgid "Saturday"
+msgstr "Sábado"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee__lastname2
+msgid "Second last name"
+msgstr "Segundo apellido"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,help:cb_hr_views.field_hr_job__state
+msgid "Set whether the recruitment process is open or closed for this job position."
+msgstr "Establecer si el proceso de selección está abierto o cerrado para este puesto de trabajo."
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_medical_patient__show_info
+#: model:ir.model.fields,field_description:cb_hr_views.field_res_partner__show_info
+#: model:ir.model.fields,field_description:cb_hr_views.field_res_users__show_info
+msgid "Show Info"
+msgstr "Ver información"
+
+#. module: cb_hr_views
+#: selection:hr.employee,marital:0
+msgid "Single"
+msgstr "Soltero(a)"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,help:cb_hr_views.field_hr_employee__sinid
+msgid "Social Insurance Number"
+msgstr "Número de la mutua laboral."
+
+#. module: cb_hr_views
+#: model:ir.model.fields,help:cb_hr_views.field_hr_employee__ssnid
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.view_employee_form
+msgid "Social Security Number"
+msgstr "Número de la Seguridad Social."
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_contract__date_start
+msgid "Start Date"
+msgstr "Fecha de inicio"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,help:cb_hr_views.field_hr_contract__date_start
+msgid "Start date of the contract."
+msgstr "Fecha de comienzo del contrato"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_job__state
+msgid "Status"
+msgstr "Estado"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_contract__substitute_contract
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_contract_type__substitute_contract
+msgid "Substitute Contract"
+msgstr "Contrado de Substitución"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_contract__substituting_id
+msgid "Substituting"
+msgstr "Substituyendo a"
+
+#. module: cb_hr_views
+#: selection:hr.attendance.theoretical.time.report,week_day:0
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.hr_attendance_theoretical_view_filter
+msgid "Sunday"
+msgstr "Domingo"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,help:cb_hr_views.field_hr_employee__identification_id
+msgid "The Tax Identification Number. Complete it if the contact is subjected to government taxes. Used in some legal statements."
+msgstr "El número de identificación de impuesto. Complételo si el contacto está sujeto a los impuestos del gobierno. Utilizado en algunas declaraciones legales."
+
+#. module: cb_hr_views
+#: code:addons/cb_hr_views/models/hr_employee.py:176
+#, python-format
+msgid "This employee doesn't work today"
+msgstr "Este empleado no trabaja hoy"
+
+#. module: cb_hr_views
+#: selection:hr.attendance.theoretical.time.report,week_day:0
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.hr_attendance_theoretical_view_filter
+msgid "Thursday"
+msgstr "Jueves"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee__today_schedule
+msgid "Today Schedule"
+msgstr "Horario de hoy"
+
+#. module: cb_hr_views
+#: selection:hr.attendance.theoretical.time.report,week_day:0
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.hr_attendance_theoretical_view_filter
+msgid "Tuesday"
+msgstr "Martes"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_contract__turn
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee__turn
+msgid "Turn"
+msgstr "Turno"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee__user_id
+msgid "User"
+msgstr "Usuario"
+
+#. module: cb_hr_views
+#: model:ir.model,name:cb_hr_views.model_res_users
+msgid "Users"
+msgstr "Usuarios"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee__visa_expire
+msgid "Visa Expire Date"
+msgstr "Fecha expiración visado"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee__visa_no
+msgid "Visa No"
+msgstr "Número de Visado"
+
+#. module: cb_hr_views
+#: selection:hr.attendance.theoretical.time.report,week_day:0
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.hr_attendance_theoretical_view_filter
+msgid "Wednesday"
+msgstr "Miércoles"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_attendance_theoretical_time_report__week_day
+msgid "Week Day"
+msgstr "Día de la semana"
+
+#. module: cb_hr_views
+#: selection:hr.employee,marital:0
+msgid "Widower"
+msgstr "Viudo(a)"
+
+#. module: cb_hr_views
+#: model:ir.actions.act_window,name:cb_hr_views.wizard_bank_account_employee_act_window
+msgid "Wizard Bank Account Employee"
+msgstr "Wizard Bank Account Employee"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee__work_email
+msgid "Work Email"
+msgstr "Correo-e del trabajo"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee__permit_no
+msgid "Work Permit No"
+msgstr "Número de permiso de trabajo"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee__personal_identifier
+msgid "Work's Personal ID"
+msgstr "ID Personal del Trabajo"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_contract__working_hours_type
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_employee__working_hours_type
+msgid "Working Hours Type"
+msgstr "Jornada"
+
+#. module: cb_hr_views
+#: model:ir.model.fields,field_description:cb_hr_views.field_hr_contract__resource_calendar_id
+msgid "Working Schedule"
+msgstr "Planificación de trabajo"
+
+#. module: cb_hr_views
+#: code:addons/cb_hr_views/models/hr_employee.py:178
+#: code:addons/cb_hr_views/models/hr_employee.py:183
+#, python-format
+msgid "Working from %s to %s"
+msgstr "Trabajando de %s a %s"
+
+#. module: cb_hr_views
+#: model_terms:ir.ui.view,arch_db:cb_hr_views.hr_department_view_kanban
+msgid "default_image"
+msgstr "default_image"

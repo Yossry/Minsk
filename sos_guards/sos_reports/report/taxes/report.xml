@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>             
+    <data>
+    
+        <!-- Tax At Source Report -->
+		<report
+			id="action_tax_source_report"
+			string= "Tax At Source Report"
+			model = "sos_reports.tax.at.source.wiz"
+			report_type="qweb-pdf"
+			file="sos_reports.tax_at_source_report"
+			name="sos_reports.tax_at_source_report"
+		/>
+
+	</data>
+</odoo>

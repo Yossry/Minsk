@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="education_order_day_view_tree" model="ir.ui.view">
+        <field name="model">education.order.day</field>
+        <field name="arch" type="xml">
+            <tree string="Orders of the day">
+                <field name="school_id" />
+                <field name="month_id" />
+                <field name="meeting_day" />
+                <field name="course_id" />
+                <field name="type" />
+            </tree>
+        </field>
+    </record>
+    <record id="education_order_day_view_search" model="ir.ui.view">
+        <field name="model">education.order.day</field>
+        <field name="arch" type="xml">
+            <search string="Search orders of the day">
+                <field name="school_id" />
+                <field name="month_id" />
+                <field name="meeting_day" />
+                <field name="course_id" />
+                <field name="type" />
+                <group expand="1" string="Group By">
+                    <filter string="School" name="school_group"
+                            domain="[]" context="{'group_by':'school_id'}"/>
+                    <filter string="Month" name="month_group"
+                            domain="[]" context="{'group_by':'month_id'}"/>
+                    <filter string="Meeting day" name="meeting_day_group"
+                            domain="[]" context="{'group_by':'meeting_day'}"/>
+                    <filter string="Course" name="course_group"
+                            domain="[]" context="{'group_by':'course_id'}"/>
+                    <filter string="type" name="type_group"
+                            domain="[]" context="{'group_by':'type'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="education_order_day_view_form" model="ir.ui.view">
+        <field name="model">education.order.day</field>
+        <field name="arch" type="xml">
+            <form string="Order of the day">
+                <sheet>
+                    <group name="head" colspan="4">
+                       <group>
+                            <field name="school_id" />
+                            <field name="month_id" />
+                            <field name="type" />
+                       </group>
+                       <group>
+                            <field name="meeting_day" />
+                            <field name="course_id" />
+                       </group>
+                    </group>
+                    <group name="body" colspan="4">
+                        <notebook>
+                            <page strint="Order of the day" name="order-day">
+                                <field name="order_day" colspan="4" nolabel="1" />
+                            </page>
+                        </notebook>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_education_order_day_view_form" model="ir.actions.act_window">
+        <field name="name">Orders of the day</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">education.order.day</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_education_order_day"
+        action="action_education_order_day_view_form"
+        name="Orders of the day"
+        groups="hr.group_hr_manager"
+        sequence="120" parent="education.schedule_table_menuitem"/>
+</odoo>

@@ -1,0 +1,3 @@
+"id","name","code","iso_code","direction","grouping","decimal_point","thousands_sep","date_format","time_format","translatable","active"
+"base.lang_en","English","en_US","en","Left-to-Right","[3,0]",".",",","%d/%m/%Y","%H:%M:%S","True","True"
+"base.lang_ar_SY","Arabic / الْعَرَبيّة","ar_SY","ar_SY","Right-to-Left","[3,0]",".",",","%d/%m/%Y","%H:%M:%S","True","True"

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_account_payment_tree" model="ir.ui.view">
+        <field name="name">view.customer.payment.tree</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="attributes">
+                <attribute name="editable">top</attribute>
+            </xpath>
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="sale_order_id" />
+                <field name="payment_info" readonly="True" />
+                <field name="payment_reviewed" readonly="True" />
+                <button
+                    name="open_payment"
+                    string="Open its Customer Payment"
+                    type="object"
+                    icon="fa-dedent"
+                />
+            </xpath>
+        </field>
+    </record>
+    <record id="view_account_payment_invoice_form" model="ir.ui.view">
+        <field name="name">view.account.payment.invoice.form</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_invoice_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/group" position="before">
+                <field name="invoice_type" invisible="1" />
+                <group>
+                    <div
+                        class="alert alert-info"
+                        role="alert"
+                        attrs="{'invisible': [('invoice_type', 'not in', ('out_refund', 'in_refund'))]}"
+                    >
+                        Attention: You are registering a Credit Note payment, please double check before register.
+                    </div>
+                </group>
+            </xpath>
+            <xpath expr="//field[@name='amount']" position="after">
+                <field
+                    name="inverse_amount"
+                    required="1"
+                    attrs="{'invisible': [('invoice_type', 'not in', ('out_refund', 'in_refund'))]}"
+                />
+            </xpath>
+            <xpath expr="//field[@name='amount']" position="attributes">
+                <attribute
+                    name="attrs"
+                >{'invisible': [('invoice_type', 'in', ('out_refund', 'in_refund'))]}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='payment_date']" position="after">
+                <field name="payment_info" />
+            </xpath>
+        </field>
+    </record>
+    <record id="view_account_payment_search" model="ir.ui.view">
+        <field name="name">view.customer.payment.search</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_search" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="sale_order_ids" />
+                <field name="payment_info" />
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <menuitem name="Persons" id="clv_person.menu_community_community_persons"
+        parent="clv_base.menu_community_community"
+        groups="clv_person.group_user"
+        sequence="10"
+        action="clv_person.clv_person_action"/>
+
+    <menuitem name="Person" id="clv_person.menu_community_config_person" 
+        parent="clv_base.menu_community_config"
+        groups="clv_person.group_user"
+        sequence="10"/>
+
+    <menuitem name="Categories" id="clv_person.menu_community_config_person_categories" 
+        parent="clv_person.menu_community_config_person"
+        groups="clv_person.group_user"
+        sequence="10"
+        action="clv_person.clv_person_category_action"/>
+
+    <menuitem name="Markers" id="clv_person.menu_community_config_person_markers" 
+        parent="clv_person.menu_community_config_person"
+        groups="clv_person.group_user"
+        sequence="20"
+        action="clv_person.clv_person_marker_action"/>
+
+</odoo>

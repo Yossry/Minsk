@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+	<template id ="report_complaintstatistics">
+		<t t-call="web.html_container">
+				<t t-call="web.external_layout" style="font-family:georgia,garamond,serif;font-size:10px">
+					<div class="page">
+						<style>
+								.tabhead{font-family:georgia,garamond,serif;font-size:10px;}
+								.tabcol{font-size:14px;}
+								table th { background-color:#d4e3e5;}
+								tr:nth-child(even) {background-color: #FFEBCD;}
+								tr:nth-child(odd) {background-color: #cdcdcd;}
+						</style>
+						
+						<h3>Complaint Statistics Report</h3>
+						<h5>
+							From: <span t-esc="get_date_formate(data['start_date'])"/><br></br>
+							To: <span t-esc="get_date_formate(data['end_date'])"/><br></br>
+						</h5>
+						
+						<table class="table table-condensed" width="100%">
+							<tr style="font-size:12px; font-weight:bold">
+								<td>SR#. </td>
+								<td>Project Name </td>
+								<td>Complaints Received </td>
+								<td>Complaints Solved </td>
+								<td>Complaints Unsolved </td>
+							</tr>
+							<t t-foreach="Projects" t-as="project">
+								<tr>
+									<td> <span t-esc="project_index + 1" /> </td>
+									<td> <span t-esc="project['name']" /> </td>
+									<td> <span t-esc="project['received']" /> </td>
+									<td> <span t-esc="project['solved']" /> </td>
+									<td> <span t-esc="project['unsolved']" /> </td>
+								</tr>
+							</t>
+							
+							 <tr style="font-size:10px; font-weight:bold;">
+							 	<td colspan="2" style="text-center;"> TOTAL</td>
+							 	<td> <span t-esc="Received" /> </td>
+							 	<td> <span t-esc="Solved" /> </td>
+							 	<td> <span t-esc="Unsolved" /> </td>
+							 </tr>
+						</table>
+					</div>
+				</t>
+		</t>
+	</template>
+	
+	</data>
+</odoo>

@@ -1,0 +1,11 @@
+<odoo>
+
+    <record model="res.groups" id="group_products_management">
+        <field name="name">Products Management</field>
+    </record>
+
+    <record id="base.user_root" model="res.users">
+        <field name="groups_id" eval="[(4,ref('product_management_group.group_products_management'))]"/>
+    </record>
+
+</odoo>

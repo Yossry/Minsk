@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<template id ="hr_payroll_ext.staff_payroll_advice_summary_report">
+			<t t-call="web.html_container">
+					<t t-call="web.external_layout" style="font-family:georgia,garamond,serif;font-size:10px;">
+						<div class="page">
+							<t t-set="info" t-value="get_header_info"/>
+							
+							<div class="row" style="font-family:georgia,garamond,serif;font-size:10px;font-weight:bold;">
+								To,
+							</div>
+							
+							<div class="row" style="font-family:georgia,garamond,serif;font-size:10px;font-weight:bold;">
+								The Manager
+							</div>
+							<div class="row" style="font-family:georgia,garamond,serif;font-size:10px;font-weight:bold;">
+								Bank
+							</div>
+							<br/>
+							
+							<div class="row" style="font-family:georgia,garamond,serif;font-size:12px;">
+								Dear Sir/Madam,
+							</div>
+							
+							
+							<div class="row" style="font-family:georgia,garamond,serif;font-size:10px;margin-left:80px;margin:top:50px;font-weight:bold;">
+								Payment Advice from A/C no. <span t-esc="info['bank']" />
+								From period  <span t-esc="info['from_date']" />
+								to  <span t-esc="info['to_date']" />
+							</div>
+							<div class="row" style="font-family:georgia,garamond,serif;font-size:12px;padding-bottom:5px;padding-top:8px;">
+								Please make the payroll transfer from above account number to the below mentioned account numbers towards employee salaries:
+							</div>
+								
+							<table class="table table-condensed" width="100%">
+								<thead>
+									<tr style="font-size:10px; font-weight:bold;">
+										<th class="text-left">SI. No</th>
+										<th class="text-left">Account Title</th>
+										<th class="text-left">Bank Account No.</th>
+										<th class="text-right">By Salary</th>
+										<th class="text-center">C/D</th>
+									</tr>
+								</thead>
+						
+								<tbody>
+									<t t-foreach="Result" t-as="line">
+										<tr style="font-size:10px;">
+											<td class="text-left">
+												<span t-esc="line_index + 1" />
+											</td>
+											<td class="text-left">
+												<span t-esc="line['name']"/>
+											</td>
+											<td class="text-left">
+												<span t-esc="line['acc_no']"/>
+											</td>
+											<td class="text-right">
+												<span t-esc="line['bysal'] and '{0:,.2f}'.format(line['bysal']) or '-'" />
+											</td>
+											<td class="text-center">
+												<span t-esc="line['debit_credit']"/>
+											</td>
+										</tr>
+									</t>
+								<!-- Total Line -->
+								
+								<tr>
+									<td colspan="2" class="text-center" style="font-family:georgia,garamond,serif;font-size:10px;font-weight:bold;"></td>
+									<td class="text-left" style="font-family:georgia,garamond,serif;font-size:10px;font-weight:bold;">Total :</td>
+									<td class="text-right" style="font-family:georgia,garamond,serif;font-size:10px;font-weight:bold;"> <span t-esc="Total and '{0:,.2f}'.format(Total) or '-'" /></td>
+									<td></td>
+								</tr>
+							</tbody>
+						</table>
+					
+						<p style="font-family:georgia,garamond,serif;font-size:10px;margin-top:40px;">
+							Yours Sincerely
+		    			</p>
+		    			
+		    			<p style="font-family:georgia,garamond,serif;font-size:10px;margin-top:20px;">
+							For Security Organizing System
+		    			</p>
+		    			
+		    			
+		    			<p style="font-family:georgia,garamond,serif;font-size:10px;margin-top:80px;">
+							Authorized Signature
+		    			</p>	
+		    				
+						
+					</div>
+				</t>
+			</t>
+		</template>
+	
+	</data>
+</odoo>

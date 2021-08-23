@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="clv_external_sync_schedule_mass_edit_view_form" model="ir.ui.view">
+        <field name="name">clv.external_sync.schedule.mass_edit.form</field>
+        <field name="model">clv.external_sync.schedule.mass_edit</field>
+        <field name="arch" type="xml">
+            <form>
+                <div class="oe_right">
+                </div>
+                <label for="external_sync_schedule_ids"/>
+                <field name="external_sync_schedule_ids"/>
+                <group>
+                    <group name="external_host_id_selection">
+                        <field name="external_host_id_selection"/>
+                    </group>
+                    <group>
+                        <field name="external_host_id" options="{'no_open': False, 'no_create': True}" nolabel='1'/>
+                    </group>
+                    <group>
+                        <field name="external_max_task_selection"/>
+                    </group>
+                    <group>
+                        <field name="external_max_task" nolabel='1'/>
+                    </group>
+                    <group>
+                        <field name="external_disable_identification_selection"/>
+                    </group>
+                    <group>
+                        <field name="external_disable_identification" nolabel='1'/>
+                    </group>
+                    <group>
+                        <field name="external_disable_check_missing_selection"/>
+                    </group>
+                    <group>
+                        <field name="external_disable_check_missing" nolabel='1'/>
+                    </group>
+                    <group>
+                        <field name="external_disable_inclusion_selection"/>
+                    </group>
+                    <group>
+                        <field name="external_disable_inclusion" nolabel='1'/>
+                    </group>
+                    <group>
+                        <field name="external_disable_sync_selection"/>
+                    </group>
+                    <group>
+                        <field name="external_disable_sync" nolabel='1'/>
+                    </group>
+                    <group>
+                        <field name="external_last_update_start_selection"/>
+                    </group>
+                    <group name="external_last_update_start">
+                        <field name="external_last_update_start" nolabel='1'/>
+                    </group>
+                    <group>
+                        <field name="external_last_update_end_selection"/>
+                    </group>
+                    <group name="external_last_update_end">
+                        <field name="external_last_update_end" nolabel='1'/>
+                    </group>
+                </group>
+                <footer>
+                    <button 
+                        type="object"
+                        name="do_external_sync_schedule_mass_edit"
+                        string="Mass Edit"
+                        class="oe_highlight"
+                        />
+                    <button special="cancel" string="Cancel"/>
+                </footer>
+            </form>
+
+        </field>
+    </record>
+
+    <!-- More button Action -->
+    <act_window 
+        id="clv_external_sync_schedule_mass_edit_action"
+        name="External Sync Schedule Mass Edit"
+        src_model="clv.external_sync.schedule"
+        res_model="clv.external_sync.schedule.mass_edit"
+        view_mode="form"
+        key2="client_action_multi"
+        target="new"
+    />
+
+</odoo>

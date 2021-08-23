@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2015-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- "License URL : <https://store.webkul.com/license.html/>" -->
+
+<odoo>
+    <data>
+
+        <record id="res_config_settings_view_vendor_portal_form" model="ir.ui.view">
+            <field name="name">res.config.settings.view.form.inherit.rfq</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority" eval="3"/>
+            <field name="inherit_id" ref="base.res_config_settings_view_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('settings')]" position="inside">
+                    <div class="app_settings_block o_not_app" data-string="Odoo Vendor Portal" data-key="odoo_vendor_portal">
+                        <h2>Vendor RFQ</h2>
+                        <p class="text-muted" style="margin-left:5%">
+                            RFQs cron setting
+                        </p>
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-xs-12 col-md-6 o_setting_box">
+                                <div class="o_setting_left_pane" />
+                                <div class="o_setting_right_pane">
+                                    <label for="id" string="Set RFQs as done"/>
+                                    <div class="text-muted">
+                                        RFQ will be marked as done on the basis of:
+                                    </div>
+                                    <div class="content-group">
+                                        <div class="mt16">
+                                            <field name="done_rfq_basedon" class="o_light_label" widget="radio"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h2>RFQs Status Message</h2>
+                        <p class="text-muted" style="margin-left:5%">
+                          Following message will appear on the RFQs website page according to the status.
+                        </p>
+                        <div class="row mt16 o_settings_container" id="mob_service">
+                            <div class="col-xs-12 col-md-12 o_setting_box">
+                                <div class="o_setting_left_pane" />
+                                <div class="o_setting_right_pane">
+                                    <label for="id" string="Quote Submission Template"/>
+                                    <div class="content-group">
+                                        <div class="mt16">
+                                            <field name="msg_quote_submit"
+                                                   class="o_light_label"
+                                                   placeholder="Thanks! We have received your quote. We will revert back to you if your quote will get approved."/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-12 o_setting_box">
+                                <div class="o_setting_left_pane" />
+                                <div class="o_setting_right_pane">
+                                    <label for="id" string="Quote Acceptance Template"/>
+                                    <div class="content-group">
+                                        <div class="mt16">
+                                            <field name="msg_quote_accecpt"
+                                                   class="o_light_label"
+                                                   placeholder="Congratulations! we have accepted your quotation, we'll soon create the purchase order for you. We will look forward to a long-term business relationship with you."/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-12 o_setting_box">
+                                <div class="o_setting_left_pane" />
+                                <div class="o_setting_right_pane">
+                                    <label for="id" string="Quote not Accepted Template"/>
+                                    <div class="content-group">
+                                        <div class="mt16">
+                                            <field name="msg_quote_reject"
+                                                   class="o_light_label"
+                                                   placeholder="We regret that your quote has not been accepted. We will be glad to give you an another opportunity soon."/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-12 o_setting_box">
+                                <div class="o_setting_left_pane" />
+                                <div class="o_setting_right_pane">
+                                    <label for="id" string="PO created for the RFQ"/>
+                                    <div class="content-group">
+                                        <div class="mt16">
+                                            <field name="msg_po_create"
+                                                   class="o_light_label"
+                                                   placeholder="Congratulations! A Purchase Order has been created for this RFQ."/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-12 o_setting_box">
+                                <div class="o_setting_left_pane" />
+                                <div class="o_setting_right_pane">
+                                    <label for="id" string="RFQ Cancelled Template"/>
+                                    <div class="content-group">
+                                        <div class="mt16">
+                                            <field name="msg_rfq_cancel"
+                                                   class="o_light_label"
+                                                   placeholder="Sorry! This RFQ has been cancelled."/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="action_rfq_portal_config" model="ir.actions.act_window">
+            <field name="name">Configure Odoo Vendor Portal</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.config.settings</field>
+            <field name="view_id" ref="res_config_settings_view_vendor_portal_form"/>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+        </record>
+
+        <record id="res_config_settings_view_form_inherit_vendor_portal" model="ir.ui.view">
+            <field name="name">res.config.settings.view.form.inherit.vendor.portal</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="odoo_vendor_portal.res_config_settings_view_vendor_portal_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@data-key='odoo_vendor_portal']" position="attributes">
+                    <attribute name="class">app_settings_block</attribute>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+  </odoo>

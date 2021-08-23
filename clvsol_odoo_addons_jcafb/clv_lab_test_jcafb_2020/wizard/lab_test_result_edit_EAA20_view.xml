@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="clv_lab_test_result_edit_eaa20_view_form" model="ir.ui.view">
+        <field name="name">clv.lab_test.result.edit_eaa20.form</field>
+        <field name="model">clv.lab_test.result.edit_eaa20</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_right">
+                    </div>
+                    <group  name="group_top">
+                        <field name="result_id" options="{'no_open': True, 'no_create': True, 'readonly': True}"/>
+                        <field name="lab_test_type_id" options="{'no_open': True, 'no_create': True, 'readonly': True}"/>
+                        <field name="lab_test_request_id" options="{'no_open': True, 'no_create': True, 'readonly': True}"/>
+                    </group>
+                    <group name="group_bottom">
+                        <group string='Identificação da Amostra'>
+                            <field name="EAA20_local_coleta"/>
+                            <field name="EAA20_ponto_coleta"/>
+                            <field name="EAA20_data_coleta"/>
+                            <field name="EAA20_coleta_resp"/>
+                        </group>
+                        <group string='Identificação do Morador'>
+                            <field name="EAA20_morador"/>
+                        </group>
+                        <group string='Determinação de Cloro Livre e pH'>
+                            <field name="EAA20_cloro_livre_valor"/>
+                            <field name="EAA20_data_cloro_livre"/>
+                            <field name="EAA20_cloro_livre_resp"/>
+                            <field name="EAA20_ph_valor"/>
+                            <field name="EAA20_data_ph"/>
+                            <field name="EAA20_ph_resp"/>
+                        </group>
+                        <group string='Análise Microbiológica'>
+                            <field name="EAA20_coliformes_totais_valor"/>
+                            <field name="EAA20_data_coliformes_totais"/>
+                            <field name="EAA20_coliformes_totais_resp"/>
+                            <field name="EAA20_escherichia_coli_valor"/>
+                            <field name="EAA20_data_escherichia_coli"/>
+                            <field name="EAA20_escherichia_coli_resp"/>
+                        </group>
+                        <label for="EAA20_obs"/>
+                        <field name="EAA20_obs"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button 
+                        type="object"
+                        name="do_result_updt_EAA20"
+                        string="Result Update"
+                        class="oe_highlight"
+                        />
+                    <button special="cancel" string="Cancel"/>
+                </footer>
+            </form>
+
+        </field>
+    </record>
+
+    <act_window 
+        id="clv_lab_test_result_edit_eaa20_action"
+        name="Lab Test Result Edit (EAA20)"
+        res_model="clv.lab_test.result.edit_eaa20"
+        view_mode="form"
+        target="new"
+    />
+
+</odoo>

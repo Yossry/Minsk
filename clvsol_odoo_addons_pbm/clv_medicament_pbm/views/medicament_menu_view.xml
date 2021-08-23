@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <menuitem name="Medicaments" id="clv_medicament.menu_pharmacy_medicament_medicaments"
+            parent="clv_base.menu_pharmacy_medicament"
+            groups="clv_medicament.group_user"
+            sequence="10"
+            action="clv_medicament.clv_medicament_action"/>
+
+        <menuitem name="Lists" id="clv_medicament.menu_pharmacy_medicament_medicaments_lists"
+            parent="clv_medicament.menu_pharmacy_medicament_medicaments"
+            groups="clv_medicament.group_user"
+            sequence="10"
+            action="clv_medicament.clv_medicament_list_action"/>
+
+        <menuitem name="List Items" id="clv_medicament.menu_pharmacy_medicament_medicaments_list_items"
+            parent="clv_medicament.menu_pharmacy_medicament_medicaments"
+            groups="clv_medicament.group_user"
+            sequence="20"
+            action="clv_medicament.clv_medicament_list_item_action"/>
+
+        <menuitem name="Medicament" id="clv_medicament.menu_pharmacy_config_medicament" 
+            parent="clv_base.menu_pharmacy_config"
+            groups="clv_medicament.group_user"
+            sequence="10"/>
+
+        <menuitem name="Categories" id="clv_medicament.menu_pharmacy_config_medicament_categories" 
+            parent="clv_medicament.menu_pharmacy_config_medicament"
+            groups="clv_medicament.group_user"
+            sequence="10"
+            action="clv_medicament.clv_medicament_category_action"/>
+
+        <menuitem name="Active Components" id="clv_medicament.menu_pharmacy_config_medicament_active_components"
+            parent="clv_medicament.menu_pharmacy_config_medicament"
+            groups="clv_medicament.group_user"
+            sequence="20"
+            action="clv_medicament.clv_medicament_active_component_action"/>
+
+        <menuitem name="Strings" id="clv_medicament.menu_pharmacy_config_medicament_active_components_strings"
+            parent="clv_medicament.menu_pharmacy_config_medicament_active_components"
+            groups="clv_medicament.group_user"
+            sequence="10"
+            action="clv_medicament.clv_medicament_active_component_str_action"/>
+
+        <menuitem name="Manufacturers" id="clv_medicament.menu_pharmacy_config_medicament_manufacturers"
+            parent="clv_medicament.menu_pharmacy_config_medicament"
+            groups="clv_medicament.group_user"
+            sequence="40"
+            action="clv_medicament.clv_medicament_manufacturer_action"/>
+
+        <menuitem name="Strings" id="clv_medicament.menu_pharmacy_config_medicament_manufacturers_strings"
+            parent="clv_medicament.menu_pharmacy_config_medicament_manufacturers"
+            groups="clv_medicament.group_user"
+            sequence="10"
+            action="clv_medicament.clv_medicament_manufacturer_str_action"/>
+
+        <menuitem name="Presentation Form" id="clv_medicament.menu_pharmacy_config_medicament_pres_form"
+            parent="clv_medicament.menu_pharmacy_config_medicament"
+            groups="clv_medicament.group_user"
+            sequence="50"
+            action="clv_medicament.clv_medicament_pres_form_action"/>
+
+        <menuitem name="UOM" id="clv_medicament.menu_pharmacy_config_medicament_uom"  
+            parent="clv_medicament.menu_pharmacy_config_medicament"
+            groups="clv_medicament.group_user"
+            sequence="70" 
+            action="clv_medicament.clv_medicament_uom_action"/>
+
+    </data>
+</odoo>

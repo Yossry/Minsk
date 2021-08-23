@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo noupdate="1">
+
+    <record id="clv_referenceable_model_lab_test_request" model="clv.referenceable.model">
+        <field name="base_model">clv.lab_test.request</field>
+        <field name="name">Patient</field>
+        <field name="model">clv.patient</field>
+        <field name="priority">10</field>
+    </record>
+
+    <record id="clv_referenceable_model_lab_test_result" model="clv.referenceable.model">
+        <field name="base_model">clv.lab_test.result</field>
+        <field name="name">Patient</field>
+        <field name="model">clv.patient</field>
+        <field name="priority">10</field>
+    </record>
+
+    <record id="clv_referenceable_model_lab_test_report" model="clv.referenceable.model">
+        <field name="base_model">clv.lab_test.report</field>
+        <field name="name">Patient</field>
+        <field name="model">clv.patient</field>
+        <field name="priority">10</field>
+    </record>
+
+</odoo>

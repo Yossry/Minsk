@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data> 
+			<record model="ir.ui.view" id="sos_attendance_device_tree_view">
+			<field name="name">sos.attendance.device.tree.view</field>
+			<field name="model">sos.attendance.device</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Attendance Device">
+					<field name="name"/>
+					<field name="device_number"/>
+					<field name="post_id" />
+					<field name="conn_company" />
+					<field name="sim_no" />
+					<field name="city"/>
+					<field name="device_status"/>
+				</tree>
+			</field>
+		</record>
+
+
+		<record model="ir.ui.view" id="sos_attendance_device_form_view">
+			<field name="name">sos.attendance.device.form.view</field>
+			<field name="model">sos.attendance.device</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">	
+				<form string="Attendance Device">
+					<header>
+						<button name="device_done" type="object" states="draft" string="Done" class="oe_highlight"/>		
+						<field name="state" widget="statusbar" nolabel="1" />
+					</header>
+					<sheet>
+					<group>
+						<group>
+							<field name="name" placeholder=" Name..." invisible='1'/>
+							<field name="device_number"/>
+							<field name="conn_company"/>
+							<field name="sim_no"/>
+							<field name="date"/>
+							<field name="device_status"/>
+						</group>
+						<group>	
+								<field name="project_id" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}" />
+								<field name="center_id" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>
+								<field name="post_id" domain="[('center_id','=',center_id),('project_id','=',project_id)]" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>
+								<field name="city" placeholder="City... Islamabad"/>
+								
+						</group>
+					</group>
+						<field name="remarks" placeholder="Please Enter your Remarks......."/>
+				</sheet>
+					<div class="oe_chatter">
+						<field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+						<field name="message_ids" widget="mail_thread" placeholder="Share a note..."/>
+		      		</div>
+				</form>
+			</field>
+		</record>
+		
+		
+		<record id="sos_attendance_device_filter" model="ir.ui.view">
+		<field name="name">sos.attendance.device.filter</field>
+		<field name="model">sos.attendance.device</field>
+		<field name="arch" type="xml">
+			<search string="Attendance Devices Filter">
+				<filter icon="terp-go-today" string="Draft" name="draft" domain="[('state','=','draft')]" />			
+				<filter icon="terp-go-today" string="Done" name="done" domain="[('state','=','done')]" />
+				<field name="name"/>
+				<field name="device_number"/>
+				<field name="date"/>
+				<field name="center_id"/>
+				<field name="project_id"/>
+				<field name="post_id"/>
+				<field name="city"/>
+				<field name="conn_company"/>
+				<field name="sim_no"/>
+				<separator/>
+					<group expand="0" string="Group By">
+						<filter string="Center" name="center_id" icon="terp-partner" domain="[]" context="{'group_by':'center_id'}"/>
+						<filter string="Project" name="project_id" icon="terp-partner" domain="[]" context="{'group_by':'project_id'}"/>
+						<filter string="Post" name="post_id" icon="terp-partner" domain="[]" context="{'group_by':'post_id'}"/>
+						<filter string="Date" name="date" icon="terp-partner" domain="[]" context="{'group_by':'date'}"/>
+						<filter string="State" name="state" icon="terp-partner" domain="[]" context="{'group_by':'state'}"/>
+						<filter string="Connection Type" name="conn_company" icon="terp-partner" domain="[]" context="{'group_by':'conn_company'}"/>
+						<filter string="Device Status" name="device_status" icon="terp-partner" domain="[]" context="{'group_by':'device_status'}"/>
+					</group>
+			</search>
+		</field>
+		</record>
+
+
+
+		<record id="sos_attendance_device_action" model="ir.actions.act_window">
+			<field name="name">Attendance Devices</field>
+			<field name="res_model">sos.attendance.device</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+					Click to create a new Device.
+				</p>
+			</field>
+	</record> 
+  
+    </data>
+</odoo>

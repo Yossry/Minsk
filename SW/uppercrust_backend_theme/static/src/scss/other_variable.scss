@@ -1,0 +1,144 @@
+$white: white;
+
+// Left Bar color
+$brand-primary-light: lighten( $brand-primary, 40% );
+
+// Icon Color
+$icon: $button-box;
+
+// Menu sub Title
+$menu-sub-title: $menu-main-title;
+
+// Common color
+$white: #FFFFFF;
+$black: #000;
+
+// Hover Color
+$tr-hover: rgba($brand-primary, .03);
+
+// Background Light
+$bg-light: rgba($brand-primary, .5);
+
+$normal-color: $Label-value;
+$table-row: $Label-value;
+$form-label-color: $Label;
+$font-color: $Label-value;
+$badge-bg: $brand-primary;
+
+// Bootstrap color for list row
+$text-info: #00b3e5;
+$text-danger: #ca0c05;
+$text-success: #00aa00;
+$text-warning: #e47e01;
+$text-primary: #005ba9;
+$text-muted: #717171;
+
+// Denger-light
+$text-danger-light: rgba($text-danger, .01);
+
+//== Colors
+$brand-success: #00a04a;
+$brand-info: #87c0d1;
+$brand-warning: #f0ad4e;
+$brand-danger: #dc6965;
+$brand-optinal: #F9F9F9;
+
+// Base color change
+$state-danger-text: $text-danger;
+$state-success-text: $text-success;
+$odoo-tooltip-background-color: $tooltip;
+$odoo-tooltip-color: $white;
+$odoo-tooltip-arrow-color: $tooltip;
+$odoo-brand-secondary: $tooltip;
+$o-community-color: $brand-secondary;
+$screen-sm:                  768px;
+$screen-sm-min:              $screen-sm;
+$screen-md:                  992px;
+$screen-md-min:              $screen-md;
+$screen-desktop:             $screen-md-min;
+$screen-lg:                  1200px;
+$screen-lg-min:              $screen-lg;
+$screen-lg-desktop:          $screen-lg-min;
+$screen-xs-max:              ($screen-sm-min - 1);
+$screen-xs-max:              ($screen-sm-min - 1);
+$screen-sm-max:              ($screen-md-min - 1);
+$screen-md-max:              ($screen-lg-min - 1);
+
+//== Buttons
+$btn-default-bg: $white;
+$btn-default-border: $border;
+$btn-default-color: $form-label-color;
+$btn-primary-bg: $brand-secondary;
+$btn-primary-border: $brand-secondary;
+$btn-primary-color: $white;
+$btn-borrdere-radius: 0;
+
+//== Scaffolding
+$link-color: $link;
+$link-hover-decoration: none;
+
+//box shadow
+$box-shadow: 5px 8px 12px -4px $bg-light;
+
+// Font sizing
+$font-size-13: 11px;
+$font-size-12: 100%;
+$font-size-11: 120px;
+$font-size-10: 50px;
+$font-size-9: 36px;
+$font-size-8: 16px;
+$font-size-7: 30px;
+$font-size-4: 22px;
+$font-size-5: 20px;
+$font-size-6: 19px;
+$font-size-0: 18px;
+$font-size-1: 13px;
+$font-size-2: 12px;
+$font-size-3: 10px;
+$font-size-n: 0px;
+
+// Font Weight
+$font-weight-4: 400;
+$font-weight-5: 500;
+$font-weight-6: 600;
+$font-weight-7: 700;
+$font-weight-b: bold;
+
+$calender-tag-info: #00b3e5;
+$calender-tag-danger: #ca0c05;
+$calender-tag-success: #00aa00;
+$calender-tag-warning: #e47e01;
+$calender-tag-primary: #005ba9;
+$calender-tag-muted: #717171;
+
+:root {
+  --blue: #007bff;
+  --indigo: #6610f2;
+  --purple: #6f42c1;
+  --pink: #e83e8c;
+  --red: #dc3545;
+  --orange: #fd7e14;
+  --yellow: #ffc107;
+  --green: #28a745;
+  --teal: #20c997;
+  --cyan: #17a2b8;
+  --white: #fff;
+  --gray: $text-muted;
+  --gray-dark: #343a40;
+  --primary: $brand-primary;
+  --secondary: $brand-secondary;
+  --success: $text-success;
+  --info: $text-info;
+  --warning: $brand-warning;
+  --danger: $text-danger;
+  --light: #f8f9fa;
+  --dark: #343a40;
+}
+
+// Webclient Variables
+$o-brand-odoo: $brand-primary;
+$o-brand-primary: $brand-primary;
+
+$o-brand-secondary: $brand-secondary;
+$o-main-text-color: #4c4c4c;
+$o-main-color-muted: $text-muted;

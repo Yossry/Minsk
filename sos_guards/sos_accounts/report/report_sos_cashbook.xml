@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<template id ="sos_accounts.report_sos_cashbook_document">
+			<t t-call="web.external_layout">
+    	 		<div class="page">
+    	 			<style>
+						.tabhead{font-size:12px;}
+						.tabcol{font-size:14px;}
+					</style>
+					<br> </br>
+					
+					<div class="row" style="margin-top:5px;">
+						<div class="col-xs-12" style="font-size:14px; margin-top:6px;">
+    	 					Reference: &#32;&#32;&#32;&#32; &#32;&#32;&#32;&#32;
+    	 					<span t-esc="doc.name" />
+		   	 			</div>
+		   	 		</div>	
+		   	 		
+		   	 		<table class="table table-condensed" style="font-size:12px;text-align:left; align:left;background-color:#E5E4E2;">
+		   	 		<tr>
+		   	 			<td class="text-left" width="30%">Journal</td>
+		   	 			<td class="text-left"  width="320%"><span t-esc="doc.journal_id.name" /></td>
+		   	 			<td class="text-left"  width="30%">Starting Balance</td>
+		   	 			<td class="text-left"  width="20%"><span t-esc="doc.balance_start" /></td>
+		   	 		</tr>
+		   	 		
+		   	 		<tr>
+		   	 			<td class="text-left"  width="30%">Date</td>
+		   	 			<td class="text-left"  width="20%"><span t-esc="doc.date" /></td>
+		   	 			<td class="text-left"  width="30%">Ending Balance</td>
+		   	 			<td class="text-left"  width="20%"><span t-esc="doc.balance_end_real" /></td>
+		   	 		</tr>
+			 		</table>
+					
+					
+					<table class="table table-condensed">
+			 		 <thead>
+			 		 	 <tr style="font-size:11px;font-weight:bold;text-align:center;align:left;background-color:#A6ACAF;">
+			 		 	 	<th>Sr#</th>
+			 		 	 	<th>Entry Date</th>
+			 		 	 	<th>Financial Date</th>
+			 		 	 	<th>Reference</th>    	 		 	 	
+			 		 	 	<th>Counterpart Account</th>
+			 		 	 	<th>Label</th>
+			 		 	 	<th>Amount</th>
+			 		 	 	<th>Cost Center</th>
+			 		 	 	<th>Employee</th>
+			 		 	 	<th>Project</th>
+			 		 	 	<th>Region</th>
+			 		 	 	<th>Partner/Post</th>
+			 		 	 	<th>Mode</th>
+			 		 	 	<th>Segments</th>
+			 		 	  </tr>
+			 		  </thead>
+			 		  
+			 		  <tbody style="font-size:12px;text-align:left; align:left;background-color:#E5E4E2;">
+			 		  	 <tr t-foreach="doc.line_ids" t-as="line">
+			 		  	 	<td> <span t-esc="line_index + 1" />  </td>
+			 		  	 	<td> <span t-field="line.entry_date"/>  </td>
+							<td> <span t-field="line.date"/>  </td>
+							<td> <span t-field="line.ref"/>  </td>						
+							<td> <span t-field="line.account_id.name"/>  </td>
+							<td> <span t-field="line.name"/>  </td>
+							<td> <span t-field="line.amount"/>  </td>
+							
+							<!-- cost center -->
+							<td>
+								<t  t-if="line.a1_id"> 
+									<span t-esc="line.a1_id.name"/>
+								</t>	  
+							</td>
+							
+							<!-- Employee -->
+							<td>
+								<t  t-if="line.a2_id"> 
+									<span t-esc="line.a2_id.name"/>
+								</t>  
+							</td>
+							
+							<!-- Project -->
+							<td>
+								<t  t-if="line.a3_id"> 
+									<span t-esc="line.a3_id.name"/>
+								</t>
+									  
+							</td>
+							
+							<!-- Region -->
+							<td>
+								<t  t-if="line.a4_id"> 
+									<span t-esc="line.a4_id.name"/>
+								</t>  
+							</td>
+							
+							<!-- Partner/Post  -->
+							<td>
+								<t  t-if="line.a5_id"> 
+									<span t-esc="line.a5_id.name"/>
+								</t>
+									  
+							</td>
+							
+							<!-- Mode -->
+							<td>
+								<t  t-if="line.a6_id"> 
+									<span t-esc="line.a6_id.name"/>
+								</t>
+									  
+							</td>
+							
+							<!-- Segments -->
+							<td>
+								<t  t-if="line.a7_id"> 
+									<span t-esc="line.a7_id.name"/>
+								</t>
+									  
+							</td>
+			 		  	 </tr>
+			 		  	 <!-- Total -->
+			 		  	 <tr>
+			 		  	 	<td colspan="6" style="font-size:10px; font-weight:bold;"> Computed Balance</td>
+			 		  	 	<td style="font-size:10px; font-weight:bold;"><span t-esc="doc.balance_end"/> </td>
+			 		  	 	<td colspan="7" style="font-size:10px; font-weight:bold;"> </td>
+			 		  	 </tr>
+			 		  </tbody>
+			 	</table>
+					
+						
+				</div>
+			</t>
+		</template>
+		
+		
+	<template id="sos_accounts.report_sos_cashbook">
+    	<t t-call="web.html_container">
+    	    <t t-foreach="docs" t-as="doc">
+            	<t t-call="sos_accounts.report_sos_cashbook_document"/>
+        	</t>
+    	</t>
+	</template>
+	
+	</data>
+</odoo>

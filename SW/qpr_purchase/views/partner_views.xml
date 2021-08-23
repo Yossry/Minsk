@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="res_partner_view_purchase_buttons" model="ir.ui.view">
+        <field name="name">res.partner.view.purchase.buttons</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="priority" eval="20"/>
+        <field name="groups_id" eval="[(4, ref('purchase.group_purchase_manager'))]"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form//sheet" position="before">
+                <header>
+                    <button name="action_verified" string="Partner Verify" attrs="{'invisible': [('is_verified', '=', True)]}" type="object" class="oe_highlight"/>
+                    <field name="is_verified" invisible="1"/>
+                </header>
+            </xpath>
+             <field name="type" position="before">
+                <field name="reference_code"/>
+            </field>
+            <xpath expr="//form//sheet//div[hasclass('oe_title')]//h1" position="inside">
+                <span class="fa fa-certificate ml4 text-info oe_read_only" attrs="{'invisible': [('is_verified', '=', False)]}"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_partner_tree_inherit_qpr_purchase" model="ir.ui.view">
+        <field name="name">res.partner.view.tree</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree" />
+        <field name="arch" type="xml">
+            <field name="display_name" position="after">
+                <field name="is_verified" invisible="1"/>
+            </field>
+            <xpath expr="//tree" position="attributes">
+                <attribute name="decoration-info">is_verified == True</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

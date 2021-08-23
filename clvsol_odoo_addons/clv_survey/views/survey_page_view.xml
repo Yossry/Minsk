@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="survey_survey_view_form_page" model="ir.ui.view">
+        <field name="name">survey.survey.form</field>
+        <field name="model">survey.survey</field>
+        <field name="inherit_id" ref="survey.survey_form"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="sequence" position="after">
+                <field name="code"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="survey_page_view_form" model="ir.ui.view">
+        <field name="name">survey.page.form</field>
+        <field name="model">survey.page</field>
+        <field name="inherit_id" ref="survey.survey_page_form"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="title" position="replace">
+            </field>
+            <label for="title" position="replace">
+                <label for="title" class="oe_edit_only"/>
+                <h1><field name="title" placeholder="Page Title"/></h1>
+                <label for="code" class="oe_edit_only"/>
+                <h3><field name="code" placeholder="Page Code"/></h3>
+                <label for="description" class="oe_edit_only"/>
+                <h3><field name="description" placeholder="Page Description"/></h3>
+            </label>
+            <xpath expr="//sheet" position="inside">
+                <notebook>
+                    <page name="settings" string="Settings" groups="clv_base.group_reguser" invisible="False">
+                        <group name="settings_top">
+                            <group name="settings_left">
+                                <field name="id"/>
+                            </group>
+                            <group name='settings_right'>
+                                <div class="oe_button_box" name="settings_buttons">
+                                    <!--button name="toggle_active"
+                                                type="object"
+                                                class="oe_stat_button"
+                                                icon="fa-archive"
+                                                groups="clv_base.group_reguser"
+                                                >
+                                            <field name="active"
+                                                   widget="boolean_button"
+                                                   options='{"terminology": "archive"}'
+                                                   />
+                                    </button-->
+                                </div>
+                            </group>
+                            <group name="settings_left_3">
+                            </group>
+                            <group name='settings_right_3'>
+                                <div class="oe_button_box" name="settings_buttons_3">
+                                </div>
+                            </group>
+                        </group>
+                    </page>
+                </notebook>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="survey_page_view_tree" model="ir.ui.view">
+        <field name="name">survey.page.tree</field>
+        <field name="model">survey.page</field>
+        <field name="inherit_id" ref="survey.survey_page_tree"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="sequence" position="after">
+                <field name="code" />
+            </field>
+        </field>
+    </record>
+
+</odoo>

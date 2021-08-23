@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="res_company_inherit_default_payment_settings" model="ir.ui.view">
+            <field name="name">res.company.default.report.settings</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="professional_templates.res_company_inherit_default_settings"/>
+            <field name="arch" type="xml">
+			 <xpath expr="//group[@name='default_report_templates']" position="inside">
+				<group>
+			           <field name="template_payment"/>
+				</group>
+		 </xpath>
+	    </field>
+	</record>
+    </data>
+</openerp>
+

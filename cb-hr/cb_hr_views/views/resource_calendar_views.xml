@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2019 Creu Blanca
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+        <!-- RESOURCE.CALENDAR.ATTENDANCE -->
+    <record id="view_resource_calendar_attendance_tree" model="ir.ui.view">
+        <field name="name">resource.calendar.attendance.tree</field>
+        <field name="model">resource.calendar.attendance</field>
+        <field name="inherit_id" ref="resource.view_resource_calendar_attendance_tree"/>
+        <field name="arch" type="xml">
+            <field name="date_from" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="date_to" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="resource_calendar_form_view">
+        <field name="name">resource.calendar.form (in cb_hr_views)</field>
+        <field name="model">resource.calendar</field>
+        <field name="inherit_id" ref="resource.resource_calendar_form"/>
+        <field name="arch" type="xml">
+            <field name="company_id" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <xpath expr="//button[@name='%(resource.resource_calendar_leaves_action_from_calendar)s']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//button[@name='%(resource.resource_resource_action_from_calendar)s']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='global_leave_ids']/.." position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <div name="button_box" position="inside">
+                <button name="toggle_archive_calendar" type="object" groups="hr.group_hr_user"
+                        class="oe_stat_button" icon="fa-archive">
+                    <field name="not_archived" widget="boolean_button"
+                        options='{"terminology": "archive"}'/>
+                </button>
+            </div>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="resource_calendar_tree_view">
+        <field name="name">resource.calendar.tree (in cb_hr_views)</field>
+        <field name="model">resource.calendar</field>
+        <field name="inherit_id" ref="resource.view_resource_calendar_tree"/>
+        <field name="arch" type="xml">
+            <field name="company_id" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_resource_calendar_search">
+        <field name="name">resource.calendar.tree (in cb_hr_views)</field>
+        <field name="model">resource.calendar</field>
+        <field name="inherit_id" ref="resource.view_resource_calendar_search"/>
+        <field name="arch" type="xml">
+            <field name="company_id" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="company_id" position="after">
+                <filter name="not_archived" string="Not Archived" domain="[('not_archived', '=', True)]"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="resource.action_resource_calendar_form" model="ir.actions.act_window">
+        <field name="context">{'search_default_not_archived': 1}</field>
+    </record>
+
+    <menuitem
+        action="resource.action_resource_calendar_form"
+        id="menu_resource_calendar_tree"
+        parent="hr.menu_hr_root"
+        name="Calendars"
+        sequence="93"
+        groups="hr.group_hr_manager"/>
+
+</odoo>

@@ -1,0 +1,2 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_asset_disposal_report_asset_manager","access_asset_disposal_report_asset_manager","model_asset_disposal_report","odoo_account_asset_extend_ce.group_asset_manager",1,1,1,1

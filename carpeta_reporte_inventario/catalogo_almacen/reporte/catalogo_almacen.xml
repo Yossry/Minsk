@@ -1,0 +1,64 @@
+<odoo>
+	<template id="catalogo_almacen">
+		<t t-call="web.html_container">
+			<t t-call="web.external_layout">
+				<t>
+					<div class="page">
+                        <table class="table table-condensed">
+			                <thead>
+			                  <tr>
+                                <th>Imagen</th>
+                                <th>Código</th>
+			                    <th>Producto</th>
+			                    <th>Cedis Occidente</th>
+			                    <th>Cedis Centro</th>
+			                    <th>Cedis Sur</th>
+                                <th>Tránsito COcci</th>
+                                <th>Tránsito CCentro</th>
+                                <th>Tránsito CSur</th>
+			                  </tr>
+			                </thead>
+			                <tbody class="invoice_tbody">
+                                <t t-foreach="docs" t-as="o">
+                                    <t t-if="o.stock_gdl or o.et_co or o.stock_cdmx or o.et_cc or o.stock_mer or o.et_cs">
+                                        <tr>
+                                            <td>
+                                                <img t-attf-src="data:image/*;base64,{{o.image_small}}"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="o.default_code"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="o.name"/>
+                                            </td>
+                                            
+                                            <td>
+                                                <span t-field ="o.stock_gdl"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="o.stock_cdmx"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="o.stock_mer"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="o.et_co"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="o.et_cc"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="o.et_cs"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+								</t> 
+			                </tbody>
+			            </table>
+					</div>
+				</t>
+			</t>
+		</t>
+	</template>
+
+</odoo>

@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<odoo>
+
+        <template id="assets_common" name="store assets" inherit_id="web.assets_common">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/qpr_login/static/src/css/login.css" type="text/less"/>
+            </xpath>
+        </template>
+
+        <template inherit_id="web.login_layout" id="login_layout">
+            <t t-set="body_classname" t-value="'bg-100'" position="replace">
+                <t t-set="body_classname" t-value="'container-login100'"/>
+           </t>
+           <xpath expr="//div[hasclass('card-body')]" position="attributes">
+                <attribute name="class">card-body wrap-login100</attribute>
+           </xpath>
+           <xpath expr="//div[hasclass('card-body')]//div[1]" position="replace">
+           </xpath>
+           <xpath expr="//div[hasclass('card-body')]/.." position="attributes">
+                <attribute name="style">max-width: 450px;</attribute>
+           </xpath>
+        </template>
+
+        <template inherit_id="web.login" id="login">
+            <input name="csrf_token" position="after">
+                <span class="login100-form-logo">
+                    <a id="linkThree" href="#thingThree">
+                        <img src="/qpr_login/static/src/img/login_logo_old.png" style="margin-top: -11px;"/>
+                    </a>
+                </span>
+
+                <span class="login100-form-title mt32 mb32">
+                </span>
+            </input>
+            <xpath expr="//form[hasclass('oe_login_form')]" position="before">
+                <t t-set="disable_footer" t-value="True"/>
+            </xpath>
+            <xpath expr="//form[hasclass('oe_login_form')]" position="attributes">
+                <attribute name="class">oe_login_form login100-form</attribute>
+            </xpath>
+            <xpath expr="//div[hasclass('field-login')]" position="replace">
+                <div class="form-group field-login">
+                    <div t-attf-class="input-group {{'input-group-sm' if form_small else ''}}">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text input-group-custom" id="basic-addon1"><span style="font-size: 20px;" class="fa fa-user"/></span>
+                        </div>
+                        <input style="height: 50px;" type="text" placeholder="Username" name="login" t-att-value="login" id="login" t-attf-class="input100 #{'form-control-sm' if form_small else ''}" required="required" autofocus="autofocus" autocomplete="off"/>
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="//div[hasclass('field-password')]" position="replace">
+                <div class="form-group field-password mt32 mb32">
+                    <div t-attf-class="input-group {{'input-group-sm' if form_small else ''}}">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text input-group-custom" id="basic-addon1"><span style="font-size: 20px;" class="fa fa-lock"/></span>
+                        </div>
+                        <input style="height:50px;" type="password" placeholder="Password" name="password" id="password" t-attf-class="input100 #{'form-control-sm' if form_small else ''}" required="required" autocomplete="current-password" t-att-autofocus="'autofocus' if login else None" maxlength="4096"/>
+                    </div>
+                </div>
+            </xpath>
+             <xpath expr="//form[hasclass('oe_login_form')]//button[@type='submit']" position="replace">
+                <center><button type="submit" class="login100-form-btn">Log in</button></center>
+             </xpath>
+        </template>
+
+</odoo>
+
+

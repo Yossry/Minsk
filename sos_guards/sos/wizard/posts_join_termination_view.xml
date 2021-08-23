@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_posts_join_termination" model="ir.ui.view">
+            <field name="name">Posts Join Termination</field>
+            <field name="model">posts.join.termination</field>
+            <field name="arch" type="xml">
+            <form string="Posts Join Termination" version="7.0">
+                <label for="date_from" string="This wizard will print report which displays Posts Joining and Termination for specified dates."/>
+                <footer>
+                    <button name="print_report" string="Print" type="object" class="oe_highlight"/>
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+                <group>
+                    <field name="date_from"/>
+                    <field name="date_to"/> 
+                    <field name="order_by"/> 
+                </group>
+				<field name="center_ids"/> 
+            </form>
+            </field>
+        </record>
+
+        <record id="action_posts_join_termination" model="ir.actions.act_window">
+            <field name="name">Posts Join Termination</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">posts.join.termination</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+		
+        
+           
+        
+    </data>
+</odoo>

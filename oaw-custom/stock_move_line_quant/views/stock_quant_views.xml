@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record model="ir.ui.view" id="view_stock_quant_form">
+        <field name="name">stock.quant.form</field>
+        <field name="model">stock.quant</field>
+        <field name="inherit_id" ref="stock.view_stock_quant_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//label[@for='quantity']" position="before">
+                <field name="usage" />
+                <field name="reservation_picking_id" />
+                <field name="actual_qty" />
+            </xpath>
+            <xpath expr="//field[@name='in_date']" position="after">
+                <field name='cost' />
+                <field name='currency_id' />
+                <field name='purchase_price_unit' />
+                <field name='exchange_rate' />
+            </xpath>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="view_stock_quant_tree">
+        <field name="name">stock.quant.tree</field>
+        <field name="model">stock.quant</field>
+        <field name="inherit_id" ref="stock.view_stock_quant_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='location_id']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+            <xpath expr="//field[@name='owner_id']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+            <xpath expr="//field[@name='reserved_quantity']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+            <xpath expr="//field[@name='quantity']" position="after">
+                <field name="reservation_picking_id" />
+                <field name="location_id" />
+                <field name="owner_id" groups="stock.group_tracking_owner" />
+                <field name="in_date" />
+                <field name='currency_id' string='Purch Curr' />
+                <field name='purchase_price_unit' string='Curr Price' />
+                <field name='exchange_rate' />
+                <field name='cost' />
+                <field name="write_date" />
+                <field name="write_uid" />
+            </xpath>
+        </field>
+    </record>
+    <record id="action_stock_quant" model="ir.actions.act_window">
+        <field name="name">Stock Quant</field>
+        <field name="res_model">stock.quant</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_type">form</field>
+        <field name="view_id" ref="view_stock_quant_tree" />
+        <field
+            name="context"
+        >{'search_default_internal_loc': 1, 'search_default_positive': 1}</field>
+        <field name="search_view_id" ref="stock.quant_search_view" />
+    </record>
+    <menuitem
+        action="action_stock_quant"
+        id="menu_stock_quant"
+        parent="stock.menu_warehouse_report"
+        sequence="10"
+    />
+</odoo>

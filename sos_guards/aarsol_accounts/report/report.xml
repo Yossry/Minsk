@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+<template id="web.internal_layout">
+    <!-- Multicompany -->
+    <t t-if="o and 'company_id' in o">
+        <t t-set="company" t-value="o.company_id"/>
+    </t>
+    <t t-if="not o or not 'company_id' in o">
+        <t t-set="company" t-value="res_company"/>
+    </t>
+
+    <div class="header">
+        <div class="row">
+            <div class="col-xs-3">
+                <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
+            </div>
+            <div class="col-xs-6 text-center">
+                <span t-esc="company.name"/>
+            </div>
+            <div class="col-xs-2 col-xs-offset-1 text-right">
+                <ul class="list-inline">
+                    <li><span class="page"/></li>
+                    <li>/</li>
+                    <li><span class="topage"/></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="article">
+      <t t-raw="0" />
+    </div>
+</template>
+
+
+<!--
+<template id="web.external_layout2">
+    <t t-if="not o and doc">
+        <t t-set="o" t-value="doc"/>
+    </t>
+    <t t-if="o and 'company_id' in o">
+        <t t-set="company" t-value="o.company_id"></t>
+    </t>
+    <t t-if="not o or not 'company_id' in o">
+        <t t-set="company" t-value="res_company"></t>
+    </t>
+
+    <t t-call="web.external_layout_header2" /> 
+    
+</template>
+
+<template id="web.external_layout_header2">
+    <div class="header">
+        <div class="row">
+            <div class="col-xs-3">
+                <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 55px;"/>
+            </div>
+            <div class="col-xs-6 text-right" style="margin-top:20px;" t-field="company.report_header"/>
+			<div class="col-xs-3 pull-right">
+                <img t-if="company.parent_id.logo" t-att-src="'data:image/png;base64,%s' % company.parent_id.logo" style="max-height: 55px;"/>
+            </div>
+        </div>
+        <div class="row zero_min_height">
+            <div class="col-xs-12">
+                <div style="border-bottom: 1px solid black;"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3" name="company_address">
+                <div t-field="company.partner_id" 
+                    t-field-options='{"widget": "contact", "fields": ["name"], "no_marker": true}'
+                    style="border-bottom: 1px solid black;"/>
+            </div>
+
+			<div class="col-xs-3 pull-right">            
+		        <ul class="list-inline">
+		            <li>Page:</li>
+		            <li><span class="page"/></li>
+		            <li>/</li>
+		            <li><span class="topage"/></li>
+		        </ul>
+		    </div>
+
+        </div>
+    </div>
+    <div class="article">
+      <t t-raw="0" />
+    </div>
+</template>
+	
+<template id="web.external_layout_header">
+    <div class="header">
+        <div class="row">
+            <div class="col-xs-3">
+                <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 55px;"/>
+            </div>
+            <div class="col-xs-6 text-right" style="margin-top:20px;" t-field="company.report_header"/>
+			<div class="col-xs-3 pull-right">
+                <img t-if="company.parent_id.logo" t-att-src="'data:image/png;base64,%s' % company.parent_id.logo" style="max-height: 55px;"/>
+            </div>
+        </div>
+        <div class="row zero_min_height">
+            <div class="col-xs-12">
+                <div style="border-bottom: 1px solid black;"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3" name="company_address">
+                <div t-field="company.partner_id" 
+                    t-field-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}'
+                    style="border-bottom: 1px solid black;"/>
+            </div>
+        </div>
+    </div>
+    <div class="article">
+      <t t-raw="0" />
+    </div>
+</template>
+
+
+<template id="web.external_layout_wo_footer">
+  
+    <t t-if="not o and doc">
+        <t t-set="o" t-value="doc"/>
+    </t>
+    <t t-if="o and 'company_id' in o">
+        <t t-set="company" t-value="o.company_id"></t>
+    </t>
+    <t t-if="not o or not 'company_id' in o">
+        <t t-set="company" t-value="res_company"></t>
+    </t>
+    <t t-call="web.external_layout_header" />
+      
+</template>
+-->
+<!--
+<template id="minimal_layout" inherit_id="report.minimal_layout">
+	<xpath expr="//t[@t-if='subst is True']" position="replace">
+		<t t-if="subst is True">
+		<script>
+		    function subst() {
+		        var vars = {};
+		        var x = document.location.search.substring(1).split('&amp;');
+		        for (var i in x) {
+		            var z = x[i].split('=', 2);
+		            vars[z[0]] = unescape(z[1]);
+		        }
+		        var x=['frompage', 'topage', 'page', 'webpage', 'section', 'subsection', 'subsubsection'];
+		        for (var i in x) {
+		            var y = document.getElementsByClassName(x[i]);
+		            for (var j=0; j&lt;y.length; ++j)
+		                y[j].textContent = vars[x[i]];
+		            }
+		        var operations = {
+		            'not-first-page': function (elt) {
+		                elt.style.visibility = (vars.page === vars.frompage) ? "hidden" : "visible";
+		            },
+		            'not-last-page': function (elt) {
+		                elt.style.visibility = (vars.page === vars.topage) ? "hidden" : "visible";
+		            },
+		            'first-page': function (elt) {
+		                elt.style.visibility = (vars.page === vars.frompage) ? "visible" : "hidden";
+		            },
+		            'last-page': function (elt) {
+		                elt.style.visibility = (vars.page === vars.topage) ? "visible" : "hidden";
+		            },
+		        };
+		        for (var klass in operations) {
+		            var y = document.getElementsByClassName(klass);
+		            for (var j=0; j&lt;y.length; ++j)
+		                operations[klass](y[j]);
+		            }
+		    }
+		    </script>
+		</t>
+	</xpath>
+</template>
+-->
+
+<!--
+<record id="paperformat_aarsol" model="report.paperformat">
+    <field name="name">AARSOL</field>
+    <field name="default" eval="True"/>
+    <field name="format">custom</field>
+    <field name="page_height">80</field>
+    <field name="page_width">175</field>
+    <field name="orientation">Portrait</field>
+    <field name="margin_top">40</field>
+    <field name="margin_bottom">20</field>
+    <field name="margin_left">3</field>
+    <field name="margin_right">3</field>
+    <field name="header_line" eval="False"/>
+    <field name="header_spacing">45</field>
+    <field name="dpi">90</field>
+</record>
+-->
+
+</data>
+</openerp>

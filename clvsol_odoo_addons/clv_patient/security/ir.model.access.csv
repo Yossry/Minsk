@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_clv_patient_user,clv.patient.user,model_clv_patient,clv_patient.group_user,1,0,0,0
+access_clv_patient_manager,clv.patient.manager,model_clv_patient,clv_patient.group_manager,1,1,1,0
+access_clv_patient_supmanager,clv.patient.supmanager,model_clv_patient,clv_patient.group_supmanager,1,1,1,1
+
+access_clv_patient_category_user,clv.patient.category.user,model_clv_patient_category,clv_patient.group_user,1,0,0,0
+access_clv_patient_category_manager,clv.patient.manager.category,model_clv_patient_category,clv_patient.group_manager,1,1,1,0
+access_clv_patient_category_supmanager,clv.patient.category.supmanager,model_clv_patient_category,clv_patient.group_supmanager,1,1,1,1

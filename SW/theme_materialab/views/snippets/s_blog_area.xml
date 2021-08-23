@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template name="Blog Area" id="s_blog_area">
+        <!-- ====START BLOG TABLE==== -->
+        <section id="blog" class="blog_area section-padding oe_structure">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="section_title mb80">
+                            <h5 class="smallHd text-center">latest news</h5>
+                            <h2 class="secHd text-center">from the blog</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 fix_p_r">
+                        <div class="blog_slid">
+                            <div class="item">
+                                <a href="#">
+                                    <div class="blog_img waves-effect">
+                                        <img src="/theme_materialab/static/src/img/blog_1.jpg" alt="" />
+                                    </div>
+                                </a>
+                                <div class="blog_cont">
+                                    <ul class="blog_s">
+                                        <li><a href="#"><i class="zmdi zmdi-account"></i>Admin</a></li>
+                                        <li><a href="#"><i class="zmdi zmdi-calendar-alt"></i>June 18,2015</a></li>
+                                    </ul>
+                                    <h4>
+                                        <a href="#">What is minimal Design</a>
+                                    </h4>
+                                    <p>If you’ve followed along and done the steps above, you’ve created a good starting place.</p>
+                                    <a class="th_bt btn waves-effect waves-light" href="#">Full Story</a>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <a href="#">
+                                    <div class="blog_img waves-effect">
+                                        <img src="/theme_materialab/static/src/img/blog_3.jpg" alt="" />
+                                    </div>
+                                </a>
+                                <div class="blog_cont">
+                                    <ul class="blog_s">
+                                        <li><a href="#"><i class="zmdi zmdi-account"></i>Admin</a></li>
+                                        <li><a href="#"><i class="zmdi zmdi-calendar-alt"></i>June 18,2015</a></li>
+                                    </ul>
+                                    <h4><a href="#">What is minimal Design</a></h4>
+                                    <p>If you’ve followed along and done the steps above, you’ve created a good starting place.</p>
+                                    <a class="th_bt btn waves-effect waves-light" href="#">Full Story</a>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <a href="#">
+                                    <div class="blog_img waves-effect">
+                                        <img src="/theme_materialab/static/src/img/blog_1.jpg" alt="" />
+                                    </div>
+                                </a>
+                                <div class="blog_cont">
+                                    <ul class="blog_s">
+                                        <li><a href="#"><i class="zmdi zmdi-account"></i>admin</a></li>
+                                        <li><a href="#"><i class="zmdi zmdi-calendar-alt"></i>June 18,2015</a></li>
+                                    </ul>
+                                    <h4>
+                                        <a href="#">What is minimal Design</a>
+                                    </h4>
+                                    <p>If you’ve followed along and done the steps above, you’ve created a good starting place.</p>
+                                    <a class="th_bt btn waves-effect waves-light" href="#">Full Story</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ====END BLOG TABLE==== -->
+    </template>
+</odoo>

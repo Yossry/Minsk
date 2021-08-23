@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_clv_referenceable_model_user,clv.referenceable.model.user,model_clv_referenceable_model,clv_base.group_user,1,0,0,0
+access_clv_referenceable_model_manager,clv.referenceable.model.manager,model_clv_referenceable_model,clv_base.group_manager,1,1,1,0
+access_clv_referenceable_model_supmanager,clv.referenceable.model.supmanager,model_clv_referenceable_model,clv_base.group_supmanager,1,1,1,1

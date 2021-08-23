@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="account.action_account_journal_form" model="ir.actions.act_window">
+        <field name="domain">[('is_kiosk_partner', '=', False)]</field>
+    </record>
+
+    <record id="view_account_journal_form_kiosk" model="ir.ui.view">
+        <field name="name">account.journal.form.kiosk</field>
+        <field name="model">account.journal</field>
+        <field name="priority">100</field>
+        <field name="arch" type="xml">
+            <form string="Bank Channel">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" type="object" name="toggle_active" icon="fa-archive">
+                            <field name="active" widget="boolean_button" options='{"terminology": "archive"}'/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1><field name="name" class="oe_inline"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="type"/>
+                            <field name="is_kiosk_partner" invisible="1"/>
+                            <field name="kiosk_account_id" attrs="{'invisible': [('is_kiosk_partner', '=', False)]}"/>
+                        </group>
+                        <group>
+                            <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>
+                            <field name="company_partner_id" invisible="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="journal_entries" string="Journal Entries">
+                            <group>
+                                <group>
+                                    <field name="code"/>
+                                    <label for="sequence_number_next"/>
+                                    <div>
+                                        <field name="sequence_number_next" style="padding-right: 1.0em"/>
+                                        <field name="sequence_id" required="0"
+                                               attrs="{'readonly': 1}" groups="base.group_no_one"/>
+                                    </div>
+                                    <field name="refund_sequence"
+                                           attrs="{'invisible': [('type', 'not in', ['sale', 'purchase'])]}"
+                                           groups="base.group_no_one"/>
+                                    <label for="refund_sequence_number_next"
+                                           attrs="{'invisible': ['|',('type', 'not in', ['sale', 'purchase']), ('refund_sequence', '!=', True)]}"/>
+                                    <div attrs="{'invisible': ['|',('type', 'not in', ['sale', 'purchase']), ('refund_sequence', '!=', True)]}">
+                                        <field name="refund_sequence_number_next" style="padding-right: 1.0em"/>
+                                        <field name="refund_sequence_id" required="0"
+                                               attrs="{'readonly': 1}" groups="base.group_no_one"/>
+                                    </div>
+                                </group>
+                                <group>
+                                    <field name="default_debit_account_id" domain="[('deprecated', '=', False)]" groups="account.group_account_user"/>
+                                    <field name="default_credit_account_id" domain="[('deprecated', '=', False)]" groups="account.group_account_user"/>
+                                    <field name="currency_id" options="{'no_create': True}" groups="base.group_multi_currency"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Rates" attrs="{'invisible': [('is_kiosk_partner', '=', False)]}">
+                            <field name="rate_ids" nolable="1">
+                                <tree editable="bottom">
+                                    <field name="from_amount"/>
+                                    <field name="to_amount"/>
+                                    <field name="max_cap_amount"/>
+                                    <field name="rate_percent"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_account_journal_form_kiosk" model="ir.actions.act_window">
+        <field name="name">Banking Channel</field>
+        <field name="res_model">account.journal</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="domain">[('is_kiosk_partner', '=', True)]</field>
+        <field name="context">{'default_is_kiosk_partner': True}</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('account.view_account_journal_tree')}),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('account.account_journal_view_kanban')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('payment_kiosk.view_account_journal_form_kiosk')})]"/>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            Add a journal
+          </p><p>
+            A journal is used to record transactions of all accounting data
+            related to the day-to-day business.
+          </p>
+        </field>
+    </record>
+    <menuitem action="action_account_journal_form_kiosk"
+              id="menu_action_payment_channelform"
+              parent="menu_kiosk_configuration"
+              groups="account.group_account_manager" sequence="0"/>
+
+</odoo>

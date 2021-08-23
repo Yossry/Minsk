@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="stock_repair_locations" model="stock.location">
+        <field name="name">Repair Location</field>
+        <field name="usage">internal</field>
+        <field name="company_id" />
+        <field name="return_location">True</field>
+    </record>
+</odoo>

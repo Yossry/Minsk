@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_button_pack_operation_lot_form" model="ir.ui.view">
+            <field name="name">button.pack.operation.lots.form</field>
+            <field name="model">sos.uniform.dispatch.line</field>
+            <field eval="20" name="priority"/>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="product_id" readonly="1"/>
+                            <label for="product_qty"/>
+                            <span>
+                                <field name="product_qty" class="oe_inline" readonly="1"/> of
+                                <field name="todo_qty" class="oe_inline" readonly="1"/>
+                            </span>
+                        </group>
+                        <group>
+                            <field name="rfid"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="button_pack_ids" nolabel="1">
+                             <tree create="false" edit="false" delete="true">
+                                <field name="rfid"/>
+                                <field name="qty" />
+                             </tree>
+                        </field>
+                    </group>
+                    <footer>
+                    <button name="save" type="object" string="Save" class="oe_highlight"/>
+                    <button string="Discard" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>
+

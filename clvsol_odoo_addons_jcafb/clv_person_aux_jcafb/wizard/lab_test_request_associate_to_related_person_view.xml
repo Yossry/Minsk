@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="clv_lab_test_request_associate_to_related_person_view_form" model="ir.ui.view">
+        <field name="name">clv.lab_test.request.associate_to_related_person.form</field>
+        <field name="model">clv.lab_test.request.associate_to_related_person</field>
+        <field name="arch" type="xml">
+            <form>
+                <div class="oe_right">
+                </div>
+                <label for="lab_test_request_ids"/>
+                <field name="lab_test_request_ids"/>
+                <group>
+                    <group>
+                    </group>
+                </group>
+                <footer>
+                    <button 
+                        type="object"
+                        name="do_lab_test_request_associate_to_related_person"
+                        string="Associate to Related Person"
+                        class="oe_highlight"
+                        />
+                    <button special="cancel" string="Cancel"/>
+                </footer>
+            </form>
+
+        </field>
+    </record>
+
+    <!-- More button Action -->
+    <act_window 
+        id="clv_lab_test_request_associate_to_related_person_action"
+        name="Lab Test Request Associate to Related Person"
+        src_model="clv.lab_test.request"
+        res_model="clv.lab_test.request.associate_to_related_person"
+        view_mode="form"
+        key2="client_action_multi"
+        target="new"
+    />
+
+</odoo>

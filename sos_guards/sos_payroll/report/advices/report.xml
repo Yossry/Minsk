@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    
+    	<!-- Guards Payment Advice -->
+		<report
+			id="sos_payroll.guards_payment_advice"
+			string= "Print Advice"
+			model = "guards.payroll.advice"
+			report_type="qweb-pdf"
+			file="sos_payroll.guards_payment_advice_report"
+			name="sos_payroll.guards_payment_advice_report"
+		/>
+		
+		
+		<!-- Guards Payment Advice Summary -->
+		<report
+			id="sos_payroll.action_guards_summary_adivce_summary"
+			string= "Print Advice Summary"
+			model = "guards.payroll.advice.summary.wiz"
+			report_type="qweb-pdf"
+			file="sos_payroll.guards_payroll_advice_summary_report"
+			name="sos_payroll.guards_payroll_advice_summary_report"
+		/>
+		
+		<!-- Projects Salary Advice Qweb Report -->
+		<report
+			id="report_projects_salary_adice"
+			string= "Projects Salary Advice Report"
+			model = "sos_payroll.projects.salary.advice.rep"
+			report_type="qweb-pdf"
+			file="sos_payroll.report_projectssalary_advice"
+			name="sos_payroll.report_projectssalary_advice"
+		/>
+		
+		<!-- Subadvise Salary Report -->
+		<report
+			id="action_guards_subadvice_salary_report"
+			string= "Subadvise Salary Report"
+			model = "sos_payroll.guards.subadvice.salary"
+			report_type="qweb-pdf"
+			file="sos_payroll.guards_subadvice_salary_report"
+			name="sos_payroll.guards_subadvice_salary_report"
+		/>  
+		
+		
+    </data>
+    
+</odoo>

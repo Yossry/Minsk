@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <record id="view_purchase_invoice_category_wizard_form" model="ir.ui.view">
+        <field name="name">purchase.invoice.category.wizard.form</field>
+        <field name="model">purchase.invoice.category.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="restricted_category_ids" invisible="True"/>
+                        <field name="category_ids" domain="[('id','in',restricted_category_ids)]"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_create_invoices"   string="Confirm" type="object" class="oe_highlight"/>
+                    <button string="Cancel" special="cancel" class="oe_link"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    
+    <record id="view_purchase_invoice_category_wizard_action" model="ir.actions.act_window">
+        <field name="name">Select Product Category</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">purchase.invoice.category.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_type">form</field>
+        <field name="target">new</field>
+    </record>
+    
+</odoo>

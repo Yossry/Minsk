@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="clv_lab_test_report_edit_edh20_view_form" model="ir.ui.view">
+        <field name="name">clv.lab_test.report.edit_edh20.form</field>
+        <field name="model">clv.lab_test.report.edit_edh20</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_right">
+                    </div>
+                    <group  name="group_top">
+                        <field name="report_id" options="{'no_open': True, 'no_create': True, 'readonly': True}"/>
+                        <field name="lab_test_type_id" options="{'no_open': True, 'no_create': True, 'readonly': True}"/>
+                        <field name="lab_test_request_id" options="{'no_open': True, 'no_create': True, 'readonly': True}"/>
+                        <field name="has_complement" options="{'readonly': True}"/>
+                    </group>
+                    <!--group name="group_bottom">
+                        <group string='Medidas Antropométricas'>
+                            <field name="EDH20_peso"/>
+                            <field name="EDH20_altura"/>
+                            <field name="EDH20_imc"/>
+                            <field name="EDH20_circ_abdominal"/>
+                        </group>
+                        <group string='Medidas da Pressão Arterial'>
+                            <field name="EDH20_pa"/>
+                            <field name="EDH20_PAS"/>
+                            <field name="EDH20_PAD"/>
+                        </group>
+                        <group string='Glicemia e Colesterolemia'>
+                            <field name="EDH20_glicemia"/>
+                            <field name="EDH20_colesterol"/>
+                        </group>
+                        <label for="EDH20_obs"/>
+                        <field name="EDH20_obs"/>
+                    </group-->
+                    <!--group>
+                        <group string='Colesterol Total e Frações'>
+                            <field name="EDH20_colesterol_total"/>
+                            <separator/>
+                            <field name="EDH20_hdl_colesterol"/>
+                            <separator/>
+                            <field name="EDH20_ldl_colesterol"/>
+                            <field name="EDH20_fracao_nao_hdl"/>
+                        </group>
+                        <group string='Triglicérides'>
+                            <field name="EDH20_triglicerides"/>
+                        </group>
+                        <label for="EDH20_obs_2"/>
+                        <field name="EDH20_obs_2"/>
+                    </group-->
+                </sheet>
+                <footer>
+                    <button 
+                        type="object"
+                        name="do_report_updt_EDH20"
+                        string="Report Update"
+                        class="oe_highlight"
+                        />
+                    <button special="cancel" string="Cancel"/>
+                </footer>
+            </form>
+
+        </field>
+    </record>
+
+    <act_window 
+        id="clv_lab_test_report_edit_edh20_action"
+        name="Lab Test Report Edit"
+        res_model="clv.lab_test.report.edit_edh20"
+        view_mode="form"
+        target="new"
+    />
+
+</odoo>

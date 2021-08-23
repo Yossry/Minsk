@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_invoices_verification" model="ir.ui.view">
+            <field name="name">Invoices Verification</field>
+            <field name="model">invoices.verification</field>
+            <field name="arch" type="xml">
+            <form string="Invoices Verification">
+            	<!--SARFRAZ-->
+               <!-- <label string="This wizard will print report which displays Summary of the Invoices Verification."/> -->
+                <footer>
+                    <button name="print_report" string="Print" type="object" class="oe_highlight"/>
+                        or
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+                <group>
+                    <group>
+						<field name="date_from"/>
+						<field name="date_to"/>  
+						<field name="project_id"/> 						
+                    </group>                    
+                </group>
+                
+            </form>
+            </field>
+        </record>
+
+        <record id="action_invoices_verification" model="ir.actions.act_window">
+            <field name="name">Invoices Verification</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">invoices.verification</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+		
+    </data>
+</odoo>

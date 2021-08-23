@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem
+        id="menu_finance_invoices"
+        name="Invoices"
+        parent="account.menu_finance"
+        sequence="1"
+    />
+    <record id="view_invoice_line2" model="ir.ui.view">
+        <field name="name">account.invoice.line2</field>
+        <field name="model">account.invoice.line</field>
+        <field name="arch" type="xml">
+            <tree
+                colors="blue:state == 'draft';black:state in ('proforma','proforma2','open');
+                    gray:state == 'cancel'"
+                string="Invoice Lines"
+                create="false"
+                delete="false"
+                default_order="id desc"
+                editable="top"
+            >
+                <field name="id" readonly="1" invisible="1" />
+                <field name="invoice_id" readonly="1" />
+                <field name="reference" readonly="1" />
+                <field name="payment_reference" readonly="1" />
+                <field name="product_id" readonly="1" />
+                <field
+                    name="image_medium"
+                    string="Image"
+                    widget="image"
+                    options='{"size": [64, 64]}'
+                />
+                <field name="lot_id" readonly="1" />
+                <field name="name" invisible="1" />
+                <field name="so_id" />
+                <field name="po_id" />
+                <field name="date_invoice" />
+                <field name="date_due" invisible='1' />
+                <field name="user_id" />
+                <field name="reviewed" string="Reviewed" />
+                <field name="note" />
+                <field name="partner_id" />
+                <field name="ref" />
+                <field name="company_id" invisible='1' />
+                <field name="account_id" readonly="1" />
+                <field name="account_analytic_id" readonly="1" invisible='1' />
+                <field name="quantity" readonly="1" />
+                <field name="price_unit" readonly="1" />
+                <field name="discount" readonly="1" />
+                <field name="invoice_line_tax_ids" readonly="1" invisible='1' />
+                <field name="price_subtotal" readonly="1" />
+                <field name="currency_id" invisible="1" />
+                <field name="rate" />
+                <field name="base_amt" />
+                <field name="state" />
+            </tree>
+        </field>
+    </record>
+    <record id="account_invoice_line_search" model="ir.ui.view">
+        <field name="name">account.invoice.line.search</field>
+        <field name="model">account.invoice.line</field>
+        <field name="arch" type="xml">
+            <search string="Search Invoice">
+                <field
+                    name="number"
+                    string="Number"
+                    filter_domain="['|',('number','ilike',self),('origin','ilike',self)]"
+                />
+                <field name="lot_id" string="Case No." />
+                <field name="reference" string="Supplier Reference" />
+                <field name="product_id" string="Product" />
+                <field name="partner_id" string="Partner" />
+                <filter name="draft" string="Draft" domain="[('state','=','draft')]" />
+                <filter name="open" string="Open" domain="[('state','=','open')]" />
+                <filter name="paid" string="Paid" domain="[('state','=','paid')]" />
+                <filter
+                    name="cancelled"
+                    string="Cancelled"
+                    domain="[('state','=','cancel')]"
+                />
+                <separator />
+                <filter
+                    name="today"
+                    icon="terp-go-today"
+                    string="Today"
+                    domain="[('date_invoice','&lt;=',time.strftime('%%Y-%%m-%%d 23:59:59')),('date_invoice','&gt;=',time.strftime('%%Y-%%m-%%d 00:00:00'))]"
+                />
+                <group expand="0" string="Group By...">
+                    <filter
+                        name="casenumber"
+                        string="Case No."
+                        domain="[]"
+                        context="{'group_by':'lot_id'}"
+                    />
+                    <filter
+                        name="product"
+                        string="Product"
+                        domain="[]"
+                        context="{'group_by':'product_id'}"
+                    />
+                    <filter
+                        name="partner"
+                        string="Partner"
+                        domain="[]"
+                        context="{'group_by':'partner_id'}"
+                    />
+                    <filter
+                        name="invoice"
+                        string="Invoice"
+                        domain="[]"
+                        context="{'group_by':'invoice_id'}"
+                    />
+                    <filter
+                        name="invoicedate"
+                        string="Invoice Date"
+                        domain="[]"
+                        context="{'group_by':'date_invoice'}"
+                    />
+                    <filter
+                        name="status"
+                        string="Status"
+                        domain="[]"
+                        context="{'group_by':'state'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id='action_invoice_line' model='ir.actions.act_window'>
+        <field name="name">Invoice Lines</field>
+        <field name="res_model">account.invoice.line</field>
+        <field name="domain" />
+        <field name="view_id" ref="view_invoice_line2" />
+        <field name="search_view_id" ref="account_invoice_line_search" />
+    </record>
+    <menuitem
+        id="invoice_lines"
+        name="Invoice Lines"
+        parent="menu_finance_invoices"
+        action="action_invoice_line"
+        sequence="10"
+    />
+</odoo>

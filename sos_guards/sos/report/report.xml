@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+		
+		<!--
+		<record id="sos_guards_cards" model="ir.actions.report.xml">
+			<field name="name">Guards Cards</field>
+			<field name="type">ir.actions.report.xml</field>
+			<field name="model">hr.employee</field>
+			<field name="report_name">guards_cards_aeroo</field>
+			<field name="report_type">aeroo</field>
+			<field name="in_format">oo-odt</field>	
+			<field name="out_format" eval="ref('report_aeroo.report_mimetypes_pdf_odt')"/>
+			<field name="parser_loc">sos/report/parser.py</field>
+			<field name="report_rml">sos/report/guards_cards.odt</field>
+			<field name="parser_state">loc</field>
+			<field name="tml_source">file</field>			
+		</record>
+
+		<record model="ir.values" id="action_guards_cards_rep">
+			<field name="model_id" ref="model_hr_employee"/>
+			<field name="object" eval="1"/>
+			<field name="name">Guards Cards</field>
+			<field name="key2">client_print_multi</field>
+			<field name="value" eval="'ir.actions.report.xml,' +str(ref('sos_guards_cards'))"/>
+			<field name="key">action</field>
+			<field name="model">hr.employee</field>
+		</record>
+		-->
+		
+		<!-- Gaurds Appointment Letter Report -->
+		<report
+			id="report_guards_appointment_letter"
+			string= "Appointment Letter"
+			model = "hr.employee"
+			report_type="qweb-pdf"
+			file="sos.report_guards_appointmentletter"
+			name="sos.report_guards_appointmentletter"
+		/>
+		
+		<!-- Gaurds Exit Form Report -->
+		<report
+			id="report_guards_exit_form"
+			string= "Guards Exit Form"
+			model = "hr.employee"
+			report_type="qweb-pdf"
+			file="sos.report_guards_exitform"
+			name="sos.report_guards_exitform"
+		/>
+		
+		<!-- Gaurds Police Verification Report -->
+		<report
+			id="report_police_verification"
+			string= "Police Verification"
+			model = "hr.employee"
+			report_type="qweb-pdf"
+			file="sos.report_policeverification"
+			name="sos.report_policeverification"
+		/>
+		
+		
+		<!-- Project Guards Detail Report -->
+		<report
+			id="report_project_guards"
+			string= "Project Guards"
+			model = "sos.project"
+			report_type="qweb-pdf"
+			file="sos.report_guards_project"
+			name="sos.report_guards_project"
+		/>
+		<!-- Project Guards Insurance Report -->
+		<report
+			id="report_insurance_guards"
+			string="Guards Insurance"
+			model="sos.project"
+			report_type="qweb-pdf"
+			file="sos.report_guards_insurance"
+			name="sos.report_guards_insurance"
+		/>
+		<!-- Project Salary Rates Report -->
+		<report
+			id="report_projects_salary_rates"
+			string= "Salary Rates"
+			model="sos.project"
+			report_type="qweb-pdf"
+			file="sos.report_projects_salaryrates"
+			name="sos.report_projects_salaryrates"
+		/>
+		<!-- Project Invoice Rates Report -->
+		<report
+			id="report_projects_invoice_rates"
+			string= "Invoice Rates"
+			model="sos.project"
+			report_type="qweb-pdf"
+			file="sos.report_projects_invoicerates"
+			name="sos.report_projects_invoicerates"
+		/>
+		<!-- Project Guards Details Report -->
+		<report
+			id="report_project_guard_details"
+			string= "Projects Detail"
+			model="sos.project.guards.wizard"
+			report_type="qweb-pdf"
+			file="sos.report_projectguard_details"
+			name="sos.report_projectguard_details"
+		/>
+		<!-- Project Postwise Guards Details Report -->
+		<report
+			id="report_project_postwise_guard_details"
+			string= "Post Guards Detail"
+			model="sos.project.postwise.guards.wizard"
+			report_type="qweb-pdf"
+			file="sos.report_project_postwiseguard_details"
+			name="sos.report_project_postwiseguard_details"
+		/>
+
+		<!-- Guards Posts termination Report -->
+		<report
+			id="report_guard_join_termination"
+			string= "guard Join Termination Report"
+			model = "guards.join.termination"
+			report_type="qweb-pdf"
+			file="sos.report_guards_jointermination"
+			name="sos.report_guards_jointermination"
+		/>
+		<!-- Guards Posts termination Report -->
+		<report
+			id="report_posts_join_termination"
+			string= "Posts Join Termination Report"
+			model = "posts.join.termination"
+			report_type="qweb-pdf"
+			file="sos.report_posts_jointermination"
+			name="sos.report_posts_jointermination"
+		/>
+		<!-- Staff Salary Report -->
+		<report
+			id="action_sos_staff_salary_sheet"
+			string= "Salary Sheet Report"
+			model = "sos.staff.salary.sheet.wizard"
+			report_type="qweb-pdf"
+			file="sos.report_staffsalarysheet"
+			name="sos.report_staffsalarysheet"
+		/>
+
+		<report
+			id="report_sos_staff_gross_salary_sheet"
+			string= "Gross Salary Sheet Report"
+			model = "sos.staff.gross.salary.sheet.wizard"
+			report_type="qweb-pdf"
+			file="sos.report_staff_gross_salarysheet"
+			name="sos.report_staff_gross_salarysheet"
+		/>
+		
+		<!-- Staff Payment Advice Report -->
+		<report
+			id="report_sos_staff_payment_advice"
+			string= "Staff Payment Advice"
+			model = "hr.payroll.advice"
+			report_type="qweb-pdf"
+			file="sos.report_staff_payment_advice"
+			name="sos.report_staff_payment_advice"
+		/>
+		
+		<!-- Guard Profile Data Report -->
+		<report
+			id="report_sos_guarddocument"
+			string= "Guard Profile Data Report"
+			model = "sos.guard.document"
+			report_type="qweb-pdf"
+			file="sos.report_guarddocument"
+			name="sos.report_guarddocument"
+		/>
+		
+		<!-- Guards Bank Account Report -->
+		<report
+			id="report_guards_bankaccount"
+			string= "Guards Bank Account Report"
+			model = "guards.bank.account"
+			report_type="qweb-pdf"
+			file="sos.report_bankaccounts"
+			name="sos.report_bankaccounts"
+		/>
+		
+		<!-- Centers Salary Rates Report -->
+		<report
+			id="report_centers_salary_rates"
+			string= "Salary Rates"
+			model="sos.center"
+			report_type="qweb-pdf"
+			file="sos.report_centers_salaryrates"
+			name="sos.report_centers_salaryrates"
+		/>
+		<!-- Centers Invoice Rates Report -->
+		<report
+			id="report_centers_invoice_rates"
+			string= "Invoice Rates"
+			model="sos.center"
+			report_type="qweb-pdf"
+			file="sos.report_centers_invoicerates"
+			name="sos.report_centers_invoicerates"
+		/>
+		
+		<!-- Centers Postwise Guards Details Report -->
+		<report
+			id="report_center_postwise_guard_details"
+			string= "Post Guards Detail"
+			model="sos.center.postwise.guards.wizard"
+			report_type="qweb-pdf"
+			file="sos.report_center_postwiseguard_details"
+			name="sos.report_center_postwiseguard_details"
+		/>
+		
+		<!-- Guards Center / Project complete list  in Guards Menu -->
+		<report
+			id="report_guards_data"
+			string= "Guards"
+			model="sos.guards.data.report"
+			report_type="qweb-pdf"
+			file="sos.report_guardsdata"
+			name="sos.report_guardsdata"
+		/>
+		
+		<!--  Clients visit Detail Report -->
+		<report
+			id="report_clients_visit"
+			string= "Clients Visit"
+			model = "daily.clients.visit"
+			report_type="qweb-pdf"
+			file="sos.report_clientsvisit"
+			name="sos.report_clientsvisit"
+		/>
+		
+		<!--  Armourer visit Detail Report -->
+		<report
+			id="report_armourer_visit"
+			string= "Armourer Visit"
+			model = "daily.armourer.visit"
+			report_type="qweb-pdf"
+			file="sos.report_armourervisit"
+			name="sos.report_armourervisit"
+		/>
+		
+		<!--  Posts Addresses Detail Report -->
+		<report
+			id="report_posts_address"
+			string= "SOS Posts "
+			model = "sos.posts.report.wizard"
+			report_type="qweb-pdf"
+			file="sos.report_postsaddress"
+			name="sos.report_postsaddress"
+		/>
+		
+		<!--  Guards Docs Complaint Report -->
+		<report
+			id="report_guards_docs_complaint"
+			string= "SOS Guards Docs Complaints"
+			model = "guards.docs.complaint.wizard"
+			report_type="qweb-pdf"
+			file="sos.report_guards_docscomplaint"
+			name="sos.report_guards_docscomplaint"
+		/>
+		
+		<!-- Gaurds Exit Form Report From Exit Model -->
+		<report
+			id="report_guards_exit_form2"
+			string= "Exit Form"
+			model = "sos.guards.exit.form"
+			report_type="qweb-pdf"
+			file="sos.report_guards_exitform2"
+			name="sos.report_guards_exitform2"
+		/>
+		
+    </data>
+</odoo>

@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_clv_set_user,clv.set.user,model_clv_set,clv_set.group_user,1,0,0,0
+access_clv_set_manager,clv.set.manager,model_clv_set,clv_set.group_manager,1,1,1,0
+access_clv_set_supmanager,clv.set.supmanager,model_clv_set,clv_set.group_supmanager,1,1,1,1
+
+access_clv_set_category_user,clv.set.category.user,model_clv_set_category,clv_set.group_user,1,0,0,0
+access_clv_set_category_manager,clv.set.manager.category,model_clv_set_category,clv_set.group_manager,1,1,1,0
+access_clv_set_category_supmanager,clv.set.category.supmanager,model_clv_set_category,clv_set.group_supmanager,1,1,1,1
+
+access_clv_set_element_user,clv.set.element.user,model_clv_set_element,clv_set.group_user,1,0,0,0
+access_clv_set_element_manager,clv.set.manager.element,model_clv_set_element,clv_set.group_manager,1,1,1,0
+access_clv_set_element_supmanager,clv.set.element.supmanager,model_clv_set_element,clv_set.group_supmanager,1,1,1,1

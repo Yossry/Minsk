@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+   <record id="company_form_zabra" model="ir.ui.view">
+        <field name="name">res.company.form.zabra.inherit</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook[last()]" position="inside">
+                <page string="Printer Configuration" name="printer_config">
+                    <group>
+                        <group>
+                            <field name="product_printer"/>
+                            <field name="location_printer"/>
+                            <field name="shipping_printer"/>
+                            <field name="print_onreceive_product"/>
+                        </group>
+                        <group>
+                            <field name="product_height"/>
+                            <field name="location_height"/>
+                            <field name="shipping_height"/>
+                            <field name="printer_type"/>
+                        </group>
+                        <group>
+                            <field name="product_width"/>
+                            <field name="location_width"/>
+                            <field name="shipping_width"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_picking_form_zebra" model="ir.ui.view">
+        <field name="name">stock.picking.form.zebra.inherit</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <field name='priority' position="after">
+                <field name="print_onreceive_product"/>
+            </field>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="product_template_form_zibra_view_procurement_button">
+            <field name="name">product.template_procurement</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="stock.product_template_form_view_procurement_button"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_open_quants']" position="replace">
+                    <button type="object"
+                            name="action_open_quants"
+                            attrs="{'invisible':[('type', '!=', 'product')]}"
+                            class="oe_stat_button product_qty_on_hand_text" icon="fa-building-o">
+                            <field name="qty_available" widget="statinfo" string="On Hand"/>
+                    </button>
+                </xpath>
+            </field>
+    </record>
+</odoo>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+        
+    <record id="clv_lab_test_report_view_form_lab_test_report" model="ir.ui.view">
+        <field name="name">clv.lab_test.report.form</field>
+        <field name="model">clv.lab_test.report</field>
+        <field name="inherit_id" ref="clv_lab_test.clv_lab_test_report_view_form"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <!--label for="lab_test_type_id" position="before">
+                <h3><field name="person_id" placeholder="Person..." options="{'no_open': False, 'no_create': True}" invisible="True"/></h3>
+            </label-->
+            <!--field name="date_report" position="before">
+                <field name="person_employee_id" placeholder="Responsible Empĺoyee..." options="{'no_open': False, 'no_create': True}"/>
+                <field name="survey_id" options="{'no_open': False, 'no_create': True}"/>
+            </field-->
+            <group name="group_left" position="inside">
+                <field name="has_complement"/>
+            </group>
+            <group name="group_middle_left" position="inside">
+                <button
+                    type="action"
+                    name="%(clv_lab_test_report_approve_action)d"
+                    string="Lab Test Report Approve"
+                    class="oe_stat_button"
+                    icon="fa-check-square-o"
+                    help="Lab Test Report Approve"
+                    groups="clv_lab_test.group_approver"
+                    invisible="True"
+                />
+                <field name="approved"/>
+                <field name="employee_id" placeholder="Approved by..." options="{'no_open': False, 'no_create': True}"/>
+                <field name="professional_id" invisible="True"/>
+                <field name="date_approved"/>
+            </group>
+        </field>
+    </record>
+   
+    <!--record id="clv_lab_test_report_view_tree_lab_test_report" model="ir.ui.view">
+        <field name="name">clv.lab_test.report.tree</field>
+        <field name="model">clv.lab_test.report</field>
+        <field name="inherit_id" ref="clv_lab_test.clv_lab_test_report_view_tree"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="lab_test_type_id" position="before">
+                <field name="person_id"/>
+                <field name="person_employee_id"/>
+            </field>
+            <field name="lab_test_type_id" position="after">
+                <field name="survey_id"/>
+            </field>
+        </field>
+    </record-->
+   
+    <record id="clv_lab_test_report_view_search_lab_test_report" model="ir.ui.view">
+        <field name="name">clv.lab_test.report.tree</field>
+        <field name="model">clv.lab_test.report</field>
+        <field name="inherit_id" ref="clv_lab_test.clv_lab_test_report_view_search"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <!--field name="lab_test_type_id" position="before">
+                <field name="person_id"/>
+                <field name="person_employee_id"/>
+            </field-->
+            <!--field name="lab_test_type_id" position="after">
+                <field name="survey_id"/>
+            </field-->
+            <field name="code" position="after">
+                <field name="has_complement"/>
+            </field>
+            <field name="lab_test_type_id" position="after">
+                <field name="employee_id"/>
+            </field>
+            <group name="group_by" position="inside">
+                <filter name="group_by_has_complement" string="Has Complement" context="{'group_by': 'has_complement'}"/>
+                <filter name="group_by_employee_id" string="Approved by" context="{'group_by': 'employee_id'}"/>
+                <!--filter string="Person" context="{'group_by': 'person_id'}"/>
+                <filter string="Responsible Empĺoyee" domain="[]"  context="{'group_by': 'person_employee_id'}"/>
+                <filter string="Related Survey Type" domain="[]"  context="{'group_by': 'survey_id'}"/-->
+            </group>
+        </field>
+    </record>
+   
+    <!--record id="clv_person_view_form_lab_test_report" model="ir.ui.view">
+        <field name="name">clv.person.form</field>
+        <field name="model">clv.person</field>
+        <field name="inherit_id" ref="clv_person.clv_person_view_form"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <page name="settings" position="before">
+                <page string="Lab Test Reports" invisible="True">
+                    <group>
+                        <field name="lab_test_report_ids" colspan="4" nolabel="1"/>
+                    </group>
+                </page>
+            </page>
+        </field>
+    </record-->
+
+</odoo>

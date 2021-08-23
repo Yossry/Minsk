@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+		<data>   
+		<!-- Payroll Period -->
+		<record id="view_payroll_period_tree" model="ir.ui.view">
+			<field name="name">hr.payroll.period.tree</field>
+			<field name="model">hr.payroll.period</field>
+			<field name="arch" type="xml">
+				<tree string="Payroll Periods" create="false">
+				    <field name="name"/>
+				    <field name="date_start"/>
+				    <field name="date_end"/>
+				    <field name="state"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="view_payroll_period_form" model="ir.ui.view">
+			<field name="name">hr.payroll.period.form</field>
+			<field name="model">hr.payroll.period</field>
+			<field name="arch" type="xml">
+				<form string="Payroll Period">          
+				    <header>
+				    	<button name="%(salary_planner_action)d" type="action" class="oe_highlight" string="End of Pay Period Wizard"/>
+				    	<field name="state" widget="statusbar"/>
+				    </header>
+				    <sheet> 
+						<group>
+						    <group>
+						        <field name="schedule_id"/>
+						        <label for="date_start" string="Interval"/>
+						        <div>
+						            <field name="date_start" nolabel="1" class="oe_inline"/> - 
+						            <field name="date_end" nolabel="1" class="oe_inline"/>
+						        </div>
+						        <field name="name"/>
+						        <field name="register_id"/>
+						    </group>
+						</group>         
+				    </sheet>
+				    <div class="oe_chatter">
+				        <field name="message_follower_ids" widget="mail_followers"/>
+				        <field name="message_ids" widget="mail_thread"/>
+				    </div> 
+				</form>
+			</field>
+		</record>
+
+		<record id="open_payroll_period_view" model="ir.actions.act_window">
+			<field name="name">Payroll Periods</field>
+			<field name="res_model">hr.payroll.period</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<!-- End of Pay Period -->
+		<record id="action_pay_period_end" model="ir.actions.act_window">
+			<field name="name">End of Pay Period</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">hr.payroll.period</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[('state','in',['ended','locked','generate','payment'])]</field>
+			<field name="help" type="html">
+			  <p>
+				There are no current pay periods that are past their end date.
+			  </p>
+			</field>
+		</record>
+
+				
+		<!-- Payroll Period Schedule -->
+		<record id="view_payperiod_schedule_tree" model="ir.ui.view">
+			<field name="name">hr.payroll.period.schedule.tree</field>
+			<field name="model">hr.payroll.period.schedule</field>
+			<field name="arch" type="xml">
+				<tree string="Pay Period Schedules">
+				    <field name="name"/>
+				    <field name="type"/>
+				    <field name="tz"/>
+				    <field name="ot_week_startday"/>
+				    <field name="ot_max_rollover_hours"/>
+				    <field name="ot_max_rollover_gap"/>
+				    <field name="active"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="view_payperiod_schedule_form" model="ir.ui.view">
+			<field name="name">hr.payroll.period.schedule.form</field>
+			<field name="model">hr.payroll.period.schedule</field>
+			<field name="arch" type="xml">
+				<form string="Pay Period Schedule">
+				<sheet>
+				    <group>
+				        <group>
+				            <field name="name"/>
+				            <field name="tz"/>
+				            <field name="ot_week_startday"/>
+				            <field name="ot_max_rollover_hours"/>
+				            <field name="ot_max_rollover_gap"/>
+				            <field name="paydate_biz_day"/>
+				        </group>
+				        <group>
+				            <field name="type"/>
+				            <field name="mo_firstday" attrs="{'invisible': [('type','!=','monthly')]}"/>
+				            <field name="mo_paydate" attrs="{'invisible': [('type','!=','monthly')]}"/>
+				            <newline/>
+				            <field name="initial_period_date" attrs="{'invisible': [('type','!=','monthly')], 'required': [('type','=','monthly')]}"/>
+				            <field name="active"/>
+				        </group>
+				    </group>
+				    <group string="Pay Periods" colspan="4" col="1">
+				        <button name="add_pay_period" type="object" string="Add"/>
+				        <field name="pay_period_ids" nolabel="1"/>
+				    </group>
+				    
+				    <group string="Contracts" colspan="4" col="1">
+				        <field name="contract_ids" widget="many2manytags" nolabel="1">
+				        	<tree>
+				        		<field name="name" string='Reference'/>
+								<field name="employee_id"/>
+								<field name="department_id"/>
+								<field name="job_id"/>		                
+								<field name="wage"/>
+								<field name="house_rent_allowance" string='HRA'/>
+								<!-- <field name="acomodation_allowance" string='RAA'/> -->
+								<field name="mobile_allowance" string='MA'/>
+								<field name="transportation_allowance" string='TA'/>
+								<field name="state"/>               
+						    </tree>    
+				        </field>
+				    </group>
+				</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="view_payperiod_contract_tree" model="ir.ui.view">
+			<field name="name">hr.payperiod.contract.tree</field>
+			<field name="model">hr.contract</field>
+			<field name="priority">32</field>
+			<field name="arch" type="xml">
+				<tree edit="false" create="false" delete="false">
+					<field name="name" string='Reference'/>
+				    <field name="employee_id"/>
+				    <field name="department_id"/>
+				    <field name="job_id"/>		                
+				    <field name="wage"/>
+				    <field name="house_rent_allowance" string='HRA'/>
+				    <!--<field name="acomodation_allowance" string='RAA'/>-->
+				    <field name="mobile_allowance" string='MA'/>
+				    <field name="transportation_allowance" string='TA'/>
+				    <field name="state"/>                    
+				</tree>    
+			</field>
+		</record>
+
+		<record id="open_payroll_period_schedule_view" model="ir.actions.act_window">
+			<field name="name">Payroll Period Schedules</field>
+			<field name="res_model">hr.payroll.period.schedule</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+			
+		<!-- Pay Slip Amendment -->
+		<!--
+		<record id="view_hr_payslip_amendment_tree" model="ir.ui.view">
+		    <field name="name">hr.payslip.amendment.tree.inherit</field>
+		    <field name="model">hr.payslip.amendment</field>
+		    <field name="inherit_id" ref="hr_payslip_amendment.view_payslip_amendment_tree"/>
+		    <field name="arch" type="xml">
+		        <xpath expr="//field[@name='employee_id']" position="after">
+		            <field name="pay_period_id"/>
+		        </xpath>
+		    </field>
+		</record>
+		<record id="view_hr_payslip_amendment_form" model="ir.ui.view">
+		    <field name="name">hr.payslip.amendment.form.inherit</field>
+		    <field name="model">hr.payslip.amendment</field>
+		    <field name="inherit_id" ref="hr_payslip_amendment.view_payslip_amendment_form"/>
+		    <field name="arch" type="xml">
+		        <xpath expr="//field[@name='name']" position="after">
+		            <field name="pay_period_id" widget="selection"/>
+		        </xpath>
+		    </field>
+		</record>
+		-->
+		<!-- Leave Types -->
+		
+		<record id="view_hr_holidays_status_form" model="ir.ui.view">
+		    <field name="name">hr.holidays.status.form.inherit</field>
+		    <field name="model">hr.leave.type</field>
+		    <field name="inherit_id" ref="hr_holidays.edit_holiday_status_form"/>
+		    <field name="arch" type="xml">
+		        <xpath expr="//field[@name='name']" position="after">
+		            <field name="code"/>
+		        </xpath>
+		    </field>
+		</record>
+				
+				       
+			  
+	</data>
+</odoo>
+
+

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    
+		<!-- Terminate  -->
+        <record id="view_weapon_terminate" model="ir.ui.view">
+            <field name="name">weapon_terminate</field>
+            <field name="model">sos.weapon.terminate</field>
+            <field name="arch" type="xml">
+                <form string="Weapons Termination">                    
+                    <group colspan="4" >
+                        <field name="lbl" readonly="1" nolabel="1"/>                         
+                    </group>
+                    <group>                   
+                        <group>                        	
+							<field name="weapon_id" options="{'no_quick_create':True,'no_create_edit':True}"/>
+                        	<field name="to_reason" />
+						</group>
+						<group>														
+							<field name="todate"/>	
+							<field name="remarks"/>								
+                        </group>							
+                    </group>
+                    <footer>
+						<button string="Terminate" name="weapon_terminate" type="object" class="oe_highlight"  />
+						<button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+               </form>
+            </field>
+        </record>
+		
+		<act_window
+            id="action_weapon_terminate"
+            name="Termiante Post Weapon"
+            res_model="sos.weapon.terminate"
+            src_model="sos.weapon"
+            view_mode="form"
+            multi="False"
+            target="new"
+            key2="client_action_multi"
+        />
+		
+    </data>
+</odoo>

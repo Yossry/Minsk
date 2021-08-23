@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="view_guards_join_termination" model="ir.ui.view">
+            <field name="name">Guards Join Termination</field>
+            <field name="model">guards.join.termination</field>
+            <field name="arch" type="xml">
+            <form string="Guards Join Termination" >
+                <label for="date_from" string="This wizard will print report which displays Guards Joining and Termination for specified dates."/>
+                <footer>
+                    <button name="print_report" string="Print" type="object" class="oe_highlight"/>
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+                <group>
+                    <field name="date_from"/>
+                    <field name="date_to"/> 
+                    <field name="order_by"/>
+		    		<field name="with_detail"/> 
+                </group>
+            </form>
+            </field>
+        </record>
+
+        <record id="action_guards_join_termination" model="ir.actions.act_window">
+            <field name="name">Guards Join Termination</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">guards.join.termination</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+</odoo>

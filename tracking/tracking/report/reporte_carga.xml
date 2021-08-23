@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<odoo>
+	<template id="reporte_carga_tracking">
+		<t t-call="web.html_container">
+			<h2><t t-esc="fecha"/></h2>
+			<t t-foreach="docs" t-as="o">
+				<t t-call="web.external_layout">
+					<div class="page">
+
+						<h2>
+							<t t-if="o.state == 'draft'">
+								<span>Reporte Carga Borrador # </span>
+							</t>
+							<t t-if="o.state == 'validate'">
+								<span>Reporte Carga # </span>
+							</t>
+							<span t-field="o.name"/>
+						</h2>
+
+						<div class="row mt32 mb32" id="informations">
+							<div class="col-auto mw-100 mb-2">
+								<strong>Empleado:</strong>
+								<p class="m-0" t-field="o.employee_id"/>
+							</div>
+							<div class="col-auto mw-100 mb-2">
+								<strong>Fecha:</strong>
+								<p class="m-0" t-field="o.date"/>
+							</div>
+							<div class="col-auto mw-100 mb-2">
+								<strong>Estado:</strong>
+								<p class="m-0" t-field="o.state"/>
+							</div>
+						</div>
+
+						<table class="table table-sm o_main_table">
+							<thead>
+								<tr>
+									<th class="text-center"><h4>COTIZACIONES</h4></th>
+								</tr>
+								<tr>
+									<th class="text-left">Cotizacion</th>
+								</tr>
+							</thead>
+							<tbody class="sale_tbody">
+								<t t-foreach="o.pos_quotation_report_line" t-as="line">
+									<tr>
+										<td><span t-field="line.quotation_id.name"/></td>
+									</tr>
+								</t>
+							</tbody>
+						</table>
+
+						<br /><br />
+
+						<table class="table table-sm o_main_table">
+							<thead>
+								<tr>
+									<th colspan="2" class="text-center"><h4>PRODUCTOS A CARGAR</h4></th>
+								</tr>
+								<tr>
+									<th class="text-left">Producto</th>
+									<th class="text-left">Cantidad</th>
+								</tr>
+							</thead>
+							<tbody class="sale_tbody">
+								<t t-foreach="o.pos_quotation_report_products" t-as="line">
+									<tr>
+										<td><span t-field="line.product_id"/></td>
+										<td><span t-field="line.qty"/></td>
+									</tr>
+								</t>
+							</tbody>
+						</table>
+
+					</div>
+				</t>
+			</t>
+		</t>
+	</template>
+	<report 
+		id="action_report_carga"
+		string="Reporte Carga"
+		model="quotation.pos.report" 
+		report_type="qweb-pdf"
+		file="tracking.reporte_carga" 
+		name="tracking.reporte_carga_tracking"
+		/>
+	</odoo>

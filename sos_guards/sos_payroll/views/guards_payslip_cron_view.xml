@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+<data>
+	<record id="view_guards_payslip_cron_tree" model="ir.ui.view">
+		<field name="name">guards.payslip.cron.tree</field>
+		<field name="model">guards.payslip.cron</field>
+		<field name="priority" eval="8" />
+		<field name="arch" type="xml">
+			<tree string="Guards Payslip Crons" create="false" edit="false" delete="false">
+				<field name="employee_id"/>
+				<field name="date_from"/>
+				<field name="date_to"/>
+				<field name="project_id"/>
+				<field name="center_id"/>
+				<field name="paidon"/>
+				<field name="slip_id"/>
+				<field name="note"/>
+				<field name="audit_result"/>				
+				<field name="state"/>
+			</tree>
+		</field>
+		
+	</record>
+	
+<record id="view_guards_payslip_cron_form" model="ir.ui.view">
+		<field name="name">guards.payslip.cron.form</field>
+		<field name="model">guards.payslip.cron</field>
+		<field name="priority" eval="8" />
+		<field name="arch" type="xml">
+			<form string="Guards Payslip Crons">
+				<group>
+					<group>
+						<field name="employee_id"
+							context="{'form_view_ref': 'sos.view_guard_form','tree_view_ref': 'sos.view_guard_tree','filter_view_ref': 'sos.view_guard_filter'}"/>
+						<field name="date_from"/>
+						<field name="date_to"/>
+						<field name="project_id"/>
+					</group>
+					<group>
+						<field name="center_id"/>
+						<field name="paidon"/>
+						<field name="slip_id"/>
+						<field name="state"/>
+					</group>
+				</group>
+			</form>
+		</field>
+		
+	</record>
+
+	<record id="view_guards_payslip_cron_search" model="ir.ui.view">
+		<field name="name">guards.payslip.cron.search</field>
+		<field name="model">guards.payslip.cron</field>
+		<field name="priority" eval="8" />
+		<field name="arch" type="xml">
+			<search string="Guards Payslip Crons">
+				<filter string="Draft" name="draft" domain="[('state','=','draft')]" />
+				<filter string="Done" name="done" domain="[('state','=','done')]" />
+
+				<field name="employee_id" />
+				
+				<newline />
+				
+				<group expand="0" string="Group By...">
+					<filter name="employee_id" string="Employee" domain="[]" context="{'group_by':'employee_id'}"/>
+					<filter name="project_id" string="Project" domain="[]" context="{'group_by':'project_id'}"/>
+					<filter name="center_id" string="Center" domain="[]" context="{'group_by':'center_id'}"/>
+					<filter name="state" string="Status" domain="[]" context="{'group_by':'state'}" />	
+					<filter name="audit_result" string="Audit" domain="[]" context="{'group_by':'audit_result'}" />	
+					<filter name="date_from" string="Date (Year)" domain="[]" context="{'group_by':'date_from:year'}" />
+					<filter name="date_from" string="Date (Month)" domain="[]" context="{'group_by':'date_from:month'}" />																						
+				</group>
+				
+			</search>
+		</field>
+	</record>
+	
+	<record model="ir.actions.act_window" id="act_guards_payslip_cron_view">
+		<field name="name">Payslip Crons</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">guards.payslip.cron</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form</field>
+		<field name="context">{'search_default_draft':1}</field>
+	</record>
+		
+<record id="view_posts_payslip_cron_tree" model="ir.ui.view">
+		<field name="name">posts.payslip.cron.tree</field>
+		<field name="model">posts.payslip.cron</field>
+		<field name="priority" eval="8" />
+		<field name="arch" type="xml">
+			<tree string="Posts Payslip Crons" create="false" edit="false" delete="false">
+				<field name="post_id"/>
+				<field name="date_from"/>
+				<field name="date_to"/>
+				<field name="project_id"/>
+				<field name="center_id"/>
+				<field name="note"/>
+				<field name="audit_result"/>				
+				<field name="state"/>
+			</tree>
+		</field>
+		
+	</record>
+	
+<record id="view_posts_payslip_cron_form" model="ir.ui.view">
+		<field name="name">posts.payslip.cron.form</field>
+		<field name="model">posts.payslip.cron</field>
+		<field name="priority" eval="8" />
+		<field name="arch" type="xml">
+			<form string="Posts Payslip Crons">
+				<group>
+					<group>
+						<field name="post_id"
+							context="{'form_view_ref': 'sos.sos_post_form_view','tree_view_ref': 'sos.sos_post_tree_view','filter_view_ref': 'sos.sos_post_filter_view'}"/>
+						<field name="date_from"/>
+						<field name="date_to"/>
+						<field name="project_id"/>
+					</group>
+					<group>
+						<field name="center_id"/>
+						<field name="state"/>
+					</group>
+				</group>
+			</form>
+		</field>
+		
+	</record>
+
+	<record id="view_posts_payslip_cron_search" model="ir.ui.view">
+		<field name="name">posts.payslip.cron.search</field>
+		<field name="model">posts.payslip.cron</field>
+		<field name="priority" eval="8" />
+		<field name="arch" type="xml">
+			<search string="Posts Payslip Crons">
+				<filter string="Draft" name="draft" domain="[('state','=','draft')]" />
+				<filter string="Done" name="done" domain="[('state','=','done')]" />
+
+				<field name="post_id" />
+				
+				<newline />
+				
+				<group expand="0" string="Group By...">
+					<filter name="post_id" string="Post" domain="[]" context="{'group_by':'post_id'}"/>
+					<filter name="project_id" string="Project" domain="[]" context="{'group_by':'project_id'}"/>
+					<filter name="center_id" string="Center" domain="[]" context="{'group_by':'center_id'}"/>
+					<filter name="state" string="Status" domain="[]" context="{'group_by':'state'}" />	
+					<filter name="audit_result" string="Audit" domain="[]" context="{'group_by':'audit_result'}" />	
+					<filter name="date_from" string="Date (Year)" domain="[]" context="{'group_by':'date_from:year'}" />
+					<filter name="date_from" string="Date (Month)" domain="[]" context="{'group_by':'date_from:month'}" />																						
+				</group>
+				
+			</search>
+		</field>
+	</record>
+	
+	<record model="ir.actions.act_window" id="act_posts_payslip_cron_view">
+		<field name="name">Post Payslip Crons</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">posts.payslip.cron</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form</field>
+		<field name="context">{'search_default_draft':1}</field>
+	</record>
+	
+</data>
+</odoo>

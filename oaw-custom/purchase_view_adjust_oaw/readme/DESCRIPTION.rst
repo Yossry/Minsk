@@ -1,0 +1,1 @@
+Adjust purchase related views.

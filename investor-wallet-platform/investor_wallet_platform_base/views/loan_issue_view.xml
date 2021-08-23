@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright 2019 Coop IT Easy
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+    <record id="view_loan_issue_form" model="ir.ui.view">
+        <field name="name">view_loan_issue_form</field>
+        <field name="model">loan.issue</field>
+        <field name="inherit_id" ref="easy_my_coop_loan.view_loan_issue_form"/>
+        <field name="arch" type="xml">
+        	<button name="compute_loan_interest" position="after">
+				<button name="validation_request" string="Validation request"
+						type="object" attrs="{'invisible':[('validation_requested','=',True)]}"
+						groups="easy_my_coop.group_easy_my_coop_manager"/>
+				<button name="validate" string="Validate"
+						type="object" attrs="{'invisible':['|',('validation_requested','=',False),('validated','=',True)]}"
+						groups="investor_wallet_platform_base.group_platform_wallet_manager"/>
+				<button name="refuse" string="Refused"
+						type="object" attrs="{'invisible':['|',('validation_requested','=',False),('validated','=',True)]}"
+						groups="investor_wallet_platform_base.group_platform_wallet_manager"/>
+        	</button>
+            <xpath expr="//field[@name='default_issue']" position="before">
+                <field name="structure"/>
+            </xpath>
+            <xpath expr="//field[@name='date']" position="after">
+                <field name="creation_mode"/>
+            </xpath>
+            <field name="interest_payment_info" position="after">
+            	<field name="write_date"/>
+            	<field name="validation_requested"/>
+            	<field name="validated"/>
+                <field name="validation_date"/>
+                <field name="validated_by"/>
+            </field>
+            <page name="lines" position="after">
+            	<page string="Issue Information" name="issue_information">
+    				<group>
+    					<group>
+    						<field name="solidary"/>
+	    					<field name="banking"/>
+		    				<field name="tax_benefit"/>
+		    				<field name="tax_policy"/>
+		    				<field name="access_terms"/>
+		    				<field name="fees"/>
+	    				</group>
+	    				<group>
+    						<field name="book_value" widget='monetary' options="{'currency_field': 'currency_id', 'field_digits': True}"/>
+		    				<field name="info_note_url"/>
+		    				<field name="advantages"/>
+		    				<field name="oversubscription_policy"/>
+	    				</group>
+    				</group>
+    			</page>
+    			<page string="Risk" name="risk">
+    				<group>
+    					<group>
+		    				<field name="purpose_of_issue"/>
+		    				<field name="price_fluctuation_risk"/>
+		    				<field name="capital_risk"/>
+    					</group>
+    					<group>
+		    				<field name="other_product_risk"/>
+		    				<field name="transfer_allowed"/>
+		    				<field name="refund_policy"/>
+    					</group>
+    				</group>
+    			</page>
+            </page>
+        </field>
+    </record>
+
+    <record id="view_loan_issue_filter" model="ir.ui.view">
+        <field name="name">Loans Issue Search</field>
+        <field name="model">loan.issue</field>
+        <field name="inherit_id" ref="easy_my_coop_loan.view_loan_issue_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search" position="inside">
+                <group expand="0" name="group_by" string="Group By">
+                    <filter name="structure" string="Structure" context="{'group_by' : 'structure'}" />
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+
+    <record id="view_loan_issue_line_filter" model="ir.ui.view">
+        <field name="name">Loans Search</field>
+        <field name="model">loan.issue.line</field>
+        <field name="inherit_id" ref="easy_my_coop_loan.view_loan_issue_line_filter"/>
+        <field name="arch" type="xml">
+            <filter name="loan_issue_id" position="after">
+                <filter name="structure" string="Structure" context="{'group_by' : 'structure'}" />
+            </filter>
+        </field>
+    </record>
+
+    <record id="view_loan_issue_tree" model="ir.ui.view">
+		<field name="name">view_loan_issue_tree</field>
+		<field name="model">loan.issue</field>
+        <field name="inherit_id" ref="easy_my_coop_loan.view_loan_issue_tree"/>
+		<field name="arch" type="xml">
+            <field name="name" position="before">
+                <field name="structure" groups="investor_wallet_platform_base.group_platform_wallet_user"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="loan_issue_line_view_tree" model="ir.ui.view">
+		<field name="name">loan_issue_line_view_tree</field>
+		<field name="model">loan.issue.line</field>
+        <field name="inherit_id" ref="easy_my_coop_loan.loan_issue_line_view_tree"/>
+		<field name="arch" type="xml">
+            <field name="name" position="before">
+                <field name="structure" groups="investor_wallet_platform_base.group_platform_wallet_user"/>
+            </field>
+            <field name="date" position="after">
+                <field name="creation_mode"/>
+            </field>
+        </field>
+    </record>
+</odoo>

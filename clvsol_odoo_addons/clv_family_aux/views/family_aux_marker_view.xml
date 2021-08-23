@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="clv_family_aux_view_tree_marker" model="ir.ui.view">
+        <field name="name">clv.family_aux.tree</field>
+        <field name="model">clv.family_aux</field>
+        <field name="inherit_id" ref="clv_family_aux_view_tree"/>
+        <field name="priority" eval="20"/>
+        <field name="arch" type="xml">
+            <field name="code" position="after">
+                <field name="marker_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="clv_family_aux_view_form_marker" model="ir.ui.view">
+        <field name="name">clv.family_aux.form</field>
+        <field name="model">clv.family_aux</field>
+        <field name="inherit_id" ref="clv_family_aux_view_form"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <label for="name" position="before">
+                <label for="marker_ids" class="oe_edit_only"/>
+                <h4><field name="marker_ids" widget="many2many_tags" placeholder="Markers..." options="{'color_field': 'color', 'no_open': False, 'no_create': True}"/></h4>
+            </label>
+        </field>
+    </record>
+
+    <record id="clv_family_aux_view_search_marker" model="ir.ui.view">
+        <field name="name">clv.family_aux.search</field>
+        <field name="model">clv.family_aux</field>
+        <field name="inherit_id" ref="clv_family_aux_view_search"/>
+        <field name="priority" eval="20"/>
+        <field name="arch" type="xml">
+            <field name="code" position="after">
+                <field name="marker_ids"/>
+                <field name="marker_names"/>
+            </field>
+            <group name="group_by" position="inside">
+                <filter name="filter_family_aux_marker" string="Markers" context="{'group_by': 'marker_names'}"/>
+            </group>
+        </field>
+    </record>
+
+</odoo>

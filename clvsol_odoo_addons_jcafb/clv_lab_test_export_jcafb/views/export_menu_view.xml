@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <menuitem name="Lab Test Criteria" id="clv_export.menu_exports_exports_model_exports_lab_test_criteria"  
+        parent="clv_export.menu_exports_exports_model_exports"
+        groups="clv_base.group_user"
+        sequence="40"
+        action="clv_lab_test_export.clv_model_export_lab_test_criterion_action"/>
+
+    <menuitem name="Lab Test Criteria" id="clv_export.menu_exports_config_model_export_templates_lab_test_criteria"  
+        parent="clv_export.menu_exports_config_model_export_templates"
+        groups="clv_base.group_user"
+        sequence="40"
+        action="clv_lab_test_export.clv_model_export_template_lab_test_criterion_action"/>
+
+</odoo>

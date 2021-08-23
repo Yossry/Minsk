@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Sale Order Form View -->
+        <record id="amount_word_form_view" model="ir.ui.view">
+            <field name="name">Amount To Word in Sale Order</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='note']" position="after">
+                    <group colspan="2" attrs="{'invisible': [('amount_total', '&lt;=', 0)]}">
+                        <div class="oe_subtotal_footer_separator oe_inline o_td_label" style="font-size:15px;">
+                            <label for="num_word" style="margin-right: 8px;font-size:15px;"/>
+                            <field name="num_word" string="Amount In Word"/>
+                        </div>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Purchase Order Form View -->
+        <record id="purchase_form_view" model="ir.ui.view">
+            <field name="name">Amount To Word Purchase Order</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='notes']" position="after">
+                    <group colspan="2"  attrs="{'invisible': [('amount_total', '&lt;=', 0)]}">
+                        <div class="oe_subtotal_footer_separator oe_inline o_td_label" style="font-size:15px;">
+                            <label for="num_word" style="margin-right: 8px;font-size:15px;"/>
+                            <field name="num_word" string="Amount In Word"/>
+                        </div>
+                    </group>   
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Invoice form view for Vendor Bills -->
+        <record id="invoice_vendor_form_view" model="ir.ui.view">
+            <field name="name">Amount To Word Invoice Order Vendor Bills</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='comment']" position="after">
+                    <group colspan="2"  attrs="{'invisible': [('amount_total', '&lt;=', 0)]}">
+                        <div class="oe_subtotal_footer_separator oe_inline o_td_label" style="font-size:15px; text-align:right;">
+                            <label for="num_word" style="margin-right: 8px;font-size:15px;"/>
+                            <field name="num_word" string="Amount In Word"/>
+                        </div>
+                    </group>   
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Invoice form view for Customer Invoice -->
+        <record id="invoice_customer_form_view" model="ir.ui.view">
+            <field name="name">Amount To Word Customer Invoice</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='comment']" position="before">
+                    <group colspan="2"  attrs="{'invisible': [('amount_total', '&lt;=', 0)]}">
+                        <div class="oe_subtotal_footer_separator oe_inline o_td_label" style="font-size:15px; text-align:right;">
+                            <label for="num_word" style="margin-right: 8px;font-size:15px;"/>
+                            <field name="num_word" string="Amount In Word"/>
+                        </div>
+                    </group>   
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

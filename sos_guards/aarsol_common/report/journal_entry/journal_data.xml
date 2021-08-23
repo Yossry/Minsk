@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+	<template id="aarsol_accounts.journal_data">
+        <div class="col-xs-12" t-attf-style="color:{{style.theme_txt_color}};text-align:center; padding-left:0px; padding-right:0px;">
+                <div t-attf-style="width:auto; display:inline-block; padding-left:8px; padding-right:8px;">
+                          <h3 style="margin-top:8px; margin-bottom:8px;">...</h3>
+                </div>
+           </div>
+   
+	   <div class="col-xs-12" style="padding:8px;"/>
+
+            <!-- Is there a discount on at least one line? -->
+            <!--<t t-set="display_discount" t-value="any([l.discount for l in o.line_ids])"/>
+            <t t-set="col_span" t-value="7 if display_discount else 6"/> -->
+			<t t-set="col_span" t-value="7"/>	
+            <table class="table  table-condensed" t-attf-style="color:{{style.text_color}};" >
+                <thead t-attf-style="color:{{style.theme_txt_color}};">
+                    <t t-set="th_style" t-value="'border-bottom: 1px solid #ddd !important;white-space:nowrap;'"></t>
+                    <tr t-attf-style="background-color:{{style.theme_color}};">
+                        <th t-attf-style="{{th_style}}"><i class="fa fa-list-ol"></i></th>
+						<th t-attf-style="{{th_style}}"><i class="fa fa-info-circle"></i> Account</th>
+                        <th t-attf-style="{{th_style}}"><i class="fa fa-sort-amount-asc"> Code</i></th>
+                        <th t-attf-style="{{th_style}}"><i class="fa fa-th-large"> Account Name</i></th>
+                        <th t-attf-style="{{th_style}}"><i class="fa fa-th-large"> Narration</i></th>
+                        <th class="text-right" t-attf-style="{{th_style}}"><i class="fa fa-money"> Debit</i></th>
+                        <th class="text-right" t-attf-style="{{th_style}}"><i class="fa fa-money"> Credit</i></th>
+                    </tr>
+                </thead>
+                <tbody>
+					<t t-foreach="o.move_layout_lines(move_id=o.id)" t-as="p">
+					    <!-- Name of the category -->
+			    		  <!--
+			    		  <t t-call="professional_templates.category_template">
+					    	  <t t-set="doc" t-value="o"/>
+					          <t t-set="cols" t-value="col_span"  />
+					      </t>
+							-->
+						<!--<t t-foreach="o.line_ids" t-as="l">-->
+						<t t-foreach="p['lines']" t-as="l">
+							<tr t-attf-style="background-color:{{style.odd if l_parity in 'odd' else style.even}};color:{{style.text_color}};page-break-inside: avoid">
+								<td><span t-esc="l_index + 1"/></td>
+								<td>GL</td>
+								<td><span t-field="l.account_id.code"/></td>
+								<td><span t-field="l.account_id.name"/></td>
+								<td><span t-field="l.name"/></td>
+								<td class="text-right"><span t-esc="l.debit and '{0:,.2f}'.format(l.debit) or '-'" /></td>
+								<td class="text-right"><span t-esc="l.credit and '{0:,.2f}'.format(l.credit) or '-'" /></td>
+							</tr>
+							<t t-foreach="o.line_dimension_lines(move_line=l)" t-as="d">
+								<tr t-attf-style="color:{{style.text_color}};font-size:11px !important; page-break-inside: avoid">																	
+									<td></td>
+									<td><span t-esc="d['nd_name']"/></td>
+									<td><span t-esc="d['code']"/></td>
+									<td colspan="2"><span t-esc="d['name']"/></td>									
+								</tr>
+							</t>
+						</t>
+
+
+
+						<!-- Subtotal -->
+						<!--
+						<t t-call="professional_templates.subtotal_template">
+							<t t-set="doc" t-value="o"/>
+							<t t-set="cols" t-value="col_span"  />
+						</t>
+						-->
+						<!-- Separator -->
+						<!--
+						  <t t-call="professional_templates.separator_template">
+							<t t-set="doc" t-value="o"/>
+							<t t-set="cols" t-value="col_span"  />
+						  </t>
+						-->
+						<!-- Pagebreak -->
+						<!--
+						  <t t-if="'pagebreak' in p['category'] and p['category'].pagebreak is True">
+							 <t t-if="p_index &lt; p_size - 1">
+								<![CDATA[
+									</tbody>
+								</table>
+								<p style="page-break-before:always;"> </p>
+								<table class="table table-condensed" style="page-break-before:always;">
+								]]>
+								<thead t-attf-style="color:{{o.theme_txt_color}};">
+								 	<t t-set="th_style" t-value="'border-bottom: 1px solid #ddd !important;white-space:nowrap;'"></t>
+									<tr t-attf-style="background-color:{{o.theme_color}};">
+										<th t-attf-style="{{th_style}}"><i class="fa fa-list-ol"></i></th>
+									 	<th t-attf-style="{{th_style}}"><i class="fa fa-sort-amount-asc"> Account Code</i></th>
+				                        <th t-attf-style="{{th_style}}"><i class="fa fa-th-large"> Account Name</i></th>
+                				        <th t-attf-style="{{th_style}}"><i class="fa fa-th-large"> Narration</i></th>
+                				        <th class="text-right" t-attf-style="{{th_style}}"><i class="fa fa-money"> Debit</i></th>
+                				        <th class="text-right" t-attf-style="{{th_style}}"><i class="fa fa-usd"> Credit</i></th>
+									</tr>
+								</thead>
+
+								<![CDATA[
+								<tbody>
+							 ]]>
+
+							 </t>
+						</t> --> <!-- Page Break -->
+						
+                    </t>  <!-- Loop -->
+                </tbody>
+                </table>
+
+
+				<div class="col-xs-5 pull-right" style="padding-left:0px; padding-right:0px; page-break-inside: avoid;">
+                <table class="table table-condensed" t-attf-style="color:{{style.text_color}};">
+				<tbody>
+                    <tr t-attf-style="border-top: 1px solid {{style.text_color}};" >
+                        <td t-attf-style="border-top: 1px solid {{style.text_color}} !important;"><strong>Total Transaction</strong></td>
+                        <td class="text-right" t-attf-style="border-top: 1px solid {{style.text_color}} !important;">
+							<span t-esc="o.amount and '{0:,.2f}'.format(o.amount) or '-'" /> <span t-field="o.currency_id.symbol"/>
+                        </td>
+                    </tr>
+                    
+				</tbody>
+                </table>
+               </div>
+
+
+				<div class="col-xs-12" style="padding-left:0px; padding-right:0px; margin-top:10px; page-break-inside: avoid;">
+                <table class="table table-condensed" t-attf-style="color:{{style.text_color}};">
+				<tbody>
+                    <tr t-attf-style="border-top: 1px solid {{style.text_color}};" >
+                        <td t-attf-style="border-top: 1px solid {{style.text_color}} !important;text-align:center;"><strong>Prepared By</strong></td>
+                        <td t-attf-style="border-top: 1px solid {{style.text_color}} !important;text-align:center;"><strong>Accounts Manager</strong></td>
+                        <td t-attf-style="border-top: 1px solid {{style.text_color}} !important;text-align:center;"><strong>Finance Manager</strong></td>
+                        <td t-attf-style="border-top: 1px solid {{style.text_color}} !important;text-align:center;"><strong>General Manager</strong></td>
+
+                    </tr>
+                    
+				</tbody>
+                </table>
+               </div>
+               
+	</template>
+</data>
+</odoo>
+                      

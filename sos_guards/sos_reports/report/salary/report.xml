@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>             
+    <data>
+    
+        <!-- Salary Invoice Comparsion -->
+		<report
+			id="report_salary_invoice_comp"
+			string= "Salary Invoice Comparsion Report"
+			model = "sos_reports.salary.invoice.comp"
+			report_type="qweb-pdf"
+			file="sos_reports.report_salary_invoicecomp"
+			name="sos_reports.report_salary_invoicecomp"
+		/>
+		
+		<!-- Salary Comparsion Summary Center -->
+		<!--
+		<report
+			id="report_comp_summary_center"
+			string= "Salary Comparsion Summary Center Wise"
+			model = "sos_reports.salary.comp.summary"
+			report_type="qweb-pdf"
+			file="sos_reports.report_compsummarycenter"
+			name="sos_reports.report_compsummarycenter"
+		/>
+		-->
+		<!-- Salary Comparsion Summary Project -->
+		<!--
+		<report
+			id="report_comp_summary_project"
+			string= "Salary Comparsion Summary Project Wise"
+			model = "sos_reports.salary.comp.summary"
+			report_type="qweb-pdf"
+			file="sos_reports.report_compsummaryproject"
+			name="sos_reports.report_compsummaryproject"
+		/>
+		-->
+		
+		<!-- Salary Comparsion Summary post -->
+		<!--
+		<report
+			id="report_comp_summary_post"
+			string= "Salary Comparsion Summary Post Wise"
+			model = "sos_reports.salary.comp.summary"
+			report_type="qweb-pdf"
+			file="sos_reports.report_compsummarypost"
+			name="sos_reports.report_compsummarypost"
+		/>
+		-->
+		
+		<!-- Guards Salary Expense Region Wise -->
+		<!--
+		<report
+			id="guards_salary_region_wise_report"
+			string= "Region Wise Salary Expense"
+			model = "sos_reports.guards.salary.expense.wizard"
+			report_type="qweb-pdf"
+			file="sos_reports.report_guards_salary_regionwise"
+			name="sos_reports.report_guards_salary_regionwise"
+		/>
+		-->
+		
+		<!-- Guards Salary Expense Project Wise -->
+		<!--
+		<report
+			id="guards_salary_project_wise_report"
+			string= "Project Wise Salary Expense"
+			model = "sos_reports.guards.salary.expense.wizard"
+			report_type="qweb-pdf"
+			file="sos_reports.report_guards_salary_projectwise"
+			name="sos_reports.report_guards_salary_projectwise"
+		/>
+		 --> 
+	</data>
+</odoo>

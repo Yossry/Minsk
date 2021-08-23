@@ -1,0 +1,448 @@
+@mixin full_width-view() {
+    & > tbody {
+        display: block;
+        & > tr {
+            display: -ms-flexbox;
+            display: -moz-box;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            -ms-flex-flow: row wrap;
+            -moz-flex-flow: row wrap;
+            -webkit-flex-flow: row wrap;
+            flex-flow: row wrap;
+            & > td {
+                -ms-flex: 1 0 auto;
+                -moz-flex: 1 0 auto;
+                -webkit-box-flex: 1;
+                -webkit-flex: 1 0 auto;
+                flex: 1 0 auto;
+                display: block;
+                max-width: 100%;
+                padding: 3px 0px 3px 0px;
+                width: auto;
+                min-width: 100%;
+                .o_field_widget {
+                    width: 100%;
+                    margin-right: 5px;
+                    .o_input_dropdown {
+                        -ms-flex: 1 1 auto;
+                        -moz-flex: 1 1 auto;
+                        -webkit-box-flex: 1;
+                        -webkit-flex: 1 1 auto;
+                        flex: 1 1 auto;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin form_view_mobile() {
+    .o_form_sheet_bg {
+        padding: 10px;
+        .o_form_sheet {
+            .o_cu_panel {
+                .o_group {
+                    display: inline-block;
+                    .o_group_col_6, .o_group_col_4 {
+                        width: 100%;
+                        display: block;
+                        @include full_width-view();
+                    }
+                    @include full_width-view();
+                }
+                .oe_title {
+                    padding-left: 0;
+                    padding-right: 0px;
+                    width: 100%;
+                    margin: 0;
+                }
+                .o_field_image {
+                    float: none;
+                    margin: auto;
+                    width: 100%;
+                    text-align: center;
+                    img {
+                        margin: auto;
+                    }
+                    .o_form_image_controls {
+                        margin: 10px 0;
+                        margin-top: 0px;
+                        display: table;
+                        .o_select_file_button {
+                            background-color: $brand-secondary;
+                        }
+                    }
+                }
+                #o_employee_container {
+                    #o_employee_right {
+                        border-left: 0;
+                    }
+                }
+            }
+            .o_notebook {
+                .o_group {
+                    .o_group_col_6 {
+                        width: 100%;
+                        display: block;
+                        @include full_width-view();
+                    }
+                    @include full_width-view();
+                }
+                table.o_inner_group.o_group {
+                    display: block;
+                }
+                div.tab-pane {
+                    padding: 0px;
+                }
+                .panel-ul {
+                    & > li {
+                        display: block;
+                        & > a:first-child {
+                            padding: 5px;
+                        }
+                    }
+                }
+                .tab-pane {
+                    & > .o_inner_group {
+                        @include full_width-view();
+                    }
+                }
+            }
+            .panel-ul {
+                & > li {
+                    display: block;
+                }
+            }
+        }
+        .o_form_statusbar {
+            .o_statusbar_buttons {
+                ul.dropdown-menu {
+                    padding: 5px;
+                    width: auto;
+                    min-width: auto;
+                    left: 0;
+                    right: auto;
+                    & > li{
+                        button{
+                            width: 100%;
+                            margin: 3px 0;
+                        }
+                    }
+                }
+            }
+            .o_statusbar_status {
+                position: relative;
+                ul.dropdown-menu {
+                    padding: 5px;
+                    width: auto;
+                    min-width: auto;
+                    left: auto !important;
+                    right: 0;
+                    transform: none !important;
+                    top: 100% !important;
+                    li {
+                        float: none;
+                        button {
+                            width: 100%;
+                            margin: 3px 0;
+                            &:before, &:after {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .o_chatter.oe_chatter {
+        padding: 10px !important;
+        .o_chatter_topbar {
+            width: 100%;
+            justify-content: center;
+            .o_topbar_right_area{
+                padding: 6px 0;
+            }
+        }
+    }
+    .oe_chatter {
+        max-width: 100%;
+        min-width: 100%;
+    }
+    &.o_form_nosheet {
+        padding: 10px;
+        .o_group.o_inner_group {
+            width: 100%;
+            display: block;
+            @include full_width-view();
+        }
+        .o_field_image.oe_avatar{
+            width: 100%;
+            margin: auto;
+            display: table;
+            .img{
+                display: table;
+                margin-bottom: 5px;
+            }
+            &.oe_right{
+                width: 100% !important;
+            }
+        }
+        .o_field_image{
+            width: 100%;
+            margin: auto;
+            box-shadow: none;
+            .o_form_image_controls{
+                display: table;
+                padding: 0;
+                margin-top: 10px;
+                background-color: transparent;
+            }
+        }
+    }
+    .o_group.o_inner_group.oe_subtotal_footer.o_inner_group {
+        width: 100% !important;
+        tbody > tr {
+            & > td:not(.o_td_label) {
+                float: right;
+                width: 50% !important;
+                .oe_subtotal_footer_separator {
+                    text-align: left;
+                    .o_form_label {
+                        font-weight: bold;
+                    }
+                }
+            }
+            .o_td_label {
+                text-align: left;
+                width: 50%;
+                float: left;
+            }
+        }
+    }
+    // Fields
+    .o_field_widget.o_field_many2one, .o_field_widget.o_field_radio, .o_field_widget.o_field_many2manytags, .o_field_widget.o_field_percent_pie, .o_field_widget.o_field_monetary, .o_field_widget.o_field_binary_file {
+        display: -ms-inline-flexbox;
+        display: -moz-inline-box;
+        display: -webkit-inline-box;
+        display: -webkit-inline-flex;
+        display: inline-flex;
+    }
+    .o_field_widget .o_field_widget, .btn .o_field_widget{
+        margin-bottom: 0px;
+    }
+    .o_phone_block {
+        width: 92%;
+        float: left;
+    }
+    .o_phone_block + button.fa-envelope-o {
+        padding: 5px 2px;
+    }
+    .o_cu_panel {
+        .o_field_radio {
+            display: block !important;
+            padding-bottom: 2px;
+        }
+    }
+    &.o_form_readonly {
+        .o_form_sheet_bg {
+            .o_cu_panel {
+                .o_group.o_inner_group, tbody {
+                    tr {
+                        td {
+                            .o_row {
+                                width: 100%;
+                            }
+                            .o_field_phone {
+                                width: 92%;
+                                float: left;
+                            }
+                            .o_field_phone + button.fa-envelope-o {
+                                padding: 0px 2px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .col-md-11.col-md-offset-1.col-sm-12.no-margin-top {
+        width: 100% !important;
+        margin: auto !important;
+    }
+    .o_select_file_button {
+        background: $brand-secondary;
+        color: $white;
+    }
+    .o_field_image {
+        img {
+            margin: auto;
+            display: table;
+            margin-bottom: 10px;
+        }
+    }
+    .o_radio_item, .o_checkbox {
+        margin-bottom: 2px;
+    }
+    .o_field_domain{
+        .o_domain_node{
+            .o_domain_tree{
+                .o_domain_tree_header{
+                    width: 100%;
+                    display: block;
+                    margin-bottom: 15px;
+                }
+            }
+        }
+        .o_field_domain_panel{
+            position: relative;
+            margin-top: 8px;
+        }
+    }
+    // Fields
+}
+
+// Button box - [start]
+// Buttton view only touch device
+@mixin oe_touch_btn_box() {
+    .oe_button_box {
+        position: relative;
+        & > button {
+            width: 100% !important;
+        }
+        ul.o_dropdown_more {
+            border-radius: 0;
+            box-shadow: none;
+            padding: 0px 5px;
+            border: 1px solid $border;
+            left: 5px;
+            right: 0px;
+            margin-top: 15px;
+            & > li {
+                & > button {
+                    width: 100% !important;
+                    border: none;
+                    margin-bottom: 5px;
+                    margin-left: 0px !important;
+                }
+                &:first-child > button {
+                    margin-top: 5px;
+                }
+            }
+        }
+    }
+}
+
+// Buttton view only touch device
+// Button box - [stop]
+// Form view - [start]
+.o_web_client.ad_mobile {
+    .o_main {
+        .o_main_content.ad_rightbar {
+            & > .o_content {
+                .o_view_controller, .o_reconciliation {
+                    .o_form_view {
+                        @include form_view_mobile();
+                        @include oe_touch_btn_box();
+                    }
+                }
+                .o_hr_attendance_kiosk_mode_container {
+                    .o_hr_attendance_kiosk_mode {
+                        padding: 4em 2em;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Form view - [start]
+
+// Wizard form view - [stop]
+body.o_web_client.ad_mobile {
+    .modal-dialog, .modal.o_technical_modal.o_modal_full .modal-dialog{
+        margin: auto;
+        max-width: 100%;
+        padding: 0;
+        .modal-content {
+            border: none;
+            .modal-header{
+                background-color: $brand-secondary;
+                border-radius: 0;
+                .modal-title, .close{
+                    color: $white;
+                }
+            }
+            .modal-body {
+                &.o_act_window{
+                    .o_form_view {
+                        @include form_view_mobile();
+                        @include oe_touch_btn_box();
+                    }
+                    .o_modal_header{
+                        .o_searchview{
+                            float: left;
+                            .o_enable_searchview{
+                                background-color: transparent;
+                            }
+                            .o_mobile_search{
+                                .o_filter_condition{
+                                    max-width: 100%;
+                                }
+                            }
+                        }
+                    }
+                }
+                &.o_export{
+                    .o_export_panel{
+                        flex-wrap: wrap;
+                        .o_left_panel, .o_center_panel, .o_right_panel{
+                            margin-bottom: 10px;
+                        }
+                        .o_left_panel{
+                            overflow: auto;
+                            height: 300px;
+                        }
+                    }
+                }
+            }
+            .modal-footer {
+                button {
+                    margin: 2px 5px;
+                }
+            }
+        }
+        &.o_select_media_dialog{
+            max-width: 100%;
+            margin: 0px;
+            .modal-body{
+                .nav.nav-tabs{
+                    .nav-item.ml-auto.search{
+                        width: 100%;
+                    }
+                    .nav-item.search:not(.ml-auto){
+                        text-align: center;
+                    }
+                }
+                .tab-content{
+                    .tab-pane{
+                        .form-inline{
+                            .card{
+                                .card-body{
+                                    .form-inline{
+                                        .btn-group{
+                                            margin: 0px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Wizard form view - [stop]

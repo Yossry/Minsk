@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <menuitem name="Persons (Aux)" id="clv_person_aux.menu_community_aux_person_auxs"
+        parent="clv_base.menu_community_aux"
+        groups="clv_person_aux.group_user"
+        sequence="10"
+        action="clv_person_aux.clv_person_aux_action"/>
+
+</odoo>

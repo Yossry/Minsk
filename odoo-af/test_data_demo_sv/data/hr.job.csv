@@ -1,0 +1,8 @@
+id,name,department_id/id,no_of_recruitment,no_of_hired_employee
+hr.job_ceo,Verkställande direktör,hr.dep_management,1,0
+hr.job_cto,IT-chef,hr.dep_rd,1,0
+hr.job_consultant,Konsult,hr.dep_ps,5,0
+hr.job_developer,Utvecklare,hr.dep_rd,5,0
+hr.job_hrm,Personalchef,hr.dep_administration,1,0
+hr.job_marketing,Marknadschef,hr.dep_sales,1,0
+hr.job_trainee,Praktikant,0,1,0

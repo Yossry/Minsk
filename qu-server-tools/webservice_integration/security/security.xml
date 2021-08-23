@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    © 2019 QubiQ (http://www.qubiq.es/)
+    @author: Xavier Jiménez <xavier.jimenez@qubiq.es>
+    License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+
+<odoo noupdate="1">
+
+    <record id="webservice_manager_group" model="res.groups">
+        <field name="name">Webservice Manager</field>
+        <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]" />
+    </record>
+
+
+    <record id="access_webservice_instance" model="ir.model.access">
+        <field name="name">Access Webservice Instance</field>
+        <field name="model_id" ref="model_webservice_instance"/>
+        <field name="group_id" ref="webservice_manager_group"/>
+        <field eval="1" name="perm_read"/>
+        <field eval="1" name="perm_unlink"/>
+        <field eval="1" name="perm_write"/>
+        <field eval="1" name="perm_create"/>
+    </record>
+    <record id="access_webservice_mapper" model="ir.model.access">
+        <field name="name">Access Webservice Mapper</field>
+        <field name="model_id" ref="model_webservice_mapper"/>
+        <field name="group_id" ref="webservice_manager_group"/>
+        <field eval="1" name="perm_read"/>
+        <field eval="1" name="perm_unlink"/>
+        <field eval="1" name="perm_write"/>
+        <field eval="1" name="perm_create"/>
+    </record>
+    <record id="access_webservice_field" model="ir.model.access">
+        <field name="name">Access Webservice Field</field>
+        <field name="model_id" ref="model_webservice_mapper_fields"/>
+        <field name="group_id" ref="webservice_manager_group"/>
+        <field eval="1" name="perm_read"/>
+        <field eval="1" name="perm_unlink"/>
+        <field eval="1" name="perm_write"/>
+        <field eval="1" name="perm_create"/>
+    </record>
+
+
+</odoo>

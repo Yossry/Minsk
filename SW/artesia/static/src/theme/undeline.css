@@ -1,0 +1,64 @@
+h1.brand {
+  text-decoration: underline !important;
+}
+.heading-block h1, .heading-block h2, .heading-block h3, .heading-block h4 {
+	text-decoration: underline !important;
+}
+h1>span:not(.nocolor):not(.badge) {
+	text-decoration: underline !important;
+}
+.inner_about_title h2 {
+	text-decoration: underline !important;
+}
+#service-second h2 {
+	text-decoration: underline !important;
+}
+#customize-second .title {
+	text-decoration: underline !important;
+}
+#our-blog-second h2 {
+	text-decoration: underline !important;
+}
+#contact-us-second h3.tittle {
+	text-decoration: underline !important;
+}
+#contact-us-second h4.info {
+	text-decoration: underline !important;
+}
+.slider_area .home_slider .slingle_home_slider .slider_area_inner h1 {
+	text-decoration: underline !important;
+}
+#about-third h3 {
+	text-decoration: underline !important;	
+}
+#about-third h3 {
+	text-decoration: underline !important;	
+}
+#optimized-third .about-more .section-title h2 {
+	text-decoration: underline !important;
+}
+#contact-us-third .contact-area .heading > h2 {
+	text-decoration: underline !important;
+}
+#about-fouth .section-title h2 {
+	text-decoration: underline !important;
+}
+#feature-fourth .tab-pane h2 {
+	text-decoration: underline !important;
+}
+#customize-fourth .about-text h4 {
+	text-decoration: underline !important;
+}
+#contact-us-fourth .contact-us h3 {
+	text-decoration: underline !important;
+}
+.section-title h2{
+	text-decoration: underline !important;
+}
+.fame-cap-text h1 {
+	text-decoration: underline !important;
+	
+}
+#footer h4 {
+    text-decoration: underline !important;
+}

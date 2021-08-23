@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		
+	<!-- Record Rules: Attendance -->
+    <record id="hr_employee_employee_attendance_rule" model="ir.rule">
+        <field name="name">Attendance Access</field>
+        <field name="model_id" ref="hr_attendance.model_hr_attendance"/>
+         <field name="groups" eval="[(4,ref('base.group_user'))]"/>
+        <field name="domain_force">[('employee_id', 'child_of', [employee.id for employee in user.employee_ids])]</field>
+    </record> 
+    
+    <record id="hr_attendance.hr_attendance_rule_attendance_manager" model="ir.rule">
+        <field name="name">attendance officer: full access</field>
+        <field name="model_id" ref="model_hr_attendance"/>
+        <field name="domain_force">[('employee_id', 'child_of', [employee.id for employee in user.employee_ids])]</field>
+        <field name="groups" eval="[(4,ref('hr_attendance.group_hr_attendance_user'))]"/>
+    </record> 
+    
+    <!--
+    <record id="hr_employee_leave_master_rule" model="ir.rule">
+        <field name="name">Leaves Access</field>
+        <field name="model_id" ref="model_hr_holidays"/>
+         <field name="groups" eval="[(4,ref('group_leaves_master'))]"/>
+        <field name="domain_force">[(1, '=', 1), ('state','=', 'validate')]</field>
+    </record>
+    -->
+      
+	</data>
+</odoo>
+

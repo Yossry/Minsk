@@ -1,0 +1,990 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* aarsol_accounts
+#	* aarsol_accounts
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.0c\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-12-15 17:06+0000\n"
+"PO-Revision-Date: 2016-12-15 17:06+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+
+#. module: web
+#. openerp-web
+#: code:addons/web/static/src/xml/base.xml:171
+#: code:addons/web/static/src/xml/base.xml:446
+#: code:addons/web/static/src/xml/base.xml:915
+#, python-format
+msgid "Edit"
+msgstr "تعديل"
+
+#. module: aarsol_accounts
+#: model:ir.ui.view,arch_db:aarsol_accounts.journal_data
+msgid "<i class=\"fa fa-money\"> Debit</i>"
+msgstr "<i class=\"fa fa-money\"> دين</i>"
+
+#. module: aarsol_accounts
+#: model:ir.ui.view,arch_db:aarsol_accounts.journal_data
+msgid "<i class=\"fa fa-money\"> Credit</i>"
+msgstr "<i class=\"fa fa-money\"> رصيد</i>"
+
+#. module: aarsol_accounts
+#: model:ir.ui.view,arch_db:aarsol_accounts.journal_data
+msgid "<i class=\"fa fa-th-large\"> Account Name</i>"
+msgstr "<i class=\"fa fa-th-large\"> أسم الحساب</i>"
+
+#. module: aarsol_accounts
+#: model:ir.ui.view,arch_db:aarsol_accounts.journal_data
+msgid "<i class=\"fa fa-th-large\"> Narration</i>"
+msgstr "<i class=\"fa fa-th-large\"> رواية</i>"
+
+#. module: aarsol_accounts
+#: model:ir.ui.view,arch_db:aarsol_accounts.journal_data
+msgid "<i class=\"fa fa-sort-amount-asc\"> Code</i>"
+msgstr "<i class=\"fa fa-sort-amount-asc\"> رمز</i>"
+
+#. module: aarsol_accounts
+#: model:ir.ui.view,arch_db:aarsol_accounts.journal_data
+msgid "<i class=\"fa fa-info-circle\"/> Account"
+msgstr "<i class=\"fa fa-info-circle\"/> حساب"
+
+#. module: aarsol_accounts
+#: model:ir.ui.view,arch_db:aarsol_accounts.journal_data
+msgid "<strong>Total Transaction</strong>"
+msgstr "<strong>عملية مجموع</strong>"
+
+#. module: aarsol_accounts
+#: model:ir.ui.view,arch_db:aarsol_accounts.journal_data
+#: model:ir.ui.view,arch_db:aarsol_accounts.payment_data
+msgid "<strong>General Manager</strong>"
+msgstr "<strong>مدير عام</strong>"
+
+#. module: aarsol_accounts
+#: model:ir.ui.view,arch_db:aarsol_accounts.journal_data
+#: model:ir.ui.view,arch_db:aarsol_accounts.payment_data
+msgid "<strong>Finance Manager</strong>"
+msgstr "<strong>المدير المالي</strong>"
+
+#. module: aarsol_accounts
+#: model:ir.ui.view,arch_db:aarsol_accounts.journal_data
+#: model:ir.ui.view,arch_db:aarsol_accounts.payment_data
+msgid "<strong>Accounts Manager</strong>"
+msgstr "<strong>مدير الحسابات</strong>"
+
+#: model:ir.ui.view,arch_db:aarsol_accounts.JOURNAL_6_document
+msgid "<strong>Accounting Journal:</strong>"
+msgstr "<strong>المحاسبة مجلة:</strong>"
+
+#. module: aarsol_accounts
+#: model:ir.ui.view,arch_db:aarsol_accounts.journal_data
+#: model:ir.ui.view,arch_db:aarsol_accounts.payment_data
+msgid "<strong>Prepared By</strong>"
+msgstr "<strong>أُعدت بواسطة</strong>"
+
+#. module: account
+#: model:ir.ui.view,arch_db:account.report_trialbalance
+msgid "Opening"
+msgstr "الرصيد الافتتاحي"
+
+#. module: account
+#: model:ir.ui.view,arch_db:account.account_journal_dashboard_kanban_view
+msgid "New Transactions"
+msgstr "عملية جديدة"
+
+#. module: account
+#: model:ir.ui.view,arch_db:account.account_journal_dashboard_kanban_view
+msgid "New Statement"
+msgstr "بيان جديد"
+
+#. module: account
+#: model:ir.ui.view,arch_db:account.view_move_form
+msgid "Post"
+msgstr "ترحيل"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_account_name
+#: model:ir.model.fields,field_description:account.field_account_account_tag_name
+#: model:ir.model.fields,field_description:account.field_account_account_template_name
+#: model:ir.model.fields,field_description:account.field_account_chart_template_name
+#: model:ir.model.fields,field_description:account.field_account_payment_method_name
+#: model:ir.model.fields,field_description:account.field_account_payment_name
+#: model:ir.model.fields,field_description:account.field_account_tax_group_name
+#: model:ir.ui.view,arch_db:account.report_financial
+msgid "Name"
+msgstr "اسم"
+
+#. module: account
+#: model:ir.ui.view,arch_db:account.view_move_form
+msgid "Reverse Entry"
+msgstr "عكس القيد"
+
+#. module: account
+#: code:addons/account/wizard/account_move_reversal.py:20
+#: model:ir.actions.act_window,name:account.action_view_account_move_reversal
+#: model:ir.ui.view,arch_db:account.view_account_move_reversal
+#, python-format
+msgid "Reverse Moves"
+msgstr "التحركات العكسية"
+
+
+#. module: account
+#: model:ir.ui.view,arch_db:account.view_account_config_settings
+msgid "Chart of Account"
+msgstr "شجرة الحساب"
+
+#. module: account
+#: model:ir.actions.act_window,name:account.action_account_form
+#: model:ir.ui.menu,name:account.menu_action_account_form
+#: model:ir.ui.view,arch_db:account.account_planner
+#: model:ir.ui.view,arch_db:account.view_account_config_settings
+msgid "Chart of Accounts"
+msgstr "الدليل المحاسبي"
+
+#. module: account
+#: model:ir.ui.menu,name:account.menu_finance_entries
+#: model:res.groups,name:account.group_account_manager
+msgid "Adviser"
+msgstr "الحركات اليومية"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_bank_accounts_wizard_acc_name
+msgid "Account Name."
+msgstr "اسم الحساب"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#. module: aarsol_accounts
+#: selection:ledger.summary.report,display_att:0
+msgid "(Balance)"
+msgstr "(توازن)"
+
+
+#. module: aarsol_accounts
+#: model:ir.ui.view,arch_db:aarsol_accounts.partner_statement
+msgid "<i class=\"fa fa-balance-scale\"> Balance</i>"
+msgstr "<i class=\"fa fa-balance-scale\"> توازن</i>"
+
+#. module: aarsol_accounts
+#: model:ir.ui.view,arch_db:aarsol_accounts.partner_statement
+msgid "<i class=\"fa fa-bars\"> JRNL</i>"
+msgstr "<i class=\"fa fa-bars\"> مجلة</i>"
+
+#. module: aarsol_accounts
+#: model:ir.ui.view,arch_db:aarsol_accounts.partner_statement
+msgid "<i class=\"fa fa-calendar\"> Date</i>"
+msgstr "<i class=\"fa fa-calendar\"> تاريخ</i>"
+
+#. module: aarsol_accounts
+#: model:ir.ui.view,arch_db:aarsol_accounts.partner_statement
+msgid "<i class=\"fa fa-credit-card\"> Credit</i>"
+msgstr "<i class=\"fa fa-credit-card\"> رصيد</i>"
+
+#. module: aarsol_accounts
+#: model:ir.ui.view,arch_db:aarsol_accounts.partner_statement
+msgid "<i class=\"fa fa-credit-card\"> Debit</i>"
+msgstr "<i class=\"fa fa-credit-card\"> دين</i>"
+
+#. module: aarsol_accounts
+#: model:ir.ui.view,arch_db:aarsol_accounts.partner_statement
+msgid "<i class=\"fa fa-database\"> Account</i>"
+msgstr "<i class=\"fa fa-database\"> حساب</i>"
+
+#. module: aarsol_accounts
+#: model:ir.ui.view,arch_db:aarsol_accounts.view_account_payment_form_rep
+#: model:ir.ui.view,arch_db:aarsol_accounts.view_move_form_customized
+msgid "<i class=\"fa fa-info-circle\" aria-hidden=\"true\">\n"
+"	                    			<strong> NOTE:</strong>\n"
+"	              		     </i>"
+msgstr "<i class=\"fa fa-info-circle\" aria-hidden=\"true\">\n"
+"	                    			<strong> ملاحظة:</strong>\n"
+"	              		     </i>"
+
+#. module: aarsol_accounts
+#: model:ir.ui.view,arch_db:aarsol_accounts.partner_statement
+msgid "<i class=\"fa fa-th-large\"> Ref</i>"
+msgstr "<i class=\"fa fa-th-large\"> مرجع</i>"
+
+#. module: aarsol_accounts
+#: model:ir.ui.view,arch_db:aarsol_accounts.partner_statement
+msgid "<span class=\"fa fa-user\"/> \n"
+"                            <strong>Partner:</strong>"
+msgstr "<span class=\"fa fa-user\"/> \n"
+"                            <strong>شريك:</strong>"
+
+#. module: aarsol_accounts
+#: model:ir.ui.view,arch_db:aarsol_accounts.ledger_summary
+msgid "<strong>Account:</strong>"
+msgstr "<strong>حساب:</strong>"
+
+#. module: aarsol_accounts
+#: model:ir.ui.view,arch_db:aarsol_accounts.partner_statement
+msgid "<strong>Date From :</strong>"
+msgstr "<strong>التاريخ من :</strong>"
+
+#. module: aarsol_accounts
+#: model:ir.ui.view,arch_db:aarsol_accounts.partner_statement
+msgid "<strong>Date To :</strong>"
+msgstr "<strong>التاريخ إلى:</strong>"
+
+#. module: aarsol_accounts
+#: model:ir.ui.view,arch_db:aarsol_accounts.ledger_summary
+msgid "<strong>Dimension:</strong>"
+msgstr "<strong>البعد:</strong>"
+
+#. module: aarsol_accounts
+#: model:ir.ui.view,arch_db:aarsol_accounts.ledger_summary
+msgid "<strong>From:</strong>"
+msgstr "<strong>من عند:</strong>"
+
+#. module: aarsol_accounts
+#: model:ir.ui.view,arch_db:aarsol_accounts.ledger_summary
+msgid "<strong>Interval:</strong>"
+msgstr "<strong>فترة:</strong>"
+
+#. module: aarsol_accounts
+#: model:ir.model,name:aarsol_accounts.model_account_account
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_payment_line_account_id
+#: model:ir.model.fields,field_description:aarsol_accounts.field_ledger_summary_report_account_id
+msgid "Account"
+msgstr "حساب"
+
+#. module: aarsol_accounts
+#: model:ir.model,name:aarsol_accounts.model_account_move
+msgid "Account Entry"
+msgstr "قيد الحساب"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_account_account_section
+msgid "Account Section"
+msgstr "قسم الحسابات"
+
+#. module: aarsol_accounts
+#: model:ir.model,name:aarsol_accounts.model_account_section
+msgid "Account Sections"
+msgstr "أقسام حساب"
+
+#. module: aarsol_accounts
+#: model:ir.ui.view,arch_db:aarsol_accounts.account_payment_line_form
+msgid "Accounting Dimensions"
+msgstr "المحاسبة الأبعاد"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_report_general_ledger_account_ids
+msgid "Accounts"
+msgstr "الحسابات"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_auto_dimensions_entry_active
+msgid "Active"
+msgstr "نشط"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_move_line_section_separator
+msgid "Add separator"
+msgstr "إضافة فاصل "
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_payment_line_amount
+msgid "Amount"
+msgstr "المبلغ"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_payment_line_amount_currency
+msgid "Amount currency"
+msgstr "مبلغ العملة"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_move_line_analytic_dimensions
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_payment_line_analytic_dimensions
+#: model:ir.ui.menu,name:aarsol_accounts.menu_analytic_config_root
+msgid "Analytic Dimensions"
+msgstr "التحليل الأبعاد"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_ledger_dimension_lines_code_id
+msgid "Analytic Value"
+msgstr "القيمة التحليلية"
+
+#. module: aarsol_accounts
+#: selection:account.move,voucher_type:0
+msgid "Asset Voucher"
+msgstr "قسيمة الأصول"
+
+#. module: aarsol_accounts
+#: model:ir.actions.act_window,name:aarsol_accounts.act_auto_dimensions_entry
+#: model:ir.ui.menu,name:aarsol_accounts.menu_analytic_auto_dimensions_entry
+#: model:ir.ui.view,arch_db:aarsol_accounts.view_auto_dimensions_entry_tree
+msgid "Auto Dimensions Entry"
+msgstr "السيارات الأبعاد الدخول"
+
+#. module: aarsol_accounts
+#: selection:ledger.summary.report,display_att:0
+msgid "Balance"
+msgstr "توازن"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_move_line_d_bin
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_payment_line_d_bin
+msgid "Binary Dimension"
+msgstr "البعد الثنائي"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_res_partner_analytic_code_id
+msgid "Bound Analytic Code"
+msgstr "منضم كود تحليلية"
+
+#. module: aarsol_accounts
+#: model:ir.ui.view,arch_db:aarsol_accounts.ledger_summary_report_view
+#: model:ir.ui.view,arch_db:aarsol_accounts.view_partner_statement_wizard
+msgid "Cancel"
+msgstr "إلغاء"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_move_line_section_code
+#: model:ir.model.fields,field_description:aarsol_accounts.field_res_partner_code
+msgid "Code"
+msgstr "الكود"
+
+#. module: aarsol_accounts
+#: model:ir.ui.menu,name:aarsol_accounts.menu_analytic_code
+msgid "Codes"
+msgstr "رموز"
+
+#. module: aarsol_accounts
+#: model:ir.model,name:aarsol_accounts.model_res_company
+msgid "Companies"
+msgstr "المؤسسات"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_payment_line_company_id
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_payment_user_company_id
+msgid "Company"
+msgstr "المؤسسة"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_move_name_color
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_payment_name_color
+msgid "Company Name Color"
+msgstr "Company Name Color"
+
+#. module: aarsol_accounts
+#: code:addons/aarsol_accounts/models/dimensions.py:583
+#: code:addons/aarsol_accounts/models/dimensions.py:585
+#, python-format
+msgid "Configuration Error !"
+msgstr "Configuration Error !"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_move_line_section_create_uid
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_payment_line_create_uid
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_section_create_uid
+#: model:ir.model.fields,field_description:aarsol_accounts.field_auto_dimensions_entry_create_uid
+#: model:ir.model.fields,field_description:aarsol_accounts.field_ledger_dimension_create_uid
+#: model:ir.model.fields,field_description:aarsol_accounts.field_ledger_dimension_lines_create_uid
+#: model:ir.model.fields,field_description:aarsol_accounts.field_ledger_summary_report_create_uid
+#: model:ir.model.fields,field_description:aarsol_accounts.field_partner_statement_wizard_create_uid
+msgid "Created by"
+msgstr "أنشئ بواسطة"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_move_line_section_create_date
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_payment_line_create_date
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_section_create_date
+#: model:ir.model.fields,field_description:aarsol_accounts.field_auto_dimensions_entry_create_date
+#: model:ir.model.fields,field_description:aarsol_accounts.field_ledger_dimension_create_date
+#: model:ir.model.fields,field_description:aarsol_accounts.field_ledger_dimension_lines_create_date
+#: model:ir.model.fields,field_description:aarsol_accounts.field_ledger_summary_report_create_date
+#: model:ir.model.fields,field_description:aarsol_accounts.field_partner_statement_wizard_create_date
+msgid "Created on"
+msgstr "أنشئ في"
+
+#. module: aarsol_accounts
+#: selection:ledger.summary.report,display_att:0
+msgid "Credit"
+msgstr "رصيد"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_payment_line_company_currency_id
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_payment_line_currency_id
+msgid "Currency"
+msgstr "العملة"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_move_cust_color
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_payment_cust_color
+msgid "Customer Name Color"
+msgstr "Customer Name Color"
+
+#. module: aarsol_accounts
+#: code:addons/aarsol_accounts/models/dimensions.py:496
+#, python-format
+msgid "Customer Payment"
+msgstr "دفع العملاءء"
+
+#. module: aarsol_accounts
+#: code:addons/aarsol_accounts/models/dimensions.py:498
+#, python-format
+msgid "Customer Refund"
+msgstr "رد العملاء"
+
+#. module: aarsol_accounts
+#: selection:ledger.summary.report,display_att:0
+msgid "Debit"
+msgstr "دين"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_ledger_dimension_name
+#: model:ir.ui.view,arch_db:aarsol_accounts.account_payment_line_form
+#: model:ir.ui.view,arch_db:aarsol_accounts.view_account_payment_form_journal
+#: model:ir.ui.view,arch_db:aarsol_accounts.view_move_form
+msgid "Description"
+msgstr "الوصف"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_auto_dimensions_entry_dst_col
+msgid "Destination Field"
+msgstr "Destination Field"
+
+#. module: aarsol_accounts
+#: model:ir.ui.view,arch_db:aarsol_accounts.ledger_summary
+msgid "Difference"
+msgstr "فرق"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_ledger_dimension_lines_nd_id
+#: model:ir.model.fields,field_description:aarsol_accounts.field_ledger_summary_report_dimension_id
+#: model:ir.ui.view,arch_db:aarsol_accounts.ledger_summary
+msgid "Dimension"
+msgstr "الأبعاد"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_auto_dimensions_entry_dimension_id
+msgid "Dimension id"
+msgstr "البعد معرف"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_report_general_ledger_dimension_ids
+#: model:ir.model.fields,field_description:aarsol_accounts.field_ledger_dimension_ac_lines
+#: model:ir.ui.menu,name:aarsol_accounts.menu_analytic_dimension
+msgid "Dimensions"
+msgstr "الأبعاد"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_ledger_summary_report_display_att
+msgid "Display Attribute"
+msgstr "عرض سمة"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_move_line_section_display_name
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_payment_line_display_name
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_section_display_name
+#: model:ir.model.fields,field_description:aarsol_accounts.field_auto_dimensions_entry_display_name
+#: model:ir.model.fields,field_description:aarsol_accounts.field_ledger_dimension_display_name
+#: model:ir.model.fields,field_description:aarsol_accounts.field_ledger_dimension_lines_display_name
+#: model:ir.model.fields,field_description:aarsol_accounts.field_ledger_summary_report_display_name
+#: model:ir.model.fields,field_description:aarsol_accounts.field_partner_statement_wizard_display_name
+#: model:ir.model.fields,field_description:aarsol_accounts.field_report_aarsol_accounts_ledger_summary_display_name
+#: model:ir.model.fields,field_description:aarsol_accounts.field_report_aarsol_accounts_partner_statement_display_name
+msgid "Display Name"
+msgstr "اسم العرض"
+
+#. module: aarsol_accounts
+#: code:addons/aarsol_accounts/models/dimensions.py:393
+#, python-format
+msgid "Either pass both debit and credit or none."
+msgstr "Either pass both debit and credit or none."
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_partner_statement_wizard_date_to
+msgid "End Date"
+msgstr "تاريخ الإنتهاء"
+
+#. module: aarsol_accounts
+#: code:addons/aarsol_accounts/wizard/ledger_summary.py:30
+#, python-format
+msgid "For Month Interval, the Interval Count should be between 2 and 12"
+msgstr "لشهر الفاصل الزمني، ينبغي أن يكون عدد الفاصل الزمني بين 2 و 12"
+
+#. module: aarsol_accounts
+#: model:ir.model,name:aarsol_accounts.model_account_report_general_ledger
+msgid "General Ledger Report"
+msgstr "تقرير الأستاذ العام"
+
+#. module: aarsol_accounts
+#: selection:account.move,voucher_type:0
+msgid "General Voucher"
+msgstr "قسيمة عامة"
+
+#. module: aarsol_accounts
+#: model:ir.ui.view,arch_db:aarsol_accounts.view_partner_statement_wizard
+msgid "Generate Partner Statement"
+msgstr "توليد بيان شريك"
+
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_payment_line_narration
+msgid "Internal Note"
+msgstr "ملاحظة داخلية"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_ledger_summary_report_interval
+msgid "Interval"
+msgstr "فترة"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_ledger_summary_report_interval_count
+msgid "Interval Count"
+msgstr "عدد الفاصل"
+
+#. module: aarsol_accounts
+#: model:ir.model,name:aarsol_accounts.model_account_invoice
+msgid "Invoice"
+msgstr "الفاتورة"
+
+#. module: aarsol_accounts
+#: model:ir.ui.view,arch_db:aarsol_accounts.view_move_form_customized
+msgid "Invoice Report Settings"
+msgstr "إعدادات تقرير الفاتورة"
+
+#. module: aarsol_accounts
+#: code:addons/aarsol_accounts/models/dimensions.py:391
+#, python-format
+msgid "It is mandatory to specify an account and a journal to create a write-off."
+msgstr "It is mandatory to specify an account and a journal to create a write-off."
+
+#. module: aarsol_accounts
+#: model:ir.actions.report.xml,name:aarsol_accounts.report_journal_entry
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_payment_line_move_id
+msgid "Journal Entry"
+msgstr "قيد يومية"
+
+#. module: account
+#: model:ir.ui.view,arch_db:account.view_move_line_form
+msgid "-> View reconciled entries"
+msgstr "مشاهدة مقالات توفيق"
+
+
+#. module: aarsol_accounts
+#: model:ir.model,name:aarsol_accounts.model_account_move_line
+msgid "Journal Item"
+msgstr "عنصر يومية"
+
+#. module: aarsol_accounts
+#: model:ir.ui.view,arch_db:aarsol_accounts.view_move_form
+msgid "Journal Items"
+msgstr "عناصر اليومية"
+
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_payment_line_name
+msgid "Label"
+msgstr "تسمية"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_move_line_section___last_update
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_payment_line___last_update
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_section___last_update
+#: model:ir.model.fields,field_description:aarsol_accounts.field_auto_dimensions_entry___last_update
+#: model:ir.model.fields,field_description:aarsol_accounts.field_ledger_dimension___last_update
+#: model:ir.model.fields,field_description:aarsol_accounts.field_ledger_dimension_lines___last_update
+#: model:ir.model.fields,field_description:aarsol_accounts.field_ledger_summary_report___last_update
+#: model:ir.model.fields,field_description:aarsol_accounts.field_partner_statement_wizard___last_update
+#: model:ir.model.fields,field_description:aarsol_accounts.field_report_aarsol_accounts_ledger_summary___last_update
+#: model:ir.model.fields,field_description:aarsol_accounts.field_report_aarsol_accounts_partner_statement___last_update
+msgid "Last Modified on"
+msgstr "آخر تعديل في"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_move_line_section_write_uid
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_payment_line_write_uid
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_section_write_uid
+#: model:ir.model.fields,field_description:aarsol_accounts.field_auto_dimensions_entry_write_uid
+#: model:ir.model.fields,field_description:aarsol_accounts.field_ledger_dimension_lines_write_uid
+#: model:ir.model.fields,field_description:aarsol_accounts.field_ledger_dimension_write_uid
+#: model:ir.model.fields,field_description:aarsol_accounts.field_ledger_summary_report_write_uid
+#: model:ir.model.fields,field_description:aarsol_accounts.field_partner_statement_wizard_write_uid
+msgid "Last Updated by"
+msgstr "آخر تحديث بواسطة"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_move_line_section_write_date
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_payment_line_write_date
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_section_write_date
+#: model:ir.model.fields,field_description:aarsol_accounts.field_auto_dimensions_entry_write_date
+#: model:ir.model.fields,field_description:aarsol_accounts.field_ledger_dimension_lines_write_date
+#: model:ir.model.fields,field_description:aarsol_accounts.field_ledger_dimension_write_date
+#: model:ir.model.fields,field_description:aarsol_accounts.field_ledger_summary_report_write_date
+#: model:ir.model.fields,field_description:aarsol_accounts.field_partner_statement_wizard_write_date
+msgid "Last Updated on"
+msgstr "آخر تحديث في"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_ledger_dimension_lines_ac_id
+#: model:ir.ui.view,arch_db:aarsol_accounts.ledger_dimension_view
+msgid "Ledger Dimension"
+msgstr "دفتر الأستاذ البعد"
+
+#. module: aarsol_accounts
+#: model:ir.ui.view,arch_db:aarsol_accounts.ledger_dimension_view
+msgid "Ledger Dimensions"
+msgstr "دفتر الأستاذ الأبعاد"
+
+#. module: aarsol_accounts
+#: model:ir.actions.act_window,name:aarsol_accounts.action_legder_summary_report
+#: model:ir.actions.report.xml,name:aarsol_accounts.ledgersummary
+#: model:ir.ui.menu,name:aarsol_accounts.menu_legder_summary_report
+#: model:ir.ui.view,arch_db:aarsol_accounts.ledger_summary
+msgid "Ledger Summary Report"
+msgstr "دفتر الأستاذ تقرير موجز"
+
+#. module: aarsol_accounts
+#: model:ir.model,name:aarsol_accounts.model_ledger_summary_report
+#: model:ir.ui.view,arch_db:aarsol_accounts.ledger_summary_report_view
+msgid "Ledger Summary Report Wizard"
+msgstr "معالج تقرير ليدجر موجز"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_move_invoice_logo
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_payment_invoice_logo
+msgid "Logo"
+msgstr "الشعار"
+
+#. module: aarsol_accounts
+#: selection:ledger.summary.report,interval:0
+msgid "Month"
+msgstr "شهر"
+
+#. module: aarsol_accounts
+#: code:addons/aarsol_accounts/models/dimensions.py:543
+#, python-format
+msgid "Only a draft payment can be posted. Trying to post a payment in state %s."
+msgstr "Only a draft payment can be posted. Trying to post a payment in state %s."
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_payment_line_payment_id
+msgid "Originator Payment"
+msgstr "Originator Payment"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_section_parent_id
+msgid "Parent Section"
+msgstr "حساب الاب "
+
+#. module: aarsol_accounts
+#: model:ir.model,name:aarsol_accounts.model_res_partner
+#: model:ir.model.fields,field_description:aarsol_accounts.field_partner_statement_wizard_partner_id
+msgid "Partner"
+msgstr "الشريك"
+
+#. module: aarsol_accounts
+#: model:ir.ui.view,arch_db:aarsol_accounts.partner_statement
+msgid "Partner Ledger"
+msgstr "شريك ليدجر"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_payment_line_ref
+msgid "Partner Reference"
+msgstr "المرجع شريك"
+
+#. module: aarsol_accounts
+#: model:ir.actions.act_window,name:aarsol_accounts.act_partner_statement_wizard
+#: model:ir.actions.report.xml,name:aarsol_accounts.partnerstatement
+msgid "Partner Statement"
+msgstr "بيان شريك"
+
+#. module: aarsol_accounts
+#: model:ir.ui.view,arch_db:aarsol_accounts.view_partner_statement_wizard
+msgid "Partner Statement Wizard"
+msgstr "معالج بيان شريك"
+
+#. module: aarsol_accounts
+#: model:ir.ui.view,arch_db:aarsol_accounts.account_payment_line_form
+msgid "Payment Entry"
+msgstr "دفع الدخول"
+
+#. module: aarsol_accounts
+#: model:ir.ui.view,arch_db:aarsol_accounts.account_payment_line_form
+msgid "Payment Line"
+msgstr "خط الدفع"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_payment_payment_lines
+#: model:ir.ui.view,arch_db:aarsol_accounts.view_account_payment_form_journal
+msgid "Payment Lines"
+msgstr "خطوط الدفع"
+
+#. module: aarsol_accounts
+#: model:ir.ui.view,arch_db:aarsol_accounts.view_account_payment_form_rep
+msgid "Payment Report Settings"
+msgstr "إعدادات الدفع تقرير"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_payment_template_id
+#: model:ir.model.fields,field_description:aarsol_accounts.field_res_company_template_payment
+msgid "Payment Template"
+msgstr "Payment Template"
+
+#. module: aarsol_accounts
+#: selection:account.move,voucher_type:0
+msgid "Payment Voucher"
+msgstr "Payment Voucher"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,help:aarsol_accounts.field_account_payment_line_payment_id
+msgid "Payment that created this entry"
+msgstr "Payment that created this entry"
+
+#. module: aarsol_accounts
+#: model:ir.model,name:aarsol_accounts.model_account_payment
+msgid "Payments"
+msgstr "المدفوعات"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_move_picking_id
+msgid "Picking"
+msgstr "Picking"
+
+#. module: aarsol_accounts
+#: code:addons/aarsol_accounts/models/dimensions.py:247
+#, python-format
+msgid "Please define a sequence on the journal."
+msgstr "Please define a sequence on the journal."
+
+#. module: aarsol_accounts
+#: model:ir.ui.view,arch_db:aarsol_accounts.ledger_summary_report_view
+msgid "Print"
+msgstr "طباعة"
+
+#. module: aarsol_accounts
+#: selection:account.move,voucher_type:0
+msgid "Receipt Voucher"
+msgstr "Receipt Voucher"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_account_nd_ids
+msgid "Related Dimension"
+msgstr "مرتبط وضع الأبعاد"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_move_line_section_id
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_move_line_section_name
+msgid "Section"
+msgstr "القسم"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_section_code
+msgid "Section Code"
+msgstr "رقم الحساب"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_section_name
+msgid "Section Name"
+msgstr "اسم القسم"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_move_line_section_sequence
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_move_line_sequence
+#: model:ir.model.fields,field_description:aarsol_accounts.field_auto_dimensions_entry_sequence
+msgid "Sequence"
+msgstr "المسلسل"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_auto_dimensions_entry_src_col
+msgid "Source Field"
+msgstr "Source Field"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_auto_dimensions_entry_src_fnc
+msgid "Source Function"
+msgstr "Source Function"
+
+#. module: aarsol_accounts
+#: model:ir.ui.view,arch_db:aarsol_accounts.ledger_summary
+msgid "Sr."
+msgstr "Sr."
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_partner_statement_wizard_date_from
+msgid "Start Date"
+msgstr "تاريخ البدء"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_ledger_summary_report_date_start
+msgid "Starting Month"
+msgstr "شهر ابتداء من"
+
+#. module: aarsol_accounts
+#: selection:account.move,voucher_type:0
+msgid "Stock Voucher"
+msgstr "Stock Voucher"
+
+#. module: aarsol_accounts
+#: model:ir.ui.menu,name:aarsol_accounts.menu_analytic_structure
+msgid "Structures"
+msgstr "الهياكل"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_move_text_color
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_payment_text_color
+msgid "Text Color"
+msgstr "Text Color"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,help:aarsol_accounts.field_account_move_theme_color
+msgid "The Main Theme color of the Journal. Normally this should be one of your official company colors"
+msgstr "The Main Theme color of the Journal. Normally this should be one of your official company colors"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,help:aarsol_accounts.field_account_payment_theme_color
+msgid "The Main Theme color of the Payment. Normally this should be one of your official company colors"
+msgstr "The Main Theme color of the Payment. Normally this should be one of your official company colors"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,help:aarsol_accounts.field_account_move_name_color
+#: model:ir.model.fields,help:aarsol_accounts.field_account_payment_name_color
+msgid "The Text color of the Company Name. Normally this should be one of your official company colors or default HTML text color"
+msgstr "The Text color of the Company Name. Normally this should be one of your official company colors or default HTML text color"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,help:aarsol_accounts.field_account_move_cust_color
+#: model:ir.model.fields,help:aarsol_accounts.field_account_payment_cust_color
+msgid "The Text color of the Customer Name. Normally this should be one of your official company colors or default HTML text color"
+msgstr "The Text color of the Customer Name. Normally this should be one of your official company colors or default HTML text color"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,help:aarsol_accounts.field_account_move_text_color
+msgid "The Text color of the Journal. Normally this should be one of your official company colors or default HTML text color"
+msgstr "The Text color of the Journal. Normally this should be one of your official company colors or default HTML text color"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,help:aarsol_accounts.field_account_payment_text_color
+msgid "The Text color of the Payment. Normally this should be one of your official company colors or default HTML text color"
+msgstr "The Text color of the Payment. Normally this should be one of your official company colors or default HTML text color"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,help:aarsol_accounts.field_account_move_theme_txt_color
+#: model:ir.model.fields,help:aarsol_accounts.field_account_payment_theme_txt_color
+msgid "The Text color of the areas with theme color. This should not be the same the theme color"
+msgstr "The Text color of the areas with theme color. This should not be the same the theme color"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,help:aarsol_accounts.field_account_payment_line_amount_currency
+msgid "The amount expressed in an optional other currency if it is a multi-currency entry."
+msgstr "The amount expressed in an optional other currency if it is a multi-currency entry."
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,help:aarsol_accounts.field_account_move_even
+msgid "The background color for Even lines in the Journal"
+msgstr "The background color for Even lines in the Journal"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,help:aarsol_accounts.field_account_payment_even
+msgid "The background color for Even lines in the Payment"
+msgstr "The background color for Even lines in the Payment"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,help:aarsol_accounts.field_account_move_odd
+msgid "The background color for Odd lines in the Journal"
+msgstr "The background color for Odd lines in the Journal"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,help:aarsol_accounts.field_account_payment_odd
+msgid "The background color for Odd lines in the Payment"
+msgstr "The background color for Odd lines in the Payment"
+
+#. module: aarsol_accounts
+#: code:addons/aarsol_accounts/models/dimensions.py:583
+#, python-format
+msgid "The journal %s does not have a sequence, please specify one."
+msgstr "The journal %s does not have a sequence, please specify one."
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,help:aarsol_accounts.field_account_payment_line_move_id
+msgid "The move of this entry line."
+msgstr "The move of this entry line."
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,help:aarsol_accounts.field_account_payment_line_currency_id
+msgid "The optional other currency if it is a multi-currency entry."
+msgstr "The optional other currency if it is a multi-currency entry."
+
+#. module: aarsol_accounts
+#: code:addons/aarsol_accounts/models/dimensions.py:546
+#, python-format
+msgid "The payment cannot be processed because the invoice is not open!"
+msgstr "The payment cannot be processed because the invoice is not open!"
+
+#. module: aarsol_accounts
+#: code:addons/aarsol_accounts/models/dimensions.py:585
+#, python-format
+msgid "The sequence of journal %s is deactivated."
+msgstr "The sequence of journal %s is deactivated."
+
+#. module: aarsol_accounts
+#: model:ir.ui.view,arch_db:aarsol_accounts.view_account_payment_form_journal
+msgid "Total Amount"
+msgstr "إجمالي المبلغ"
+
+#. module: aarsol_accounts
+#: model:ir.ui.view,arch_db:aarsol_accounts.view_move_form
+msgid "Total Credit"
+msgstr "إجمالي الائتمان"
+
+#. module: aarsol_accounts
+#: model:ir.ui.view,arch_db:aarsol_accounts.view_move_form
+msgid "Total Debit"
+msgstr "إجمالي الخصم"
+
+#. module: aarsol_accounts
+#: model:ir.ui.view,arch_db:aarsol_accounts.ledger_summary
+msgid "Totals"
+msgstr "المجاميع"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_payment_user_id
+msgid "User"
+msgstr "المستخدم"
+
+#. module: aarsol_accounts
+#: code:addons/aarsol_accounts/models/dimensions.py:503
+#, python-format
+msgid "Vendor Payment"
+msgstr "بائع الدفع"
+
+#. module: aarsol_accounts
+#: code:addons/aarsol_accounts/models/dimensions.py:501
+#, python-format
+msgid "Vendor Refund"
+msgstr "بائع استرداد الأموال"
+
+#. module: aarsol_accounts
+#: model:ir.model.fields,field_description:aarsol_accounts.field_account_move_voucher_type
+msgid "Voucher Type"
+msgstr "نوع القسيمة"
+
+#. module: aarsol_accounts
+#: code:addons/aarsol_accounts/models/dimensions.py:397
+#, python-format
+msgid "Write-Off"
+msgstr "لا تصلح"
+
+

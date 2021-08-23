@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_partner_form" model="ir.ui.view">
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="before">
+                <header>
+                    <button name="add_email_blacklist" type="object" string="Add email to blacklist"
+                        class="oe_highlight" help="Add the partner email to blackclist"
+                        attrs="{'invisible':[('is_blacklisted', '=', True)]}"/>
+                    <button name="remove_email_blacklist" type="object" string="Remove email of blacklist"
+                        class="oe_highlight" help="Remove partner email of blackclist"
+                        attrs="{'invisible':[('is_blacklisted', '=', False)]}"/>
+                </header>
+            </xpath>
+        </field>
+    </record>
+</odoo>

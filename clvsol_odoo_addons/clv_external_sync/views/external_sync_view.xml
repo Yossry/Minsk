@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="clv_external_sync_view_form" model="ir.ui.view">
+        <field name="name">clv.external_sync.form</field>
+        <field name="model">clv.external_sync</field>
+        <field name="arch" type="xml">
+            <form string="External Sync">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="model"/>
+                            <field name="res_id"/>
+                            <field name="res_last_update"/>
+                            <field name="reference" widget="reference"/>
+                            <field name="reference_name"/>
+                        </group>
+                        <group>
+                            <field name="external_model"/>
+                            <field name="external_id"/>
+                            <field name="external_last_update"/>
+                            <field name="external_sync"/>
+                        </group>
+                        <group>
+                            <field name="id"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="clv_external_sync_view_tree" model="ir.ui.view">
+        <field name="name">clv.external_sync.tree</field>
+        <field name="model">clv.external_sync</field>
+        <field name="arch" type="xml">
+            <tree string="External Sync">
+                <field name="model"/>
+                <field name="res_id"/>
+                <field name="res_last_update"/>
+                <field name="reference"/>
+                <field name="reference_name"/>
+                <field name="external_model"/>
+                <field name="external_id"/>
+                <field name="external_last_update"/>
+                <field name="external_sync"/>
+                <field name="id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="clv_external_sync_view_search" model="ir.ui.view">
+        <field name="name">clv.external_sync.search</field>
+        <field name="model">clv.external_sync</field>
+        <field name="arch" type="xml">
+            <search string="External Sync">
+                <field name="external_model"/>
+                <field name="model"/>
+                <field name="res_id"/>
+                <field name="reference"/>
+                <field name="reference_name"/>
+                <field name="external_sync"/>
+                <field name="id"/>
+                <group name="group_by" expand="0" string="Group By...">
+                    <filter name="filter_external_model" string="External Model Name" domain="[]" context="{'group_by':'external_model'}"/>
+                    <filter name="filter_model" string="Model Name" domain="[]" context="{'group_by':'model'}"/>
+                    <filter name="filter_reference" string="Reference" domain="[]" context="{'group_by':'reference'}"/>
+                    <filter name="filter_reference_name" string="Reference Name" domain="[]" context="{'group_by':'reference_name'}"/>
+                    <filter name="filter_external_sync" string="External Synchronization" context="{'group_by': 'external_sync'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="clv_external_sync_action">
+        <field name="name">External Syncs</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">clv.external_sync</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

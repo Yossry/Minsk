@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+	<template id ="report_ablincentive">
+		<t t-call="web.html_container">
+				<t t-call="web.external_layout" style="font-family:georgia,garamond,serif;font-size:10px">
+					<div class="page">
+						<style>
+								.tabhead{font-family:georgia,garamond,serif;font-size:14px;}
+								.tabcol{font-family:georgia,garamond,serif;font-size:13px;}
+								table th { background-color:#d4e3e5;}
+								tr:nth-child(even) {background-color: #FFEBCD;}
+								tr:nth-child(odd) {background-color: #cdcdcd;}
+						</style>
+						<div width="100%"><center><h3>ABL Incentive Report</h3></center> </div>
+						<table class="table" width="100%">
+							<tr class="tabcol">
+								<td class="text-center">
+									<h3> From
+									<span t-esc="get_date_formate(data['date_from'])" />
+									To
+									<span t-esc="get_date_formate(data['date_to'])" />
+									</h3> 
+								</td>
+							</tr>
+						</table>
+							<table class="table" width="100%">
+								<thead>
+									<tr class="tabhead">
+										<th>Sr.No</th>
+										<th>Employee ID</th>
+										<th>Employee Name</th>
+										<th>Post</th>
+										<th>Days</th>
+										<th>Amount </th>
+									</tr>
+								</thead>
+								<tbody>
+									<t t-foreach="PayslipLines" t-as="line">
+										<tr class="tabcol">
+											<td>
+												<span t-esc="line_index + 1" />
+											</td>
+											<td>
+												<span t-esc="line.employee_id.code" />
+											</td>
+											<td>
+												<span t-esc="line.employee_id.name_related" />
+											</td>
+											<td>
+												<span t-esc="Post(line.slip_id.id,line.employee_id.id)" />
+											</td>
+											<td>
+												<span t-esc="Days(line.slip_id.id,line.employee_id.id)" />
+											</td>
+											<td>
+												<span t-esc="line.total" />
+											</td>
+										</tr>
+									</t>
+								</tbody>	
+							</table>
+							<div style="width:400px;background:#d4e3e5; margin-left:400px;"><h4>Total:<span style="margin-left:250px;" t-esc="total_amount" /></h4></div>
+					</div>
+				</t>
+		</t>
+	</template>
+	
+	</data>
+</odoo>

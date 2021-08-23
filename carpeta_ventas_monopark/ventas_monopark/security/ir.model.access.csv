@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_tiempo_entrega,tiempo.entrega,model_tiempo_entrega,,1,1,1,1
+access_obser_sale,obser.sale,model_obser_sale,,1,1,1,1

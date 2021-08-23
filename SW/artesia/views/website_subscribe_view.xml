@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<!-- Website Subscribe Tree View -->
+    <record id="website_subscribe_tree_view" model="ir.ui.view">
+        <field name="name">website.subscribe</field>
+        <field name="model">website.subscribe</field>
+        <field name="arch" type="xml">
+            <tree editable="top">
+                <field name="name" required="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Website Subscribe action -->
+    <record id="website_subscribe_action" model="ir.actions.act_window">
+        <field name="name">Subscribe</field>
+        <field name="res_model">website.subscribe</field>
+        <field name="view_mode">tree</field>
+        <field name="view_type">form</field>
+        <field name="view_id" ref="website_subscribe_tree_view"/>
+    </record>
+
+    <!-- Website Subscribe Menu -->
+    <menuitem id="website_subscribe_menu" name="Subscribe" parent="website.menu_website_configuration" sequence="5" action="website_subscribe_action"/>
+
+</odoo>

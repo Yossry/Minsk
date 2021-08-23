@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>	
+		<template id ="sos_uniform.report_weaponprojectall">
+			<t t-call="web.html_container">
+				<t t-call="web.external_layout" style="font-family:georgia,garamond,serif;font-size:10px">
+					<div class="page">
+						<style>
+							 tr:nth-child(even) {background-color: #FFEBCD;}
+							 tr:nth-child(odd) {background-color: #cdcdcd;}
+						</style>
+						
+						<h4>Weapons Project Wise Report </h4>
+						<h5>
+							From: <span t-esc="get_date_formate(data['date_from'])"/><br></br>
+							To: <span t-esc="get_date_formate(data['date_to'])"/><br></br>
+						</h5>
+						
+						<table class="table table-condensed" width="100%">
+							
+							<tr style="font-size:12px; font-weight:bold; background-color:#E5E8E8;">
+								<td colspan="2"> DATE: </td>
+								<td colspan="20" style="text-align:left;">
+									<t t-esc="context_timestamp(datetime.datetime.now()).strftime('%H:%M:%S')"/> </td>
+								
+							</tr>
+							
+							<tr>
+								<td colspan="3"  style="border:1px solid;"> </td>
+								<td colspan="9" style="text-align:center;font-size:12px; font-weight:bold; border:1px solid">Weapons </td>
+								<td colspan="9" style="text-align:center;font-size:12px; font-weight:bold; border:1px solid">Rounds </td>
+								<td style="border:1px solid"> </td>
+							</tr>
+							
+							
+							<tr style="font-size:10px; font-weight:bold; background-color:#A6ACAF;">
+								<td>SR#. </td>
+								<td>Project </td>
+								<td>Guards </td>
+								<td>32 Bore </td>
+								<td>30 Bore </td>
+								<td>12 Bore </td>
+								<td>222 Bore </td>
+								<td>44 Bore </td>
+								<td>7 MM </td>
+								<td>8 MM </td>
+								<td>9MM </td>
+								<td>MP-5 </td>
+								
+								<td>32 Bore </td>
+								<td>30 Bore </td>
+								<td>12 Bore </td>
+								<td>222 Bore </td>
+								<td>44 Bore </td>
+								<td>7 MM </td>
+								<td>8 MM </td>
+								<td>9MM </td>
+								<td>MP-5 </td>
+								<td>Shilling </td>
+							</tr>
+							
+							<t t-foreach="Projects" t-as="line">
+						 		<tr style="font-size:10px;">
+						 			<td> <span t-esc="line_index + 1" /> </td>
+						 			<td> <span t-esc="line['project_name']" /> </td>
+						 			<td> <span t-esc="line['project_guards']" /> </td>
+						 			<td> <span t-esc="line['bore_32']" /> </td>
+						 			<td> <span t-esc="line['bore_30']" /> </td>
+						 			<td> <span t-esc="line['bore_12']" /> </td>
+						 			<td> <span t-esc="line['bore_222']" /> </td>
+						 			<td> <span t-esc="line['bore_44']" /> </td>
+						 			<td> <span t-esc="line['mm_7']" /> </td>
+						 			<td> <span t-esc="line['mm_8']" /> </td>
+						 			<td> <span t-esc="line['mm_9']" /> </td>
+						 			<td> <span t-esc="line['mp_5']" /> </td>
+						 			
+						 			<td> <span t-esc="line['bore_32_rounds']" /> </td>
+						 			<td> <span t-esc="line['bore_30_rounds']" /> </td>
+						 			<td> <span t-esc="line['bore_12_rounds']" /> </td>
+						 			<td> <span t-esc="line['bore_222_rounds']" /> </td>
+						 			<td> <span t-esc="line['bore_44_rounds']" /> </td>
+						 			<td> <span t-esc="line['mm_7_rounds']" /> </td>
+						 			<td> <span t-esc="line['mm_8_rounds']" /> </td>
+						 			<td> <span t-esc="line['mm_9_rounds']" /> </td>
+						 			<td> <span t-esc="line['mp_5_rounds']" /> </td>
+						 			
+						 			<td> <span t-esc="line['shilling']" /> </td>
+						 		</tr>
+							 </t>
+							 
+							 <tr style="font-size:10px; font-weight:bold; background-color:#A6ACAF;">
+							 	<td colspan="3" style="text-align:center;"> TOTALS:</td>
+							 	<td><span t-esc="Bore32" /> </td>
+							 	<td><span t-esc="Bore30" /> </td>
+							 	<td><span t-esc="Bore12" /> </td>
+							 	<td><span t-esc="Bore222" /> </td>
+							 	<td><span t-esc="Bore44" /> </td>
+							 	<td><span t-esc="MM7" /> </td>
+							 	<td><span t-esc="MM8" /> </td>
+							 	<td><span t-esc="MM9" /> </td>
+							 	<td><span t-esc="MP5" /> </td>
+							 	
+							 	<td><span t-esc="Rounds32" /> </td>
+							 	<td><span t-esc="Rounds30" /> </td>
+							 	<td><span t-esc="Rounds12" /> </td>
+							 	<td><span t-esc="Rounds222" /> </td>
+							 	<td><span t-esc="Rounds44" /> </td>
+							 	<td><span t-esc="Rounds7" /> </td>
+							 	<td><span t-esc="Rounds8" /> </td>
+							 	<td><span t-esc="Rounds9" /> </td>
+							 	<td><span t-esc="Rounds5" /> </td>
+							 	
+							 	<td><span t-esc="Shilling" /> </td>
+							 </tr>	
+								
+						</table>
+								
+					</div>
+				</t>		 
+			</t>
+		</template>
+		
+	</data>
+</odoo>
+

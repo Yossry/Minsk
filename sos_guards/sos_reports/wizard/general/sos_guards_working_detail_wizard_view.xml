@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="sos_guards_working_detail_wizard_view" model="ir.ui.view">
+        <field name="name">Guards Working Detail Report</field>
+        <field name="model">sos.guards.working.detail.wizard</field>
+        <field name="arch" type="xml">
+			<form string="Guards Working Detail Report Wizard">
+				
+				<notebook tabpos="up" colspan="4">    				                    
+					<page string="Project Filters" name="projects">
+						<separator string="Print only" colspan="4"/>
+						<field name="project_ids"  widget="many2many_tags" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>
+					</page>
+
+					<page string="Center Filters" name="centers">
+						<separator string="Print only" colspan="4"/>
+						<field name="center_ids"  widget="many2many_tags" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>
+					</page>
+					
+					<page string="Post Filters" name="centers">
+						<separator string="Print only" colspan="4"/>
+						<field name="post_ids"  widget="many2many_tags" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>
+					</page>
+				                    
+                </notebook>
+				
+				<footer>
+						<button icon="gtk-execute" string="Print" name="print_report" type="object" class="oe_highlight"  />
+						<button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+			</form>
+		</field>
+    </record>
+
+    <record id="action_guards_working_detail_wizard" model="ir.actions.act_window">
+            <field name="name">Guards Working Detail</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sos.guards.working.detail.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+    
+    
+</odoo>

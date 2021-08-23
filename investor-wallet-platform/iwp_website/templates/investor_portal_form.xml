@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2019-     Coop IT Easy SCRLfs <http://coopiteasy.be>
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+<odoo>
+
+    <template id="investor_details" name="Investor Details">
+        <t t-call="portal.portal_layout">
+            <t t-set="additional_title">Your Investor Details</t>
+            <h3 class="mt-4">Investor Details</h3>
+            <form method="post">
+                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                <p class="alert alert-danger" role="alert" t-if="form.errors.get('__all__')">
+                    <t t-esc="form.errors.get('__all__')"/>
+                </p>
+
+                <t t-foreach="form.fields" t-as="field_name">
+                    <t t-call="{{form.fields[field_name].template}}">
+                        <t t-set="name" t-value="field_name"/>
+                        <t t-set="field" t-value="form.fields[field_name]"/>
+                    </t>
+                </t>
+
+                <p class="alert alert-danger" role="alert" t-if="form.errors.get('__all__')">
+                    <t t-esc="form.errors.get('__all__')"/>
+                </p>
+
+                <div class="text-center oe_login_buttons pt-3">
+                    <button type="submit" class="btn btn-primary btn-block">
+                        Envoyer
+                    </button>
+                </div>
+            </form>
+        </t>
+    </template>
+
+
+    <template id="investor_company_details" name="Investor Company Details">
+        <t t-call="portal.portal_layout">
+            <t t-set="additional_title">Your Investor Details</t>
+            <h3 class="mt-4">Investor Details</h3>
+            <form method="post">
+                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                <h3 class="mt-4">Company</h3>
+                <p class="alert alert-danger" role="alert" t-if="form.errors.get('__all__')">
+                    <t t-esc="form.errors.get('__all__')"/>
+                </p>
+
+                <t t-foreach="form.fields" t-as="field_name">
+                    <h3 t-if="field_name == 'rep_firstname'">
+                        Representative
+                    </h3>
+                    <t t-call="{{form.fields[field_name].template}}">
+                        <t t-set="name" t-value="field_name"/>
+                        <t t-set="field" t-value="form.fields[field_name]"/>
+                    </t>
+                </t>
+
+                <p class="alert alert-danger" role="alert" t-if="form.errors.get('__all__')">
+                    <t t-esc="form.errors.get('__all__')"/>
+                </p>
+
+                <div class="text-center oe_login_buttons pt-3">
+                    <button type="submit" class="btn btn-primary btn-block">
+                        Envoyer
+                    </button>
+                </div>
+            </form>
+        </t>
+    </template>
+
+</odoo>

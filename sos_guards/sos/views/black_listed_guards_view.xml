@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data> 
+			<record model="ir.ui.view" id="sos_black_list_guards_view">
+			<field name="name">sos.black.list.guards.tree.view</field>
+			<field name="model">sos.black.list.guards</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Black Listed Guards">
+					<field name="name" />
+					<field name="cnic"/>
+					<field name="father_name"/>
+					<field name="father_cnic"/>
+					<field name="black_list_date"/>
+					<field name="city"/>
+					<field name="reason"/>
+					<field name="state"/>
+				</tree>
+			</field>
+		</record>
+
+
+		<record model="ir.ui.view" id="sos_black_list_guards_form_view">
+			<field name="name">sos.black.list.guards.form.view</field>
+			<field name="model">sos.black.list.guards</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">	
+				<form string="Black Listed Guards ">
+					<header>
+						<button name="list_approved" type="object" states="draft" string="Approved" class="oe_highlight"/>		
+						<field name="state" widget="statusbar" nolabel="1" />
+					</header>
+					<sheet>
+					<group>
+						<group>
+							<field name="name"/>
+							<field name="father_name"/>
+						</group>
+						<group>	
+							<field name="cnic" placeholder="e.g. 36303-6839001-7"/>
+							<field name="father_cnic" placeholder="e.g. 36303-6800391-1"/>
+						</group>
+						
+						<group>
+							<field name="black_list_company" placeholder="Black Listed By... company Name...."/>
+							<field name="black_list_date"/>
+						</group>
+						<group>	
+							<field name="date"/>
+							<field name="city" placeholder="City... Islamabad"/>
+							<field name="criminal_record" invisible="1"/>
+						</group>
+					</group>
+						<separator string="Reason of Black List:" />
+						<field name="reason" placeholder="Reason of Black List......."/>
+						<separator string="Comments If Any:" />
+						<field name="remarks" placeholder="Please Enter your Remarks about the Visit......."/>
+				</sheet>
+					<div class="oe_chatter">
+						<field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+						<field name="message_ids" widget="mail_thread" placeholder="Share a note..."/>
+		      		</div>
+				</form>
+			</field>
+		</record>
+		
+		
+		<record id="sos_black_list_guards_filter" model="ir.ui.view">
+		<field name="name">sos.black.list.guards.filter</field>
+		<field name="model">sos.black.list.guards</field>
+		<field name="arch" type="xml">
+			<search string="Black Listed Guards Filter">
+				<filter icon="terp-go-today"  string="Draft" name="draft" domain="[('state','=','draft')]" />			
+				<filter icon="terp-go-today"  string="Approve" name="approve" domain="[('state','=','approve')]" />
+				<field name="date"/>
+				<field name="black_list_date"/>
+				<field name="name"/>
+				<field name="father_name"/>
+				<field name="cnic"/>
+				<field name="father_cnic"/>
+				<field name="city"/>
+				<field name="criminal_record"/>
+				<separator/>
+					<group expand="0" string="Group By">
+						<filter string="Date" name="date" icon="terp-partner" domain="[]" context="{'group_by':'date'}"/>
+						<filter string="State" name="state" icon="terp-partner" domain="[]" context="{'group_by':'state'}"/>
+					</group>
+			</search>
+		</field>
+		</record>
+
+
+
+		<record id="sos_black_listed_guards_action" model="ir.actions.act_window">
+			<field name="name">Black Listed Guards</field>
+			<field name="res_model">sos.black.list.guards</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+					Click to create a new Visit.
+				</p>
+			</field>
+	</record>
+  
+    </data>
+</odoo>

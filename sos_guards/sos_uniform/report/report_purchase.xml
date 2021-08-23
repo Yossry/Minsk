@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>	
+		<template id ="sos_uniform.report_purchase">
+			<t t-call="web.html_container">
+				<t t-call="web.external_layout" style="font-family:georgia,garamond,serif;font-size:10px">
+					<div class="page">
+						<style>
+							 tr:nth-child(even) {background-color: #FFEBCD;}
+							 tr:nth-child(odd) {background-color: #cdcdcd;}
+						</style>
+						
+						<h4> Purchase Report </h4>
+						<h5>
+							From: <span t-esc="get_date_formate(data['date_from'])"/><br></br>
+							To: <span t-esc="get_date_formate(data['date_to'])"/><br></br>
+						</h5>
+						
+						<table class="table table-condensed" width="100%">
+							<tr style="font-size:12px; font-weight:bold; background-color:#E5E8E8;">
+								<td colspan="2"> DATE: </td>
+								<td colspan="5">
+									<t t-esc="context_timestamp(datetime.datetime.now()).strftime('%H:%M:%S')"/></td>
+								
+							</tr>
+							<tr style="font-size:10px; font-weight:bold; background-color:#A6ACAF;">
+								<td>SR#. </td>
+								<td>Date </td>
+								<td>Product </td>
+								<td>Qty </td>
+								<td>Supplier </td>
+								<td>Unit Price </td>
+								<td>Total Amount</td>
+							</tr>
+							
+							<t t-foreach="Purchases" t-as="purchase">
+								<tr>
+									<td> <span t-esc="purchase_index + 1" /> </td>
+									<td> <span t-field="purchase.date" t-field-options='{"format": "d-MM-y"}' /> </td>
+									<td> <span t-esc="purchase.product_id.product_tmpl_id.name" /> </td>
+									<td> <span t-esc="purchase.product_qty" /> </td>
+									<td> <span t-esc="purchase.picking_id.partner_id.name" /> </td>
+									<td> <span t-esc="purchase.purchase_line_id.price_unit" /> </td>
+									<td> <span t-esc="purchase.purchase_line_id.price_subtotal" /> </td>
+								</tr>
+							</t>
+							
+						</table>			
+					</div>
+				</t>		 
+			</t>
+		</template>
+		
+	</data>
+</odoo>
+

@@ -1,0 +1,171 @@
+// Style for the widget "dashboard_graph"
+.o_dashboard_graph {
+    &.o_graph_linechart {
+        > svg {
+            height: 75px;
+            // X axis
+            g.nv-x.nv-axis {
+                transform: translateY(50px);
+                // Remove max and min labels
+                g.nv-axisMaxMin {
+                    display: none;
+                }
+                g.tick.major {
+                    line {
+                        display: none;
+                    }
+                }
+            }
+
+            // !important are needed because nvd3 uses inline style on elements
+
+            // Remove strokes
+            g.nv-linesWrap {
+                g.nv-group.nv-series-0 {
+                    fill-opacity: 0.3 !important;
+                    fill: $brand-primary !important;
+                    stroke: $brand-primary !important;
+
+                    .nv-point {
+                        visibility: hidden;
+                        stroke: $brand-primary !important;
+                        fill: white;
+                    }
+                    .nv-point:nth-child(5n+1) {
+                        visibility: visible;
+                        fill-opacity: .95 !important;
+                        stroke-opacity: .95 !important;
+                    }
+                }
+            }
+        }
+    }
+    &.o_graph_barchart {
+        > svg {
+            height: 75px;
+            overflow: visible;
+            g.nv-barsWrap {
+                g.nv-group.nv-series-0 {
+                    g.past {
+                        opacity: 0.5;
+                        fill: $brand-primary !important;
+                    }
+                    g.future {
+                        opacity: 0.5;
+                        fill: $brand-primary !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.modal-content {
+    .o_cusomize_theme {
+        .o_left_panel {
+            height: 100%;
+            border-right: 1px solid $border;
+            ul.oe_theme_colorpicker {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: flex-start;
+                align-items: center;
+                width: 100%;
+                padding-left: 0;
+                margin: auto;
+                & > li {
+                    position: relative;
+                    list-style: none;
+                    display: inline-block;
+                    width: 62.8px;
+                    height: 62px;
+                    text-align: center;
+                    margin: 5px;
+                    &.selected {
+                        .oe_theme_color:before {
+                            content: "";
+                            position: absolute;
+                            left: 0;
+                            right: 0;
+                            top: 0;
+                            bottom: -5px;
+                            width: 100%;
+                            @include border-animation();
+                        }
+                    }
+                    & > .oe_theme_color {
+                        position: relative;
+                        display: block;
+                        height: 100%;
+                        width: 100%;
+                        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
+                        &:hover > .o_theme_option {
+                            visibility: visible;
+                            opacity: 1;
+                        }
+                        & > .o_theme_option {
+                            visibility: hidden;
+                            opacity: 0;
+                            transition: visibility 0.3s linear, opacity 0.3s linear;
+                            position: absolute;
+                            left: 0;
+                            right: 0;
+                            top: 0;
+                            bottom: 0;
+                            background-color: rgba(0, 0, 0, 0.7);
+                            color: #fff;
+                            font-size: 25px;
+                            align-items: center;
+                            justify-content: space-around;
+                            display: flex;
+                            flex-flow: column;
+                            & > span {
+                                height: 25px;
+                                width: 25px;
+                            }
+                        }
+                        &.o_add_theme {
+                            border: 1px solid $border;
+                            &:after {
+                                content: "\f067";
+                                font-family: FontAwesome;
+                                width: 100%;
+                                height: 100%;
+                                display: flex;
+                                flex-direction: row;
+                                justify-content: center;
+                                align-items: center;
+                                font-size: large;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .o_right_panel {
+            & > .o_form_title {
+                padding: 10px 15px 10px 0;
+                text-transform: uppercase;
+                color: $notbook;
+                font-weight: bold;
+                border-bottom: 1px solid $border;
+            }
+            input.form-control {
+                border: 1px solid $border;
+                border-radius: 0;
+                border-top-style: none;
+                border-right-style: none;
+                border-left-style: none;
+                -webkit-box-shadow: none;
+                box-shadow: none;
+                color: $Label-value;
+                &:focus {
+                    -webkit-box-shadow: none;
+                    box-shadow: none;
+                    @include border-animation();
+                }
+            }
+        }
+    }
+}

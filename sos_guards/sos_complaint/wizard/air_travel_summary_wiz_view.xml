@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="air_travel_summary_wiz_view" model="ir.ui.view">
+        <field name="name">Air Travel Summary</field>
+        <field name="model">air.travel.summary.wiz</field>
+        <field name="arch" type="xml">
+			<form string="Air Travel Summary Wizard">
+				<group>
+					<group>
+						<field name="need_full_report"/>	
+					</group>
+					<group attrs="{'invisible': [('need_full_report', '=', True)]}">
+						<field name="date_from" string="Booking Date (From)"/>
+						<field name="date_to" string="Booking Date (To)"/>
+					</group>
+				</group>
+				
+				<footer>
+					<button string="Print" name="print_report" type="object" class="oe_highlight"  />
+					<button string="Cancel" class="oe_link" special="cancel" />
+               </footer>
+			</form>
+		</field>
+    </record>
+
+    <record id="action_air_travel_summary_wiz" model="ir.actions.act_window">
+        <field name="name">Air Travel Summary Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">air.travel.summary.wiz</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="air_travel_summary_wiz_view"/>
+        <field name="target">new</field>
+    </record>
+</odoo>

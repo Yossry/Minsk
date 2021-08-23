@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_payslip_summary" model="ir.ui.view">
+            <field name="name">Payslip Summary</field>
+            <field name="model">payslip.summary</field>
+            <field name="arch" type="xml">
+            <form string="Payslip Summary">
+            	<!--SARFRAZ-->
+               <!-- <label string="This wizard will print report which displays Summary of the Payslips."/> -->
+                <footer>
+                    <button name="print_report" string="Print" type="object" class="oe_highlight"/>
+                        or
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+                <group>
+                    <group>
+						<field name="period_id"/>  
+						<field name="period_id2"/>  
+                    </group>
+                    <group>
+						<field name="project_bool"/>  
+						<field name="center_bool"/>  
+                    </group>
+                </group>
+            </form>
+            </field>
+        </record>
+
+        <record id="action_payslip_summary" model="ir.actions.act_window">
+            <field name="name">Payslip Summary</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">payslip.summary</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+		
+       <menuitem name="Payslip Summary" parent="hr.menu_hr_reporting_timesheet" sequence="5" icon="STOCK_PRINT" action="action_payslip_summary" id="menu_payslip_summary"/>
+           
+        
+    </data>
+</odoo>
+
+

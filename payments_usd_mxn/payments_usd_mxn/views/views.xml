@@ -1,0 +1,104 @@
+<odoo>
+  <data>
+    <!--wizar par buscar por tipo de pago-->
+    <record id="action_wizard_reporte" model="ir.ui.view">
+      <field name="name">Informe USD MXN</field>
+      <field name="model">wizar.usd.mxn</field>
+      <field name="arch" type="xml">
+      <form>
+        <header></header>
+        <sheet>
+          <group>
+            <field name="type"/>
+          </group>
+        </sheet>
+        <footer>
+          <button string="Buscar" type="object" name="pagos" class="btn-primary"/>
+          <button special="cancel" string="Cancelar"/>
+        </footer>
+      </form>
+      </field>
+    </record>
+
+    <record id="action_view_wizard_reporte" model="ir.actions.act_window">
+      <field name="name">Informe USD MXN</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">wizar.usd.mxn</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="action_wizard_reporte"/>
+      <field name="target">new</field>
+    </record>
+   <!--MENUT DE WIZAR EN LA OPCIONDE CLIENTES-->
+    <menuitem name="Informe USD MXN" action="action_view_wizard_reporte" id="menu_usd_mxn"
+      parent="account.menu_finance_reports" sequence="1" />
+
+   <!-- AGREGAR CAMPO AL MODLEO ACCOUNT.PAYMENT-->
+
+    <record id="fields_model_account_pyment" model="ir.ui.view">
+      <field name="name">field.type</field>
+      <field name="model">account.invoice</field>
+      <field name="inherit_id" ref="account.invoice_supplier_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='reference']" position="after">
+          <field name="importe_mxn" invisible="1"/>
+          <field name="importe_usd" invisible="1"/> 
+           <field name="mxn" invisible="1"/>
+          <field name="usd"  invisible="1"/>
+        </xpath>
+      </field>
+    </record>
+
+     <record id="fields_model_account_pyment" model="ir.ui.view">
+      <field name="name">field.type</field>
+      <field name="model">account.invoice</field>
+      <field name="inherit_id" ref="account.invoice_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='partner_id']" position="after">
+          <field name="importe_mxn" invisible="1"/>
+          <field name="importe_usd" invisible="1"/> 
+           <field name="mxn" invisible="1"/>
+          <field name="usd"  invisible="1"/>
+        </xpath>
+      </field>
+    </record>
+
+
+    <record id="id_view_historial_pagos_tree" model="ir.ui.view">
+      <field name="name">model.devo.tree</field>
+      <field name="model">account.invoice</field>
+      <field name="arch" type="xml">
+        <tree string="Informe USD MXN">
+            <field name="partner_id" invisible="1"/>
+            <field name="source_email" invisible="1"/>
+            <field name="invoice_icon" string=" "/>
+            <field name="vendor_display_name" groups="base.group_user" string="Vendor"/>
+            <field name="date_invoice" string="Bill Date"/>
+            <field name="number"/>
+            <field name="reference"/>
+            <field name="commercial_partner_id" invisible="1"/>
+            <field name="name" invisible="1"/>
+            <field name="journal_id" invisible="1"/>
+            <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
+            <field name="date_due"/>
+            <field name="origin"/>
+            <field name="amount_untaxed" string="Tax Excluded" sum="Total"/>
+            <field name="amount_tax" sum="Total" invisible="1" />
+            <field name="importe_mxn" sum="Amount"/>
+            <field name="importe_usd" sum="Amount"/>
+            <field name="amount_total_signed" string="Total" sum="Total" invisible="1"/>
+            <field name="residual_signed" string="To Pay" sum="To pay" invisible="1"/>            
+            <field name="mxn" sum="mxn"/>
+            <field name="usd"  sum="usd"/>
+            <field name="currency_id" invisible="1"/>
+            <field name="company_currency_id" invisible="1"/>
+            <field name="state"/>
+            <field name="type" invisible="context.get('type',True)"/>
+        </tree>
+      </field>
+    </record>
+
+
+
+  </data>       
+</odoo>

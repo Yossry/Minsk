@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="view_move_form" model="ir.ui.view">
+        <field name="model">stock.move</field>
+        <field name="inherit_id" ref="stock.view_move_form"/>
+        <field name="arch" type="xml">
+            <field name="origin" position="before">
+                <field name="picking_id" readonly="1"/>
+            </field>
+        </field>
+    </record>
+
+     <record id="view_move_picking_form" model="ir.ui.view">
+        <field name="model">stock.move</field>
+        <field name="inherit_id" ref="stock.view_move_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[contains(@groups,'base.group_no_one')]" position="attributes">
+              <attribute name="groups"></attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_move_search" model="ir.ui.view">
+        <field name="name">stock.move.search.inherit</field>
+        <field name="model">stock.move</field>
+        <field name="inherit_id" ref="stock.view_move_search"/>
+        <field name="arch" type="xml">
+            <filter name="by_product" position="after">
+                <filter string="Picking Type" name="picking_type" context="{'group_by':'picking_type_id'}"/>
+                <!-- This it's not posible to use becase the field it's not stored -->
+                <!-- <filter string="Picking Partner" name="picking_partner_id" context="{'group_by':'picking_partner_id'}"/> -->
+            </filter>
+            <filter name="outgoing" position="after">
+                <filter string="Internal" name="internal" domain="[('picking_code','=','internal')]"/>
+                <filter string="Manufacturing" name="manufacturing" domain="[('picking_code','=','mrp_operation')]"/>
+            </filter>
+            <filter name="future" position="attributes">
+                <attribute name="domain">[('state','in',('assigned','confirmed','waiting', 'partially_available'))]</attribute>
+            </filter>
+        </field>
+    </record>
+
+    <record id="view_move_tree" model="ir.ui.view">
+        <field name="name">stock.move.tree.inherit</field>
+        <field name="model">stock.move</field>
+        <field name="inherit_id" ref="stock.view_move_tree"/>
+        <field name="arch" type="xml">
+            <field name="product_id" position="before">
+                <field name="picking_partner_id" string="Picking Partner"/>
+            </field>
+            <tree>
+                <field name="picking_create_user_id"/>
+            </tree>
+            <field name="reference" position="after">
+                <field name="origin"/>
+            </field>
+            <field name="product_uom" position="after">
+                <field name="product_qty" string="Q. UdM Producto" groups="uom.group_uom"/>
+            </field>
+        </field>
+    </record>
+
+
+    <record model="ir.ui.view" id="view_move_picking_tree">
+        <field name="name">stock.move.tree</field>
+        <field name="model">stock.move</field>
+        <field name="inherit_id" ref="stock.view_move_picking_tree"/>
+        <field name="arch" type="xml">
+            <field name="product_id" position="before">
+                <!-- por ejemplo, lo usamos para mostrar este campo en stock_usability_batch_picking -->
+                <field name="picking_id" invisible="not context.get('show_picking', False)"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="stock.stock_move_menu" model="ir.ui.menu">
+        <field name="name">Products Moves</field>
+        <field name="groups_id" eval="[(3, ref('base.group_no_one'))]"/>
+    </record>
+
+</odoo>

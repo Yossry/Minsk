@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo noupdate="0">
+ 
+	<record id="clv_file_system_directory_lab_test_result_files_xls" model="clv.file_system.directory">
+		<field name="name" eval="&quot;&quot;&quot;Lab Test Result Files (XLS)&quot;&quot;&quot;"/>
+		<field name="directory" eval="&quot;&quot;&quot;/opt/odoo/clvsol_filestore/clvhealth_jcafb/lab_test_files/results/xls&quot;&quot;&quot;"/>
+	</record>
+
+	<record id="clv_file_system_directory_lab_test_result_files_templates" model="clv.file_system.directory">
+		<field name="name" eval="&quot;&quot;&quot;Lab Test Result Files (Templates)&quot;&quot;&quot;"/>
+		<field name="directory" eval="&quot;&quot;&quot;/opt/odoo/clvsol_filestore/clvhealth_jcafb/lab_test_files/results/templates&quot;&quot;&quot;"/>
+	</record>
+
+	<record id="clv_file_system_directory_lab_test_report_files_xls" model="clv.file_system.directory">
+		<field name="name" eval="&quot;&quot;&quot;Lab Test Report Files (XLS)&quot;&quot;&quot;"/>
+		<field name="directory" eval="&quot;&quot;&quot;/opt/odoo/clvsol_filestore/clvhealth_jcafb/lab_test_files/reports/xls&quot;&quot;&quot;"/>
+	</record>
+
+	<record id="clv_file_system_directory_lab_test_report_files_templates" model="clv.file_system.directory">
+		<field name="name" eval="&quot;&quot;&quot;Lab Test Report Files (Templates)&quot;&quot;&quot;"/>
+		<field name="directory" eval="&quot;&quot;&quot;/opt/odoo/clvsol_filestore/clvhealth_jcafb/lab_test_files/reports/templates&quot;&quot;&quot;"/>
+	</record>
+
+</odoo>

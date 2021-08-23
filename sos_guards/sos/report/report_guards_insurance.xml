@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<template id ="sos.report_guards_insurance">
+		<t t-call="web.html_container">
+			<t t-foreach="docs" t-as="doc">
+				<t t-call="web.external_layout" style="font-family:georgia,garamond,serif;font-size:10px">
+					<div class="page">
+						 <div class="row">
+						 	 <div class="col-xs-4">
+						 	 	 <img width="40%" style="max-height:125px;" class="img img-responsive" src="/sos/static/img/logo.png"/>
+						 	 </div>
+					 		 <div class="col-xs-3">
+						 	 </div>
+						 	 
+					 	 	<div class="col-xs-5" style="font-size:14px; font-weight:bold; text-align:right; align:left;margin-top:20px;">
+					 	 		SECURITY ORGANIZING SYSTEM (PVT) LIMITED
+					 	 	</div>
+					 	 </div>	
+					 	 
+					 	 
+						<h4> Guards Data For Insurance </h4>
+					 <table class="table table-bordered">
+					 	<tr style="background-color: #FFEBCD; font-size:12px;font-weight:bold;">
+					 		<td>Sr </td>
+					 		<td>Branch Name </td>
+					 		<td>Guard Name </td>
+					 		<td>Father Name</td>
+					 		<td>CNIC #</td>
+					 		<td>DOB </td>
+					 	</tr>
+				 		<tr style="background-color:#e5e7e9; font-size:14px;font-weight:bold;">
+				 			<td colspan="6"  style="text-align:center;"><span t-esc="doc.name" /> </td>
+				 		</tr>
+				 			<t t-foreach="doc.employee_ids" t-as="guard">
+				 				<tr>
+					 				<td><span t-esc="guard_index + 1" /> </td>
+					 				<td><span t-esc="guard.current_post_id.name" /> </td>
+					 				<td><span t-esc="guard.name" /> </td>
+					 				<td><span t-esc="guard.fathername" /> </td>
+					 				<td><span t-esc="guard.cnic" /> </td>
+					 				<td><span t-esc="guard.birthday" /> </td>
+					 			</tr>
+					 		</t>
+					</table>
+				</div>
+					 				
+				</t>
+			</t>	
+		</t>
+	</template>		
+	</data>
+</odoo>

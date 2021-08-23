@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Sequences for Disposal Sequence -->
+        <record id="disposal_specification_seq" model = "ir.sequence">
+            <field name="name">Disposal Sequence.seq</field>
+            <field name="code">disposal.specification.seq</field>
+            <field name="prefix">DIS/</field>
+            <field name="padding">4</field>
+        </record>
+
+    </data>
+</odoo>

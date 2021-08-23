@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>	
+		<template id ="report_audit_guardsalary">
+			<t t-call="web.html_container">
+				<t t-call="web.basic_layout">
+				<div class="page">
+					<style>
+						table th { background-color:#d4e3e5;}
+					</style>
+					
+					 <div class="row">
+					 	 <div class="col-xs-4">
+					 	 	 <img width="40%" style="max-height:125px;" class="img img-responsive" src="/sos_payroll/static/src/img/logo.png"/>
+					 	 </div>
+					 	 <div class="col-xs-3">
+					 	 </div>
+					 	 
+					 	 <div class="col-xs-5" style="font-size:14px; font-weight:bold; text-align:right; align:left;margin-top:20px;">
+					 	 	SECURITY ORGANIZING SYSTEM (PVT) LIMITED
+					 	 </div>
+					 </div>
+				
+					 <div class="row" style="font-size:12px; font-weight:bold; text-align:center; align:left;">
+					 	<div class="col-xs-12">
+					 		Guards Salary Report From  <span t-esc="get_date_formate(data['date_from'])"/> To <span t-esc="get_date_formate(data['date_to'])"/> 
+					 	</div>
+					 </div>
+					 
+					 <t  t-if="data['group_by'] == 'sos_report_audit_salary_aeroo'">
+					 	 <div class="col-xs-12 pull-right" style="padding-left:0px; padding-right:0px; page-break-inside: avoid;">
+					 	 	 <table class="table table-bordered">
+					 	 	 	<tbody>
+					 	 	 		
+					 	 	 		<tr style="font-size:9px; font-weight:bold; background-color:#d4e3e5;">
+						 				<th>Slip </th>
+							 			<th>Salary Status </th>
+							 			<th>Post ID </th>
+							 			<th>Post Name </th>
+							 			<th>Invoice </th>
+							 			<th>Invoice status </th>
+							 			<th>Rate </th>
+							 			<th>Days </th>
+							 			<th>Salary Days </th>
+							 			<th>Invoice Days </th>
+							 			<th>Diff </th>
+							 			<th>Gross Amt. </th>
+							 			<th>ALW. </th>
+							 			<th>ADV. </th>
+							 			<th>U.D </th>
+							 			<th>Net Salary </th>
+						 			</tr>
+					 	 	 		
+					 	 	 		<t t-foreach="Guards" t-as="guard">
+							 			<tr>
+						 				<td style="text-align:left; font-size:12px; font-weight:bold;"> 
+						 					<span t-esc="guard['code']" />
+						 				</td>
+						 				<td colspan="3" style="text-align:left; font-size:12px; font-weight:bold;"> 
+						 					<span t-esc="guard['name']" />
+						 				</td>
+						 				
+						 				<td colspan="7">
+						 				</td>
+						 				
+						 				<td style="text-align:left; font-size:12px; font-weight:bold;"> 
+						 					<span t-esc="guard['Gross_Amt'] and '{0:,.0f}'.format(int(guard['Gross_Amt'])) or '-'" />
+						 				</td>
+						 				<td style="text-align:left; font-size:12px; font-weight:bold;"> 
+						 					<span t-esc="guard['ALW'] and '{0:,.0f}'.format(int(guard['ALW'])) or '-'" />
+						 				</td>
+						 				<td style="text-align:left; font-size:12px; font-weight:bold;"> 
+						 					<span t-esc="guard['ADV'] and '{0:,.0f}'.format(int(guard['ADV'])) or '-'" />
+						 				</td>
+						 				<td style="text-align:left; font-size:12px; font-weight:bold;"> 
+						 					<span t-esc="guard['UD'] and '{0:,.0f}'.format(int(guard['UD'])) or '-'" />
+						 				</td>
+						 				<td style="text-align:left; font-size:12px; font-weight:bold;"> 
+						 					<span t-esc="guard['NET'] and '{0:,.0f}'.format(int(guard['NET'])) or '-'" />
+						 				</td>
+						 			</tr>
+						 			
+						 			
+						 			<t t-foreach="guard['Audit_Lines']" t-as="line">
+						 			<tr>	
+						 				<td style="text-align:left; font-size:12px;"> 
+						 					<span t-esc="line['slipnumber']" />
+						 				</td>
+						 				<td style="text-align:left; font-size:12px;"> 
+						 					<span t-esc="line['contract_name']" />
+						 				</td>
+						 				<td style="text-align:left; font-size:12px;"> 
+						 					<span t-esc="line['post_id']" />
+						 				</td>
+						 				<td style="text-align:left; font-size:12px;"> 
+						 					<span t-esc="line['postname']" />
+						 				</td>
+						 				<td style="text-align:left; font-size:12px;"> 
+						 					<span t-esc="line['invnumber']" />
+						 				</td>
+						 				<td style="text-align:left; font-size:12px;"> 
+						 					<span t-esc="line['invstate']" />
+						 				</td>
+						 				<td style="text-align:left; font-size:12px;"> 
+						 					<span t-esc="line['guardrate'] and '{0:,.0f}'.format(int(line['guardrate'])) or '-'" />
+						 				</td>
+						 				<td style="text-align:left; font-size:12px;"> 
+						 					<span t-esc="line['dutydays'] and '{0:,.0f}'.format(int(line['dutydays'])) or '-'" />
+						 				</td>
+						 				<td style="text-align:left; font-size:12px;"> 
+						 					<span t-esc="line['sal_days'] and '{0:,.0f}'.format(int(line['sal_days'])) or '-'" />
+						 				</td>
+						 				<td style="text-align:left; font-size:12px;"> 
+						 					<span t-esc="line['inv_days'] and '{0:,.0f}'.format(int(line['inv_days'])) or '-'" />
+						 				</td>
+						 				<td style="text-align:left; font-size:12px;"> 
+						 					<span t-esc="line['diff_days'] and '{0:,.0f}'.format(int(line['diff_days'])) or '-'" />
+						 				</td>
+						 				<td style="text-align:left; font-size:12px;"> 
+						 					<span t-esc="line['salaryamt'] and '{0:,.0f}'.format(int(line['salaryamt'])) or '-'" />
+						 				</td>
+						 				<td style="text-align:left; font-size:12px;"> 
+						 					-
+						 				</td>
+						 				<td style="text-align:left; font-size:12px;"> 
+						 					-
+						 				</td>
+						 				<td style="text-align:left; font-size:12px;"> 
+						 					-
+						 				</td>
+						 				<td style="text-align:left; font-size:12px;"> 
+						 					-
+						 				</td>
+						 			</tr>
+							 		</t>	
+							 			
+							 	</t>	
+					 	 	 	</tbody>
+					 	 	 </table>
+					 	 </div>
+					 </t>
+					 
+					 
+				</div>	
+			</t>
+			</t>
+		</template>
+		
+	</data>
+</odoo>
+

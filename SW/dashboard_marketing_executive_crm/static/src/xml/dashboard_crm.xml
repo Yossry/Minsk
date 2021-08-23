@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates >
+   <t t-name="time_activity">
+      <t t-foreach="log" t-as="message">
+         <div class="sl-item">
+            <div class="sl-left"><i class="fa fa-circle text-info"></i>
+            </div>
+            <div class="sl-right">
+               <div>
+                  <h6><a href="#" class="text-danger"><t t-esc="message.log_data"/>:</a> <t t-raw="message.body"/></h6>
+                  <span class="sl-date"><t t-esc="message.date"/></span>
+               </div>
+            </div>
+         </div>
+      </t>
+   </t>
+   
+   <t t-name="user_activity_timeline">
+      <t t-foreach="user_activity_timeline" t-as="activity">
+         <div class="sl-item">
+            <div class="sl-left">
+               <img t-att-src="activity.user_image" alt="user" class="img-circle"/>
+            </div>
+            <div class="sl-right">
+               <div class="m-l-40">
+                  <a href="#" class="text-success"><t t-esc="activity.user_name"/></a> <span class="sl-date"><t t-esc="activity.date"/></span>
+                  <p><t t-raw="activity.body"/><strong><t t-raw="activity.name"/></strong></p>
+               </div>
+            </div>
+         </div>
+         <hr/>
+      </t>
+   </t>
+   
+   <t t-name="dashboard_crm">
+      <br/>
+      <div class="">
+         <div class="col-12 col-12 col-12 first-client-block">
+            <div class="white-box">
+               <div class="row">
+                  <div class="col col-3 row-in-br">
+                     <div class="col-in">
+                        <h3 class="box-title">Total Customers</h3>
+                        <ul class="list-inline two-part">
+                           <li><i class="fa fa-male text-success"></i></li>
+                           <li class="text-right"><span class="counter total_customers">0</span></li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="col col-3 row-in-br  b-r-none">
+                     <div class="col-in">
+                        <h3 class="box-title">Total Leads</h3>
+                        <ul class="list-inline two-part">
+                           <li><i class="fa fa-user text-warning"></i></li>
+                           <li class="text-right"><span class="counter total_leads">0</span></li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="col col-3 row-in-br">
+                     <div class="col-in">
+                        <h3 class="box-title">Total Opportunity</h3>
+                        <ul class="list-inline two-part">
+                           <li><i class="fa fa-user-plus text-danger"></i></li>
+                           <li class="text-right"><span class="counter total_opportunities">0</span></li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="col-3 b-0">
+                     <div class="col-in">
+                        <h3 class="box-title">Total Expected Revenue </h3>
+                        <ul class="list-inline two-part">
+                           <li><i class="fa fa-suitcase text-inverse"></i></li>
+                           <li class="text-right"><span class="counter total_expected_revenu">0</span></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+               <div class="clearfix"></div>
+            </div>
+         </div>
+      </div>
+      
+      <div class="clearfix"></div>
+
+      <div class="row">
+         <div class="col-4">
+            <div class="pull-right">
+               <a class="active" href="javascript: void(0)" id="get_roi_campaigns">Campaigns</a> |
+               <a class="" href="javascript: void(0)" id="get_roi_mediums">Mediums</a> |
+               <a class="" href="javascript: void(0)" id="get_roi_sources">Sources </a>by ROI
+            </div>
+
+            <div class="clearfix"/>
+
+            <div class="panel panel-default">
+               <div class="panel-heading roi_title">Campaigns by ROI</div>
+               <div class="panel-wrapper">
+                  <div class="panel-body">
+                     <div id="by-roi-container">
+
+                     </div>
+                     <br/>
+                     <div class="roi_footer">Campaigns by ROI This Year</div>
+                  </div>
+               </div>
+            </div>
+
+
+            <div class="pull-right">
+               Lead/oppty Count per <a class="active" href="javascript: void(0)" id="get_lead_count_campaigns">Campaigns</a> |
+               <a class="" href="javascript: void(0)" id="get_lead_count_mediums">Mediums</a> |
+               <a class="" href="javascript: void(0)" id="get_lead_count_sources">Sources </a>
+            </div>
+
+            <div class="clearfix"/>
+
+            <div class="panel panel-default">
+               <div class="panel-heading lead_count_header">Lead/oppty Count per Campaign </div>
+               <div class="panel-wrapper">
+                  <div class="panel-body">
+                     <div id="lead-count-per-campaign-container">
+
+                     </div>
+                     <br/>
+                     <div class="lead_count_footer">Lead/oppty Count per Campaign This Year</div>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         <div class="col-4">
+            <div class="panel panel-default">
+               <div class="panel-heading">Lead Trending Report</div>
+               <div class="panel-wrapper">
+                  <div class="panel-body">
+                     <div id="lead-trending-report-container">
+
+                     </div>
+                     <br/>
+                     Lead Trending Report This Year
+                  </div>
+               </div>
+            </div>
+            <div class="panel panel-default">
+               <div class="panel-heading">Converted Leads by Month</div>
+               <div class="panel-wrapper collapse in">
+                  <div class="panel-body">
+                     <div id="converted-lead-container">
+
+                     </div>
+                     <br/>
+                     Number of Converted Leads This Year
+                  </div>
+               </div>
+            </div>
+            <div class="panel panel-default">
+               <div class="panel-heading">Lead Conversion Rate</div>
+               <div class="panel-wrapper">
+                  <div class="panel-body">
+                     <div id="conversion-rate-container">
+
+                     </div>
+                     <br/>
+                     Lead Conversion Rate This Year
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="col-4">
+            <div class="panel panel-default">
+               <div class="panel-heading">Leads Activity Timeline</div>
+               <div class="panel-wrapper">
+                  <div class="panel-body">
+                     <div class="steamline time-activity-container">
+
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <div class="panel panel-default">
+               <div class="panel-heading">Employee Activity Timeline</div>
+               <div class="panel-wrapper">
+                  <div class="panel-body">
+                     <div class="steamline user-activity-timeline-container">
+
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+         </div>
+      </div>
+      <div class="clearfix"></div>
+   </t>
+</templates>

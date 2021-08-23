@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2019 Coop IT Easy SCRLfs <http://coopiteasy.be>
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+<odoo>
+
+    <template id="iwp_website.login_showcase_website"
+        inherit_id="web.login_layout"
+        name="Link to Showcase Website on the login page">
+        <xpath expr="//div[hasclass('card-body')]//img" position="after">
+            <div class="oe_showcase_website mt-2">
+                <a t-attf-href="{{request.env['res.company']._company_default_get().website}}">
+                    Go to label website
+                </a>
+            </div>
+        </xpath>
+    </template>
+
+
+    <template id="iwp_website.menu_showcase_website"
+        inherit_id="portal.frontend_layout"
+        name="Link to Showcase Website in the menu">
+        <xpath expr="//*[@id='top_menu']/li" position="before">
+            <li class="nav-item">
+                <a class="nav-link oe_showcase_website"
+                    t-attf-href="{{request.env['res.company']._company_default_get().website}}">
+                    Label website
+                </a>
+            </li>
+        </xpath>
+    </template>
+
+</odoo>

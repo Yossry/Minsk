@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>    
+	<data>
+		
+		<record id="hr_payslip_view_appraisal" model="ir.ui.view">
+        	<field name="name">hr_payslip_view_appr</field>
+            <field name="model">hr.payslip</field>
+            <field name="inherit_id" ref="hr_payroll.view_hr_payslip_form"/>
+            <field name="arch" type="xml">
+				<notebook>
+                     	<page string="Other Dedcutions/Allowances">
+              				<group>
+                    			<field name="add_other"/>
+                    		</group>
+                    		<group>
+                    			<field name="other_deductions" attrs="{'invisible': [('add_other','!=', True)]}"/>
+                    			<field name="other_allowances" attrs="{'invisible': [('add_other','!=', True)]}"/>
+                    		</group>
+                    	</page>
+                </notebook>	
+			</field>
+        </record>
+        <record id="hr_contract_view_allow" model="ir.ui.view">
+        	<field name="name">hr_contract_view_allow</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+            <field name="arch" type="xml">
+				<notebook>
+                     	<page string="Dedcutions/Allowances">
+              				<div class="o_row" name="allow">
+              					<group>
+              						<group string="Employee Allowances">
+	                    				<field name="trans_allow"/>
+                    					<field name="housing_allow"/>
+                    					<field name="live_allow"/>
+                    					<field name="risk_allow"/>
+                    					<field name="other_allowances"/>
+                    				</group>
+                    				<group string="Employee Deductions">
+	    	                			<field name="nationality" invisible="1"/>
+    		                			<field name="calc_gosi"/>
+    		                			<field name="gosi" attrs="{'invisible': [('calc_gosi','!=', True)]}"/>
+    	    	            			<field name="other_dedcutions"/>
+    	    	            			<button name="onchange_gosi" string="Re-Calculate" type="object"/>
+	            	        		</group>
+                    			</group>
+	                    	</div>
+                    	</page>
+                </notebook>	
+			</field>
+        </record>
+	</data>
+</openerp>

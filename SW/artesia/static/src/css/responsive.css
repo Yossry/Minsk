@@ -1,0 +1,95 @@
+@media only screen and (max-width: 767px) {
+    #slider_snippets .carousel {
+        height: 400px !important;
+    }
+    #slider_snippets {
+        margin-top: 0px !important;
+    }
+    .cap-text {
+        margin-top: 30%;
+        max-width: 350px;
+    }
+    .cap-text h1 {
+        font-size: 3rem !important;
+    }
+    .content-wrap {
+        padding: 0px 0;
+    }
+    .section {
+        margin: 90px 0;
+    }
+    header a.navbar-brand img {
+        margin-top: 0px !important;
+    }
+    #customize-second .video-section {
+        margin: 40px 0px 155px 0px;        
+    }
+    #customize-second .video-section:after {
+        width: 330PX;
+        height: 340px;
+        left: 15px;
+    }
+    #customize-third .about_Us_area .about_history {
+        width: 100% !important;
+    }
+    #customize-third .about_Us_area .about_site_image {
+        width: 100% !important;
+    }
+    #counter-fourth .fact-counter .single-item .text {
+        margin-bottom: 50px !important;
+    }
+    #work-gallery-fourth .portfolio-text {
+        left: -4px;
+    }
+    .portfolio-image {
+        width: 150px;
+        height: 130px;
+    }
+    .pricing1_float_left {
+        float: none;
+    }
+    .pricing1_float_right {
+        float: none;
+    }
+    #optimized-fourth .panel-default .panel-heading {
+        padding: 20px;
+    }
+    .panel-title {
+        font-size: 13px;
+    }
+    .hidden-xs {
+        display: initial !important;
+    }
+    .team-image {
+        margin-left: 60px;
+    }
+    .brand-img {
+        height: 60px !important;
+    }
+    #semi-footer-third .main-footer .contact-widget {
+        margin-left: 5px !important;
+    }
+    #semi-footer-third .main-footer .post-widget {
+        left: 5px !important;
+    }
+}
+@media only screen and (min-width: 360px) and (max-width: 640px) {
+    .panel-title {
+        font-size: 12px;
+    }
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .pricing1_float_left {
+        float: none;
+    }
+    .pricing1_float_right {
+        float: none;
+    }
+    #semi-footer-third .main-footer .contact-widget {
+        margin-left: 20px !important;
+        top: -115px !important;
+    }
+    #semi-footer-third .main-footer .post-widget {
+        left: 0px !important;
+    }
+}

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>	
+		<template id ="month_wise_pf_report">
+			<t t-call="web.html_container">
+				<t t-call="web.external_layout">
+					<div class="page">
+						<style>
+							table th { background-color:#d4e3e5;}
+						</style>
+						 	<p style="font-size:13px; font-weight:bold; text-align:center; align:left;"> Monthly Provident Fund Report </p>
+						 
+						<table class="table table-bordered">
+							<thead style="font-size:12px; font-weight:bold;">
+								<th>SR# </th>
+								<th class="text-center">January</th>
+								<th class="text-center">February</th>
+								<th class="text-center">March</th>
+								<th class="text-center">April</th>
+								<th class="text-center">May</th>
+								<th class="text-center">June</th>
+								<th class="text-center">July</th>
+								<th class="text-center">August</th>
+								<th class="text-center">September</th>
+								<th class="text-center">October</th>
+								<th class="text-center">November</th>
+								<th class="text-center">December</th>
+								<th class="text-center">Total</th>
+							</thead>
+
+							<tbody>
+								<t t-foreach="rep_data" t-as="ln">
+									<tr>
+										<td class="text-right">
+											<span t-esc="ln_index + 1" />
+										</td>
+										<td class="text-right">
+											<span t-esc="ln['jan'] and '{0:,.0f}'.format(ln['jan']) or '-'" />
+										</td>
+										<td class="text-right">
+											<span t-esc="ln['feb'] and '{0:,.2f}'.format(ln['feb']) or '-'" />
+										</td>
+										<td class="text-right">
+											<span t-esc="ln['mar'] and '{0:,.0f}'.format(ln['mar']) or '-'" />
+										</td>
+										<td class="text-right">
+											<span t-esc="ln['apr'] and '{0:,.2f}'.format(ln['apr']) or '-'" />
+										</td>
+										<td class="text-right">
+											<span t-esc="ln['may'] and '{0:,.0f}'.format(ln['may']) or '-'" />
+										</td>
+										<td class="text-right">
+											<span t-esc="ln['jun'] and '{0:,.2f}'.format(ln['jun']) or '-'" />
+										</td>
+										<td class="text-right">
+											<span t-esc="ln['jul'] and '{0:,.0f}'.format(ln['jul']) or '-'" />
+										</td>
+										<td class="text-right">
+											<span t-esc="ln['aug'] and '{0:,.2f}'.format(ln['aug']) or '-'" />
+										</td>
+										<td class="text-right">
+											<span t-esc="ln['sep'] and '{0:,.2f}'.format(ln['sep']) or '-'" />
+										</td>
+										<td class="text-right">
+											<span t-esc="ln['oct'] and '{0:,.2f}'.format(ln['oct']) or '-'" />
+										</td>
+										<td class="text-right">
+											<span t-esc="ln['nov'] and '{0:,.2f}'.format(ln['nov']) or '-'" />
+										</td>
+										<td class="text-right">
+											<span t-esc="ln['dec'] and '{0:,.2f}'.format(ln['dec']) or '-'" />
+										</td>
+										<td class="text-right">
+											<span t-esc="ln['total'] and '{0:,.2f}'.format(ln['total']) or '-'" />
+										</td>
+									</tr>
+								</t>
+							</tbody>	
+						</table>
+					
+					</div>
+				</t>		 			 	
+			</t>
+		</template>
+		
+	</data>
+</odoo>
+

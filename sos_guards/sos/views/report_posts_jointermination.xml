@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+	<template id ="sos.report_posts_jointermination">
+		<t t-call="web.html_container">
+			<t t-call="web.external_layout" style="font-family:georgia,garamond,serif;font-size:10px">
+			<div class="page">
+				<div width="100%"><center><h3>Posts Joining And Termination Report</h3></center> </div>
+				<div width="100%"><center><h3> From <span t-esc="get_date_formate(data['date_from'])"/> To  <span t-esc="get_date_formate(data['date_to'])"/> </h3></center> </div>
+			
+				<div class="col-xs-12 pull-right" style="padding-left:0px; padding-right:0px; page-break-inside: avoid;">
+				<table class="table table-bordered" width="100%">
+					<tr>
+						<!-- First Columns containing the Center Data -->
+						<td width="47%">
+							<table class="table table-bordered" width="100%">
+								<tr  style="font-size:10px; font-weight:bold; background-color:#d4e3e5;">
+									<th class="text-center;">SR.</th>
+									<th class="text-center;">Center Name</th>
+									<th class="text-center;">New Joined </th>
+									<th class="text-center;">Terminated</th>
+								</tr>
+								
+								<t t-foreach="Center_Recs" t-as="c">
+									<tr style="font-size:12px;">
+										<td>
+											<span t-esc="c_index + 1" />
+										</td>
+										<td>
+											<span t-esc="c['name']" />
+										</td>
+										<td>
+											<span t-esc="c['joined']" />
+										</td>
+										<td>
+											<span t-esc="c['terminated']" />
+										</td>
+									</tr>	
+								</t>
+								<tr style="font-size:10px; font-weight:bold;">
+									<td colspan="2"> Totals: </td>
+									<td> <span t-esc="Center_Jointed" /></td>
+									<td> <span t-esc="Center_Terminated" /></td>
+								</tr>
+							</table>
+						</td>
+						
+						<!-- Second Columns containing the Project Data -->
+						<td width="47%">
+							<table class="table table-bordered" width="100%">
+								<tr  style="font-size:10px; font-weight:bold; background-color:#d4e3e5;">
+									<th class="text-center;">SR.</th>
+									<th class="text-center;">Project Name</th>
+									<th class="text-center;">New Joined </th>
+									<th class="text-center;">Terminated</th>
+								</tr>
+								
+								<t t-foreach="Project_Recs" t-as="p">
+									<tr style="font-size:12px;">
+										<td>
+											<span t-esc="p_index + 1" />
+										</td>
+										<td>
+											<span t-esc="p['name']" />
+										</td>
+										<td>
+											<span t-esc="p['joined']" />
+										</td>
+										<td>
+											<span t-esc="p['terminated']" />
+										</td>
+									</tr>	
+								</t>
+								
+								<tr style="font-size:10px; font-weight:bold;">
+									<td colspan="2"> Totals: </td>
+									<td> <span t-esc="Project_Jointed" /></td>
+									<td> <span t-esc="Project_Terminated" /></td>
+								</tr>
+								
+							</table>
+						</td>				
+					</tr>
+				</table>	
+			</div>
+			
+			<!-- Posts Joined-->
+			<div width="100%"><h4>New Posts Joined in the Period From 
+			<span t-esc="get_date_formate(data['date_from'])"/> To  <span t-esc="get_date_formate(data['date_to'])"/></h4> </div>
+			
+			<table class="table table-bordered" width="100%">
+		 		<tr  style="font-size:10px; font-weight:bold; background-color:#d4e3e5;">
+					<th class="text-center;">SR. </th>
+					<th class="text-center;">ID </th>
+					<th class="text-center;">Name </th>
+					<th class="text-center;">Center </th>
+					<th class="text-center;">Deployment </th>
+					<th class="text-center;">No. of Guards </th>
+				</tr>
+				<t t-foreach="Joined_Posts" t-as="joined">
+					<tr style="font-size:11px;">
+						<td>
+							<span t-esc="joined_index + 1" />
+						</td>
+						<td>
+							<span t-esc="joined['id']" />
+						</td>
+						<td>
+							<span t-esc="joined['name']" />
+						</td>
+						<td>
+							<span t-esc="joined['center']" />
+						</td>
+						<td>
+							<span t-esc="joined['startdate']" />
+						</td>
+						<td>
+							<span t-esc="joined['guards']" />
+						</td>
+					</tr>
+				</t>
+				
+				<tr style="font-size:10px; font-weight:bold;">
+					<td colspan="5" style="text-align:right;">
+						Totals:
+					</td>
+					<td>
+						<span t-esc="Joined_Total" />
+					</td>
+				</tr>	
+			</table>
+			
+			<!-- Posts Terminated -->
+			<div width="100%"><h4>Posts Terminated in the Period From 
+			<span t-esc="get_date_formate(data['date_from'])"/> To  <span t-esc="get_date_formate(data['date_to'])"/></h4> </div>
+			
+			<table class="table table-bordered" width="100%">
+		 		<tr  style="font-size:10px; font-weight:bold; background-color:#d4e3e5;">
+					<th class="text-center;">SR. </th>
+					<th class="text-center;">ID </th>
+					<th class="text-center;">Name </th>
+					<th class="text-center;">Center </th>
+					<th class="text-center;">Deployment </th>
+					<th class="text-center;">Termination </th>
+					<th class="text-center;">No. of Guards </th>
+				</tr>
+				<t t-foreach="Terminated_Posts" t-as="terminate">
+					<tr style="font-size:11px;">
+						<td>
+							<span t-esc="terminate_index + 1" />
+						</td>
+						<td>
+							<span t-esc="terminate['id']" />
+						</td>
+						<td>
+							<span t-esc="terminate['name']" />
+						</td>
+						<td>
+							<span t-esc="terminate['center']" />
+						</td>
+						<td>
+							<span t-esc="terminate['startdate']" />
+						</td>
+						<td>
+							<span t-esc="terminate['enddate']" />
+						</td>
+						<td>
+							<span t-esc="terminate['guards']" />
+						</td>
+					</tr>
+				</t>
+				
+				<tr style="font-size:10px; font-weight:bold;">
+					<td colspan="6" style="text-align:right;">
+						Totals:
+					</td>
+					<td>
+						<span t-esc="Terminated_Total" />
+					</td>
+				</tr>	
+			</table>							
+				
+		</div>
+		</t>
+		</t>
+	</template>
+	
+	</data>
+</odoo>

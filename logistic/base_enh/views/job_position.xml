@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="job_position_list_view">
+            <field name="name">job_position</field>
+            <field name="model">job.position</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                </tree>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="job_position_form_view">
+            <field name="name">job_position</field>
+            <field name="model">job.position</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window"
+            id="job_position_action">
+            <field name="name">Job Position</field>
+            <field name="res_model">job.position</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <menuitem id="menu_job_position" parent="contacts.res_partner_menu_config" 
+                    name="Job Position" 
+                    action="job_position_action" 
+                    sequence="2"/>
+
+
+    </data>
+</odoo>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="iwp_website.login" inherit_id="auth_signup.login" name="Login: Sign up - Reset Password">
+        <xpath expr="//form[hasclass('oe_login_form')]" position="before">
+            <div id="language-selection">
+                <ul class="nav justify-content-center">
+                    <li t-foreach="request.env['res.lang'].search([])" t-as="lang"
+                        class="nav-item">
+                        <a t-attf-href="/{{ lang.code }}/web/login?redirect={{ request.params.get('redirect', '/') }}" class="nav-link" t-esc="lang.iso_code[:2].upper()"/>
+                    </li>
+                </ul>
+            </div>
+        </xpath>
+        <xpath expr="//button[@type='submit']/following-sibling::div" position="replace">
+            <div id="signup_title" class="text-center mt-4">
+                Don't have an account ?
+            </div>
+            <div id="signup_container" class="text-center mt-2 mb-2">
+                <a id="signup_indi" class="btn btn-secondary mt-2"
+                    t-if="signup_enabled"
+                    t-attf-href="/web/investor/signup?{{ keep_query() }}">
+                    Sign up for individual
+                </a>
+                <a id="signup_comp" class="btn btn-secondary mt-2"
+                    t-if="signup_enabled"
+                    t-attf-href="/web/investor/company/signup?{{ keep_query() }}">
+                    Sign up for company
+                </a>
+            </div>
+            <div id="reset_container" class="text-center mt-4 mb-4 small">
+                <a t-if="reset_password_enabled" t-attf-href="/web/reset_password?{{ keep_query() }}">Reset Password</a>
+            </div>
+        </xpath>
+    </template>
+
+
+    <template id="investor_signup_form" name="Sign up login for investor">
+        <t t-call="web.login_layout">
+            <t t-set="disable_footer" t-value="True"/>
+            <form class="oe_signup_form" role="form" method="post" t-if="not message">
+                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                <p class="alert alert-danger" role="alert" t-if="form.errors.get('__all__')">
+                    <t t-esc="form.errors.get('__all__')"/>
+                </p>
+
+                <t t-foreach="form.fields" t-as="field_name">
+                    <t t-call="{{form.fields[field_name].template}}">
+                        <t t-set="name" t-value="field_name"/>
+                        <t t-set="field" t-value="form.fields[field_name]"/>
+                    </t>
+                    <p t-if="field_name == 'data_policy_approval'">
+                        <t t-raw="data_policy_text"/>
+                    </p>
+                </t>
+
+                <p class="alert alert-danger" role="alert" t-if="form.errors.get('__all__')">
+                    <t t-esc="form.errors.get('__all__')"/>
+                </p>
+
+                <input type="hidden" name="redirect" t-att-value="redirect"/>
+                <input type="hidden" name="token" t-att-value="token"/>
+                <div class="text-center oe_login_buttons pt-3">
+                    <button type="submit" class="btn btn-primary btn-block"> Sign up</button>
+                    <a t-attf-href="/web/login?{{ keep_query() }}" class="btn btn-link btn-sm" role="button">Already have an account?</a>
+                    <div class="o_login_auth"/>
+                </div>
+            </form>
+        </t>
+    </template>
+
+
+    <template id="company_signup_form" name="Sign up login for investor">
+        <t t-call="web.login_layout">
+            <t t-set="disable_footer" t-value="True"/>
+            <form class="oe_signup_form" role="form" method="post" t-if="not message">
+                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                <p class="alert alert-danger" role="alert" t-if="form.errors.get('__all__')">
+                    <t t-esc="form.errors.get('__all__')"/>
+                </p>
+
+                <t t-foreach="form.fields" t-as="field_name">
+                    <h3 t-if="field_name == 'login'">
+                        Company
+                    </h3>
+                    <h3 t-if="field_name == 'rep_firstname'">
+                        Representative
+                    </h3>
+                    <t t-call="{{form.fields[field_name].template}}">
+                        <t t-set="name" t-value="field_name"/>
+                        <t t-set="field" t-value="form.fields[field_name]"/>
+                    </t>
+                    <p t-if="field_name == 'data_policy_approval'">
+                        <t t-raw="data_policy_text"/>
+                    </p>
+                </t>
+
+                <p class="alert alert-danger" role="alert" t-if="form.errors.get('__all__')">
+                    <t t-esc="form.errors.get('__all__')"/>
+                </p>
+
+                <input type="hidden" name="redirect" t-att-value="redirect"/>
+                <input type="hidden" name="token" t-att-value="token"/>
+                <div class="text-center oe_login_buttons pt-3">
+                    <button type="submit" class="btn btn-primary btn-block"> Sign up</button>
+                    <a t-attf-href="/web/login?{{ keep_query() }}" class="btn btn-link btn-sm" role="button">Already have an account?</a>
+                    <div class="o_login_auth"/>
+                </div>
+            </form>
+        </t>
+    </template>
+
+</odoo>

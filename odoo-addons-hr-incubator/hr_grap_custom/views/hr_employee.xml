@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright 2019 GRAP
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+    <record id="view_employee_form_grap" model="ir.ui.view">
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <field name="mutual_insurance_id" position="before">
+                <field name="mutual_insurance_state"/>
+                <field name="mutual_insurance_proof_received" attrs="{
+                    'invisible': [('mutual_insurance_state', '!=', 'exempted')]}"/>
+            </field>
+
+            <field name="mutual_insurance_id" position="attributes">
+                <attribute name="attrs">{'invisible': [('mutual_insurance_state', 'in', ('exempted'))]}</attribute>
+            </field>
+            <field name="mutual_insurance_level_id" position="attributes">
+                <attribute name="attrs">{'invisible': [('mutual_insurance_state', 'in', ('exempted'))]}</attribute>
+            </field>
+            <field name="mutual_insurance_date_start" position="attributes">
+                <attribute name="attrs">{'invisible': [('mutual_insurance_state', 'in', ('exempted'))]}</attribute>
+            </field>
+            <field name="mutual_insurance_date_end" position="attributes">
+                <attribute name="attrs">{'invisible': [('mutual_insurance_state', 'in', ('exempted'))]}</attribute>
+            </field>
+
+        </field>
+    </record>
+</odoo>

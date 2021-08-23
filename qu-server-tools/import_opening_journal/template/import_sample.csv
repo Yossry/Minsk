@@ -1,0 +1,8 @@
+move_id,m_date,account,name,debit,credit,analytic_account_id
+(ID del asiento,(Fecha asiento),(Código de la cuenta,(Etiqueta del asiento),(Debe),(Haber),
+ creado en Odoo),, contable),,,,
+,,,,,,
+,,,,,,
+,,,,,,
+6519,11/30/2018,43000711,Fac. MS/2018/1131,"5875,77",0,MS
+277,02/13/2018,70500000,Fac. MS/2018/0099,0,2027,MS

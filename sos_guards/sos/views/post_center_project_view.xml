@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<!-- posts -->
+		<record model="ir.ui.view" id="sos_post_tree_view">
+			<field name="name">sos.post.tree.view</field>
+			<field name="model">sos.post</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Posts" create="false" delete="false">
+					<field name="name"/>
+					<field name="project_id" />
+					<field name="startdate" />
+					<field name="region_id" />
+					<field name="center_id" />
+					<field name="partycode" />
+					<field name="guardrate" invisible="1"/>
+					<field name="seniorguardrate" invisible="1"/>
+					<field name="mujahidrate" invisible="1"/>
+					<field name="taxrate_id" />
+					<field name="cur_guards" />
+					<field name="guards" />
+					<field name="active" />
+					<field name="morning_shift_guards" string="Morning Guards"/>
+					<field name="evening_shift_guards" string="Evening Guards"/>
+				</tree>
+			</field>
+		  </record>
+
+		<record model="ir.ui.view" id="sos_post_form_view">
+			<field name="name">sos.post.form.view</field>
+			<field name="model">sos.post</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Posts" create="false" delete="false">
+					<sheet>
+						<div class="oe_button_box" name="button_box">
+						</div>
+						<div class="oe_title">
+						   <label for="name" class="oe_edit_only"/>
+						   <h1>
+							   <field name="name"/>
+						   </h1>
+						   <label for="project_id" class="oe_edit_only"/>
+						   <field name="project_id"  attrs="{'required':1}"/>
+						   <label for="center_id" class="oe_edit_only"/>
+						   <field name="center_id"  attrs="{'required':1}"/>
+						</div>
+						<group>
+							<group>
+								<field name="guards"  attrs="{'required':1}"/>
+								<field name="cur_guards" readonly="1"/>
+								<field name="startdate"/>
+								<field name="enddate"/>
+								<field name="active" />
+								<field name="ftn"/>
+								<field name="strn" />
+								<field name="region_id" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}" />
+								<field name="partner_id" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>
+							</group>
+							<group>
+								<field name="guardrate" groups="sos.group_coordinator,sos.group_hr_master"/>
+								<field name="guardarmedrate" groups="sos.group_coordinator,sos.group_hr_master"/>
+								<field name="mujahidrate" groups="sos.group_coordinator,sos.group_hr_master"/>
+								<field name="seniorguardrate" groups="sos.group_coordinator,sos.group_hr_master"/>
+								<field name="supervisorrate" groups="sos.group_coordinator,sos.group_hr_master"/>
+								<field name="searcherdrate" groups="sos.group_coordinator,sos.group_hr_master"/>
+								<field name="paidon" groups="sos.group_coordinator,sos.group_hr_master"/>
+								<field name="taxrate_id" groups="sos.group_coordinator,sos.group_hr_master"/>
+								<field name="insurance" groups="sos.group_coordinator,sos.group_hr_master"/>
+							</group>
+						</group>
+						<group>
+							<group>
+								<field name="morning_shift_guards" />
+							</group>
+							<group>
+								<field name="evening_shift_guards" />
+							</group>
+						</group>
+
+						<notebook>
+							<page  string="Address">
+								<group>
+									<group>
+										<label for="street" string="Address"/>
+										<div>
+											<field name="street"  attrs="{'required':1}" placeholder="Street..."/>
+											<field name="street2"/>
+											<div class="address_format">
+												<field name="postcity_id"  attrs="{'required':1}" placeholder="City" style="width: 80%%"/>
+											</div>
+										</div>
+										<field name="website" widget="url" placeholder="e.g. www.odoo.com"/>
+									</group>
+									<group>
+										<field name="function" placeholder="e.g. The Manager"/>
+										<field name="phone" placeholder="e.g. +32.81.81.37.00"/>
+										<field name="mobile"/>
+									<!--	<field name="fax"/> -->
+										<field name="email" widget="email"/>
+									</group>
+									<group colspan="3">
+										<field name="headoffice" domain="[('type', '=', 'headoffice')]" />
+									</group>
+									</group>
+							</page>
+
+							<page string="Notes">
+								<group>
+									<field name="remark_ids">
+									<tree editable="top" edit="false" delete="false">
+										<field name="user_id" readonly='1' />
+										<field name="note_date"  readonly='1' />
+										<field name="notes" />
+									</tree>
+									</field>
+								</group>
+							</page>
+
+							<page string="Contacts">
+								<!-- <field name="address_id"> -->
+								<field name="address_id" mode="kanban">
+									<kanban>
+										<field name="color"/>
+										<field name="name"/>
+										<field name="email"/>
+										<field name="parent_id"/>
+										<field name="phone"/>
+										<field name="street"/>
+										<field name="street2"/>
+										<field name="city"/>
+										<field name="mobile"/>
+										<templates>
+											<t t-name="kanban-box">
+												<div t-attf-class="oe_kanban_color_#{kanban_getcolor(record.color.raw_value)} oe_kanban_card oe_kanban_global_click oe_semantic_html_override">
+													<div class="oe_dropdown_toggle oe_dropdown_kanban">
+														<!--
+														<a class="dropdown-toggle btn" data-toggle="dropdown" >
+															<span class="fa fa-bars fa-lg"/>
+														</a>
+														-->
+														 <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+															<t t-if="widget.editable"><li><a type="edit">Edit</a></li></t>
+															<t t-if="widget.deletable"><li><a type="delete">Delete</a></li></t>
+															<li><ul class="oe_kanban_colorpicker" data-field="color"/></li>
+														</ul>
+
+													</div>
+
+													<div class="oe_module_desc">
+														<div class="oe_kanban_content">
+															<b><field name="name"/></b><br/>
+
+															<t title="Mobile"><field name="mobile" />
+															<br /></t>
+
+															<br/>
+
+															<div class="oe_kanban_right">
+															<!--
+																<img t-att-src="kanban_image('sos.partneraddress', 'image_small', record.id.value)" t-att-title="record.id.value" width="24" height="24" class="oe_kanban_avatar"/>
+															-->
+															</div>
+															<div style="font-size: 10px;">
+																<t t-if="record.street.raw_value" title="Street"><field name="street"/><br/></t>
+																<t t-if="record.street2.raw_value" title="Street2"><field name="street2"/><br/></t>
+																<t t-if="record.city.raw_value" title="City"><field name="city"/><br/></t>
+															</div>
+															<div class="oe_kanban_footer_left" style="margin-top:5px;">
+																<field name="sos_category_ids"/>
+															</div>
+														</div>
+													</div>
+												</div>
+											</t>
+										</templates>
+
+									</kanban>
+
+								</field>
+							</page>
+
+							<page string="Account Settings">
+								<group>
+									<group>
+										<field name="partycode" />
+										<field name="ntn" />
+										<field name="stno" />
+										<field name="attendance_min_date" />
+									</group>
+
+									<group>
+										<field name="bank" string="Bank"/>
+										<field name="bankacc" />
+										<field name="central" />
+										<field name="attendance_max_date" />
+									</group>
+								</group>
+							</page>
+
+							<!--
+							<page string="Guards">
+								<group>
+									<field name="employee_ids" options="{'always_reload': true}">
+
+										<tree create="false" edit="false" delete="false">
+											<field name="post_id" invisible="1"/>
+											<field name="project_id" invisible="1"/>
+											<field name="employee_id"/>
+											<field name="fromdate" />
+											<field name="todate" />
+											<field name="current" invisible="1"/>
+
+										</tree>
+
+									</field>
+								</group>
+							</page>
+							-->
+
+							<page string="Guards Allowed">
+								<group>
+									<field name="job_ids">
+									<tree editable="bottom">
+										<field name="contract_id" />
+										<field name="product_id" />
+										<field name="guards" />
+										<field name="rate" />
+										<button name="unlink" icon="gtk-remove" type="object" help="Delete Posting Record" groups="sos.group_hr_master"/>
+									</tree>
+									</field>
+								</group>
+							</page>
+
+						<page string="Weapons">
+							<group>
+								<field name="weapon_lines">
+									<tree  create="false" edit="false" delete="false">
+										<field name="weapon_id"/>
+										<field name="current"/>
+										<field name="fromdate"/>
+										<field name="todate"/>
+									</tree>
+								</field>
+							</group>
+						</page>
+
+						</notebook>
+
+					</sheet>
+					<div class="oe_chatter">
+						<field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+						<field name="message_ids" widget="mail_thread" placeholder="Share a note..."/>
+					</div>
+
+				</form>
+			</field>
+		</record>
+
+		<record id="sos_post_filter_view" model="ir.ui.view">
+			<field name="name">sos.post.select</field>
+			<field name="model">sos.post</field>
+			<field name="arch" type="xml">
+				<search string="Search Partner">
+
+					<field name="name" filter_domain="['|','|',('name','ilike',self),('project_id','ilike',self),('partycode','ilike',self)]"/>
+				   <filter string="Over Staffing" name="overstaffing" domain="[('is_overstaffed','=',True)]" help="Current Guards are more than the allowned ones"/>
+				   <filter string="In-active" name="inactiveposts" icon="terp-personal+" domain="[('active','=',False)]" help="View In-active Posts"/>
+				   <separator/>
+
+				   <field name="name" string="Post" filter_domain="[('name','ilike', self)]"/>
+
+				  <field name="project_id" filter_domain="[('project_id','ilike', self)]"/>
+				   <field name="center_id" filter_domain="[('center_id','ilike', self)]"/>
+				   <field name="partycode" filter_domain="[('partycode','ilike', self)]"/>
+
+				   <group expand="0" string="Group By...">
+					   <filter string="Project" name="project_id" icon="terp-personal" domain="[]" context="{'group_by' : 'project_id'}" />
+					   <filter string="Center" name="center_id" icon="terp-personal" domain="[]" context="{'group_by' : 'center_id'}" />
+					   <filter string="Region" name="region_id" icon="terp-personal" domain="[]" context="{'group_by' : 'region_id'}" />
+					   <filter string="Guards" name="guards" context="{'group_by': 'guards'}"/>
+					   <filter string="Guard Rate" name="guardrate" context="{'group_by': 'guardrate'}"/>
+					   <filter string="Senior Guard Rate" name="seniorguardrate" context="{'group_by': 'seniorguardrate'}"/>
+				   </group>
+
+			   </search>
+			</field>
+		</record>
+
+		<record id="sos_post_action" model="ir.actions.act_window">
+			<field name="name">Posts</field>
+			<field name="res_model">sos.post</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[]</field>
+			<field name="search_view_id" ref="sos_post_filter_view"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+					Click to create a new Post.
+				</p>
+			</field>
+		</record>
+
+		<record id="open_view_sos_post_action_view1" model="ir.actions.act_window.view">
+			<field eval="1" name="sequence"/>
+			<field name="view_mode">tree</field>
+			<field name="view_id" ref="sos_post_tree_view"/>
+			<field name="act_window_id" ref="sos_post_action"/>
+		</record>
+
+		<record id="open_view_sos_post_action_view2" model="ir.actions.act_window.view">
+			<field eval="2" name="sequence"/>
+			<field name="view_mode">form</field>
+			<field name="view_id" ref="sos_post_form_view"/>
+			<field name="act_window_id" ref="sos_post_action"/>
+		</record>
+
+
+
+		<!-- projects -->
+		<record model="ir.ui.view" id="sos_project_tree_view">
+			   <field name="name">sos.project.tree.view</field>
+			   <field name="model">sos.project</field>
+			   <field name="type">tree</field>
+			   <field name="arch" type="xml">
+				   <tree string="Projects">
+					   <field name="name" string="Project Name"/>
+					   <field name="accountno" placeholder="Account No..."/>
+					   <field name="post_ids" />
+					   <field name="start_date" />
+					   <field name="coordinator_ids" />
+					   <field name="centralized" />
+					   <field name="attendance_min_date" />
+					   <field name="attendance_max_date" />
+				   </tree>
+			   </field>
+		</record>
+		<record model="ir.ui.view" id="sos_project_form_view">
+			   <field name="name">sos.project.form.view</field>
+			   <field name="model">sos.project</field>
+			   <field name="type">form</field>
+			   <field name="arch" type="xml">
+				   <form string="Guards Project  Form">
+					   <sheet>
+						   <group>
+							   <group>
+								   <field name="name" string="Project Name" readonly="0"/>
+								   <field name="accountno" placeholder="Account No..."/>
+								   <field name="centralized" />
+									<field name="start_date" />
+							   </group>
+							   <group>
+								   <field name="active" />
+								   <field name="project_coordinator_id" />
+								   <field name="attendance_min_date" />
+								   <field name="attendance_max_date" />
+							   </group>
+						   </group>
+						   <notebook>
+
+							   <page string="Posts">
+								   <field name="post_ids" />
+							   </page>
+
+							   <page string="Coordinators">
+								   <field name="coordinator_ids"/>
+							   </page>
+							   <!--
+								<page string="Guards">
+									<field name="employee_ids"  domain="[('current','=',True)]"/>
+							   </page>
+							-->
+						   </notebook>
+					   </sheet>
+				   </form>
+			   </field>
+		</record>
+
+		  <record id="sos_project_action" model="ir.actions.act_window">
+			<field name="name">Gurad Projects</field>
+			<field name="res_model">sos.project</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+					Click to create a new Project.
+				</p>
+			</field>
+		  </record>
+
+		<!--Centers-->
+		<record model="ir.ui.view" id="sos_center_tree_view">
+			<field name="name">sos.center.tree.view</field>
+			<field name="model">sos.center</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Centers">
+					<field name="name" />
+					<!-- <field name="emp_points" string='Employee Data %' /> -->
+					<field name="post_ids" />
+					<field name="city_ids" />
+					<field name="attendance_min_date" />
+					<field name="attendance_max_date" />
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="sos_center_form_view">
+			<field name="name">sos.center.form.view</field>
+			<field name="model">sos.center</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Center">
+					<sheet>
+						<group>
+							<div class="oe_title">
+								<label for="name"/>
+								<h1>
+									<field name="name" default_focus="1" placeholder="Name..." />
+								</h1>
+								<field name="code" placeholder="Code..." />
+								<field name="region_id"/>
+								<group>
+									<group>
+										<field name="regional_head_id" />
+										<field name="supervisor_id" />
+									</group>
+									<group>
+										<field name="attendance_min_date"  groups="sos.group_account_auditor"/>
+										<field name="attendance_max_date"  groups="sos.group_account_auditor"/>
+									</group>
+								</group>
+							</div>
+						</group>
+
+						<notebook>
+							<page string="Posts">
+								<field name="post_ids">
+								<tree>
+									<field name="name" />
+									<field name="project_id" />
+									<field name="guardrate" />
+									<field name="startdate" />
+									<field name="guards" />
+									<field name="active" />
+									<field name="paidon" />
+								</tree>
+								</field>
+							</page>
+							<!--
+							<page string="Guards">
+								<field name="employee_ids">
+								<tree>
+									<field name="code"/>
+								   <field name="name"/>
+								   <field name="fathername"/>
+								   <field name="cnic"/>
+								   <field name="current"/>
+								   <field name="project_id"/>
+								   <field name="current_post_id"/>
+								   <field name="center_id"/>
+								   <field name="points"/>
+								</tree>
+								</field>
+							</page>
+							-->
+							<page string="Cities">
+								<field name="city_ids" />
+							</page>
+							<page string="Users">
+								<field name="user_ids" />
+							</page>
+						</notebook>
+
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="sos_center_action" model="ir.actions.act_window">
+			<field name="name">Centers</field>
+				<field name="res_model">sos.center</field>
+				<field name="view_type">form</field>
+				<field name="view_mode">tree,form</field>
+				<field name="help" type="html">
+					<p class="oe_view_nocontent_create">
+						Click to create a new Center.
+					</p>
+			</field>
+		</record>
+
+	</data>
+</odoo>

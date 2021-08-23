@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+		<!-- Sequence of Guards PF Return Form -->
+    	<record model="ir.sequence" id="seq_sos_guards_pf_return_form">
+		    <field name="name">Guards PF Returns Form</field>
+		    <field name="code">sos.guards.pf.return.form</field>
+		    <field name="prefix">PFRET/</field>
+		    <field name="padding">4</field>
+		</record>
+		
+    </data>
+</odoo>

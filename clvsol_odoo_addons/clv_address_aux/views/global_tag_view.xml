@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+        
+    <record id="clv_global_tag_view_form_address_aux" model="ir.ui.view">
+        <field name="name">clv.global_tag.form</field>
+        <field name="model">clv.global_tag</field>
+        <field name="inherit_id" ref="clv_global_tag.clv_global_tag_view_form"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <page name="tag_for" position="inside">
+                <group string="Addresses (Aux)">
+                    <field name="address_aux_ids" colspan="4" nolabel="1"/>
+                </group>
+            </page>
+        </field>
+    </record>
+
+    <record id="clv_address_aux_view_form_global_tag" model="ir.ui.view">
+        <field name="name">clv.address_aux.form</field>
+        <field name="model">clv.address_aux</field>
+        <field name="inherit_id" ref="clv_address_aux_view_form"/>
+        <field name="priority" eval="6"/>
+        <field name="arch" type="xml">
+            <label for="name" position="before">
+                <label for="global_tag_ids"  groups="clv_global_tag.group_user" class="oe_edit_only"/>
+                <h4><field name="global_tag_ids" widget="many2many_tags" placeholder="Global Tags..." options="{'color_field': 'color', 'no_open': False, 'no_create': True}" groups="clv_global_tag.group_user"/></h4>
+            </label>
+        </field>
+    </record>
+
+    <record id="clv_address_aux_view_tree_global_tag" model="ir.ui.view">
+        <field name="name">clv.address_aux.tree</field>
+        <field name="model">clv.address_aux</field>
+        <field name="inherit_id" ref="clv_address_aux_view_tree"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="code" position="after">
+                <field name="global_tag_ids" widget="many2many_tags" placeholder="Global Tags..." options="{'color_field': 'color'}" groups="clv_global_tag.group_user"/>
+                <field name="global_tag_names_suport" invisible="True"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="clv_address_aux_view_search_global_tag" model="ir.ui.view">
+        <field name="name">clv.address_aux.search</field>
+        <field name="model">clv.address_aux</field>
+        <field name="inherit_id" ref="clv_address_aux_view_search"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="code" position="after">
+                <field name="global_tag_ids"/>
+            </field>
+            <group name="group_by" position="inside">
+                <filter name="filter_global_tag_names" string="Global Tags" context="{'group_by': 'global_tag_names'}"/>
+            </group>
+        </field>
+    </record>
+
+</odoo>

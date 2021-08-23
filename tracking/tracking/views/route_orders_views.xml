@@ -1,0 +1,130 @@
+<odoo>
+    <data>
+        <record id="view_route_order_search" model="ir.ui.view">
+            <field name="name">view.route.order.search</field>
+            <field name="model">route.order</field>
+            <field name="arch" type="xml">
+                <search string="Ruta de Ordenes">
+                    <field name="name"/>
+                    <newline/>
+                    <group expand="0" string="Group By...">
+                        <filter string="Nombre" icon="terp-partner" domain="[]" name="filter_nombres_ruta" context="{'group_by':'name'}" />
+                        <filter string="Cliente" icon="terp-partner" domain="[]" name="filter_clientes_ruta" context="{'group_by':'partner_id'}" />
+                        <separator orientation="vertical"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+     <!-- <record id='view_route_order_form' model="ir.ui.view">
+        <field name="name">route_view_order_form</field>
+        <field name="model">route.order</field>
+        <field name="arch" type="xml">
+            <form string="Ruta de Ordenes">
+                <header>
+                
+                    <button class="oe_stat_button" icon="fa-cubes" type="action" name="389">
+                        <field name="x_route_orders_id__lx_orders_count" string="Shipping" widget="statinfo"/>
+                    </button> 
+                
+            </header>
+            <sheet>
+                <div class="oe_title">
+                    <label string="Orden" />
+                    <h1>
+                        <field name="name" readonly="1" />
+                    </h1>
+                </div>
+                <group>
+                    <group>
+
+                        <field name="partner_id" />
+                        <field name="partner_shipping_id" />
+                        <field name="priority" />
+                        <field name="type" />
+                        <field name="state" />
+                    </group>
+                    <group>
+                        <field name="date_order" />
+                        <field name="manage_id" />
+                        <field name="comentary" />
+                        <field name="stock_picking_id" />
+                        <field name="sale_order_id" />
+                        <field name="amount" />
+                    </group>
+                </group>
+            </sheet>
+        </form>
+    </field>
+</record> -->
+<record id="view_route_order_form_form" model="ir.ui.view">
+    <field name="name">view.routeorder.form.form</field>
+    <field name="model">route.order</field>
+    <field name="arch" type="xml">
+        <form string="Ruta de Ordenes">
+        <sheet>
+                <div class="oe_title">
+                    <h1>
+                        <field name="name" readonly="1" />
+                    </h1>
+                </div>
+                <group>
+                    <group>
+
+                        <field name="partner_id" />
+                        <field name="partner_shipping_id" />
+                        <field name="priority" />
+                        <field name="type" />
+                        <field name="state" />
+                        <field name="cancel_mot" />
+                        <field name="sync_error" />
+                    </group>
+                    <group>
+                        <field name="date_order" />
+                        <field name="manage_id" />
+                        <field name="zone_id" />
+                        <field name="comentary" />
+                        <field name="stock_picking_id" />
+                        <field name="sale_order_id" />
+                        <field name="amount" />
+                    </group>
+                </group>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+<record id="view_route_order_tree" model="ir.ui.view">
+    <field name="name">view.routeorder.tree</field>
+    <field name="model">route.order</field>
+    <field name="arch" type="xml">
+        <tree string="Ruta de Ordenes">
+            <field name="id" />
+            <field name="name" />
+            <field name="partner_id" />
+            <field name="partner_shipping_id" />
+            <field name="priority" />
+            <field name="date_order" />
+            <field name="manage_id" />
+            <field name="state"/>
+        </tree>
+    </field>
+</record>
+
+
+
+<record id="route_order_action_generic" model="ir.actions.act_window">
+    <field name="name">Ruta de Ordenes</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">route.order</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">tree,form</field>
+</record>
+
+
+<menuitem action="route_order_action_generic" name="Ruta de Ordenes"
+  id="menu_route_order"
+  parent="sale.sale_order_menu"
+  />
+
+</data>
+</odoo>

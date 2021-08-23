@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!--
+        <record model="ir.cron" id="sos_payroll_to_be_processed">
+            <field name="name">Payroll to be Processed</field>
+            <field name="interval_number">5</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field eval="False" name="doall"/>
+            <field eval="'hr.employee'" name="model"/>
+            <field eval="'recompute_payslip_count'" name="function"/>
+            <field eval="'()'" name="args"/>
+        </record>
+		-->
+
+		<record model="ir.cron" id="sos_mark_center_attendance_cron">
+            <field name="name">Mark Center Attendance</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field eval="False" name="doall"/>
+            <field eval="'sos.center.attendance'" name="model"/>
+            <field eval="'mark_center_attendance_cron'" name="function"/>
+            <field eval="'()'" name="args"/>
+        </record>
+        
+		<record model="ir.cron" id="sos_mark_guards_attendance">
+            <field name="name">Mark Guards Attendance</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field eval="False" name="doall"/>
+            <field eval="'sos.center.attendance'" name="model"/>
+            <field eval="'mark_guards_attendance_cron'" name="function"/>
+            <field eval="'()'" name="args"/>
+        </record>
+        
+        <record model="ir.cron" id="sos_guards_payslip">
+            <field name="name">Generate Payslips</field>
+            <field name="interval_number">2</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field eval="False" name="doall"/>
+            <field eval="'guards.payslip.cron'" name="model"/>
+            <field eval="'generate_slips'" name="function"/>
+            <field eval="'()'" name="args"/>
+        </record>
+        
+        
+        <record model="ir.cron" id="sos_attendance_close_cron">
+            <field name="name">Attendance Close</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field eval="False" name="doall"/>
+            <field eval="'sos.attendance.close'" name="model"/>
+            <field eval="'attendance_close_cron'" name="function"/>
+            <field eval="'()'" name="args"/>
+        </record>
+        <!--
+        <record model="ir.cron" id="sos_staff_payslip">
+            <field name="name">Generate Staff Slips</field>
+            <field name="interval_number">10</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field eval="False" name="doall"/>
+            <field eval="'staff.payslip.cron'" name="model"/>
+            <field eval="'generate_slips'" name="function"/>
+            <field eval="'()'" name="args"/>
+        </record>
+      -->
+    </data>
+</odoo>
+
+

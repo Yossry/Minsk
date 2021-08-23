@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+ 		
+ 		<record id="security_year_jo" model="social.year">
+            <field name="name">2020</field>
+            <field name="emp_perc">0.075</field>
+            <field name="comp_perc">14.25</field>
+        </record>
+        
+        <record id="hr.security_year_jo" model="social.year">
+            <field name="social_year" ref="jo_hrms.social_year1"/>
+        </record>
+	</data>
+</odoo>

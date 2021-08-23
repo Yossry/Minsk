@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="singup_modal">
+        <div id="singup_modal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content" style="border:none !important; border-radius:0; box-shadow:none !important; -webkit-box-shadow: none !important; background-color: transparent !important;width: 71%;
+    margin-left: 19%;">
+                    <div class="modal-header" style="color:white">
+                        <h2 style="color: white;">Start your free 14-day trial of Qretail</h2>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span style="font-size: 40px;color: white;">&amp;times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/store/singup" id="store-create-form" name="contact_form" class="default-form">
+                            <div class="form-group field-login">
+                                <input type="text" placeholder="Email Address" name="login"  id="login" class="form-control" required="required" autofocus="autofocus" autocapitalize="off"/>
+                            </div>
+                            <div class="form-group field-login">
+                                <input type="password" placeholder="Password" name="password"  id="password" class="form-control" required="required" autofocus="autofocus" autocapitalize="off"/>
+                            </div>
+                            <div class="form-group field-login">
+                                <input type="text" placeholder="Your Store Name" name="store_name"  id="store_name" class="form-control" required="required" autofocus="autofocus" autocapitalize="off"/>
+                            </div>
+                            <div class="form-group field-login">
+                                <select name="plan_id" class="form-control">
+                                    <option value="lite">Lite</option>
+                                    <option value="pro">Pro</option>
+                                    <option value="enterprise">Enterprise</option>
+                                </select>
+                            </div>
+                            <div class="form-group field-login">
+                                <input type="text" placeholder="Phone no" name="phone"  id="phone" class="form-control" required="required" autofocus="autofocus" autocapitalize="off"/>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-lg pull-right">Create Your Store</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+    <template id="homepage_singup_modal" inherit_id="website.layout">
+        <xpath expr="//main" position="inside">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#singup_modal" data-backdrop="static" data-keyboard="false">
+                Launch demo modal
+            </button>
+            <t t-call="artesia.singup_modal"/>
+        </xpath>
+    </template>
+</odoo>

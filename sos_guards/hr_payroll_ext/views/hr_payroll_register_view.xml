@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+<data>
+        
+<record id="hr_payroll_register_tree" model="ir.ui.view">
+    <field name="name">hr.payroll.register.tree</field>
+    <field name="model">hr.payroll.register</field>
+    <field name="arch" type="xml">
+        <tree string="Payroll Registers">
+            <field name="name"/>
+            <field name="date_start"/>
+			<field name="date_end"/>
+			<field name="state"/>
+        </tree>
+    </field>
+</record>
+
+<record id="hr_payroll_register_form" model="ir.ui.view">
+    <field name="name">hr.payroll.register.form</field>
+    <field name="model">hr.payroll.register</field>
+    <field name="arch" type="xml">
+        <form string="Payroll Register">
+            <header>
+                <!--
+                <button name="% ( 
+                action_create_runs)d" type="action" string="Create Payslips"/>
+                -->
+                <button name="action_delete_runs" type="object" string="Remove All Payslips"
+                        confirm="This will delete all payslip records for this Register. Are you sure you want to continue?"/>
+                
+                <field name="state" widget="statusbar"/>
+            </header>
+			<sheet>
+                <label for="name" class="oe_edit_only"/>
+                <h1>
+                    <field name="name"/>
+                </h1>
+                <group>
+					<group>
+						<field name="date_start"/>
+						<field name="date_end"/>
+					</group>
+					<group>
+						<field name="company_id"/>
+					</group>
+				</group>
+                
+                <newline/>
+                <field name="run_ids" colspan="4" nolabel="1">
+                    <tree string="Payslip Runs by Department">
+                        <field name="name"/>
+                        <field name="date_start"/>
+                        <field name="date_end"/>
+                        <field name="credit_note"/>
+                        <field name="available_advice"/>
+                        <field name="state"/>
+                    </tree>
+                </field>
+			</sheet>
+        </form>
+    </field>
+</record>
+        
+<record id="open_payroll_registers" model="ir.actions.act_window">
+    <field name="name">Registers</field>
+    <field name="res_model">hr.payroll.register</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">tree,form</field>
+    <field name="view_id" ref="hr_payroll_register_tree"/>
+</record>
+
+
+       <!-- Payslip Run Inherit for Register -->
+
+		 <record id="hr_payslip_run_form" model="ir.ui.view">
+            <field name="name">hr.payslip.run.form.inherit</field>
+            <field name="model">hr.payslip.run</field>
+            <field name="inherit_id" ref="hr_payroll.hr_payslip_run_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='credit_note']" position="after">
+                    <field name="register_id"/>
+                </xpath>
+                
+                  <xpath expr="//field[@name='slip_ids']" position="after">
+                  	 <div class="row">
+                        	<div class="col-xs-6 pull-left">
+                        	</div>  
+                        	<div class="col-xs-6 pull-left">
+                    			<field class="pull-right" style="padding-bottom:10px;text-align:right;" name="total"/>
+                   			</div>
+		    			</div>	
+                </xpath>
+                
+            </field>
+        </record>
+
+		<!-- SARFRAZ
+		 <record id="hr_payslip_run_tree" model="ir.ui.view">
+            <field name="name">hr.payslip.run.tree.inherit</field>
+            <field name="model">hr.payslip.run</field>
+            <field name="inherit_id" ref="hr_payroll.hr_payslip_run_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='credit_note']" position="after">
+                    <field name="register_id"/>
+                </xpath>
+            </field>
+        </record>
+
+		<record id="hr_payslip_run_filter" model="ir.ui.view">
+            <field name="name">hr.payslip.run.tree.inherit</field>
+            <field name="model">hr.payslip.run</field>
+            <field name="inherit_id" ref="hr_payroll.hr_payslip_run_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='done_filter']" position="after">
+                    <group col="8" colspan="4" expand="0" string="Group By">
+                        <filter string="Register" name="register" context="{'group_by':'register_id'}"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+-->
+        
+    </data>
+</odoo>

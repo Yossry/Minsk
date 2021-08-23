@@ -1,0 +1,18 @@
+<odoo>
+    <record id="product_product_update_chrono24_action" model="ir.actions.server">
+        <field name="name">Update Chrono24 Date</field>
+        <field name="model_id" ref="product.model_product_product" />
+        <field name="binding_model_id" ref="product.model_product_product" />
+        <field name="state">code</field>
+        <field name="code">records.updated_chrono24_date_button()</field>
+    </record>
+    <record id="product_temmplate_update_chrono24_action" model="ir.actions.server">
+        <field name="name">Update Chrono24 Date</field>
+        <field name="model_id" ref="product.model_product_template" />
+        <field name="binding_model_id" ref="product.model_product_template" />
+        <field name="state">code</field>
+        <field
+            name="code"
+        >records.mapped('product_variant_ids').updated_chrono24_date_button()</field>
+    </record>
+</odoo>

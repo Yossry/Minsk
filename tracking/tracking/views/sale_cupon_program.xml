@@ -1,0 +1,19 @@
+<odoo>
+  <data>
+      <record id="view_sale_cupon_program_form_inherit" model="ir.ui.view">
+            <field name="name">view_sale_cupon_program_form_inherit</field>
+            <field name="model">sale.coupon.program</field>
+            <field name="inherit_id" ref="sale_coupon.sale_coupon_program_view_form_common"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet" position="inside">
+                   <group>
+                     <field name="products_dom" />
+                   </group>
+                </xpath>
+                <xpath expr="//field[@name='discount_type']" position="replace">
+                  <field name="discount_type" class="oe_inline" attrs="{'required': [('reward_type','=','discount')]}" invisible="1"/>
+                </xpath>
+            </field>
+    </record>
+  </data>
+</odoo>

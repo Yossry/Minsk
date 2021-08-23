@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <template id="osbt_theme_assets_ent" name="OSBT Theme Assets">
+    <link rel="stylesheet" type="text/scss" href="/odoo_shoppe_backend_theme/static/src/scss/themes/orange.scss"/>
+    <link rel="stylesheet" type="text/scss" href="/odoo_shoppe_backend_theme/static/src/scss/themes/blue.scss"/>
+    <link rel="stylesheet" type="text/scss" href="/odoo_shoppe_backend_theme/static/src/scss/themes/prussian.scss"/>
+    <link rel="stylesheet" type="text/scss" href="/odoo_shoppe_backend_theme/static/src/scss/themes/dark_red.scss"/>
+    <link rel="stylesheet" type="text/scss" href="/odoo_shoppe_backend_theme/static/src/scss/themes/gray_black.scss"/>
+    <link rel="stylesheet" type="text/scss" href="/odoo_shoppe_backend_theme/static/src/scss/themes/grey.scss"/>
+    <link rel="stylesheet" type="text/scss" href="/odoo_shoppe_backend_theme/static/src/scss/themes/pink.scss"/>
+    <link rel="stylesheet" type="text/scss" href="/odoo_shoppe_backend_theme/static/src/scss/themes/white.scss"/>
+    <link rel="stylesheet" type="text/scss" href="/odoo_shoppe_backend_theme/static/src/scss/themes/yellow_green.scss"/>
+  </template>
+
+  <template id="app_assets" inherit_id="web.assets_backend" name="Apps Assets">
+    <xpath expr="." position="inside">
+      <link rel="stylesheet" type="text/scss" href="/odoo_shoppe_backend_theme/static/src/scss/apps.scss"/>
+    </xpath>
+  </template>
+
+  <template id="odoo_shoppe_backend_theme.webclient_bootstrap_apps">
+    <t t-call="web.layout">
+      <t t-set="head_web">
+        <script type="text/javascript">
+          odoo.session_info = <t t-raw="session_info"/>;
+        </script>
+
+        <t t-call-assets="web.assets_common" t-js="false"/>
+        <t t-call-assets="web.assets_backend" t-js="false"/>
+        <t t-call-assets="web_editor.summernote" t-js="false"/>
+        <t t-call-assets="web_editor.assets_editor" t-js="false"/>
+        <t t-call-assets="web.assets_common" t-css="false"/>
+        <t t-call-assets="web.assets_backend" t-css="false"/>
+        <t t-call-assets="web_editor.summernote" t-css="false"/>
+        <t t-call-assets="web_editor.assets_editor" t-css="false"/>
+
+        <![CDATA[
+          <!--[if lt IE 10]>
+              <body class="ie9">
+          <![endif]-->
+        ]]>
+        <t t-call-assets="odoo_shoppe_backend_theme.osbt_theme_assets_ent" t-js="false"/>
+        <script type="text/javascript">
+          odoo.define('web.web_client', function (require) {
+              var WebClient = require('web.WebClient');
+              var web_client = new WebClient();
+              $(function() {
+                  web_client.setElement($(document.body));
+                  web_client.start();
+              });
+              return web_client;
+          });
+        </script>
+      </t>
+      <t t-set="head" t-value="head_web + (head or '')"/>
+      <t t-set="body_classname" t-value="'o_web_client appstheme'"/>
+      <div class="o_main">
+        <main class="o_main_content"/>
+      </div>
+    </t>
+  </template>
+</odoo>

@@ -1,0 +1,180 @@
+@mixin menu-xs() {
+    & > header {
+        .o_main_navbar {
+            div.oe_menu_layout{
+                #o_menu_apps{
+                    .main_menu{
+                        position: fixed;
+                        left: -100%;
+                        width: 100%;
+                        max-width: 100%;
+                    }
+                }
+                #o_menu_sections.o_menu_sections{
+                    position: fixed;
+                    left: -100%;
+                    width: 100%;
+                    max-width: 100%;
+                }
+                .o_quick_menu{
+                    .o_glonal_search_dropdown{
+                        position: fixed !important;
+                        display: block;
+                        right: 0;
+                        left: -100% !important;
+                        width: 100%;
+                        min-width: 100%;
+                        padding: 10px 10px 10px 65px;
+                        .user-dropdown{
+                            .global-search{
+                                min-width: 100%;
+                                max-width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+            .o_menu_systray {
+               & > li{
+                    & > .dropdown-menu{
+                        position: fixed !important;
+                        left: -100%;
+                        width: 100%;
+                        max-width: 100%;
+                        box-shadow: none;
+                        padding: 30px 0px 30px 65px;
+                        &.show{
+                          left: 0;
+                          right: 0;
+                          width: 100%;
+                          max-width: 100%;  
+                        }
+                    }
+                    &.o_switch_company_menu:not(.show) .dropdown-menu{
+                        left: -100% !important;
+                    }
+                }
+                .o_mail_systray_item{
+                    .o_mail_systray_dropdown{
+                        display: -webkit-box;
+                        display: -webkit-flex;
+                        display: flex;
+                        -webkit-flex-flow: column nowrap;
+                        flex-flow: column nowrap;
+                        margin: 0;
+                        min-width: 100%;
+                        max-width: 100%;
+                        padding: 30px 0px 0px 65px;
+                        .o_mail_mobile_tabs{
+                            position: relative;
+                            align-content: flex-end;
+                            justify-content: flex-end;
+                            flex: 0 0 auto;
+                            box-shadow: none;
+                            border-top: 1px solid $border;
+                            .o_mail_mobile_tab{
+                                box-shadow: none;
+                                &.active{
+                                    background: repeating-linear-gradient(to right, $brand-primary 0%, $brand-primary 100%) left bottom transparent no-repeat;
+                                    background-size: 100% 1px;
+                                    background-position: center top;
+                                    -webkit-animation: line-animate .5s 1;
+                                    -moz-animation: line-animate .5s 1;
+                                    animation: line-animate .5s 1;
+                                    & > span{
+                                        color: $brand-secondary;
+                                    }
+                                }
+                            }
+                        }
+                        .o_mail_systray_dropdown_items{
+                            flex: 1 1 auto;
+                            overflow: auto;
+                        }
+                        .o_mail_systray_mobile_header{
+                            padding: 0px;
+                            text-align: right;
+                            box-shadow: none;
+                            height: auto;
+                            & > button{
+                                border: none;
+                                padding: 5px;
+                            }
+                        }
+                    }
+                } 
+            }
+            #av_full_view{
+                left: 65px;
+                padding: 18px 12px;
+            }
+        }
+    }
+    .o_main {
+        .ad_rightbar {
+            @include slide-animation();
+            flex: 0 0 100%;
+        }
+    }
+    &:not(.ad_full_view) {
+        .o_main {
+            .ad_rightbar {
+                flex: 0 0 100%;
+                @include slide-animation();
+            }
+        }
+    }
+    &.ad_open_childmenu, &.nav-sm {
+        .o_main {
+            .ad_leftbar.o_sub_menu {
+                width: 100%;
+                .ad_right_panel {
+                    .o_sub_menu_content {
+                        .oe_secondary_menu {
+                            padding-right: 5px;
+                            padding-left: 5px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.nav-sm{
+        header{
+            .o_main_navbar{
+                .oe_menu_layout{
+                    #o_menu_apps{
+                        .main_menu{
+                            position: fixed;
+                            left: 0;
+                            right: 0;
+                            width: 100%;
+                            max-width: 100%;
+                            @include slide-animation();
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.ad_open_childmenu{
+        & > header{
+            & > .o_main_navbar{
+                & > div.oe_menu_layout{
+                    #o_menu_sections.o_menu_sections{
+                        position: fixed;
+                        left: 0;
+                        right: 0;
+                        width: 100%;
+                        max-width: 100%;
+                        @include slide-animation();
+                    }
+                }
+            }
+        }
+    }
+}
+
+body.o_web_client.ad_mobile {
+    @include menu-xs();
+}

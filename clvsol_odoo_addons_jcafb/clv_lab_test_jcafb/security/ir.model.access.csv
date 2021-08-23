@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_clv_lab_test_parasite_user,clv.lab_test.parasite.user,model_clv_lab_test_parasite,clv_lab_test.group_user,1,0,0,0
+access_clv_lab_test_parasite_manager,clv.lab_test.parasite.manager,model_clv_lab_test_parasite,clv_lab_test.group_manager,1,1,1,0
+access_clv_lab_test_parasite_supmanager,clv.lab_test.parasite.supmanager,model_clv_lab_test_parasite,clv_lab_test.group_supmanager,1,1,1,1
+
+access_clv_lab_test_crystal_user,clv.lab_test.crystal.user,model_clv_lab_test_crystal,clv_lab_test.group_user,1,0,0,0
+access_clv_lab_test_crystal_manager,clv.lab_test.crystal.manager,model_clv_lab_test_crystal,clv_lab_test.group_manager,1,1,1,0
+access_clv_lab_test_crystal_supmanager,clv.lab_test.crystal.supmanager,model_clv_lab_test_crystal,clv_lab_test.group_supmanager,1,1,1,1

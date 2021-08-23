@@ -1,0 +1,1196 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Product Offer-->
+    <menuitem
+        id="product_offer_section"
+        name="Product Offer"
+        groups="sales_team.group_sale_salesman"
+        parent="sale.sale_menu_root"
+        sequence="25"
+    />
+    <!-- add fields in form view -->
+    <record id="product_template_form_view" model="ir.ui.view">
+        <field name="name">product.template.common.form</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view" />
+        <field name="arch" type="xml">
+            <xpath
+                expr="//group[@name='group_standard_price']/label[1]"
+                position="before"
+            >
+                <field name="net_price" />
+                <field name="discount" />
+            </xpath>
+        </field>
+    </record>
+    <!-- Products: Internal: Product Offer AA -->
+    <record id="product_template_kanban_aa" model="ir.ui.view">
+        <field name="name">product.template.kanban.aa</field>
+        <field name="model">product.template</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="type" />
+                <field name="id" />
+                <field name="image" />
+                <field name="default_code" />
+                <field name="overseas_stock" />
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div
+                                class="o_kanban_image"
+                                style="width: 150px; height: 150px;"
+                            >
+                                <img
+                                    style="width: 150px; height: 150px;"
+                                    t-att-src="kanban_image('product.template', 'image', record.id.raw_value)"
+                                    alt="Product"
+                                />
+                            </div>
+                            <div class="oe_kanban_details" style="padding-left: 155px;">
+                                <h4>
+                                    <span t-if="record.default_code.raw_value">
+                                        [<field name="default_code" />]
+                                    </span>
+                                    <field name="name" />
+                                </h4>
+                                <div name="tags" />
+                                <ul>
+                                    <li>Brand:
+                                        <field name="brand" />
+                                    </li>
+                                    <li
+                                        t-if="record.type.raw_value != 'service'"
+                                    >HK Stock:
+                                        <field name="qty_local_stock" />
+                                        <field name="uom_id" />
+                                    </li>
+                                    <li
+                                        t-if="record.type.raw_value != 'service'"
+                                    >Overseas Stock:
+                                        <field name="qty_overseas" />
+                                        <field name="uom_id" />
+                                    </li>
+                                    <li
+                                        t-if="record.type.raw_value != 'service'"
+                                    >Reserved:
+                                        <field name="qty_reserved" />
+                                        <field name="uom_id" />
+                                    </li>
+                                    <li
+                                        t-if="record.overseas_stock.raw_value != 'No'"
+                                    > Overseas Retail in <field
+                                            name="curr_of_cheapest"
+                                        />: <field name="retail_of_cheapest" /></li>
+                                    <li id="hk-retail1">HK Retail:
+                                        <field name="list_price_integer" />
+                                    </li>
+                                    <li>Discount:<field name="discount" />%
+                                    </li>
+                                    <li>Sale HKD:
+                                        <field name="net_price_integer" />
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record id="product_template_kanban_aa_action" model="ir.actions.act_window">
+        <field name="name">AA</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.template</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_type">form</field>
+        <field name="view_id" ref="product_template_kanban_aa" />
+        <field name="context">{"search_default_warehouse_internal_location": 1}</field>
+    </record>
+    <menuitem
+        action="product_template_kanban_aa_action"
+        id="menu_product_template_kanban_aa_action"
+        parent="product_offer_section"
+        sequence="4"
+    />
+    <!-- Products: Internal CN:: Product Offer AA CNY -->
+    <record id="product_template_kanban_aa_cn" model="ir.ui.view">
+        <field name="name">product.template.kanban.aa.cn</field>
+        <field name="model">product.template</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="type" />
+                <field name="id" />
+                <field name="image" />
+                <field name="default_code" />
+                <field name="overseas_stock" />
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div
+                                class="o_kanban_image"
+                                style="width: 150px; height: 150px;"
+                            >
+                                <img
+                                    style="width: 150px; height: 150px;"
+                                    t-att-src="kanban_image('product.template', 'image', record.id.raw_value)"
+                                    alt="Product"
+                                />
+                            </div>
+                            <div class="oe_kanban_details" style="padding-left: 155px;">
+                                <h4>
+                                    <span t-if="record.default_code.raw_value">
+                                        [<field name="default_code" />]
+                                    </span>
+                                    <field name="name" />
+                                </h4>
+                                <div name="tags" />
+                                <ul>
+                                    <li>品牌:
+                                        <field name="brand" />
+                                    </li>
+                                    <li
+                                        t-if="record.type.raw_value != 'service'"
+                                    >香港現貨:
+                                        <field name="qty_local_stock" />
+                                        <field name="uom_id" />
+                                    </li>
+                                    <li
+                                        t-if="record.type.raw_value != 'service'"
+                                    >歐洲期貨:
+                                        <field name="qty_overseas" />
+                                        <field name="uom_id" />
+                                    </li>
+                                    <li
+                                        t-if="record.type.raw_value != 'service'"
+                                    >已預留:
+                                        <field name="qty_reserved" />
+                                        <field name="uom_id" />
+                                    </li>
+                                    <li
+                                        t-if="record.overseas_stock.raw_value != 'No'"
+                                    > 公價 <field name="curr_of_cheapest" />: <field
+                                            name="retail_of_cheapest"
+                                        /></li>
+                                    <li id="hk-retail1">港幣公價:
+                                        <field name="list_price_integer" />
+                                    </li>
+                                    <li>港幣賣價:
+                                        <field name="net_price_integer" />
+                                    </li>
+                                    <li>折扣率:<field name="discount" />%
+                                    </li>
+                                    <li style="font-style:italic">今日人民幣賣價:
+                                        <field name="net_price_cny" />
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record id="product_template_kanban_aa_cn_action" model="ir.actions.act_window">
+        <field name="name">AA (CN)</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.template</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_type">form</field>
+        <field name="view_id" ref="product_template_kanban_aa_cn" />
+        <field name="context">{"search_default_warehouse_internal_location":1}</field>
+    </record>
+    <menuitem
+        action="product_template_kanban_aa_cn_action"
+        id="menu_product_template_kanban_aa_cn_action"
+        parent="product_offer_section"
+        sequence="5"
+    />
+    <!-- Product Offer (ALL) AA-No-Qty-->
+    <record id="product_template_kanban_aa_all_no_qty" model="ir.ui.view">
+        <field name="name">product.template.kanban.aa.all.no.qty</field>
+        <field name="model">product.template</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="type" />
+                <field name="sale_hkd_aa_so" />
+                <field name="id" />
+                <field name="image" />
+                <field name="default_code" />
+                <field name="overseas_stock" />
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div
+                                class="o_kanban_image"
+                                style="width: 150px; height: 150px;"
+                            >
+                                <img
+                                    style="width: 150px; height: 150px;"
+                                    t-att-src="kanban_image('product.template', 'image', record.id.raw_value)"
+                                    alt="Product"
+                                />
+                            </div>
+                            <div class="oe_kanban_details" style="padding-left: 155px;">
+                                <h4>
+                                    <span t-if="record.default_code.raw_value">
+                                        [<field name="default_code" />]
+                                    </span>
+                                    <field name="name" />
+                                </h4>
+                                <div name="tags" />
+                                <ul>
+                                    <li>Brand:
+                                        <field name="brand" />
+                                    </li>
+                                    <li
+                                        t-if="record.type.raw_value != 'service'"
+                                    >HK Stock:
+                                        <field name="local_stock" />
+                                    </li>
+                                    <li
+                                        t-if="record.type.raw_value != 'service'"
+                                    >Overseas Stock:
+                                        <field name="overseas_stock" />
+                                    </li>
+                                    <li
+                                        t-if="record.overseas_stock.raw_value != 'No'"
+                                    > Overseas Retail in <field
+                                            name="curr_of_cheapest"
+                                        />: <field name="retail_of_cheapest" /></li>
+                                    <li id="hk-retail1">HK Retail:
+                                        <field name="list_price_integer" />
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_aa_so.raw_value == 0"
+                                    >Discount:<field name="discount" />%
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_aa_so.raw_value == 0"
+                                    >Sale HKD:
+                                        <field name="net_price_integer" />
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_aa_so.raw_value == 0"
+                                    >Sale USD:
+                                        <field name="sale_in_usd" />
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_aa_so.raw_value == 0"
+                                    >Sale EUR:
+                                        <field name="sale_in_eur" />
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_aa_so.raw_value == 0"
+                                    >Sale CHF:
+                                        <field name="sale_in_chf" />
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_aa_so.raw_value == 0"
+                                    >Sale RMB:
+                                        <field name="sale_in_rmb" />
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_aa_so.raw_value > 0"
+                                    >Discount:<field name="discount_aa_so" />%
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_aa_so.raw_value > 0"
+                                        style="color:DarkGrey"
+                                    >Sale HKD:
+                                        <field name="net_price_integer" />
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_aa_so.raw_value > 0"
+                                        style="color:DarkGrey"
+                                    >Sale USD:
+                                        <field name="sale_in_usd" />
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_aa_so.raw_value > 0"
+                                        style="color:DarkGrey"
+                                    >Sale EUR:
+                                        <field name="sale_in_eur" />
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_aa_so.raw_value > 0"
+                                        style="color:DarkGrey"
+                                    >Sale CHF:
+                                        <field name="sale_in_chf" />
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_aa_so.raw_value > 0"
+                                        style="color:DarkGrey"
+                                    >Sale RMB:
+                                        <field name="sale_in_rmb" />
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_aa_so.raw_value > 0"
+                                        style="color:Red; font-weight:bold;"
+                                    >
+                                        Sale HKD Special:
+                                        <field name="sale_hkd_aa_so" />
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_aa_so.raw_value > 0"
+                                        style="color:Red; font-weight:bold;"
+                                    >
+                                        Sale USD Special:
+                                        <field name="sale_in_usd_so" />
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_aa_so.raw_value > 0"
+                                        style="color:Red; font-weight:bold;"
+                                    >
+                                        Sale EUR Special:
+                                        <field name="sale_in_eur_so" />
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_aa_so.raw_value > 0"
+                                        style="color:Red; font-weight:bold;"
+                                    >
+                                        Sale CHF Special:
+                                        <field name="sale_in_chf_so" />
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_aa_so.raw_value > 0"
+                                        style="color:Red; font-weight:bold;"
+                                    >
+                                        Sale RMB Special:
+                                        <field name="sale_in_rmb_so" />
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record
+        id="product_template_kanban_aa_all_no_qty_action"
+        model="ir.actions.act_window"
+    >
+        <field name="name">AA-NO-QTY ALL</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.template</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_type">form</field>
+        <field name="view_id" ref="product_template_kanban_aa_all_no_qty" />
+        <field name="context">{"search_default_warehouse_internal_location":1}</field>
+    </record>
+    <menuitem
+        action="product_template_kanban_aa_all_no_qty_action"
+        id="menu_product_template_kanban_aa_all_no_qty_action"
+        parent="product_offer_section"
+        sequence="8"
+    />
+    <!-- Product Offer (ALL) AA-No-Qty CN-->
+    <record id="product_template_kanban_aa_all_no_qty_cn" model="ir.ui.view">
+        <field name="name">product.template.kanban.aa.all.no.qty.cn</field>
+        <field name="model">product.template</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="type" />
+                <field name="id" />
+                <field name="image" />
+                <field name="sale_hkd_aa_so" />
+                <field name="default_code" />
+                <field name="overseas_stock" />
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div
+                                class="o_kanban_image"
+                                style="width: 150px; height: 150px;"
+                            >
+                                <img
+                                    style="width: 150px; height: 150px;"
+                                    t-att-src="kanban_image('product.template', 'image', record.id.raw_value)"
+                                    alt="Product"
+                                />
+                            </div>
+                            <div class="oe_kanban_details" style="padding-left: 155px;">
+                                <h4>
+                                    <span t-if="record.default_code.raw_value">
+                                        [<field name="default_code" />]
+                                    </span>
+                                    <field name="name" />
+                                </h4>
+                                <div name="tags" />
+                                <ul>
+                                    <li>品牌:
+                                        <field name="brand" />
+                                    </li>
+                                    <li
+                                        t-if="record.type.raw_value != 'service'"
+                                    >香港現貨:
+                                        <field name="local_stock" />
+                                    </li>
+                                    <li
+                                        t-if="record.type.raw_value != 'service'"
+                                    >歐洲期貨:
+                                        <field name="overseas_stock" />
+                                    </li>
+                                    <li
+                                        t-if="record.overseas_stock.raw_value != 'No'"
+                                    > 公價 <field name="curr_of_cheapest" />: <field
+                                            name="retail_of_cheapest"
+                                        /></li>
+                                    <li id="hk-retail1">港幣公價:
+                                        <field name="list_price_integer" />
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_aa_so.raw_value == 0"
+                                    >折扣率:<field name="discount" />%
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_aa_so.raw_value == 0"
+                                    >港幣賣價:
+                                        <field name="net_price_integer" />
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_aa_so.raw_value == 0"
+                                    >美元賣價:
+                                        <field name="sale_in_usd" />
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_aa_so.raw_value == 0"
+                                    >歐元賣價:
+                                        <field name="sale_in_eur" />
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_aa_so.raw_value == 0"
+                                    >瑞郎賣價:
+                                        <field name="sale_in_chf" />
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_aa_so.raw_value == 0"
+                                    >人民幣賣價:
+                                        <field name="sale_in_rmb" />
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_aa_so.raw_value > 0"
+                                    >折扣率:<field name="discount_aa_so" />%
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_aa_so.raw_value > 0"
+                                        style="color:DarkGrey"
+                                    >港幣賣價:
+                                        <field name="net_price_integer" />
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_aa_so.raw_value > 0"
+                                        style="color:DarkGrey"
+                                    >美元賣價:
+                                        <field name="sale_in_usd" />
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_aa_so.raw_value > 0"
+                                        style="color:DarkGrey"
+                                    >歐元賣價:
+                                        <field name="sale_in_eur" />
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_aa_so.raw_value > 0"
+                                        style="color:DarkGrey"
+                                    >瑞郎賣價:
+                                        <field name="sale_in_chf" />
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_aa_so.raw_value > 0"
+                                        style="color:DarkGrey"
+                                    >人民幣賣價:
+                                        <field name="sale_in_rmb" />
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_aa_so.raw_value > 0"
+                                        style="color:Red; font-weight:bold;"
+                                    >
+                                        港幣減價後特價:
+                                        <field name="sale_hkd_aa_so" />
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_aa_so.raw_value > 0"
+                                        style="color:Red; font-weight:bold;"
+                                    >
+                                        美元減價後特價:
+                                        <field name="sale_in_usd_so" />
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_aa_so.raw_value > 0"
+                                        style="color:Red; font-weight:bold;"
+                                    >
+                                        歐元減價後特價:
+                                        <field name="sale_in_eur_so" />
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_aa_so.raw_value > 0"
+                                        style="color:Red; font-weight:bold;"
+                                    >
+                                        瑞郎減價後特價:
+                                        <field name="sale_in_chf_so" />
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_aa_so.raw_value > 0"
+                                        style="color:Red; font-weight:bold;"
+                                    >
+                                        人民幣減價後特價:
+                                        <field name="sale_in_rmb_so" />
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record
+        id="product_template_kanban_aa_all_no_qty_cn_action"
+        model="ir.actions.act_window"
+    >
+        <field name="name">AA-NO-QTY ALL (CN)</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.template</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_type">form</field>
+        <field name="view_id" ref="product_template_kanban_aa_all_no_qty_cn" />
+        <field name="context">{"search_default_warehouse_internal_location":1}</field>
+    </record>
+    <menuitem
+        action="product_template_kanban_aa_all_no_qty_cn_action"
+        id="menu_product_template_kanban_aa_all_no_qty_cn_action"
+        parent="product_offer_section"
+        sequence="8"
+    />
+    <!-- Product Offer AA-No-Qty-->
+    <record id="product_template_kanban_aa_no_qty" model="ir.ui.view">
+        <field name="name">product.template.kanban.aa.no.qty</field>
+        <field name="model">product.template</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="type" />
+                <field name="id" />
+                <field name="image" />
+                <field name="sale_hkd_aa_so" />
+                <field name="default_code" />
+                <field name="overseas_stock" />
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div
+                                class="o_kanban_image"
+                                style="width: 150px; height: 150px;"
+                            >
+                                <img
+                                    style="width: 150px; height: 150px;"
+                                    t-att-src="kanban_image('product.template', 'image', record.id.raw_value)"
+                                    alt="Product"
+                                />
+                            </div>
+                            <div class="oe_kanban_details" style="padding-left: 155px;">
+                                <h4>
+                                    <span t-if="record.default_code.raw_value">
+                                        [<field name="default_code" />]
+                                    </span>
+                                    <field name="name" />
+                                </h4>
+                                <div name="tags" />
+                                <ul>
+                                    <li>Brand:
+                                        <field name="brand" />
+                                    </li>
+                                    <li
+                                        t-if="record.type.raw_value != 'service'"
+                                    >HK Stock:
+                                        <field name="local_stock" />
+                                    </li>
+                                    <li
+                                        t-if="record.type.raw_value != 'service'"
+                                    >Overseas Stock:
+                                        <field name="overseas_stock" />
+                                    </li>
+                                    <li
+                                        t-if="record.overseas_stock.raw_value != 'No'"
+                                    > Overseas Retail in <field
+                                            name="curr_of_cheapest"
+                                        />: <field name="retail_of_cheapest" /></li>
+                                    <li id="hk-retail1">HK Retail:
+                                        <field name="list_price_integer" />
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_aa_so.raw_value == 0"
+                                    >Discount:<field name="discount" />%
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_aa_so.raw_value == 0"
+                                    >Sale HKD:
+                                        <field name="net_price_integer" />
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_aa_so.raw_value > 0"
+                                    >Discount:<field name="discount_aa_so" />%
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_aa_so.raw_value > 0"
+                                        style="color:DarkGrey"
+                                    >Sale HKD:
+                                        <field name="net_price_integer" />
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_aa_so.raw_value > 0"
+                                        style="color:Red; font-weight:bold;"
+                                    >
+                                        Sale HKD Special:
+                                        <field name="sale_hkd_aa_so" />
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record id="product_template_kanban_aa_no_qty_action" model="ir.actions.act_window">
+        <field name="name">AA-NO-QTY</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.template</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_type">form</field>
+        <field name="view_id" ref="product_template_kanban_aa_no_qty" />
+        <field name="context">{"search_default_warehouse_internal_location":1}</field>
+    </record>
+    <menuitem
+        action="product_template_kanban_aa_no_qty_action"
+        id="menu_product_template_kanban_aa_no_qty_action"
+        parent="product_offer_section"
+        sequence="6"
+    />
+    <!-- Product Offer AA-No-Qty CN -->
+    <record id="product_template_kanban_aa_no_qty_cn" model="ir.ui.view">
+        <field name="name">product.template.kanban.aa.no.qty.cn</field>
+        <field name="model">product.template</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="type" />
+                <field name="id" />
+                <field name="image" />
+                <field name="sale_hkd_aa_so" />
+                <field name="default_code" />
+                <field name="overseas_stock" />
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div
+                                class="o_kanban_image"
+                                style="width: 150px; height: 150px;"
+                            >
+                                <img
+                                    style="width: 150px; height: 150px;"
+                                    t-att-src="kanban_image('product.template', 'image', record.id.raw_value)"
+                                    alt="Product"
+                                />
+                            </div>
+                            <div class="oe_kanban_details" style="padding-left: 155px;">
+                                <h4>
+                                    <span t-if="record.default_code.raw_value">
+                                        [<field name="default_code" />]
+                                    </span>
+                                    <field name="name" />
+                                </h4>
+                                <div name="tags" />
+                                <ul>
+                                    <li>品牌:
+                                        <field name="brand" />
+                                    </li>
+                                    <li
+                                        t-if="record.type.raw_value != 'service'"
+                                    >香港現貨:
+                                        <field name="local_stock" />
+                                    </li>
+                                    <li
+                                        t-if="record.type.raw_value != 'service'"
+                                    >歐洲期貨:
+                                        <field name="overseas_stock" />
+                                    </li>
+                                    <li
+                                        t-if="record.overseas_stock.raw_value != 'No'"
+                                    > 公價 <field name="curr_of_cheapest" />: <field
+                                            name="retail_of_cheapest"
+                                        /></li>
+                                    <li id="hk-retail1">港幣公價:
+                                        <field name="list_price_integer" />
+                                    </li>
+                                    <li>港幣賣價:
+                                        <field name="net_price_integer" />
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_aa_so.raw_value == 0"
+                                    >折扣率:<field name="discount" />%
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_aa_so.raw_value == 0"
+                                        style="font-style:italic;"
+                                    >今日人民幣賣價:
+                                        <field name="net_price_cny" />
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_aa_so.raw_value > 0"
+                                    >折扣率:<field name="discount_aa_so" />%
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_aa_so.raw_value > 0"
+                                        style="color:DarkGrey;font-style:italic"
+                                    >今日人民幣賣價:
+                                        <field name="net_price_cny" />
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_aa_so.raw_value > 0"
+                                        style="color:Red; font-weight:bold; font-style:italic"
+                                    >人民幣減價後特價:
+                                        <field name="sale_hkd_aa_so_cn" />
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record
+        id="product_template_kanban_aa_no_qty_cn_action"
+        model="ir.actions.act_window"
+    >
+        <field name="name">AA-NO-QTY (CN)</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.template</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_type">form</field>
+        <field name="view_id" ref="product_template_kanban_aa_no_qty_cn" />
+        <field name="context">{"search_default_warehouse_internal_location":1}</field>
+    </record>
+    <menuitem
+        action="product_template_kanban_aa_no_qty_cn_action"
+        id="menu_product_template_kanban_aa_no_qty_cn_action"
+        parent="product_offer_section"
+        sequence="6"
+    />
+    <!-- Product Offer AC-No-Qty-->
+    <record id="product_template_kanban_ac_no_qty" model="ir.ui.view">
+        <field name="name">product.template.kanban.ac.no.qty</field>
+        <field name="model">product.template</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="type" />
+                <field name="id" />
+                <field name="image" />
+                <field name="sale_hkd_ac_so" />
+                <field name="default_code" />
+                <field name="overseas_stock" />
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div
+                                class="o_kanban_image"
+                                style="width: 150px; height: 150px;"
+                            >
+                                <img
+                                    style="width: 150px; height: 150px;"
+                                    t-att-src="kanban_image('product.template', 'image', record.id.raw_value)"
+                                    alt="Product"
+                                />
+                            </div>
+                            <div class="oe_kanban_details" style="padding-left: 155px;">
+                                <h4>
+                                    <span t-if="record.default_code.raw_value">
+                                        [<field name="default_code" />]
+                                    </span>
+                                    <field name="name" />
+                                </h4>
+                                <div name="tags" />
+                                <ul>
+                                    <li>Brand:
+                                        <field name="brand" />
+                                    </li>
+                                    <li
+                                        t-if="record.type.raw_value != 'service'"
+                                    >HK Stock:
+                                        <field name="local_stock" />
+                                    </li>
+                                    <li
+                                        t-if="record.type.raw_value != 'service'"
+                                    >Overseas Stock:
+                                        <field name="overseas_stock" />
+                                    </li>
+                                    <li
+                                        t-if="record.overseas_stock.raw_value != 'No'"
+                                    > Overseas Retail in <field
+                                            name="curr_of_cheapest"
+                                        />: <field name="retail_of_cheapest" /></li>
+                                    <li id="hk-retail1">HK Retail:
+                                        <field name="list_price_integer" />
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_ac_so.raw_value == 0"
+                                    >Discount:<field name="discount_ac" />
+                                        %
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_ac_so.raw_value == 0"
+                                    >Sale HKD:
+                                        <field name="sale_hkd_ac" />
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_ac_so.raw_value > 0"
+                                    >Discount:<field name="discount_ac_so" />%
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_ac_so.raw_value > 0"
+                                        style="color:DarkGrey"
+                                    >Sale HKD:
+                                        <field name="sale_hkd_ac" />
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_ac_so.raw_value > 0"
+                                        style="color:Red; font-weight:bold;"
+                                    >
+                                        Sale HKD Special:
+                                        <field name="sale_hkd_ac_so" />
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record id="product_template_kanban_ac_no_qty_action" model="ir.actions.act_window">
+        <!--<field name="name">Product Offer (EN): Sales Price</field>-->
+        <field name="name">AC-NO-QTY</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.template</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_type">form</field>
+        <field name="view_id" ref="product_template_kanban_ac_no_qty" />
+        <field name="context">{"search_default_warehouse_internal_location":1}</field>
+    </record>
+    <menuitem
+        action="product_template_kanban_ac_no_qty_action"
+        id="menu_product_template_kanban_ac_no_qty_action"
+        parent="product_offer_section"
+        sequence="9"
+    />
+    <!-- Product Offer AC-No-Qty CN -->
+    <record id="product_template_kanban_ac_no_qty_cn" model="ir.ui.view">
+        <field name="name">product.template.kanban.aa.no.qty.cn</field>
+        <field name="model">product.template</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="type" />
+                <field name="id" />
+                <field name="image" />
+                <field name="sale_hkd_ac_so" />
+                <field name="default_code" />
+                <field name="overseas_stock" />
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div
+                                class="o_kanban_image"
+                                style="width: 150px; height: 150px;"
+                            >
+                                <img
+                                    style="width: 150px; height: 150px;"
+                                    t-att-src="kanban_image('product.template', 'image', record.id.raw_value)"
+                                    alt="Product"
+                                />
+                            </div>
+                            <div class="oe_kanban_details" style="padding-left: 155px;">
+                                <h4>
+                                    <span t-if="record.default_code.raw_value">
+                                        [<field name="default_code" />]
+                                    </span>
+                                    <field name="name" />
+                                </h4>
+                                <div name="tags" />
+                                <ul>
+                                    <li>品牌:
+                                        <field name="brand" />
+                                    </li>
+                                    <li
+                                        t-if="record.type.raw_value != 'service'"
+                                    >香港現貨:
+                                        <field name="local_stock" />
+                                    </li>
+                                    <li
+                                        t-if="record.type.raw_value != 'service'"
+                                    >歐洲期貨:
+                                        <field name="overseas_stock" />
+                                    </li>
+                                    <li
+                                        t-if="record.overseas_stock.raw_value != 'No'"
+                                    > 公價 <field name="curr_of_cheapest" />: <field
+                                            name="retail_of_cheapest"
+                                        /></li>
+                                    <li id="hk-retail1">港幣公價:
+                                        <field name="list_price_integer" />
+                                    </li>
+                                    <li>港幣賣價:
+                                        <field name="net_price_integer" />
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_ac_so.raw_value == 0"
+                                    >折扣率:<field name="discount_ac" />%
+                                    </li>
+                                    <li
+                                        t-if="record.sale_hkd_ac_so.raw_value == 0"
+                                        style="font-style:italic"
+                                    >今日人民幣賣價:
+                                        <field name="sale_hkd_ac_cn" />
+                                    </li>
+                                    <t t-if="record.sale_hkd_ac_so.raw_value > 0">
+                                        <li
+                                            t-if="record.sale_hkd_ac_so.raw_value > 0"
+                                        >折扣率:<field name="discount_ac_so" />%
+                                        </li>
+                                        <li
+                                            t-if="record.sale_hkd_ac_so.raw_value > 0"
+                                            style="color:DarkGrey;font-style:italic"
+                                        >今日人民幣賣價:
+                                            <field name="sale_hkd_ac_cn" />
+                                        </li>
+                                        <li
+                                            t-if="record.sale_hkd_ac_so.raw_value > 0"
+                                            style="color:Red; font-weight:bold; font-style:italic"
+                                        >人民幣減價後特價:
+                                            <field name="sale_hkd_ac_so_cn" />
+                                        </li>
+                                    </t>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record
+        id="product_template_kanban_ac_no_qty_cn_action"
+        model="ir.actions.act_window"
+    >
+        <!--<field name="name">Product Offer (ZH): Sales Price</field>-->
+        <field name="name">AC-NO-QTY (CN)</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.template</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_type">form</field>
+        <field name="view_id" ref="product_template_kanban_ac_no_qty_cn" />
+        <field name="context">{"search_default_warehouse_internal_location":1}</field>
+    </record>
+    <menuitem
+        action="product_template_kanban_ac_no_qty_cn_action"
+        id="menu_product_template_kanban_ac_no_qty_cn_action"
+        parent="product_offer_section"
+        sequence="9"
+    />
+    <!-- Product Offer (EN): Availability = Product Offer Available -->
+    <!--TODO: Get New Price-->
+    <record id="product_template_kanban_availability" model="ir.ui.view">
+        <field name="name">Product.template.kanban.availability</field>
+        <field name="model">product.template</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="type" />
+                <field name="id" />
+                <field name="image" />
+                <field name="default_code" />
+                <field name="overseas_stock" />
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div
+                                class="o_kanban_image"
+                                style="width: 150px; height: 150px;"
+                            >
+                                <img
+                                    style="width: 150px; height: 150px;"
+                                    t-att-src="kanban_image('product.template', 'image', record.id.raw_value)"
+                                    alt="Product"
+                                />
+                            </div>
+                            <div class="oe_kanban_details" style="padding-left: 155px;">
+                                <h4>
+                                    <span t-if="record.default_code.raw_value">
+                                        [<field name="default_code" />]
+                                    </span>
+                                    <field name="name" />
+                                </h4>
+                                <div name="tags" />
+                                <ul>
+                                    <li>Brand:
+                                        <field name="brand" />
+                                    </li>
+                                    <li
+                                        t-if="record.overseas_stock.raw_value != 'No'"
+                                    > Overseas Retail in <field
+                                            name="curr_of_cheapest"
+                                        />: <field name="retail_of_cheapest" /></li>
+                                    <li id="hk-retail1">HK Retail:
+                                        <field name="list_price_integer" />
+                                    </li>
+                                    <li
+                                        t-if="record.type.raw_value != 'service'"
+                                    >HK Stock:
+                                        <field name="local_stock" no_export="True" />
+                                    </li>
+                                    <li
+                                        t-if="record.type.raw_value != 'service'"
+                                    >Overseas Stock:
+                                        <field name="overseas_stock" no_export="True" />
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record
+        id="product_template_kanban_availability_action"
+        model="ir.actions.act_window"
+    >
+        <!--<field name="name">Product Offer (EN): Availability</field>-->
+        <field name="name">Available</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.template</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_type">form</field>
+        <field name="view_id" ref="product_template_kanban_availability" />
+        <field name="context">{"search_default_warehouse_internal_location":1}</field>
+    </record>
+    <menuitem
+        action="product_template_kanban_availability_action"
+        id="menu_product_template_kanban_availability_action"
+        parent="product_offer_section"
+        sequence="10"
+    />
+    <!-- Product Offer (ZH): Availability = Product Offer Available CN -->
+    <!--TODO: Get New Price-->
+    <record id="product_template_kanban_availability_cn" model="ir.ui.view">
+        <field name="name">product.template.kanban.availability.cn</field>
+        <field name="model">product.template</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="type" />
+                <field name="id" />
+                <field name="image" />
+                <field name="default_code" />
+                <field name="overseas_stock" />
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div
+                                class="o_kanban_image"
+                                style="width: 150px; height: 150px;"
+                            >
+                                <img
+                                    style="width: 150px; height: 150px;"
+                                    t-att-src="kanban_image('product.template', 'image', record.id.raw_value)"
+                                    alt="Product"
+                                />
+                            </div>
+                            <div class="oe_kanban_details" style="padding-left: 155px;">
+                                <h4>
+                                    <span t-if="record.default_code.raw_value">
+                                        [<field name="default_code" />]
+                                    </span>
+                                    <field name="name" />
+                                </h4>
+                                <div name="tags" />
+                                <ul>
+                                    <li>品牌:
+                                        <field name="brand" />
+                                    </li>
+                                    <li
+                                        t-if="record.overseas_stock.raw_value != 'No'"
+                                    > 公價 <field name="curr_of_cheapest" />: <field
+                                            name="retail_of_cheapest"
+                                        /></li>
+                                    <li id="hk-retail1">港幣公價:
+                                        <field name="list_price_integer" />
+                                    </li>
+                                    <li
+                                        t-if="record.type.raw_value != 'service'"
+                                    >香港現貨:
+                                        <field name="local_stock" no_export="True" />
+                                    </li>
+                                    <li
+                                        t-if="record.type.raw_value != 'service'"
+                                    >歐洲期貨:
+                                        <field name="overseas_stock" no_export="True" />
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record
+        id="product_template_kanban_availability_cn_action"
+        model="ir.actions.act_window"
+    >
+        <!--<field name="name">Product Offer (ZH): Availability</field>-->
+        <field name="name">Available (CN)</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.template</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_type">form</field>
+        <field name="view_id" ref="product_template_kanban_availability_cn" />
+        <field name="context">{"search_default_warehouse_internal_location":1}</field>
+    </record>
+    <menuitem
+        action="product_template_kanban_availability_cn_action"
+        id="menu_product_template_kanban_availability_cn_action"
+        parent="product_offer_section"
+        sequence="10"
+    />
+    <record id="product_template_search_form_view_stock" model="ir.ui.view">
+        <field name="name">product.template.search</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="stock.product_template_search_form_view_stock" />
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='real_stock_negative']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//filter[@name='real_stock_available']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+    <record id="product_template_search_view" model="ir.ui.view">
+        <field name="name">product.template.search</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_search_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='activities_overdue']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//filter[@name='activities_today']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath
+                expr="//filter[@name='activities_upcoming_all']"
+                position="attributes"
+            >
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

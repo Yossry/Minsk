@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template name="Protfolio Area" id="s_protfolio_area">
+        <!-- ====PROTFOLIO AREA==== -->
+        <section id="Portfolio" class="protfolio_area section-padding oe_structure">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="section_title mb80">
+                            <h5 class="smallHd text-center">Here are some of</h5>
+                            <h2 class="secHd text-center">our awesome works</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="work_trigge">
+                            <ul class="trigger mb80 text-center">
+                                <li class="filter active" data-filter="">ALL</li>
+                                <li class="filter" data-filter=".store">STORE</li>
+                                <li class="filter" data-filter=".ecommerce">ECOMMERCE</li>
+                                <li class="filter" data-filter=".theme">THEME</li>
+                                <li class="filter" data-filter=".others">OTHERS</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="all_work_item">
+                        <div class="col-xs-12 col-sm-6 col-md-4 mix all theme">
+                            <figure>
+                                <div class="RXcircleEffect"></div>
+                                <img src="/theme_materialab/static/src/img/mixtup1.jpg" alt="" />
+                                <figcaption>
+                                    <div class="capCont">
+                                        <ul class="iconlink">
+                                            <li>
+                                                <a data-gall="group_1" class="veno vbox-item" href="/theme_materialab/static/src/img/mixtup1.jpg">
+                                                    <i class="zmdi zmdi-zoom-in btn waves-effect waves-dark"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="zmdi zmdi-link btn waves-effect waves-dark"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <h4>Banner Design</h4>
+                                        <p>Others/ Design</p>
+                                    </div>
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 mix all ecommerce others">
+                            <figure>
+                                <div class="RXcircleEffect"></div>
+                                <img src="/theme_materialab/static/src/img/mixtup3.jpg" alt="" />
+                                <figcaption>
+                                    <div class="capCont">
+                                        <ul class="iconlink">
+                                            <li>
+                                                <a data-gall="group_1" class="veno vbox-item" href="/theme_materialab/static/src/img/mixtup3.jpg">
+                                                    <i class="zmdi zmdi-zoom-in btn waves-effect waves-dark"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="zmdi zmdi-link btn waves-effect waves-dark"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <h4>Website</h4>
+                                        <p>Web Design / Development</p>
+                                    </div>
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 mix all ecommerce store">
+                            <figure>
+                                <div class="RXcircleEffect"></div>
+                                <img src="/theme_materialab/static/src/img/mixtup6.jpg" alt="" />
+                                <figcaption>
+                                    <div class="capCont">
+                                        <ul class="iconlink">
+                                            <li>
+                                                <a data-gall="group_1" class="veno vbox-item" href="/theme_materialab/static/src/img/mixtup6.jpg">
+                                                    <i class="zmdi zmdi-zoom-in btn waves-effect waves-dark"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="zmdi zmdi-link btn waves-effect waves-dark"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <h4>Ecommerce</h4>
+                                        <p>Development</p>
+                                    </div>
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 mix others">
+                            <figure>
+                                <div class="RXcircleEffect"></div>
+                                <img src="/theme_materialab/static/src/img/mixtup4.jpg" alt="" />
+                                <figcaption>
+                                    <div class="capCont">
+                                        <ul class="iconlink">
+                                            <li>
+                                                <a data-gall="group_1" class="veno vbox-item" href="/theme_materialab/static/src/img/mixtup4.jpg">
+                                                    <i class="zmdi zmdi-zoom-in btn waves-effect waves-dark"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="zmdi zmdi-link btn waves-effect waves-dark"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <h4>Mobile Application</h4>
+                                        <p>Design/Development</p>
+                                    </div>
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 mix all theme">
+                            <figure>
+                                <div class="RXcircleEffect"></div>
+                                <img src="/theme_materialab/static/src/img/mixtup2.jpg" alt="" />
+                                <figcaption>
+                                    <div class="capCont">
+                                        <ul class="iconlink">
+                                            <li>
+                                                <a data-gall="group_1" class="veno vbox-item" href="/theme_materialab/static/src/img/mixtup2.jpg">
+                                                    <i class="zmdi zmdi-zoom-in btn waves-effect waves-dark"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="zmdi zmdi-link btn waves-effect waves-dark"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <h4>seo</h4>
+                                        <p>SEO/Optimization</p>
+                                    </div>
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 mix store">
+                            <figure>
+                                <div class="RXcircleEffect"></div>
+                                <img src="/theme_materialab/static/src/img/mixtup7.jpg" alt="" />
+                                <figcaption>
+                                    <div class="capCont">
+                                        <ul class="iconlink">
+                                            <li>
+                                                <a data-gall="group_1" class="veno vbox-item" href="/theme_materialab/static/src/img/mixtup7.jpg">
+                                                    <i class="zmdi zmdi-zoom-in btn waves-effect waves-dark"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="zmdi zmdi-link btn waves-effect waves-dark"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <h4>Marketing</h4>
+                                        <p>Online Marketing</p>
+                                    </div>
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 mix ecommerce">
+                            <figure>
+                                <div class="RXcircleEffect"></div>
+                                <img src="/theme_materialab/static/src/img/mixtup5.jpg" alt="" />
+                                <figcaption>
+                                    <div class="capCont">
+                                        <ul class="iconlink">
+                                            <li>
+                                                <a data-gall="group_1" class="veno vbox-item" href="/theme_materialab/static/src/img/mixtup5.jpg">
+                                                    <i class="zmdi zmdi-zoom-in btn waves-effect waves-dark"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="zmdi zmdi-link btn btn-link btn waves-effect waves-dark"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <h4>Logo Design</h4>
+                                        <p>Others/ Design</p>
+                                    </div>
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 mix ERP">
+                            <figure>
+                                <div class="RXcircleEffect"></div>
+                                <img src="/theme_materialab/static/src/img/mixtup9.jpg" alt="" />
+                                <figcaption>
+                                    <div class="capCont">
+                                        <ul class="iconlink">
+                                            <li>
+                                                <a data-gall="group_1" class="veno vbox-item" href="/theme_materialab/static/src/img/mixtup9.jpg">
+                                                    <i class="zmdi zmdi-zoom-in btn waves-effect waves-dark"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="zmdi zmdi-link btn btn-link btn waves-effect waves-dark">
+                                                    </i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <h4>Logo Design</h4>
+                                        <p>Others/ Design</p>
+                                    </div>
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 mix ecommerce">
+                            <figure>
+                                <div class="RXcircleEffect"></div>
+                                <img src="/theme_materialab/static/src/img/mixtup8.jpg" alt="" />
+                                <figcaption>
+                                    <div class="capCont">
+                                        <ul class="iconlink">
+                                            <li>
+                                                <a data-gall="group_1" class="veno vbox-item" href="/theme_materialab/static/src/img/mixtup8.jpg">
+                                                    <i class="zmdi zmdi-zoom-in btn waves-effect waves-dark"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="zmdi zmdi-link btn btn-link btn waves-effect waves-dark"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <h4>Logo Design</h4>
+                                        <p>Others/ Design</p>
+                                    </div>
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 trigger_bottom">
+                        <a href="#" class="th_bt btn waves-effect waves-light">View All
+                            <i class="zmdi zmdi-long-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ====END PROTFOLIO AREA==== -->
+    </template>
+</odoo>

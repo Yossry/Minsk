@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="clv_model_export_template_field_copy_view_form" model="ir.ui.view">
+        <field name="name">clv.model_export.template.field.copy.form</field>
+        <field name="model">clv.model_export.template.field.copy</field>
+        <field name="arch" type="xml">
+            <form>
+                <div class="oe_right">
+                </div>
+                <label for="model_export_template_field_ids"/>
+                <field name="model_export_template_field_ids"/>
+                <group>
+                    <group>
+                        <field name="create_new_model_export_template"/>
+                        <field name="model_export_template_id" options="{'no_open': False, 'no_create': True}" attrs="{'invisible':[('create_new_model_export_template','=',True)]}"/>
+                        <field name="new_model_export_template_name" attrs="{'invisible':[('create_new_model_export_template','=',False)]}"/>
+                        <field name="new_model_export_model_id" options="{'no_open': False, 'no_create': True}" attrs="{'invisible':[('create_new_model_export_template','=',False)]}"/>
+                    </group>
+                </group>
+                <footer>
+                    <button 
+                        type="object"
+                        name="do_model_export_template_field_copy"
+                        string="Copy"
+                        class="oe_highlight"
+                        />
+                    <button special="cancel" string="Cancel"/>
+                </footer>
+            </form>
+
+        </field>
+    </record>
+
+    <!-- More button Action -->
+    <act_window 
+        id="clv_model_export_template_field_copy_action"
+        name="Model Export Template Field Copy"
+        src_model="clv.model_export.template.field"
+        res_model="clv.model_export.template.field.copy"
+        view_mode="form"
+        key2="client_action_multi"
+        target="new"
+    />
+
+</odoo>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="sales_markting_cost_tree_view" model="ir.ui.view">
+        <field name="name">sales.markting.cost.tree</field>
+        <field name="model">sales.markting.cost</field>
+        <field eval="7" name="priority"/>
+        <field name="arch" type="xml">
+            <tree string="Sales Markting Cost">
+                <field name="name"/>
+                <field name="date_of_investment"/>
+                <field name="cost_of_investment"/>
+                <field name="campaign_id"/>
+                <field name="source_id"/>
+                <field name="medium_id"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="sales_markting_cost_form_view" model="ir.ui.view">
+        <field name="name">sales.markting.cost.form</field>
+        <field name="model">sales.markting.cost</field>
+        <field eval="7" name="priority"/>
+        <field name="arch" type="xml">
+            <form string="Sales Markting Cost">
+                <header>
+					<field name="state" widget="statusbar" options="{'clickable': '1'}"/>
+				</header>
+				<sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="date_of_investment" required="1"/>
+                            <field name="cost_of_investment" required="1"/>
+                        </group>
+                        <group>
+                            <field name="campaign_id" required="1"/>
+                            <field name="source_id" required="1"/>
+                            <field name="medium_id" required="1"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="note"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="sales_markting_cost_pivot_view" model="ir.ui.view">
+            <field name="name">sales.markting.cost.pivot</field>
+            <field name="model">sales.markting.cost</field>
+            <field eval="7" name="priority"/>
+            <field name="arch" type="xml">
+                <pivot string="Sales Markting Cost" display_quantity="true">
+					<field name="campaign_id" type="row"/>
+					<field name="date_of_investment" type="col"/>
+					<field name="cost_of_investment" type="measure"/>
+				</pivot>
+            </field>
+        </record>
+    
+    <record id="sales_markting_cost_search_view" model="ir.ui.view">
+        <field name="name">sales.markting.cost.search</field>
+        <field name="model">sales.markting.cost</field>
+        <field eval="7" name="priority"/>
+        <field name="arch" type="xml">
+            <search string="Sales Markting Cost">
+                <field name="name"/>
+                <field name="date_of_investment"/>
+                <field name="cost_of_investment"/>
+                <field name="campaign_id"/>
+                <field name="source_id"/>
+                <field name="medium_id"/>
+                <group expand="0" string="Group By">
+                    <filter name="groupby_campaign_id" string="Campaign" domain="[]" context="{'group_by':'campaign_id'}"/>
+                    <filter name="groupby_source_id" string="Source" domain="[]" context="{'group_by':'source_id'}"/>
+                    <filter name="groupby_medium_id" string="Medium" domain="[]" context="{'group_by':'medium_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    
+    <record id="sales_markting_cost_action" model="ir.actions.act_window">
+        <field name="name">Sales Markting Cost</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sales.markting.cost</field>
+        <field name="view_mode">pivot,tree,form</field>
+        <field name="view_type">form</field>
+        <field name="view_id" ref="sales_markting_cost_tree_view"/>
+    </record>
+    
+    <menuitem action="sales_markting_cost_action" id="menu_sales_markting_cost_action_form"
+              parent="crm.crm_menu_root" sequence="10"/>
+</odoo>

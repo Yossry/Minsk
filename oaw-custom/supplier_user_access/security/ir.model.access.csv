@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_product_product_supplier_fm,access_product_product_supplier_fm,product.model_product_product,group_supplier_fm,1,0,0,0
+access_stock_quant_supplier_fm,access_stock_quant_supplier_fm,stock.model_stock_quant,group_supplier_fm,1,1,1,0
+access_supplier_stock_supplier,access_supplier_stock_supplier,supplier_stock.model_supplier_stock,group_supplier,1,1,1,1
+access_supplier_location_supplier,access_supplier_location_supplier,supplier_stock.model_supplier_location,group_supplier,1,1,1,1
+access_account_journal_supplier,access_account_journal_supplier,account.model_account_journal,group_supplier,1,0,0,0
+access_account_analytic_line_supplier_fm,access_account_analytic_line_supplier_fm,analytic.model_account_analytic_line,group_supplier_fm,1,0,0,0
+access_account_move_line_supplier,access_account_move_line_supplier,account.model_account_move_line,group_supplier,1,0,0,0
+access_stock_picking,stock.picking,stock.model_stock_picking,group_supplier,1,0,0,0
+access_stock_move,stock.move,stock.model_stock_move,group_supplier,1,0,0,0

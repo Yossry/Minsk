@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+	
+	<!-- Ledger Summary Report 
+	.tabhead{font-family:georgia,garamond,serif;}
+	.tabcol{font-family:georgia,garamond,serif;}
+	-->
+	<report
+		id="ledgersummary"
+		string= "Ledger Summary Report"
+		model = "ledger.summary.report"
+		report_type="qweb-html"
+		file="aarsol_accounts.ledger_summary"
+		name="aarsol_accounts.ledger_summary"
+	/>
+		
+<template id ="ledger_summary">
+	<t t-call="web.html_container">
+		<t t-call="web.internal_layout">
+			<div class="page">
+				<style>					
+					table th { background-color:#d4e3e5;}
+					tr:nth-child(even) {background-color: #FFEBCD;}
+					tr:nth-child(odd) {background-color: #cdcdcd;}						
+				</style>
+				<h3>Ledger Summary Report</h3>
+				<div class="row mt32">
+                    <div class="col-xs-3">
+                        <strong>Account:</strong>
+                        <p t-esc="data['account_id'][1]"/>
+                    </div>
+                    <div class="col-xs-3">
+                        <strong>Dimension:</strong>
+                        <p t-esc="data['dimension_id'][1]"/>                       
+                    </div>                    
+                </div>
+				 <div class="row mb32">
+                    <div class="col-xs-3">
+                        <strong>From:</strong>
+						<p t-esc="get_date_formate(data['date_start'])"/>						  
+                    </div>
+                    <div class="col-xs-3">
+                        <strong>Interval:</strong>
+						<p> <span t-esc="data['interval']"/> [<span t-esc="data['interval_count']"/>]</p>						  
+                    </div>		
+                </div>
+				
+				<table class="table" width="100%">
+					<thead style="border: 1px solid black">
+						<tr class="tabhead">
+							<th class="text-left" style="border: 1px solid black">Sr.</th>
+							<th class="text-left" style="border: 1px solid black">Dimension</th>
+							<t t-foreach="months" t-as="month">
+								<th class="text-left" style="border: 1px solid black"><span t-esc="month"/></th>	
+							</t>
+						</tr>
+					</thead>
+					<tbody>
+						<t t-foreach="lines" t-as="line">
+							
+							<tr t-if="line_index == 0" t-attf-style="background-color:#e5e3d4;">
+								<td colspan="2" class="text-center">Totals</td>
+								<t t-foreach="line['cols']" t-as="num">
+									<td class="text-right">
+										<span t-esc="num and ('{0:,.2f}'.format(num) if num > 0 else '({0:.2f})'.format(abs(num))) or '-'" />	
+									</td>
+								</t>
+								<td  class="text-right">
+									<span t-esc="line['total'] and '{0:,.2f}'.format(line['total']) or '-'" />	
+								</td>							
+							</tr>
+							
+							<tr t-if="line_index > 0" class="tabcol">
+								<td class="text-center"><span t-esc="line_index" /></td>
+								<td class="text-left"><span t-esc="line['dimension']" /></td>
+								<t t-foreach="line['cols']" t-as="num">										
+									<td  class="text-right">
+										<span t-esc="num and ('{0:,.2f}'.format(num) if num > 0 else '({0:.2f})'.format(abs(num))) or '-'" />	
+									</td>
+								</t>
+								<td  class="text-right">
+									<span t-esc="line['total'] and '{0:,.2f}'.format(line['total']) or '-'" />	
+								</td>
+							</tr>
+
+							<tr class="tabcol">
+								<td colspan="2" class="text-right">Difference</td>									
+								<t t-foreach="line['diff']" t-as="num">										
+									<td  class="text-right">
+										<span t-esc="num and ('{0:,.2f}'.format(num) if num > 0 else '({0:.2f})'.format(abs(num))) or '-'" />	
+									</td>
+								</t>									
+							</tr>
+
+						</t>
+					</tbody>	
+				</table>
+			</div>	
+		</t>
+	</t>
+</template>
+	
+</data>
+</odoo>
+

@@ -1,0 +1,24 @@
+<odoo>
+    <data>
+        <record id="add_field_amount_text" model="ir.ui.view">
+            <field name="name">Add fields</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='amount_total']" position="after">
+                    <field name="cam_monto_letra" string="Monto en letra" invisible="1"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="add_columna_precio_unico" model="ir.ui.view">
+            <field name="name">add.columna.precio</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook/page/field[@name='invoice_line_ids']/tree/field[@name='price_unit']" position="after">
+                    <field name="precio_unico" widget="monetary" invisible="1"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

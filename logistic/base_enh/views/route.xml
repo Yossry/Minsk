@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>  <data>
+
+        <record model="ir.ui.view" id="route_list_view">
+            <field name="name">route</field>
+            <field name="model">route</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="shipment_method" />
+                    <field name="country_id" />
+                    <field name="state_id" />
+                    <field name="city_id"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="route_form_view">
+            <field name="name">route</field>
+            <field name="model">route</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="shipment_method" />
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="country_id" 
+                                       options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"
+                                       attrs="{'invisible': [('shipment_method', 'not in', ['land_freight'])]}"/>
+                                <field name="state_id" options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"
+                                       attrs="{'invisible': [('shipment_method', 'not in', ['land_freight'])]}"/>
+                            </group>
+                            <group>
+                                <field name="city_id" domain="[('country_id','=',country_id)]" 
+                                        attrs="{'invisible': [('shipment_method', 'not in', ['land_freight'])]}"
+                                        options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+                                <field name="place_id" 
+                                       domain="[('country_id','=',country_id)]" 
+                                       options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"
+                                       attrs="{'invisible': [('shipment_method', 'not in', ['land_freight'])]}"/>
+                            </group>
+                            
+                            <group>
+                                <field name="sea_port_id" 
+                                       options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"
+                                       attrs="{'invisible': [('shipment_method', 'not in', ['sea_freight','land_freight'])]}"/>
+                                <field name="air_port_id" 
+                                       options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"
+                                       attrs="{'invisible': [('shipment_method', 'not in', ['air_freight','land_freight'])]}"/>
+                            </group>
+                            <group>
+                                <field name="place_of_port_id" 
+                                        options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"
+                                        domain="[('port_id','=',sea_port_id)]"
+                                        attrs="{'invisible': [('shipment_method', 'not in', ['sea_freight','land_freight','air_freight'])]}"/>
+                                <field name="custom_point_id" 
+                                       attrs="{'invisible': [('shipment_method', 'not in', ['clearance','land_freight'])]}" 
+                                       options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+                                <field name="depot_id" 
+                                       attrs="{'invisible': [('shipment_method', 'not in', ['land_freight'])]}" 
+                                       options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+                                <field name="border_point_id" 
+                                       attrs="{'invisible': [('shipment_method', 'not in', ['clearance','land_freight'])]}" 
+                                       options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+                                <field name="dry_port_id" 
+                                       attrs="{'invisible': [('shipment_method', 'not in', ['land_freight'])]}" 
+                                       options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="route_action">
+            <field name="name">Route</field>
+            <field name="res_model">route</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <!-- <menuitem  id="route_menu"
+            parent="location_menu" action="route_action" /> -->
+
+    </data>
+</odoo>

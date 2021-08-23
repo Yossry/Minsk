@@ -1,0 +1,593 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<!--Guard form view -->
+		<record id="view_guard_form" model="ir.ui.view">
+			<field name="name">sos.guard.form</field>
+			<field name="model">hr.employee</field>
+			<field name="arch" type="xml">
+			<form string="Guard">
+				<header>
+					<button name="profile_done" type="object" states="" string="Done" class="oe_highlight" groups="sos.group_regional_manager,sos.group_coordinator,sos.group_special" attrs="{'invisible':[('profile_status', '!=', 'draft')]}" />
+					<button name="profile_hr_review" type="object" states="" string="HR Review" class="oe_highlight" groups="sos.group_special,sos.group_superusers" attrs="{'invisible':[('profile_status', '!=', 'done')]}" />
+					<button name="profile_complete" type="object" states="" string="Complete" class="oe_highlight" groups="sos.group_special,sos.group_superusers" attrs="{'invisible':[('profile_status', '!=', 'hr_review')]}" />
+
+					<button name="profile_lock" type="object" states="" string="Profile Lock" class="oe_highlight" groups="hr.group_hr_manager" attrs="{'invisible':[('lock_profile', '!=', False)]}" />
+					<button name="profile_unlock" type="object" states="" string="Profile UnLock" class="oe_highlight" groups="hr.group_hr_manager" attrs="{'invisible':[('lock_profile', '!=', True)]}" />
+
+					<field name="profile_status" widget="statusbar" nolabel="1" statusbar_colors='{"draft":"red","done":"blue"}'/>
+				</header>
+
+			<sheet>
+				<div class="oe_button_box" name="button_box">
+					<button class="oe_inline oe_stat_button" name="update_points" type="object">
+						<field name="points" widget="percentpie" string="Points" help="Points Detail"/>
+					</button>
+
+			   </div>
+			  <field name="image_medium" widget='image' class="oe_left oe_avatar"  style="width: 10%%"/>
+			   <div class="oe_title"  style="width: 45%%">
+				   <label for="name" class="oe_edit_only"/>
+				   <h1>
+					   <field name="name"/>
+				   </h1>
+				   <field name="cnic" placeholder="CNIC e.g. 11200-4561234-2"/>
+				   <label for="fathername" class="oe_edit_only"/>
+				   <field name="fathername"  attrs="{'required':1}"/>
+				   <!--<field name="cnic"   attrs="{'required':1,'readonly':[('profile_status','in',['done','hr_review','complete'])]}" placeholder="CNIC e.g. 11200-4561234-2" widget="mask" data-inputmask="'mask':'99999-9999999-9'" /> -->
+				   <label for="category_ids" class="oe_edit_only"/>
+				   <field name="category_ids" widget="many2many_tags" placeholder="e.g. Part Time" options="{'no_quick_create':True, 'no_create_edit': True, 'limit': 10}"/>
+			   </div>
+
+			   <group>
+				<group>
+					<field name="is_guard" />
+					<field name="code" readonly="1"/>
+					<field name="cnic_expiry"/>
+					<field name="birthday"/>
+				</group>
+
+				<group>
+					<field name="current" readonly="1"/>
+					<field name="current_post_id" readonly="1"/>
+					<field name="project_id" readonly="1"/>
+					<field name="lock_profile" readonly="1"/>
+				</group>
+			   </group>
+
+			   <notebook>
+			   <page name="public_information" string="Public Information">
+				   <group>
+					   <group string="Contact Information">
+
+						   <label for="street" string="Permanent Address"/>
+							<div>
+								<field name="street"/>
+								<field name="street2"/>
+
+							</div>
+
+						   <field name="work_phone" string="Phone"/>
+						   <field name="mobile_phone" string="Mobile"/>
+					   </group>
+					   <group string="Position">
+						   <field name="center_id" attrs="{'required':1}"/>
+						   <field name="department_id" on_change="onchange_department_id(department_id)" options="{'no_quick_create':True, 'no_create_edit': True, 'limit': 10, 'no_open': True'}" required="1"/>
+						   <field name="job_id" domain="[('state','!=','old')]" context="{'form_view_ref': 'hr.view_hr_job_employee_form'}" options="{'no_quick_create':True, 'no_create_edit': True, 'limit': 10}"/>
+
+					   </group>
+
+				   </group>
+				   <field name="notes" placeholder="Other Information ..." colspan="4"/>
+			   </page>
+
+			   <page name="personal_information" string="Personal Information">
+				   <group>
+					   <group string="Bank Account Detail">
+						   <field name="bank_id" options="{'no_quick_create':True, 'no_create_edit': True, 'limit': 10}"/>
+						   <field name="bankacctitle"/>
+						   <field name="bankacc"/>
+						   <field name="branch"/>
+						   <field name="accowner"/>
+						   <field name="acc_creation_date"/>
+					   </group>
+
+					   <group string="Personal Information">
+						   <label for="street" string="Current Address"/>
+						   <div>
+								<field name="home_street"/>
+								<field name="home_street2"/>
+
+							</div>
+
+						   <field name="mothername"/>
+						   <field name="education_id" options="{'no_quick_create':True, 'no_create_edit': True, 'limit': 10}"/>
+						<!--   <field name="birthday"/> -->
+						   <field name="bloodgroup_id" string='Blood Group' options="{'no_quick_create':True, 'no_create_edit': True, 'limit': 10}"/>
+						   <field name="identity"/>
+						   <field name="height"/>
+						   <field name="weight"/>
+					   </group>
+
+					   <group string="Status">
+						   <field name="gender"/>
+						   <field name="marital"/>
+					   </group>
+
+				   </group>
+			   </page>
+
+			   <page name="hr_settings" string="HR Settings">
+				   <group>
+					   <group string="Salary Info">
+							<field name="basicpay"/>
+							<field name="dutybonus"/>
+							<field name="wpallowance"/>
+							<field name="annualleaves"/>
+					   </group>
+					   <group string="Job">
+							<!-- <field name="designation_id"  attrs="{'required':1}"/>	-->
+							<field name="guard_contract_id" options="{'no_quick_create':True, 'no_create_edit': True, 'limit': 10}"/>
+					   </group>
+
+					   <group string="Time Period" name="time_period">
+							<field name="appointmentdate" attrs="{'readonly': [('is_guard','=',True)]}"/>
+							<field name="resigdate" attrs="{'readonly': [('is_guard','=',True)]}"/>
+					   </group>
+
+						<group string="Rejoining" attrs="{'invisible':[('current', '=', True),('is_guard','=',True)]}">
+							<button name="rejoin_guards_button" type="object" string="Rejoin" class="oe_highlight" groups="sos.group_regional_manager,sos.group_coordinator,sos.group_special"/>
+						</group>
+				   </group>
+			   </page>
+
+			   <page name="political" string="Political">
+				<group>
+					<group string="Political Information">
+						<field name="policestation"/>
+						<field name="postoffice"/>
+						<field name="areanazim"/>
+						<field name="wknownperson"/>
+						<field name="unioncouncil"/>
+						<field name="na_no"/>
+						<field name="pa_no"/>
+						<field name="voteno"/>
+					</group>
+					<group>
+						<field name="kin"/>
+						<field name="wifename"/>
+						<field name="childno"/>
+						<field name="boys"/>
+						<field name="girls"/>
+
+					</group>
+				</group>
+			   </page>
+
+
+			   <page name="documents" string="Documents">
+				<group>
+					<group string="Documents">
+						<field name="dischargebook"/>
+						<field name="educertificate"/>
+						<field name="policeverification"/>
+						<field name="policeattest"/>
+					</group>
+					<group>
+						<field name="nadraattest"/>
+						<field name="pensionbook"/>
+						<field name="cniccopy"/>
+						<field name="nadraattestdate"/>
+					</group>
+				</group>
+			   </page>
+
+			   <page name="army_info" string="Army Info">
+				<group>
+					<group string="Army Information">
+						<field name="joindate" string="Joining Date"/>
+						<field name="unitname"/>
+						<field name="armyno"/>
+						<field name="lastunit"/>
+						<field name="lastcenter"/>
+						<field name="lastdesig"/>
+						<field name="serviceperiod"/>
+						<field name="recordcenter"/>
+					</group>
+					<group>
+						<field name="dischargedate"/>
+						<field name="rank"/>
+						<field name="trade"/>
+						<field name="forcetype"/>
+						<field name="prevforces"/>
+						<field name="officername"/>
+					</group>
+				</group>
+			   </page>
+
+			<!--
+			   <page string="Family">
+					<field name="child_ids">
+						<tree editable="bottom">
+							<field name="name"/>
+							<field name="dob"/>
+							<field name="profession"/>
+							<field name="gender"/>
+						</tree>
+					</field>
+			   </page>
+			  -->
+
+
+				<page name="references" string="Reference">
+					<field name="ref_ids">
+						<tree delete="false">
+							<field name="name" />
+							<field name="profession" />
+							<field name="cnic"/>
+							<field name="birthdate"/>
+							<field name="mobile"/>
+							<field name="phone"/>
+							<field name="street"/>
+							<field name="street2" />
+							<field name="city" />
+						</tree>
+
+					</field>
+				</page>
+
+						<!--
+						<kanban>
+							<field name="color"/>
+							<field name="name"/>
+							<field name="email"/>
+							<field name="parent_id"/>
+							<field name="profession"/>
+							<field name="phone"/>
+							<field name="street"/>
+							<field name="street2"/>
+							<field name="city"/>
+							<field name="mobile"/>
+							<templates>
+								<t t-name="kanban-box">
+
+									<div t-attf-class="oe_kanban_color_#{kanban_getcolor(record.color.raw_value)} oe_kanban_card oe_kanban_global_click oe_semantic_html_override">
+										<div class="oe_dropdown_toggle oe_dropdown_kanban">
+											<span class="oe_e">i</span>
+											<ul class="oe_dropdown_menu">
+												<li><a type="edit">Edit...</a></li>
+												<li><a type="delete">Delete</a></li>
+												<li><ul class="oe_kanban_colorpicker" data-field="color"/></li>
+											</ul>
+										</div>
+
+
+								<div class="oe_module_desc">
+									<div class="oe_kanban_content">
+										<b><field name="name"/></b><br/>
+										<i><field name="profession" /></i><br/>
+										<i><field name="cnic" /></i><br/>
+										<t title="Mobile"><field name="mobile" />
+										<br /></t>
+
+										<br/>
+										<div class="oe_kanban_right" style="margin-left: 225px;margin-top:-110px;">
+											<img t-att-src="kanban_image('sos.partneraddress', 'image_small', record.id.value)" t-att-title="record.id.value" width="48" height="48" class="oe_kanban_avatar"/>
+										</div>
+
+										<div style="font-size: 10px;margin-top:70px;">
+											<t t-if="record.street.raw_value" title="Street"><field name="street"/><br/></t>
+											<t t-if="record.street2.raw_value" title="Street2"><field name="street2"/><br/></t>
+											<t t-if="record.city.raw_value" title="City"><field name="city"/><br/></t>
+										</div>
+
+										<div class="oe_kanban_footer_left" style="margin-top:5px;">
+											<field name="category_ids"/>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</t>
+					</templates>
+				</kanban>
+
+				-->
+
+
+			   <page name="posts" string="Posts">
+				   <group>
+					   <field name="post_ids" options="{'always_reload': true}" nolabel="1">
+							<tree create="false" edit="false" delete="false">
+								<field name="post_id"/>
+								<field name="project_id" invisible="1"/>
+								<field name="fromdate" />
+								<field name="todate" />
+
+								<field name="current" invisible="1"/>
+								<button name="unlink" icon="gtk-remove" type="object" help="Delete Posting Record" groups="sos.group_hr_master"/>
+							</tree>
+						</field>
+				   </group>
+			   </page>
+
+			   <page string="Fingers" name="fingers">
+					 <group>
+							 <group string="Left Hand Fingers" name="left_hand_fingers">
+								<field name="l_thumb" widget='image' class="oe_left oe_avatar" options='{"size": [70, 70]}'/>
+								<field name="l_index_finger" widget='image' class="oe_left oe_avatar" options='{"size": [70, 70]}'/>
+								<field name="l_middle_finger" widget='image' class="oe_left oe_avatar" options='{"size": [70, 70]}'/>
+								<field name="l_ring_finger" widget='image' class="oe_left oe_avatar" options='{"size": [70, 70]}'/>
+								<field name="l_baby_finger" widget='image' class="oe_left oe_avatar" options='{"size": [70, 70]}'/>
+							  </group>
+
+							   <group string="Right Hand Fingers" name="right_hand_fingers">
+									<field name="r_thumb"  widget='image' class="oe_left oe_avatar" options='{"size": [70, 70]}'/>
+									<field name="r_index_finger"  widget='image' class="oe_left oe_avatar" options='{"size": [70, 70]}'/>
+									<field name="r_middle_finger"  widget='image' class="oe_left oe_avatar" options='{"size": [70, 70]}'/>
+									<field name="r_ring_finger"  widget='image' class="oe_left oe_avatar" options='{"size": [70, 70]}'/>
+									<field name="r_baby_finger"  widget='image' class="oe_left oe_avatar" options='{"size": [70, 70]}'/>
+								</group>
+					  </group>
+			  </page>
+
+
+			<!-- **** Guards Re-Joining History **** -->
+				<page string="Re-Join History" name="rejoin_history">
+					 <group>
+					   <field name="rejoin_ids" nolabel="1">
+							<tree create="false" edit="false" delete="false">
+								<field name="previous_appointmentdate"/>
+								<field name="previous_terminatedate"/>
+								<field name="rejoin_date"/>
+							</tree>
+
+							<form create="false" edit="false" delete="false">
+								<group>
+									<group>
+										<field name="previous_appointmentdate"/>
+										<field name="previous_terminatedate"/>
+									</group>
+									<group>
+										<field name="rejoin_date"/>
+									</group>
+								</group>
+
+							</form>
+						</field>
+				   </group>
+
+				</page>
+
+				</notebook>
+		   </sheet>
+
+		   <div class="oe_chatter">
+				<field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+				<field name="message_ids" widget="mail_thread" placeholder="Share a note..."/>
+			</div>
+		   </form>
+		   </field>
+		</record>
+
+   
+		<record id="view_guard_tree" model="ir.ui.view">
+		   <field name="name">sos.guard.tree</field>
+		   <field name="model">hr.employee</field>
+		   <field name="arch" type="xml">
+			   <tree string="Guards">
+				   <field name="code"/>
+				   <field name="name"/>
+				   <field name="fathername"/>
+				   <field name="cnic"/>
+				   <field name="current"/>
+				   <field name="project_id"/>
+				   <field name="current_post_id"/>
+				   <field name="current_post_start_date"/>
+				   <field name="center_id"/>
+					<field name="guard_contract_id"/>
+				   <field name="points"/>
+				   <field name="bank_id" groups="account.group_account_invoice"/>
+				   <field name="accowner" invisible="True"/>
+				   <field name="bankacctitle" groups="account.group_account_invoice"/>
+				   <field name="bankacc" groups="account.group_account_invoice"/>
+				   <field name="birthday"/>
+				   <field name="profile_status"/>
+				   <field name="lock_profile"/>
+			   </tree>
+		   </field>
+		</record>
+
+		<record id="view_guard_filter" model="ir.ui.view">
+			<field name="name">sos.guard.select</field>
+			<field name="model">hr.employee</field>
+			<field name="arch" type="xml">
+				<search string="Search Guards">
+				   <field name="name" string="Guard"
+						filter_domain="['|','|','|', ('name','ilike',self), ('cnic','ilike',self), ('mobile_phone', 'ilike', self), ('code', 'ilike', self)]"/>
+				   <separator/>
+				   <filter icon="terp-go-today" string="Current" name="current" domain="[('current','=',True),('department_id','=',29)]" />
+				   <separator/>
+
+				   <filter icon="terp-go-today" string="Ex-Armed" name="armed" domain="[('category_ids','=','Army')]" />
+				   <filter icon="terp-go-today" string="Civilian" name="civil" domain="[('category_ids','=','Civil')]" />
+				   <separator/>
+				   <filter icon="terp-go-today" string="Locked Profiles" name="locked_profiles" domain="[('lock_profile','=',True)]" />
+
+				   <field name="code" string="Code"/>
+				   <field name="mobile_phone" string="Mobile Phone"/>
+				   <field name="fathername" string="Father Name"/>
+
+				   <!-- <field name="current_post" string="Current Post"/>	-->
+				   <field name="project_id" string="Project"/>
+				   <field name="current_post_id" string="Post"/>
+				   <field name="center_id" string="Center"/>
+				   <field name="bank_id" string="Bank"/>
+				   <field name="accowner" string="Account Owner"/>
+				   <group expand="0" string="Group By...">
+						<filter string="Contract" name='guard_contract_id' context="{'group_by': 'guard_contract_id'}"/>
+						<filter string="Project" name="project_id" context="{'group_by': 'project_id'}"/>
+						<filter string="Center" name='center_id' context="{'group_by': 'center_id'}"/>
+						<filter string="Post" name='current_post_id' context="{'group_by': 'current_post_id'}"/>
+						<separator/>
+						<filter string="Bank" name='bank_id' context="{'group_by': 'bank_id'}"/>
+						<filter string="Account Owner" name='accowner' context="{'group_by': 'accowner'}"/>
+
+						<separator/>
+						<filter string="Profle Status" name='profile_status' context="{'group_by': 'profile_status'}"/>
+						<filter string="Acc. Create Date" name='acc_creation_date' context="{'group_by': 'acc_creation_date'}"/>
+
+						<separator/>
+						<!-- Guards Joining Filters -->
+						<filter string="Yearly Registration" name='appointmentdate' context="{'group_by':'appointmentdate:year'}"/>
+						<filter string="Monthly Registration" name='appointmentdate' context="{'group_by':'appointmentdate:month'}"/>
+						<filter string="Weekly Registration" name='appointmentdate' context="{'group_by':'appointmentdate:week'}"/>
+						<filter string="Daily Registration" name='appointmentdate' context="{'group_by':'appointmentdate:day'}"/>
+
+						<separator/>
+						<!-- Guards Resign Filters -->
+						<filter string="Yearly Termination" name='resigdate' context="{'group_by':'resigdate:year'}"/>
+						<filter string="Monthly Termination" name='resigdate' context="{'group_by':'resigdate:month'}"/>
+						<filter string="Weekly Termination" name='resigdate' context="{'group_by':'resigdate:week'}"/>
+						<filter string="Daily Termination" name='resigdate' context="{'group_by':'resigdate:day'}"/>
+						<separator/>
+						<filter string="Profile Lock Status" name='groupby_lock_profile' context="{'group_by':'lock_profile'}"/>
+				   </group>
+
+			   </search>
+			</field>
+		</record>
+
+		<record id="open_view_guard_list_my" model="ir.actions.act_window">
+			<field name="name">Guards</field>
+			<field name="res_model">hr.employee</field>
+			<field name="view_type">form</field>
+			<field eval="False" name="view_id"/>
+			<field name="view_mode">tree,form</field>
+			<field name="context">{'search_default_current':1}</field>
+			<field name="search_view_id" ref="view_guard_filter"/>
+			<field name="help" type="html">
+			  <p class="oe_view_nocontent_create">
+				Click to add a new Guard.
+			  </p><p>
+				With just a quick glance on the AARSOL ERP screen, you
+				can easily find all the information you need for each Guard;
+				contact data, job position, availability, etc.
+			  </p>
+			</field>
+		</record>
+
+		<record id="open_view_guard_list_my_view1" model="ir.actions.act_window.view">
+			<field eval="1" name="sequence"/>
+			<field name="view_mode">tree</field>
+			<field name="view_id" ref="view_guard_tree"/>
+			<field name="act_window_id" ref="open_view_guard_list_my"/>
+		</record>
+
+		<record id="open_view_guard_list_my_view2" model="ir.actions.act_window.view">
+			<field eval="2" name="sequence"/>
+			<field name="view_mode">form</field>
+			<field name="view_id" ref="view_guard_form"/>
+			<field name="act_window_id" ref="open_view_guard_list_my"/>
+		</record>
+
+		<!--   ***********  Employees ************ -->
+		<record id="inherited_view_employee_form" model="ir.ui.view">
+			<field name="name">hr.employee.form.inherit</field>
+			<field name="model">hr.employee</field>
+			<field name="type">form</field>
+			<field name="inherit_id" ref="hr.view_employee_form"/>
+			<field name="arch" type="xml">
+				  <field name="category_ids" position="replace">
+						<group>
+							<group>
+							   <field name="cnic" string="CNIC" required="1" />
+							   <field name="category_ids" widget="many2many_tags" placeholder="e.g. Part Time" groups="hr.group_hr_user"/>
+							</group>
+							<group>
+								<field name="center_id" required="1"/>
+								<field name="code" required="1" string="ERP ID"/>
+							</group>
+						</group>
+				  </field>
+
+				  <xpath expr="//group[@name='active_group']" position="before">
+					  <group string="Time Period">
+						  <field name="appointmentdate"/>
+						  <field name="resigdate"/>
+					  </group>
+				</xpath>
+				<xpath expr="//notebook" position="inside">
+					<page string="Documents">
+						<group>
+							<group>
+								<field name="cnic_expiry"/>
+								<field name="cniccopy"/>
+								<field name="nadraattest"/>
+								<field name="education_id"/>
+							</group>
+							<group>
+								<field name="educertificate"/>
+								<field name="emp_exp_certificate"/>
+								<field name="emp_cv"/>
+								<field name="emp_photographs"/>
+							</group>
+						</group>
+					</page>
+				</xpath>
+			</field>
+		</record>
+
+		<record id="inherited_view_employee_tree" model="ir.ui.view">
+				<field name="name">hr.employee.tree.inherit</field>
+				<field name="model">hr.employee</field>
+				<field name="inherit_id" ref="hr.view_employee_tree"/>
+				<field name="arch" type="xml">
+					  <field name="name" position="before">
+						  <field name="code"/>
+					  </field>
+				</field>
+		</record>
+
+		<record id="hr.open_view_employee_list_my" model="ir.actions.act_window">
+			<field name="name">Employees</field>
+			<field name="res_model">hr.employee</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">kanban,tree,form</field>
+			<field name="domain">[('id', '>', 1),('is_guard','=',False)]</field>
+			<field name="view_id" eval="False"/>
+			<field name="search_view_id" ref="hr.view_employee_filter"/>
+			<field name="help" type="html">
+			  <p class="oe_view_nocontent_create">
+				Click to add a new employee.
+			  </p><p>
+				With just a quick glance on the AARSOL ERP employee screen, you
+				can easily find all the information you need for each person;
+				contact data, job position, availability, etc.
+			  </p>
+			</field>
+		</record>
+
+		<record id="open_view_employee_list_my_view1" model="ir.actions.act_window.view">
+			<field eval="1" name="sequence"/>
+			<field name="view_mode">kanban</field>
+			<field name="view_id" ref="hr.hr_kanban_view_employees"/>
+			<field name="act_window_id" ref="hr.open_view_employee_list_my"/>
+		</record>
+
+		<record id="open_view_employee_list_my_view2" model="ir.actions.act_window.view">
+			<field eval="2" name="sequence"/>
+			<field name="view_mode">tree</field>
+			<field name="view_id" ref="hr.view_employee_tree"/>
+			<field name="act_window_id" ref="hr.open_view_employee_list_my"/>
+		</record>
+
+		<record id="open_view_employee_list_my_view3" model="ir.actions.act_window.view">
+			<field eval="3" name="sequence"/>
+			<field name="view_mode">form</field>
+			<field name="view_id" ref="hr.view_employee_form"/>
+			<field name="act_window_id" ref="hr.open_view_employee_list_my"/>
+		</record>
+
+	</data>
+</odoo>

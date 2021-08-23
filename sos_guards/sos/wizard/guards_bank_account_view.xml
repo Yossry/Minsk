@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="guards_bank_account_view" model="ir.ui.view">
+        <field name="name">Guards Bank Account Wizard</field>
+        <field name="model">guards.bank.account</field>
+        <field name="arch" type="xml">
+			<form string="Guards Bank Account Wizard">
+					<group>
+                        <notebook>              
+                            <page string="Center" name="centers">
+                                <separator string="Print only" colspan="4"/>
+                                <field name="center_ids" widget="many2many_tags" options="{'no_quick_create':True,'no_create_edit':True}"/>
+                            </page>
+                            <page string="Project" name="projects">
+                                <separator string="Print only" colspan="4"/>
+                                <field name="project_ids" widget="many2many_tags" options="{'no_quick_create':True,'no_create_edit':True}"/>                        
+                            </page>
+                        
+                        </notebook>
+					</group>
+				
+				<footer>
+						<button icon="gtk-execute" string="Print" name="print_report" type="object" class="oe_highlight"  />
+						<button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+			</form>
+		</field>
+    </record>
+
+    <record id="action_guards_bank_account_view" model="ir.actions.act_window">
+        <field name="name">Guard Bank Account Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">guards.bank.account</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="guards_bank_account_view"/>
+        <field name="target">new</field>
+    </record>
+</odoo>

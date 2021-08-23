@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo noupdate="0">
+ 
+	<record id="clv_family_family_summary_template" model="clv.summary.template">
+		<field name="name" eval="&quot;&quot;&quot;clv.family [_family_summary]&quot;&quot;&quot;"/>
+		<field name="model" eval="&quot;&quot;&quot;clv.family&quot;&quot;&quot;"/>
+		<field name="action" eval="&quot;&quot;&quot;_family_summary&quot;&quot;&quot;"/>
+	</record>
+	 
+</odoo>

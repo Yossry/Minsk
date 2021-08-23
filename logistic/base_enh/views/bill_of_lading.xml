@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<record model="ir.ui.view" id="bill_of_lading_list_view">
+			<field name="name">bill.of.lading</field>
+			<field name="model">bill.of.lading</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="shipping_line_id" />
+					<field name="bill_lading_no" />
+					<field name="shipper_id" />
+					<field name="consignee_id" />
+					<field name="first_notify_id" />
+					<field name="add_notify_id" />
+					<field name="booking_no" />
+					<field name="contract_no" />
+					<field name="port_loading_id" />
+					<field name="port_dest_id" />
+					<field name="vessel_id" />
+					<field name="voyage_id" />
+					<field name="contract_no" />
+					<field name="place_of_loading" />
+                    <field name="place_of_receipt" />
+				</tree>
+			</field>
+		</record>
+
+
+		<record model="ir.ui.view" id="bill_of_lading_form_view">
+			<field name="name">bill.of.lading</field>
+			<field name="model">bill.of.lading</field>
+			<field name="arch" type="xml">
+				<form>
+					<sheet>
+						<group>
+							<group>
+								<field name="shipping_line_id" />
+								<field name="bill_lading_no" />
+								<field name="shipper_id" />
+								<field name="consignee_id" />
+								<field name="first_notify_id" />
+								<field name="add_notify_id" />
+								<field name="place_of_loading" />
+                                <field name="place_of_receipt" />
+							</group>
+							<group>
+								<field name="booking_no" />
+								<field name="contract_no" />
+								<field name="port_loading_id" />
+								<field name="port_dest_id" />
+								<field name="vessel_id" />
+								<field name="voyage_id" />
+								<field name="contract_no" />
+							</group>
+							
+							<label for="commodity_ids" style="font-weight: bold" />
+							         <field name="commodity_ids" >
+                                      <tree create="false" delete="false" edit="false" editable="false">
+                                            <field name="name" />
+                                        </tree>
+                                    </field>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window"
+			id="bill_of_lading_action">
+			<field name="name">Internal Bill of Lading</field>
+			<field name="res_model">bill.of.lading</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+
+
+
+	</data>
+</odoo>

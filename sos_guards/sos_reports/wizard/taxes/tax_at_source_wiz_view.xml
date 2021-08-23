@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="view_tax_at_source_wiz" model="ir.ui.view">
+			<field name="name">Tax At Source</field>
+			<field name="model">tax.at.source.wiz</field>
+			<field name="arch" type="xml">
+				<form string="Report Options">
+					<group>
+						<group>
+							<field name="date_from" />
+							<field name="date_to" />
+						</group>
+						<group>
+						</group>
+					</group>
+					<footer>
+						<button name="print_report" string="Generate Report" type="object" default_focus="1" class="oe_highlight"/>
+						<button string="Cancel" class="oe_link" special="cancel" />
+					</footer>
+				</form>
+
+			</field>
+		</record>
+
+		<record id="action_tax_at_source_wiz" model="ir.actions.act_window">
+			<field name="name">Tax At Source</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">tax.at.source.wiz</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="view_id" ref="view_tax_at_source_wiz"/>
+			<field name="target">new</field>
+		</record>
+
+	</data>
+</odoo>
+
+

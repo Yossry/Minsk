@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+        
+    <record id="clv_person_view_form_document_person_history" model="ir.ui.view">
+        <field name="name">clv.person.form</field>
+        <field name="model">clv.person</field>
+        <field name="inherit_id" ref="clv_person_jcafb.clv_person_view_form_document"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <button name="clv_document.clv_document_action" position="replace">
+                <button name="clv_document.clv_document_action"
+                        type="action"
+                        class="oe_stat_button"
+                        icon="fa-list"
+                        context="{'search_default_ref_name': name, 'search_default_ref_code': code, 'search_default_group_by_phase_id': 1}"
+                        attrs="{'invisible': [('count_documents_2', '=', 0)]}"
+                        >
+                    <div class="o_form_field o_stat_info">
+                        <span class="o_stat_value">
+                            <field name="count_documents_2"/>
+                        </span>
+                        <span class="o_stat_text"> Document(s)</span>
+                    </div>
+                </button>
+            </button>
+        </field>
+    </record>
+
+    <record id="clv_person_view_form_event_attendee_person_history" model="ir.ui.view">
+        <field name="name">clv.person.form</field>
+        <field name="model">clv.person</field>
+        <field name="inherit_id" ref="clv_person_jcafb.clv_person_view_form_event_attendee"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <button name="clv_event.clv_event_attendee_action" position="replace">
+                <button name="clv_event.clv_event_attendee_action"
+                        type="action"
+                        class="oe_stat_button"
+                        icon="fa-list"
+                        context="{'search_default_ref_name': name, 'search_default_ref_code': code, 'search_default_group_by_event_phase_id': 1}"
+                        attrs="{'invisible': [('count_events_2', '=', 0)]}"
+                        >
+                    <div class="o_form_field o_stat_info">
+                        <span class="o_stat_value">
+                            <field name="count_events_2"/>
+                        </span>
+                        <span class="o_stat_text"> Events(s)</span>
+                    </div>
+                </button>
+            </button>
+        </field>
+    </record>
+
+    <record id="clv_person_view_form_lab_test_request_person_history" model="ir.ui.view">
+        <field name="name">clv.person.form</field>
+        <field name="model">clv.person</field>
+        <field name="inherit_id" ref="clv_person_jcafb.clv_person_view_form_lab_test_request"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <button name="clv_lab_test.clv_lab_test_request_action" position="replace">
+                <button name="clv_lab_test.clv_lab_test_request_action"
+                        type="action"
+                        class="oe_stat_button"
+                        icon="fa-list"
+                        context="{'search_default_ref_name': name, 'search_default_ref_code': code, 'search_default_group_by_phase_id': 1}"
+                        attrs="{'invisible': [('count_lab_test_requests_2', '=', 0)]}"
+                        >
+                    <div class="o_form_field o_stat_info">
+                        <span class="o_stat_value">
+                            <field name="count_lab_test_requests_2"/>
+                        </span>
+                        <span class="o_stat_text"> Lab Test Request(s)</span>
+                    </div>
+                </button>
+            </button>
+        </field>
+    </record>
+
+    <record id="clv_person_view_form_lab_test_result_person_history" model="ir.ui.view">
+        <field name="name">clv.person.form</field>
+        <field name="model">clv.person</field>
+        <field name="inherit_id" ref="clv_person_jcafb.clv_person_view_form_lab_test_result"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <button name="clv_lab_test.clv_lab_test_result_action" position="replace">
+                <button name="clv_lab_test.clv_lab_test_result_action"
+                        type="action"
+                        class="oe_stat_button"
+                        icon="fa-list"
+                        context="{'search_default_ref_name': name, 'search_default_ref_code': code, 'search_default_group_by_phase_id': 1}"
+                        attrs="{'invisible': [('count_lab_test_results_2', '=', 0)]}"
+                        >
+                    <div class="o_form_field o_stat_info">
+                        <span class="o_stat_value">
+                            <field name="count_lab_test_results_2"/>
+                        </span>
+                        <span class="o_stat_text"> Lab Test Result(s)</span>
+                    </div>
+                </button>
+            </button>
+        </field>
+    </record>
+
+    <record id="clv_person_view_form_lab_test_report_person_history" model="ir.ui.view">
+        <field name="name">clv.person.form</field>
+        <field name="model">clv.person</field>
+        <field name="inherit_id" ref="clv_person_jcafb.clv_person_view_form_lab_test_report"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <button name="clv_lab_test.clv_lab_test_report_action" position="replace">
+                <button name="clv_lab_test.clv_lab_test_report_action"
+                        type="action"
+                        class="oe_stat_button"
+                        icon="fa-list"
+                        context="{'search_default_ref_name': name, 'search_default_ref_code': code, 'search_default_group_by_phase_id': 1}"
+                        attrs="{'invisible': [('count_lab_test_reports_2', '=', 0)]}"
+                        >
+                    <div class="o_form_field o_stat_info">
+                        <span class="o_stat_value">
+                            <field name="count_lab_test_reports_2"/>
+                        </span>
+                        <span class="o_stat_text"> Lab Test Report(s)</span>
+                    </div>
+                </button>
+            </button>
+        </field>
+    </record>
+
+</odoo>

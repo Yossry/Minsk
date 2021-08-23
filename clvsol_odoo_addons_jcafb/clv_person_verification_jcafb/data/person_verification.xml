@@ -1,0 +1,46 @@
+<?xml version="1.0" ?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo noupdate="0">
+ 
+	<record id="clv_person_person_verification_template" model="clv.verification.template">
+		<field name="name" eval="&quot;&quot;&quot;clv.person [_person_verification]&quot;&quot;&quot;"/>
+		<field name="model" eval="&quot;&quot;&quot;clv.person&quot;&quot;&quot;"/>
+		<!--field name="method" eval="&quot;&quot;&quot;_object_verification&quot;&quot;&quot;"/-->
+		<field name="action" eval="&quot;&quot;&quot;_person_verification&quot;&quot;&quot;"/>
+		<!--field name="verification_disable_check_missing" eval="False"/-->
+	</record>
+	 
+	<!--record id="clv_person_person_verification_schedule" model="clv.verification.schedule">
+		<field name="name" eval="&quot;&quot;&quot;clv.person [_person_verification]&quot;&quot;&quot;"/>
+		<field name="template_id" eval="clv_person_person_verification_template"/>
+	</record-->
+	 
+	<record id="clv_person_person_verification_ref_address_template" model="clv.verification.template">
+		<field name="name" eval="&quot;&quot;&quot;clv.person [_person_verification_ref_address]&quot;&quot;&quot;"/>
+		<field name="model" eval="&quot;&quot;&quot;clv.person&quot;&quot;&quot;"/>
+		<!--field name="method" eval="&quot;&quot;&quot;_object_verification&quot;&quot;&quot;"/-->
+		<field name="action" eval="&quot;&quot;&quot;_person_verification_ref_address&quot;&quot;&quot;"/>
+		<!--field name="verification_disable_check_missing" eval="False"/-->
+	</record>
+	 
+	<!--record id="clv_person_person_verification_ref_address_schedule" model="clv.verification.schedule">
+		<field name="name" eval="&quot;&quot;&quot;clv.person [_person_verification_ref_address]&quot;&quot;&quot;"/>
+		<field name="template_id" eval="clv_person_person_verification_ref_address_template"/>
+	</record-->
+	 
+	<record id="clv_person_person_verification_family_template" model="clv.verification.template">
+		<field name="name" eval="&quot;&quot;&quot;clv.person [_person_verification_family]&quot;&quot;&quot;"/>
+		<field name="model" eval="&quot;&quot;&quot;clv.person&quot;&quot;&quot;"/>
+		<!--field name="method" eval="&quot;&quot;&quot;_object_verification&quot;&quot;&quot;"/-->
+		<field name="action" eval="&quot;&quot;&quot;_person_verification_family&quot;&quot;&quot;"/>
+		<!--field name="verification_disable_check_missing" eval="False"/-->
+	</record>
+	 
+	<!--record id="clv_person_person_verification_family_schedule" model="clv.verification.schedule">
+		<field name="name" eval="&quot;&quot;&quot;clv.person [_person_verification_family]&quot;&quot;&quot;"/>
+		<field name="template_id" eval="clv_person_person_verification_family_template"/>
+	</record-->
+	 
+</odoo>

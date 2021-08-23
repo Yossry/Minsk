@@ -1,0 +1,1462 @@
+code,name
+(Código de 6 dígitos que,(Nombre de la nueva cuenta)
+ identifica la cuenta),
+,
+,
+10000000,Capital social
+10100000,Fondo social
+10200000,Capital
+10300000,"Socios por desembolsos no exigidos, capi"
+10300004,"Socios por desembolsos no exigidos, capi"
+10300400,"Socios por desembolsos no exigidos, capi"
+10400000,Socios por aportaciones no dinerarias pe
+10400004,Socios por aportaciones no dinerarias pe
+10400400,Socios por aportaciones no dinerarias pe
+10800000,Acciones o participaciones propias en si
+10900000,Acciones o participaciones propias para
+11000000,Prima de Emisión o asunción
+11100000,Patrimonio neto por emision de instrumen
+11100001,Resto de instrumentos de patrimonio neto
+11100100,Resto de instrumentos de patrimonio neto
+11200000,Reserva Legal
+11300000,Reservas voluntarias
+11400000,Reservas para acciones o participaciones
+11400001,Reservas estatutarias
+11400002,Reserva por capital amortizado
+11400003,Reserva por fondo de comercio
+11400004,Reservas por acciones propias aceptadas
+11400100,Reservas estatutarias
+11400200,Reserva por capital amortizado
+11400300,Reserva por fondo de comercio
+11400400,Reservas por acciones propias aceptadas
+11500000,Reservas por pérdidas y ganancias actuar
+11800000,Aportaciones de socios o propietarios
+11900000,Diferencias por ajuste del capital a eur
+12000000,Remanente
+12100000,Resultados negativos de ejercicios anter
+12100014,Resultados negativos del ejercicio 2014
+12100015,Resultados negativos del ejercicio 2015
+12100017,Resultados negativos del ejercicio 2017
+12900000,Resultado del ejercicio
+13000000,Subvenciones oficiales de capital
+13000001,Neotec 2016
+13100000,Donaciones y legados de capital
+13200000,"Otras subvenciones, donaciones y legados"
+13300000,Ajustes por valoración en activos financ
+13400000,Cobertura de flujos de efectivo
+13400001,Cobertura de una inversión neta en un ne
+13400100,Cobertura de una inversión neta en un ne
+13500000,Diferencias de conversión
+13600000,Ajustes por valoración de activos no cor
+13700000,Ingresos fiscales por diferencias perman
+13700001,Ingresos fiscales por deducciones y boni
+13700100,Ingresos fiscales por deducciones y boni
+14000000,Provisión por retribuciones del personal
+14100000,Provisión para impuestos
+14200000,Provisión para otras responsabilidades
+14300000,"Provisión por desmantelamiento, retiro o"
+14500000,Provisión para actuaciones medioambienta
+14600000,Provisión para reestructuraciones
+14700000,Provisión por transacciones con pagos ba
+15000000,Acciones o participaciones consideradas
+15300003,"Desembolsos no exigidos, empresas del gr"
+15300004,"Desembolsos no exigidos, empresas asocia"
+15300005,"Desembolsos no exigidos, otras partes vi"
+15300006,Otros desembolsos no exigidos
+15300300,"Desembolsos no exigidos, empresas del gr"
+15300400,"Desembolsos no exigidos, empresas asocia"
+15300500,"Desembolsos no exigidos, otras partes vi"
+15300600,Otros desembolsos no exigidos
+15400003,"Aportaciones no dinerarias pendientes, e"
+15400004,"Aportaciones no dinerarias pendientes, e"
+15400005,"Aportaciones no dinerarias pendientes, o"
+15400006,Otras aportaciones no dinerarias pendien
+15400300,"Aportaciones no dinerarias pendientes, e"
+15400400,"Aportaciones no dinerarias pendientes, e"
+15400500,"Aportaciones no dinerarias pendientes, o"
+15400600,Otras aportaciones no dinerarias pendien
+16000003,Deudas con entidades de crédito vinculad
+16000004,Deudas con entidades de crédito vinculad
+16000005,Deudas con otras entidades de crédito vi
+16000300,Deudas con entidades de crédito vinculad
+16000400,Deudas con entidades de crédito vinculad
+16000500,Deudas con otras entidades de crédito vi
+16100003,"Proveedores de inmovilizado, empresas de"
+16100004,"Proveedores de inmovilizado, empresas as"
+16100005,"Proveedores de inmovilizado, otras parte"
+16100300,"Proveedores de inmovilizado, empresas de"
+16100400,"Proveedores de inmovilizado, empresas as"
+16100500,"Proveedores de inmovilizado, otras parte"
+16200003,"Acreedores por arrendamiento financiero,"
+16200004,"Acreedores por arrendamiento financiero,"
+16200005,"Acreedores por arrendamiento financiero,"
+16200300,"Acreedores por arrendamiento financiero,"
+16200400,"Acreedores por arrendamiento financiero,"
+16200500,"Acreedores por arrendamiento financiero,"
+16300003,"Otras deudas, empresas del grupo"
+16300004,"Otras deudas, empresas asociadas"
+16300005,"Otras deudas, con otras partes vinculada"
+16300300,"Otras deudas, empresas del grupo"
+16300400,"Otras deudas, empresas asociadas"
+16300500,"Otras deudas, con otras partes vinculada"
+17000000,Deudas con entidades de crédito
+17000002,Prestamo ENISA
+17000003,Prestamo BANC SABADELL ICF EMPREN
+17000004,Prestamo Emprendetur
+17000005,Prestamo ENISA 2018
+17100000,Deudas
+17200000,"Deudas transformables en subvenciones, d"
+17300000,Proveedores de inmovilizado
+17400000,Acreedores por arrendamiento financiero
+17500000,Efectos a pagar
+17600005,"Pasivos por derivados financieros, carte"
+17600008,"Pasivos por derivados financieros, instr"
+17600500,"Pasivos por derivados financieros, carte"
+17600800,"Pasivos por derivados financieros, instr"
+17700000,Obligaciones y bonos
+17800000,Obligaciones y bonos convertibles
+17900000,Deudas representadas en otros valores ne
+18000000,Fianzas recibidas
+18100000,Anticipos recibidos por ventas o prestac
+18500000,Depósitos recibidos
+18900000,Garantías financieras
+19000000,Acciones o participaciones emitidas
+19200000,Suscriptores de acciones
+19400000,Capital emitido pendiente de inscripción
+19500000,Acciones o participaciones emitidas cons
+19700000,Suscriptores de acciones consideradas co
+19900000,Acciones o participaciones emitidas cons
+20000000,Investigación
+20100000,Desarrollo software Provisiones
+20100001,Desarrollo software Descarga mètricas
+20100002,Desarrollo software Optimizadors ADWORDS
+20100003,Desarrollo software BackEnd 1a versión
+20100004,Desarrollo software Analizador Anuncios
+20100005,Desarrollo software Big DATA (Análisis y
+20100006,Desarrollo software Facturación Beta
+20100007,Desarrollo software JUKES Search (3m) 2015
+20100010,Desarrollo software Engines
+20100011,Desarrollo software P.BudgetOptimyzerX
+20100012,Desarrollo software Apocalipsis
+20100013,Desarrollo software Bing
+20100014,Desarrollo software Jukes Display
+20100015,Desarrollo software Reporting
+20100016,DESARROLLO 2017 AUTOMATE
+20100017,DESARROLLO 2017 NEW LOOK & FEEL
+20100018,DESARROLLO 2017 SETTING OPTIMYZER
+20100019,DESARROLLO 2017 BID SIMULATOR
+20100020,DESARROLLO 2017 AMAZON INTEGRATION
+20100021,DESARROLLO 2017 SHOPPING SPLITER
+20100022,DESARROLLO 2018 FACEBOOK INTEGRATION
+20100023,Desarrollo 2018 Plugin Shopify
+20100024,Desarrollo 2018 Sapceboost APP
+20100025,Desarrollo 2018 Plugin Prestashop
+20200000,Concesiones administrativas
+20200001,Gestión de financiación. Emprendetur.
+20300000,Propiedad industrial
+20300001,Registro nombre comercial
+20400000,Fondo de comercio
+20500000,Derechos de traspaso
+20600000,Aplicaciones informáticas
+20600001,Software Umarketplace
+20600002,PLATAFORMA SAGE 2000 + GEST. CONT Y FINA
+20600003,SPACEBOOST.COM
+20900000,Anticipos para inmovilizaciones intangib
+21000000,Terrenos y bienes naturales
+21100000,Construcciones
+21100001,REFORMAS TUSET 32 07/2018
+21100002,GRADA OFICINAS TUSET 32
+21200000,Instalaciones técnicas
+21300000,Maquinaria
+21400000,Utillaje
+21500000,Otras instalaciones
+21600000,Mobiliario
+21600154,Mobiliario 4T 2015
+21600161,Mobiliario 1T 2016
+21600162,Mobiliario 2T 2016
+21600163,Mobiliario 3T 2016
+21600164,Mobiliario 4T 2016
+21600171,Mobiliario 2017
+21600181,Mobiliario 2018
+21700000,Equipos para proceso de información
+21700001,Equipos informáticos
+21700002,HP NOTEBOOK 250 G6
+21700003,MONITOR GAMING LG29UM69G-B
+21700004,"LG 65UJ620V 65"""
+21700005,HP NOTEBOOK 15 BS127NS (2 uni.)
+21700006,"MBPRO 15 GRIS TBAR I7 2,8GHZ"
+21700007,LG 29UM59A-P - 2 UNIDADES
+21700008,DELL XPS 15 (9570)
+21700009,INSPIRON 15 SERIE 5000-5570
+21700010,Inspiron 15 (Ej. 2017)
+21700011,Vostro 5568 (Ej. 2017)
+21700012,Apple MacBook Pro (17/11/15)
+21700013,Asus X554LA-XX371H Intel Core (24/8/15)
+21700014,LG 22MP57VQ-P 22 LED IPS (13/07/15)
+21700015,Dell Vostro 5568 Intel Core i5 (5 unid)
+21700150,Equipos Informaticos 2015
+21700154,Equipos p. proc. Inf. 4tr2015
+21700161,Equipos p. proc. Inf. 1T2016
+21700162,Equipos p. proc. Inf. 2T2016
+21700163,Equipos p. proc. Inf. 3T2016
+21700164,Equipos p. proc. Inf. 4T2016
+21700171,Equipos p. proc. Inf. 2017
+21700172,EQUIPOS INFORMATICOS 2018
+21800000,Elementos de transporte
+21900000,Otro inmovilizado material
+21900001,APPLE IPHONE X 64GB SPACE GREY
+21900002,IPAD WI-FI 32GB GOLD ISP
+21900003,SAMSUNG GALS8 5.8 4G
+22000000,Inversiones en terrenos y bienes natural
+22100000,Inversiones en construcciones
+23000000,Adaptación de terrenos y bienes naturale
+23100000,Construcciones en curso
+23200000,Instalaciones técnicas en montaje
+23300000,Maquinaria en montaje
+23700000,Equipos para procesos de información en
+23900000,Anticipos para inmovilizaciones material
+24000003,Participaciones en empresas del grupo
+24000004,Participaciones en empresas asociadas
+24000005,Participaciones en otras partes vinculad
+24000300,Participaciones en empresas del grupo
+24000400,Participaciones en empresas asociadas
+24000500,Participaciones en otras partes vinculad
+24100003,Valores representativos de deuda de empr
+24100004,Valores representativos de deuda de empr
+24100005,Valores representativos de deuda de otra
+24100300,Valores representativos de deuda de empr
+24100400,Valores representativos de deuda de empr
+24100500,Valores representativos de deuda de otra
+25000000,Inversiones financieras en instrumentos
+25100000,Valores representativos de deuda
+25200000,Créditos
+25300000,Créditos por enajenación de inmovilizado
+25400000,Créditos al personal
+25500000,"Activos por derivados financieros, carte"
+25500003,"Activos por derivados financieros, instr"
+25500300,"Activos por derivados financieros, instr"
+25700000,Derechos de reembolso derivados de contr
+25800000,Imposiciones
+25900000,Desembolsos pendientes sobre participaci
+26000000,Fianzas constituidas
+26000001,Fianza prestamo
+26500000,Depósitos constituidos
+28000000,Amortización acumulada de investigación
+28000001,Amortización acumulada de desarrollo
+28000002,Amortización acumulada de concesiones ad
+28000003,Amortización acumulada de propiedad indu
+28000005,Amortización acumulada de derechos de tr
+28000006,Amortización acumulada de aplicaciones i
+28000100,Amortización acumulada de desarrollo 201
+28000110,Amortización acumulada de desarrollo Eng
+28000111,Amortización acumulada de desarrollo P.B
+28000112,Amortización acumulada de desarrollo Apo
+28000113,Amortización acumulada de desarrollo Bin
+28000114,Amortización acumulada de desarrollo Juk
+28000115,Amortización acumulada de desarrollo Rep
+28000200,Amortización acumulada de concesiones ad
+28000300,Amortización acumulada de propiedad indu
+28000500,Amortización acumulada de derechos de tr
+28000600,Amortización acumulada de aplicaciones i
+28002015,Alta automática
+28002016,Alta automática
+28002017,Alta automática
+28002018,
+28100001,Amortización acumulada de construcciones
+28100002,Amortización acumulada de instalaciones
+28100003,Amortización acumulada de maquinaria
+28100004,Amortización acumulada de utillaje
+28100005,Amortización acumulada de otras instalac
+28100006,Amortización acumulada de mobiliario
+28100007,Amortización acumulada de equipos para p
+28100008,Amortización acumulada de elementos de t
+28100009,Amortización acumulada de otro inmoviliz
+28100100,Amortización acumulada de construcciones
+28100200,Amortización acumulada de instalaciones
+28100300,Amortización acumulada de maquinaria
+28100400,Amortización acumulada de utillaje
+28100500,Amortización acumulada de otras instalac
+28100600,Amortización acumulada de mobiliario
+28100700,Amortización acumulada de equipos para p
+28100800,Amortización acumulada de elementos de t
+28100900,Amortización acumulada de otro inmoviliz
+28200000,Amortización acumulada de las inversione
+29000000,Deterioro del valor de investigación
+29000001,Deterioro del valor de desarrollo
+29000002,Deterioro del valor de concesiones admin
+29000003,Deterioro del valor de propiedad industr
+29000005,Deterioro del valor de derechos de trasp
+29000006,Deterioro del valor de aplicaciones info
+29000100,Deterioro del valor de desarrollo
+29000200,Deterioro del valor de concesiones admin
+29000300,Deterioro del valor de propiedad industr
+29000500,Deterioro del valor de derechos de trasp
+29000600,Deterioro del valor de aplicaciones info
+29100000,Deterioro de valor de terrenos y bienes
+29100001,Deterioro de valor de construcciones
+29100002,Deterioro de valor de instalaciones técn
+29100003,Deterioro de valor de maquinaria
+29100004,Deterioro de valor de utillaje
+29100005,Deterioro de valor de otras instaciones
+29100006,Deterioro de valor de mobiliario
+29100007,Deterioro de valor de equipos para proce
+29100008,Deterioro de valor de elementos de trans
+29100009,Deterioro de valor de otro inmovilizado
+29100100,Deterioro de valor de construcciones
+29100200,Deterioro de valor de instalaciones técn
+29100300,Deterioro de valor de maquinaria
+29100400,Deterioro de valor de utillaje
+29100500,Deterioro de valor de otras instaciones
+29100600,Deterioro de valor de mobiliario
+29100700,Deterioro de valor de equipos para proce
+29100800,Deterioro de valor de elementos de trans
+29100900,Deterioro de valor de otro inmovilizado
+29200000,Deterioro de valor de los terrenos y bie
+29200001,Deterioro de valor de construcciones
+29200100,Deterioro de valor de construcciones
+29300003,Deterioro de valor de participaciones en
+29300004,Deterioro de valor de participaciones en
+29300300,Deterioro de valor de participaciones en
+29300400,Deterioro de valor de participaciones en
+29400003,Deterioro de valor de valores representa
+29400004,Deterioro de valor de valores representa
+29400005,Deterioro de valor de valores representa
+29400300,Deterioro de valor de valores representa
+29400400,Deterioro de valor de valores representa
+29400500,Deterioro de valor de valores representa
+29500003,Deterioro de valor de créditos a empresa
+29500004,Deterioro de valor de créditos a empresa
+29500005,Deterioro de valor de créditos a otras p
+29500300,Deterioro de valor de créditos a empresa
+29500400,Deterioro de valor de créditos a empresa
+29500500,Deterioro de valor de créditos a otras p
+29700000,Deterioro de valor de valores representa
+29800000,Deterioro de valor de créditos
+30000000,Mercaderías A
+30100000,Mercaderías B
+31000000,Materias Primas A
+31100000,Materias Primas B
+32000000,Elementos y conjuntos incorporables
+32100000,Combustibles
+32200000,Repuestos
+32500000,Materiales diversos
+32600000,Embalajes
+32700000,Envases
+32800000,Material de oficina
+33000000,Productos en curso A
+33100000,Productos en curso B
+34000000,Productos semiterminados A
+34100000,Productos semiterminados B
+35000000,Productos terminados A
+35100000,Productos terminados B
+36000000,Subproductos A
+36100000,Subproductos B
+36500000,Residuos A
+36600000,Residuos B
+36800000,Materiales recuperados A
+36900000,Materiales recuperados B
+39000000,Deterioro de valor de las mercaderías
+39100000,Deterioro de valor de las materias prima
+39200000,Deterioro de valor de otros aprovisionam
+39300000,Deterioro de valor de los productos en c
+39400000,Deterioro de valor de los productos semi
+39500000,Deterioro de valor de los productos term
+39600000,"Deterioro de valor de los subproductos,"
+40000000,Proveedores (euros)
+40000001,Amazon Marketplace
+40000002,Capside
+40000003,COMERCIALIZADORA PUBLICITARIA AVANZADA S
+40000004,Aragones osacar Luis
+40000005,GOOGLE IRELAND LIMITED
+40000009,"Proveedores, facturas pendientes de reci"
+40000400,Proveedores (moneda extranjera)
+40000900,"Proveedores, facturas pendientes de reci"
+40100000,"Proveedores, efectos comerciales a pagar"
+40300000,"Proveedores, empresas del grupo (euros)"
+40300001,"Efectos comerciales a pagar, empresas de"
+40300004,"Proveedores, empresas del grupo (moneda"
+40300006,Envases y embalajes a devolver a proveed
+40300009,"Proveedores, empresas del grupo, factura"
+40300100,"Efectos comerciales a pagar, empresas de"
+40300400,"Proveedores, empresas del grupo (moneda"
+40300600,Envases y embalajes a devolver a proveed
+40300900,"Proveedores, empresas del grupo, factura"
+40400000,"Proveedores, empresas asociadas"
+40500000,"Proveedores, otras partes vinculadas"
+40600000,Envases y embalajes a devolver a proveed
+40700000,Anticipos a proveedores
+40700001,ANTICIPOS A PROCURADORES
+41000000,Acreedores por prestaciones de servicios
+41000001,Fundació Universitat Pompeu Fabra
+41000002,Ventanas Directas
+41000003,Gallart Sulla Fermi
+41000004,Crispena SL
+41000005,Geseme
+41000006,SIEMENS RENTING SA
+41000007,Stripe Payments Europe Ltd
+41000008,VOZELIA TELECOM SL
+41000009,INVERSIONES INMOBILIARIAS ALBA
+41000010,AMAZON WEB SERVICE INC
+41000011,Talentrepublic SL
+41000012,Fundació Barcelona Mobile World Capital
+41000013,The eWorld Team SL
+41000014,Italent Hunters SL
+41000015,Phoenix Teefactory SL
+41000016,Linkedin Ireland
+41000017,Montoliu Stelers Danie
+41000018,Garcia Jordi
+41000019,"RENFE VIAJEROS S.M.E, SA"
+41000020,Universitat de Barcelona
+41000021,Easyfairs Iberia SL
+41000022,PC Componentes y Multimedia SLU
+41000023,Shibsted Classified Media Spain SL
+41000024,BOO PROOTEA
+41000025,Adroll
+41000026,Twitter
+41000027,"ULABOX, SL"
+41000028,Fira de Barcelona
+41000029,FUNDACIO PRIVADA PARC TECNOLOGIC
+41000030,Barcelona Tech City
+41000031,ENDESA ENERGIA SA
+41000032,MailChimp
+41000033,"Telefonica Moviles España, SA"
+41000034,Universitat Politecnica de Catalunya
+41000035,"Zendesk, inc"
+41000036,"Barcelona Business Solutions, S.L.U."
+41000037,BRUGOR PUBLICIDAD
+41000038,"VUELING AIRLINES, SA"
+41000039,Equifax Iberica SL
+41000040,"UHF FAY & CO AUDITORES ASESORES, SLP"
+41000041,"JMT AMBIPLAN DISEÑO, SL"
+41000042,"BARNATAPA, SL"
+41000043,"CLASS DIFUSION, SL"
+41000044,"DHL Express Servicios, S.L."
+41000045,Tuset Oficina y Servicios SL
+41000046,MAXI MOBILITY SPAIN SL
+41000047,REGISTRO MERCANTIL BARCELONA
+41000048,RAMON ABELLO DIZ
+41000049,Boletin Oficial del Registro Mercantil
+41000050,Fabrica Nacional de Moneda y Timbre
+41000051,Aristos Innovation Consulting SL
+41000052,"VISUALKORNER, S.L."
+41000053,"Capital English, SL"
+41000054,"Aqualogy Solutions, SL"
+41000055,"Typeform, SL"
+41000056,"REDCOON ELECTRONIC TRADE, SLU"
+41000057,"Translated, SRL"
+41000058,AENOR
+41000059,MQ1 YEEDAY mequedouno.com
+41000060,"Smart Eagle, Business Development"
+41000061,Spn Import and Services Llc
+41000062,"Contact Software, sl"
+41000063,"Iniciativas Virtuales, SA"
+41000064,Marc Noguera
+41000065,"The Mood Project, SL"
+41000066,Banco Santander SA
+41000067,Ineca Commutators sl
+41000068,Elec Dom Shop sl
+41000069,Schoenberger Germany Enterprises Gmbh &
+41000070,Pizza Market Sarria sl
+41000071,"Gonzalez Lopez, Irina"
+41000072,Dhap Center sl
+41000073,Dimension Nuevas Tecnologias
+41000074,Ana Maria Soria Sivera
+41000075,"Gonzalez Bonfill, Sandra"
+41000076,"Guilanya Gil, Joan"
+41000077,Serveis i Manteniment SL
+41000078,Airbnb Ireland
+41000079,FastSpring
+41000080,JETech Global Corp
+41000081,GODADDY.COM LLC
+41000082,Shenzen Elephone Communication Technolog
+41000083,Safescan
+41000084,"VACACIONES EDREAMS, SL"
+41000085,Ticjob
+41000086,"EDICIONES MARKETING Y PUBLICIDAD, S.L."
+41000087,Acedo Rodriguez David
+41000088,Banco Bilbao Vizcaya Argentaria
+41000089,Malcer Inmuebles SL
+41000090,Repro Copy Manteniment sl
+41000091,Leroy Merlin España SLU
+41000092,"COPYSHOW, SL"
+41000093,Apple Distribution International
+41000094,Easy Jet Airline Company Ltd
+41000095,"Hotelera Marina Barcelona, sl"
+41000096,Media Saturn Multichannel SAU
+41000097,"VODAFONE ESPAÑA, S.A."
+41000098,"Comercial Matesu, sl"
+41000099,Barcelona Productos y Servicios Inmobili
+41000100,Acreedores metálico
+41000101,"Ecommerce etc, sl"
+41000102,F. Javier Rincon Jimenez (Carpinteria Ri
+41000103,Amazon EU SARL Sucursal en España
+41000104,Josep Alvarez Zurera (Mecsa)
+41000105,Barcelona Java Users Group
+41000106,SMARTLY.IO SOLUTIONS OY
+41000107,ATLASSIAN PTY LTD
+41000108,"K-Tuin Sistemas Informaticos, SA"
+41000109,ADEMAS CORPORATE BCN SL
+41000110,SARENET SA
+41000111,"Cloudera, Inc."
+41000112,Acció 10
+41000113,Amex
+41000114,Sendiroo
+41000115,Electronicatovar
+41000116,"Ofimat, sl"
+41000117,Dell SA
+41000118,BECAS SANTANDER CRUE CEPYME
+41000119,Pons Font Josep Maria
+41000120,Dasler
+41000121,TAX & ACCOUNTING ADVISORS SL
+41000122,Iberia LAE
+41000123,Prestashop
+41000124,"SOUNDWORKS PRO, S.L"
+41000125,Albert Vila Pere
+41000126,Cooltra Motosharing S.L.
+41000128,Technologic Road SL
+41000129,Media Markt Barcelona
+41000130,GM AUDITORS SL
+41000131,HOOTSUITE MEDIA INC
+41000132,AUTOADHESIVOS Z Y R SA
+41000133,"VIVA AQUA SERVICE SPAIN, SA"
+41000134,"CACHITOS RAMBLA, S.L"
+41000135,"F. INICIATIVAS I+D+I, S.L."
+41000136,GESTORA CLUBS DIR SL
+41000137,FACEBOOK IRELAND LIMITED
+41000138,"ROCA JUNYENT, S.L.P."
+41000139,SERLIMAR SERVICIOS INTEGRALES SL
+41000140,RYANAIR LIMITED
+41000141,NORWEGIAN AIR SHUTTLE
+41000142,FREENLANCER INTERNATIONAL PTY LTED
+41000143,"FOTO K, SA"
+41000144,MONCHO'S INICIATIVAS 2000 SL
+41000145,"SOCIEDAD ESTATAL CORREOS TELEGRAFOS, S.A"
+41000146,ENVATO PTY LTD
+41000147,RIBS PARETS TEXAS SL
+41000148,AIGÜES DE BARCELONA S.A.
+41000149,"GOMEZ PACHECO, CARLOS"
+41000150,TABLEAU INTERNATIONAL UC
+41000151,"GEYCE AGP SOFTWARE, SL"
+41000152,MERCADO ACTUAL SL
+41000153,CONNECTED INTELLIGENCE LTD
+41000154,MURCIA CARD SOLUTIONS SL
+41000155,PREVILABOR 365 SL
+41000156,ROAD TO PARADISE SL
+41000157,MARLIN CAPITAL SL
+41000158,TREBLAIRUN HOLDING SL
+41000159,IRODES EQUITY SL
+41000160,"CAPITAL ENGLISH, SL"
+41000161,WEBSUMMIT
+41000162,CABIFY MEXICO S DE RL DE CV
+41000163,EYSA PSA SMART CITY MOBILITY SA
+41000164,GAT TRAVEL SL
+41000165,OFFTEK
+41000166,AGENTE DIGITAL SAS
+41000167,MICROSOFT IRELAND OPERATIONS LTD
+41000168,CHOICE CAR SA
+41000169,CLICK & TRIP TURISMO LDA
+41000170,LFC LOUREIRO FERNADES CONSULTORS UNIPESS
+41000171,PROPEOPLE CAR UNIPESSOAL LDA
+41000172,TEXEIRA & BACELAR LDA
+41000173,VOOP! CARVALHO DOS SANTOS & VAZ VELHO
+41000174,FUNDACION INFORPRESS
+41000175,INT. ESPORT. CAMP MUNI. FUT. PARC CATALA
+41000176,FINDTHATLEAD INC
+41000177,DI GARDA GASTROBAR SL
+41000200,Impresionant SL
+41000201,"DobleHilo, sl"
+41000202,FIDELIS FACTU SOCIEDAD COOPERATIVA
+41000203,The Beerbox Company SL
+41000204,FOTO CASANOVA S.L.
+41000205,Baldus Achim
+41000207,"BAYER PONT, ANDREA"
+41000208,OneSky
+41000209,Regalos Miquel SL
+41000210,DQ&A MEDIA GROUP SPAIN SLU
+41000305,C.C. ABOGADOS ASOCIADOS SCP
+41000306,LUIS IGNACIO FONT PRADES
+41000307,INSTAPAGE INC.
+41000308,.
+41000309,ASANA INC.
+41000310,MERCADONA S.A.
+41000311,INTERLOCK EXPRESS S.A.
+41000312,RAMÓN ABELLÓ DIZ
+41000314,TRANSLATED S.R.L.
+41000315,AGILE SALES
+41000316,
+41000317,OMEGA 2014 SLU
+41000318,HILTON
+41000319,JOSÉ MARQUEÑO ELLACURÍA
+41000320,SHOPIFY INC.
+41000321,SENSALED
+41000322,PILMA
+41000323,UBER
+41000324,OFFICE PARTNER SHOP-TEAM
+41000325,ENISA
+41000326,INTERCOM
+41000327,PROCURADURÍA PÉREZ DE OLAGUER
+41000328,EMPLEADOS GASTOS
+41000329,INTERCOM INC.
+41000330,"TICDATAINFORMATICA, SL"
+41000331,NOTARIA ALFONSO XII C.B.
+41000332,AGENCIA PER A LA COMPETITIVITAT DE
+41000333,SERVICIOS DEL HOGAR DESATEC S.L.
+41000334,"FERREIRAS QUEIROZ & ASOCIADOS, S.R.L."
+41000335,PLUSINTAXE SL
+41000336,SAFESCAN B.V.
+41000337,RED UNIVERSAL DE MARKETING Y BOOKINGS
+41000338,DANNY DE HAAS
+41000339,TOYS CENTRE S.L.
+41000340,MEDIA CONSULTING Y ASESORÍA S.L.
+41000341,MIREIA TORRES CANO
+41000342,RESTACASTELL2012 SL
+41000343,SAS WIHP
+41000344,AVANTGRUP S.L.
+41000345,HICEMEX SERVICIOS SL
+41000346,Todofurniture S.L.
+41000347,"CALLEJON MUZELLE, DIEGO"
+41000348,MYTAXI IBERIA SL
+41000349,FITMEDIC DIR SL
+41000350,ACTIVA AUDITORIA & CONSULTORIA SLP
+41000351,"DINAMIC VENDING, SL"
+41000353,AXESOR CONOCER PARA DECIDIR S.A.
+41000354,BLQ CONSTRUCTION MANAGEMENT SLU
+41000355,EUROWINGS GMBH
+41000356,FR SERVICIOS DEL HOGAR SL
+41000357,GERPLEX SA
+41000359,CRIFECA VIDRE SL
+41000360,"DECOWOOD EUROPA, S.L"
+41000361,AYRE HOTEL OVIEDO
+41000362,IKEA IBERICA SA
+41000364,COMUNIDAD DE BIENES RM BARCELONA
+41000365,AMAZON WEB SERVICES EMEA SARL
+41000366,SOMO S.A.
+41000367,EUROPCAR IB S.A.
+41000368,"CRYSTAL MEDIA SHOPS, SL"
+41000369,LEROY MERLIN ESPAÑA SLU
+41000370,JAROSLAW OLSZEWSKI
+41000371,PULP SYSTEMS
+41000373,GRATAEGUS S.L.
+41000374,GREEN PRADO SL (IBIS)
+41000375,PAYPRO GLOBAL INC
+41000377,SEWAN COMUNICACIONES SL
+41000378,SUPERMETRICS LTD
+41000379,VOILA NORBERT LLC
+41000380,TRAVELPERK SL
+41000381,SUNMAR SPAIN SL
+41000382,UNITED PARCEL SERVICE ESPAÑA LTD.
+41000383,ERWIN MULLER GROUP IBERICA SL
+41000384,FUN SPORTS DIAGONAL SL
+41000385,EUROMARACAIBO SL
+41000386,BORDADOS PARA TI SL
+41000387,SCHIBESTED CLASSIFIED MEDIA SPAIN SL
+41000388,INDOOR KARTING SPAIN SA
+41000389,MELIA HOTELS INTERNATIONAL SA
+41000390,SALVARAN SL (BEST WESTERN)
+41000391,"OIKOS HOTELS, SL"
+41000392,PIMEC
+41000393,APPLE RETAIL SPAIN SLU
+41000394,MASTER COMPUTER SRL
+41000395,AGENCIA INTERACTIVA EABARCELONA SL
+41000396,LAMPSA HELLENIC HOTELS S.A.
+41000397,BOOKING.COM
+41000398,ABANIK PRODUCCIONES SL
+41000399,RECRUITEE B.V.
+41000400,ATLAS SERVICIOS EMPRESARIALES SA
+41000703,Garcia i Serra Jordi
+41000899,Acreedores tiquets
+41000900,Acreedores por prestaciones de servicios
+41000901,ALCA TECNO. DE LA INF. Y LAS COMUN. SL
+41090000,FRAS PDTES DE RECIBIR
+41090001,FRAS PENDIENTES DE RECIBIR TECNOLYTIC
+41090002,FRAS. PDTES RECIBIR VISAS
+41100000,"Acreedores, efectos comerciales a pagar"
+41100014,Crimons Rent & Event
+41100112,Acreedores T Visa 1012 IR
+41100116,Acreedores T Visa 1016 AM
+41100117,Acreedores T Visa 8014 PC
+41100150,Acreedores T Amex
+41200001,United Parcel Service España ltd
+41900000,Acreedores por operaciones en común
+43000000,Clientes (euros)
+43000001,Inter Partner Assistance Prestadora de S
+43000002,BabyMarket SAS
+43000003,TOP DOCTORS SL
+43000004,Clientes (moneda extranjera)
+43000005,Delaweb S.L.U.
+43000006,ProTeam Online SAU
+43000007,SERVICIOS OPERATIVOS S.A.
+43000008,Transports Ciutat Comtal  2 SL
+43000009,"Clientes, facturas pendientes de recibir"
+43000010,Ideas Para Nuevos Mercados SL
+43000011,LIBROS MICUENTO S.L.
+43000012,MUNDO JOVEN TRAVEL SHOP SA DE CV
+430000124,CompanySAGETest
+43000013,Comunidad Campus S.L.
+43000014,Luxhotels SA
+43000015,GRUPO CARESNER S. DE R.L. DE C.V.
+43000016,Customer Care Technologies S.L.
+43000017,DELIVERY TECHNOLOGIES S. DE R.L. DE C.V.
+43000018,TOOTHPICK MEDIA S.L.
+43000019,EUROCONSULTING AND FORMACION SL
+43000020,Territorio del Exito SL
+43000021,TRIPUNIQ SL
+43000022,"BEEPING, LLC"
+43000023,IndianWebs SL
+43000024,Antiox 1988 SL
+43000025,Maverick Pacific S.L
+43000026,EXAPRINT IBERIA SL.
+43000027,V.P.D. MAE S.A.
+43000028,IDF CAPITAL S.A.P.I. DE CV SOFOM E.N.R.
+43000029,SAS EXAGROUP
+43000030,Fundacion Adana
+43000031,VECTOR SOFTWARE FACTORY SL
+43000032,HABITAT APARTMENTS SL
+43000033,HIGH END SHOPPING LS
+43000034,Flick Hockey SL
+43000035,RUNROOM PRODUCCION MULTIMEDIA SL
+43000036,MOVE ART MISSION SL
+43000037,BOOKINGABUS.COM APS
+43000038,PRINTERO S. DE R.L. DE C.V.
+43000039,Carnovo Spain SL
+43000040,SOLVA LLC
+43000041,PRINTU VENTURES COLOMBIA S A S
+43000042,TOP DOCTORS ITALIA SRL
+43000043,ROYAL PROFIT SL
+43000044,INTERNOVUS LTD
+43000045,FABREGUES MOTORSPORT S L
+43000046,DYLO COMMUNICATIONS SL
+43000047,Wall Box Chargers SL
+43000048,Whatâ€™s Up SL
+43000076,UVI TECH SAPI DE CV
+43000125,CompanySAGETest
+43000126,CompanySAGETest
+43000127,CompanySAGETest
+43000128,CompanySAGETest
+43000209,"Emian BÃ¶he Sunglasses Spain, S.L."
+43000210,Distribuidora G and G Ltda.
+43000236,Nephews Labs SL
+43000282,POU ROVIRA  S.L.
+43000301,Todofurniture S.L.
+43000302,Ebioss Energy AD
+43000303,Natural Logistics SL
+43000304,ROAD TO PARADISE SL
+43000305,Comercializadora Publicitaria Avanzada S
+43000306,Apartum Bookings SL
+43000307,Educaonline SL
+43000308,Enix information technologies SL (no act
+43000309,Love Digital Factory Spain S.L.
+43000310,Verticomm Network SL
+43000311,Pangealand S.L
+43000312,Gourmetissimus SL
+43000313,JEVNET ONLINE MARKETING SL
+43000314,PREMIUM TRAVELER BARCELONA
+43000315,INNOVACION Y DESARROLLO DE NUEVOS CANALE
+43000337,Athlon Body SL
+43000338,"AIRTOUCH NEW MEDIA, S.L."
+43000340,La Comunity del alquiler inteligente SL
+43000400,Clientes (moneda extranjera)
+43000411,Accent Advanced Systems SLU
+43000412,NEVENTUM S.L.
+43000413,"DIPUNTOCOM, SL"
+43000414,ADTZ México
+43000415,GESTION DE MEDIOS S.A.
+43000419,ProtecciÃ³n Seguros Daigan S.L.
+43000420,ANIBER ANDAMIOS S.L.
+43000421,EducaciÃ³n TÃ©cnica a Distancia SL
+43000422,GRUPO BRUNAT GORDILLO SL
+43000424,Centro Formativo Internacional DoÃ±a Bar
+43000425,Dinamic Screen DiseÃ±o y ProgramaciÃ³n W
+43000426,Centre MÃ¨dic Integral Joanic S.L.
+43000431,Tu-APP.NET
+43000446,EUROPLAST BUFALVENT SL
+43000447,Maquinas Efectos Especiales S.L.
+43000448,JUGUETRONICA S.L
+43000449,ADS AND TEA SL
+43000450,S.B.ORBYCE S.L.
+43000451,Deliberry Digital Spain S.L.
+43000452,Textiles y Confecciones Brownie S.L.
+43000456,Jorge Lucas Olmedo Nieto
+43000457,BalooConnect TecnologÃ­as InformÃ¡ticas 
+43000458,Roofoods Spain S.L.
+43000460,Educamarketing SL
+43000461,Mega cuadro S.A.
+43000470,Comercializadora Publicitaria Av
+43000475,Mega cuadro S.A.
+43000476,DENTARED ODONTOLOGY SERVICES S.L.
+43000477,"EIGP, Escuela Internacional de G"
+43000478,URGIL 24 S.L.
+43000479,Comercializadora Publicitaria Av
+43000480,Consultorio Dexeus S.A.P.
+43000481,HANDPLANT MEDIA SL
+43000482,ANIMALING ONLINE S.L.
+43000483,Motobuykers SL
+43000489,Educa Network S.L.N.E.
+43000490,Wayna Aero S.L.
+43000491,Maquinas Efectos Especiales S.L.
+43000492,CLOSKET WORLD SL
+43000493,THE BLICKERS SL
+43000494,Laboratorios Novader S.L.
+43000495,TEXTILES MONTECID SL
+43000496,TuLotero.es
+43000497,Comunicaciones Golber S.L.
+43000498,Tritium Software S.L.
+43000499,Emagister Servicios de FormaciÃ³n SL
+43000512,MAHOU S.A.
+43000519,STERN MOTOR SL
+43000521,Sarsa Granollers 2 SL
+43000523,HelpMyCash SL
+43000525,Sarsa Granollers SL
+43000527,TRAMA SERVEIS GENERALS S L
+43000529,Doctor Fakoy S.L.
+43000531,Expatica Communications BV
+43000533,SARSA MOTOR SA
+43000535,Iniciativas Interactivas digitales SL
+43000537,Smartbrand SL
+43000539,SARSA VALLES SA
+43000541,MOVENTO AUTOSELECCION SL
+43000542,Prodo Travel Ltd Sti
+43000544,SARFA SL
+43000546,THE EMOJI PROJECT SL
+43000548,AVENIX CORPORACIÃ“N SL
+43000550,Auser Concept 3000 SA
+43000554,Refineria Web SL
+43000556,Promofarma Ecom S.L.
+43000558,Mundo Animal Tienda SL
+43000560,SOCIEDAD DE AUTOMOVILES REUNIDOS SAU
+43000562,La CigÃ¼eÃ±a del Bebe SL
+43000564,THE BLICKERS SL
+43000582,BARCELONA SUSCRIPCIONES PRESS MEDIA SLU
+43000587,ALTADILL S.L.
+43000599,MEDIATONIC SL
+43000602,Pruebas JORDI SL
+43000604,Conforama EspaÃ±a SA
+43000606,Viajes AnticiclÃ³n S.L.
+43000608,Tiendeo Web Marketing SL
+43000610,Sal a Navegar Servicios Náuticos
+43000612,24HOURS FABULOUS SL
+43000614,Salut Ecommerce SL
+43000621,City Tour World Wide
+43000623,HERRERA MARKETING DIGITAL SL
+43000624,EscapadaRural servicios para propietario
+43000630,NothingAD comunicaciÃ³ S.L
+43000632,Auser Concept 3000 SA
+43000637,Social Laboratories SL
+43000639,SHERPA EUROPE SL
+43000641,AFT GmbH
+43000643,FRIENDLY RENTALS SL
+43000644,HOTELES MARINA DOR S.L.
+43000645,ByHours Travel S.L.
+43000646,DESKIDEA S.L.
+43000648,MQ1 Yeeday S.L.
+43000650,SERVEIS GENERALS DE MOBILITAT I TRANSPOR
+43000652,LA TORRE WALLACE SL
+43000653,PADELMANIA SL
+43000660,Jahetrobat S.L
+43000666,OH MY VENTURES S.L.
+43000668,The Macnificos Store SL
+43000671,ElevenYellow Pte. Ltd.
+43000673,SINGULAR CONTRACT SL
+43000675,TENEDORA ALA SAPI DE CV
+43000679,Onery Overseas Ltd.
+43000681,MANAGEMENT MEDITERRANEAN DE CREDITO FINA
+43000682,Comercializadora Publicitaria Av
+43000684,Deudas.cl SpA
+43000685,DUKE TRADING S.L.
+43000692,TOPSYBORA SL
+43000711,Circuits de Catalunya S.L.
+43000713,Kave Home S.L.
+43000715,LE SAPEURS SL
+43000717,Tadas Motuzas
+43000719,Aethalia Viajes y Cruceros S.L.
+43000721,PELAMARMO REPARACIONES SL
+43000722,ElevenYellow Pte. Ltd.
+43000727,COPPEL SA DE CV
+43000732,GIGAMEDIA SL
+43000747,NUTRITIENDA S.L.
+43000749,Heygo Moments S.L.
+43000751,E-Solutions Insiteout SL
+43000753,MIRAI ESPAÃ‘A SL
+43000755,PYRON GESTIONA S.L.
+43000757,ONE WAY RENTAL CAR SL
+43000759,Shopiteca S.L.
+43000760,VILADOMAT SAU
+43000762,Portobello Street S.L.
+43000764,Indigital Systems Limited
+43000766,Beauty Luxe Distributions SLU
+43000768,SPAIN BUSINESS SCHOOL CONSULTORIA Y SERV
+43000770,Shopiteca S.L.
+43000772,Actividades Digital Media SL
+43000774,Actividades Digital Media SL
+43000776,GIGAMEDIA SL
+43000778,Dâ€™OR HOLDING DIVISION INTERNATIONAL SL
+43000780,Kestile S.r.l.
+43000782,Sinergia 360 S.L.
+43000807,Shopiteca S.L.
+43000809,INTERPHARMA SA
+43000810,INTERPRO SLU
+43000812,FUNDACIÃ“N PRIVADA PASQUAL MARAGALL PARA
+43000814,FundaciÃ³n Rafael DondÃ© IAP
+43000816,MURCIA CARDS SOLUTIONS S.L.
+43000817,CODIGO KREATIVO SL
+43000829,Pruebas dos
+43000835,RocketROI Marketing
+43000837,Iguana Sell S.L.
+43000839,TUANDCO SL
+43000841,INSTITUT D ESTUDI APLICATS SL
+43000843,Intersales Commerce S.L.
+43000844,INTERNOVUS LTD
+43000845,Artic Technologic S.L.
+43000854,Cover-More Insurance Services Pty Ltd
+43000858,RocketROI
+43000859,IMPORTACIONES Y REPRESENTACIONES SALA S.
+43000860,Only-apartments S.A.
+43000861,MGS Seguros y Reaseguros SA
+43000862,SOCIAL CAR S.L.
+43000863,The Story Tailors S.L
+43000864,Wemcor Servicios Web SL
+43000865,LEADING2APSS SL
+43000867,Rocketroi TEST
+43000868,Rocketroi TEST
+43000879,OLD PLAY SPAIN S.L.U.
+43000880,Wedding Planner SLU
+43000887,BIGLE IBERIA SL
+43000890,GERPLEX SA
+43000891,Cleaning For You S.L.
+43000892,DIGITAL GROUP BRANCH SL
+43000893,FUTBOL CORNER SL
+43000894,Lead Certain
+43000895,PRONTOPISO SL
+43000896,JULIA TRAVEL SL
+43000897,Bmuebles.com
+43000898,COMERCIO ONLINE LEVANTE S.L.
+43000899,COOLLIGAN SL
+43000900,Enix Information Technologies SL
+43000901,ADMANIC GmbH
+43000902,BOOKINGABUS.COM ApS
+43000903,Alfonso Miguelez Martinez
+43000910,Jose Luis Gonzalez Grau
+43000911,Vector Software Factory S.L.
+43000912,ID Finance Brasil LTDA
+43000913,PUM TOURS MEDIA SPAIN SL
+43000914,Palma Trend S.L.
+43000915,TOP DOCTORS ITALIA SRL
+43000920,MASTER AUTOMOCIÃ“N S.L.
+43000926,TEXTIL TEXTURA S.L.
+43000927,Allianz CompaÃ±Ã­a de Seguros y Reasegur
+43000934,COMPENSA BOLSA DE INTERCAMBIO S.L.
+43000935,Cucupharma SL
+43000936,INNOVACIÃ“N Y DESARROLLO DE NUEVOS CANAL
+43000937,LES SAPEURS SL
+43000938,Digital Investment Group S.A.S
+43000939,Icarus Media Digital Limited
+43000940,Quipu App SL
+43000941,SINcuotas S.L.
+43000942,PACO PERFUMERIA SL
+43000943,ROYAL PROFIT SL
+43000944,SAS SELECTAUX
+43000945,DECLARANDO ASESORES 3.0 S.L.
+43000946,ISDIN SA
+43000954,AUTO BELTRAN SA
+43000955,Heaven Labs Ltd
+43000956,SKT ONE SA DE CV
+43000957,SKT ONE SA DE CV
+43000958,Enalquiler Rental Online S.L.
+43000960,Carbray LAWYERS S.L.P.U.
+43000961,Deporvillage S.L.
+43000963,Gregory Dharveng
+43000964,High-End Shopping SL
+43000965,Maletia Online S.L.
+43000966,MEDICAL BEAUTY CARE HOLDING SLU
+43000967,INNOVACIÃ“N Y DESARROLLO DE NUEVOS CANAL
+43000968,IMPORTADORA H1826 S.A. DE C.V.
+43000969,Bricum Profesional SL
+43000970,Solva LLC
+43000971,IDF Capital S.A.P.I de C.V. SOFOM E.N.R.
+43000972,City Tour World Wide SL
+43000973,Seqoya Watches SL
+43000974,INNOVACION Y DESARROLLO DE NUEVOS CANALE
+43000975,IDFinance Spain S.L.
+43000976,MERKUR INTERACTIVE SERVICES GMBH
+43000977,TOYS CENTRE S.L.
+43000978,Holded Technologies SL
+43000979,AC MARCA HOME CARE SAU
+43000980,ACCOM S.L.
+43000981,ROBIN COLLECTION SL
+43000982,FUNDACIÃ“ PER A LA UNIVERSITAT OBERTA DE
+43001000,Nabumbu Toys SL
+43001001,Alex
+43001002,Shoppy Spain S.C.P.
+43001003,Reial AutomÃ²bil Club de Catalunya
+43001004,Danone SA
+43001005,SEEK HAWK SL
+43001006,AFRILUXE NIGERIA LIMITED
+43001007,CENTRE ESPORTIU MANACOR S.L.
+43001008,My Expenses SL
+43001009,OFI.COM.MX SAPI DE CV
+43001010,Casa Editorial El Tiempo S.A.
+43001011,Hyperled
+43001012,Grouz
+43001013,Vicent Ferrer Rodrigo
+43001014,Casa Editorial El Tiempo S.A.
+43001015,INMHO GESTION DE LA PROPIEDAD SL
+43001016,GymCompany Spain SL
+43001017,MERKUR INTERACTIVE SERVICES GMBH
+43001018,Bullmet Europe S.L
+43001019,Playbrand S.L
+43001020,UBIQUM ACADEMY S.L
+43001021,Neil
+43001022,LUCA
+43001023,MISTRAL FERTILITY CLINICS SL
+43001024,INTERPRO SLU
+43001025,SILMARES INVERSIONES SL
+43001026,MASCOTEROS DIGITAL FACTORY SL
+43001027,GREEN ICE SL
+43001028,Racc motor centers SL
+43001029,Advaliantleads LLC
+43001030,Monyui Heras SLU
+43001031,FUN DAS BCN SL
+43001032,APU SOLUCIONES S.L.
+43001033,The Global Sharing Company S.L.
+43001034,Tryplaner Marketing S.L.
+43001035,PORTAL INTERACTIV SL
+43001036,Victor
+43001037,CLINICA OPCION MEDICA SL
+43001038,CREAMFINANCE SPAIN SLU
+43001039,COMPTE ICARIA SL
+43001040,GOWAGO AG
+43001041,EUROTRADE INTERNATIONAL LIMITED
+43001042,K-2 GROUP NEW BUSINESS SPAIN SL
+43001043,Ecom Digital Factory SL
+43001044,Actividades Digital Media SL
+43001045,WHITE SUMMER SL
+43001046,SOTAVENTO TRADING SL
+43001047,MARKETINHOUSE MEDIA SL
+43001048,SERVICIOS DE COMERCIO ESTRATEGICO SAS
+43001049,ADN COMUNITY SL
+43001050,Santafixie Group SL
+43001051,MOTORPRIM S.L.
+43001052,MARFINA SL
+43001053,Carethy
+43001054,GOOGLE IRELAND LIMITED
+43001055,FACTOR CLAVE COMUNICACION SL
+43001056,GAMA PROFIT SL
+43001057,INTERSPORT CCS SA
+43001058,Blas
+43001059,Inseryal SL
+43001060,FACTOR CLAVE COMUNICACION SL
+43001061,Autodescuento SL
+43001062,Outdoor Spirit Project SL
+43001063,Lindas Art Boulevard LLC
+43009999,PEPE RUBIANES
+43100000,Efectos comerciales en cartera
+43100001,Efectos comerciales descontados
+43100002,Efectos comerciales en gestión de cobro
+43100005,Efectos comerciales impagados
+43100100,Efectos comerciales descontados
+43100200,Efectos comerciales en gestión de cobro
+43100500,Efectos comerciales impagados
+43200000,"Clientes, operaciones de factoring"
+43300000,Clientes empresas del grupo (euros)
+43300001,"Efectos comerciales a cobrar, empresas d"
+43300002,"Clientes empresas del grupo, operaciones"
+43300004,Clientes empresas del grupo (moneda extr
+43300006,Clientes empresas del grupo de dudoso co
+43300007,Envases y embalajes a devolver a cliente
+43300009,"Clientes empresas del grupo, facturas pe"
+43300100,"Efectos comerciales a cobrar, empresas d"
+43300200,"Clientes empresas del grupo, operaciones"
+43300400,Clientes empresas del grupo (moneda extr
+43300600,Clientes empresas del grupo de dudoso co
+43300700,Envases y embalajes a devolver a cliente
+43300900,"Clientes empresas del grupo, facturas pe"
+43400000,"Clientes, empresas asociadas"
+43500000,"Clientes, otras partes vinculadas"
+43600000,Clientes de dudoso cobro
+43700000,Envases y embalajes a devolver por clien
+43800000,Anticipos de clientes
+44000000,Deudores (euros)
+44000001,NEOTEC 2016
+44000002,HORIZONTE PYME
+44000003,SUBVENCIO APC
+44000004,Deudores (moneda extranjera)
+44000005,CTA CON IRODES EQUITY SL
+44000006,CTA CON TREBLAIRUN HOLDING SL
+44000007,CTA CON MARLIN CAPITAL SL
+44000008,PROVISION PAGO ENISA
+44000009,"Deudores, facturas pendientes de formali"
+44000010,PROVISION PAGO ENISA 2017
+44000400,Deudores (moneda extranjera)
+44000900,"Deudores, facturas pendientes de formali"
+44100000,"Deudores, efectos comerciales en cartera"
+44100001,"Deudores, efectos comerciales descontado"
+44100002,"Deudores, efectos comerciales en gestión"
+44100005,"Deudores, efectos comerciales impagados"
+44100100,"Deudores, efectos comerciales descontado"
+44100200,"Deudores, efectos comerciales en gestión"
+44100500,"Deudores, efectos comerciales impagados"
+44600000,Deudores de dudoso cobro
+44900000,Deudores por operaciones en común
+46000000,Anticipos de remuneraciones
+46000001,Anticipos por subvención PC
+46500000,Remuneraciones pendientes de pago
+46500001,Remuneraciones pendientes
+46500002,DESCUENTOS NOMINAS
+46500010,PROVISION BONNUS
+46600000,Remuneraciones mediante sistemas de apor
+47000000,"Hacienda Pública, deudora por IVA"
+47000002,"Hacienda Pública, deudora por I Sociedad"
+47000008,"Hacienda Pública, deudora por subvencion"
+47000009,"Hacienda Pública, deudora por devolución"
+47000800,"Hacienda Pública, deudora por subvencion"
+47000900,"Hacienda Pública, deudora por devolución"
+47100000,"Organismos de la Seguridad Social, deudo"
+47200000,Hacienda Pública. IVA soportado
+47200001,HP IVA SOPORTADO IMPORTACIONES
+47200002,HP IVA SOPORTADO INTRACOMUNITARIO
+47300000,"Hacienda Pública, retenciones y pagos a"
+47300002,"Hacienda Pública, pagos a cuenta I Socie"
+47300003,Retenciones prestamo Enisa
+47400000,Activos por diferencias temporarias dedu
+47400002,Derechos por deducciones y bonificacione
+47400005,Crédito por pérdidas a compensar del eje
+47400200,Derechos por deducciones y bonificacione
+47400500,Crédito por pérdidas a compensar del eje
+47500000,"Hacienda Pública, acreedora por IVA"
+47500001,"Hacienda Pública, acreedora por retencio"
+47500002,"Hacienda Pública, acreedora por impuesto"
+47500008,"Hacienda Pública, acreedora por subvenci"
+47500100,"Hacienda Pública, acreedora por retencio"
+47500111,"Hacienda Pública, acreedora por retencio"
+47500112,"Hacienda Pública, acreedora por retencio"
+47500200,"Hacienda Pública, acreedora por impuesto"
+47500800,"Hacienda Pública, acreedora por subvenci"
+47510000,IRPF M111 A PAGAR
+47510001,IRPF MODELO 123
+47510002,IRPF PROFESIONALES
+47510003,IRPF NOMINAS
+47600000,"Organismos de la Seguridad Social, acree"
+47700000,Hacienda Pública. IVA repercutido
+47700001,HP IVA REPERCUTIDO IMPORTACIONES
+47700002,HP IVA REPERCUTIDO INTRACOMUNITARIO
+47900000,Pasivos por diferencias temporarias impo
+48000000,Gastos anticipados
+48000001,Gastos anticipados Cloudera
+48000002,Gastos anticipados Amazonweb
+48000003,Gastos anticipados Smart Eagle 1
+48000004,Gastos anticipados Smart Eagle 2
+48000005,Gastos Anticipados Asana
+48000006,Gastos anticipados Tableau
+48000007,Gastos anticipados Prestashop
+48000008,Gastos anticipados SEOCOM
+48500000,Ingresos anticipados
+48500001,NEOTEC 2016
+49000000,Deterioro de valor de créditos por opera
+49300003,Deterioro de valor de créditos por opera
+49300004,Deterioro de valor de créditos por opera
+49300005,Deterioro de valor de créditos por opera
+49300300,Deterioro de valor de créditos por opera
+49300400,Deterioro de valor de créditos por opera
+49300500,Deterioro de valor de créditos por opera
+49900004,Provisión por contratos onerosos
+49900009,Provisión para otras operaciones comerci
+49900400,Provisión por contratos onerosos
+49900900,Provisión para otras operaciones comerci
+50000000,Obligaciones y bonos a corto plazo
+50100000,Obligaciones y bonos convertibles a cort
+50200000,Acciones o participaciones a corto plazo
+50500000,Deudas representadas en otros valores ne
+50600000,Intereses a corto plazo de empréstitos y
+50700000,Dividendos de acciones o participaciones
+50900000,Obligaciones y bonos amortizados
+50900001,Obligaciones y bonos convertibles amorti
+50900005,Otros valores negociables amortizados
+50900100,Obligaciones y bonos convertibles amorti
+50900500,Otros valores negociables amortizados
+51000003,Deudas a corto plazo con entidades de cr
+51000004,Deudas a corto plazo con entidades de cr
+51000005,Deudas a corto plazo con otras entidades
+51000300,Deudas a corto plazo con entidades de cr
+51000400,Deudas a corto plazo con entidades de cr
+51000500,Deudas a corto plazo con otras entidades
+51100003,Proveedores de inmovilizado a corto plaz
+51100004,Proveedores de inmovilizado a corto plaz
+51100005,Proveedores de inmovilizado a corto plaz
+51100300,Proveedores de inmovilizado a corto plaz
+51100400,Proveedores de inmovilizado a corto plaz
+51100500,Proveedores de inmovilizado a corto plaz
+51200003,Acreedores por arrendamiento financiero
+51200004,Acreedores por arrendamiento financiero
+51200005,Acreedores por arrendamiento financiero
+51200300,Acreedores por arrendamiento financiero
+51200400,Acreedores por arrendamiento financiero
+51200500,Acreedores por arrendamiento financiero
+51300003,Otras deudas a corto plazo con empresas
+51300004,Otras deudas a corto plazo con empresas
+51300005,Otras deudas a corto plazo con otras par
+51300300,Otras deudas a corto plazo con empresas
+51300400,Otras deudas a corto plazo con empresas
+51300500,Otras deudas a corto plazo con otras par
+51400003,Intereses a corto plazo de deudas con em
+51400004,Intereses a corto plazo de deudas con em
+51400005,Intereses a corto plazo de deudas con ot
+51400300,Intereses a corto plazo de deudas con em
+51400400,Intereses a corto plazo de deudas con em
+51400500,Intereses a corto plazo de deudas con ot
+52000000,Préstamos a corto plazo de entidades de
+52000001,Préstamos a corto plazo Banco de Santand
+52000002,Préstamos a corto plazo Banco de Santand
+52000003,Préstamos a corto plazo
+52000004,Préstamos a corto plazo ENISA
+52000005,PRESTAMO A C/P SABADELL - ICF
+52000008,Deudas por efectos descontados
+52000009,Deudas por operaciones de “factoring”
+52000010,VISA IR
+52000011,VISA PC
+52000012,VISA AM
+52000100,Deudas a corto plazo por crédito dispues
+52000101,Deudas a corto plazo por pagos Visa
+52000102,AMEX
+52000800,Deudas por efectos descontados
+52000900,Deudas por operaciones de “factoring”
+52100000,Deudas a corto plazo
+52200000,Deudas a corto plazo transformables en s
+52300000,Proveedores de inmovilizado a corto plaz
+52300001,Servitec Oficina
+52300002,Habitat
+52300003,Ikea
+52300004,Maisons du Monde
+52300005,JM Bruneau España SL
+52300006,Ofiprix SL
+52300007,"Ticdatainformatica, S.L"
+52300008,Todoforniture
+52400000,Acreedores por arrendamiento financiero
+52500000,Efectos a pagar a corto plazo
+52600000,Dividendo activo a pagar
+52700000,Intereses a corto plazo de deudas con en
+52700001,Intereses a corto plazo de deudas con EN
+52800000,Intereses a corto plazo de deudas
+52800001,INTERESES A C/P EMPRENDETEUR
+52800002,INTERESES A C/P ENISA
+52800003,INTERESES A C/P ENISA 2017
+52900000,Provisión a corto plazo por retribucione
+52900001,Provisión a corto plazo para impuestos
+52900002,Provisión a corto plazo para otras respo
+52900003,Provisión a corto plazo por desmantelami
+52900005,Provisión a corto plazo para actuaciones
+52900006,Provisión a corto plazo para reestructur
+52900007,Provisión a corto plazo por transaccione
+52900100,Provisión a corto plazo para impuestos
+52900200,Provisión a corto plazo para otras respo
+52900300,Provisión a corto plazo por desmantelami
+52900500,Provisión a corto plazo para actuaciones
+52900600,Provisión a corto plazo para reestructur
+52900700,Provisión a corto plazo por transaccione
+53000003,Participaciones a corto plazo en empresa
+53000004,Participaciones a corto plazo en empresa
+53000005,Participaciones a corto plazo en otras p
+53000300,Participaciones a corto plazo en empresa
+53000400,Participaciones a corto plazo en empresa
+53000500,Participaciones a corto plazo en otras p
+53100003,Valores representativos de deuda a corto
+53100004,Valores representativos de deuda a corto
+53100005,Valores representativos de deuda a corto
+53100300,Valores representativos de deuda a corto
+53100400,Valores representativos de deuda a corto
+53100500,Valores representativos de deuda a corto
+53200003,Créditos a corto plazo a empresas del gr
+53200004,Créditos a corto plazo a empresas asocia
+53200005,Créditos a corto plazo a otras partes vi
+53200300,Créditos a corto plazo a empresas del gr
+53200400,Créditos a corto plazo a empresas asocia
+53200500,Créditos a corto plazo a otras partes vi
+53300003,Intereses a corto plazo de valores repre
+53300004,Intereses a corto plazo de valores repre
+53300005,Intereses a corto plazo de valores repre
+53300300,Intereses a corto plazo de valores repre
+53300400,Intereses a corto plazo de valores repre
+53300500,Intereses a corto plazo de valores repre
+53400003,Intereses a corto plazo de créditos a em
+53400004,Intereses a corto plazo de créditos a em
+53400005,Intereses a corto plazo de créditos a ot
+53400300,Intereses a corto plazo de créditos a em
+53400400,Intereses a corto plazo de créditos a em
+53400500,Intereses a corto plazo de créditos a ot
+53500003,Dividendo a cobrar de inversiones financ
+53500004,Dividendo a cobrar de inversiones financ
+53500005,Dividendo a cobrar de inversiones financ
+53500300,Dividendo a cobrar de inversiones financ
+53500400,Dividendo a cobrar de inversiones financ
+53500500,Dividendo a cobrar de inversiones financ
+53900003,Desembolsos pendientes sobre participaci
+53900004,Desembolsos pendientes sobre participaci
+53900005,Desembolsos pendientes sobre participaci
+53900300,Desembolsos pendientes sobre participaci
+53900400,Desembolsos pendientes sobre participaci
+53900500,Desembolsos pendientes sobre participaci
+55100000,Alta automática
+55500000,Partidas pendientes de aplicación
+55500001,PARTIDAS PDTES BANCO SANTANDER
+55500002,PARTIDAS PDTES BANC SABADELL
+57200000,Bancos e instituciones de crédito c/c vi
+57200001,Efectivo
+57200002,Banco
+57200003,BANCO SABADELL
+57200004,Stripe
+57200005,BANCO SANTANDER
+60000000,Compras de mercaderías
+60700000,Trabajos realizados por otras empresas
+60700001,Coste de medios comprados
+60700002,Comisiones comerciales
+60700003,Traducciones
+60700004,Provisiones de medios comprados
+60700005,TOOLS
+62000000,Gastos en investigación y desarrollo del
+62100000,Arrendamientos y cánones
+62100001,Alquiler local
+62100002,Renting impresora
+62200000,Reparaciones y conservación
+62200001,Mantenimientos en general
+62200002,Licencias IT
+62200003,TOOLS
+62200004,Hosting
+62200005,Provisiones TOOLS
+62300000,Servicios de profesionales independiente
+62300001,Abogados y notarios
+62300002,Gestorias y asesorias
+62300004,Contabilidad y administración
+62300009,Selección y headhunting
+62300010,Consultoria
+62300011,Servicios holdings
+62500000,Primas de seguros
+62600000,Servicios bancarios y similares
+62600001,Comisiones bancarias transacciones divisas
+62600002,Comisiones Stripe
+62700000,"Publicidad, propaganda y relaciones públ"
+62700002,Publicidad en general
+62700003,Ferias y congresos
+62700004,Publicidad por cuenta de otros
+62700005,Consultoria comercial
+62700006,Marketing Tools
+62700007,Servicios comerciales Latam
+62700008,Otros Marketing
+62700009,Marketing Tecnolytic
+62700010,Partnership
+62700011,Sales Tools
+62800000,Suministros
+62800003,Telefono
+62800004,Luz
+62800005,Agua
+62900000,Otros servicios
+62900002,Hospedajes y manutenciones
+62900003,"Desplazamientos (PK,PEAJE,TAXI)"
+62900004,"Desplazamientos(AVION, TREN"
+62900005,Material y compras de oficina
+62900006,Otros gastos V
+62900007,Traducciones
+62900008,Material Informático
+62900009,ASOCIACIONES CUOTAS
+62900099,Gastos varios
+63000000,Impuesto corriente
+63000001,Impuesto diferido
+63000100,Impuesto diferido
+63100000,Otros tributos
+63300000,Ajustes negativos en la imposición sobre
+64000000,Sueldos y salarios
+64000001,PROVISION BONNUS
+64000011,Sueldos y salarios AM
+64000012,Sueldos y salarios EXC
+64000013,Sueldos y salarios BIZ MS
+64000014,Sueldos y salarios BIZ
+64000015,Sueldos y salarios CS
+64000016,Sueldos y salarios DEV
+64000017,Sueldos y salarios MKT
+64000018,Sueldos y salarios UX
+64000019,Sueldos y salarios OPS
+64000020,Sueldos y salarios PROD
+64000021,Sueldos y salarios SALES
+64000099,Ajuste pago de más nómina UX
+64000101,Provisión bonus AM
+64000102,Provisión bonus EXC
+64000103,Provisión bonus BIZ MS
+64000104,Provisión bonus BIZ
+64000105,Provisión bonus CS
+64000106,Provisión bonus DEV
+64000107,Provisión bonus MKT
+64000108,Provisión bonus UX
+64100000,INDEMNIZACIONES
+64200000,Seguridad Social a cargo de la empresa
+64200001,Seguridad Social a cargo Empresa AM
+64200002,Seguridad Social a cargo Empresa EXC
+64200003,Seguridad Social a cargo Empresa BIZ MS
+64200004,Seguridad Social a cargo Empresa BIZ
+64200005,Seguridad Social a cargo Empresa CS
+64200006,Seguridad Social a cargo Empresa DEV
+64200007,Seguridad Social a cargo Empresa MKT
+64200008,Seguridad Social a cargo Empresa UX
+64200009,Seguridad Social a cargo Empresa OPS
+64200010,Seguridad Social a cargo Empresa PROD
+64200011,Seguridad Social a cargo Empresa SALES
+64900000,Otros gastos sociales
+64900001,CONSUMOS DIR
+64900002,Convenios universitarios y prácticas
+64900003,GASTOS PERSONAL - LIBERALIDAD
+65000000,OTROS GASTOS DE GESTION CORRIENTE
+65900000,Otras pérdidas en gestión corriente
+66200000,"Intereses de deudas, empresas del grupo"
+66200001,"Intereses de deudas, empresas asociadas"
+66200002,"Intereses de deudas, otras partes vincul"
+66200003,Intereses de deudas con entidades de cré
+66200004,"Intereses de deudas, otras empresas"
+66200100,"Intereses de deudas, empresas asociadas"
+66200200,"Intereses de deudas, otras partes vincul"
+66200201,"Intereses de deudas, ENISA"
+66200300,Intereses ENISA 2016
+66200301,Intereses ENISA 2017
+66200302,Intereses ICF - SABADELL
+66200303,Intereses EMPRENDETUR
+66200400,"Intereses de deudas, otras empresas"
+66200401,"Intereses de deudas, AEAT"
+66800000,Diferencias negativas de cambio
+66900000,Otros gastos financieros
+67100000,Pérdidas procedentes del inmovilizado ma
+67800000,Gastos excepcionales
+67800001,Defecto de cobro
+68000000,Amortización del inmovilizado intangible
+68100000,Amortización del inmovilizado material
+68100005,Amortización otras instalaciones
+68100006,Amortización mobiliario
+68100007,Amortización equipos para procesos inf.
+68200000,Amortización de las inversiones inmobili
+69000000,Pérdidas por deterioro del inmovilizado
+69100000,Pérdidas por deterioro del inmovilizado
+69200000,Pérdidas por deterioro de las inversione
+69300000,Pérdidas por deterioro de productos term
+69300001,Pérdidas por deterioro de mercaderías
+69300002,Pérdidas por deterioro de materias prima
+69300003,Pérdidas por deterioro de otros aprovisi
+69300100,Pérdidas por deterioro de mercaderías
+69300200,Pérdidas por deterioro de materias prima
+69300300,Pérdidas por deterioro de otros aprovisi
+69400000,Pérdidas por deterioro de créditos por o
+69500004,Dotación a la provisión por contratos on
+69500009,Dotación a la provisión para otras opera
+69500400,Dotación a la provisión por contratos on
+69500900,Dotación a la provisión para otras opera
+70500000,Prestaciones de servicios
+70500001,Facturación inversión cliente
+70500002,Facturación Payback Google
+70500003,Ingresos refacturación gastos Marketing
+70500004,Ingresos gastos empleados subvencionados
+70900000,RAPPEL VENTAS 2017 ANIMALING
+73000000,Trabajos realizados para el inmovilizado
+74000000,"Subvenciones, donaciones y legados a la"
+74000001,NEOTEC 2016
+74000002,HORIZONTE PYME
+74000003,SUBVENCIO APC
+76800000,Diferencias positivas de cambio
+76800001,Diferencias positivas de cambio
+76900000,Otros ingresos financieros
+76900001,Recuperación comisión devoluciones
+76900002,Intereses AEAT a n. favor
+79400000,Revers. del det. créditos oper. comer

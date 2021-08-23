@@ -1,0 +1,744 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="assets_frontend" inherit_id="website.assets_frontend" name="Shop">
+        <xpath expr="." position="inside">
+            <link
+                rel='stylesheet'
+                href='/website_timecheck/static/src/css/website_timecheck.css'
+            />
+            <link
+                rel='stylesheet'
+                href="/website_timecheck/static/src/css/bootstrap.css"
+            />
+        </xpath>
+    </template>
+    <template
+        id="products_categories"
+        inherit_id="website_sale.products_categories"
+        name="Product Categories"
+    >
+        <xpath expr="//ul[@class='nav nav-pills flex-column mt16']" position="replace">
+            <ul class="nav nav-pills flex-column mt16 hidden-xs">
+                <li class="nav-item">
+                    <a
+                        href="/shop/all_products"
+                        t-attf-class="nav-link#{'' if request.session.new_arrival or request.session.special_offer else ' active' }"
+                    >All Products</a>
+                </li>
+                <li class="nav-item">
+                    <a
+                        href="/shop/new_arrival"
+                        t-attf-class="nav-link#{'' if not request.session.new_arrival else ' active' }"
+                    >New Arrival</a>
+                </li>
+                <li class="nav-item">
+                    <a
+                        href="/shop/special_offer"
+                        t-attf-class="nav-link#{'' if not request.session.special_offer else ' active' }"
+                    >Special Offer</a>
+                </li>
+                <br />
+                <br />
+                <li class="nav-item">
+                    <a
+                        href="/shop/all_stock"
+                        t-attf-class="nav-link#{'' if request.session.hk_stock or request.session.oversea_stock else ' active' }"
+                    >All Locations</a>
+                </li>
+                <li class="nav-item">
+                    <a
+                        href="/shop/hk_stock"
+                        t-attf-class="nav-link#{'' if not request.session.hk_stock else ' active' }"
+                    >HK Stock</a>
+                </li>
+                <li class="nav-item">
+                    <a
+                        href="/shop/oversea_stock"
+                        t-attf-class="nav-link#{'' if not request.session.oversea_stock else ' active' }"
+                    >Oversea Stock</a>
+                </li>
+                <br />
+                <br />
+                <li class="nav-item">
+                    <a
+                        t-att-href="keep('/shop',category=0)"
+                        t-attf-class="nav-link#{'' if category else ' active' }"
+                    >All Categories</a>
+                </li>
+                <t t-foreach="categories" t-as="c">
+                    <t t-call="website_sale.categories_recursive" />
+                </t>
+            </ul>
+            <div
+                class="navbar navbar-default navbar-static-top visible-xs-inline"
+                style="z-index: 900;"
+            >
+                <div
+                    class="collapse navbar-collapse navbar-cate-collapse navbar_collapse"
+                >
+                    <ul class="nav nav-pills flex-column mt16">
+                        <li class="nav-item">
+                            <a
+                                href="/shop/all_products"
+                                t-attf-class="nav-link#{'' if request.session.new_arrival or request.session.special_offer else ' active' }"
+                            >All Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                href="/shop/new_arrival"
+                                t-attf-class="nav-link#{'' if not request.session.new_arrival else ' active' }"
+                            >New Arrival</a>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                href="/shop/special_offer"
+                                t-attf-class="nav-link#{'' if not request.session.special_offer else ' active' }"
+                            >Special Offer</a>
+                        </li>
+                        <br />
+                        <br />
+                        <li class="nav-item">
+                            <a
+                                href="/shop/all_stock"
+                                t-attf-class="nav-link#{'' if request.session.hk_stock or request.session.oversea_stock else ' active' }"
+                            >All Locations</a>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                href="/shop/hk_stock"
+                                t-attf-class="nav-link#{'' if not request.session.hk_stock else ' active' }"
+                            >HK Stock</a>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                href="/shop/oversea_stock"
+                                t-attf-class="nav-link#{'' if not request.session.oversea_stock else ' active' }"
+                            >Oversea Stock</a>
+                        </li>
+                        <br />
+                        <br />
+                        <li class="nav-item">
+                            <a
+                                t-att-href="keep('/shop',category=0)"
+                                t-attf-class="nav-link#{'' if category else ' active' }"
+                            >All Categories</a>
+                        </li>
+                        <t t-foreach="categories" t-as="c">
+                            <t t-call="website_sale.categories_recursive" />
+                        </t>
+                    </ul>
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="//div[@id='products_grid_before']" position="attributes">
+            <attribute name="class">col-md-3</attribute>
+        </xpath>
+    </template>
+    <template id="products" inherit_id="website_sale.products" name="Products">
+        <xpath expr="//t[@t-call='website_sale.search']" position="after">
+            <div class="dropdown ml-2 visible-xs-inline">
+                <a
+                    role="button"
+                    href="#"
+                    class="btn btn-secondary"
+                    data-toggle="collapse"
+                    data-target=".navbar-cate-collapse"
+                >Filter <i class="dropdown-toggle" /></a>
+            </div>
+        </xpath>
+    </template>
+    <template
+        id="products_item"
+        name="Products item"
+        inherit_id="website_sale.products_item"
+    >
+        <xpath expr="//h6" position="replace">
+            <h6 class="product_info">
+                <a
+                    itemprop="name"
+                    t-att-href="product_href"
+                    t-att-content="product.name"
+                >
+                    <span t-field="product.category_name" />
+                    <br />
+                    <span t-field="product.name" />
+                </a>
+                <a
+                    role="button"
+                    t-if="not show_publish and not product.website_published"
+                    t-att-href="product_href"
+                    class="btn btn-secondary btn-sm btn-danger"
+                    title="This product is unpublished."
+                >Unpublished</a>
+            </h6>
+            <div class="product_info">
+                Internal Code: <span t-field="product.default_code" /><br />
+            </div>
+            <div
+                groups="website_timecheck.group_timecheck_trial"
+                class="product_info"
+            >Stock:
+                <span
+                    t-if="product.local_stock_not_reserved and product.qty_overseas"
+                >HK<span
+                        groups="website_timecheck.group_timecheck_light"
+                        t-if="product.qty_local_supplier_stock != 0"
+                    >(R)</span>, Overseas</span>
+                <span
+                    t-if="product.local_stock_not_reserved and not product.qty_overseas"
+                >HK<span
+                        groups="website_timecheck.group_timecheck_light"
+                        t-if="product.qty_local_supplier_stock != 0"
+                    >(R)</span></span>
+                <span
+                    t-if="not product.local_stock_not_reserved and product.qty_overseas"
+                >Overseas</span>
+                <span
+                    t-if="not product.local_stock_not_reserved and not product.qty_overseas"
+                >N/A</span>
+            </div>
+        </xpath>
+        <!-- Adjust product image's css (Non-XS device) -->
+        <xpath expr="//span[@t-field='product.image']" position="attributes">
+            <attribute name="class">hidden-xs</attribute>
+        </xpath>
+        <!-- Adjust product image's css (XS device) -->
+        <xpath expr="//span[@t-field='product.image']" position="after">
+            <span
+                t-field="product.image"
+                t-options="{'widget': 'image', 'resize': None if product_image_big else '300x300'}"
+                class="visible-xs-inline"
+            />
+        </xpath>
+        <xpath expr="//section" position="attributes">
+            <attribute name="class">product_item</attribute>
+        </xpath>
+        <xpath expr="//div[@itemprop='offers']" position="replace">
+            <div
+                itemprop="offers"
+                itemscope="itemscope"
+                itemtype="http://schema.org/Offer"
+                class="product_price"
+                t-if="product.product_variant_ids"
+                style="position: static !important; padding: unset !important;"
+            >
+                <div
+                    t-if="product.qty_overseas != 0 and product.oversea_retail_currency_id != product.company_id.currency_id"
+                >
+                    <span>Retail in <span
+                            t-field="product.oversea_retail_currency_id.name"
+                        />:</span>
+                    <t t-if="product.oversea_retail_price != 0">
+                        <span
+                            t-esc="'{:,.0f}'.format(product.oversea_retail_price)"
+                            style="white-space: nowrap;"
+                        />
+                    </t>
+                    <t t-if="product.oversea_retail_price == 0">
+                        <span style="white-space: nowrap;">N/A</span>
+                    </t>
+                </div>
+                <div>
+                    <span>HKD Retail:</span>
+                    <t
+                        t-if="product.qty_overseas != 0 and product.oversea_retail_currency_id == product.company_id.currency_id and product.price &gt; product.oversea_retail_price"
+                    >
+                        <t t-if="product.oversea_retail_price != 0">
+                            <span
+                                t-esc="'{:,.0f}'.format(product.oversea_retail_price)"
+                                style="white-space: nowrap;"
+                            />
+                        </t>
+                        <t t-if="product.oversea_retail_price == 0">
+                            <span style="white-space: nowrap;">N/A</span>
+                        </t>
+                    </t>
+                    <t
+                        t-if="product.qty_overseas == 0 or
+                                product.qty_overseas != 0 and product.oversea_retail_currency_id != product.company_id.currency_id or
+                                product.qty_overseas != 0 and product.oversea_retail_currency_id == product.company_id.currency_id and product.price &lt;= product.oversea_retail_price"
+                    >
+                        <t t-if="product.list_price != 0">
+                            <span
+                                t-esc="'{:,.0f}'.format(product.list_price)"
+                                style="white-space: nowrap;"
+                            />
+                        </t>
+                        <t t-if="product.list_price == 0">
+                            <span style="white-space: nowrap;">N/A</span>
+                        </t>
+                    </t>
+                </div>
+                <div
+                    t-if="not product.sale_hkd_ac_so"
+                    groups="website_timecheck.group_timecheck_light"
+                >
+                    <span>Sale HKD:</span>
+                    <t t-if="product.sale_hkd_ac != 0">
+                        <span
+                            t-esc="'{:,.0f}'.format(product.sale_hkd_ac)"
+                            style="white-space: nowrap;"
+                        />
+                    </t>
+                    <t t-if="product.sale_hkd_ac == 0">
+                        <span style="white-space: nowrap;">N/A</span>
+                    </t>
+                </div>
+                <div
+                    t-if="product.sale_hkd_ac_so"
+                    groups="website_timecheck.group_timecheck_light"
+                >
+                    <span style="color: DarkGrey;">Sale HKD:</span>
+                    <t t-if="product.sale_hkd_ac != 0">
+                        <span
+                            t-esc="'{:,.0f}'.format(product.sale_hkd_ac)"
+                            style="white-space: nowrap; color: DarkGrey;"
+                        />
+                    </t>
+                    <t t-if="product.sale_hkd_ac == 0">
+                        <span
+                            t-if="product.sale_hkd_ac == 0"
+                            style="white-space: nowrap; color: DarkGrey;"
+                        >N/A</span>
+                    </t>
+                </div>
+                <div
+                    t-if="product.sale_hkd_ac_so and not product.in_special_offer_limit"
+                >
+                    <span style="color: red; font-weight:bold;">Special Offer:</span>
+                    <t t-if="product.sale_hkd_ac_so != 0">
+                        <span
+                            t-if="product.sale_hkd_ac_so != 0"
+                            t-esc="'{:,.0f}'.format(product.sale_hkd_ac_so)"
+                            style="white-space: nowrap; color: red; font-weight:bold;"
+                        />
+                    </t>
+                    <t t-if="product.sale_hkd_ac_so == 0">
+                        <span
+                            t-if="product.sale_hkd_ac_so == 0"
+                            style="white-space: nowrap; color: red; font-weight:bold;"
+                        >N/A</span>
+                    </t>
+                    <span style="color: red; font-weight:bold;">HKD</span>
+                </div>
+                <t
+                    t-set="product_variant_id"
+                    t-value="product._get_first_possible_variant_id()"
+                />
+                <input
+                    name="product_id"
+                    t-att-value="product_variant_id"
+                    type="hidden"
+                />
+                <t t-if="product_variant_id">
+                    <a
+                        groups="website_timecheck.group_timecheck_basic"
+                        href="#"
+                        role="button"
+                        class="btn btn-secondary btn-sm a-submit"
+                        aria-label="Shopping cart"
+                        title="Shopping cart"
+                    >
+                        <span class="fa fa-shopping-cart" /> Checkout
+                    </a>
+                    <a
+                        groups="base.group_public"
+                        href="/web/login"
+                        class="btn btn-secondary btn-sm"
+                        aria-label="Shopping cart"
+                        title="Shopping cart"
+                    >
+                        <span class="fa fa-shopping-cart" /> Checkout
+                    </a>
+                </t>
+            </div>
+        </xpath>
+    </template>
+    <template id="product" name="Product" inherit_id="website_sale.product">
+        <xpath expr="//t[@t-set='image_ids']" position="replace">
+            <t t-set="image_ids" t-value="[]" />
+            <t t-set="image_ids" t-value="product.product_image_ids" />
+        </xpath>
+        <xpath expr="//h1[@itemprop='name']" position="replace">
+            <h4 itemprop="name" t-field="product.name">Product Name</h4>
+            <h4>Internal Code: <span t-field="product.default_code" /></h4>
+        </xpath>
+        <xpath expr="//form" position="before">
+            <div>
+                <h4 groups="website_timecheck.group_timecheck_trial">
+                    Stock:
+                    <span
+                        t-if="product.local_stock_not_reserved and product.qty_overseas"
+                    >HK<span
+                            groups="website_timecheck.group_timecheck_light"
+                            t-if="product.qty_local_supplier_stock != 0"
+                        >(R)</span>, Overseas</span>
+                    <span
+                        t-if="product.local_stock_not_reserved and not product.qty_overseas"
+                    >HK<span
+                            groups="website_timecheck.group_timecheck_light"
+                            t-if="product.qty_local_supplier_stock != 0"
+                        >(R)</span></span>
+                    <span
+                        t-if="not product.local_stock_not_reserved and product.qty_overseas"
+                    >Overseas</span>
+                    <span
+                        t-if="not product.local_stock_not_reserved and not product.qty_overseas"
+                    >N/A</span>
+                </h4>
+            </div>
+        </xpath>
+        <xpath expr="//form" position="attributes">
+            <attribute name="groups">website_timecheck.group_timecheck_light</attribute>
+        </xpath>
+    </template>
+    <template
+        id="product_price"
+        name="Product Price"
+        inherit_id="website_sale.product_price"
+    >
+        <xpath expr="//div[@class='product_price mt16']" position="attributes">
+            <attribute name="class">product_price</attribute>
+        </xpath>
+        <xpath
+            expr="//h4[@class='oe_price_h4 css_editable_mode_hidden']"
+            position="replace"
+        >
+            <h4
+                class="oe_price_h4 css_editable_mode_hidden decimal_precision"
+                t-att-data-precision="user_id.partner_id.property_product_pricelist.currency_id.rounding"
+            >
+                <div
+                    t-if="product.qty_overseas != 0 and product.oversea_retail_currency_id != product.company_id.currency_id"
+                >
+                    <span>Retail in <span
+                            t-field="product.oversea_retail_currency_id.name"
+                        />:</span>
+                    <t t-if="product.oversea_retail_price != 0">
+                        <span
+                            t-esc="'{:,.0f}'.format(product.oversea_retail_price)"
+                            style="white-space: nowrap;"
+                        />
+                    </t>
+                    <t t-if="product.oversea_retail_price == 0">
+                        <span style="white-space: nowrap;">N/A</span>
+                    </t>
+                </div>
+                <div>
+                    <span>HKD Retail:</span>
+                    <t
+                        t-if="product.qty_overseas != 0 and product.oversea_retail_currency_id == product.company_id.currency_id and product.price &gt; product.oversea_retail_price"
+                    >
+                        <t t-if="product.oversea_retail_price != 0">
+                            <span
+                                t-esc="'{:,.0f}'.format(product.oversea_retail_price)"
+                                style="white-space: nowrap;"
+                            />
+                        </t>
+                        <t t-if="product.oversea_retail_price == 0">
+                            <span style="white-space: nowrap;">N/A</span>
+                        </t>
+                    </t>
+                    <t
+                        t-if="product.qty_overseas == 0 or
+                                product.qty_overseas != 0 and product.oversea_retail_currency_id != product.company_id.currency_id or
+                                product.qty_overseas != 0 and product.oversea_retail_currency_id == product.company_id.currency_id and product.price &lt;= product.oversea_retail_price"
+                    >
+                        <t t-if="product.list_price != 0">
+                            <span
+                                t-esc="'{:,.0f}'.format(product.list_price)"
+                                style="white-space: nowrap;"
+                            />
+                        </t>
+                        <t t-if="product.list_price == 0">
+                            <span style="white-space: nowrap;">N/A</span>
+                        </t>
+                    </t>
+                </div>
+                <div
+                    t-if="not product.sale_hkd_ac_so"
+                    groups="website_timecheck.group_timecheck_light"
+                >
+                    <span>Sale HKD:</span>
+                    <t t-if="product.sale_hkd_ac != 0">
+                        <span
+                            t-esc="'{:,.0f}'.format(product.sale_hkd_ac)"
+                            style="white-space: nowrap;"
+                        />
+                    </t>
+                    <t t-if="product.sale_hkd_ac == 0">
+                        <span style="white-space: nowrap;">N/A</span>
+                    </t>
+                </div>
+                <div
+                    t-if="product.sale_hkd_ac_so"
+                    groups="website_timecheck.group_timecheck_light"
+                >
+                    <span style="color: DarkGrey;">Sale HKD:</span>
+                    <t t-if="product.sale_hkd_ac != 0">
+                        <span
+                            t-esc="'{:,.0f}'.format(product.sale_hkd_ac)"
+                            style="white-space: nowrap; color: DarkGrey;"
+                        />
+                    </t>
+                    <t t-if="product.sale_hkd_ac == 0">
+                        <span
+                            t-if="product.sale_hkd_ac == 0"
+                            style="white-space: nowrap; color: DarkGrey;"
+                        >N/A</span>
+                    </t>
+                </div>
+                <div
+                    t-if="product.sale_hkd_ac_so and not product.in_special_offer_limit"
+                >
+                    <span style="color: red; font-weight:bold;">Special Offer:</span>
+                    <t t-if="product.sale_hkd_ac_so != 0">
+                        <span
+                            t-if="product.sale_hkd_ac_so != 0"
+                            t-esc="'{:,.0f}'.format(product.sale_hkd_ac_so)"
+                            style="white-space: nowrap; color: red; font-weight:bold;"
+                        />
+                    </t>
+                    <t t-if="product.sale_hkd_ac_so == 0">
+                        <span
+                            t-if="product.sale_hkd_ac_so == 0"
+                            style="white-space: nowrap; color: red; font-weight:bold;"
+                        >N/A</span>
+                    </t>
+                    <span style="color: red; font-weight:bold;">HKD</span>
+                </div>
+            </h4>
+        </xpath>
+    </template>
+    <template
+        id="short_cart_summary"
+        name="Short Cart right column"
+        inherit_id="website_sale.short_cart_summary"
+    >
+        <xpath expr="//a[@href='/shop/checkout?express=1']" position="replace" />
+    </template>
+    <template id="website_sale.total">
+        <div
+            id="cart_total"
+            t-att-class="extra_class or ''"
+            t-if="website_sale_order and website_sale_order.website_order_line"
+        >
+            <table class="table">
+                <tr id="order_total">
+                    <td class="text-right noborder">
+                        <strong>Total:</strong>
+                    </td>
+                    <td class="text-xl-right noborder">
+                        <strong
+                            t-field="website_sale_order.amount_total"
+                            t-options='{"widget": "monetary", "display_currency": website_sale_order.pricelist_id.currency_id}'
+                        />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </template>
+    <template
+        id="cart_lines"
+        name="Shopping Cart Lines"
+        inherit_id="website_sale.cart_lines"
+    >
+        <xpath expr="//thead//th[@class='text-center td-price']" position="after">
+            <th
+                groups="website_timecheck.group_timecheck_light"
+                class="text-center td-price"
+            >Sale HKD</th>
+        </xpath>
+        <xpath expr="//tbody//td[@class='text-center td-price']" position="after">
+            <td class="text-center" groups="website_timecheck.group_timecheck_light">
+                <span
+                    t-esc="'{:,.0f}'.format(line.product_id.sale_hkd_ac)"
+                    style="white-space: nowrap;"
+                />
+            </td>
+        </xpath>
+        <xpath expr="//span[@t-field='line.product_id.image_small']" position="replace">
+            <span
+                t-field="line.product_id.image_medium"
+                t-options="{'widget': 'image', 'class': 'rounded'}"
+            />
+        </xpath>
+    </template>
+    <template id="cart" name="Shopping Cart" inherit_id="website_sale.cart">
+        <xpath expr="//div[@class='col-12']" position="attributes">
+            <attribute name="style">display: none;</attribute>
+        </xpath>
+        <xpath expr="//a[@href='/shop']" position="replace" />
+        <xpath expr="//a[@href='/shop/checkout?express=1']" position="replace" />
+        <xpath expr="//t[@t-call='website_sale.cart_lines']" position="after">
+            <form
+                action="/cart/update_payment_delivery_info"
+                method="post"
+                t-if="website_sale_order"
+            >
+                <input
+                    type="hidden"
+                    name="csrf_token"
+                    t-att-value="request.csrf_token()"
+                />
+                <div class="row">
+                    <div class="form-group col-lg-6">
+                        <label
+                            class="control-label"
+                            for="payment_method"
+                        >Payment Method</label>
+                        <select name="payment_method" class="form-control">
+                            <option
+                                value="china_bank_transfer"
+                                t-att-selected="'china_bank_transfer' == website_sale_order.payment_method"
+                            >China Bank Transfer</option>
+                            <option
+                                value="hk_bank_cheque"
+                                t-att-selected="'hk_bank_cheque' == website_sale_order.payment_method"
+                            >Hong Kong Banks' Cheque</option>
+                            <option
+                                value="direct_bank_transfer"
+                                t-att-selected="'direct_bank_transfer' == website_sale_order.payment_method"
+                            >Bank Transfer to our HK company</option>
+                            <option
+                                value="visa_union_pay"
+                                t-att-selected="'visa_union_pay' == website_sale_order.payment_method"
+                            >Visa or Union (Extra 2.2% as fee)</option>
+                            <option
+                                value="other"
+                                t-att-selected="'other' == website_sale_order.payment_method"
+                            >Other Payment Method</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label
+                            class="control-label"
+                            for="payment_desc"
+                        >Other Payment Method</label>
+                        <input
+                            type="text"
+                            name="payment_desc"
+                            class="form-control"
+                            t-att-value="website_sale_order.payment_desc"
+                        />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-lg-6">
+                        <label
+                            class="control-label"
+                            for="picking_date"
+                        >Desire Picking Date (Delivery：Monday to Friday 15:00-18:00)</label>
+                        <input
+                            type="date"
+                            name="picking_date"
+                            class="form-control"
+                            t-att-value="website_sale_order.picking_date"
+                        />
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label
+                            class="control-label"
+                            for="other_inquiry"
+                        >Other Inquiry</label>
+                        <input
+                            type="text"
+                            name="other_inquiry"
+                            class="form-control"
+                            t-att-value="website_sale_order.other_inquiry"
+                        />
+                    </div>
+                </div>
+                <div class="clearfix">
+                    <a
+                        href="/shop"
+                        class="btn btn-default mb32"
+                        style="background-color: #a0a0a2 !important; color: #fff !important;"
+                    ><span class="fa fa-long-arrow-left" /> Continue Shopping</a>
+                    <a
+                        class="btn btn-default btn-primary pull-right mb32 a-submit"
+                        style="color: #fff !important;"
+                    >Confirm and Submit <span class="fa fa-long-arrow-right" /></a>
+                </div>
+            </form>
+        </xpath>
+    </template>
+    <template id="total" name="total" inherit_id="website_sale.total">
+        <xpath expr="//table" position="attributes">
+            <attribute
+                name="t-if"
+            >website_sale_order and not website_sale_order.is_mto</attribute>
+        </xpath>
+    </template>
+    <template id="confirmation">
+        <t t-call="website.layout">
+            <t t-set="additional_title">Order - Submitted</t>
+            <div id="wrap">
+                <div class="container oe_website_sale" style="margin-top: 120px;">
+                    <h1 class="mb32">Order
+                        <em t-field="order.name" />
+                        Submitted
+                    </h1>
+                    <div class="row">
+                        <div class="col-md-8 oe_cart">
+                            <h2>We will contact you soon.</h2>
+                            <a
+                                style="background-color: #a0a0a2 !important; color: #fff !important;"
+                                href="/shop"
+                                class="btn btn-default mb32"
+                            >Continue Shopping</a>
+                            <div class="clearfix" />
+                            <div class="oe_structure" />
+                        </div>
+                    </div>
+                </div>
+                <div class="oe_structure" />
+            </div>
+        </t>
+    </template>
+    <template
+        id="product_quantity"
+        inherit_id="website_sale.product_quantity"
+        name="Select Quantity"
+    >
+        <xpath
+            expr="//div[@class='css_quantity input-group oe_website_spinner']"
+            position="attributes"
+        >
+            <attribute name="groups">website_timecheck.group_timecheck_basic</attribute>
+        </xpath>
+    </template>
+    <template
+        id="frontend_layout"
+        name="Main Frontend Layout"
+        inherit_id="portal.frontend_layout"
+    >
+        <xpath expr="//span[@class='navbar-toggler-icon']" position="replace">
+            <i class="fa fa-user" style="font-size: 18px !important" />
+        </xpath>
+        <xpath expr="//li[@class='nav-item dropdown']" position="attributes">
+            <attribute name="class">hidden-xs</attribute>
+        </xpath>
+        <xpath expr="//li[@class='hidden-xs']" position="after">
+            <li
+                class="visible-xs-inline"
+                t-ignore="true"
+                t-if="not user_id._is_public()"
+            >
+                <a href="#" class="nav-link">
+                    <b>
+                        <span
+                            t-esc="user_id.name[:23] + '...' if user_id.name and len(user_id.name) &gt; 25 else user_id.name"
+                        />
+                    </b>
+                </a>
+                <a href="/my" class="nav-link">My Account</a>
+                <a
+                    id="o_logout"
+                    class="nav-link"
+                    t-attf-href="/web/session/logout?redirect=/"
+                >Logout</a>
+            </li>
+        </xpath>
+    </template>
+</odoo>

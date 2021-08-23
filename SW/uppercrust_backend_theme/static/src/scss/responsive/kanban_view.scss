@@ -1,0 +1,166 @@
+@mixin kanban-xs() {
+    & > .o_main {
+        .o_main_content.ad_rightbar {
+            .o_content > .o_view_controller, .o_view_controller {
+                .o_kanban_view {
+                    &:not(.o_kanban_dashboard) {
+                        padding: 0px 10px !important;
+                    }
+                    &.o_kanban_dashboard {
+                        overflow: hidden;
+                        .o_kanban_record {
+                            width: 100%;
+                            flex: 1 1 100%;
+                        }
+                    }
+                    .o_kanban_record {
+                        margin: 5px;
+                        .oe_kanban_details{
+                            font-size: $font-size-1;
+                        }
+                    }
+                    &.o_kanban_grouped {
+                        display: inline-block;
+                        position: absolute;
+                        width: 100%;
+                        top: 0;
+                        bottom: 0;
+                        left: 0;
+                        overflow: hidden !important;
+                        right: 0;
+                        padding: 0px !important;
+                        margin: 0;
+                        border: none;
+                        .o_kanban_mobile_tabs {
+                            background-color: $brand-secondary;
+                            .o_kanban_mobile_tab {
+                                &.o_current {
+                                    border-bottom: 1px solid $brand-secondary;
+                                    @include border-animation-white();
+                                }
+                            }
+                        }
+                        .o_kanban_group {
+                            padding: 0px 5px;
+                            .o_kanban_record {
+                                margin: 0px;
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+                .o_kanban_view {
+                    .o_account_dashboard_header {
+                        margin: 0px;
+                    }
+                }
+            }
+        }
+    }
+    .o_kanban_view.o_kanban_grouped {
+        display: block;
+        position: relative;
+        overflow: hidden;
+
+        .o_kanban_mobile_tabs {
+            height: $o-kanban-mobile-tabs-height;
+            position: relative;
+            background-color: #5E5E5E;
+
+            .o_kanban_mobile_tab {
+                position: absolute;
+                top: auto;
+                left: 100%;
+                bottom: auto;
+                right: auto;
+                transform: translateX(-50%);
+                height: 40px;
+                padding: 10px;
+                color: white;
+                height: $o-kanban-mobile-tabs-height;
+                padding: 10px;
+                font-size: 14px;
+                color: white;
+
+                &.o_current {
+                    font-weight: bold;
+                    border-bottom: 3px solid $brand-secondary;
+                }
+                .o_column_title {
+                    white-space: nowrap;
+                }
+            }
+        }
+
+        // [class] to get same specificity as elsewhere (kanban_view.less)
+        &[class] .o_kanban_group:not(.o_column_folded) {
+            position: absolute;
+            top: 40px;
+            bottom: 0;
+            right: auto;
+            overflow-x: scroll;
+            width: 100%;
+            padding: 0;
+            margin-left: 0; // override the margin-left: -1px of the desktop mode
+            border: none;
+
+            .o_kanban_header {
+                display: none;
+            }
+            .o_kanban_record, .o_kanban_quick_create {
+                border: none;
+                border-bottom: 1px solid lightgray;
+                padding: 10px 16px;
+                margin: 0;
+            }
+        }
+    }
+    .o_dashboard {
+        .oe_dashboard {
+            position: relative;
+            .oe_dashboard_column {
+                .oe_action {
+                    .oe_content {
+                        .o_kanban_view {
+                            position: relative;
+                            flex-wrap: wrap-reverse;
+                            .o_kanban_group {
+                                position: relative;
+                                top: 0;
+                            }
+                            .o_kanban_mobile_tabs {
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .o_account_dashboard_header {
+        margin: 0px;
+        .o_form_statusbar {
+            .o_statusbar_status {
+                text-align: left;
+                & > h4 {
+                    margin-bottom: 25px;
+                    float: left;
+                    text-align: left;
+                    width: 100%;
+                    padding-left: 5px;
+                }
+                .o_arrow_button {
+                    margin-bottom: 5px;
+                }
+            }
+            & > .pull-right {
+                position: absolute;
+                right: 0;
+            }
+        }
+    }
+}
+
+body.o_web_client.ad_mobile {
+    @include kanban-xs();
+}

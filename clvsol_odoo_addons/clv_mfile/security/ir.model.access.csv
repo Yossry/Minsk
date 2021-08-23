@@ -1,0 +1,17 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_clv_mfile_user,clv.mfile.user,model_clv_mfile,clv_mfile.group_user,1,0,0,0
+access_clv_mfile_manager,clv.mfile.manager,model_clv_mfile,clv_mfile.group_manager,1,1,1,0
+access_clv_mfile_supmanager,clv.mfile.supmanager,model_clv_mfile,clv_mfile.group_supmanager,1,1,1,1
+
+access_clv_mfile_category_user,clv.mfile.category.user,model_clv_mfile_category,clv_mfile.group_user,1,0,0,0
+access_clv_mfile_category_manager,clv.mfile.manager.category,model_clv_mfile_category,clv_mfile.group_manager,1,1,1,0
+access_clv_mfile_category_supmanager,clv.mfile.category.supmanager,model_clv_mfile_category,clv_mfile.group_supmanager,1,1,1,1
+
+access_clv_mfile_marker_user,clv.mfile.marker.user,model_clv_mfile_marker,clv_mfile.group_user,1,0,0,0
+access_clv_mfile_marker_manager,clv.mfile.manager.marker,model_clv_mfile_marker,clv_mfile.group_manager,1,1,1,0
+access_clv_mfile_marker_supmanager,clv.mfile.marker.supmanager,model_clv_mfile_marker,clv_mfile.group_supmanager,1,1,1,1
+
+access_clv_mfile_format_user,clv.mfile.format.user,model_clv_mfile_format,clv_mfile.group_user,1,0,0,0
+access_clv_mfile_format_manager,clv.mfile.manager.format,model_clv_mfile_format,clv_mfile.group_manager,1,1,1,0
+access_clv_mfile_format_supmanager,clv.mfile.format.supmanager,model_clv_mfile_format,clv_mfile.group_supmanager,1,1,1,1

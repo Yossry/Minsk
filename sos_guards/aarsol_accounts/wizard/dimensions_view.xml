@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+	<data>
+ 
+		<record id="dimension_entry_form" model="ir.ui.view">
+			<field name="name">account.dimension.entry.form</field>
+			<field name="model">account.dimension.entry</field>
+			<field name="arch" type="xml">
+				<form string="Dimensions Entry">
+					<group>
+						<field name="account_id" readonly="1"/>
+						<field name="model_name" invisible="1"/>
+						<field name="model_db_name" invisible="1"/>
+						<field name="rec_id" invisible="1"/>
+						<field name="readonly" invisible="1"/>
+					</group>
+
+					<group string="Accounting Dimensions">
+							<field name="a1_id" attrs="{'invisible': [('H1_id', '!=', 1)], 'required': [('H1_id', '=', 1)], 'readonly': [('readonly', '=', True)]}"
+								options="{'no_create': True, 'limit': 10}"/>
+							<field name="a2_id" attrs="{'invisible': [('H2_id', '!=', 1)], 'required': [('H2_id', '=', 1)], 'readonly': [('readonly', '=', True)]}"
+								options="{'no_create': True, 'limit': 10}"/>
+							<field name="a3_id" attrs="{'invisible': [('H3_id', '!=', 1)], 'required': [('H3_id', '=', 1)], 'readonly': [('readonly', '=', True)]}"
+								options="{'no_create': True, 'limit': 10}"/>
+							<field name="a4_id" attrs="{'invisible': [('H4_id', '!=', 1)], 'required': [('H4_id', '=', 1)], 'readonly': [('readonly', '=', True)]}"
+								options="{'no_create': True, 'limit': 10}"/>
+							<field name="a5_id" attrs="{'invisible': [('H5_id', '!=', 1)], 'required': [('H5_id', '=', 1)], 'readonly': [('readonly', '=', True)]}"
+								options="{'no_create': True, 'limit': 10}"/>
+							<field name="a6_id" attrs="{'invisible': [('H6_id', '!=', 1)], 'required': [('H6_id', '=', 1)], 'readonly': [('readonly', '=', True)]}"
+								options="{'no_create': True, 'limit': 10}"/>
+							<field name="a7_id" attrs="{'invisible': [('H7_id', '!=', 1)], 'required': [('H7_id', '=', 1)], 'readonly': [('readonly', '=', True)]}"
+								options="{'no_create': True, 'limit': 10}"/>
+							<field name="a8_id" attrs="{'invisible': [('H8_id', '!=', 1)], 'required': [('H8_id', '=', 1)], 'readonly': [('readonly', '=', True)]}"
+								options="{'no_create': True, 'limit': 10}"/>
+							<field name="a9_id" attrs="{'invisible': [('H9_id', '!=', 1)], 'required': [('H9_id', '=', 1)], 'readonly': [('readonly', '=', True)]}"
+								options="{'no_create': True, 'limit': 10}"/>
+							<field name="a10_id" attrs="{'invisible': [('H10_id', '!=', 1)], 'required': [('H10_id', '=', 1)], 'readonly': [('readonly', '=', True)]}"
+								options="{'no_create': True, 'limit': 10}"/>
+
+							<field name="d_bin" invisible="1"/>
+							<field name="H1_id" invisible="1"/>
+							<field name="H2_id" invisible="1" />
+							<field name="H3_id" invisible="1" />
+							<field name="H4_id" invisible="1"/>
+							<field name="H5_id" invisible="1"/>
+							<field name="H6_id" invisible="1"/>
+							<field name="H7_id" invisible="1"/>
+							<field name="H8_id" invisible="1"/>
+							<field name="H9_id" invisible="1"/>
+							<field name="H10_id" invisible="1"/>
+						</group>
+
+						<footer>
+							<button name="save_dimensions" string="Save Dimensions" type="object" default_focus="1" class="oe_highlight"/>
+							<button string="Cancel" class="oe_link" special="cancel" />
+						</footer>
+				</form>
+			</field>
+		</record>
+
+	</data>
+</odoo>

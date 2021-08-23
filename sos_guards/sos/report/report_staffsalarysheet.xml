@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<template id ="report_staffsalarysheet">
+			<t t-call="web.html_container">
+					<t t-call="web.basic_layout" style="font-family:georgia,garamond,serif;font-size:10px">
+						<div class="page">
+							<style>
+									.tabhead{font-size:9px;}
+									.tabcol{font-size:9px;}
+									.tabtot{font-size:10px;}
+									 table th { background-color:#d4e3e5;}
+									 tr:nth-child(even) {background-color: #FFEBCD;}
+									 tr:nth-child(odd) {background-color: #cdcdcd;}
+							</style>
+							<h4>Salary Sheet</h4>	 							
+							<h5>	
+								From: <span t-esc="get_date_formate(data['date_from'])"/><br></br>
+								To: <span t-esc="get_date_formate(data['date_to'])"/><br></br>							
+							</h5>	
+
+								<table class="table table-condensed" width="100%">
+									<thead>
+										<tr class="tabhead">
+											<th class="text-center" colspan="5" style="background-color:#ffffff;border:none"></th>
+											<th class="text-center" colspan="12" style="background-color:#FFEBCD;font-size:9px;border: 1px solid black;">S  A  L  A  R  Y</th>
+											<th class="text-center" colspan="7" style="background-color:#cdcdcd;font-size:9px;border: 1px solid black;">D E D U C T I O N S</th>
+											<th class="text-right" style="background-color:#ffffff;border:none"></th>
+										</tr>
+										<tr class="tabhead" style="padding-left:0px;padding-right:0px;margin-left:0px;margin-right:0px;">
+											<th class="text-center">S.No</th>
+											<th class="text-center">EMP Code</th>
+											<th class="text-left">Name</th>
+											<th class="text-left">Position</th>
+											<th class="text-right">Salary Days</th>
+
+											<th class="text-right">Basic</th>
+											<th class="text-right">Earned</th>
+											<th class="text-right">Bike Maint.</th>
+											<!-- <th class="text-right">Medical</th> -->
+											<th class="text-right">Housing</th>
+											<th class="text-right">Arrears</th>
+											<th class="text-right">Mobile Allowance</th>
+											<th class="text-right">Food Allowance</th>
+											<th class="text-right">Transport Allowance</th>
+											<th class="text-right">Fuel Allowance</th>
+											<th class="text-right">Out Station</th>
+											<th class="text-right">Special Allowance</th>
+											<th class="text-right">Gross</th>
+										
+											<th class="text-right">Income Tax</th>
+											<th class="text-right">Late/Absent Fine</th>
+											
+											<th class="text-right">Loan</th>
+											<th class="text-right">Advance</th>
+											<th class="text-right">Mobile</th>
+											<th class="text-right">PF</th>
+											<!-- <th class="text-right">INSD</th>
+											<th class="text-right">Others</th>
+											-->
+											<th class="text-right">Tot Ded.</th>
+											<th class="text-right">Net Salary</th>
+											
+										</tr>
+									</thead>
+									<tbody>
+								
+										<t t-foreach="Payslip" t-as="rec">
+											<tr class="tabcol">
+												<td class="text-left" style="font-size:12px;font-weight:bold;" colspan="26">
+													<span t-esc="rec['department']" />
+												</td>
+											</tr>
+											
+												<!--
+												<t t-foreach="rec['segments']" t-as="segment">
+													<tr class="tabcol">
+														<td class="text-left" style="padding-left:50px;font-size:10px;font-weight:bold;" colspan="27">
+														<span t-esc="segment['segment']" />
+													</td>
+													</tr>
+													-->
+													
+													<t t-foreach="rec['payslips']" t-as="payslip">
+														<tr style="font-size:12px;">
+															<td class="text-center">
+																<span t-esc="payslip_index + 1" />
+															</td>
+															<td class="text-center">
+																<span t-esc="payslip.employee_id.code" />
+															</td>
+															<td class="text-left">
+																<span t-esc="payslip.employee_id.name" />
+															</td>
+															<td class="text-left">
+																<span t-esc="payslip.employee_id.job_id.name" />
+															</td>
+													
+															<td class="text-right">
+																<span t-esc="Working_Days(payslip.id,'WORK100') + Working_Days(payslip.id,'HDAYS100')" />
+															</td>
+													
+															<td class="text-right">
+																<span t-esc="payslip.contract_id.wage and '{0:,.2f}'.format(int(payslip.contract_id.wage)) or '-'" />													
+															</td>
+													
+															<td class="text-right">
+																<span t-esc="Lines(payslip.id,'payslip_line','BASIC') and '{0:,.2f}'.format(int(Lines(payslip.id,'payslip_line','BASIC'))) or '-'" />													
+															</td>
+															<td class="text-right">
+																<span t-esc="Lines(payslip.id,'payslip_line','SBIKA') and '{0:,.2f}'.format(int(Lines(payslip.id,'payslip_line','SBIKA'))) or '-'" />													
+															</td>
+															<!--
+															<td class="text-right">
+																<span t-esc="Lines(payslip.id,'payslip_line','MEDA') and '{0:,.2f}'.format(int(Lines(payslip.id,'payslip_line','MEDA'))) or '-'" />													
+															</td>
+															-->
+														
+															<td class="text-right">
+																<span t-esc="Lines(payslip.id,'payslip_line','PHR') and '**' or ''" />
+																<span t-esc="Lines(payslip.id,'payslip_line','HRA') and '{0:,.2f}'.format(int(Lines(payslip.id,'payslip_line','HRA'))) or '-'" />													
+															</td>
+															<td class="text-right">
+																<span t-esc="Lines(payslip.id,'input_line','ARS') and '{0:,.2f}'.format(int(Lines(payslip.id,'input_line','ARS'))) or '-'" />													
+															</td>
+															<td class="text-right">
+																<span t-esc="Lines(payslip.id,'payslip_line','MA') and '{0:,.2f}'.format(int(Lines(payslip.id,'payslip_line','MA'))) or '-'" />													
+															</td>
+															<td class="text-right">
+																<span t-esc="Lines(payslip.id,'payslip_line','FDA') and '{0:,.2f}'.format(int(Lines(payslip.id,'payslip_line','FDA'))) or '-'" />													
+															</td>
+															<td class="text-right">
+																<span t-esc="Lines(payslip.id,'payslip_line','TRA') and '{0:,.2f}'.format(int(Lines(payslip.id,'payslip_line','TRA'))) or '-'" />													
+															</td>
+															<td class="text-right">
+																<span t-esc="Lines(payslip.id,'payslip_line','FLA') and '{0:,.2f}'.format(int(Lines(payslip.id,'payslip_line','FLA'))) or '-'" />	
+															</td>
+														
+															<td class="text-right">
+																<span t-esc="Lines(payslip.id,'payslip_line','OSSA') and '{0:,.2f}'.format(int(Lines(payslip.id,'payslip_line','OSSA'))) or '-'" />	
+															</td>
+															<td class="text-right">
+																<span t-esc="Lines(payslip.id,'payslip_line','SSPA') and '{0:,.2f}'.format(int(Lines(payslip.id,'payslip_line','SSPA'))) or '-'" />	
+															</td>
+															<td class="text-right">
+																<span t-esc="'{0:,.2f}'.format(int(Lines(payslip.id,'payslip_line','GROSS')))" />
+															</td>
+														
+															<td class="text-right">
+																<span t-esc="Lines(payslip.id,'payslip_line','TAXD') and '{0:,.2f}'.format(int(abs(Lines(payslip.id,'payslip_line','TAXD')))) or '-'" />	
+															</td>
+															<td class="text-right">
+																<span t-esc="Lines(payslip.id,'payslip_line','FINE') and '{0:,.2f}'.format(int(abs(Lines(payslip.id,'payslip_line','FINE')))) or '-'" />	
+															</td>
+														
+															<td class="text-right">
+																<span t-esc="Lines(payslip.id,'input_line','LOAN') and '{0:,.2f}'.format(int(Lines(payslip.id,'input_line','LOAN'))) or '-'" />													
+															</td>
+														
+															<td class="text-right">
+																<span t-esc="Lines(payslip.id,'input_line','ADV') and '{0:,.2f}'.format(int(Lines(payslip.id,'input_line','ADV'))) or '-'" />													
+															</td>
+															<td class="text-right">
+																<span t-esc="Lines(payslip.id,'input_line','MOBD') and '{0:,.2f}'.format(int(Lines(payslip.id,'input_line','MOBD'))) or '-'" />													
+															</td>
+															<td class="text-right">
+																<span t-esc="Lines(payslip.id,'payslip_line','SPROF') and '{0:,.2f}'.format(int(abs(Lines(payslip.id,'payslip_line','SPROF')))) or '-'" />													
+															</td>
+															<!--
+															<td class="text-right">
+																<span t-esc="Lines(payslip.id,'payslip_line','INSD') and '{0:,.2f}'.format(int(abs(Lines(payslip.id,'payslip_line','INSD')))) or '-'" />													
+															</td>
+															
+															<td class="text-right">
+																<span t-esc="Lines(payslip.id,'input_line','ODE') and '{0:,.2f}'.format(int(Lines(payslip.id,'input_line','ODE'))) or '-'" />	
+															</td>
+															-->
+															<td class="text-right">
+																<span t-esc="Employee_Deduction(payslip.id) and '{0:,.2f}'.format(int(abs(Employee_Deduction(payslip.id)))) or '-'" />	
+															</td>
+															
+															<td class="text-right">
+																<span t-esc="Lines(payslip.id,'payslip_line','NET') and '{0:,.2f}'.format(int(Lines(payslip.id,'payslip_line','NET'))) or '-'" />	
+															</td>													
+														</tr>
+													<!--</t>--> <!-- segment loop-->	
+											
+												</t> <!-- payslip loop-->
+												
+											
+												<!-- Department Totals -->
+												<tr style="font-size:14px;">
+													<td class="text-center" colspan="5">
+														Totals:
+													</td>
+													<td class="text-right">
+														<span t-esc="rec['dept_wage'] and '{0:,.2f}'.format(int(rec['dept_wage'])) or '-'" />													
+													</td>											
+													<td class="text-right">
+														<span t-esc="rec['dept_basic'] and '{0:,.2f}'.format(int(rec['dept_basic'])) or '-'" />													
+													</td>
+													<td class="text-right">
+														<span t-esc="rec['dept_bike'] and '{0:,.2f}'.format(int(rec['dept_bike'])) or '-'" />													
+													</td>
+													<!--
+													<td class="text-right">
+														<span t-esc="rec['dept_medical'] and '{0:,.2f}'.format(int(rec['dept_medical'])) or '-'" />													
+													</td>
+													-->
+													<td class="text-right">
+														<span t-esc="rec['dept_housing'] and '{0:,.2f}'.format(int(rec['dept_housing'])) or '-'" />		
+													</td>
+													<td class="text-right">
+														<span t-esc="rec['dept_arrear'] and '{0:,.2f}'.format(int(rec['dept_arrear'])) or '-'" />												
+													</td>
+													<td class="text-right">
+														<span t-esc="rec['dept_mobile'] and '{0:,.2f}'.format(int(rec['dept_mobile'])) or '-'" />													
+													</td>
+													<td class="text-right">
+														<span t-esc="rec['dept_food'] and '{0:,.2f}'.format(int(rec['dept_food'])) or '-'" />												
+													</td>
+													<td class="text-right">
+														<span t-esc="rec['dept_trans'] and '{0:,.2f}'.format(int(rec['dept_trans'])) or '-'" />													
+													</td>
+													<td class="text-right">
+														<span t-esc="rec['dept_fuel'] and '{0:,.2f}'.format(int(rec['dept_fuel'])) or '-'" />			
+													</td>
+													<td class="text-right">
+														<span t-esc="rec['dept_out_station'] and '{0:,.2f}'.format(int(rec['dept_out_station'])) or '-'" />			
+													</td>
+													<td class="text-right">
+														<span t-esc="rec['dept_special_allw'] and '{0:,.2f}'.format(int(rec['dept_special_allw'])) or '-'" />			
+													</td>
+													<td class="text-right">
+														<span t-esc="rec['dept_gross'] and '{0:,.2f}'.format(int(rec['dept_gross'])) or '-'" />													
+													</td>
+												
+												
+													<td class="text-right">	
+														<span t-esc="rec['dept_tax'] and '{0:,.2f}'.format(int(abs(rec['dept_tax']))) or '-'" />										
+													</td>
+												
+													<td class="text-right">	
+														<span t-esc="rec['dept_fine'] and '{0:,.2f}'.format(int(rec['dept_fine'])) or '-'" />										
+													</td>
+												
+													<td class="text-right">
+														<span t-esc="rec['dept_loan'] and '{0:,.2f}'.format(int(rec['dept_loan'])) or '-'" />													
+													</td>
+												
+													<td class="text-right">
+														<span t-esc="rec['dept_advance'] and '{0:,.2f}'.format(int(rec['dept_advance'])) or '-'" />													
+													</td>
+													
+												
+													<td class="text-right">
+														<span t-esc="rec['dept_mobile_deduct'] and '{0:,.2f}'.format(int(rec['dept_mobile_deduct'])) or '-'" />													
+													</td>
+													
+													<td class="text-right">
+														<span t-esc="rec['dept_pf_deduct'] and '{0:,.2f}'.format(int(abs(rec['dept_pf_deduct']))) or '-'" />													
+													</td>
+													<!--
+													<td class="text-right">
+														<span t-esc="rec['dept_insd_deduct'] and '{0:,.2f}'.format(int(abs(rec['dept_insd_deduct']))) or '-'" />													
+													</td>
+												
+													<td class="text-right">
+														<span t-esc="rec['dept_other_deduction'] and '{0:,.2f}'.format(int(rec['dept_other_deduction'])) or '-'" />													
+													</td>
+												-->	
+												<td class="text-right">
+												</td>
+													<td class="text-right">
+														<span t-esc="rec['dept_net'] and '{0:,.2f}'.format(int(rec['dept_net'])) or '-'" />																							
+													</td>
+												</tr>
+											
+												
+											</t>
+										
+										
+											<!-- Over All Totals -->
+											<tr style="font-size:14px;">
+												<td class="text-center" colspan="5">
+													Grand Totals:
+												</td>
+												<td class="text-right">
+													<span t-esc="WAGE and '{0:,.2f}'.format(int(WAGE)) or '-'" />													
+												</td>											
+												<td class="text-right">
+													<span t-esc="BASIC and '{0:,.2f}'.format(int(BASIC)) or '-'" />													
+												</td>
+												<td class="text-right">
+													<span t-esc="BIKE and '{0:,.2f}'.format(int(BIKE)) or '-'" />													
+												</td>
+												<!--
+												<td class="text-right">
+													<span t-esc="MEDICAL and '{0:,.2f}'.format(int(MEDICAL)) or '-'" />													
+												</td>
+												-->
+												<td class="text-right">
+													<span t-esc="HOUSING and '{0:,.2f}'.format(int(HOUSING)) or '-'" />		
+												</td>
+												<td class="text-right">
+													<span t-esc="ARREAR and '{0:,.2f}'.format(int(ARREAR)) or '-'" />												
+												</td>
+												<td class="text-right">
+													<span t-esc="MOBILE and '{0:,.2f}'.format(int(MOBILE)) or '-'" />													
+												</td>
+												<td class="text-right">
+													<span t-esc="FOOD and '{0:,.2f}'.format(int(FOOD)) or '-'" />												
+												</td>
+												<td class="text-right">
+													<span t-esc="TRANS and '{0:,.2f}'.format(int(TRANS)) or '-'" />													
+												</td>
+												<td class="text-right">
+													<span t-esc="FUEL and '{0:,.2f}'.format(int(FUEL)) or '-'" />			
+												</td>
+												<td class="text-right">
+													<span t-esc="OUT_STATION and '{0:,.2f}'.format(int(OUT_STATION)) or '-'" />			
+												</td>
+												<td class="text-right">
+													<span t-esc="SPECIAL_ALLW and '{0:,.2f}'.format(int(SPECIAL_ALLW)) or '-'" />			
+												</td>
+												<td class="text-right">
+													<span t-esc="GROSS and '{0:,.2f}'.format(int(GROSS)) or '-'" />													
+												</td>
+											
+												<td class="text-right">
+													<span t-esc="TAX and '{0:,.2f}'.format(int(abs(TAX))) or '-'" />													
+												</td>
+												<td class="text-right">
+													<span t-esc="FINE and '{0:,.2f}'.format(int(abs(FINE))) or '-'" />													
+												</td>
+											
+												<td class="text-right">
+													<span t-esc="PENDALITY and '{0:,.2f}'.format(int(abs(PENDALITY))) or '-'" />													
+												</td>
+											
+											
+												<td class="text-right">
+													<span t-esc="LOAN and '{0:,.2f}'.format(int(LOAN)) or '-'" />													
+												</td>
+												<td class="text-right">
+													<span t-esc="ADVANCE and '{0:,.2f}'.format(int(ADVANCE)) or '-'" />													
+												</td>
+											
+												<td class="text-right">
+													<span t-esc="MOBILE_DEDUCT and '{0:,.2f}'.format(int(MOBILE_DEDUCT)) or '-'" />													
+												</td>
+												
+												
+												<td class="text-right">
+													<span t-esc="PF_DEDUCT and '{0:,.2f}'.format(int(PF_DEDUCT)) or '-'" />													
+												</td>
+												
+												<!--
+												<td class="text-right">
+													<span t-esc="INSD_DEDUCT and '{0:,.2f}'.format(int(INSD_DEDUCT)) or '-'" />													
+												</td>
+												
+												<td class="text-right">
+													<span t-esc="OTHER_DEDUCTION and '{0:,.2f}'.format(int(OTHER_DEDUCTION)) or '-'" />													
+												</td>
+												-->
+												<td class="text-right">
+													<span t-esc="NET and '{0:,.2f}'.format(int(NET)) or '-'" />																							
+												</td>
+											</tr>
+										
+																					                
+										</tbody>
+		            				</table>
+		           				
+						</div>
+					</t>
+			</t>
+		</template>
+	
+	</data>
+</odoo>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+<data>        
+
+ <record id="sos_jacket_return_tree" model="ir.ui.view">
+ 	<field name="name">Uniform Return Tree</field>
+ 	<field name="model">sos.jacket.return</field>
+ 	<field name="priority" eval="15"/>
+ 	<field name="type">tree</field>	
+ 	<field name="arch" type="xml">
+ 		<tree>
+ 			<field name="return_number"/>
+ 			<field name="date"/>
+ 			<field name="center_id"/>
+			<field name="project_id"/>
+			<field name="employee_id"/>
+ 			<field name="post_id"/>
+ 			<field name="guard_id"/>
+ 			<field name="state"/>
+ 		</tree>
+ 	</field>	
+</record>
+
+ <record id="sos_jacket_return_form" model="ir.ui.view">
+ 	<field name="name">Uniform Return Form</field>
+ 	<field name="model">sos.jacket.return</field>
+ 	<field name="priority" eval="15"/>
+ 	<field name="type">form</field>	
+ 	<field name="arch" type="xml">
+ 		<form string="Uniform Return">
+			<header>
+				<button name="demand_recommended" type="object" states="draft" string="Recommended" class="oe_highlight" groups="sos.group_regional_manager,hr.group_hr_user" />
+				<button name="demand_reviewed" type="object" states="recommended" string="Reviewed" class="oe_highlight" groups="sos_uniform.group_demand_review"/>	  
+				<button name="demand_approved" type="object" states="reviewed" string="Approved" class="oe_highlight" groups="sos_uniform.group_demand_approved"/>
+				<button name="demand_dispatch" type="object" states="approved" string="Dispatch" class="oe_highlight" groups="stock.group_stock_manager"/>	  
+				<button name="demand_rejected" type="object" states="draft,reviewed,recommended,dispatch,approved" string="Rejected" class="oe_highlight" groups="hr.group_hr_user"/>	  
+				<field name="state" widget="statusbar" nolabel="1" statusbar_visible="draft,recommended,review,dispatch,approved,done,rejected"/>	  
+			 </header>
+			 <sheet string="Jacket Returns">
+			 	<group colspan="4">
+			 		<group>
+				 	 	<field name="return_number"/>
+				 	 	<field name="center_id" attrs="{'readonly':[('state','!=','draft')]}"/>
+				 	 	<field name="employee_id" attrs="{'readonly':[('state','!=','draft')]}"/>
+				 	 </group>
+				 	 <group>
+				 	 	<field name="date"/>
+				 	 	<field name="project_id" attrs="{'readonly':[('state','!=','draft')]}"/>
+				 	 	<field name="post_id" domain="[('center_id', '=', center_id),('project_id', '=', project_id),('active', '=', True)]" attrs="{'readonly':[('state','!=','draft')]}"/>
+				 	 	<field name="guard_id" domain="[('current_post', '=', post_id),('current', '=', True),('is_guard', '=', True)]" options="{'no_create': True, 'limit': 10}" attrs="{'readonly':[('state','!=','draft')]}"/>
+				 	 </group>
+				 </group>
+				 		
+				<group colspan="4">	
+					<group>
+						<field name="remarks"/>
+					</group>	  					 
+				</group>
+				
+				<notebook>
+					<page string="Items">
+						<field name="jacket_return_line">
+							<tree editable="top" >
+								<field name="item"/>
+								<field name="qty"/>
+								<field name="size"/>
+							</tree>
+						</field>	
+					</page>
+				</notebook>
+			<!--	 <field name="product_ids" colspan="4" nolabel="1" attrs="{'invisible': ['|','|','|','|',('state', '=', 'draft'),('state', '=', 'recommended'),('state', '=', 'reviewed'),('state', '=', 'approved'),('state', '=', 'rejected')]}" /> -->
+			</sheet>
+		</form>		  
+	</field>
+</record>
+
+
+
+<record id="sos_jacket_demand_return_filter" model="ir.ui.view">
+	<field name="name">sos.jacket.return.filter</field>
+	<field name="model">sos.jacket.return</field>
+	<field name="arch" type="xml">
+		<search string="Search Uniform Return">
+			<filter icon="terp-go-today" string="Draft" name="draft" domain="[('state','=','draft')]" />
+			<filter icon="terp-go-today" string="Done" name="done" domain="[('state','=','done')]" />
+			<filter icon="terp-go-today" string="Approved" name="done" domain="[('state','=','approved')]" />
+			<filter icon="terp-go-today" string="Rejected" name="done" domain="[('state','=','rejected')]" />
+			
+			<field name="return_number"/>
+			<field name="center_id"/>
+			<field name="project_id"/>
+			<field name="date"/>
+			<field name="state"/>
+			<separator/>
+			<group expand="0" string="Group By">
+				<filter string="Center" name="center_id" icon="terp-partner" domain="[]" context="{'group_by':'center_id'}"/>
+				<filter string="Project" name="project_id" icon="terp-partner" domain="[]" context="{'group_by':'project_id'}"/>
+				<filter string="Date" name="date" icon="terp-partner" domain="[]" context="{'group_by':'date'}"/>
+				<filter string="State" name="state" icon="terp-partner" domain="[]" context="{'group_by':'state'}"/>
+			</group>
+			  
+		</search>
+	</field>
+</record>
+
+<record id="sos_jacket_return_action" model="ir.actions.act_window">
+	<field name="name">Uniform Returns </field>
+	<field name="res_model">sos.jacket.return</field>
+	<field name="view_type">form</field>
+	<field name="view_mode">tree,form</field>	
+	<field name="domain">[]</field>
+	<field name="context">{'search_default_draft':1}</field>
+	<field name="help" type="html">
+		<p class="oe_view_nocontent_create">
+			Click to create a new Uniform Return  .
+	</p>
+	</field>
+</record> 
+ 
+</data>
+</odoo>

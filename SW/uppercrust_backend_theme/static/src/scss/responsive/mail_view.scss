@@ -1,0 +1,685 @@
+@mixin mail-xs() {
+    .o_main {
+        .ad_rightbar {
+            .o_content {
+                .o_mail_discuss:not(.ad_chat) {
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    height: 100%;
+                    top: 0;
+                    bottom: 0;
+                    z-index: 0;
+                    @include slide-animation();
+                    .mobile_contant, .o_mail_discuss_content {
+                        margin-left: 0px;
+                        margin-right: 0px;
+                        .o_mailbox_inbox {
+                            display: none;
+                            .o_mail_thread {
+                                padding: 0px;
+                            }
+                        }
+                        .o_mail_thread {
+                            padding: 0px 10px;
+                            .o_message_form {
+                                .panel-heading {
+                                    padding: 10px 0;
+                                    .oe_data_contant {
+                                        .oe_box {
+                                            display: flex;
+                                            margin: 0;
+                                            align-items: center;
+                                            .o_back {
+                                                flex: 0 0 36px;
+                                                width: auto;
+                                                margin: 0;
+                                                padding: 0;
+                                            }
+                                            .o_user_info {
+                                                display: flex;
+                                                overflow: hidden;
+                                                text-overflow: ellipsis;
+                                                .oe_image {
+                                                    img {
+                                                        width: 50px;
+                                                        height: 50px;
+                                                        margin: auto;
+                                                        @include round-border();
+                                                    }
+                                                }
+                                                .o_user_email {
+                                                    padding: 0px 10px;
+                                                    text-overflow: ellipsis;
+                                                    display: block;
+                                                    .panel-title, .to_partners {
+                                                        overflow: hidden;
+                                                        text-overflow: ellipsis;
+                                                        display: block;
+                                                        white-space: nowrap;
+                                                        word-wrap: break-word;
+                                                    }
+                                                }
+                                            }
+                                            .o_button_header {
+                                                flex: 0 0 30px;
+                                                align-items: center;
+                                                margin: 0;
+                                                padding: 0;
+                                                width: auto;
+                                            }
+                                        }
+                                    }
+                                    .o_button_header {
+                                        box-shadow: none;
+                                        .dropdown {
+                                            .fa-ellipsis-v {
+                                                &:focus, &:active, &:hover {
+                                                    box-shadow: none;
+                                                }
+                                                &[aria-expanded="true"] {
+                                                    border: 1px solid $border;
+                                                    border-bottom: none;
+                                                }
+                                            }
+                                            .dropdown-backdrop {
+                                                display: none;
+                                            }
+                                            .dropdown-menu {
+                                                right: 0;
+                                                left: auto;
+                                                margin: 0;
+                                                li {
+                                                    padding: 10px;
+                                                    height: 34px;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                .panel-body {
+                                    word-wrap: break-word;
+                                    p, h3, div, span {
+                                        word-wrap: break-word;
+                                    }
+                                }
+                            }
+                            .o_mail_thread_content{
+                                padding: 0px;
+                            }
+                        }
+                    }
+                    &:not(.ad_mobile_conversation) {
+                        .o_mail_mobile_tabs {
+                            box-shadow: none;
+                            .o_mail_mobile_tab {
+                                box-shadow: none;
+                                color: $icon;
+                                &.active {
+                                    color: $brand-secondary;
+                                    @include border-animation();
+                                    background-position: center top;
+                                    .o_tab_title, .fa {
+                                        color: $brand-secondary;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .o_mail_discuss_mobile_mailboxes_buttons {
+                        box-shadow: none;
+                        z-index: 0;
+                        display: flex;
+                        flex: 0 0 auto;
+                        z-index: 2;
+                        & > button {
+                            display: flex !important;
+                            flex: 1 1 auto;
+                            width: 20%;
+                            flex-flow: column nowrap;
+                            justify-content: space-between;
+                            border: 1px solid $brand-secondary;
+                            text-align: center;
+                            align-items: center;
+                            font-size: 10px;
+                            padding: 6px 0px;
+                            background-color: $brand-secondary !important;
+                            color: $white;
+                            box-shadow: none;
+                            & > i {
+                                padding-bottom: 4%;
+                                font-size: 1.3em;
+                                display: block;
+                                font-weight: 500;
+                            }
+                            &.btn-primary {
+                                @include border-animation-white();
+                            }
+                            &[data-type="channel_inbox"] {
+                                &:before {
+                                    margin-right: 5px;
+                                    font: normal normal normal 14px/1 FontAwesome;
+                                    content: "\f01c";
+                                }
+                            }
+                            &[data-type="channel_starred"] {
+                                &:before {
+                                    margin-right: 5px;
+                                    font: normal normal normal 14px/1 FontAwesome;
+                                    content: "\f006";
+                                }
+                            }
+                        }
+                        &.oe_cp_mobile_btn {
+                            & > button {
+                                &:before {
+                                    display: none;
+                                }
+                            }
+                        }
+                    }
+                    .o_mail_chat_button_new_message {
+                        position: absolute;
+                        bottom: 54px;
+                        right: 22px;
+                        width: auto;
+                        border-radius: 50%;
+                        width: 56px;
+                        height: 56px;
+                        display: flex;
+                        visibility: visible;
+                        vertical-align: middle;
+                        background-color: $brand-secondary;
+                        border: 1px solid $brand-secondary;
+                        text-align: center;
+                        margin: auto;
+                        cursor: pointer;
+                        justify-content: center;
+                        align-items: center;
+                        color: $white;
+                        font-size: large;
+                        padding: 0;
+                    }
+                    .o_mail_discuss_tab_pane {
+                        padding: 0px 10px;
+                        .o_mail_preview {
+                            padding: 10px 5px;
+                            height: 65px;
+                            background-color: $white;
+                            border-bottom: 1px solid $border;
+                            .o_mail_preview_image {
+                                width: 50px;
+                                height: 50px;
+                                & > img {
+                                    @include round-border();
+                                }
+                            }
+                            .o_preview_info {
+                                .o_channel_title {
+                                    color: $brand-secondary;
+                                }
+                                .o_last_message_date {
+                                    color: $text-muted;
+                                }
+                                .o_last_message_preview {
+                                    color: $Label-value;
+                                }
+                            }
+                        }
+                        .o_mail_add_thread {
+                            border: none;
+                            margin: 10px 0px;
+                            & > span{
+                                display: none;
+                            }
+                            input {
+                                box-shadow: none;
+                                border: none;
+                                border-bottom: 1px solid $border;
+                                &:focus {
+                                    @include border-animation();
+                                }
+                            }
+                        }
+                    }
+                    .o_mail_discuss_content.mobile_contant {
+                        .o_mail_thread {
+                            .o_inbox_content {
+                                #tbody.ad-mobile-kanban {
+                                    .o_message_row {
+                                        padding: 10px 0px;
+                                        border-bottom: 1px solid $border;
+                                        display: flex;
+                                        flex-direction: row;
+                                        align-items: center;
+                                        justify-content: flex-start;
+                                        .ad-image {
+                                            flex: 0 0 60px;
+                                            img {
+                                                text-align: center;
+                                                margin: auto;
+                                                display: table;
+                                                width: 50px;
+                                                height: 50px;
+                                                @include round-border();
+                                            }
+                                            .mail-checkbox {
+                                                text-align: center;
+                                                .o_checkbox {
+                                                    & > input.icheckbox {
+                                                        height: 30px;
+                                                        width: 30px;
+                                                        border-radius: 50%;
+                                                    }
+                                                    & > span {
+                                                        height: 30px;
+                                                        width: 30px;
+                                                        border-radius: 50%;
+                                                    }
+                                                    & > input:checked ~ span:after {
+                                                        font-size: 24px;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        .ad-message-details {
+                                            display: block;
+                                            .ad-settings-btn {
+                                                overflow: visible;
+                                            }
+                                        }
+                                        .ad-message-body {
+                                            height: 16px;
+                                            & > * {
+                                                display: none;
+                                            }
+                                            & > p:first-child {
+                                                display: block;
+                                                text-overflow: ellipsis;
+                                                overflow: hidden;
+                                                white-space: nowrap;
+                                                margin: 0 !important;
+                                                &:not(:first-line) {
+                                                    display: none;
+                                                }
+                                            }
+                                        }
+                                        .ad-settings-btn {
+                                            .fa-ellipsis-v {
+                                                padding: 4px 8px;
+                                                box-shadow: none;
+                                                &:focus {
+                                                    box-shadow: none;
+                                                }
+                                                &[aria-expanded="true"] {
+                                                    border: 1px solid $border;
+                                                    border-bottom: none;
+                                                }
+                                            }
+                                            .dropdown-menu {
+                                                right: -3px;
+                                                left: auto;
+                                                margin: 0;
+                                                & > li {
+                                                    padding: 10px;
+                                                    width: 100%;
+                                                    height: 34px;
+                                                    & > span {
+                                                        font-family: 'Roboto';
+                                                        font-size: 13px;
+                                                    }
+                                                    & > span.oe_icon {
+                                                        display: table-cell;
+                                                        float: left;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        .row {
+                                            margin: 0;
+                                            .o_mail_redirect {
+                                                font-weight: bold;
+                                            }
+                                            .o_important .oe_icon {
+                                                background: url(/uppercrust_backend_theme/static/src/img/importance.png) no-repeat;
+                                                height: 19px;
+                                                width: 19px;
+                                                padding: 3px;
+                                            }
+                                            .o_thread_message_star {
+                                                padding: 3px;
+                                            }
+                                            .o_important.important-o .oe_icon {
+                                                background-position: -38px 0;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .o_mail_discuss.ad_mobile_conversation {
+                    .o_mail_mobile_tabs {
+                        border: 1px solid $brand-secondary;
+                        .o_mail_mobile_tab {
+                            background-color: $brand-secondary;
+                            color: $white;
+                            & > sapn {
+                                color: $white;
+                            }
+                            &.active {
+                                @include border-animation-white();
+                                background-color: $brand-secondary;
+                                & > span {
+                                    color: $white;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .o_control_panel{
+                .ad_bottom_panel{
+                    .o_cp_left{
+                        .o_cp_buttons{
+                            .o_discuss_buttons{
+                                position: fixed;
+                                right: -65px;
+                                bottom: 120px;
+                                z-index: 1111;
+                                display: block;
+                                width: auto !important;
+                                @include slide-animation();
+                                .d-none{
+                                    display: none !important;
+                                }
+                                .d-block{
+                                    display: inline-block !important;
+                                }
+                            }
+                        }
+                        &:not(.oe_ent_button){
+                            .o_cp_buttons{
+                                .o_mail_discuss_button_mark_all_read {
+                                    visibility: hidden;
+                                    font-size: $font-size-n;
+                                    z-index: 9999;
+                                    position: absolute;
+                                    bottom: 0px;
+                                    right: 15px;
+                                    width: 58px;
+                                    padding: 0 !important;
+                                    &:before {
+                                        content: "\f046";
+                                        visibility: visible !important;
+                                        float: right;
+                                        @include button-primary();
+                                    }
+                                }
+                                .o_mail_discuss_button_dm_chat, .o_mail_discuss_button_public {
+                                    visibility: hidden;
+                                    font-size: $font-size-n;
+                                    z-index: 9999;
+                                    position: absolute;
+                                    bottom: 0px;
+                                    right: 15px;
+                                    width: 58px;
+                                    padding: 0 !important;
+                                    &:before {
+                                        content: "\f067";
+                                        visibility: visible !important;
+                                        float: right;
+                                        @include button-primary();
+                                    }
+                                }
+                                .o_mail_discuss_button_unstar_all {
+                                    visibility: hidden;
+                                    font-size: $font-size-n;
+                                    z-index: 9999;
+                                    position: absolute;
+                                    bottom: 0px;
+                                    right: 15px;
+                                    width: 58px;
+                                    padding: 0 !important;
+                                    &:before {
+                                        content: "\f006";
+                                        visibility: visible !important;
+                                        float: right;
+                                        @include button-primary();
+                                    }
+                                }
+                                .o_mail_discuss_button_invite {
+                                    visibility: hidden;
+                                    font-size: $font-size-n;
+                                    z-index: 9999;
+                                    position: absolute;
+                                    bottom: 0px;
+                                    right: 15px;
+                                    width: 58px;
+                                    padding: 0 !important;
+                                    &:before {
+                                        content: "\f234";
+                                        float: right;
+                                        visibility: visible !important;
+                                        @include button-primary();
+                                    }
+                                }
+                                .o_mail_discuss_button_unsubscribe {
+                                    visibility: hidden;
+                                    font-size: $font-size-n;
+                                    z-index: 9999;
+                                    position: absolute;
+                                    bottom: 0px;
+                                    right: 15px;
+                                    width: 58px;
+                                    padding: 0 !important;
+                                    &:before {
+                                        content: "\f235";
+                                        float: right;
+                                        visibility: visible !important;
+                                        @include button-primary();
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Web - responsive view
+    .o_mail_discuss {
+        @include o-flex-display();
+        @include o-flex-flow(column, nowrap);
+        background: white;
+        .o_mail_discuss_content {
+            @include o-flex(1, 0, 0);
+            margin-left: 0;
+            background-color: transparent;
+        }
+
+        .o_mail_discuss_tab_pane {
+            overflow-x: scroll;
+            .o_mail_add_channel {
+                display: none;
+                position: relative;
+                padding: 5px 0px;
+                margin: 10px;
+                border: 1px solid $border;
+                border-radius: 4px;
+                > span {
+                    @include o-position-absolute($top: 10px, $left: 10px);
+                }
+                > input {
+                    border: none;
+                    padding: 5px 8px;
+                    padding-left: 20px;
+                }
+            }
+        }
+        .o_mail_mobile_tabs {
+            @include o-flex(0, 0, auto);
+        }
+    }
+    .o_mail_preview {
+        @include o-flex-display();
+        cursor: pointer;
+        overflow: hidden;
+        position: relative;
+        &:not(:last-child) {
+            border-bottom: 1px solid $border;
+        }
+        .o_mail_preview_image {
+            @include o-flex(0, 0, auto);
+            position: relative;
+            width: auto;
+            > img {
+                height: 100%;
+                width: 100%;
+                max-width: 50px;
+                max-height: 50px;
+                border-radius: 50%;
+                border: 1px solid $brand-secondary;
+            }
+            &.o_mail_channel_app > img {
+                border-radius: 2px;
+            }
+            .o_mail_user_status {
+                @include o-position-absolute($bottom: 0px, $right: 0px);
+            }
+        }
+        .o_preview_info {
+            @include o-flex(1, 1, 100%);
+            overflow: hidden;
+            .o_channel_title {
+                @include o-flex-display();
+                .o_preview_name {
+                    @include o-flex(0, 1, auto);
+                    @include o-text-overflow();
+                }
+                .o_preview_counter {
+                    @include o-flex(1, 1, auto);
+                }
+                .o_last_message_date {
+                    @include o-flex(0, 0, auto);
+                    font-weight: bold;
+                    color: $Label-value;
+                }
+            }
+            .o_last_message_preview {
+                width: 100%;
+                max-height: 20px;
+                @include o-text-overflow();
+            }
+        }
+        &.o_channel_unread {
+            background-color: transparent;
+            .o_preview_info {
+                .o_channel_title {
+                    .o_preview_name, .o_preview_counter {
+                        font-weight: 700;
+                    }
+                }
+            }
+        }
+    }
+
+    $o-mail-chatter-mobile-gap: 2%;
+
+    .o_main_navbar > ul.o_menu_systray > li.open .dropdown-menu {
+        border: none;
+    }
+
+    .o_mail_preview {
+        padding: $o-mail-chatter-mobile-gap;
+
+        .o_preview_info, .o_last_message_date {
+            margin-left: $o-mail-chatter-mobile-gap;
+        }
+
+        .o_preview_name {
+            font-size: 1.1em;
+        }
+
+        .o_last_message_date{
+            font-size: 0.9em;
+            font-weight: bold;
+            color: $text-muted;
+        }
+        &.o_preview_unread .o_preview_info .o_preview_title .o_last_message_date{
+            color: $brand-secondary;
+            font-weight: bold;
+        }
+
+        .o_last_message_preview {
+            margin-top: $o-mail-chatter-mobile-gap*0.5;
+        }
+    }
+
+    .o_mail_mobile_tabs {
+        @include o-flex-display();
+
+        .o_mail_mobile_tab {
+            @include o-flex-display();
+            @include o-flex(1, 1, auto);
+            width: 20%;
+            @include o-flex-flow(column, nowrap);
+            @include o-justify-content(space-between);
+            padding: $o-mail-chatter-mobile-gap $o-mail-chatter-mobile-gap*2;
+            text-align: center;
+
+            > span {
+                display: block;
+                font-weight: 500;
+                font-size: 10px;
+
+                &.fa {
+                    padding-bottom: $o-mail-chatter-mobile-gap*2;
+                    font-size: 1.3em;
+                }
+            }
+        }
+    }
+    // Web - responsive view
+
+}
+
+@mixin mail-xs-full() {
+    .o_main {
+        .ad_rightbar {
+            .o_content {
+                .o_mail_discuss:not(.ad_chat) {
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    height: 100%;
+                    top: 0;
+                    z-index: 0;
+                    @include slide-animation();
+                }
+            }
+            .o_control_panel{
+                .ad_bottom_panel{
+                    .o_cp_left{
+                        .o_cp_buttons{
+                            .o_discuss_buttons{
+                                right: 0px;
+                                @include slide-animation();
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.o_web_client.ad_mobile {
+    @include mail-xs();
+}
+
+.o_web_client.ad_mobile.ad_full_view {
+    @include mail-xs-full();
+}

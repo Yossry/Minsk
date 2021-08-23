@@ -1,0 +1,54 @@
+/*
+    @Author: KSOLVES India Private Limited
+    @Email: sales@ksolves.com
+*/
+
+.pos .quantity-count{
+    color: white;
+    line-height: 13px;
+    padding: 2px 5px;
+    border-radius: 2px;
+    font-weight: bold;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+}
+
+.pos .product{
+    transition: all 1s ease;
+}
+
+.pos .quantity-count.warn{
+    background: #EF5350;
+}
+
+.pos .quantity-count.normal{
+    background: #32a868;
+}
+
+.pos .product .overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 2;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pointer-none {
+    pointer-events: none;
+}
+
+.pos .popup.popup-error p.body {
+     white-space:pre-wrap;
+}
+
+.pos .text{
+  font-size: 15px;
+  color: black;
+  line-height: 1;
+  text-align: center;
+}

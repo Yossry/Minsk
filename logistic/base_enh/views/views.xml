@@ -1,0 +1,1055 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<record model="ir.ui.view" id="port_list_view">
+			<field name="name">Port list</field>
+			<field name="model">port</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="name" />
+					<field name="code" />
+					<field name="country_id" />
+					<field name="type" invisible="True" />
+					<field name="port_type" widget="many2many_tags" />
+					<field name="city_id" />
+					<field name="active"/>
+				</tree>
+			</field>
+		</record>
+
+
+		<record model="ir.ui.view" id="port_form_view">
+			<field name="name">port list</field>
+			<field name="model">port</field>
+			<field name="arch" type="xml">
+				<form>
+					<sheet>
+						<group>
+							<group>
+								<field name="name" />
+								<field name="code" />
+							</group>
+							<group>
+								<field name="country_id"
+									options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" />
+								<field name="port_type" widget="many2many_tags" />
+								<field name="state_id"
+									domain="[('country_id','=',country_id)]"
+									options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" />
+								<field name="type" invisible="True" />
+								<field name="city_id"
+									options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"
+									domain="[('country_id','=',country_id),'|',('state_id','=',state_id),('state_id','=',False)]" />
+							     <field name="active"/>
+							</group>
+						</group>
+					</sheet>
+					<div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                 </div>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="port_action">
+			<field name="name">Port</field>
+			<field name="res_model">port</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<!-- Extra Services views start here -->
+		<record model="ir.ui.view" id="extra_services_list_view">
+			<field name="name">Extra Services list</field>
+			<field name="model">extra.services</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="name" />
+					<field name="code" />
+					<field name="note" />
+					<field name="active" />
+				</tree>
+			</field>
+		</record>
+
+
+		<record model="ir.ui.view" id="extra_services_form_view">
+			<field name="name">Extra Services list</field>
+			<field name="model">extra.services</field>
+			<field name="arch" type="xml">
+				<form>
+					<sheet>
+						<group>
+							<group>
+								<field name="name" />
+								<field name="code" />
+							</group>
+							<group>
+								<field name="active" />
+							</group>
+						</group>
+						<group>
+							<field name="note" />
+						</group>
+					</sheet>
+					<div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                 </div>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window"
+			id="extra_services_action">
+			<field name="name">Extra Services</field>
+			<field name="res_model">extra.services</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+		<!-- Extra Services end here -->
+		<!-- Warehouse views start here -->
+		<record model="ir.ui.view" id="warehouse_list_view">
+			<field name="name">Ware House list</field>
+			<field name="model">ware.house</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="name" />
+					<field name="code" />
+					<field name="type" />
+					<field name="terminal_code"
+						attrs="{'invisible':[('type','=','bonded')]}" />
+				</tree>
+			</field>
+		</record>
+
+
+		<record model="ir.ui.view" id="warehouse_form_view">
+			<field name="name">Warehouse list</field>
+			<field name="model">ware.house</field>
+			<field name="arch" type="xml">
+				<form>
+					<sheet>
+						<field name="image" widget="image" class="oe_avatar" />
+						<group>
+							<group>
+								<field name="name" />
+								<field name="code" />
+								<field name="image_attachment" />
+							</group>
+							<group>
+								<field name="type" required="True" />
+								<field name="terminal_code"
+									attrs="{'invisible':['|',('type','=','bonded'),('type','=','others')],
+									       'required':[('type','=','terminal')]}" />
+								<field name='address'
+									attrs="{'invisible':['|',('type','=','bonded'),('type','=','terminal')],
+									'required':[('type','=','others')]}" />
+								<field name="active" />
+							</group>
+						</group>
+						<group string="Location Details">
+						  <group>
+						      <field name="country_id"
+						              options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"
+						              required="True"/>
+						      <field name="state_id"
+						              options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"
+						              domain="[('country_id','=',country_id)]" />
+						      <field name="city_id"
+						              options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"
+						               domain="[('country_id','=',country_id),'|',('state_id','=',state_id),('state_id','=',False)]"
+						               required="True"/>
+						      <field name="place_id"
+						             attrs="{'invisible':[('type','not in',['others'])],'required':[('type','=','others')]}"
+						             options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"
+						             domain="[('country_id','=',country_id),('city_id','=',city_id),('is_port','=',False)]"/>
+						      <field name="port_id"
+						             attrs="{'invisible':[('type','not in',['terminal'])],'required':[('type','=','terminal')]}"
+						             options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"
+						             domain="[('country_id','=',country_id),('city_id','=',city_id)]"/>
+						      <field name="terminal_id"
+						             attrs="{'invisible':[('type','not in',['terminal'])],'required':[('type','=','terminal')]}"
+						             options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"
+						             domain="[('port_id','=',port_id),('port_id','!=',False)]"/>
+						  </group>
+						</group>
+						<group>
+							<field name="note" />
+						</group>
+					</sheet>
+					<div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                 </div>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="warehouse_action">
+			<field name="name">Warehouse</field>
+			<field name="res_model">ware.house</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+		<!-- Warehouse views end here -->
+
+		<!-- MIT Company views start here -->
+		<record model="ir.ui.view" id="mit_companies_list_view">
+			<field name="name">MIT Companies list</field>
+			<field name="model">mit.companies</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="company_No" />
+					<field name="name" />
+					<field name="type" />
+					<field name="capital" />
+					<field name="registration_date" />
+					<field name="city_id" />
+					<field name="phone" />
+					<field name="mobile" />
+					<field name="HQ" />
+					<field name="po_box" />
+					<field name="postal_code" />
+					<field name="Email" />
+					<field name="org_national_no" />
+					<!-- <field name="active" /> -->
+				</tree>
+			</field>
+		</record>
+
+
+		<record model="ir.ui.view" id="mit_companies_form_view">
+			<field name="name">MIT Companies list</field>
+			<field name="model">mit.companies</field>
+			<field name="arch" type="xml">
+				<form>
+					<sheet>
+						<div class="oe_button_box" name="button_box">
+							<button name="get_trade_name" type="object"
+								class="oe_stat_button" icon="fa-pencil" string="Trade Name">
+								<!-- (If you want to display the count)<field name="field_name_for_count" 
+									widget="statinfo" string="You String Name" /> -->
+							</button>
+						</div>
+						<group>
+							<group>
+								<field name="company_No" />
+								<field name="name" />
+								<field name="type" />
+								<field name="capital" />
+							</group>
+							<group>
+								<field name="registration_date" />
+								<field name="city_id" domain="[('country_id','=',112)]" />
+								<field name="phone" />
+								<field name="mobile" />
+							</group>
+							<group>
+								<field name="HQ" />
+								<field name="po_box" />
+								<field name="postal_code" />
+								<!-- <field name="type_flag" /> -->
+							</group>
+							<group>
+								<field name="Email" />
+								<field name="org_national_no" />
+								<field name="active" />
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="mit_companies_action">
+			<field name="name">MIT Companies Action</field>
+			<field name="res_model">mit.companies</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<!-- MIT views end here -->
+
+		<!-- Trade name views start here -->
+		<record model="ir.ui.view" id="trade_name_list_view">
+			<field name="name">Trade Name list</field>
+			<field name="model">trade.name</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="trade_No" />
+					<field name="city_id" />
+					<field name="type" />
+					<field name="registration_No" />
+					<field name="trade_name" />
+					<field name="registration_date" />
+					<field name="state" />
+					<field name="owner" />
+					<field name="active" />
+				</tree>
+			</field>
+		</record>
+
+
+		<record model="ir.ui.view" id="trade_name_form_view">
+			<field name="name">Trade Name list</field>
+			<field name="model">trade.name</field>
+			<field name="arch" type="xml">
+				<form>
+					<sheet>
+						<group>
+							<group>
+								<field name="trade_No" />
+								<field name="city_id" domain="[('country_id','=',112)]" />
+								<field name="type" />
+								<field name="registration_No" />
+							</group>
+							<group>
+							    <field name="active" />
+								<field name="trade_name" />
+								<field name="registration_date" />
+								<field name="state" />
+								<field name="owner" />
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="trade_name_action">
+			<field name="name">Trade Name Action</field>
+			<field name="res_model">trade.name</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<!-- Trade name views end here -->
+
+		<!-- Importer card views start here -->
+		<record model="ir.ui.view" id="importer_card_list_view">
+			<field name="name">Importer Card list</field>
+			<field name="model">importer.card</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="card_No" />
+					<field name="name" />
+					<field name="issue_date" />
+					<field name="expiry_date" />
+				</tree>
+			</field>
+		</record>
+
+
+		<record model="ir.ui.view" id="importer_card_form_view">
+			<field name="name">Importer Card list</field>
+			<field name="model">importer.card</field>
+			<field name="arch" type="xml">
+				<form>
+					<sheet>
+						<group>
+							<group>
+								<field name="card_No" />
+								<field name="name" />
+							</group>
+							<group>
+								<field name="issue_date" />
+								<field name="expiry_date" />
+								<field name="active" />
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="importer_card_action">
+			<field name="name">Importer Card Action</field>
+			<field name="res_model">importer.card</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<!-- importer card name views end here -->
+
+		<!-- individual estableshment views start here -->
+		<record model="ir.ui.view"
+			id="individual_establishment_list_view">
+			<field name="name">Individual Establishment list</field>
+			<field name="model">individual.establishment</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="ind_No" />
+					<field name="city_id" />
+					<field name="registeration_date" />
+					<field name="capital" />
+					<field name="owner_nationality" />
+					<field name="state" />
+					<field name="status_date" />
+					<field name="National_ID" />
+					<field name="establishment_name" />
+					<field name="trade_name" />
+					<field name="place_id" />
+					<field name="street" />
+					<field name="active" />
+				</tree>
+			</field>
+		</record>
+
+
+		<record model="ir.ui.view"
+			id="individual_establishment_form_view">
+			<field name="name">Individual Establishment list</field>
+			<field name="model">individual.establishment</field>
+			<field name="arch" type="xml">
+				<form>
+					<sheet>
+						<group>
+							<group>
+								<field name="ind_No" />
+								<field name="city_id" domain="[('country_id','=',112)]" />
+								<field name="registeration_date" />
+								<field name="capital" />
+							</group>
+							<group>
+							    <field name="active" />
+								<field name="owner_nationality" />
+								<field name="state" />
+								<field name="status_date" />
+								<field name="National_ID" />
+							</group>
+							<group>
+								<field name="establishment_name" />
+								<field name="trade_name" />
+							</group>
+							<group>
+								<field name="place_id" />
+								<field name="street" />
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window"
+			id="individual_establishment_action">
+			<field name="name">Individual Establishment Action</field>
+			<field name="res_model">individual.establishment</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<!-- Individual Establishment views end here -->
+
+		<!-- <menuitem name="Locations" id="location_menu" parent="contacts.menu_contacts" 
+			/> -->
+
+
+
+
+
+
+
+		<!-- MIT Companies Menu Top Menu -->
+		<menuitem name="MIT Info" id="mitInfo_menu"
+			parent="contacts.menu_contacts" />
+
+		<menuitem name="MIT Companies" id="mit_companies_menu"
+			parent="mitInfo_menu" action="mit_companies_action" />
+
+		<menuitem name="Trade Name" id="trade_name_menu"
+			parent="mitInfo_menu" action="trade_name_action" />
+
+		<menuitem name="Importer Card" id="importer_card_menu"
+			parent="mitInfo_menu" action="importer_card_action" />
+
+		<menuitem name="Individual Establishment"
+			id="individual_establishment_menu" parent="mitInfo_menu"
+			action="individual_establishment_action" />
+        
+        
+    
+			
+			
+		 <record model="ir.ui.view" id="view_res_partner_filter">
+			<field name="name">res.partner</field>
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="base.view_res_partner_filter" />
+			<field name="arch" type="xml">
+			<xpath expr="//field[@name='parent_id']" position="after">
+				<filter string="My Contact" name="my_contact" domain="[('sale_person_ids.user_id','=',uid)]"/>
+                   <separator/>
+				</xpath>
+			
+			
+			</field>
+			</record>
+			
+			
+		<record model="ir.ui.view" id="res_partner_form_view">
+			<field name="name">res.partner</field>
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="base.view_partner_form" />
+			<field name="arch" type="xml">
+
+				<button name="toggle_active" position="before">
+					<button type="object" string="vessels"
+						class="oe_stat_button" icon="fa-ship" name="open_vessels"
+						attrs="{'invisible':[('customer','=',True)]}">
+					</button>
+				</button>
+				
+				<xpath expr="//notebook//page[@name='sales_purchases']//group[1]//group[3]" position="attributes">
+				<attribute name="invisible">1</attribute>
+				</xpath>
+				
+				<xpath expr="//field[@name='zip']" position="attributes">
+				<attribute name="placeholder">ZIP/Postal Code</attribute>
+				</xpath>
+				
+				<xpath expr="//field[@name='city']" position="after">
+					<field name="country_enforce_cities" invisible="1" />
+					<field name='city_id' placeholder="City"
+						class="o_address_city"
+						context="{'default_country_id': country_id,
+                              'default_name': city,
+                              'default_zipcode': zip,
+                              'default_state_id': state_id}"
+						domain="[('country_id', '=', country_id),'|',('state_id','=',state_id),('state_id','=',False)]"
+						attrs="{'invisible': [('country_enforce_cities', '=', False)]}" 
+                        options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+				</xpath>
+                
+                <xpath
+                    expr="//field[@name='category_id']"
+                    position="attributes">
+                    <attribute name="options">{'no_create_edit': True, 'no_create': True, 'no_open': True}
+                    </attribute>
+                </xpath>
+                <xpath
+                    expr="//field[@name='state_id']"
+                    position="attributes">
+                    <attribute name="options">{'no_create_edit': True, 'no_create': True, 'no_open': True}
+                    </attribute>
+                </xpath>
+				<xpath expr="//field[@name='vat']" position="before">
+					<field name="local_name" />
+				</xpath>
+				
+				<xpath
+					expr="//notebook//page[1]//field[@name='child_ids']//form//field[@name='comment']"
+					position="after">
+					<field name="customs_id" />
+
+				</xpath>
+				<xpath
+					expr="//notebook//page[1]//field[@name='child_ids']//form//field[@name='function']"
+					position="replace">
+					<field name="job_position_id" />
+
+				</xpath>
+				<xpath
+					expr='//kanban/templates/t/div/div/div[@t-if="record.function.raw_value"]'
+					position="replace">
+					<div t-if="record.job_position_id.raw_value">
+						<field name="job_position_id" />
+					</div>
+				</xpath>
+				<xpath
+					expr="//notebook//page[3]//group[@name='container_row_2']"
+					position="inside">
+					<label for="sale_person_ids" string="Related User"/>
+						<field name="sale_person_ids">
+							<tree editable="botton">
+								<field name="user_id"
+									options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" />
+								<field name="type" />
+								<field name="from_date" />
+								<field name="to_date" />
+								<field name="is_active" />
+							</tree>
+							<form></form>
+						</field>
+				</xpath>
+				
+                <xpath
+                    expr="//notebook//page[3]//field[@name='customer']"
+                    position="attributes">
+                    <attribute name="attrs">{'invisible':['|','|',('is_diver','=',True),('is_customs_point','=',True),('is_depot','=',True)]}
+                    </attribute>
+                </xpath>
+                <xpath
+                    expr="//notebook//page[3]//field[@name='supplier']"
+                    position="attributes">
+                    <attribute name="attrs">{'invisible':['|','|',('is_diver','=',True),('is_customs_point','=',True),('is_depot','=',True)]}
+                    </attribute>
+                </xpath>
+                
+				<xpath expr="//notebook//page[3]//group[@name='purchase']"
+					position="inside">
+					
+					<field name="is_courier"/>
+					<field name="is_shipper"
+						 attrs="{'invisible':['|','|',
+                                                       ('is_diver','=',True),
+                                                       ('is_customs_point','=',True),
+                                                       ('is_depot','=',True)]}"/>
+					<field name="is_consignee"
+						attrs="{'invisible':['|','|',
+                                                       ('is_diver','=',True),
+                                                       ('is_customs_point','=',True),
+                                                       ('is_depot','=',True)]}"/>
+					<field name="is_notify"
+						 attrs="{'invisible':['|','|',
+                                                       ('is_diver','=',True),
+                                                       ('is_customs_point','=',True),
+                                                       ('is_depot','=',True)]}"/>
+					<field name="is_agent"
+						 attrs="{'invisible':['|','|',
+                                                       ('is_diver','=',True),
+                                                       ('is_customs_point','=',True),
+                                                       ('is_depot','=',True)]}"/>
+					<field name="is_diver" 
+					       attrs="{'invisible':['|','|','|','|','|','|','|','|','|','|','|',
+					                                   ('customer','=',True),
+					                                   ('supplier','=',True),
+					                                   ('is_shipper','=',True),
+					                                   ('is_consignee','=',True),
+					                                   ('is_notify','=',True),
+					                                   ('is_sea_line','=',True),
+					                                   ('is_air_line','=',True),
+					                                   ('is_clearance_company','=',True),
+					                                   ('is_transporter_company','=',True),
+					                                   ('is_insurance_company','=',True),
+					                                   ('is_depot','=',True),
+					                                   ('is_customs_point','=',True)]}"/>
+					<!-- <field name="driver_id" /> -->
+					<field name="is_customs_point"
+						attrs="{'invisible':['|','|','|','|','|','|','|','|','|','|','|',
+						                         ('customer','=',True),
+						                         ('supplier','=',True),
+						                         ('is_shipper','=',True),
+						                         ('is_consignee','=',True),
+						                         ('is_notify','=',True),
+						                         ('is_sea_line','=',True),
+						                         ('is_air_line','=',True),
+						                         ('is_clearance_company','=',True),
+						                         ('is_transporter_company','=',True),
+						                         ('is_insurance_company','=',True),
+						                         ('is_diver','=',True),
+						                         ('is_depot','=',True)]}" />
+					<field name="is_competitor" 
+					       attrs="{'invisible':['|','|','|','|','|','|','|','|','|','|','|','|',
+					                                    ('customer','=',True),
+					                                    ('supplier','=',True),
+					                                    ('is_shipper','=',True),
+					                                    ('is_consignee','=',True),
+					                                    ('is_notify','=',True),
+					                                    ('is_sea_line','=',True),
+					                                    ('is_air_line','=',True),
+					                                    ('is_clearance_company','=',True),
+					                                    ('is_transporter_company','=',True),
+					                                    ('is_insurance_company','=',True),
+					                                    ('is_diver','=',True),
+					                                    ('is_depot','=',True),
+					                                    ('is_customs_point','=',True)]}"/>
+					<field name="is_sea_line"
+						attrs="{'invisible':['|','|','|','|','|','|','|','|','|','|',
+						                         ('supplier','=',True),
+						                         ('is_shipper','=',True),
+                                                 ('is_consignee','=',True),
+                                                 ('is_notify','=',True),
+                                                 ('is_air_line','=',True),
+                                                 ('is_clearance_company','=',True),
+                                                 ('is_transporter_company','=',True),
+                                                 ('is_insurance_company','=',True),
+                                                 ('is_diver','=',True),
+                                                 ('is_depot','=',True),
+                                                 ('is_customs_point','=',True)]}" />
+					<field name="is_air_line"
+						attrs="{'invisible':['|','|','|','|','|','|','|','|','|','|',
+						                         ('supplier','=',True),
+						                         ('is_shipper','=',True),
+                                                 ('is_consignee','=',True),
+                                                 ('is_notify','=',True),
+                                                 ('is_sea_line','=',True),
+                                                 ('is_clearance_company','=',True),
+                                                 ('is_transporter_company','=',True),
+                                                 ('is_insurance_company','=',True),
+                                                 ('is_diver','=',True),
+                                                 ('is_depot','=',True),
+                                                 ('is_customs_point','=',True)]}" />
+					<field name="is_clearance_company"
+						attrs="{'invisible':['|','|','|','|','|','|','|','|','|','|',
+						                         ('supplier','=',True),
+						                         ('is_shipper','=',True),
+                                                 ('is_consignee','=',True),
+                                                 ('is_notify','=',True),
+                                                 ('is_sea_line','=',True),
+                                                 ('is_air_line','=',True),
+                                                 ('is_transporter_company','=',True),
+                                                 ('is_insurance_company','=',True),
+                                                 ('is_diver','=',True),
+                                                 ('is_depot','=',True),
+                                                 ('is_customs_point','=',True)]}" />
+					<field name="is_transporter_company"
+						attrs="{'invisible':['|','|','|','|','|','|','|','|','|','|',
+						                         ('supplier','=',True),
+						                         ('is_shipper','=',True),
+                                                 ('is_consignee','=',True),
+                                                 ('is_notify','=',True),
+                                                 ('is_sea_line','=',True),
+                                                 ('is_air_line','=',True),
+                                                 ('is_clearance_company','=',True),
+                                                 ('is_insurance_company','=',True),
+                                                 ('is_diver','=',True),
+                                                 ('is_depot','=',True),
+                                                 ('is_customs_point','=',True)]}" />
+					<field name="is_insurance_company"
+						attrs="{'invisible':['|','|','|','|','|','|','|','|','|','|',
+						                         ('supplier','=',True),
+						                         ('is_shipper','=',True),
+                                                 ('is_consignee','=',True),
+                                                 ('is_notify','=',True),
+                                                 ('is_sea_line','=',True),
+                                                 ('is_air_line','=',True),
+                                                 ('is_clearance_company','=',True),
+                                                 ('is_transporter_company','=',True),
+                                                 ('is_diver','=',True),
+                                                 ('is_depot','=',True),
+                                                 ('is_customs_point','=',True)]}" />
+					<field name="is_depot" 
+					       attrs="{'invisible':['|','|','|','|','|','|','|','|','|','|','|',
+					                                    ('customer','=',True),
+					                                    ('supplier','=',True),
+					                                    ('is_shipper','=',True),
+					                                    ('is_consignee','=',True),
+					                                    ('is_notify','=',True),
+					                                    ('is_sea_line','=',True),
+					                                    ('is_air_line','=',True),
+					                                    ('is_clearance_company','=',True),
+					                                    ('is_transporter_company','=',True),
+					                                    ('is_insurance_company','=',True),
+					                                    ('is_diver','=',True),
+					                                    ('is_customs_point','=',True)]}"/>
+				</xpath>
+
+				<!-- <xpath expr="//group[1]/group[2]" position="inside">
+					<field name="cheek_name" />
+				</xpath> -->
+				<!-- google map -->
+				<xpath expr="//notebook" position="inside">
+					<page string="Map" name="partner_geo_map">
+						<field name="google_map_partner" widget="map" nolabel="1" />
+					</page>
+				</xpath>
+				<xpath expr="//notebook" position="inside">
+				    <page string="Airline" attrs="{'invisible':[('is_air_line','=',False)]}">
+    				    <group>
+        				    <group>
+        				        <field name="iata_code"/>
+        				        <field name="cass_code"/>
+        				        <field name="icao_code"/>
+        				    </group>
+    				    </group>
+				    </page>
+				</xpath>
+				<xpath expr="//notebook" position="inside">
+
+					<!-- <page string="Products"> <field name="product_ids"> <tree> <field 
+						name="display_name" /> </tree> </field> </page> -->
+					<page string="Commodity">
+						<field name="commodity_ids">
+							<tree>
+								<field name="name" />
+							</tree>
+						</field>
+					</page>
+					<page string="Phone Numbers">
+						<field name="phone_ids">
+							<tree editable="botton">
+								<field name="name" />
+								<field name="note" />
+							</tree>
+						</field>
+					</page>
+					<page string="Driver">
+						<group>
+							<group>
+								<field name="plate_code" />
+								<field name="plate_number" />
+								<field name="country_nati_id" />
+								<field name="country_truck_id" />
+
+							</group>
+						</group>
+					</page>
+
+					<page string="Sea Line"
+						attrs="{'invisible':[('customer','=',True)]}">
+						<field name="sea_ids">
+							<tree editable="botton">
+								<field name="container_size_id" />
+								<field name="type" />
+								<field name="free_days" />
+								<field name="first_demurrage_from" />
+								<field name="first_demurrage_to" 
+								       attrs="{'required': [('type', 'in', ['import','export'])]}"/>
+								<field name="first_rate" 
+								       attrs="{'required': [('type', 'in', ['import','export'])]}"/>
+								<field name="second_demurrage_from" />
+								<field name="second_demurrage_to" 
+								       attrs="{'required': [('type', 'in', ['import','export'])]}"/>
+								<field name="second_rate" 
+								       attrs="{'required': [('type', 'in', ['import','export'])]}"/>
+								<field name="third_demurrage_from" />
+								<field name="third_demurrage_to" />
+								<field name="third_rate" attrs="{'required': [('type', 'in', ['import','export'])]}"/>
+								<field name="delivery_order" />
+								<field name="agency" />
+								<field name="currency_id" />
+							</tree>
+						</field>
+
+						<group>
+							<group>
+								<field name="bill_fees" />
+								<field name="release_to_bill" />
+								<field name="amendment_fees" />
+								<field name="late_payment" />
+
+							</group>
+						</group>
+					</page>
+				</xpath>
+
+				<xpath expr="//notebook//page[3]//group[@name='sale']"
+					position="inside">
+					<field name="customer_class_id" />
+					<field name="customs_id" />
+				</xpath>
+			</field>
+		</record>
+		
+		<!-- <record model="ir.ui.view" id="hr_employee_form_view"> <field name="name">Employees</field> 
+			<field name="model">hr.employee</field> <field name="inherit_id" ref="hr.view_employee_form" 
+			/> <field name="arch" type="xml"> <xpath expr="//notebook//page[2]//group[1]//group[2]//field[@name='bank_account_id'" 
+			position="after"> <field name="local_name" /> </xpath> </field> </record> -->
+
+		<record model="ir.ui.view" id="res_city_form_view">
+			<field name="name">res.city</field>
+			<field name="model">res.city</field>
+			<field name="inherit_id" ref="base_address_city.view_city_tree" />
+			<field name="arch" type="xml">
+
+				<field name="zipcode" position="replace" />
+				<field name="state_id" position="attributes">
+					<attribute name="domain">[('country_id','=',country_id)]
+					</attribute>
+				</field>
+				<field name="country_id" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</field>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="product_template_form_view">
+			<field name="name">product.template</field>
+			<field name="model">product.template</field>
+			<field name="inherit_id"
+				ref="product.product_template_form_view" />
+			<field name="arch" type="xml">
+
+				<div name="options" position="inside">
+					<div>
+						<field name="is_discount" />
+						<label for="is_discount" />
+					</div>
+					<div>
+						<field name="is_add_cost" />
+						<label for="is_add_cost" />
+					</div>
+
+				</div>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="product_normal_form_view">
+			<field name="name">product.product</field>
+			<field name="model">product.product</field>
+			<field name="inherit_id" ref="product.product_normal_form_view" />
+			<field name="arch" type="xml">
+
+				<xpath expr="//notebook" position="inside">
+					<page string="Commodity">
+						<group>
+							<group>
+								<field name="temperature" />
+								<field name="warehouse_condition" />
+								<field name="warehouse_condition_att" />
+								<field name="transport_condition" />
+								<field name="transport_condition_att" />
+								<field name="port_condition" />
+								<field name="port_condition_att" />
+								<field name="other_condition" />
+								<field name="other_condition_att" />
+
+							</group>
+						</group>
+
+
+					</page>
+
+
+				</xpath>
+			</field>
+		</record>
+
+		<record id="open_cities_of_state" model="ir.actions.act_window">
+			<field name="name">Cities</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">res.city</field>
+			<field name="view_type">form</field>
+			<field name="view_id" ref="base_address_city.view_city_tree" />
+			<field name="domain">[('state_id','=',active_id)]</field>
+			<field name="target">current</field>
+		</record>
+	    
+        
+        <!-- crm action -->
+        <!-- <record id="crm.crm_case_form_view_oppor" model="ir.actions.act_window">
+            <button string="New Quotation" name="475" type="action" class="oe_highlight" 
+                    attrs="{'invisible': ['&amp;', ('probability', '=', 0), ('active', '=', False)]}" 
+                    context="{'search_default_partner_id': partner_id,'default_partner_id': partner_id,'default_team_id': team_id,'default_campaign_id': campaign_id,'default_medium_id': medium_id,'default_origin': name,'default_source_id': source_id}"
+                    invisible="1"/>
+        </record> -->
+        <!-- <record model="ir.ui.view" id="crm_inherit_form_view">
+            <field name="name">crm.lead</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_form_view_oppor" />
+            <field name="arch" type="xml">
+            <button string="New Quotation" name="475" type="action" class="oe_highlight" 
+                    attrs="{'invisible': ['&amp;', ('probability', '=', 0), ('active', '=', False)]}" 
+                    context="{'search_default_partner_id': partner_id,'default_partner_id': partner_id,'default_team_id': team_id,'default_campaign_id': campaign_id,'default_medium_id': medium_id,'default_origin': name,'default_source_id': source_id}"
+                    invisible="1"/>
+            </field>
+        </record> -->
+        
+		<record model="ir.ui.view" id="view_country_form">
+			<field name="name">res.country</field>
+			<field name="model">res.country</field>
+			<field name="inherit_id" ref="base.view_country_form" />
+			<field name="arch" type="xml">
+
+				<xpath expr="//field[@name='state_ids']//tree"
+					position="inside">
+					<field name="country_id" invisible="1" />
+					<button
+						context="{'default_state_id':active_id,'default_country_id':country_id}"
+						name="%(open_cities_of_state)d" string='Open Cities' type='action' />
+
+
+				</xpath>
+			</field>
+		</record>
+
+
+		<record model="ir.ui.view" id="view_employee_form">
+			<field name="name">hr.employee</field>
+			<field name="model">hr.employee</field>
+			<field name="inherit_id" ref="hr.view_employee_form" />
+			<field name="arch" type="xml">
+				<xpath
+					expr="//notebook//page[@name='personal_information']//field[@name='visa_expire']"
+					position="after">
+					<field name="social_security_no" />
+					<field name="tax_registration_no" />
+					<field name="health_care_insurance_no" />
+					<field name="national_id_card_no" />
+					<field name="national_register_no" />
+					<field name="has_us_citizenship" />
+					<field name="has_diseases" />
+					<field name="diseases_medications_ids" attrs="{'invisible':[('has_diseases','!=',True)]}">
+						<tree editable="botton">
+							<field name="diseases"/>
+							<field name="medications"/>
+						</tree>
+						<form></form>
+
+					</field>
+				</xpath>
+
+				<xpath expr="//notebook//page[2]" position="inside">
+					<label for="travels_ids" />
+					<field name="travels_ids">
+						<tree editable="botton">
+							<field name="country_from_id"
+								options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" />
+							<field name="country_to_id"
+								options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" />
+							<field name="date_of_departure" />
+							<field name="date_of_arrival" />
+							<field name="reason" />
+						</tree>
+					</field>
+				</xpath>
+			</field>
+		</record>
+
+
+		<record model="ir.ui.view"
+			id="view_employee_form_inherit_hr_attendance">
+			<field name="name">hr.employee</field>
+			<field name="model">hr.employee</field>
+			<field name="inherit_id"
+				ref="hr_attendance.view_employee_form_inherit_hr_attendance" />
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='pin']" position="attributes">
+					<attribute name="password">True</attribute>
+
+				</xpath>
+
+			</field>
+		</record>
+
+
+
+
+
+		<record model="ir.ui.view"
+			id="view_res_country_city_extended_form">
+			<field name="name">res.country</field>
+			<field name="model">res.country</field>
+			<field name="inherit_id"
+				ref="base_address_city.view_res_country_city_extended_form" />
+			<field name="arch" type="xml">
+				<xpath
+					expr="//button[@name='%(base_address_city.action_res_city_tree)d']"
+					position="attributes">
+					<attribute name="attrs">{'invisible':[('state_ids','!=',[])]}
+					</attribute>
+				</xpath>
+			</field>
+		</record>
+
+
+
+
+		<record model="ir.ui.view"
+			id="helpdesk_ticket_view_form">
+			<field name="name">helpdesk.ticket</field>
+			<field name="model">helpdesk.ticket</field>
+			<field name="inherit_id"
+				ref="helpdesk.helpdesk_ticket_view_form" />
+			<field name="arch" type="xml">
+				<xpath
+					expr="//field[@name='priority']"
+					position="after">
+					<field name="job_id" options="{'no_create':True,'no_create_edit':True,'no_open':True}"/>
+				</xpath>
+			</field>
+		</record>
+
+
+
+	</data>
+</odoo>

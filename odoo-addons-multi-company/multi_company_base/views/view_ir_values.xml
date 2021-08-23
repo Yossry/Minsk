@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="view_ir_values_search" model="ir.ui.view">
+        <field name="model">ir.values</field>
+        <field name="inherit_id" ref="base.values_view_search_action" />
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="company_id" groups="base.group_multi_company"/>
+                <filter name="company_id" string="Company" context="{'group_by':'company_id'}" groups="base.group_multi_company"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_ir_values_form" model="ir.ui.view">
+        <field name="model">ir.values</field>
+        <field name="inherit_id" ref="base.values_view_tree_action" />
+        <field name="arch" type="xml">
+            <field name="key2" position="after">
+                <field name="company_id" groups="base.group_multi_company"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

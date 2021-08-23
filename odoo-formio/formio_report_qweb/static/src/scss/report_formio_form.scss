@@ -1,0 +1,42 @@
+.formio_header {
+    padding: 4px;
+    border-bottom: 1px solid #d8d8d8;
+}
+
+/* Input components */
+
+.formio_text_component p,
+.formio_select_component div.value_container,
+.formio_component_not_implemented div.raw_value {
+    border: 1px solid #d8d8d8;
+    padding: 4px;
+    padding-left: 8px;
+}
+
+.formio_select_component div span.badge {
+    border: 1px solid #d8d8d8;
+    margin-right: 4px;
+    font-size: 0.9em;
+}
+
+/* Layout components */
+
+.formio_components > table td {
+    border: none;
+}
+
+.formio_panel_component {
+    border: 1px solid #f0f0f0;
+}
+
+.formio_panel_component p {
+    padding: 8px;
+    background-color: #f0f0f0;
+}
+
+/* Component not implemented */
+
+.formio_component_not_implemented small {
+    color: #808080;
+    font-style: italic;
+}

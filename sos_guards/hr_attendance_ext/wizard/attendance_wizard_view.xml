@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_attendance_wizard" model="ir.ui.view">
+            <field name="name">Attendance Wizard</field>
+            <field name="model">attendance.wizard</field>
+            <field name="arch" type="xml">
+            <form string="Attendance">
+                <footer>
+                    <button name="print_report" string="Print" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel" />
+                </footer>
+                <group>
+                    <field name="date"/>
+                </group>
+                
+                <group>
+                	<field name="employee_ids" strong="Employee" context="{'tree_view_ref': 'hr_ext.view_employee_wizard_tree'}"/>
+                </group>                
+                
+            </form>
+            </field>
+        </record>
+
+        <record id="action_attendance_wizard" model="ir.actions.act_window">
+            <field name="name">Attendance Report</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">attendance.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        
+    </data>
+</odoo>

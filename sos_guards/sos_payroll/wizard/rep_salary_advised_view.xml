@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_salary_advised" model="ir.ui.view">
+            <field name="name">Salary Advised</field>
+            <field name="model">salary.advised</field>
+            <field name="arch" type="xml">
+            <form string="Salary Advised">
+                <label for="date_from" string="This wizard will print report which displays Advised Salary for specified dates."/>
+                <footer>
+                    <button name="print_report" string="Print" type="object" class="oe_highlight"/>
+                        or
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+                <group>
+                    <field name="date_from"/>
+                    <field name="date_to"/>                    
+                    <field name="report_name"/>   
+                </group>
+            </form>
+            </field>
+        </record>
+
+        <record id="action_salary_advised" model="ir.actions.act_window">
+            <field name="name">Salary Advised</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">salary.advised</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+		
+        <menuitem name="Advised Salary" parent="sos_payroll.menu_salary_reporting" sequence="31" action="action_salary_advised" id="menu_salary_advised"/>
+        
+        
+    </data>
+</odoo>

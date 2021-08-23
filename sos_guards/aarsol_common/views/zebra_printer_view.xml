@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+     <template id="assets_backend" name="aarsol common" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/aarsol_common/static/src/lib/rsvp-3.1.0.min.js"></script>
+            <script type="text/javascript" src="/aarsol_common/static/src/lib/sha-256.min.js"></script>
+            <script type="text/javascript" src="/aarsol_common/static/src/lib/qz-tray.js"></script>
+            <script type="text/javascript" src="/aarsol_common/static/src/lib/jsrsasign-latest-all-min.js"></script>
+            <script type="text/javascript" src="/aarsol_common/static/src/lib/jsrsasign-latest-all-min.js"></script>
+            <script type="text/javascript" src="/aarsol_common/static/src/lib/rsvp-3.1.0.min.js"></script>
+            <script type="text/javascript" src="/aarsol_common/static/src/lib/sha-256.min.js"></script>
+            <script type="text/javascript" src="/aarsol_common/static/src/lib/qz-tray.js"></script>
+            <script type="text/javascript" src="/aarsol_common/static/src/js/qweb_action_manager.js" />
+        </xpath>
+    </template>
+</odoo>

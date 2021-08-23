@@ -1,0 +1,18 @@
+<openerp>
+  <data>
+      <record id="view_employee_form_inherit" model="ir.ui.view">
+            <field name="name">view.employee.form.add.text.field</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='category_ids']" position="before">
+                    <group>
+                        <field name="password" placeholder="contraseña"/>
+                        <field name="rol_type" string="Tipo Usuario LXTrack"/>
+                    </group>
+                </xpath>
+            </field>
+    </record>
+
+  </data>
+</openerp>

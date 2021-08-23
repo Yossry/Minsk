@@ -1,0 +1,65 @@
+// Setting View - Start
+.o_base_settings {
+    .o_control_panel {
+        .o_panel {
+            .o_setting_search {
+                .searchInput {
+                    border: none;
+                    padding-left: 10px;
+                    &:focus {
+                        @include border-animation();
+                    }
+                }
+            }
+        }
+    }
+    .o_setting_container {
+        .settings_tab {
+            background: $white;
+            border-right: 1px solid $border;
+            div.tab {
+                align-items: center;
+                justify-content: flex-start;
+                .icon {
+                    height: 23px;
+                }
+                .app_name {
+                    color: $normal-color;
+                    white-space: nowrap;
+                }
+                &.selected, &:hover {
+                    background-color: $brand-optinal;
+                    box-shadow: inset 3px 0 0 $brand-primary;
+                }
+            }
+        }
+        .settings {
+            & > .app_settings_block {
+                h2 {
+                    background-color: transparent;
+                    border-bottom: none;
+                    margin: 0px 17px;
+                    text-transform: uppercase;
+                    padding-left: 0px;
+                    &:before {
+                        content: '';
+                        display: inline-block;
+                        width: 0;
+                        height: 0;
+                        vertical-align: middle;
+                        border: 8px solid $brand-secondary;
+                        float: left;
+                        margin-right: 10px;
+                    }
+                }
+            }
+        }
+        .o_setting_box {
+            .o_setting_right_pane {
+                border: none;
+            }
+        }
+    }
+}
+
+// Serting View - Stop

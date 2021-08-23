@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        
+        <record id="clv_history_marker_view_form_mfile" model="ir.ui.view">
+            <field name="name">clv.history_marker.form</field>
+            <field name="model">clv.history_marker</field>
+            <field name="inherit_id" ref="clv_history_marker.clv_history_marker_view_form"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <page name="marker_for" position="inside">
+                    <group string="Media Files">
+                        <field name="mfile_ids" colspan="4" nolabel="1"/>
+                    </group>
+                </page>
+            </field>
+        </record>
+
+        <record id="clv_mfile_view_form_history_marker" model="ir.ui.view">
+            <field name="name">clv.mfile.form</field>
+            <field name="model">clv.mfile</field>
+            <field name="inherit_id" ref="clv_mfile.clv_mfile_view_form"/>
+            <field name="priority" eval="6"/>
+            <field name="arch" type="xml">
+                <field name="date_inclusion" position="before">
+                    <field name="history_marker_id" options='{"no_open": True, "no_create": True}'/>
+                </field>
+            </field>
+        </record>
+
+        <record id="clv_mfile_view_tree_history_marker" model="ir.ui.view">
+            <field name="name">clv.mfile.tree</field>
+            <field name="model">clv.mfile</field>
+            <field name="inherit_id" ref="clv_mfile.clv_mfile_view_tree"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <field name="code" position="before">
+                    <field name="history_marker_id" groups="clv_history_marker.group_user"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="clv_mfile_view_search_history_marker" model="ir.ui.view">
+            <field name="name">clv.mfile.search</field>
+            <field name="model">clv.mfile</field>
+            <field name="inherit_id" ref="clv_mfile.clv_mfile_view_search"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <field name="code" position="after">
+                    <field name="history_marker_id"/>
+                </field>
+                <group name="group_by" position="inside">
+                    <filter string="History Marker" context="{'group_by': 'history_marker_id'}"/>
+                </group>
+            </field>
+        </record>
+
+    </data>
+</odoo>

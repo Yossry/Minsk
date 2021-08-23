@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="clv_global_settings_view_form_filestore_summary_files" model="ir.ui.view">
+        <field name="name">clv.global_settings.form</field>
+        <field name="model">clv.global_settings</field>
+        <field name="inherit_id" ref="clv_base.clv_global_settings_view_form_filestore"/>
+        <field name="priority" eval="10" />
+        <field name="arch" type="xml">
+            <header name="global_settings_header" position="after">
+                <group name="mfile" string="Summary">
+                    <group name="summary_files">
+                        <field name="summary_files_directory"/>
+                        <field name="current_summary_files_directory" invisible="True"/>
+                        <field name="summary_file_name"/>
+                        <field name="current_summary_file_name" invisible="True"/>
+                    </group>
+                </group>
+            </header>
+        </field>
+    </record>
+       
+</odoo>

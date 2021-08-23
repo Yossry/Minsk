@@ -1,0 +1,397 @@
+/**********************************************************************************
+*  Copyright (C) 2019 UNIBRAVO
+**********************************************************************************/
+// Apps Menu Dashboard
+
+.o-app-name {
+	color: white;
+    font-size: 15px;
+    font-weight: 500;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.45);
+}
+
+.o_menu_apps .full {
+    width: 46px;
+    font-size: 18px;
+    text-align: center;
+}
+
+.o_menu_apps .dropdown-menu.show {
+	background: linear-gradient(to right bottom, #77717e, #b30b86);
+}
+
+.o_menu_apps .dropdown-menu.show .o-app-icon {
+	padding: 20px 0 0;
+}
+
+.o_menu_apps .dropdown-menu.show .o-app-icon:hover {
+	box-shadow: 0 8px 15px -10px black;
+    transform: translateY(-1px);
+}
+
+.dropdown-item.o_app {
+    background: transparent;
+}
+
+.o-menu-search-result {
+	color: white;
+}
+
+.fa-th-large::before {
+    content: "\f00a";
+}
+
+// Apps Menu Dashboard 2
+
+ @mixin full-screen-dropdown {
+    border: none;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - #{$o-navbar-height});
+    max-height: calc(100vh - #{$o-navbar-height});
+    position: fixed;
+    width: 100vw;
+    z-index: 100;
+    top: $o-navbar-height !important;
+    transform: none !important;
+}
+
+// Main navbar
+@include media-breakpoint-down(sm) {
+    .o_main_navbar {
+        display: flex;
+
+        > .dropdown {
+            display: flex;
+
+            .navbar-toggler {
+                color: white;
+            }
+
+            .o_menu_sections, .o_menu_systray {
+                padding: 0;
+            }
+        }
+
+        .o_menu_systray {
+            margin-left: auto;
+        }
+
+        .o_menu_brand,
+        .o_menu_sections,
+        .oe_topbar_name {
+            display: none;
+        }
+
+        .o-menu-toggle {
+            cursor: pointer;
+            padding: 0 $o-horizontal-padding;
+        }
+
+        // Menu fullscreen layout
+        .o_menu_sections.show {
+            @include full-screen-dropdown();
+            background-color: $dropdown-bg;
+
+            .show {
+                display: flex;
+                flex-direction: column;
+
+                .dropdown-menu {
+                    margin-left: 1rem;
+                    min-width: auto;
+                    width: calc(100vw - 2rem);
+                }
+            }
+
+            > li,
+            .o_menu_entry_lvl_1,
+            .o_menu_header_lvl_1 {
+                // Homogeneous colors
+                background-color: $dropdown-bg;
+                color: $dropdown-link-color;
+
+                &:hover {
+                    background-color: $dropdown-link-hover-bg;
+                    color: $dropdown-link-hover-color;
+                }
+
+                // Disable .o-no-caret class effect
+                &.o-no-caret::after {
+                    content: "";
+                }
+
+                // Fix a strange glitch leaving headers invisible
+                .dropdown-header {
+                    color: $dropdown-header-color;
+                }
+            }
+        }
+
+        // Custom fullscreen layout for systray items
+        .o_mail_systray_dropdown.show {
+            @include full-screen-dropdown();
+
+            // Fix stretchy images
+            .o_mail_preview_image {
+                align-items: center;
+                display: flex;
+                flex-direction: row;
+
+                img {
+                    display: block;
+                    height: auto;
+                }
+            }
+        }
+
+        // Higher height for dropdown items, for those with sausage fingers
+        .dropdown-menu .dropdown-item {
+            padding: {
+                bottom: 0.5rem;
+                top: 0.5rem;
+            }
+        }
+    }
+}
+
+// Iconized full screen apps menu
+.o_menu_apps {
+
+    .o_menu_search_input {
+        flex: 1 1 auto;
+        border: none;
+        background-color: rgba(0, 0, 0, 0);
+        color: white;
+        text-shadow: inherit;
+        font-size: 15px;
+        &:focus {
+            outline: none;
+        }
+        @mixin o-placeholder {
+            color: white;
+            opacity: 0.5;
+        }
+        &::-webkit-input-placeholder { // WebKit, Blink, Edge
+            @include o-placeholder;
+        }
+        &::-moz-placeholder { // Mozilla Firefox 19+
+            @include o-placeholder;
+        }
+        &:-ms-input-placeholder { // Internet Explorer 10-11
+            @include o-placeholder;
+        }
+    }
+
+    .o_menu_search_icon {
+        flex: 0 0 auto;
+        font-size: 20px;
+        color: white;
+        margin-right: 15px;
+    }
+
+    .search-input {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 auto;
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 850px;
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(0, 0, 0, 0.1);
+    margin-bottom: 8px;
+    align-items: center;
+    border-radius: 5px;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+    padding: 10px 15px;
+}
+    .search-input:focus {
+        border-color: $o-brand-primary;
+    }
+
+    .dropdown-menu.show {
+        @include full-screen-dropdown();
+
+        // Display apps in a grid
+        align-content: flex-start;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+
+        @include media-breakpoint-up(lg) {
+            padding: {
+                left: 20vw;
+                right: 20vw;
+            }
+        }
+
+        .o_app {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+
+            // Size depends on screen
+            width: 33.33333333%;
+            @include media-breakpoint-up(sm) {
+                width: 25%;
+            }
+            @include media-breakpoint-up(md) {
+                width: 16.6666666%;
+            }
+        }
+
+        // Hide app icons when searching
+        .has-results ~ .o_app {
+            display: none;
+        }
+
+        .o-app-icon {
+            height: auto;
+            max-width: 7rem;
+            width: 100%;
+        }
+
+        // Search input for menus
+        .form-row {
+            width: 100%;
+        }
+
+        .o-menu-search-result {
+            align-items: center;
+            background-position: left;
+            background-repeat: no-repeat;
+            background-size: contain;
+            cursor: pointer;
+            display: flex;
+            padding-left: 3rem;
+            white-space: normal;
+        }
+
+        // Allow to scroll only on results, keeping static search box above
+        .search-container {
+            margin-top: 20px;
+        }
+
+        .search-container.has-results {
+            height: 100%;
+
+            .search-results {
+                height: calc(100% - 3em);
+                overflow: auto;
+            }
+        }
+    }
+}
+
+// Scroll all but top bar
+html .o_web_client .o_main .o_main_content {
+    @include media-breakpoint-down(sm) {
+        overflow: auto;
+
+        .o_content {
+            overflow: initial;
+        }
+    }
+}
+
+// Control panel (breadcrumbs, search box, buttons...)
+@include media-breakpoint-down(sm) {
+    .o_control_panel {
+        // Arrange buttons to use space better
+        .breadcrumb,
+        .o_cp_buttons,
+        .o_cp_left,
+        .o_cp_right,
+        .o_cp_searchview {
+            flex: 1 1 100%;
+            @include media-breakpoint-up(md) {
+                flex-basis: 50%;
+            }
+        }
+
+        .breadcrumb {
+            flex-basis: 80%;
+        }
+
+        .o_cp_searchview,
+        .o_cp_right {
+            flex-basis: 10%;
+        }
+
+        .o_cp_left {
+            flex-basis: 50%;
+            white-space: nowrap;
+        }
+
+        .o_cp_pager {
+            white-space: nowrap;
+        }
+
+        // Hide all but 2 last breadcrumbs, and render 2nd-to-last as arrow
+        .breadcrumb-item {
+            &:not(.active) {
+                padding-left: 0;
+            }
+
+            &::before {
+                content: none;
+                padding-right: 0;
+            }
+
+            &:nth-last-of-type(1n+3) {
+                display: none;
+            }
+
+            &:nth-last-of-type(2) {
+                &::before {
+                    color: var(--primary);
+                    content: "\f048"; // .fa-step-backward
+                    cursor: pointer;
+                    font-family: FontAwesome;
+                }
+
+                a {
+                    display: none;
+                }
+            }
+        }
+
+        // Ellipsize long breadcrumbs
+        .breadcrumb {
+            max-width: 100%;
+            text-overflow: ellipsis;
+        }
+
+        // Empty sidebar should not break layout
+        .o_cp_sidebar:blank {
+            display: none;
+        }
+
+        .o_cp_buttons .btn.d-block:not(.d-none) {
+            display: inline-block !important;
+        }
+
+        // Dropdown with buttons to switch the view type
+        .o_cp_switch_buttons.show {
+            .dropdown-menu {
+                align-content: center;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                padding: 0;
+
+                .btn {
+                    border: {
+                        bottom: 0;
+                        radius: 0;
+                        top: 0;
+                    }
+                }
+            }
+        }
+    }
+}

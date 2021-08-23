@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="hr_employee_history_view_form" model="ir.ui.view">
+        <field name="name">hr.employee.history.form</field>
+        <field name="model">hr.employee.history</field>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div name="button_box" class="oe_right oe_button_box">
+                    </div>
+                    <div name="title" class="oe_title">
+                        <group>
+                            <field name="employee_id" options="{'no_open': False, 'no_create': True}"/>
+                            <field name="department_id" default_focus="1" options="{'no_open': False, 'no_create': True}"/>
+                            <field name="job_id" default_focus="1" options="{'no_open': False, 'no_create': True}"/>
+                            <field name="date_sign_in"/>
+                            <field name="date_sign_out"/>
+                        </group>
+                        <label for="notes" class="oe_edit_only"/>
+                        <field name="notes" jobholder="Notes..."/>
+                    </div>
+                    <notebook>
+                        <page name="settings" string="Settings" groups="clv_base.group_reguser" invisible="False">
+                            <group name="settings_top">
+                                <group name="settings_left">
+                                    <field name="id"/>
+                                </group>
+                                <group name='settings_right'>
+                                    <div class="oe_button_box" name="settings_buttons">
+                                        <button name="toggle_active"
+                                                    type="object"
+                                                    class="oe_stat_button"
+                                                    icon="fa-archive"
+                                                    groups="clv_base.group_reguser"
+                                                    >
+                                                <field name="active"
+                                                       widget="boolean_button"
+                                                       options='{"terminology": "archive"}'
+                                                       />
+                                        </button>
+                                    </div>
+                                </group>
+                                <group name="settings_left_3">
+                                </group>
+                                <group name='settings_right_3'>
+                                    <div class="oe_button_box" name="settings_buttons_3">
+                                    </div>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="hr_employee_history_view_tree" model="ir.ui.view">
+        <field name="name">hr.employee.history.tree</field>
+        <field name="model">hr.employee.history</field>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <tree colors="red:date_sign_out != False;blue:date_sign_out == False">
+                <field name="employee_id"/>
+                <field name="department_id"/>
+                <field name="job_id"/>
+                <field name="date_sign_in"/>
+                <field name="date_sign_out"/>
+                <field name="notes"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="hr_employee_history_view_search" model="ir.ui.view">
+        <field name="name">hr.employee.history.search</field>
+        <field name="model">hr.employee.history</field>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <search>
+                <field name="employee_id"/>
+                <field name="department_id"/>
+                <field name="job_id"/>
+                <field name="date_sign_in"/>
+                <field name="date_sign_out"/>
+                <field name="notes"/>
+                <newline/>
+                <filter name="opened" string="Opened Employee" domain="[('date_sign_out','=',False)]"/>
+                <filter name="closed" string="Closed Employee" domain="[('date_sign_out','!=',False)]"/>
+                <filter string="Archived" name="inactive" domain="[('active','=',False)]"/>
+                <group name="group_by" expand="0" string="Group By...">
+                    <filter name="group_by_employee_id" string="Employee" domain="[]" context="{'group_by':'employee_id'}"/>
+                    <filter name="group_by_department_id" string="Department" domain="[]" context="{'group_by':'department_id'}"/>
+                    <filter name="group_by_job_id" string="Job" domain="[]" context="{'group_by':'job_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="hr_employee_history_actions" model="ir.actions.act_window">
+        <field name="name">Employee History</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.employee.history</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="hr_employee_history_view_search"/>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Click to add a new employee history item.
+          </p>
+        </field>
+    </record>
+    
+    <record id="hr_employee_view_form_history" model="ir.ui.view">
+        <field name="name">hr.employee.form</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <page name="hr_settings" position="after">
+                <page string="Employee History">
+                    <field name="employee_history_ids" colspan="4" nolabel="1">
+                        <group>
+                            <!--tree string="Employees" colors="red:date_sign_out != False;blue:date_sign_out == False">
+                                <field name="job_id"/>
+                                <field name="date_sign_in"/>
+                                <field name="date_sign_out"/>
+                                <field name="notes"/>
+                            </tree-->
+                        </group>
+                    </field>
+                </page>
+            </page>
+        </field>
+    </record>
+
+</odoo>

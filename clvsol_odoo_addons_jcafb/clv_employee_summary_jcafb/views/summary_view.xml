@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+        
+    <record id="hr_employee_view_form_summary" model="ir.ui.view">
+        <field name="name">hr.employee.form</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="clv_employee.hr_employee_view_form"/>
+        <field name="priority" eval="6"/>
+        <field name="arch" type="xml">
+            <field name="category_ids" position="after">
+                <group>
+                    <group>
+                        <field name="summary_id" options='{"no_open": False, "no_create": True}'/>
+                        <field name="date_summary"/>
+                    </group>
+                    <group>
+                        <field name="file_name" invisible="1"/>
+                        <field name="file_content" filename="file_name"/>
+                        <field name="stored_file_name" invisible="1"/>
+                        <field name="directory_id" options="{'no_open': False, 'no_create': True}" invisible="1"/>
+                    </group>
+                </group>
+            </field>
+        </field>
+    </record>
+
+    <record id="hr_employee_view_tree_summary" model="ir.ui.view">
+        <field name="name">hr.employee.tree</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="clv_employee.hr_employee_view_tree"/>
+        <field name="priority" eval="20"/>
+        <field name="arch" type="xml">
+            <field name="parent_id" position="after">
+                <field name="file_name" invisible="1"/>
+                <field name="file_content" filename="file_name" widget="binary"/>
+                <field name="stored_file_name" invisible="1"/>
+                <field name="directory_id" invisible="1"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

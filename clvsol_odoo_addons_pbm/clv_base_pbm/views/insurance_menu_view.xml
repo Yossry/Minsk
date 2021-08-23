@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <menuitem name="Insurance" id="clv_base.menu_insurance" 
+        groups="clv_base.group_user"
+        sequence="14"/>
+
+    <menuitem name="Insurance" id="clv_base.menu_insurance_insurance"  
+        parent="clv_base.menu_insurance"
+        groups="clv_base.group_user"
+        sequence="10"/>
+
+    <menuitem name="Configuration" id="clv_base.menu_insurance_config"  
+        parent="clv_base.menu_insurance"
+        groups="clv_base.group_manager"
+        sequence="90"/>
+
+</odoo>

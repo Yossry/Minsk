@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <menuitem name="Partner Entity" id="clv_base.partner_entity" 
+        parent="clv_base.menu_base_config"
+        groups="clv_base.group_user"
+        sequence="200"/>
+
+    <menuitem name="Street Patterns" id="clv_base.partner_entity_street_patterns" 
+        parent="clv_base.partner_entity"
+        groups="clv_base.group_user"
+        sequence="10"
+        action="clv_partner_entity_street_pattern_action"/>
+
+</odoo>

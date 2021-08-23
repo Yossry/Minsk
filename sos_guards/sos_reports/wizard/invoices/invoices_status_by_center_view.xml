@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_invoices_status_by_center" model="ir.ui.view">
+            <field name="name">Invoices Status by Center</field>
+            <field name="model">invoices.status.by.center</field>
+            <field name="arch" type="xml">
+            <form string="Invoices Status by Project" version="7.0">
+                <!-- <label string="This wizard will print report which displays Center wise Status of the Invoices."/> --> <!-- SARFRAZ -->                
+                <group>
+                    <field name="period_id"  required="1" options="{'no_create': True, 'limit': 10}"/>                    
+                </group>
+                <footer>
+					<button name="print_report" string="Print" type="object" class="oe_highlight"/>
+						or
+					<button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+            </form>
+            </field>
+        </record>
+
+        <record id="action_invoices_status_by_center" model="ir.actions.act_window">
+            <field name="name">Invoices Status by Center</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">invoices.status.by.center</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>        
+        
+    </data>
+</openerp>

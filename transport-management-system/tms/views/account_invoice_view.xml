@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="account_invoice_tms_form" model="ir.ui.view">
+        <field name="name">Invoice for TMS</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account.invoice_form"/>
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page attrs="{'invisible':[('waybill_ids','=',False)]}" string="Waybills">
+                    <field name="waybill_ids"/>
+                </page>
+            </notebook>
+        </field>
+    </record>
+    <record id="view_customer_invoice_search" model="ir.ui.view">
+        <field name="name">tms.customer.invoice.search</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account.view_account_invoice_filter"/>
+        <field name="arch" type="xml">
+            <group position="inside">
+                <filter context="{'group_by':'state'}" name="state_group_by" string="Status"/>
+            </group>
+        </field>
+    </record>
+    <record id="account.action_invoice_tree1" model="ir.actions.act_window">
+        <field name="context">{'search_default_state_group_by': 1}</field>
+    </record>
+</odoo>

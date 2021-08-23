@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_project_bid_total_labor" model="ir.ui.view">
+        <field name="name">project.bid.total.labor.tree</field>
+        <field name="model">project.bid.total.labor</field>
+        <field name="arch" type="xml">
+            <tree string="Total Labor">
+                <field name="name"/>
+                <field name="quantity" sum="Total Quantity"/>
+                <field name="cogs" sum="COGS"/>
+                <field name="overhead" sum="Overhead Cost"/>
+                <field name="profit" sum="Total Profit"/>
+                <field name="sell" sum="Total Sell"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_project_bid_totals" model="ir.ui.view">
+        <field name="name">project.bid.totals.tree</field>
+        <field name="model">project.bid.totals</field>
+        <field name="arch" type="xml">
+            <tree string="Totals">
+                <field name="name"/>
+                <field name="cogs" sum="COGS"/>
+                <field name="overhead" sum="Overhead Cost"/>
+                <field name="profit" sum="Total Profit"/>
+                <field name="sell" sum="Total Sell"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_project_bid_component_labor" model="ir.ui.view">
+        <field name="name">project.bid.component.labor.tree</field>
+        <field name="model">project.bid.component.labor</field>
+        <field name="arch" type="xml">
+            <tree string="Component-specific labor" editable="top">
+                <field name="product_id" domain="[('type', '=', 'service')]"/>
+                <field name="quantity"/>
+                <field name="uom_id"/>
+                <field name="unit_cost"/>
+                <field name="cogs" sum="COGS"/>
+                <field name="overhead" sum="Overhead Cost"/>
+                <field name="profit" sum="Total Profit"/>
+                <field name="sell" sum="Total Sell"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_project_bid_component_material" model="ir.ui.view">
+        <field name="name">project.bid.component.material.tree</field>
+        <field name="model">project.bid.component.material</field>
+        <field name="arch" type="xml">
+            <tree string="Component Materials" editable="top">
+                <field name="product_id"/>
+                <field name="name"/>
+                <field name="quantity"/>
+                <field name="uom_id"/>
+                <field name="unit_cost"/>
+                <field name="cogs" sum="COGS"/>
+                <field name="overhead" sum="Overhead Cost"/>
+                <field name="profit" sum="Total Profit"/>
+                <field name="sell" sum="Total Sell"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_project_bid_component_tree" model="ir.ui.view">
+        <field name="name">project.bid.component.tree</field>
+        <field name="model">project.bid.component</field>
+        <field name="arch" type="xml">
+            <tree string="Deriverables">
+                <field name="bid_id"/>
+                <field name="name"/>
+                <field name="quantity"/>
+                <field name="material_cogs" sum="Material Cost"/>
+                <field name="labor_cogs" sum="Labor Cost"/>
+                <field name="total_cogs" sum="COGS"/>
+                <field name="total_overhead" sum="Overhead Cost"/>
+                <field name="total_profit" sum="Net Profit"/>
+                <field name="total_sell" sum="Total Revenue"/>
+                <field name="gross_profit" sum="Gross Profit"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_project_bid_component_form" model="ir.ui.view">
+        <field name="name">project.bid.component.form</field>
+        <field name="model">project.bid.component</field>
+        <field name="arch" type="xml">
+            <form string="Project Bid Component">
+                <group name="component">
+                    <field name="bid_component_template_id"
+                           options="{'no_create': True}"/>
+                    <field name="bid_id" readonly="1"/>
+                    <field name="name"/>
+                    <field name="overhead_rate"/>
+                    <field name="profit_rate"/>
+                </group>
+                <group name="material">
+                    <field name="material_ids"/>
+                </group>
+                <group name="labor">
+                    <field name="labor"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_project_bid_other_labor" model="ir.ui.view">
+        <field name="name">project.bid.other.labor.tree</field>
+        <field name="model">project.bid.other.labor</field>
+        <field name="arch" type="xml">
+            <tree string="Other Labor" editable="top">
+                <field name="product_id" domain="[('type', '=', 'service')]"/>
+                <field name="quantity"/>
+                <field name="uom_id"/>
+                <field name="unit_cost"/>
+                <field name="overhead_rate"/>
+                <field name="profit_rate"/>
+                <field name="cogs" sum="COGS"/>
+                <field name="overhead" sum="Overhead Cost"/>
+                <field name="profit" sum="Total Net Profit"/>
+                <field name="sell" sum="Total Sell"/>
+                <field name="gross_profit" sum="Total Gross Profit"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_project_bid_other_expenses" model="ir.ui.view">
+        <field name="name">project.bid.other.expenses.tree</field>
+        <field name="model">project.bid.other.expenses</field>
+        <field name="arch" type="xml">
+            <tree string="Other Expenses" editable="top">
+                <field name="product_id"/>
+                <field name="quantity"/>
+                <field name="uom_id"/>
+                <field name="unit_cost"/>
+                <field name="overhead_rate"/>
+                <field name="profit_rate"/>
+                <field name="cogs" sum="COGS"/>
+                <field name="overhead" sum="Overhead Cost"/>
+                <field name="profit" sum="Total Profit"/>
+                <field name="sell" sum="Total Sell"/>
+                <field name="gross_profit" sum="Total Gross Profit"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_project_bid_form" model="ir.ui.view">
+        <field name="name">project.bid.form</field>
+        <field name="model">project.bid</field>
+        <field name="arch" type="xml">
+            <form string="Project Bid">
+                <header>
+                    <button name="action_button_confirm"
+                            states="draft"
+                            string="Confirm"
+                            type="object"
+                            class="oe_highlight"/>
+                    <button name="action_button_approve" states="confirm"
+                            string="Approve" type="object"
+                            class="oe_highlight"
+                            groups="project_bid.group_project_bid_manager"/>
+                    <button name="action_button_draft"
+                            states="confirm,approve,cancel"
+                            string="Reset to Draft" type="object"/>
+                    <button name="action_button_cancel"
+                            states="draft,confirm,approve" string="Cancel"
+                            type="object"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group name="main" colspan="4" col="4">
+                        <group name="code" colspan="2">
+                            <field name="code"/>
+                            <field name="name" placeholder="Bid summary..."/>
+                            <field name="partner_id"
+                                   domain="[('customer','=',True)]"
+                                   context="{'search_default_customer':1, 'show_address': 1}"
+                                   options='{"always_reload": True}'/>
+                            <field name="parent_id"/>
+                            <field name="bid_template_id"/>
+                        </group>
+                        <group name="wbs_totals_header" colspan="2">
+                            <field name="wbs_total_income"/>
+                            <field name="wbs_total_cogs"/>
+                            <field name="wbs_total_gp"/>
+                            <field name="wbs_total_gm_percent"/>
+                            <field name="wbs_total_overhead"/>
+                            <field name="wbs_total_npm"/>
+                            <field name="wbs_total_npm_percent"/>
+                        </group>
+                    </group>
+                    <group name="wbs_totals" colspan="4">
+                        <group name="labor" colspan="4">
+                            <field name="wbs_totals_non_material"/>
+                        </group>
+                        <newline/>
+                        <group name="totals" colspan="4">
+                            <field name="wbs_totals_all"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Components"
+                              name="components">
+                            <field name="components"
+                                   context="{'overhead_rate': overhead_rate, 'profit_rate': profit_rate, 'bid_template_id': bid_template_id, 'bid_id': id}">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="quantity"/>
+                                    <field name="material_cogs" sum="Material Cost"/>
+                                    <field name="labor_cogs" sum="Labor Cost"/>
+                                    <field name="total_cogs" sum="COGS"/>
+                                    <field name="total_overhead" sum="Overhead Cost"/>
+                                    <field name="total_profit" sum="Net Profit"/>
+                                    <field name="total_sell" sum="Total Revenue"/>
+                                    <field name="gross_profit" sum="Gross Profit"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Other labor"
+                              name="other_labor">
+                            <field name="other_labor"
+                                   context="{'overhead_rate': overhead_rate, 'profit_rate': profit_rate}"/>
+                        </page>
+                        <page string="Other expenses"
+                              name="other_expenses">
+                            <field name="other_expenses"
+                                   context="{'overhead_rate': overhead_rate, 'profit_rate': profit_rate}"/>
+                        </page>
+                        <page string="WBS" name="children">
+                            <group>
+                                <field name="child_ids"/>
+                            </group>
+                        </page>
+                        <page string="Bid Totals"
+                              name="bid_totals">
+                            <group>
+                                <field name="totals_non_material"/>
+                            </group>
+                            <newline/>
+                            <group>
+                                <field name="totals_all"/>
+                            </group>
+                            <group>
+                                <field name="total_income"/>
+                                <field name="total_cogs"/>
+                                <field name="total_gp"/>
+                                <field name="total_gm_percent"/>
+                                <field name="total_overhead"/>
+                                <field name="total_npm"/>
+                                <field name="total_npm_percent"/>
+                            </group>
+                        </page>
+                        <page string="Notes" name="notes">
+                            <group>
+                                <field name="notes"/>
+                            </group>
+                        </page>
+                        <page string="Administration" name="admin">
+                            <group>
+                                <field name="overhead_rate"/>
+                                <field name="profit_rate"/>
+                            </group>
+                            <group>
+                                <field name="created_on"/>
+                                <field name="created_by"/>
+                                <field name="approved_by"/>
+                                <field name="approved_on"/>
+                                <field name="due_by"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_project_bid_tree" model="ir.ui.view">
+        <field name="name">project.bid.tree</field>
+        <field name="model">project.bid</field>
+        <field name="arch" type="xml">
+            <tree string="Bid" fonts="bold:message_unread==True"
+                  colors="red:due_by and (due_by &lt; current_date) and state=='draft';black:state in ('draft','approve');blue:state=='confirm';grey:state=='cancel'">
+                <field name="message_unread" invisible="1"/>
+                <field name="complete_code"/>
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="parent_id"/>
+                <field name="wbs_total_income" string="Revenue"/>
+                <field name="wbs_total_cogs" string="Cost of Sales"/>
+                <field name="wbs_total_gp" string="Gross Profit"/>
+                <field name="wbs_total_gm_percent"
+                       string="Gross Margin %%"/>
+                <field name="wbs_total_overhead" string="Total Overhead"/>
+                <field name="wbs_total_npm" string="Net Profit Margin"/>
+                <field name="wbs_total_npm_percent"
+                       string="Net Profit Margin %%"/>
+                <field name="created_on"/>
+                <field name="created_by"/>
+                <field name="due_by"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_project_bid_filter" model="ir.ui.view">
+        <field name="name">project.bid.select</field>
+        <field name="model">project.bid</field>
+        <field name="type">search</field>
+        <field name="arch" type="xml">
+            <search string="Search bids">
+                <group col='6' colspan='5'>
+                    <field name="partner_id"/>
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="complete_code"/>
+                    <field name="created_on"/>
+                    <filter string="Unread Messages"
+                            name="message_unread"
+                            domain="[('message_unread', '=', True)]"
+                            help="Unread messages"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_project_bid_open_form" model="ir.actions.act_window">
+        <field name="name">Project Bids</field>
+        <field name="res_model">project.bid</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_project_bid_filter" />
+    </record>
+
+    <record model="ir.actions.act_window.view"
+            id="action_project_bid_open_form_view">
+        <field name="sequence" eval="1"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_project_bid_tree"/>
+        <field name="act_window_id" ref="action_project_bid_open_form"/>
+    </record>
+
+    <menuitem groups="project_bid.group_project_bid_user,project_bid.group_project_bid_manager"
+              action="action_project_bid_open_form"
+              id="project_bid_entries"
+              parent="project.menu_main_pm"/>
+</odoo>

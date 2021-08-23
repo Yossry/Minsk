@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+	<template id ="report_additionalguard">
+		<t t-call="web.html_container">
+				<t t-call="web.external_layout" style="font-family:georgia,garamond,serif;font-size:10px">
+					<div class="page">
+						<style>
+								.tabhead{font-family:georgia,garamond,serif;font-size:10px;}
+								.tabcol{font-size:14px;}
+								table th { background-color:#d4e3e5;}
+								tr:nth-child(even) {background-color: #FFEBCD;}
+								tr:nth-child(odd) {background-color: #cdcdcd;}
+						</style>
+						<div width="100%"><center><h3> Additional Guard Report </h3></center> </div>
+						<div width="100%"><center><h3> From <span t-esc="get_date_formate(data['date_from'])"/> To  <span t-esc="get_date_formate(data['date_to'])"/> </h3></center> </div>
+						
+						
+							<table class="table" width="100%">
+								<tr>
+									<!-- First Columns containing the Project Data -->
+									<td width="47%">
+										<table width="100%">
+											<thead style="border: 1px solid black">
+												<tr class="tabcol">
+													<td colspan="6">
+														<center><b> Project Wise Additional Guard Data </b></center>
+													</td>
+												</tr>
+												<tr class="tabhead">
+													<th class="text-center"  style="border: 1px solid black">SR.No</th>
+													<th class="text-center"  style="border: 1px solid black">Project Name</th>
+													<th class="text-center"  style="border: 1px solid black">Permanent</th>
+													<th class="text-center"  style="border: 1px solid black">Temporary</th>
+													<th class="text-center"  style="border: 1px solid black">WithDraw</th>
+													<th class="text-center"  style="border: 1px solid black">Total</th>
+												</tr>
+											</thead>
+											<tbody>	
+												<t t-foreach="Project" t-as="p">
+													<tr class="tabcol">
+														<td class="text-left">
+															<span t-esc="p_index + 1" />
+														</td>
+														<td class="text-left">
+															<span t-esc="p['name']" />
+														</td>
+														<td class="text-center">
+															<span t-esc="p['p_permanent'] or '-'" />
+														</td>
+														<td class="text-center">
+															<span t-esc="p['p_temporary'] or '-'" />
+														</td>
+														<td class="text-center">
+															<span t-esc="p['p_withdraw'] or '-'" />
+														</td>
+														<td class="text-center">
+															<span t-esc="p['p_total'] or '-'" />
+														</td>
+													</tr>
+												</t>
+												<tr style="font-size:20px;">
+													<td class="text-right" colspan="2">
+														Total:
+													</td>
+													<td class="text-center">
+														<span t-esc="P_Permanent_Total or '-'" />
+													</td>
+													<td class="text-center">
+														<span t-esc="P_Temporary_Total or '-'" />
+													</td>
+													<td class="text-center">
+														<span t-esc="P_Withdraw_Total or '-'" />
+													</td>
+													<td class="text-center">
+														<span t-esc="Project_Total or '-'" />
+													</td>
+												</tr>
+											</tbody>	
+										</table>
+									</td>
+									<!-- END Project Data -->
+									
+									<!-- Second Columns containing the Center Data -->
+									<td width="47%">
+										<table width="100%">
+											<thead style="border: 1px solid black">
+												<tr class="tabcol">
+													<td colspan="6">
+														<center><b> Center Wise Additional Guard Data </b></center>
+													</td>
+												</tr>
+												<tr class="tabhead">
+													<th class="text-center"  style="border: 1px solid black">SR.No</th>
+													<th class="text-center"  style="border: 1px solid black">Center Name</th>
+													<th class="text-center"  style="border: 1px solid black">Permanent</th>
+													<th class="text-center"  style="border: 1px solid black">Temporary</th>
+													<th class="text-center"  style="border: 1px solid black">WithDraw</th>
+													<th class="text-center"  style="border: 1px solid black">Total</th>
+												</tr>
+											</thead>
+											<tbody>	
+												<t t-foreach="Center" t-as="c">
+													<tr class="tabcol">
+														<td class="text-left">
+															<span t-esc="c_index + 1" />
+														</td>
+														<td class="text-left">
+															<span t-esc="c['name']" />
+														</td>
+														<td class="text-center">
+															<span t-esc="c['c_permanent'] or '-'" />
+														</td>
+														<td class="text-center">
+															<span t-esc="c['c_temporary'] or '-'" />
+														</td>
+														<td class="text-center">
+															<span t-esc="c['c_withdraw'] or '-'" />
+														</td>
+														<td class="text-center">
+															<span t-esc="c['c_total'] or ''" />
+														</td>
+													</tr>
+												</t>
+												<tr style="font-size:20px;">
+													<td class="text-right" colspan="2">
+														Total:
+													</td>
+													<td class="text-center">
+														<span t-esc="C_Permanent_Total or '-'" />
+													</td>
+													<td class="text-center">
+														<span t-esc="C_Temporary_Total or '-'" />
+													</td>
+													<td class="text-center">
+														<span t-esc="C_Withdraw_Total or '-'" />
+													</td>
+													<td class="text-center">
+														<span t-esc="Center_Total or '-'" />
+													</td>
+												</tr>
+											</tbody>	
+										</table>
+									</td>
+									<!-- END Center Data -->
+								</tr>		
+							</table>
+							<!-- Main Table1 End -->
+							
+							<!-- Main TableLast contain all data -->
+							<table class="table"  width="100%">
+								<thead style="border: 1px solid black">
+									<tr>
+										<td colspan="9">
+											<center><b> Additional Guards Detail </b></center>
+										</td>
+									</tr>
+									
+									<tr class="tabhead">
+										<th class="text-center"  style="border: 1px solid black">SR.No</th>
+										<th class="text-center"  style="border: 1px solid black">Dep. Date</th>
+										<th class="text-center"  style="border: 1px solid black">Center</th>
+										<th class="text-center"  style="border: 1px solid black">Project</th>
+										<th class="text-center"  style="border: 1px solid black">Post</th>
+										<th class="text-center"  style="border: 1px solid black">Guards</th>
+										<th class="text-center"  style="border: 1px solid black">Category</th>
+										<th class="text-center"  style="border: 1px solid black">Type</th>
+										<th class="text-center"  style="border: 1px solid black">Guard Category</th>
+									</tr>
+								</thead>
+								<tbody>
+									<t t-foreach="Guards" t-as="guard">
+										<tr>
+											<td class="text-left">
+												<span t-esc="guard_index + 1" />
+											</td>
+											<td class="text-left">
+												<span t-esc="get_date_formate(guard.dep_date)" />
+											</td>
+											<td class="text-left">
+												<span t-esc="guard.center_id.name" />
+											</td>
+											<td class="text-left">
+												<span t-esc="guard.project_id.name" />
+											</td>
+											<td class="text-left">
+												<span t-esc="guard.post_id.name" />
+											</td>
+											<td class="text-left">
+												<span t-esc="guard.guards" />
+											</td>
+											<td class="text-left">
+												<span t-esc="guard.deployment_category" />
+											</td>
+											<td class="text-left">
+												<span t-esc="guard.status" />
+											</td>
+											<td class="text-left">
+												<span t-esc="guard.guards_type" />
+											</td>
+										</tr>
+									</t>
+								</tbody>			
+							
+							</table>
+							<!-- Main TableLast  -->
+					</div>
+				</t>
+		</t>
+	</template>
+	
+	</data>
+</odoo>

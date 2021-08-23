@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+
+		<!--SOS Guard Incident form form view -->
+		<record id="view_sos_guard_incident_form" model="ir.ui.view">
+			<field name="name">sos.guard.incident.form</field>
+			<field name="model">sos.guard.incident</field>
+			<field name="arch" type="xml">
+				<form string="Guards Incident Form">
+				   <header>
+						<button name="action_open" states="draft" string="Open" class="oe_highlight" type="object"/>
+						<button name="action_done" states="open" string="Done" class="oe_highlight" type="object"/>
+						<field name="state" widget="statusbar" nolabel="1" />
+				   </header>
+				   <sheet>
+					   <div class="oe_title">
+						   <h1>
+							   <field name="name" readonly="1" nolabel="1"/>
+						   </h1>
+					   </div>
+					   <div class="oe_right oe_button_box" name="button_box">
+					   </div>
+
+					   <group>
+							<group string="Branch Location">
+								<field name="center_id" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>
+								<field name="project_id" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>
+								<field name="post_id"  domain="[('center_id', '=', center_id),('project_id', '=', project_id)]" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>
+								<field name="post_city" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>
+							</group>
+
+							<group string="General Information">
+								<field name="incident_date"/>
+								<field name="guards_type"/>
+								<field name="guards" placehoder="NO. of Guards,1,2 etc."/>
+								<field name="sos_guard_involved"/>
+
+							</group>
+
+							<group string="Incident Detail">
+								<field name="guard_injury"/>
+								<field name="injuried_guards" placehoder="NO. of Guards,1,2 etc."/>
+								<field name="guard_shaheed"/>
+								<field name="shaheed_guards" placehoder="NO. of Guards,1,2 etc."/>
+								<field name="guard_life_insurance"/>
+								<field name="guard_medical_insurance"/>
+
+
+							</group>
+							<group string="Amount Detail">
+								<field name="robbery_amount" placehoder="Robbery Amount ..."/>
+								<field name="sos_compensation_amount" placehoder="Compensation Amount ...."/>
+								<field name="bank_compensation_amount" placehoder="Bank Compensation Amount ...."/>
+								<field name="dacoity_fir_status"/>
+								<field name="coordinator_id" domain="[('is_guard', '=', False)]" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>
+							</group>
+
+					   </group>
+					   <group string="Remarks">
+							<field name="remarks" placeholder="Please Enter Your Remarks Here..."/>
+						</group>
+
+				   </sheet>
+					   <div class="oe_chatter">
+							<field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+							<field name="message_ids" widget="mail_thread" placeholder="Share a note..."/>
+						</div>
+			   </form>
+		   </field>
+		</record>
+
+		<record id="view_sos_guard_incident_tree" model="ir.ui.view">
+		   <field name="name">sos.guard.incident.tree</field>
+		   <field name="model">sos.guard.incident</field>
+		   <field name="arch" type="xml">
+			   <tree colors="black:state == 'draft';red:state  == 'open';green:state == 'done';" string="Guards Incident">
+				   <field name="name"/>
+				   <field name="project_id"/>
+				   <field name="center_id"/>
+				   <field name="post_id"/>
+				   <field name="incident_date"/>
+				   <field name="guards" />
+				   <field name="guards_type"/>
+				   <field name="robbery_amount" />
+				   <field name="dacoity_fir_status"/>
+				   <field name="state" />
+			   </tree>
+		   </field>
+		</record>
+
+		<record id="view_sos_guard_incident_filter" model="ir.ui.view">
+			<field name="name">sos.guard.incident.select</field>
+			<field name="model">sos.guard.incident</field>
+			<field name="arch" type="xml">
+				<search string="Guard Incident">
+					<field name="name" string="Guards Incident"
+						filter_domain="['|', ('name','ilike',self), ('post_id','ilike',self)]"/>
+				   <separator/>
+
+				   <field name="project_id" string="Project"/>
+				   <field name="center_id" string="Center"/>
+				   <field name="post_id" string="Post"/>
+
+				   <filter icon="terp-go-today" string="Draft" name="draft" domain="[('state','=','draft')]" />
+				   <filter icon="terp-go-today" string="Open" name="open" domain="[('state','=','open')]" />
+				   <filter icon="terp-go-today" string="Done" name="done" domain="[('state','=','done')]" />
+				   <separator/>
+
+				   <group expand="0" string="Group By...">
+						<filter string="Project" name="project_id" context="{'group_by': 'project_id'}"/>
+						<filter string="Center" name="center_id" context="{'group_by': 'center_id'}"/>
+						<filter string="Post" name="post_id" context="{'group_by': 'post_id'}"/>
+						<separator/>
+						<filter string="Coordinator" name="coordinator_id" context="{'group_by': 'coordinator_id'}"/>
+						<separator/>
+				   </group>
+
+			   </search>
+			</field>
+		</record>
+
+		<record id="open_view_guard_incident_list_my" model="ir.actions.act_window">
+			<field name="name">Guards Incident</field>
+			<field name="res_model">sos.guard.incident</field>
+			<field name="view_type">form</field>
+			<field eval="False" name="view_id"/>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="search_view_id" ref="view_sos_guard_incident_filter"/>
+			<field name="help" type="html">
+			  <p class="oe_view_nocontent_create">
+				Click to add a new Guard Incident Record.
+			  </p><p>
+				With just a quick glance on the AARSOL ERP screen, you
+				can easily find all the information you need for each Deployment;
+				contact data, Current Status, etc.
+			  </p>
+			</field>
+		</record>
+
+		<menuitem parent="sos.menu_gms_main" id="sos_guards_incident_mi" name="Guards Incident Form" sequence="113" action="open_view_guard_incident_list_my" groups="sos.group_hr_master,sos.group_coordinator" />
+	</data>
+</odoo>

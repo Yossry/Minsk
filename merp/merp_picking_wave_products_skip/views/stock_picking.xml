@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Picking Wave -->
+    <record id="view_picking_wave_form_products_skip" model="ir.ui.view">
+        <field name="name">stock.picking.wave.form.products.skip</field>
+        <field name="model">stock.picking.batch</field>
+        <field name="inherit_id" ref="merp_picking_wave_base.view_picking_wave_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='related_pack_operations']/tree/field[@name='qty_done']" position="after">
+                <field name="skipped" />
+            </xpath>
+            <xpath expr="//field[@name='operations_to_pick']/tree/field[@name='qty_done']" position="after">
+                <field name="skipped" />
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

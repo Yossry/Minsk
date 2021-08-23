@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>	
+		<template id ="report_postsattendance_register">
+			<t t-call="web.html_container">
+				<div class="page">
+					<style>
+						table th { background-color:#d4e3e5;}
+					</style>
+					
+					 <div class="row">
+					 	 <div class="col-xs-4">
+					 	 	 <img width="40%" style="max-height:125px;" class="img img-responsive" src="/sos_payroll/static/src/img/logo.png"/>
+					 	 </div>
+					 	 <div class="col-xs-3">
+					 	 </div>
+					 	 
+					 	 <div class="col-xs-5" style="font-size:14px; font-weight:bold; text-align:right; align:left;margin-top:20px;">
+					 	 	SECURITY ORGANIZING SYSTEM (PVT) LIMITED
+					 	 </div>
+					 </div>
+				
+					 <div class="row" style="font-size:12px; font-weight:bold; text-align:center; align:left;">
+					 	<div class="col-xs-12">
+					 		Posts Attendance Register Report From  <span t-esc="get_date_formate(data['date_from'])"/> To <span t-esc="get_date_formate(data['date_to'])"/> 
+					 	</div>
+					 </div>
+					 
+					<table class="table table-bordered" width="100%">
+						<tr>
+							<td colspan="34"  style="font-size:14px; font-weight:bold; background-color:#d4e3e5;"> <span t-esc="data['project_id'][1]"/></td>
+						</tr>
+						<t t-foreach="Register" t-as="reg">
+							<tr>
+								<td colspan="34" style="font-size:12px; font-weight:bold;"> <span t-esc="reg['post_name']"/></td>
+							</tr>
+							<tr style="font-size:10px; font-weight:bold;background-color:#d4e3e5;">
+								<td>Sr. </td>
+								<td>Name </td>
+								<td>1 </td>
+								<td>2 </td>
+								<td>3 </td>
+								<td>4 </td>
+								<td>5 </td>
+								<td>6 </td>
+								<td>7 </td>
+								<td>8 </td>
+								<td>9 </td>
+								<td>10 </td>
+								<td>11 </td>
+								<td>12 </td>
+								<td>13 </td>
+								<td>14 </td>
+								<td>15 </td>
+								<td>16 </td>
+								<td>17 </td>
+								<td>18 </td>
+								<td>19 </td>
+								<td>20 </td>
+								<td>21 </td>
+								<td>22 </td>
+								<td>23 </td>
+								<td>24 </td>
+								<td>25 </td>
+								<td>26 </td>
+								<td>27 </td>
+								<td>28 </td>
+								<td>29 </td>
+								<td>30 </td>
+								<td>31 </td>
+								<td>Total </td>
+							</tr>
+								<t t-foreach="reg['Guards']" t-as="guard">
+									<tr style="font-size:10px;">
+										<td> <span t-esc="guard_index + 1"/> </td>
+										<td> <span t-esc="guard['id']"/> - <span t-esc="guard['name']"/></td>
+										<td> <span t-esc="guard['01']"/> </td>
+										<td> <span t-esc="guard['02']"/> </td>
+										<td> <span t-esc="guard['03']"/> </td>
+										<td> <span t-esc="guard['04']"/> </td>
+										<td> <span t-esc="guard['05']"/> </td>
+										<td> <span t-esc="guard['06']"/> </td>
+										<td> <span t-esc="guard['07']"/> </td>
+										<td> <span t-esc="guard['08']"/> </td>
+										<td> <span t-esc="guard['09']"/> </td>
+										<td> <span t-esc="guard['10']"/> </td>
+										
+										<td> <span t-esc="guard['11']"/> </td>
+										<td> <span t-esc="guard['12']"/> </td>
+										<td> <span t-esc="guard['13']"/> </td>
+										<td> <span t-esc="guard['14']"/> </td>
+										<td> <span t-esc="guard['15']"/> </td>
+										<td> <span t-esc="guard['16']"/> </td>
+										<td> <span t-esc="guard['17']"/> </td>
+										<td> <span t-esc="guard['18']"/> </td>
+										<td> <span t-esc="guard['19']"/> </td>
+										<td> <span t-esc="guard['20']"/> </td>
+										
+										<td> <span t-esc="guard['21']"/> </td>
+										<td> <span t-esc="guard['22']"/> </td>
+										<td> <span t-esc="guard['23']"/> </td>
+										<td> <span t-esc="guard['24']"/> </td>
+										<td> <span t-esc="guard['25']"/> </td>
+										<td> <span t-esc="guard['26']"/> </td>
+										<td> <span t-esc="guard['27']"/> </td>
+										<td> <span t-esc="guard['28']"/> </td>
+										<td> <span t-esc="guard['29']"/> </td>
+										<td> <span t-esc="guard['30']"/> </td>
+										<td> <span t-esc="guard['31']"/> </td>
+										
+										<td> <span t-esc="guard['total']"/> </td>
+									</tr>
+								</t>
+								<tr>
+									<td colspan="33"  style="text-align:right;"> TOTAL </td>
+									<td> <span t-esc="reg['Total']"/> </td>
+								</tr>	
+									
+						</t>
+					</table>
+					
+				</div>	 			 	
+			</t>
+		</template>
+		
+	</data>
+</odoo>
+

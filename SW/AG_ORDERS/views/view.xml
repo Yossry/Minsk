@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_orders_form_form_cust">
+        <field name="name">orders.form.form.cust</field>
+        <field name="model">orders.form</field>
+        <field name="arch" type="xml">
+            <form string="Orders">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="restaurant_name" />
+                            <field name="order_time" />
+                            <field name="delivery_mode" />
+                            <field name="discount" />
+                            <field name="promo_discount" />
+                            <field name="loyalty_points" />
+                            <field name="payment_method" />
+                            <field name="gateway_charges" />
+                        </group>
+                        <group>
+                            <field name="name" />
+                            <field name="customer_name" />
+                            <field name="order_value" />
+                            <field name="paid_amount" />
+                            <field name="promo_code" />
+                            <field name="commission_amount" />
+                            <field name="settilment_amount" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record model="ir.ui.view" id="view_orders_form_tree_cust">
+        <field name="name">orders.form.tree.cust</field>
+        <field name="model">orders.form</field>
+        <field name="arch" type="xml">
+            <tree string="Orders">
+                <field name="restaurant_name" />
+                <field name="name" />
+                <field name="order_time" />
+                <field name="customer_name" />
+                <field name="delivery_mode" />
+                <field name="payment_method" />
+                <field name="order_value" />
+                <field name="discount" />
+                <field name="paid_amount" />
+                <field name="promo_discount" />
+                <field name="commission_amount" />
+                <field name="settilment_amount" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="orders_form_view_search" model="ir.ui.view">
+        <field name="name">orders.form.view.search</field>
+        <field name="model">orders.form</field>
+        <field name="arch" type="xml">
+            <search string="Orders">
+                <field name="restaurant_name" />
+                <field name="delivery_mode" />
+                <field name="payment_method" />
+                <field name="name" />
+                <field name="customer_name" />
+                <field name="promo_code" />
+           		<group expand="1" string="Group By...">
+                    <filter string="Restaurant Name" icon="terp-personal" name="group_restaurant_name" context="{'group_by':'restaurant_name'}"/>
+                    <filter string="Delivery Mode" icon="terp-personal" name="group_delivery_mode" context="{'group_by':'delivery_mode'}"/>
+                    <filter string="Payment Method" icon="terp-personal" name="group_payment_method" context="{'group_by':'payment_method'}"/>
+                    <filter string="Order ID" icon="terp-personal" name="group_name" context="{'group_by':'name'}"/>
+                    <filter string="Customer Name" icon="terp-personal" name="group_customer_name" context="{'group_by':'customer_name'}"/>
+                    <filter string="Promo Code" icon="terp-personal" name="group_promo_code" context="{'group_by':'promo_code'}"/>
+				</group>
+            </search>
+        </field>
+    </record>
+
+
+    <record id="orders_form_pivot" model="ir.ui.view">
+        <field name="name">orders.form.pivot</field>
+        <field name="model">orders.form</field>
+        <field name="arch" type="xml">
+            <pivot string="Orders" >
+                <field name="restaurant_name" />
+                <field name="order_time" />
+                <field name="delivery_mode" />
+                <field name="discount" />
+                <field name="promo_discount" />
+                <field name="loyalty_points" />
+                <field name="payment_method" />
+                <field name="gateway_charges" />
+                <field name="name" type="measure"/>
+                <field name="customer_name" />
+                <field name="order_value" />
+                <field name="paid_amount" />
+                <field name="promo_code" />
+                <field name="commission_amount" />
+                <field name="settilment_amount" />
+            </pivot>
+        </field>
+    </record>
+
+    <record id="action_orders_form_cus2" model="ir.actions.act_window">
+        <field name="name">Orders</field>
+        <field name="res_model">orders.form</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form,pivot</field>
+        <!-- <field name="context">{'search_default_group_Project_name': 1}</field> -->
+        <field name="search_view_id" ref="orders_form_view_search"/>  
+    </record>
+
+    <menuitem name="Orders" 
+              id="menu_action_orders_form_cus2" 
+              parent="account.menu_finance"
+              action="action_orders_form_cus2"/>
+    
+</odoo>

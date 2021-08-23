@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		
+        <record id="hr_rule_ss" model="hr.salary.rule">
+			<field name="name">Social Security</field>
+            <field name="sequence" eval="106"/>
+            <field name="code">SSD</field>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+	        <field name="amount_python_compute"><![CDATA[
+salary = contract.social_security_salary or contract.wage
+result = salary*(0.075)*-1 ]]></field>
+	    </record>
+    	
+		<record id="hr_rule_ss_cont" model="hr.salary.rule">
+			<field name="name">Social Security Company Contribution</field>
+            <field name="sequence" eval="150"/>
+            <field name="code">SSCC</field>
+            <field name="category_id" ref="hr_payroll.COMP"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+	        <field name="amount_python_compute"><![CDATA[
+salary = contract.social_security_salary or contract.wage
+result = salary*(0.1425)
+            ]]></field>
+	    </record>
+	    
+	    <record id="hr_rule_it" model="hr.salary.rule">
+			<field name="name">Income Tax</field>
+            <field name="sequence" eval="107"/>
+            <field name="code">ITD</field>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+	        <field name="amount_python_compute"><![CDATA[
+result = 0
+if employee.marital != 'married':
+    if GROSS > 2666.66:
+        result = (GROSS - 2666.66) * 0.2 + 174.9993
+    elif GROSS > 1833.33 and GROSS <= 2666.66 :
+        result = (GROSS - 1833.33) * 0.14 + 58.3331
+    elif GROSS > 1000 and GROSS <= 1833.33 :
+        result = (GROSS - 1000) * 0.07
+else:
+    if GROSS > 3666.66:
+        result = (GROSS - 3666.66) * 0.2 + 174.9993
+    elif GROSS > 2833.33 and GROSS <= 3666.66 :
+        result = (GROSS - 2833.33) * 0.14 + 58.3331
+    elif GROSS > 2000 and GROSS <= 2833.33 :
+        result = (GROSS - 2000) * 0.07
+result = result*-1
+            ]]></field>
+	    </record>
+        
+	</data>
+</openerp>

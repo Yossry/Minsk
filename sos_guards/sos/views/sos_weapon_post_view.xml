@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<!--Weapon Post	 -->
+		<record model="ir.ui.view" id="sos_weapon_post_tree_view">
+			<field name="name">sos.weapon.post.tree.view</field>
+			<field name="model">sos.weapon.post</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Weapon" create="false" edit="false" delete="false">
+					<field name="weapon_id"/>
+					<field name="post_id"/>
+					<field name="center_id" />
+					<field name="project_id" />
+					<field name="fromdate" />
+					<field name="todate" />
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="sos_weapon_post_form_view">
+			<field name="name">sos.weapon.post.form.view</field>
+			<field name="model">sos.weapon.post</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Weapon">
+					<sheet>
+						<group>
+							<group>
+								<field name="weapon_id" placeholder="Guard Name..."/>
+								<field name="post_id" placeholder="Post..."/>
+								<field name="current" />
+							</group>
+							<group>
+								<field name="fromdate" />
+								<field name="todate" />
+							</group>
+						</group>
+						<group>
+							<field name="remarks" />
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="sos_weapon_post_filter_view" model="ir.ui.view">
+			<field name="name">sos.weapon.post.select</field>
+			<field name="model">sos.weapon.post</field>
+			<field name="arch" type="xml">
+				<search string="Search Record">
+				   <field name="weapon_id" />
+				   <field name="post_id" />
+
+				   <filter string="Current" name="current" icon="terp-personal+" domain="[('current','=',True)]" help="View Active Guards"/>
+				   <separator/>
+
+				   <group expand="0" string="Group By...">
+					   <filter string="Center" name="center_id" icon="terp-personal" domain="[]" context="{'group_by' : 'center_id'}" />
+						<filter string="Project" name="project_id" icon="terp-personal" domain="[]" context="{'group_by' : 'project_id'}" />
+					   <filter string="Post" name="post_id" icon="terp-personal" domain="[]" context="{'group_by' : 'post_id'}" />
+					   <filter string="Weapon" name="weapon_id" icon="terp-personal" domain="[]" context="{'group_by' : 'weapon_id'}" />
+					   <filter string="Current" name="current" icon="terp-personal" domain="[]" context="{'group_by' : 'current'}" />
+
+				   </group>
+
+			   </search>
+			</field>
+		</record>
+
+		<record id="sos_weapon_post_action" model="ir.actions.act_window">
+			<field name="name">Weapon Post</field>
+			<field name="res_model">sos.weapon.post</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree</field>
+			<field name="search_view_id" ref="sos_weapon_post_filter_view"/>
+			<field name="context">{'current': True,'search_default_current':1}</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+					Click to create a new Weapon Post.
+				</p>
+			</field>
+		 </record>
+	</data>
+</odoo>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="group_department_manager" model="res.groups">
+        <field name="name">Department Manager</field>
+        <field name="implied_ids" base.group_user/>
+    </record>
+    <record id="trip_request_rule_employee" model="ir.rule">
+        <field name="name">Trip Request: employee: read</field>
+        <field name="model_id" ref="model_trip_request"/>
+        <field name="domain_force">[('employee_id.user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4,ref('base.group_user'))]"/>
+    </record>
+
+    <record id="trip_request_rule_manager" model="ir.rule">
+        <field name="name">Trip Request: Manager</field>
+        <field name="model_id" ref="model_trip_request"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('hr.group_hr_manager'))]"/>
+    </record>
+    <record id="trip_request_rule_officer" model="ir.rule">
+        <field name="name">Trip Request: Officer: read</field>
+        <field name="model_id" ref="model_trip_request"/>
+        <field name="domain_force">['|', ('department_id.manager_id.user_id', '=', user.id), ('employee_id.user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('hr.group_hr_user'))]"/>
+    </record>
+
+    <record id="hr_leave_rule_employee_update_department_manager" model="ir.rule">
+        <field name="name">Leaves: employee: create/write/unlink not validated own</field>
+        <field name="model_id" ref="model_hr_leave"/>
+        <field name="domain_force">['|', ('department_id.manager_id.user_id', '=', user.id), ('employee_id.user_id','=',user.id), ('state', 'in', ['draft', 'confirm', 'cancel', 'refuse', 'validate1'])]</field>
+        <field name="perm_read" eval="False"/>
+        <field name="groups" eval="[(4,ref('qpr_hr.group_department_manager'))]"/>
+    </record>
+</odoo>

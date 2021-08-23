@@ -1,0 +1,267 @@
+@mixin import_view {
+    form.oe_import {
+        padding: 15px;
+        .oe_import_box {
+            width: 100%;
+            border: none;
+            border-radius: 0;
+            background: $white;
+            padding: 0 0 15px;
+            .oe_import_with_file {
+                padding: 15px 0;
+                margin: 15px 0 0 0;
+                & > .oe_import_toggle {
+                    margin: 0;
+                    padding-bottom: 15px;
+                    padding-left: 15px;
+                    border-bottom: 1px solid $border;
+                    color: $font-color;
+                    font-weight: $font-weight-b;
+                    text-transform: uppercase;
+                    &:before {
+                        float: right;
+                        content: '\f053';
+                        font-family: FontAwesome;
+                        color: $font-color;
+                        margin-right: 15px;
+                        -webkit-transition-duration: 0.1s;
+                        -moz-transition-duration: 0.1s;
+                        -o-transition-duration: 0.1s;
+                        transition-duration: 0.1s;
+                    }
+                    &.open {
+                        &:before {
+                            transform: rotate(-90deg);
+                            -webkit-transition-duration: 0.1s;
+                            -moz-transition-duration: 0.1s;
+                            -o-transition-duration: 0.1s;
+                            transition-duration: 0.1s;
+                        }
+                    }
+                }
+                & > .row .oe_import_toggled {
+                    &.col-sm-5 {
+                        width: 50%;
+                        & > p {
+                            & > label {
+                                width: 25%;
+                                text-align: left;
+                                color: $form-label-color;
+                            }
+                            & > .select2-container {
+                                width: 70% !important;
+                                &.select2-container-active {
+                                    .select2-choice {
+                                        @include border-animation();
+                                    }
+                                }
+                            }
+                            & > input {
+                                width: 70%;
+                                &:focus {
+                                    @include border-animation();
+                                }
+                            }
+                        }
+                    }
+                    & > p {
+                        label {
+                            padding-right: 5px;
+                        }
+                        .select2-container {
+                            & > a {
+                                border: none;
+                                border-bottom: 1px solid $border;
+                                box-shadow: none;
+                                background-image: none;
+                                height: 34px;
+                                border-radius: 0;
+                                background-color: transparent;
+                                .select2-chosen {
+                                    box-shadow: none;
+                                }
+                                .select2-arrow {
+                                    box-shadow: none;
+                                    background-image: none;
+                                    background-color: transparent;
+                                    border-left: none;
+                                    & > b {
+                                        border-left: none;
+                                    }
+                                }
+                            }
+                        }
+                        & > input {
+                            border: none;
+                            border-bottom: 1px solid $border;
+                            outline: none;
+                        }
+                    }
+                }
+            }
+        }
+        & > .oe_import_with_file {
+            & > .oe_import_error_report {
+                margin: 15px 0px;
+                & > .oe_import_report {
+                    color: $white;
+                    border: 1px solid $brand-secondary;
+                    border-radius: 0;
+                    background-color: $brand-secondary;
+                    padding: 15px;
+                }
+                & > pre {
+                    border: 1px solid $border;
+                    border-radius: 0;
+                    color: $font-color;
+                    background-color: transparent;
+                    white-space: normal;
+                    margin-top: 15px;
+                }
+                & > ul > .oe_import_report {
+                    background-color: $tr-hover;
+                    color: $font-color;
+                    border-radius: 0;
+                }
+            }
+            label {
+                color: $form-label-color;
+                padding-right: 5px;
+            }
+            & > h2 {
+                color: $font-color;
+                margin-bottom: 15px;
+            }
+            & > .table-responsive table.table-bordered.oe_import_grid {
+                border: 0;
+                width: 100%;
+                overflow: auto;
+                display: block;
+                margin-top: 15px;
+                & > thead {
+                    background: $white;
+                    color: $font-color;
+                    & > tr {
+                        & > td {
+                            border: none;
+                            border-bottom: 1px solid $border;
+                            height: 50px;
+                            text-align: center;
+                            font-weight: $font-weight-b;
+                            .select2-container {
+                                width: 100% !important;
+                                &.select2-container-active {
+                                    .select2-choice {
+                                        @include border-animation();
+                                    }
+                                }
+                            }
+                            .select2-container {
+                                & > a {
+                                    border: none;
+                                    border-bottom: 1px solid $border;
+                                    box-shadow: none;
+                                    background-image: none;
+                                    height: 34px;
+                                    border-radius: 0;
+                                    background-color: transparent;
+                                    color: $font-color;
+                                    .select2-chosen {
+                                        box-shadow: none;
+                                    }
+                                    .select2-arrow {
+                                        box-shadow: none;
+                                        background-image: none;
+                                        background-color: transparent;
+                                        border-left: none;
+                                        & > b {
+                                            border-left: none;
+                                        }
+                                    }
+                                }
+                            }
+                            & > input {
+                                border: none;
+                                border-bottom: 1px solid $border;
+                                outline: none;
+                            }
+                        }
+                    }
+                }
+                & > tbody {
+                    & > tr {
+                        background-color: transparent;
+                        height: 50px;
+                        color: $table-row;
+                        & > td {
+                            border: none;
+                            border-bottom: 1px solid $border;
+                        }
+                    }
+                }
+            }
+        }
+        .select2-arrow {
+            background: none;
+            & > b {
+                background: none;
+                &:before {
+                    content: "\f0d7";
+                    font-family: FontAwesome;
+                }
+            }
+        }
+        abbr.select2-search-choice-close {
+            font-size: $font-size-n;
+            top: 0;
+            background: none;
+            &:before {
+                content: "\f00d";
+                font-family: FontAwesome;
+                font-size: $font-size-1;
+            }
+        }
+    }
+}
+
+.o_web_client {
+    div.select2-drop {
+        border: 1px solid $border;
+        box-shadow: none;
+        border-radius: 0;
+        padding: 5px;
+        margin-top: 3px;
+        .select2-search {
+            margin-bottom: 5px;
+            color: $font-color;
+            input {
+                border: 0;
+                border-bottom: 1px solid $border;
+                background: none;
+                padding: 0px;
+                font-size: $font-size-1;
+                &:focus {
+                    @include border-animation();
+                }
+            }
+            &:before {
+                font-size: $font-size-1;
+                content: "\f002";
+                color: $font-color;
+                position: absolute;
+                right: 10px;
+                font-family: FontAwesome;
+            }
+        }
+        .select2-results {
+            color: $font-color;
+            .select2-highlighted {
+                background-color: $tr-hover;
+                color: $font-color;
+            }
+        }
+        &.select2-drop-active {
+            border-top: 1px solid $border;
+        }
+    }
+}

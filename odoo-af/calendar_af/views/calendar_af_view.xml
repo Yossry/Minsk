@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="af_generate_occasions" model="ir.actions.server">
+        <field name="name">AF Generate Occasions</field>
+        <field name="model_id" ref="base.model_ir_actions_server"/>
+        <field name="state">code</field>
+        <field name="code">competence = env['calendar.schedule.competence'].search([('ipf_id', '=', 'ded72445-e5d3-4e21-a356-aad200dac83d')])
+start = datetime.datetime.strptime(("2020-04-01T00:00:00"), "%Y-%m-%dT%H:%M:%S")
+stop = datetime.datetime.strptime(("2020-04-02T0:00:00"), "%Y-%m-%dT%H:%M:%S")
+schedules = env['calendar.schedule'].search([('start', '>', start),('stop', '&lt;', stop),('competence', '=', competence.id)])
+
+schedules.create_occasions()</field>
+    </record>
+
+    <record id="af_get_bookable_occasions" model="ir.actions.server">
+        <field name="name">AF Get Bookable Occasion</field>
+        <field name="model_id" ref="base.model_ir_actions_server"/>
+        <field name="state">code</field>
+        <field name="code">competence = env['calendar.schedule.competence'].search([('ipf_id', '=', 'ded72445-e5d3-4e21-a356-aad200dac83d')])
+start = datetime.datetime.strptime(("2020-04-02T09:00:00"), "%Y-%m-%dT%H:%M:%S")
+stop = datetime.datetime.strptime(("2020-04-02T10:30:00"), "%Y-%m-%dT%H:%M:%S")
+occasions = env['calendar.occasion'].get_bookable_occasions(start, stop, competence, 'SPD', 5)
+reservation = env['calendar.occasion'].reserve_occasion(occasions[0])</field>
+    </record>
+
+    <record id="af_calendar_cleanup" model="ir.actions.server">
+        <field name="name">AF Calendar Cleanup</field>
+        <field name="model_id" ref="base.model_ir_actions_server"/>
+        <field name="state">code</field>
+        <field name="code">unused_occasions = env['calendar.occasion'].search([('appointment_id','=',''), ('start','&lt;', datetime.datetime.now() - datetime.timedelta(days=14))])
+unused_occasions.unlink()</field>
+    </record>
+
+    <menuitem name="PDM" id="menu_pdm" parent="calendar.mail_menu_calendar" sequence="10" />
+    <menuitem name="Local" id="menu_local" parent="calendar.mail_menu_calendar" sequence="11" />
+    <menuitem name="Administration" id="menu_admin" parent="calendar.mail_menu_calendar" sequence="20" />
+</odoo>

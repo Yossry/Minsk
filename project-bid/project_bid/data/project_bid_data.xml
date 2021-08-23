@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="0">
+
+        <!-- Bid-related subtypes for messaging / Chatter -->
+        <record id="mt_bid_confirmed" model="mail.message.subtype">
+            <field name="name">Bid Confirmed</field>
+            <field name="default" eval="True"/>
+            <field name="res_model">project.bid</field>
+        </record>
+        <record id="mt_bid_approved" model="mail.message.subtype">
+            <field name="name">Bid Approved</field>
+            <field name="default" eval="True"/>
+            <field name="res_model">project.bid</field>
+        </record>
+
+        <record id="mt_bid_draft" model="mail.message.subtype">
+            <field name="name">Bid Set to Draft</field>
+            <field name="default" eval="True"/>
+            <field name="res_model">project.bid</field>
+        </record>
+
+        <record id="mt_bid_cancel" model="mail.message.subtype">
+            <field name="name">Bid Cancelled</field>
+            <field name="default" eval="True"/>
+            <field name="res_model">project.bid</field>
+        </record>
+
+    </data>
+</openerp>

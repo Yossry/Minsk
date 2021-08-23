@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+
+<record id="view_salary_stop_wizard" model="ir.ui.view">
+	<field name="name">Salary Stop Wizard View</field>
+	<field name="model">salary.stop.wizard</field>            
+	<field name="arch" type="xml">
+		<form string="Salary Stop Wizard">
+			<label for="slip_ids" string="This wizard will Write the Stop to the Bank Name in the Payslip."/>
+			<group col="4">
+			  <!-- <field name="due_date"/> -->		
+
+			</group>
+
+			<notebook>
+				<page string="Gaurd Payslips">											
+					<field name="slip_ids" /> 
+				</page>	
+			</notebook>
+
+
+			<footer>
+				<button name="salary_stop_funct" string="Stop Salary" type="object" default_focus="1" class="oe_highlight"/>
+				or 
+				<button name="salary_restore_funct" string="Restore Salary" type="object" default_focus="1" class="oe_highlight"/>
+				or 
+				<button string="Cancel" class="oe_link" special="cancel" />
+			</footer>
+		</form>
+		
+	</field>
+</record>
+
+ <act_window id="action_salary_stop_wizard"
+	key2="client_action_multi"			
+	name="Stop Guards Salary"
+	res_model="salary.stop.wizard"
+	src_model="guards.payslip"
+	view_mode="form" 
+	target="new" 
+	view_type="form"/>
+        
+</data>
+</odoo>

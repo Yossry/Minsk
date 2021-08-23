@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template name="Our Team" id="s_our_team">
+        <!-- ====START OUR TEAM AREA==== -->
+        <section class="our_team oe_structure">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="section_title mb80">
+                            <h5 class="smallHd text-center">meet with the</h5>
+                            <h2 class="secHd text-center">crazy team</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row team_details_area">
+                    <div class="col-xs-12 col-sm-6 fix_p">
+                        <div class="team_content">
+                            <div class="team_cotent_slid">
+                                <div class="item">
+                                    <h1>Timothy<br/>Dean</h1>
+                                    <h6>Creative Director</h6>
+                                    <p>If you’ve followed along and done the steps above, you’ve created good starting place. You’re going to need to make sure your pages are optimized properly. This will ensure you get your page ranked high in the search engines.</p>
+                                    <ul class="team_social">
+                                        <li>
+                                            <a href="#">
+                                                <i class="zmdi zmdi-facebook btn waves-effect"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="zmdi zmdi-twitter btn waves-effect"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="zmdi zmdi-dribbble btn waves-effect"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="zmdi zmdi-behance btn waves-effect"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="zmdi zmdi-pinterest btn waves-effect"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <a class="th_bt btn waves-effect waves-light" href="#">Learn More
+                                        <i class="zmdi zmdi-long-arrow-right"></i>
+                                    </a>
+                                </div>
+                                <div class="item">
+                                    <h1>Ralph <br/>Ramirez</h1>
+                                    <h6>Creative Director</h6>
+                                    <p>If you’ve followed along and done the steps above, you’ve created good starting place. You’re going to need to make sure your pages are optimized properly. This will ensure you get your page ranked high in the search engines.</p>
+                                    <ul class="team_social">
+                                        <li>
+                                            <a href="#">
+                                                <i class="zmdi zmdi-facebook btn waves-effect"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="zmdi zmdi-twitter btn waves-effect"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="zmdi zmdi-dribbble btn waves-effect"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="zmdi zmdi-behance btn waves-effect"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="zmdi zmdi-pinterest btn waves-effect"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <a class="th_bt btn waves-effect waves-light" href="#">Learn More
+                                        <i class="zmdi zmdi-long-arrow-right"></i>
+                                    </a>
+                                </div>
+                                <div class="item">
+                                    <h1>Alexander<br/>Harper</h1>
+                                    <h6>Creative Director</h6>
+                                    <p>If you’ve followed along and done the steps above, you’ve created good starting place. You’re going to need to make sure your pages are optimized properly. This will ensure you get your page ranked high in the search engines.</p>
+                                    <ul class="team_social">
+                                        <li>
+                                            <a href="#">
+                                                <i class="zmdi zmdi-facebook btn waves-effect"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="zmdi zmdi-twitter btn waves-effect"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="zmdi zmdi-dribbble btn waves-effect"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="zmdi zmdi-behance btn waves-effect"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="zmdi zmdi-pinterest btn waves-effect"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <a class="th_bt btn waves-effect waves-light" href="#">Learn More
+                                        <i class="zmdi zmdi-long-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 fix_p_r">
+                        <div class="team_member_photo">
+                            <div class="team_slid">
+                                <div class="item waves-effect">
+                                    <img src="/theme_materialab/static/src/img/team_member_1.jpg" alt="" />
+                                    <div class="memberPhoto_border bg1"></div>
+                                    <div class="memberPhoto_border bg2"></div>
+                                    <div class="memberPhoto_border bg3"></div>
+                                    <div class="memberPhoto_border bg4"></div>
+                                </div>
+                                <div class="item waves-effect">
+                                    <img src="/theme_materialab/static/src/img/team_member_3.jpg" alt="" />
+                                    <div class="memberPhoto_border bg1"></div>
+                                    <div class="memberPhoto_border bg2"></div>
+                                    <div class="memberPhoto_border bg3"></div>
+                                    <div class="memberPhoto_border bg4"></div>
+                                </div>
+                                <div class="item waves-effect">
+                                    <img src="/theme_materialab/static/src/img/team_member_2.jpg" alt="" />
+                                    <div class="memberPhoto_border bg1"></div>
+                                    <div class="memberPhoto_border bg2"></div>
+                                    <div class="memberPhoto_border bg3"></div>
+                                    <div class="memberPhoto_border bg4"></div>
+                                </div>
+                            </div>
+                            <div class="teamslide_nav">
+                                <i class="zmdi zmdi-long-arrow-left testi_prev"></i>
+                                <i class="zmdi zmdi-long-arrow-right testi_next"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ====START OUR TEAM AREA==== -->
+    </template>
+</odoo>

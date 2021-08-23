@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="freight_dashboard.dashboard">
+        <!--View-->
+        <div class="col-md-12">
+            <!--<style type="text/css" t-if="! widget.isFirefox">-->
+                <!--.o_control_panel.o_breadcrumb_full {-->
+                    <!--display: none;-->
+                <!--}-->
+            <!--</style>-->
+            <div class="col-md-12">
+                <div class="col-md-4">
+                    <div class="media">
+                        <a class="pull-left my_profile">
+                            <img class="media-object dp img-circle"
+                                 t-att-src="'data:image/png;base64,'+widget.employee_data.image"
+                                 style="width: 100px;height:100px;"/>
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading"><span t-esc="widget.employee_data.display_name"/></h4>
+                            <h5 t-if="widget.employee_data.job_id"><span t-esc="widget.employee_data.job_id[1]"/></h5>
+                            <h5><span t-esc="widget.employee_data.public_info"/></h5>
+                            <hr style="margin:8px auto"/>
+                            <t t-foreach="widget.employee_data.categories" t-as="c">
+                                <span class="label label-default"><t t-esc="c"/></span>
+                            </t>
+                            <br/>
+                            <!--<span><small>Last login:<span t-esc="widget.employee_data.last_login"/></small></span>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--dashboard boxes-->
+            <div class="col-md-12">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="dash-box dash-box-color-1">
+                                <div class="dash-box-icon">
+                                    <i class="fa fa-fw fa-truck"/>
+                                </div>
+                                <div class="dash-box-body">
+                                    <span class="dash-box-count"><t t-esc="widget.employee_data.direct_operation_count"/></span>
+                                    <span class="dash-box-title">Direct</span>
+                                </div>
+
+                                <div class="dash-box-action direct-shipment">
+                                    <button>More Info</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="dash-box dash-box-color-2">
+                                <div class="dash-box-icon">
+                                    <i class="fa fa-truck"></i>
+                                </div>
+                                <div class="dash-box-body">
+                                    <span class="dash-box-count"><t t-esc="widget.employee_data.house_operation_count"/></span>
+                                    <span class="dash-box-title">House</span>
+                                </div>
+
+                                <div class="dash-box-action house-shipment">
+                                    <button>More Info</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="dash-box dash-box-color-3">
+                                <div class="dash-box-icon">
+                                    <i class="fa fa-truck"></i>
+                                </div>
+                                <div class="dash-box-body">
+                                    <span class="dash-box-count"><t t-esc="widget.employee_data.master_operation_count"/></span>
+                                    <span class="dash-box-title">Master</span>
+                                </div>
+
+                                <div class="dash-box-action master-shipment">
+                                    <button>More Info</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="dash-box dash-box-color-4">
+                                <div class="dash-box-icon">
+                                    <i class="fa fa-dollar"/>
+                                </div>
+                                <div class="dash-box-body">
+                                    <span class="dash-box-count">
+                                        <t t-esc="widget.employee_data.invoice_count"/>
+                                    </span>
+                                    <span class="dash-box-title">Customer Invoices</span>
+                                </div>
+
+                                <div class="dash-box-action invoices">
+                                    <button>More Info</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="dash-box dash-box-color-5">
+                                <div class="dash-box-icon">
+                                    <i class="fa fa-dollar"/>
+                                </div>
+                                <div class="dash-box-body">
+                                    <span class="dash-box-count"><t t-esc="widget.employee_data.bills_count"/></span>
+                                    <span class="dash-box-title">Vendor Bills</span>
+                                </div>
+
+                                <div class="dash-box-action bills">
+                                    <button>More Info</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="dash-box dash-box-color-6">
+                                <div class="dash-box-icon">
+                                    <i class="fa fa-chain"/>
+                                </div>
+                                <div class="dash-box-body">
+                                    <span class="dash-box-count"><t t-esc="widget.employee_data.port_count"/></span>
+                                    <span class="dash-box-title">Ports</span>
+                                </div>
+
+                                <div class="dash-box-action ports">
+                                    <button>More Info</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-content col-md-12">
+				<div class="container-fluid">
+                  <div class="row">
+                      <div class="col-md-6">
+                          <div class="panel">
+                              <div class="panel-heading">
+                                  <h3 class="panel-title">Operations</h3>
+                              </div>
+                              <div class="panel-body">
+                                    <canvas id="myChart"/>
+                                    <button id="generate_payroll_pdf" class="btn btn-default"
+                                        data-placement="bottom" title="Download Pdf!">
+                                        <i class="fa fa-2x fa-file-pdf-o"/> Download
+                                    </button>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="panel">
+                              <div class="panel-heading">
+                                  <h3 class="panel-title">Shippers</h3>
+                              </div>
+                              <div class="panel-body">
+                                  <canvas id="attendanceChart"/>
+                                  <button id="generate_created_by_pdf" class="btn btn-default"
+                                          data-placement="bottom" title="Download Pdf">
+                                      <i class="fa fa-2x fa-file-pdf-o"/> Download
+                                  </button>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12" style="overflow-x: scroll;">
+                    <h4>Operation Details</h4>
+                    <table id="operation_details" class="display nowrap" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Direction</th>
+                                <th>Transport</th>
+                                <th>Operation</th>
+                                <th>Shipper</th>
+                                <th>Source location</th>
+                                <th>Destination location</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="widget.employee_data.operation_table" t-as="e">
+                                <td><span t-esc="e['name']"/></td>
+                                <td><span t-esc="e['direction']"/></td>
+                                <td><span t-esc="e['transport']"/></td>
+                                <td><span t-esc="e['operation']"/></td>
+                                <td><span t-esc="e['shipper']"/></td>
+                                <td><span t-esc="e['source_location']"/></td>
+                                <td><span t-esc="e['destination_location']"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

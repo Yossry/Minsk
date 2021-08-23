@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <report
+            id="hr_employee_print_badge"
+            string="New Employee Report"
+            model="hr.employee"
+            report_type="qweb-pdf"
+            name="cb_hr_views.new_employee_report"
+            file="cb_hr_views.new_employee_report"
+            print_report_name="'new_employee_report'"
+    />
+
+    <template id="new_employee_report">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="employee">
+                <div class="header">
+                    <div>
+                        <div class="row" t-if="employee.company_id">
+                            <div class="col-3 mb8">
+                                <img t-if="employee.company_id.logo"
+                                     t-att-src="image_data_uri(employee.company_id.logo)"
+                                     alt="Logo" height="100" width="150"/>
+                            </div>
+                            <div class="col-6">
+                                <br/>
+                                <h3>Nuevas contrataciones - Datos personales / Gestoría</h3>
+                            </div>
+                            <div class="col-3 text-right mb4">
+                                <h4 class="mt0"
+                                    t-field="employee.company_id.report_header"/>
+                                <div name="company_address">
+                                    <span class="company_address"
+                                          t-field="employee.company_id.partner_id"
+                                          t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}'/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 border-top" style="border-width: medium;"/>
+                    </div>
+                </div>
+                <div class="article o_report_layout_standard"  t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
+                    <div style="font-size: 25px;">
+                        <b>Name: </b>
+                        <span t-field="employee.name"/><br/>
+                        <b>Company: </b>
+                        <span t-if="employee.company_id" t-field="employee.company_id.name"/><br/><br/>
+                        <b>Aditional data</b>
+                        <div class="row">
+                            <div class="col-6">
+                                <span>DNI / NIE: </span>
+                                <span t-field="employee.identification_id"/><br/>
+                                <span>Valid Until: </span>
+                                <span t-field="employee.identification_id_expiration"/><br/>
+                                <span>Birth date: </span>
+                                <span t-field="employee.birthday"/><br/>
+                                <span>SS: </span>
+                                <span t-field="employee.ssnid"/><br/>
+                                <span>CC: </span>
+                                <span t-field="employee.bank_account_id"/><br/>
+                                <span>Address: </span>
+                                <span t-field="employee.partner_id.street"/><br/>
+                                <span>City: </span>
+                                <span t-field="employee.partner_id.city"/><br/>
+                                <span>Province: </span>
+                                <span t-field="employee.partner_id.state_id.name"/><br/>
+                                <span>CP: </span>
+                                <span t-field="employee.partner_id.zip"/><br/>
+                                <span>Phone: </span>
+                                <span t-field="employee.partner_id.mobile"/><br/>
+                                <span>Mail: </span>
+                                <span t-field="employee.personal_email"/><br/>
+                            </div>
+                            <div class="col-6">
+                                <span>Start Date: </span>
+                                <span t-if="employee.contract_id" t-field="employee.contract_id.date_start"/><br/>
+                                <span>Center: </span>
+                                <span t-if="employee.address_id" t-field="employee.address_id.name"/><br/>
+                                <span>Working Hours: </span>
+                                <span t-field="employee.working_hours_type"/><br/>
+                                <span>Turn: </span>
+                                <span t-if="employee" t-field="employee.turn"/><br/>
+                                <span>Laboral Category: </span>
+                                <span t-if="employee" t-field="employee.laboral_category_id"/><br/>
+                            </div>
+                        </div><br/>
+                        <div>
+                            <b>Observations</b><br/>
+                            <div class="row">
+                                <div class="col-12 border" style="height: 200px;"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

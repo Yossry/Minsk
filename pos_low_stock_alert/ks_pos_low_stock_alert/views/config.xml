@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    @Author: KSOLVES India Private Limited
+    @Email: sales@ksolves.com
+-->
+
+<odoo>
+    <record id="pos_config" model="ir.ui.view">
+        <field name="name">pos.config</field>
+        <field name="model">pos.config</field>
+        <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr='//div[@id="inventory_location"]' position='after'>
+                <h2>POS Low Stock Alert</h2>
+                <div class="row mt16 o_settings_container" id="pos_session_stock">
+                    <div class="col-xs-12 col-md-6 o_setting_box" title="Display Quantity of Products in POS">
+                         <div class="o_setting_left_pane">
+                            <field name="display_stock"/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="display_stock" string="Display Product Stock"/>
+                            <div class="text-muted">
+                                Check this to display product stock
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-md-6 o_setting_box" title="Allow Order when Product is Out of Stock">
+                         <div class="o_setting_left_pane">
+                            <field name="allow_order_when_product_out_of_stock"/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="allow_order_when_product_out_of_stock" string="Allow order when product is out-of-stock"/>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-md-6 o_setting_box" attrs="{'invisible':[('display_stock', '=', False)]}">
+                        <div class="o_setting_right_pane">
+                            <label for="minimum_stock_alert" string="Minimum Stock Alert"/>
+                            <div class="text-muted">
+                                Show stock in red color when it is lower than
+                            </div>
+                            <field name="minimum_stock_alert"/>
+                        </div>
+                    </div>
+
+
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

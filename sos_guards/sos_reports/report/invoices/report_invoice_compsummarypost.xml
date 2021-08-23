@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>	
+		<template id ="sos_reports.report_invoice_compsummarypost">
+			<t t-call="web.html_container">
+				<t t-call="web.external_layout" style="font-family:georgia,garamond,serif;font-size:10px">
+				<div class="page">
+					<div class="row">
+					 	 <div class="col-xs-4">
+					 	 	 <img width="40%" style="max-height:125px;" class="img img-responsive" src="/sos_payroll/static/src/img/logo.png"/>
+					 	 </div>
+					 	 <div class="col-xs-3">
+					 	 </div>
+					 	 
+					 	 <div class="col-xs-5" style="font-size:14px; font-weight:bold; text-align:right; align:left;margin-top:20px;">
+					 	 	SECURITY ORGANIZING SYSTEM (PVT) LIMITED
+					 	 </div>
+					 </div>
+				
+					 <div class="row" style="font-size:14px; font-weight:bold; text-align:center; align:left;">
+					 	<div class="col-xs-12">
+					 		Invoice Comparison Report - <b>Post Wise</b> Month of
+					 		<span t-esc="Period1(data['date_from']).name"/> AND <span t-esc="Period2(data['date_from']).name"/> 
+					 	</div>
+					 </div>
+					 
+					 
+					 <table class="table table-bordered">
+					 	<thead>
+					 		<tr>
+					 			<th>SR.No</th>
+					 			<th>Center Name</th>
+					 			<th>Invoice Amount</th>
+					 			<th>Invoice Amount</th>
+					 			<th>Difference</th>
+					 		</tr>
+					 		
+					 		<tr>
+					 			<th colspan="2"> </th>
+					 			<th><span t-esc="Period1(data['date_from']).name"/> </th>
+					 			<th><span t-esc="Period2(data['date_from']).name"/> </th>
+					 			<th> </th>
+					 		</tr>
+					 		
+					 	</thead>
+					 	
+					 	<tbody>
+					 		
+					 		<t t-foreach="Records" t-as="rec">
+					 			<tr style="font-size:14px; font-weight:bold;">
+					 				<td class="text-left" colspan="5">
+										<span t-esc="rec['center_name']" />
+									</td>
+					 			</tr>
+					 			
+					 			<t t-foreach="rec['projects']" t-as="project">
+					 				<tr style="font-size:14px; font-weight:bold;">
+						 				<td class="text-left" colspan="5">
+											<span t-esc="project['project_name']" />
+										</td>
+					 				</tr>
+					 				
+					 				<t t-foreach="project['posts']" t-as="post">
+					 					<tr>
+							 				<td class="text-left">
+												<span t-esc="post_index + 1" />
+											</td>
+											<td class="text-left">
+												<span t-esc="post['post_name']" />
+											</td>
+											<td class="text-left">
+												<span t-esc="post['amount_prev'] and '{0:,.0f}'.format(int(post['amount_prev'])) or '-'" />
+											</td>
+											<td class="text-left">
+												<span t-esc="post['amount'] and '{0:,.0f}'.format(int(post['amount'])) or '-'" />
+											</td>
+											<td class="text-left">
+												<span t-esc="post['diff'] and '{0:,.0f}'.format(int(post['diff'])) or '-'" />
+											</td>
+							 			</tr>
+					 				</t>
+					 				
+					 				<tr style="font-size:12px; font-weight:bold;">
+							 			<td class="text-center" colspan="2">
+											Project Totals:
+										</td>
+										<td class="text-left">
+											<span t-esc="project['P_Prev_Total'] and '{0:,.0f}'.format(int(project['P_Prev_Total'])) or '-'" />
+										</td>
+										<td class="text-left">
+											<span t-esc="project['P_Current_Total'] and '{0:,.0f}'.format(int(project['P_Current_Total'])) or '-'" />
+										</td>
+										<td class="text-left">
+											<span t-esc="project['P_Diff_Total'] and '{0:,.0f}'.format(int(project['P_Diff_Total'])) or '-'" />
+										</td>
+							 		</tr>
+					 				
+					 			</t>
+					 			
+					 		</t>
+					 		
+					 		<tr style="font-size:12px; font-weight:bold;">
+					 			<td class="text-center" colspan="2">
+									GRAND TOTALS:
+								</td>
+								<td class="text-left">
+									<span t-esc="Prev_Total and '{0:,.0f}'.format(int(Prev_Total)) or '-'" />
+								</td>
+								<td class="text-left">
+									<span t-esc="Current_Total and '{0:,.0f}'.format(int(Current_Total)) or '-'" />
+								</td>
+								<td class="text-left">
+									<span t-esc="Diff_Total and '{0:,.0f}'.format(int(Diff_Total)) or '-'" />
+								</td>
+					 		</tr>
+					 			
+					 	</tbody>
+					 </table>
+					 
+				</div>	 
+			</t>
+			</t>
+		</template>
+		
+	</data>
+</odoo>
+

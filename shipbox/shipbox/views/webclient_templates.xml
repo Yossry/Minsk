@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="assets_backend" name="ShipBox Assets and Fields" inherit_id="web.assets_backend" priority='15'>
+        <xpath expr="//script[last()]" position="after">
+            <script type="text/javascript" src="/shipbox/static/src/js/core.js"></script>
+            <script type="text/javascript" src="/shipbox/static/src/js/widgets.js"></script>
+            <script type="text/javascript" src="/shipbox/static/src/js/print_queue.js"></script>
+        </xpath>
+        <xpath expr="//link[last()]" position="after">
+            <link rel="stylesheet" type="text/css" href="/shipbox/static/src/css/web.css"/>
+        </xpath>
+    </template>
+
+    <template id="mail_assets_backend" name="mail assets" inherit_id="mail.assets_backend">
+        <xpath expr="//script[@src='/mail/static/src/js/thread_field.js']" position="replace">
+            <script type="text/javascript" src="/shipbox/static/src/js/thread_field.js"></script>
+        </xpath>
+    </template>
+</odoo>

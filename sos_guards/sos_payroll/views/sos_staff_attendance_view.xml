@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+                 	
+		<record id="view_sos_staff_attendance_tree" model="ir.ui.view">
+			<field name="name">sos.staff.attendance.tree</field>
+			<field name="model">sos.guard.attendance1</field>
+			<field name="arch" type="xml">
+				<tree string="Employee attendances" decoration-danger ="duty_status == 'late'" decoration-success="duty_status =='intime'" decoration-bf="duty_status in ['late','intime']" decoration-it="duty_status in ['late','intime']">
+					<field name="name" readonly="0"/>
+					<field name="employee_id" readonly="1"/>
+					<field name="department_id" readonly="1"/>
+					<field name="center_id" readonly="1"/>
+					<field name="project_id" readonly="1"/>
+					<field name="post_id" readonly="1"/>
+					<field name="device_id" readonly="1"/>
+					<field name="device_datetime" readonly="1" invisible="1"/>
+					<field name="action" readonly="1"/>
+					<field name="current_action" readonly="1"/>
+					<field name="present_reason" attrs="{'invisible': [('current_action','!=', 'present')]}" readonly="0"/>
+					<field name="absent_reason" attrs="{'invisible': [('current_action','!=', 'absent')]}" readonly="0"/>
+					<field name="duty_status" readonly="1" />
+					<field name="late_time" readonly="0" />
+					<field name="state" readonly="1" invisible="1"/>
+					<field name="month_att" readonly="1" />
+					<field name="create_date" readonly="1" invisible="1"/>
+					<field name="create_uid" readonly="1" invisible="1"/>
+					<field name="remarks" readonly="1"/>
+					<field name="source" readonly="1"/>
+			
+				</tree>
+			</field>
+		</record>
+
+		<record id="view_sos_staff_attendance_form" model="ir.ui.view">
+			<field name="name">sos.staff.attendance.form</field>
+			<field name="model">sos.guard.attendance1</field>
+			<field name="type">form</field>	
+			<field name="arch" type="xml">
+				<form string="Employee attendances">
+					<header>
+						<button name="action_verify" type="object" states="draft" string="Verify" class="oe_highlight" groups="sos.group_hr_master"/>
+						<field name="state" widget="statusbar" nolabel="1"/>
+					</header>
+					
+					 <sheet string="Attendances">
+					 	<group>
+					 		<group>
+					 			<field name="name" readonly="0" attrs="{'readonly': [('state','!=', 'draft')]}"/>
+								<field name="employee_id" domain="[('department_id','!=', 29)]" options="{'no_quick_create':True,'no_create_edit':True}" attrs="{'readonly': [('state','!=', 'draft')]}"/>
+								<field name="center_id" attrs="{'readonly': [('state','!=', 'draft')]}" options="{'no_quick_create':True,'no_create_edit':True}"/>
+								<field name="project_id" attrs="{'readonly': [('state','!=', 'draft')]}" options="{'no_quick_create':True,'no_create_edit':True}"/>
+								<field name="post_id" attrs="{'readonly': [('state','!=', 'draft')]}" context="{'form_view_ref': 'sos.sos_post_form_view','tree_view_ref': 'sos_post_tree_view','filter_view_ref': 'sos_post_filter_view'}" options="{'no_quick_create':True,'no_create_edit':True}"/>
+								<field name="department_id" attrs="{'readonly': [('state','!=', 'draft')]}" />
+								<field name="slip_id" attrs="{'readonly': [('state','!=', 'draft')],'invisible': [('state','=', 'draft')]}"/>
+					 		</group>
+					 		<group>
+					 			<field name="device_datetime" attrs="{'readonly': [('state','!=', 'draft')]}" invisible="1"/>
+					 			<field name="device_id" attrs="{'readonly': [('state','!=', 'draft')]}" options="{'no_quick_create':True,'no_create_edit':True}"/>
+								<field name="current_action" attrs="{'readonly': [('state','!=', 'draft')]}"/>
+								<field name="present_reason" attrs="{'readonly':[('state','!=', 'draft')],'invisible': [('current_action','!=', 'present')]}"/>
+								<field name="absent_reason" attrs="{'readonly':[('state','!=', 'draft')],'invisible': [('current_action','!=', 'absent')]}" readonly="0"/>
+								<field name="action" attrs="{'readonly': [('state','!=', 'draft')]}"/>
+								<field name="duty_status" attrs="{'readonly': [('state','!=', 'draft')]}"/>
+								<field name="late_time" attrs="{'readonly': [('state','!=', 'draft')]}" />
+								<field name="source" attrs="{'readonly': [('state','!=', 'draft')]}" />
+								<field name="remarks" attrs="{'readonly': [('state','!=', 'draft')]}" />
+								<field name="month_att" attrs="{'readonly':[('state','!=', 'draft')],'invisible': [('state','=', 'draft')]}"/>
+					 		</group>
+					 	</group>
+					 </sheet>
+					 <div class="oe_chatter">
+						<field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+						<field name="message_ids" widget="mail_thread" placeholder="Share a note..."/>
+				  	</div>
+				</form> 
+			</field>
+		</record>	
+
+		<record model="ir.ui.view" id="view_sos_staff_attendance_filter">
+			<field name="name">view_sos_staff_attendance_filter</field>
+			<field name="model">sos.guard.attendance1</field>
+			<field name="arch" type="xml">
+				<search string="Hr Attendance Search">
+					<field name="name" string="Attendance"/>
+					<field name="action"/>
+					<filter icon="terp-go-today" string="Today" name="today" domain="[('name','&gt;=',current_date),('name','&lt;=',current_date)]" />
+					<filter icon="terp-go-today" string="Draft" name="draft" domain="[('state','=','draft')]" />
+					<filter icon="terp-go-today" string="Counted" name="counted" domain="[('state','=','counted')]" />
+					<filter icon="terp-go-today" string="Done" name="done" domain="[('state','=','done')]" />
+					<separator/>
+					<filter icon="terp-go-today" string="Present" name="present" domain="[('current_action','=','present')]" />
+					<filter icon="terp-go-today" string="Absent" name="absent" domain="[('current_action','=','absent')]" />
+					<filter icon="terp-go-today" string="Double" name="double" domain="[('current_action','=','double')]" />
+					<filter icon="terp-go-today" string="Leave" name="leave" domain="[('current_action','=','leave')]" />
+					<filter icon="terp-go-today" string="Extra" name="extra" domain="[('current_action','=','extra')]" />
+					<filter icon="terp-go-today" string="Extra_Double" name="extra_double" domain="[('current_action','=','extra_double')]" />
+					<separator/>
+					<filter icon="terp-go-today" string="Auto" name="auto" domain="[('source','=','auto')]" />
+					<filter icon="terp-go-today" string="Manual" name="manual" domain="[('source','=','manual')]" />
+
+					<field name="employee_id"/>
+					<field name="project_id"/>
+					<field name="post_id"/>
+					<field name="center_id"/>
+					<field name="duty_status" />
+			
+					<group expand="0" string="Group By...">
+						<filter name="center" string="Center" icon="terp-personal" domain="[]" context="{'group_by':'center_id'}"/>
+						<filter name="project" string="Project" icon="terp-personal" domain="[]" context="{'group_by':'project_id'}"/>
+						<filter name="post" string="Post" icon="terp-personal" domain="[]" context="{'group_by':'post_id'}"/>
+						<filter name="department" string="Department" icon="terp-personal" domain="[]" context="{'group_by':'department_id'}"/>
+						<filter name="employee" string="Employee" icon="terp-personal" domain="[]" context="{'group_by':'employee_id'}"/>
+				
+						<separator/>
+						<filter name="month" string="Month" icon="terp-go-today" domain="[]" context="{'group_by':'name:month'}"/>
+						<filter name="week" string="Week" icon="terp-go-today" domain="[]" context="{'group_by':'name:week'}"/>
+						<filter name="day" string="Day" icon="terp-go-today" domain="[]" context="{'group_by':'name:day'}"/>
+				
+						<separator/>
+						<filter name="status" string="Status" icon="terp-personal" domain="[]" context="{'group_by':'state'}"/>
+						<filter name="attendance" string="Attendance" icon="terp-personal" domain="[]" context="{'group_by':'current_action'}"/>
+						<filter name="device" string="Device" icon="terp-personal" domain="[]" context="{'group_by':'device_id'}"/>
+				
+						<separator/>
+						<filter name="duty_status" string="Duty Status" icon="terp-personal" domain="[]" context="{'group_by':'duty_status'}"/>
+						<filter name="action" string="Action" icon="terp-personal" domain="[]" context="{'group_by':'action'}"/>
+						<filter name="absent_reason" string="Absent Reason" icon="terp-personal" domain="[]" context="{'group_by':'absent_reason'}"/>
+						<filter name="group_source" string="Source" icon="terp-personal" domain="[]" context="{'group_by':'source'}"/>
+					</group>
+				</search>
+			</field>
+		</record>
+
+		<record id="open_view_sos_staff_attendance" model="ir.actions.act_window">
+			<field name="name">Staff Attendances</field>
+			<field name="res_model">sos.guard.attendance1</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="context">{"search_default_draft":1}</field>
+			<field name="domain">[('employee_id.department_id','!=',29)]</field>
+			<field name="search_view_id" ref="view_sos_staff_attendance_filter" />
+			<field name="help">SOS Staff Attendance.</field>
+		</record>
+
+		<record id="open_view_sos_staff_attendance_view1" model="ir.actions.act_window.view">
+			<field eval="1" name="sequence"/>
+			<field name="view_mode">tree</field>		
+			<field name="view_id" ref="view_sos_staff_attendance_tree"/>	
+			<field name="act_window_id" ref="open_view_sos_staff_attendance"/>
+		</record>
+
+		<record id="open_view_sos_staff_attendance_view2" model="ir.actions.act_window.view">
+			<field eval="2" name="sequence"/>
+			<field name="view_mode">form</field>		
+			<field name="view_id" ref="view_sos_staff_attendance_form"/>	
+			<field name="act_window_id" ref="open_view_sos_staff_attendance"/>
+		</record>	
+		
+		<menuitem name="Staff Attendance" parent="sos_payroll.staff_attendance_main_menu" action="open_view_sos_staff_attendance" sequence="5" id="menu_sos_staff_attendance"/>
+	
+	</data>
+</odoo>
+
+

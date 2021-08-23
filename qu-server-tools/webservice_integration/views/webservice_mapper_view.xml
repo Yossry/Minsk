@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2019 Jesus Ramoneda <jesus.ramoneda@qubiq.es>
+    License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <data>
+        <!-- webservice.mapper tree view -->
+        <record id="webservice_mapper_view_tree" model="ir.ui.view">
+            <field name="name">webservice.mapper.view.tree</field>
+            <field name="model">webservice.mapper</field>
+            <field name="arch" type="xml">
+                <tree multi_edit="1">
+                    <field name="sequence" widget="handle"/>
+                    <field name="name"/>
+                    <field name="webservice_id"/>
+                </tree>
+            </field>
+        </record>
+        <record id="webservice_mapper_form_view" model="ir.ui.view">
+            <field name="name">webservice.form</field>
+            <field name="model">webservice.mapper</field>
+            <field name="arch" type="xml">
+                <form string="Webservice Mapper">
+                    <header>
+                        <button name="fill_required_fields" attrs="{ 'invisible': [('webservice_id','=', False)] }" class="oe_highlight" type="object" string="Auto Fill" />
+                        <button name="create_dependences" attrs="{ 'invisible': [('webservice_id','=', False)] }" class="oe_highlight" type="object" string="Create Dependences" />
+                        <button name="check_mapped_fields" attrs="{ 'invisible': [('webservice_id','=', False)] }" class="oe_highlight" type="object" string="Check Fields" />
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group colspan="4" name="main">
+                            <group>
+                                <field name="odoo_model" options="{'no_create_edit': True}"/>
+                                <field name="odoo_model_name" invisible="1"/>
+                                <field name="webservice_id"/>
+                                <field name="source_model"/>
+                                <field name="search_domain"/>
+                            </group>
+                            <group>
+                                <field name="active"/>
+                                <field name="sync_ids"/>
+                            </group>
+                        </group>
+
+                        <notebook>
+                            <page name='mapper' string='Fields'>
+                                <group name="mapper">
+                                    <field name="mapper_fields_ids">
+                                        <tree editable="bottom" decoration-success="state_valid == 'valid'" decoration-danger="state_valid == 'not_valid'">
+                                            <field name="sequence" widget="handle"/>
+                                            <field name="odoo_field" domain="[('model', '=', parent.odoo_model_name)]" options="{'no_create_edit': True}"/>
+                                            <field name="source_field"/>
+                                            <field name="unique"/>
+                                            <field name="search_operator" optional="hide" attrs="{'readonly': [('unique','=', False)]}"/>
+                                            <field name="create_method" optional="show"/>
+                                            <field name="state_valid" invisible='1'/>
+                                            <field name="odoo_relation" invisible='1'/>
+                                            <field name="field_type" invisible='1'/>
+                                            <field name="dependence_id" attrs="{'readonly': [('field_type', 'not in', ['many2many', 'one2many', 'many2one'])]}" domain="[('odoo_model_name', '=', odoo_relation)]"/>
+                                            <button name="create_dependence" type="object" alt="Create Dependence" icon="fa-cog" attrs="{'invisible': ['|', ('field_type', 'not in', ['many2many', 'one2many', 'many2one']), ('dependence_id', '!=', False)]}"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page name='settings' string="Advance Settings">
+                                <group>
+                                    <group>
+                                        <field name="update"/>
+                                        <field name="create_active"/>
+                                    </group>
+                                    <group>
+                                        <field name="unique_source_field"/>
+                                        <field name="debug_mode"/>
+
+                                    </group>
+                                </group>
+                                <button name="create_unique_field" class="oe_highlight" type="object" string="Create Unique Field" />
+                            </page>
+
+                        </notebook>
+                        <group>
+                            <field name="method_calls"/>
+                        </group>
+                        <group name='debug'>
+                            <field name="result"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- webservice_mapper search view -->
+        <record id="webservice_mapper_view_search" model="ir.ui.view">
+            <field name="name">webservice_mapper.view.search</field>
+            <field name="model">webservice.mapper</field>
+            <field name="arch" type="xml">
+                <search string="Search Description">
+                    <!-- Add your fields here -->
+
+                    <group expand="0" string="Group By">
+                        <filter name="group_by_webservice_id" string="Webservice" context="{'group_by': 'webservice_id'} " help=""/>
+                    </group>
+
+
+                </search>
+            </field>
+        </record>
+        <!-- webservice.mapper action window -->
+        <record id="webservice_mapper_action" model="ir.actions.act_window">
+            <field name="name">Mappers</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">webservice.mapper</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+            <field name="context">{'default_active': True}</field>
+
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Create a new mapper field
+                </p>
+            </field>
+        </record>
+
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="webservice_mapper_menu_act" name="Mappers" parent="data_webservice_menu" action="webservice_mapper_action" sequence="10"/>
+
+
+        <record id="action_Sync_Data_server" model="ir.actions.server">
+            <field name="type">ir.actions.server</field>
+            <field name="name">Sync Data</field>
+            <field name="model_id" ref="webservice_integration.model_webservice_mapper"/>
+            <field name="binding_model_id" ref="webservice_integration.model_webservice_mapper"/>
+            <field name="state">code</field>
+            <field name="code">
+                if records:
+                action = records.action_sync_data()
+            </field>
+        </record>
+
+
+        <record id="action_async_data_server" model="ir.actions.server">
+            <field name="type">ir.actions.server</field>
+            <field name="name">Async Data</field>
+            <field name="model_id" ref="webservice_integration.model_webservice_mapper"/>
+            <field name="binding_model_id" ref="webservice_integration.model_webservice_mapper"/>
+            <field name="state">code</field>
+            <field name="code">
+                if records:
+                action = records.get_data_for_sync()
+            </field>
+        </record>
+
+        <record id="action_export_mappers_server" model="ir.actions.server">
+            <field name="type">ir.actions.server</field>
+            <field name="name">Export Mappers</field>
+            <field name="model_id" ref="model_webservice_mapper"/>
+            <field name="binding_model_id" ref="webservice_integration.model_webservice_mapper"/>
+            <field name="sequence" eval="5" />
+            <field name="state">code</field>
+            <field name="code">
+                if records:
+                action = records.export_mappers()
+            </field>
+        </record>
+
+    </data>
+</odoo>

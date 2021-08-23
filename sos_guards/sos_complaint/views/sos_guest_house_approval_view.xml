@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>        
+		
+		<!--SOS Guest House Approval form view -->
+		<record id="view_sos_guest_house_approval_form" model="ir.ui.view">
+			<field name="name">sos.guest.house.approval.form</field>
+			<field name="model">sos.guest.house.approval</field>
+			<field name="arch" type="xml">
+				<form string="Guest House Approval Form">
+				   <header>
+						<button name="Coordinator_Approval" states="Draft" string="Coordinator Approval" class="oe_highlight" type="object"/>
+						<button name="Admin_Approval" states="Coordinator" string="Admin Approval" class="oe_highlight" type="object"/>
+						<button name="Audit_Approval" states="Admin Approval" string="Audit Approval" class="oe_highlight" type="object"/>
+						<button name="Finance_Approval" states="Audit Approval" string="Finance Approval" class="oe_highlight" type="object"/>
+						<button name="Accounts_Approval" states="Finance Approval" string="Accounts Approval" class="oe_highlight" type="object"/>						
+						<button name="Action_Paid" states="Accounts Approval" string="Paid" class="oe_highlight" type="object"/>
+						<field name="state" widget="statusbar" nolabel="1" />
+				   </header>
+					   
+				   <sheet>
+					   <div class="oe_title">				   
+						   <h1>
+							   <field name="name" readonly="1" nolabel="1"/>
+						   </h1>
+					   </div>				   
+					   <div class="oe_right oe_button_box" name="button_box">
+					   </div>
+					   <group>	
+							<group>				   						   		
+								<field name="requested_by" domain="[('department_id','!=',29),('is_guard','=',False),('current','=',True)]" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}" required="1"/>
+							</group>
+							<group>
+							</group>
+						</group>
+						
+					   <group>
+						   <group>
+								<field name="check_in" required="1"/>
+								<field name="food" widget="radio"/>
+								<field name="food_amount" string="Food Amount" attrs="{'invisible': [('food', '=', 'NO')]}" />
+						   </group>
+						   <group>
+								<field name="check_out" required="1"/>
+								<field name="days" required="1"/>
+								<field name="rent_per_day" required="1" string="Rate Per Day"/>
+								<field name="total_rent"/>
+						   </group>
+
+							<group>
+								<field name="traveler_type" widget="radio"/>
+							</group>
+							<group>
+								<field name="sos_traveler_name" domain="[('department_id','!=',29),('is_guard','=',False),('current','=',True)]" 
+											options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}" attrs="{'required': [('traveler_type', '=', 'SOS Employees')], 'invisible': [('traveler_type', '=', 'Other Then SOS')]}"/>
+								<field name="vistor_name" attrs="{'required': [('traveler_type', '=', 'Other Then SOS')], 'invisible': [('traveler_type', '=', 'SOS Employees')]}"/>
+							</group>
+							
+							<group>
+								<field name="reference" string="Reference"/>
+								<field name="total_amount" string="Total Amount"/>
+							</group>
+							<group>
+								<field name="guest_house_name" string="Guest House Name"/>
+								<field name="city"/>
+							</group>
+					   </group>
+					   
+					   <group>
+							<field name="purpose" placeholder="Purpose ..."/>
+						</group>	
+					   
+				   </sheet>
+					   <div class="oe_chatter">
+							<field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+							<field name="message_ids" widget="mail_thread" placeholder="Share a note..."/>
+						</div>
+			   </form>
+		   </field>
+		</record>
+ 
+		<!--SOS Guest House Approval Tree view -->   
+		<record id="view_sos_guest_house_approval_tree" model="ir.ui.view">
+		   <field name="name">sos.guest.house.approval.tree</field>
+		   <field name="model">sos.guest.house.approval</field>
+		   <field name="arch" type="xml">
+			   <tree colors="black:state == 'draft';red:state  == 'HOD Approval';green:state == 'Audit Approval';" string="Air Reservation Approval">	  
+				   <field name="name"/>
+				   <field name="requested_by"/>
+				   <field name="check_in"/>
+				   <field name="check_out"/>		   
+				   <field name="food"/>
+				     <field name="food_amount"/>
+				   <field name="days" string='Days'/>
+				   <field name="rent_per_day" string='Rent Per Day'/>
+				   <field name="traveler_type"/>
+				   <field name="sos_traveler_name"/>
+				   <field name="vistor_name"/>
+				   <field name="guest_house_name" />
+				   <field name="reference"/>
+				   <field name="total_amount"/>
+				   <field name="state" />		   
+			   </tree>
+		   </field>
+		</record>
+		
+		<!--SOS Guest House Approval Search view -->	
+		<record id="view_sos_guest_house_approval_filter" model="ir.ui.view">
+			<field name="name">sos.guest.house.approval.select</field>
+			<field name="model">sos.guest.house.approval</field>
+			<field name="arch" type="xml">
+				<search string="Guest House Approval">
+				   	   		   
+				   <field name="name" string="Number"/> 
+				   <field name="requested_by" string="Requested By"/>		   				   	   		
+				   <field name="check_in"/>
+				   <field name="check_out"/>
+				   <field name="days"/>
+				   <field name="rent_per_day"/>	
+				   <field name="reference"/>
+				   <field name="state"/>
+				   
+				   <filter icon="terp-go-today" string="Draft" name="draft" domain="[('state','=','Draft')]" />
+				   <filter icon="terp-go-today" string="Coordinator Approval" name="Coordinator Approval" domain="[('state','=','Coordinator')]" />
+				   <filter icon="terp-go-today" string="Admin Approval" name="Admin Approval" domain="[('state','=','Admin Approval')]" />
+				   <filter icon="terp-go-today" string="Audit Approval" name="Audit Approval" domain="[('state','=','Audit Approval')]" />
+				   <filter icon="terp-go-today" string="Finance Approval" name="Finance Approval" domain="[('state','=','Finance Approval')]" />
+				   <filter icon="terp-go-today" string="Accounts Approval" name="Accounts Approval" domain="[('state','=','Accounts Approval')]" />
+				   	<filter icon="terp-go-today" string="Paid" name="Paid" domain="[('state','=','Paid')]" />
+				   <separator/>
+				   
+				   <group expand="0" string="Group By...">
+				   		<filter string="Food" name="food" context="{'group_by': 'food'}"/>
+				   		<filter string="Guest Type" name="traveler_type" context="{'group_by': 'traveler_type'}"/>
+				   		<filter string="State" name="state" context="{'group_by': 'state'}"/>		   		
+				   		<separator/>
+				   </group>
+				   
+			   </search>
+			</field>
+		</record>
+
+		<record id="view_sos_guest_house_approval_action" model="ir.actions.act_window">
+			<field name="name">Guest House Approval</field>
+			<field name="res_model">sos.guest.house.approval</field>
+			<field name="view_type">form</field>
+			<field eval="False" name="view_id"/>	
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[]</field>	
+			<field name="context">{}</field>		
+			<field name="search_view_id" ref="view_sos_guest_house_approval_filter"/> 
+			<field name="help" type="html">
+			  <p class="oe_view_nocontent_create">
+				Click to add a New Record.
+			  </p><p>
+				With just a quick glance on the AARSOL ERP screen, you
+				can easily find all the information you need for each Deployment;
+				contact data, Current Status, etc.
+			  </p>
+			</field>
+		</record>
+		
+	</data>
+</odoo>
+
+

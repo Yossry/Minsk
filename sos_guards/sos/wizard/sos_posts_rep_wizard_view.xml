@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+			   
+        <record id="sos_posts_report_wizard_view" model="ir.ui.view">
+            <field name="name">Posts Report</field>
+            <field name="model">sos.posts.report.wizard</field>                     
+            <field name="arch" type="xml">
+            <form string="Posts Report">
+            	 	<group colspan="4">
+            	 		<group>
+            	 			<field name="center_id" options="{'no_quick_create':True,'no_create_edit':True}"/>
+						</group>
+						<group>
+							<field name="city_id"  domain="[('center_id', '=', center_id)]" />
+						</group>	
+					</group>	
+				<footer>
+					<button name="print_report" string="Generate Report" type="object" default_focus="1" class="oe_highlight"/>
+					<button string="Cancel" class="oe_link" special="cancel" />
+				</footer> 	
+              </form>  
+            </field>
+        </record>
+	
+				
+        <record id="action_sos_posts_report_wizard" model="ir.actions.act_window">
+            <field name="name">Posts Report</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sos.posts.report.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="sos_posts_report_wizard_view"/>
+            <field name="target">new</field>
+        </record>
+		
+    </data>
+</odoo>

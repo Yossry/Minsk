@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_picking_wave_form" model="ir.ui.view">
+        <field name="name">stock.picking.wave.form.inherit</field>
+        <field name="model">stock.picking.batch</field>
+        <field name="inherit_id" ref="merp_picking_wave_base.view_picking_wave_form"/>
+        <field name="arch" type="xml">
+            <button name="done" position="replace">
+                 <button name="done" states="in_progress,on_hold" string="Done" type="object" class="oe_highlight" groups="merp_custom_access_rights.merp_picking_wave_allow_done"/>
+            </button>
+            <field name="user_id" position="after">
+                <field name="warehouse_id"/>
+                <field name="view_location_id" invisible="1"/>
+                <field name="location_id" domain="[('id','child_of',view_location_id)]"/>
+                <field name="picking_wave_type"/>
+            </field>
+            <field name="picking_ids" position="attributes">
+                <attribute name="domain">[('state', 'in', ('assigned', 'partially_available')), ('picking_type_id', '=?', picking_wave_type), ('picking_type_id.warehouse_id', '=?', warehouse_id)]</attribute>
+            </field>
+            <xpath expr="//field[@name='picking_ids']/tree/field[@name='scheduled_date']" position="after">
+                <field name="picking_type_id"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_picking_wave_tree" model="ir.ui.view">
+        <field name="name">picking.wave.tree.inherit</field>
+        <field name="model">stock.picking.batch</field>
+        <field name="inherit_id" ref="stock_picking_batch.stock_picking_batch_tree"/>
+        <field name="arch" type="xml">
+            <field name="state" position="before">
+                <field name="picking_wave_type"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

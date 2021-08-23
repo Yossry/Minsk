@@ -1,0 +1,35 @@
+$font-path: '../fonts/Roboto';
+
+@mixin gle-font($type, $weight, $style) {
+    @font-face {
+        font-family: 'Roboto';
+	font-weight: $weight;
+        font-style: $style;
+        src: url('#{$font-path}/Roboto-#{$type}-webfont.eot');
+        src: url('#{$font-path}/Roboto-#{$type}-webfont.eot?#iefix') format('embedded-opentype'),
+             url('#{$font-path}/Roboto-#{$type}-webfont.woff') format('woff'),
+             url('#{$font-path}/Roboto-#{$type}-webfont.ttf') format('truetype'),
+             url('#{$font-path}/Roboto-#{$type}-webfont.svg#Roboto') format('svg');
+    }
+
+    @font-face {
+        font-family: 'Roboto-#{$type}';
+        src: url('#{$font-path}/Roboto-#{$type}-webfont.eot');
+        src: url('#{$font-path}/Roboto-#{$type}-webfont.eot?#iefix') format('embedded-opentype'),
+             url('#{$font-path}/Roboto-#{$type}-webfont.woff') format('woff'),
+             url('#{$font-path}/Roboto-#{$type}-webfont.ttf') format('truetype'),
+             url('#{$font-path}/Roboto-#{$type}-webfont.svg#Roboto') format('svg');
+    }
+}
+
+@mixin gle-font-pair($type, $weight) {
+    @include gle-font('#{$type}', $weight, normal);
+    @include gle-font('#{$type}Italic', $weight, italic);
+}
+
+@include gle-font-pair('Thin', 100);
+@include gle-font-pair('Light', 300);
+@include gle-font-pair('Regular', 400);
+@include gle-font-pair('Medium', 500);
+@include gle-font-pair('Bold', 700);
+@include gle-font-pair('Black', 900);

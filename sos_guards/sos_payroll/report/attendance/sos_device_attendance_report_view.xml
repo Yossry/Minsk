@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="sos_device_attendance_report_view_tree" model="ir.ui.view">
+            <field name="name">sos.device.attendance.report.tree</field>
+            <field name="model">sos.device.attendance.report</field>
+            <field name="arch" type="xml">
+            	<tree string="Attendance Analysis" create="false" decoration-bf=" shortfall > 0" decoration-danger=" shortfall > 0" decoration-success=" shortfall == 0">
+            		<field name="name"/>
+            		<field name="post_id"/>
+            		<field name="guards"/>
+            		<field name="attendance"/>
+            		<field name="shortfall"/>
+                </tree>
+            </field>
+        </record>
+        
+        
+        <record id="sos_device_attendance_report_view_graph" model="ir.ui.view">
+            <field name="name">sos.device.attendance.report.graph</field>
+            <field name="model">sos.device.attendance.report</field>
+            <field name="arch" type="xml">
+                <graph string="Attendance Analysis" stacked="True">
+                    <field name="post_id" type="col"/>
+                     <field name="guards" type="col"/>
+                    <field name="name" interval="day" type="row"/>
+                </graph>
+            </field>
+        </record>
+
+        <record id="sos_device_attendance_report_view_pivot" model="ir.ui.view">
+            <field name="name">sos.device.attendance.report.pivot</field>
+            <field name="model">sos.device.attendance.report</field>
+            <field name="arch" type="xml">
+                <pivot string="Attendance Analysis" disable_linking="True">
+                    <field name="post_id" type="col"/>
+                    <field name="guards" type="col"/>
+                    <field name="name" interval="day" type="row"/>
+                </pivot>
+            </field>
+        </record>
+
+        <record id="sos_device_attendance_report_view_search" model="ir.ui.view">
+            <field name="name">sos.device.attendance.report.search</field>
+            <field name="model">sos.device.attendance.report</field>
+            <field name="arch" type="xml">
+                <search string="Attendance Analysis">
+                    <field name="post_id" string="Post"/>
+                    <group expand="1" string="Group By">
+                        <filter string="Post" context="{'group_by':'post_id'}" />
+                         <filter string="Day" context="{'group_by':'name:day'}" name="day"/>
+                          <filter string="Week" context="{'group_by':'name:week'}" name="week"/>
+                       <filter string="Month" context="{'group_by':'name:month'}" name="month"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+       <record id="sos_device_attendance_report_action" model="ir.actions.act_window">
+           <field name="name">Attendance Analysis</field>
+           <field name="res_model">sos.device.attendance.report</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">tree,pivot,graph</field>
+           <field name="context">{}</field>
+           <field name="domain">[]</field>
+       </record>
+       
+       
+       <menuitem name="Attendance Analysis" id="sos_device_attendance_report_menu"
+       		groups="sos.group_hr_master,sos.group_coordinator,sos.group_regional_manager"
+           parent="menu_gms_attendance_reports" action="sos_device_attendance_report_action" sequence="12"/>
+
+    </data>
+</odoo>

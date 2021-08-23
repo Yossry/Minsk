@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        
+        <record id="clv_model_export_view_form_card" model="ir.ui.view">
+            <field name="name">clv.model_export.form</field>
+            <field name="model">clv.model_export</field>
+            <field name="inherit_id" ref="clv_export.clv_model_export_view_form"/>
+            <field name="priority" eval="7"/>
+            <field name="arch" type="xml">
+                <field name="date_export" position="before">
+                    <field name="count_model_export_cards" attrs="{'invisible':['|', ('model_model', '!=', 'clv.card'), ('export_all_items', '=', True)]}"/>
+                </field>
+                <page name="settings" position="before">
+                    <page name="cards" string="Cards" attrs="{'invisible':['|', ('model_model', '!=', 'clv.card'), ('export_all_items', '=', True)]}">
+                        <group>
+                            <field name="model_export_card_ids" colspan="4" nolabel="1"/>
+                        </group>
+                    </page>
+                </page>
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+        
+    <record id="clv_verification_batch_member_view_form_referenceable_model" model="ir.ui.view">
+        <field name="name">clv.verification.batch.member.form</field>
+        <field name="model">clv.verification.batch.member</field>
+        <field name="inherit_id" ref="clv_verification.clv_verification_batch_member_view_form"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="verification_batch_id" position="after">
+                <field name="ref_id"  options="{'no_open': False, 'no_create': True}"/>
+                <field name="ref_model"/>
+                <field name="ref_name"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="clv_verification_batch_member_view_tree_referenceable_model" model="ir.ui.view">
+        <field name="name">clv.verification.batch.member.tree</field>
+        <field name="model">clv.verification.batch.member</field>
+        <field name="inherit_id" ref="clv_verification.clv_verification_batch_member_view_tree"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="verification_batch_id" position="after">
+                <field name="ref_id"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="clv_verification_batch_member_view_search_referenceable_model" model="ir.ui.view">
+        <field name="name">clv.verification.batch.member.search</field>
+        <field name="model">clv.verification.batch.member</field>
+        <field name="inherit_id" ref="clv_verification.clv_verification_batch_member_view_search"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="verification_batch_id" position="before">
+                <field name="ref_id"/>
+                <field name="ref_model"/>
+                <field name="ref_name"/>
+            </field>
+            <group name="group_by" position="inside">
+                <filter name="filter_ref_model" string="Refers to (Model)" context="{'group_by': 'ref_model'}"/>
+                <filter name="filter_ref_name" string="Member Name" context="{'group_by': 'ref_name'}"/>
+            </group>
+        </field>
+    </record>
+
+</odoo>

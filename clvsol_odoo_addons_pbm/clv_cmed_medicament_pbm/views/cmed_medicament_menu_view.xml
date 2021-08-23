@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <menuitem name="CMED Medicaments" id="clv_cmed_medicament.menu_pharmacy_medicament_medicaments_cmed_medicaments"
+            parent="clv_base.menu_pharmacy_medicament"
+            groups="clv_medicament.group_user"
+            sequence="20"
+            action="clv_cmed_medicament.clv_cmed_medicament_action"/>
+
+        <menuitem name="Lists" id="clv_cmed_medicament.menu_pharmacy_medicament_medicaments_cmed_medicaments_lists"
+            parent="clv_cmed_medicament.menu_pharmacy_medicament_medicaments_cmed_medicaments"
+            groups="clv_medicament.group_user"
+            sequence="10"
+            action="clv_cmed_medicament.clv_cmed_medicament_list_action"/>
+
+        <menuitem name="List Items" id="clv_cmed_medicament.menu_pharmacy_medicament_medicaments_cmed_medicaments_list_items"
+            parent="clv_cmed_medicament.menu_pharmacy_medicament_medicaments_cmed_medicaments"
+            groups="clv_medicament.group_user"
+            sequence="20"
+            action="clv_cmed_medicament.clv_cmed_medicament_list_item_action"/>
+
+    </data>
+</openerp>

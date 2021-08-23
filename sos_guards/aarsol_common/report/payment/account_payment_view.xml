@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+		<!-- by Sarfraz -->
+		<!-- 
+        <record id="view_account_payment_form_rep" model="ir.ui.view">
+            <field name="name">account.payment.form</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_form"/>
+            <field name="arch" type="xml">
+		 	
+			<xpath expr="//sheet" position="inside">
+				<notebook>		
+				 <page name="report" string="Payment Report Settings" groups="base.group_no_one">
+					<group groups="base.group_no_one">
+						<group>
+							<field name="template_id"/>	
+							<field name="invoice_logo" widget="image" class="oe_avatar" string="Payment Logo"/>
+							<field name="odd"/>
+							<field name="even"/>
+							<field name="text_color"/>
+						</group>
+						<group>
+						   <field name="theme_color"/>
+						   <field name="theme_txt_color"/>
+						   <field name="name_color"/>
+						   <field name="cust_color"/>
+							<field name="header_font"/>
+		                    <field name="body_font"/>
+		                    <field name="footer_font"/>
+					        <field name="font_family"/>
+	            		   <div>
+	              		     <i class="fa fa-info-circle" aria-hidden="true">
+	                    			<strong> NOTE:</strong>
+	              		     </i>
+	              		     <p style="margin-top:0px;">Please make sure the font family you are specifying is already installed in your Odoo Server.</p>
+	            		   </div>
+
+						</group>
+					</group>
+				 </page>
+				</notebook>
+			 </xpath>
+	    </field>
+	</record>
+-->
+    </data>
+</openerp>
+

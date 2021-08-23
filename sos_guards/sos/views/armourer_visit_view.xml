@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data> 
+			<record model="ir.ui.view" id="sos_armourer_visit_tree_view">
+			<field name="name">sos.armourer.visit.tree.view</field>
+			<field name="model">sos.armourer.visit</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Armourer_ Visit">
+					<field name="date"/>
+					<field name="post_id" />
+					<field name="city"/>
+					<field name="weapon_type"/>
+					<field name="weapon_no"/>
+					<field name="ammunation"/>
+				</tree>
+			</field>
+		</record>
+
+
+		<record model="ir.ui.view" id="sos_armourer_visit_form_view">
+			<field name="name">sos.armourer.visit.form.view</field>
+			<field name="model">sos.armourer.visit</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">	
+				<form string="Armourer Visit">
+					<header>
+						<button name="visit_approved" type="object" states="draft" string="Approved" class="oe_highlight"/>		
+						<field name="state" widget="statusbar" nolabel="1" />
+					</header>
+					<sheet>
+					<group>
+						<group>
+							<field name="name" placeholder=" Name..." invisible='1'/>
+							<field name="date"/>
+							<field name="weapon_type" placeholder="Type...."/>
+							<field name="weapon_no" placeholder="No...."/>
+							<field name="ammunation"/>
+						</group>
+						<group>	
+								<field name="project_id" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}" />
+								<field name="center_id" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>
+								<field name="post_id" domain="[('center_id','=',center_id),('project_id','=',project_id)]" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>
+								<field name="city" placeholder="City... Islamabad"/>
+								
+						</group>
+					</group>
+						<field name="remarks" placeholder="Please Enter your Remarks about the Visit......."/>
+				</sheet>
+					<div class="oe_chatter">
+						<field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+						<field name="message_ids" widget="mail_thread" placeholder="Share a note..."/>
+		      		</div>
+				</form>
+			</field>
+		</record>
+		
+		
+		<record id="sos_armourer_visit_filter" model="ir.ui.view">
+		<field name="name">sos.armourer.visit.filter</field>
+		<field name="model">sos.armourer.visit</field>
+		<field name="arch" type="xml">
+			<search string="Armourer Visit Filter">
+				<filter icon="terp-go-today"  string="Draft" name="draft" domain="[('state','=','draft')]" />			
+				<filter icon="terp-go-today"   string="Approve" name="approve" domain="[('state','=','approve')]" />
+				<field name="date"/>
+				<field name="center_id"/>
+				<field name="project_id"/>
+				<field name="post_id"/>
+				<field name="city"/>
+				<field name="weapon_type"/>
+				<field name="weapon_no"/>
+				<field name="ammunation"/>
+				<separator/>
+					<group expand="0" string="Group By">
+						<filter string="Center" name="center_id" icon="terp-partner" domain="[]" context="{'group_by':'center_id'}"/>
+						<filter string="Project" name="project_id" icon="terp-partner" domain="[]" context="{'group_by':'project_id'}"/>
+						<filter string="Post" name="post_id" icon="terp-partner" domain="[]" context="{'group_by':'post_id'}"/>
+						<filter string="Date" name="date" icon="terp-partner" domain="[]" context="{'group_by':'date'}"/>
+						<filter string="State" name="state" icon="terp-partner" domain="[]" context="{'group_by':'state'}"/>
+						<filter string="Weapon Type" name="weapon_type" icon="terp-partner" domain="[]" context="{'group_by':'weapon_type'}"/>
+						<filter string="Weapon No" name="weapon_no" icon="terp-partner" domain="[]" context="{'group_by':'weapon_no'}"/>
+						<filter string="Ammunation" name="ammunation" icon="terp-partner" domain="[]" context="{'group_by':'ammunation'}"/>
+					</group>
+			</search>
+		</field>
+		</record>
+
+
+
+		<record id="sos_armourer_visit_action" model="ir.actions.act_window">
+			<field name="name">Armourer Visits</field>
+			<field name="res_model">sos.armourer.visit</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+					Click to create a new Visit.
+				</p>
+			</field>
+	</record> 
+  
+    </data>
+</odoo>

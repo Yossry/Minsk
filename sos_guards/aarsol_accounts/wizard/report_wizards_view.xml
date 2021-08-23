@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+<!--General Ledger Dimension-->
+<record id="account.account_report_general_ledger_view" model="ir.ui.view">
+<field name="name">General Ledger</field>
+<field name="model">account.report.general.ledger</field>
+<field name="inherit_id" ref="account.account_common_report_view"/>
+<field name="arch" type="xml">
+	<data>
+				
+			<xpath expr="//field[@name='target_move']" position="after">
+				<field name="sortby" widget="radio"/>
+				<field name="display_account" widget="radio"/>
+				<field name="initial_balance"/>		    
+			</xpath>
+	
+			<xpath expr="//footer" position="before">
+				<group>
+				    <field name="account_ids" options="{'no_create': True, 'limit': 10}"/>
+				</group>
+			
+			</xpath>
+			<xpath expr="//footer" position="before">	
+				<group>
+					<field name="dimension_ids">
+						<tree string="Ledger Dimensions" editable="top">
+							<field name="ac_id" invisible="1"/>
+							<field name="nd_id" options="{'no_create': True, 'limit': 10}"/>
+							<field name="code_id" domain="[('nd_id','=',nd_id)]" options="{'no_create': True, 'limit': 10}"/>
+						</tree>
+					</field>
+				</group>
+		
+				<group>
+					<group>
+						<field name="dimension_group"  options="{'no_create': True, 'limit': 10}"/>
+					</group>
+					<group></group>
+				</group>		    
+		</xpath>
+	</data>
+</field>
+</record>
+
+
+</odoo>

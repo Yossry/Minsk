@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2015-Today GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+
+<odoo>
+
+    <record model="res.partner" id="partner_erp_manager">
+        <field name="name">ERP Manager</field>
+        <field name="email">erp-manager@odoo.coop</field>
+        <field name="customer" eval="False"/>
+        <field name="supplier" eval="False"/>
+        <field name="company_id" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+
+    <record model="res.users" id="user_erp_manager">
+        <field name="partner_id" ref="partner_erp_manager"/>
+        <field name="login">erp_manager</field>
+        <field name="password">demo</field>
+        <field name="company_id" ref="base.main_company"/>
+        <field name="company_ids" eval="[
+            (4, ref('base.main_company')),
+        ]"/>
+    </record>
+
+</odoo>

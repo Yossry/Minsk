@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="hr_employee_user_groups_updt_view_form" model="ir.ui.view">
+            <field name="name">hr.employee.user_groups_updt.form</field>
+            <field name="model">hr.employee.user_groups_updt</field>
+            <field name="arch" type="xml">
+                <form>
+                    <div class="oe_right">
+                    </div>
+                    <label for="employee_ids" class="oe_updt_only"/>
+                    <field name="employee_ids">
+                        <!--tree>
+                            <field name="name"/>
+                            <field name="code"/>
+                            <field name="job_id"/>
+                        </tree-->
+                    </field>
+                    <group>
+                        <group>
+                            <field name="count_employees"/>
+                        </group>
+                        <group>
+                        </group>
+                        <group>
+                            <field name="ref_employee_id" options="{'no_open': False, 'no_create': True}"/>
+                        </group>
+                        <group>
+                        </group>
+                        <group>
+                            <field name="group_ids_selection"/>
+                            <field name="group_ids" options="{'no_open': False, 'no_create': True}"/>
+                        </group>
+                        <group>
+                            <button type="object" name="get_reference_Employee_access_rights" string="Get Reference Employee Access Rights"/>
+                            <button type="object" name="do_refresh_access_rights" string="Refresh Access Rights"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button 
+                            type="object"
+                            name="do_employee_user_groups_updt"
+                            string="Update"
+                            class="oe_highlight"
+                            attrs="{'invisible': [('count_employees', '=', 0)]}"
+                        />
+                        <button special="cancel" string="Cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!-- More button Action -->
+        <act_window 
+            id="hr_employee_user_groups_updt_action"
+            name="Employee User Groups Update"
+            src_model="hr.employee"
+            res_model="hr.employee.user_groups_updt"
+            view_mode="form"
+            key2="client_action_multi"
+            target="new"
+        />
+
+    </data>
+</odoo>

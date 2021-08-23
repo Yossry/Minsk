@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>	
+		<template id ="report_guardsalary">
+			<t t-call="web.html_container">
+				<t t-call="web.basic_layout">
+					<div class="page">
+						<style>
+							table th { background-color:#d4e3e5;}
+						</style>
+
+						 <div class="row">
+							 <div class="col-xs-4">
+								 <img width="40%" style="max-height:125px;" class="img img-responsive" src="/sos_payroll/static/src/img/logo.png"/>
+							 </div>
+							 <div class="col-xs-3">
+							 </div>
+
+							 <div class="col-xs-5" style="font-size:14px; font-weight:bold; text-align:right; align:left;margin-top:20px;">
+								SECURITY ORGANIZING SYSTEM (PVT) LIMITED
+							 </div>
+						 </div>
+
+						 <div class="row" style="font-size:12px; font-weight:bold; text-align:center; align:left;">
+							<div class="col-xs-12">
+								Guards Salary Report From  <span t-esc="get_date_formate(data['date_from'])"/> To <span t-esc="get_date_formate(data['date_to'])"/>
+							</div>
+						 </div>
+
+						 <!-- Guards Salary By Post Wise -->
+						 <t  t-if="data['group_by'] == 'sos_report_salary_aeroo'">
+							 <div class="col-xs-12 pull-right" style="padding-left:0px; padding-right:0px; page-break-inside: avoid;">
+								<table class="table table-bordered">
+									<tbody>
+										<t t-foreach="Salary_Recs" t-as="rec">
+											<tr>
+												<td colspan="17" style="text-align:left; font-size:14px; font-weight:bold;">
+													<span t-esc="rec['post_name']" />
+												</td>
+											</tr>
+
+											<tr style="font-size:9px; font-weight:bold; background-color:#d4e3e5;">
+												<th>ID </th>
+												<th>Name </th>
+												<th>Slip </th>
+												<th>Rate </th>
+												<th>Paid L </th>
+												<th>P Days </th>
+												<th>Days </th>
+												<th>Total </th>
+												<th>Incentive </th>
+												<th>Att Incentive </th>
+												<th>Deduction </th>
+												<th>Post Net </th>
+												<th>Slip Net </th>
+												<th>Account Title </th>
+												<th>Account </th>
+												<th>Bank Name </th>
+												<th>Structure </th>
+											</tr>
+
+											<t t-foreach="rec['salary_lines']" t-as="line">
+												<tr style="font-size:10px;">
+													<td><span t-esc="line['code']" /> </td>
+													<td><span t-esc="line['emp_name']" /> </td>
+													<td><span t-esc="line['number']" /> </td>
+													<td><span t-esc="line['rate'] and '{0:,.0f}'.format(int(line['rate'])) or '-'" /> </td>
+													<td><span t-esc="line['paid_leaves'] and '{0:,.0f}'.format(int(line['paid_leaves'])) or '-'" /> </td>
+													<td><span t-esc="line['quantity'] - line['paid_leaves'] and '{0:,.0f}'.format(int(line['quantity'] - line['paid_leaves'])) or '-'" /> </td>
+													<td><span t-esc="line['quantity'] and '{0:,.0f}'.format(int(line['quantity'])) or '-'" /> </td>
+													<td><span t-esc="line['total'] and '{0:,.0f}'.format(int(line['total'])) or '-'" /> </td>
+													<td><span t-esc="line['other'] and '{0:,.0f}'.format(int(line['other'])) or '-'" /> </td>
+													<td><span t-esc="line['incentive'] and '{0:,.0f}'.format(int(line['incentive'])) or '-'" /> </td>
+													<td><span t-esc="line['deduction'] and '{0:,.0f}'.format(int(line['deduction'])) or '-'" /> </td>
+													<td><span t-esc="line['post_net'] and '{0:,.0f}'.format(int(line['post_net'])) or '-'" /> </td>
+													<td><span t-esc="line['slip_net'] and '{0:,.0f}'.format(int(line['slip_net'])) or '-'" /> </td>
+													<td><span t-esc="line['bankacctitle']" /> </td>
+													<td><span t-esc="line['bankacc']" /> </td>
+													<td><span t-esc="line['bank_name']" /> </td>
+													<td><span t-esc="line['contract_name']" /> </td>
+												</tr>
+
+											</t>
+											<tr style="font-size:9px; font-weight:bold;">
+												<td colspan="4" > TOTAL</td>
+												<td><span t-esc="rec['post_paid_leaves'] and '{0:,.0f}'.format(int(rec['post_paid_leaves'])) or '-'" /> </td>
+												<td><span t-esc="rec['post_present_days'] and '{0:,.0f}'.format(int(rec['post_present_days'])) or '-'" /> </td>
+												<td><span t-esc="rec['post_days'] and '{0:,.0f}'.format(int(rec['post_days'])) or '-'" /> </td>
+												<td><span t-esc="rec['post_total'] and '{0:,.0f}'.format(int(rec['post_total'])) or '-'" /> </td>
+												<td> - </td>
+												<td><span t-esc="rec['post_abl_incentive'] and '{0:,.0f}'.format(int(rec['post_abl_incentive'])) or '-'" /> </td>
+												<td><span t-esc="rec['post_deductions'] and '{0:,.0f}'.format(int(rec['post_deductions'])) or '-'" /> </td>
+												<td><span t-esc="rec['post_net'] and '{0:,.0f}'.format(int(rec['post_net'])) or '-'" /> </td>
+												<td colspan="5"> </td>
+											</tr>
+										</t>
+									</tbody>
+								</table>
+							 </div>
+
+
+							 <table class="table table-borderless">
+								 <tr>
+									 <td style="font-size:12px; font-weight:bold; text-align:left;">GRAND TOTALS:</td>
+									 <td></td>
+								 </tr>
+
+								 <tr>
+									 <td style="font-size:12px; font-weight:bold;">
+										 Total Paid Leaves: <span style="font-size:12px;font-weight:bold;margin-left:20px;" t-esc="paid_leaves and '{0:,.0f}'.format(int(paid_leaves)) or '-'" /> Days
+									 </td>
+									 <td class="float-right" style="font-size:14px; font-weight:bold;margin-right:100px;">
+										 Prepared By:
+									 </td>
+								 </tr>
+
+								 <tr>
+									 <td style="font-size:12px; font-weight:bold;">
+										 Total Present Days:<span style="font-size:12px; font-weight:bold;margin-left:20px;" t-esc="total_present_days and '{0:,.0f}'.format(int(total_present_days)) or '-'" /> Days
+									 </td>
+									 <td>
+									 </td>
+								 </tr>
+								 <tr>
+									 <td style="font-size:12px; font-weight:bold;">
+										 Total Days:<span style="font-size:12px; font-weight:bold;margin-left:60px;" t-esc="net_days and '{0:,.0f}'.format(int(net_days)) or '-'" /> Days
+									 </td>
+									 <td class="float-right" style="font-size:14px; font-weight:bold;margin-right:100px;">
+										 Check By:
+									 </td>
+								 </tr>
+
+								 <tr>
+									 <td style="font-size:12px; font-weight:bold;">
+										 Total Deductions:<span style="font-size:12px; font-weight:bold;margin-left:20px;" t-esc="total_deductions and '{0:,.0f}'.format(int(total_deductions)) or '-'" />/- Rs.
+									 </td>
+									 <td class="float-right" style="font-size:14px; font-weight:bold;margin-right:100px;">
+										 Approved By:
+									 </td>
+								 </tr>
+								 <tr>
+									 <td style="font-size:12px; font-weight:bold;">
+										 NET Total:<span style="font-size:12px; font-weight:bold;margin-left:60px;" t-esc="post_net_total and '{0:,.0f}'.format(int(post_net_total)) or '-'" />/- Rs.
+									 </td>
+									 <td></td>
+								 </tr>
+								 <tr>
+									 <td style="font-size:12px; font-weight:bold;">
+										 Total:	<span style="font-size:12px; font-weight:bold;margin-left:80px;" t-esc="net_total and '{0:,.0f}'.format(int(net_total)) or '-'" />/- Rs.
+									 </td>
+									 <td></td>
+								 </tr>
+							 </table>
+
+						 </t>
+
+					</div>
+				</t>
+			</t>
+		</template>
+	</data>
+</odoo>
+
+
+

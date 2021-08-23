@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_project_bid_template_tree" model="ir.ui.view">
+        <field name="name">project.bid.template.tree</field>
+        <field name="model">project.bid.template</field>
+        <field name="arch" type="xml">
+            <tree string="Template">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_project_bid_template_form" model="ir.ui.view">
+        <field name="name">project.bid.template.form</field>
+        <field name="model">project.bid.template</field>
+        <field name="arch" type="xml">
+            <form string="Project Bid Template">
+                <group name="bid_name">
+                    <field name="name" placeholder="Bid template name..."/>
+                </group>
+                <group name="mis">
+                    <field name="labor_uom_id"/>
+                    <field name="overhead_rate"/>
+                    <field name="profit_rate"/>
+                </group>
+                <notebook>
+                    <page string="Component Labor" name="component_labor">
+                        <group name="labor">
+                            <field name="default_component_labor" domain="[('type', '=', 'service')]"/>
+                        </group>
+                    </page>
+                </notebook>
+            </form>
+        </field>
+    </record>
+    <record id="view_project_bid_template_filter" model="ir.ui.view">
+        <field name="name">project.bid.template.select</field>
+        <field name="model">project.bid.template</field>
+        <field name="arch" type="xml">
+            <search string="Search bid templates">
+                <group col='6' colspan='5'>
+                    <field name="name"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_project_bid_template_open_form"
+            model="ir.actions.act_window">
+        <field name="name">Project Bid Templates</field>
+        <field name="res_model">project.bid.template</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id"
+               ref="view_project_bid_template_filter" />
+    </record>
+
+    <record model="ir.actions.act_window.view"
+            id="action_project_bid_template_open_form_view">
+        <field name="sequence" eval="1"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_project_bid_template_tree"/>
+        <field name="act_window_id"
+               ref="action_project_bid_template_open_form"/>
+    </record>
+
+    <menuitem
+            groups="project_bid.group_project_bid_user,project_bid.group_project_bid_manager"
+        action="action_project_bid_template_open_form"
+        id="project_bid_template_entries"
+        parent="project.menu_project_config"/>
+</odoo>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		
+		<record id="view_guards_arrears_tree" model="ir.ui.view">
+			<field name="name">guards.arrears.tree</field>
+			<field name="model">guards.arrears</field>
+			<field name="priority" eval="8" />
+			<field name="arch" type="xml">
+				<tree string="Guards Arrears / Fines" editable="top">
+					<field name="employee_id" domain="[('current','=', True)]" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>
+					<field name="center_id" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>
+					<field name="name"/>
+					<field name="date"/>
+					<field name="amount"/>
+					<field name="slip_id" readonly="1"/>
+					<field name="bank_id" readonly="1" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>
+					<field name="state"/>				
+				</tree>
+			</field>
+		</record>
+	
+		<record id="view_guards_arrears_form" model="ir.ui.view">
+			<field name="name">guards.arrears.form</field>
+			<field name="model">guards.arrears</field>
+			<field name="priority" eval="8" />
+			<field name="arch" type="xml">
+				<form string="Guards Arrears OR Fines">
+					<header>
+						<button name="arrears_validate" type="object" states="draft" string="Validate" class="oe_highlight" groups="account.group_account_user"/>
+					  	<button name="arrears_cancel" type="object" states="draft" string="Cancel" groups="base.group_no_one"/>
+						<field name="state" widget="statusbar" nolabel="1" />
+					</header>
+						<sheet>
+							<separator colspan="4" string="Arrear OR Fine Information" />
+						
+							<group>
+								<group>
+									<field name="employee_id" domain="[('current','=', True)]" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>
+									<field name="center_id" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>
+									<field name="bank_id" readonly="1" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>
+								</group>
+								<group>
+									<field name="name"/>
+									<field name="amount"/>
+									<field name="date"/>
+								</group>
+							</group>
+						
+							<group colspan="4">
+								<field name="description"/>
+							</group>
+
+						</sheet>
+						<div class="oe_chatter">
+							<field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+							<field name="message_ids" widget="mail_thread" placeholder="Share a note..."/>
+		      			</div>
+				</form>
+			</field>
+			
+		</record>
+	
+		<record id="view_guards_arrears_search" model="ir.ui.view">
+			<field name="name">guards.arrears.search</field>
+			<field name="model">guards.arrears</field>
+			<field name="priority" eval="8" />
+			<field name="arch" type="xml">
+				<search string="Guard">
+					<field name="state" string="State" filter_domain="['|', ('state','ilike',self),"/>
+					<filter icon="terp-go-today" string="Draft" name="draft" domain="[('state','=','draft')]" />
+					<filter icon="terp-camera_test" string="Done" name="done" domain="[('state','=','done')]" />
+				
+					<field name="center_id" />
+					<field name="employee_id" />
+					<field name="bank_id" />
+				
+					<newline />
+				
+					<group expand="0" string="Group By...">
+						<filter string="Center" name='group_center' domain="[]" context="{'group_by':'center_id'}" />	
+						<filter string="Employee" name='group_employee' domain="[]" context="{'group_by':'employee_id'}"/>
+						<filter string="Category" name='group_category' domain="[]" context="{'group_by':'name'}" />	
+						<filter string="Year" name='group_year' domain="[]" context="{'group_by':'date:year'}" />
+						<filter string="Month" name='group_month' domain="[]" context="{'group_by':'date:month'}" />
+						<filter string="Day" name='group_day' domain="[]" context="{'group_by':'date:day'}" />
+						<filter string="Bank" name='group_bank' domain="[]" context="{'group_by':'bank_id'}" />											
+					</group>
+				
+				</search>
+			</field>
+		</record>
+	
+	<record model="ir.actions.act_window" id="act_guards_arrears_view">
+		<field name="name">Guards Arrears</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">guards.arrears</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form</field>
+		<field name="context">{'search_default_draft':1}</field>
+	</record>
+	
+	<!--
+	<record id="action_guards_arrears_approval" model="ir.actions.server">
+		<field name="name">Guards Arrears Approval</field>
+		<field name="model_id" ref="model_guards_arrears"/>
+		<field name="state">code</field>
+		<field name="code">self.arrear_approve(cr, uid, context.get('active_ids', []), context=context)</field>
+	</record>	
+	-->
+	<!--
+	<record id="ir_action_guards_arrears_approval" model="ir.values">
+		<field name="key2">client_action_multi</field>
+		<field name="model">guards.arrears</field>
+		<field name="name">Arrears Approval</field>
+		<field name="value" eval="'ir.actions.server,%d'%action_guards_arrears_approval"/>		
+	</record>
+	-->
+	
+	   <!-- Action confirm_payments for multi -->
+        <record id="action_guards_arrears_approval" model="ir.actions.server">
+            <field name="name">Guards Arrears Approval</field>
+            <field name="type">ir.actions.server</field>
+            <field name="state">code</field>
+            <field name="model_id" ref="sos_payroll.model_guards_arrears"/>
+            <field name="binding_model_id" ref="sos_payroll.model_guards_arrears"/>
+            <field name="code">records.arrear_approve()</field>
+        </record>    
+	
+</data>
+</odoo>

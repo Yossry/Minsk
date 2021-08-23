@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        
+        <menuitem id="menu_dhl_logistic" name="Courier" action="dhl_logistic_action" web_icon="base_enh,static/src/img/icon2.jpg"/>
+        <menuitem id="menu_logistic_manag" name="Logistic" web_icon="base_enh,static/src/img/icon.jpg"/> 
+        <menuitem id="menu_bill_of_lading_manag" name="Bill of Lading" parent="menu_logistic_manag" sequence="3"/> 
+        <menuitem id="menu_sale_inquiry" action="sale_inquiry_action" parent="menu_logistic_manag" sequence="1"/>
+        <menuitem id="menu_job" action="view_job_action" parent="menu_logistic_manag" name="Job" sequence="2"/>
+        <menuitem id="menu_bill_of_lading" action="bill_of_lading_action" parent="menu_bill_of_lading_manag"  sequence="1"/>
+        <menuitem id="menu_external_bill_of_lading" action="external_bill_of_lading_action" parent="menu_bill_of_lading_manag"  sequence="2"/>
+        <!-- <menuitem id="menu_reporting" parent="menu_logistic_manag" name="Reporting" sequence="7"/>
+        <menuitem action="action_attendance_recap_report_wizard"
+              id="menu_attendance_report_wizard"
+              parent="menu_reporting"/> -->
+        <!-- <menuitem id="menu_reporting" parent="menu_logistic_manag" name="Reporting" sequence="7"/>
+        <menuitem name="Sale Inquiry report" id="menu_sale_inquiry_wizard" 
+                  parent="menu_reporting"
+                  action="action_sale_inquiry_report_wizard" 
+                  sequence="1"/> -->
+                  
+        <!-- Top bar menue location -->
+        <menuitem id="menu_location" parent="menu_logistic_manag" name="Locations" sequence="3"/>
+        <menuitem name="Ports" id="menu_port" 
+                  parent="menu_location"
+                  action="port_action" 
+                  sequence="1"/>
+        <menuitem  id="res_place_menu"
+                   parent="menu_location" 
+                   action="res_place_action" 
+                   name="Places" 
+                   sequence="2"/>
+        <menuitem  id="countries_view_menu"
+                   parent="menu_location" 
+                   action="base.action_country" 
+                   name="Countries" 
+                   sequence="3"/>   
+        <menuitem  id="states_view_menu"
+                   parent="menu_location" 
+                   action="base.action_country_state" 
+                   name="States" 
+                   sequence="4"/>
+        <menuitem  id="cities_view_menu"
+                   parent="menu_location" 
+                   action="base_address_city.action_res_city_tree" 
+                   name="Cities" 
+                   sequence="5"/>
+        <menuitem  id="country_group_view_menu"
+                   parent="menu_location" 
+                   action="base.action_country_group" 
+                   name="Country Group" 
+                   sequence="6"/>
+                   
+        <!-- top bar menue - cost -->
+        <menuitem id="menu_costs" 
+                  parent="menu_logistic_manag" 
+                  name="Costs" 
+                  sequence="4"/>
+        <menuitem id="line_cost_menu" 
+                  parent="menu_costs"
+                  action="line_cost_action" 
+                  name="Sea Line Cost"
+                  sequence="1"/>
+        <menuitem id="insurance_cost_menu" parent="menu_costs"
+                    action="insurance_cost_action" 
+                    name="Insurance Costs"
+                    sequence="2"/>
+        <menuitem id="transport_cost_menu" parent="menu_costs"
+            action="transport_cost_action" 
+            name="Transporter Costs"
+            sequence="3"/>
+        <menuitem id="clearance_cost_menu" parent="menu_costs"
+            action="clearance_cost_action" 
+            name="Clearance Costs"
+            sequence="4"/>
+        <menuitem id="air_line_cost_menu" parent="menu_costs"
+            action="air_line_cost_action" 
+            name="Airline Costs"
+            sequence="5"/>
+                <!-- products -->
+        <menuitem id="menu_product_is_discount" name="Products" parent="menu_costs" 
+                  action="sale.product_template_action" sequence="6"/>
+        
+        <record model="ir.actions.act_window"
+                id="sale.product_template_action">
+            <field name="name">Discount Products</field>
+            <field name="res_model">product.template</field>
+            <field name="context">{"search_default_filter_to_sell":1, "sale_multi_pricelist_product_template": 1}</field>
+            <field name="view_mode">kanban,tree,form</field>
+        </record>
+        <!-- top bar menue configuration -->
+        <menuitem id="menu_config" 
+                  parent="menu_logistic_manag" 
+                  name="Configurations" 
+                  sequence="5"/>
+        <menuitem  id="weight_type_menu"
+            parent="menu_config" action="weight_type_action" sequence="3"/>
+        <menuitem  id="customer_class_menu"
+            parent="menu_config" action="customer_class_action" sequence="4"/>
+        <menuitem  id="customs_declaration_menu"
+            parent="menu_config" action="customs_declaration_action" sequence="5"/>
+        <menuitem id="commodity_menu" parent="menu_config"
+            action="commodity_action" sequence="6"/>
+        <menuitem  id="packaging_menu"
+            parent="menu_config" action="packaging_action" sequence="7"/>
+        <menuitem name="Extra Services" id="extra_services_menu" parent="menu_config"
+            action="extra_services_action" sequence="8"/>
+        <menuitem name="Warehouse" id="warehouse_menu" parent="menu_config"
+            action="warehouse_action" sequence="9"/>
+        <menuitem  id="container_size_menu"
+            parent="menu_config" action="container_size_action" sequence="10"/>
+        <menuitem  id="agreement_method_menu"
+            parent="menu_config" action="agreement_method_action" sequence="11"/>
+        <menuitem  id="transport_type_menu"
+            parent="menu_config" action="transport_type_action" sequence="12"/>
+        
+        <!-- insurance config -->
+        <menuitem  id="insurance_menu"
+            parent="menu_config" name="Insurance" sequence="13"/>
+        <menuitem  id="insurance_type_menu"
+            parent="insurance_menu" action="insurance_type_action" 
+            sequence="1"/>
+        <menuitem  id="insurance_items_menu"
+            parent="insurance_menu" name="Insurance Items" 
+            action="insurance_items_action" sequence="2"/>
+        
+        <!-- truck menues -->
+        <menuitem  id="truck_type_label_menu"
+            parent="menu_config" name="Trucks" sequence="14"/>
+        <menuitem  id="truck_type_selections_menu"
+            parent="truck_type_label_menu" name="Truck Type Selections" 
+            action="truck_type_selections_action" sequence="2"/>
+        <menuitem  id="truck_type_menu"
+            parent="truck_type_label_menu" action="truck_type_action" sequence="1"/>
+        
+                  
+
+
+
+    </data>
+</odoo>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <record model="ir.actions.act_window" id="action_air_ticket_request_leave">
+        <field name="name">Air Ticket Request</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">air.ticket.request</field>
+        <field name="view_type">form</field>
+        <field name="domain">[('leave_id', '=', active_id)]</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!--Hr Leave Form view-->
+    <record id="hr_leave_view_form_inherit_qpr_hr" model="ir.ui.view">
+        <field name="name">hr.leave.inherited.qpr.hr</field>
+        <field name="model">hr.leave</field>
+        <field name="inherit_id" ref="hr_holidays.hr_leave_view_form"/>
+        <field name="arch" type="xml">
+
+            <field name="employee_id" position="replace">
+                <field name="employee_id" readonly="True" force_save="1"/>
+            </field>
+            <field name="department_id" position="replace">
+                <field name="department_id" readonly="True" force_save="1"/>
+            </field>
+            <field name="name" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="name" position="after">
+                <field name="note"/>
+            </field>
+
+            <xpath expr="//field[@name='number_of_hours_display']/.." position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='request_unit_half']/.." position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <button name="action_confirm" position="before">
+                <field name="air_ticket" invisible="1"/>
+                <field name="air_ticket_count" invisible="1"/>
+                <field name="is_employee" invisible="1"/>
+                <widget name="attach_document" string="Attach Documents" states="draft" action="message_post" highlight="1"/>
+                <button attrs="{'invisible': ['|', '|', '|', ('air_ticket_count', '>=', 1), ('is_employee', '=', False), ('state', '!=', 'validate1'), ('air_ticket', '=', False)]}" name="action_generate_air_ticket_request" type="object" string='Request Air Ticket' class="oe_highlight"/>
+            </button>
+            <field name="leave_type_request_unit" position="before">
+                <div class="oe_button_box" name="button_box">
+                    <button attrs="{'invisible': [('air_ticket', '=', False)]}" class="oe_stat_button" type="action" name="%(action_air_ticket_request_leave)d" icon="fa-plane">
+                        <div class="o_stat_info">
+                            <span class="o_stat_text">AirTickets</span>
+                        </div>
+                    </button>
+
+                    <button name="action_view_leave"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-calendar"
+                        groups="base.group_user"
+                        help="Remaining leaves">
+                        <field string="Leaves Left" name="leaves_count" widget="statinfo"/>
+                    </button>
+                </div>
+                <div class="oe_title">
+                    <h1>
+                        <field name="reference" readonly="1"/>
+                    </h1>
+                </div>
+            </field>
+        </field>
+    </record>
+    <!-- Sequence in Hr Leave Tree view-->
+    <record id="hr_leave_view_tree_ref_field" model="ir.ui.view">
+        <field name="name">hr.holidays.view.tree</field>
+        <field name="model">hr.leave</field>
+        <field name="inherit_id" ref="hr_holidays.hr_leave_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='employee_id']" position="before">
+                <field name="reference"/>
+            </xpath>
+            <field name="name" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="name" position="after">
+                <field name="note"/>
+            </field>
+        </field>
+    </record>
+
+
+    <record model="ir.ui.view" id="hr_leave_restriction_tree_view">
+        <field name="name">Leave Restriction</field>
+        <field name="model">hr.leave.restriction</field>
+        <field name="arch" type="xml">
+            <tree string="Leave Restriction">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="hr_leave_restriction_form_view">
+        <field name="name">Leave Restriction form</field>
+        <field name="model">hr.leave.restriction</field>
+        <field name="arch" type="xml">
+            <form string="Leave Restriction">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                    <group string='Restriction Periods'>
+                        <field name="period_ids" nolabel="1">
+                            <tree editable="bottom">
+                                <field name="name"/>
+                                <field name="date_from"/>
+                                <field name="date_to"/>
+                            </tree>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_leave_restriction">
+        <field name="name">Leave Restriction</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.leave.restriction</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Leave Restriction"
+      id="menu_hr_leave_restriction"
+      action="action_leave_restriction"
+      parent="hr_holidays.menu_hr_holidays_configuration"
+      sequence="4" groups="hr.group_hr_manager"
+    />
+</odoo>

@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_street_code_user,street.code,todoo_partner_customization.model_street_code,account.group_account_user,1,0,0,0
+access_ciiu_value_user,ciiu.value,todoo_partner_customization.model_ciiu_value,account.group_account_user,1,0,0,0
+access_address_code_user,address.code,todoo_partner_customization.model_address_code,account.group_account_user,1,0,0,0
+
+access_street_code_manager,street.code,todoo_partner_customization.model_street_code,account.group_account_manager,1,1,1,1
+access_ciiu_value_manager,ciiu.value,todoo_partner_customization.model_ciiu_value,account.group_account_manager,1,1,1,1
+access_address_code_manager,address.code,todoo_partner_customization.model_address_code,account.group_account_manager,1,1,1,1

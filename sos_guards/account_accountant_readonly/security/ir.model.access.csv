@@ -1,0 +1,110 @@
+id,group_id/id,name,model_id/id,perm_read,perm_write,perm_create,perm_unlink
+ir_attachment group_user_ro,group_account_user_ro,ir_attachment group_user.ro,base.model_ir_attachment,1,0,0,0
+ir_cron user_ro,group_account_user_ro,ir_cron user.ro,base.model_ir_cron,1,0,0,0
+ir_exports group_system_ro,group_account_user_ro,ir_exports group_system.ro,base.model_ir_exports,1,0,0,0
+ir_exports_line group_system_ro,group_account_user_ro,ir_exports_line group_system.ro,base.model_ir_exports_line,1,0,0,0
+ir_fields_converter_ro,group_account_user_ro,ir_fields_converter.ro,base.model_ir_fields_converter,1,0,0,0
+res_partner group_user_ro,group_account_user_ro,res_partner group_user.ro,account.model_res_partner,1,0,0,0
+res_partner_bank group_user_ro,group_account_user_ro,res_partner_bank group_user.ro,account.model_res_partner_bank,1,0,0,0
+res_partner_category group_user_ro,group_account_user_ro,res_partner_category group_user.ro,base.model_res_partner_category,1,0,0,0
+res_bank user_ro,group_account_user_ro,res_bank user.ro,base.model_res_bank,1,0,0,0
+ir_filters employee_ro,group_account_user_ro,ir_filters employee.ro,base.model_ir_filters,1,0,0,0
+mail_mail_user_ro,group_account_user_ro,mail.mail.user.ro,fetchmail.model_mail_mail,1,0,0,0
+mail_followers_user_ro,group_account_user_ro,mail.followers.user.ro,mail.model_mail_followers,1,0,0,0
+mail_alias_user_ro,group_account_user_ro,mail.alias.user.ro,mail.model_mail_alias,1,0,0,0
+product_uom_categ_user_ro,group_account_user_ro,product.uom.categ.user.ro,product.model_product_uom_categ,1,0,0,0
+product_uom_user_ro,group_account_user_ro,product.uom.user.ro,product.model_product_uom,1,0,0,0
+product_category_user_ro,group_account_user_ro,product.category.user.ro,account.model_product_category,1,0,0,0
+product_template_user_ro,group_account_user_ro,product.template.user.ro,account.model_product_template,1,0,0,0
+product_packaging_user_ro,group_account_user_ro,product.packaging.user.ro,product.model_product_packaging,1,0,0,0
+product_supplierinfo_user_ro,group_account_user_ro,product.supplierinfo.user.ro,product.model_product_supplierinfo,1,0,0,0
+product_pricelist_user_ro,group_account_user_ro,product.pricelist.user.ro,product.model_product_pricelist,1,0,0,0
+product_pricelist_item_user_ro,group_account_user_ro,product.pricelist.item.user.ro,product.model_product_pricelist_item,1,0,0,0
+account_tax internal user_ro,group_account_user_ro,account.tax internal user.ro,account.model_account_tax,1,0,0,0
+account_account user_ro,group_account_user_ro,account.account user.ro,account.model_account_account,1,0,0,0
+account_invoice_line user_ro,group_account_user_ro,account.invoice.line user.ro,account.model_account_invoice_line,1,0,0,0
+account_payment_term partner manager_ro,group_account_user_ro,account.payment.term partner manager.ro,account.model_account_payment_term,1,0,0,0
+account_payment_term_line partner manager_ro,group_account_user_ro,account.payment.term.line partner manager.ro,account.model_account_payment_term_line,1,0,0,0
+account_fiscal_position all_ro,group_account_user_ro,account.fiscal.position all.ro,account.model_account_fiscal_position,1,0,0,0
+account_fiscal_position_tax all_ro,group_account_user_ro,account.fiscal.position.tax all.ro,account.model_account_fiscal_position_tax,1,0,0,0
+account_fiscal_position all_ro,group_account_user_ro,account.fiscal.position all.ro,account.model_account_fiscal_position_account,1,0,0,0
+account_account_ro,group_account_user_ro,account.account.ro,account.model_account_account,1,0,0,0
+account_account_type_ro,group_account_user_ro,account.account.type.ro,account.model_account_account_type,1,0,0,0
+account_analytic_line invoice_ro,group_account_user_ro,account.analytic.line invoice.ro,account.model_account_analytic_line,1,0,0,0
+account_bank_statement_ro,group_account_user_ro,account.bank.statement.ro,account.model_account_bank_statement,1,0,0,0
+account_bank_statement_line_ro,group_account_user_ro,account.bank.statement.line.ro,account.model_account_bank_statement_line,1,0,0,0
+account_cashbox_line_ro,group_account_user_ro,account.cashbox.line.ro,account.model_account_cashbox_line,1,0,0,0
+account_financial_report_ro,group_account_user_ro,account.financial.report.ro,account.model_account_financial_report,1,0,0,0
+account_invoice accountant_ro,group_account_user_ro,account.invoice accountant.ro,account.model_account_invoice,1,0,0,0
+account_invoice_line accountant_ro,group_account_user_ro,account.invoice.line accountant.ro,account.model_account_invoice_line,1,0,0,0
+account_invoice_tax accountant_ro,group_account_user_ro,account.invoice.tax accountant.ro,account.model_account_invoice_tax,1,0,0,0
+account_journal invoice_ro,group_account_user_ro,account.journal invoice.ro,account.model_account_journal,1,0,0,0
+account_move_ro,group_account_user_ro,account.move.ro,account.model_account_move,1,0,0,0
+account_move_line invoice_ro,group_account_user_ro,account.move.line invoice.ro,account.model_account_move_line,1,0,0,0
+account_payment_term_ro,group_account_user_ro,account.payment.term.ro,account.model_account_payment_term,1,0,0,0
+account_payment_term_line_ro,group_account_user_ro,account.payment.term.line.ro,account.model_account_payment_term_line,1,0,0,0
+account_tax_ro,group_account_user_ro,account.tax.ro,account.model_account_tax,1,0,0,0
+
+sos_fiscalyear_ro,group_account_user_ro,sos.fiscalyear.ro,sos.model_sos_fiscalyear,1,0,0,0
+sos_period_ro,group_account_user_ro,sos.period.ro,sos.model_sos_period,1,0,0,0
+sos_employee_ro,group_account_user_ro,sos.employee.ro,sos.model_hr_employee,1,0,0,0
+sos_sos_clients_visit_ro,group_account_user_ro,sos.sos.clients.visit.ro,sos.model_sos_clients_visit,1,0,0,0
+sos_guard_ro,group_account_user_ro,sos.guard.ro,sos.model_hr_guard,1,0,0,0
+sos_guard_family_ro,group_account_user_ro,sos.guard.family.ro,sos.model_guard_family,1,0,0,0
+sos_guard_political_ro,group_account_user_ro,sos.guard.political.ro,sos.model_guard_political,1,0,0,0
+sos_guard_documents_ro,group_account_user_ro,sos.guard.documents.ro,sos.model_guard_documents,1,0,0,0
+sos_guard_army_ro,group_account_user_ro,sos.guard.army.ro,sos.model_guard_army,1,0,0,0
+sos_hr_employee_address_ro,group_account_user_ro,sos.hr.employee.address.ro,sos.model_hr_employee_address,1,0,0,0
+sos_hr_staff_ro,group_account_user_ro,sos.hr.staff.ro,sos.model_hr_staff,1,0,0,0
+sos_project_ro,group_account_user_ro,sos.project.ro,sos.model_sos_project,1,0,0,0
+sos_post_ro,group_account_user_ro,sos.post.ro,sos.model_sos_post,1,0,0,0
+sos_education_ro,group_account_user_ro,sos.education.ro,sos.model_sos_education,1,0,0,0
+sos_designation_ro,group_account_user_ro,sos.designation.ro,sos.model_sos_designation,1,0,0,0
+sos_subcast_ro,group_account_user_ro,sos.subcast.ro,sos.model_sos_subcast,,1,0,0,0
+sos_religion_ro,group_account_user_ro,sos.religion.ro,sos.model_sos_religion,1,0,0,0
+sos_bloodgroup_ro,group_account_user_ro,sos.bloodgroup.ro,sos.model_sos_bloodgroup,1,0,0,0
+sos_partneraddress_ro,group_account_user_ro,sos.partneraddress.ro,sos.model_sos_partneraddress,1,0,0,0
+sos_partneraddress_category_ro,group_account_user_ro,sos.partneraddress.category.ro,sos.model_sos_partneraddress_category,1,0,0,0
+sos_city_ro,group_account_user_ro,sos.city.ro,sos.model_sos_city,1,0,0,0
+sos_center_ro,group_account_user_ro,sos.center.ro,sos.model_sos_center,1,0,0,0
+sos_guard_post_ro,group_account_user_ro,sos.post.ro,sos.model_sos_guard_post,1,0,0,0
+sos_guard_childs_ro,group_account_user_ro,sos.guard.childs.ro,sos.model_sos_guard_childs,1,0,0,0
+sos_post_jobs_ro,group_account_user_ro,sos.post.jobs.ro,sos.model_sos_post_jobs,1,0,0,0
+access_resource_resource_ro,group_account_user_ro,resource.resource.ro,resource.model_resource_resource,1,0,0,0
+access_resource_calendar_ro,group_account_user_ro,resource.calendar.ro,resource.model_resource_calendar,1,0,0,0
+access_resource_calendar_attendance_ro,group_account_user_ro,resource.calendar.attendance.ro,resource.model_resource_calendar_attendance,1,0,0,0
+access_resource_calendar_leaves_ro,group_account_user_ro,resource.calendar.leaves.ro,resource.model_resource_calendar_leaves,1,0,0,0
+sos_complaint_ro,group_account_user_ro,sos.complaint.ro,sos_complaint.model_sos_complaint,1,0,0,0
+sos_complaint_category_ro,group_account_user_ro,sos.complaint.category.ro,sos_complaint.model_sos_complaint_category,1,0,0,0
+sos_inspection_ro,group_account_user_ro,sos.inspection.ro,sos_complaint.model_sos_inspection,1,0,0,0
+sos_inspection_weapon_ro,group_account_user_ro,sos.inspection.weapon.ro,sos_complaint.model_sos_inspection_weapon,1,0,0,0
+sos_inspection_ammunation_ro,group_account_user_ro,sos.inspection.ammunation_ro,sos_complaint.model_sos_inspection_ammunation,1,0,0,0
+sos_deployment_ro,group_account_user_ro,sos.deployment.ro,sos_complaint.model_sos_deployment,1,0,0,0
+sos_post_termination_ro,group_account_user_ro,sos.post.termination.ro,sos_complaint.model_sos_post_termination,1,0,0,0
+
+uniform_demand_access_ro,group_account_user_ro,uniform.demand.ro,sos_uniform.model_sos_uniform_demand,1,0,0,0
+uniform_demand_line_ro,group_account_user_ro,uniform.demand.line.ro,sos_uniform.model_sos_uniform_demand_line,1,0,0,0
+uniform_dispatch_line_ro,group_account_user_ro,uniform.dispatch.line_ro,sos_uniform.model_sos_uniform_dispatch_line,1,0,0,0
+uniform_return_line_ro,group_account_user_ro,uniform_return_line_access_ro,sos_uniform.model_sos_uniform_return_line,1,0,0,0
+uniform_return_items_ro,group_account_user_ro,uniform.return.items.ro,sos_uniform.model_sos_uniform_return_items,1,0,0,0
+uniform_demand_items_ro,group_account_user_ro,uniform.demand.items.ro,sos_uniform.model_sos_uniform_items,1,0,0,0
+weapon_demand_ro,group_account_user_ro,weapon.demand.ro,sos_uniform.model_sos_weapon_demand,1,0,0,0
+weapon_demand_line_ro,group_account_user_ro,weapo.demand.line.ro,sos_uniform.model_sos_weapon_demand_line,1,0,0,0
+weapon_dispatch_line_ro,group_account_user_ro,weapon.dispatch.line.ro,sos_uniform.model_sos_weapon_dispatch_line,1,0,0,0
+weapon_demand_items_ro,group_account_user_ro,weapon.demand.items.ro,sos_uniform.model_sos_weapon_items,1,0,0,0
+safety_demand_ro,group_account_user_ro,safety.demand.ro,sos_uniform.model_sos_safety_demand,1,0,0,0
+stationery_demand_ro,group_account_user_ro,stationery.demand.ro,sos_uniform.model_sos_stationery_demand,1,0,0,0
+stationery_demand_line_ro,group_account_user_ro,stationery.demand.line.ro,sos_uniform.model_sos_stationery_demand_line,1,0,0,0
+stationery_demand_items_ro,group_account_user_ro,stationery.demand.items.ro,sos_uniform.model_sos_stationery_items,1,0,0,0
+stationery_dispatch_line_ro,group_account_user_ro,stationery.dispatch.line.ro,sos_uniform.model_sos_stationery_dispatch_line,1,0,0,0
+jacket_demand_ro,group_account_user_ro,jacket.demand.access.ro,sos_uniform.model_sos_jacket_demand,1,0,0,0
+jacket_demand_line_ro,group_account_user_ro,jacket.demand.line.ro,sos_uniform.model_sos_jacket_demand_line,1,0,0,0
+sos_stock_move_ro,group_account_user_ro,sos.stock.move.ro,sos_uniform.model_stock_move,1,0,0,0
+
+sos_guard_action_reason_ro,group_account_user_ro,sos.guard.action.reason.ro,sos_payroll.model_sos_guard_action_reason,1,0,0,0
+sos_guard_replacement_ro,group_account_user_ro,sos.guard.replacement.ro,sos_payroll.model_sos_guard_replacement,1,0,0,0
+sos_guard_shortfall_ro,group_account_user_ro,sos.guard.shortfall.ro,sos_payroll.model_sos_guard_shortfall,1,0,0,0
+sos_guard_attendance_ro,group_account_user_ro,sos.guard.attendance.ro,sos_payroll.model_sos_guard_attendance,1,0,0,0
+sos_center_attendance_ro,group_account_user_ro,sos.center.attendance.ro,sos_payroll.model_sos_center_attendance,1,0,0,0
+
+

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+
+	  	<menuitem name="Guards PF Return Form" parent="sos.menu_gms_main" id="menu_guards_pf_return_form" sequence="13" action="sos_guards_pf_return_form_action"/>
+
+  		<menuitem id="menu_gms_payroll_pf_reports" parent="sos_payroll.menu_gms_root_payroll" name="PF Reports" sequence="110"/> 	
+			<menuitem name="Provident Fund Employee Contribution" parent="menu_gms_payroll_pf_reports" action="action_pf_employee_contribution_wizard" sequence="5" id="menu_pf_employee_contribution"/>
+			<menuitem name="Provident Fund Employee &amp; Employer Contribution" parent="menu_gms_payroll_pf_reports" action="action_pf_employer_contribution_wizard" sequence="10" id="menu_pf_employer_contribution"/>	
+	  		<menuitem name="Terminated Guards 3X Interval PF Report" parent="menu_gms_payroll_pf_reports" action="action_terminted_guards_3x_interval_pf_wizard" sequence="12" id="menu_terminated_guards_3x_interval_pf"/>
+	  		<menuitem name="Moth Wise PF Report" parent="menu_gms_payroll_pf_reports" action="action_month_wise_pf_wizard" sequence="15" id="menu_month_wise_pf_report"/>
+
+  </data>
+</odoo>

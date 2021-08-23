@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright 2019 Coop IT Easy
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+    <record id="view_event_form" model="ir.ui.view">
+        <field name="name">view_event_form</field>
+        <field name="model">event.event</field>
+        <field name="inherit_id" ref="event.view_event_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='seats_max']/.." position="after">
+                <field name="promotion_id"/>
+                <button name="button_register_promotion" string="Register Promotion as Attendees" type="object"/>
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="view_event_registration_form" model="ir.ui.view">
+        <field name="name">view_event_registration_form</field>
+        <field name="model">event.registration</field>
+        <field name="inherit_id" ref="event.view_event_registration_form"/>
+        <field name="arch" type="xml">
+            <field name="partner_id" position="after">
+                <field name="employee_id" attrs="{'readonly':[('state', '!=', 'draft')]}"/>
+                <field name="promotion_id"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_event_registration_tree" model="ir.ui.view">
+        <field name="name">view_event_registration_tree</field>
+        <field name="model">event.registration</field>
+        <field name="inherit_id" ref="event.view_event_registration_tree"/>
+        <field name="arch" type="xml">
+            <field name="partner_id" position="after">
+                <field name="employee_id"/>
+                <field name="promotion_id"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_registration_search" model="ir.ui.view">
+        <field name="name">view_registration_search</field>
+        <field name="model">event.registration</field>
+        <field name="inherit_id" ref="event.view_registration_search"/>
+        <field name="arch" type="xml">
+            <field name="partner_id" position="after">
+                <field name="employee_id"/>
+                <field name="promotion_id"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <record id="view_address_code_form" model="ir.ui.view">
+      <field name="name">address.code.form</field>
+      <field name="model">address.code</field>
+      <field name="arch" type="xml">
+        <form string="Address Code">
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="code"/>
+              <field name="company_id" groups="base.group_multi_company"
+                     readonly="1"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="view_address_code_tree" model="ir.ui.view">
+      <field name="name">address.code.tree</field>
+      <field name="model">address.code</field>
+        <field name="arch" type="xml">
+            <tree string="Address Codes">
+                <field name="code"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_address_code" model="ir.actions.act_window">
+        <field name="name">Address Codes</field>
+        <field name="res_model">address.code</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            Create a new Address Code
+          </p>
+        </field>
+    </record>
+
+    <!-- Localization menu in settings -->
+    <menuitem
+        name="Localization"
+        id="root_localization_menu"
+        parent="account.menu_finance_configuration"/>
+        <!--groups="account.group_account_manager"/>-->
+
+    <menuitem
+            action="action_address_code"
+            id="address_code_menu"
+            parent="root_localization_menu"
+            sequence="1" />
+
+
+
+  </data>
+</odoo>

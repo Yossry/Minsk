@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<!--SOS Car Approval form view -->
+		<record id="view_sos_car_approval_form" model="ir.ui.view">
+			<field name="name">sos.car.approval.form</field>
+			<field name="model">sos.car.approval</field>
+			<field name="arch" type="xml">
+				<form string="Rent A Car Approval Form">
+				   <header>
+						<button name="Coordinator_Approval" states="Draft" string="Coordinator Approval" class="oe_highlight" type="object"/>
+						<button name="Admin_Approval" states="Coordinator" string="Admin Approval" class="oe_highlight" type="object"/>
+						<button name="Audit_Approval" states="Admin Approval" string="Audit Approval" class="oe_highlight" type="object"/>
+						<button name="Finance_Approval" states="Audit Approval" string="Finance Approval" class="oe_highlight" type="object"/>
+						<button name="Accounts_Approval" states="Finance Approval" string="Accounts Approval" class="oe_highlight" type="object"/>						
+						<button name="Action_Paid" states="Accounts Approval" string="Paid" class="oe_highlight" type="object"/>
+						<field name="state" widget="statusbar" nolabel="1" />
+				   </header>
+					   
+				   <sheet>
+					   <div class="oe_title">				   
+						   <h1>
+							   <field name="name" readonly="1" nolabel="1"/>
+						   </h1>
+					   </div>				   
+					   <div class="oe_right oe_button_box" name="button_box">					   
+						   
+					   </div>
+					   <group>	
+							<group>				   						   		
+								<field name="requested_by" domain="[('department_id','!=',29),('is_guard','=',False),('current','=',True)]" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}" required="1"/>
+							</group>
+							<group>
+							</group>
+						</group>
+						
+						<group>	
+							<group>	
+								<field name="hiring_date" required="1"/>
+								<field name="fuel_option" widget="radio"/>
+								<field name="fuel_amount" attrs="{'invisible': [('fuel_option', '=', 'WithOut Fuel')]}"/>
+							</group>
+							<group>		   		
+								<field name="return_date" required="1"/>
+								<field name="days" required="1"/>
+								<field name="rent_per_day" required="1" string="Rent Rate Per Day"/>
+								<field name="total_rent"/>
+							</group>
+							
+							
+							<group>
+								<field name="traveler_type" widget="radio"/>
+							</group>
+							<group>
+								<field name="sos_traveler_name" domain="[('department_id','!=',29),('is_guard','=',False),('current','=',True)]" 
+											options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}" attrs="{'required': [('traveler_type', '=', 'SOS Employees')], 'invisible': [('traveler_type', '=', 'Other Then SOS')]}"/>
+								<field name="vistor_name" attrs="{'required': [('traveler_type', '=', 'Other Then SOS')], 'invisible': [('traveler_type', '=', 'SOS Employees')]}"/>
+							</group>
+							
+							<group>
+								<field name="travel_agent" required="1" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>
+								<field name="reference" string="Reference"/>
+								<field name="total_amount"/>
+							</group>
+							<group>
+								<field name="contact"/>
+								<field name="vehicle_type"/>
+							</group>
+					   </group>
+					   
+					   <group>
+							<field name="purpose" placeholder="Purpose ..."/>
+						</group>	
+					   
+				   </sheet>
+					   <div class="oe_chatter">
+							<field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+							<field name="message_ids" widget="mail_thread" placeholder="Share a note..."/>
+						</div>
+			   </form>
+		   </field>
+		</record>
+ 
+		<!--SOS Car Approval Tree view -->   
+		<record id="view_sos_car_approval_tree" model="ir.ui.view">
+		   <field name="name">sos.car.approval.tree</field>
+		   <field name="model">sos.car.approval</field>
+		   <field name="arch" type="xml">
+			   <tree colors="black:state == 'draft';red:state  == 'HOD Approval';green:state == 'Audit Approval';" string="Air Reservation Approval">	  
+				   <field name="name"/>
+				   <field name="requested_by"/>
+				   <field name="hiring_date"/>
+				   <field name="return_date"/>		   
+				   <field name="fuel_option"/>
+				   <field name="fuel_amount"/>
+				   <field name="days" string='Days'/>
+				   <field name="rent_per_day" string='Rent Per Day'/>
+				   <field name="total_rent"/>
+				   <field name="traveler_type"/>
+				   <field name="travel_agent" />
+				   <field name="reference"/>
+				   <field name="contact"/>
+				    <field name="vehicle_type"/>
+				    <field name="total_amount"/>			   
+				   <field name="state" />		   
+			   </tree>
+		   </field>
+		</record>
+		
+		<!--SOS Car Approval Search view -->	
+		<record id="view_sos_car_approval_filter" model="ir.ui.view">
+			<field name="name">sos.car.approval.select</field>
+			<field name="model">sos.car.approval</field>
+			<field name="arch" type="xml">
+				<search string="Rent A Car Approval">
+				   	   		   
+				   <field name="name" string="Number"/> 
+				   <field name="requested_by" string="Requested By"/>		   				   	   		
+				   <field name="hiring_date"/>
+				   <field name="return_date"/>
+				   <field name="days"/>
+				   <field name="travel_agent"/>	
+				   <field name="reference"/>	
+				   <field name="contact"/>	
+				   <field name="state"/>
+				   
+				   <filter icon="terp-go-today" string="Draft" name="draft" domain="[('state','=','Draft')]" />
+				   <filter icon="terp-go-today" string="Coordinator Approval" name="Coordinator Approval" domain="[('state','=','Coordinator')]" />
+				   <filter icon="terp-go-today" string="Admin Approval" name="Admin Approval" domain="[('state','=','Admin Approval')]" />
+				   <filter icon="terp-go-today" string="Audit Approval" name="Audit Approval" domain="[('state','=','Audit Approval')]" />
+				   <filter icon="terp-go-today" string="Finance Approval" name="Finance Approval" domain="[('state','=','Finance Approval')]" />
+				   <filter icon="terp-go-today" string="Accounts Approval" name="Accounts Approval" domain="[('state','=','Accounts Approval')]" />
+				   	<filter icon="terp-go-today" string="Paid" name="Paid" domain="[('state','=','Paid')]" />
+				   <separator/>
+				   
+				   <group expand="0" string="Group By...">
+				   		<filter string="Fuel Option" name="fuel_option" context="{'group_by': 'fuel_option'}"/>
+				   		<filter string="Vistor Type" name="traveler_type" context="{'group_by': 'traveler_type'}"/>
+				   		<filter string="Vendor Name" name="travel_agent" context="{'group_by': 'travel_agent'}"/>
+				   		<filter string="State" name="state" context="{'group_by': 'state'}"/>		   		
+				   		<separator/>
+				   </group>
+				   
+			   </search>
+			</field>
+		</record>
+	
+	
+		<record id="view_sos_car_approval_action" model="ir.actions.act_window">
+			<field name="name">Rent A Car Approval</field>
+			<field name="res_model">sos.car.approval</field>
+			<field name="view_type">form</field>
+			<field eval="False" name="view_id"/>	
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[]</field>	
+			<field name="context">{}</field>		
+			<field name="search_view_id" ref="view_sos_car_approval_filter"/> 
+			<field name="help" type="html">
+			  <p class="oe_view_nocontent_create">
+				Click to add a New Record.
+			  </p><p>
+				With just a quick glance on the AARSOL ERP screen, you
+				can easily find all the information you need for each Deployment;
+				contact data, Current Status, etc.
+			  </p>
+			</field>
+		</record>
+		
+	</data>
+</odoo>
+
+

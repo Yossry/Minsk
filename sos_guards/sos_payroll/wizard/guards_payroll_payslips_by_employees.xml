@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_guards_payslip_by_employees" model="ir.ui.view">
+            <field name="name">guards_payroll_payslip_employees</field>
+            <field name="model">guards.payslip.employees</field>
+            <field name="arch" type="xml">
+                <form string="Payslips by Guards">
+                    <header>
+                        <button icon="gtk-execute" string="Generate" name="generate_compute_sheet" type="object" class="oe_highlight"  />
+                    </header>
+                    <group>
+                        <label for="employee_ids" colspan="4" nolabel="1" string="This wizard will generate payslips for all selected Guard(s) based on the dates and credit note specified on Payslips Run." />
+                    </group>
+                    <field name="paidon"/>
+                    <group colspan="4" >
+                        <separator string="Guards" colspan="4"/>
+                        <newline/>
+						<!-- <field name="employee_ids" nolabel="1" domain="[('is_guard','=',True),('att_draft','=',True)]" context="{'tree_view_ref':'sos.view_guard_tree','search_view_ref':'sos.view_guard_filter'}"/> --> 
+						<field name="employee_ids" nolabel="1" domain="[('is_guard','=',True)]" context="{'tree_view_ref':'sos.view_guard_tree','search_view_ref':'sos.view_guard_filter'}"/>
+                    </group>
+               </form>
+            </field>
+        </record>
+
+        <record id="action_guards_payslip_by_employees" model="ir.actions.act_window">
+            <field name="name">Generate Payslips</field>
+            <field name="res_model">guards.payslip.employees</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_guards_payslip_by_employees"/>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</odoo>

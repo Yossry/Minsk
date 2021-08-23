@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+	<template id ="report_expiredocs">
+		<t t-call="web.html_container">
+				<t t-call="web.external_layout" style="font-family:georgia,garamond,serif;font-size:10px">
+					<div class="page">
+						<style>
+								.tabhead{font-size:7px;}
+								.tabcol{font-size:9px;}
+								.tabtot{font-size:10px;}
+								 table th { background-color:#d4e3e5;}
+								 tr:nth-child(even) {background-color: #FFEBCD;}
+								 tr:nth-child(odd) {background-color: #cdcdcd;}
+						</style>
+						<h4>Document Expiry Report</h4>
+							<table class="table table-condensed" width="100%">
+								<thead style="font-size:10px;font-weight:bold;">
+									<th>S.No </th>
+									<th>name </th>
+									<th>Code </th>
+									<th>Company</th>
+									<th>Date Expired</th>
+									<th>Remind Days </th>
+									<th>Left Days </th>
+									<th>Document</th>
+								</thead>
+								
+								<tbody>
+									<t t-foreach="Docs" t-as="doc">
+										<tr>
+											<td> <span t-esc="doc_index + 1" /> </td>
+											<td> <span t-esc="doc.name" /> </td>
+											<td> <span t-esc="doc.code" /> </td>
+											<td> <span t-esc="doc.company_id.partner_id.code" /> </td>
+											<td> <span t-esc="doc.date_expiry" /> </td>
+											<td> <span t-esc="doc.remind_days" /> </td>
+											<td> <span t-esc="doc.days_left" /> </td>
+											<td> <span t-esc="doc.document_id.name" /></td>
+										</tr>
+									</t>
+								</tbody>
+										
+							</table>
+
+					</div>
+				</t>
+		</t>
+	</template>
+	
+	</data>
+</odoo>
+

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data noupdate="0">
+        <record id="hr.group_hr_user" model="res.groups">
+		    <field name="name">HR Officer</field>		   
+		</record>
+		<record id="hr.group_hr_manager" model="res.groups">
+		    <field name="name">HR Manager</field>		    
+		</record>
+		
+        <record id="group_hr_head" model="res.groups">
+            <field name="name">Department Head</field>
+            <field name="category_id" ref="base.module_category_human_resources"/>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+            <field name="comment">the user will have semi approval of some HR Documents</field>
+            <field name="implied_ids" eval="[
+            	(4, ref('base.group_user')),
+            	(4, ref('hr_attendance.group_hr_attendance_user')),
+            	(4, ref('hr_holidays.group_hr_holidays_user'))
+            ]"/> 
+        </record>
+        
+      
+        <record id="group_hr_dept_manager" model="res.groups">
+            <field name="name">Department Manager</field>
+            <field name="category_id" ref="base.module_category_human_resources"/>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+            <field name="comment">the user will have final approval of some HR Documents</field>
+            <field name="implied_ids" eval="[(4, ref('hr_ext.group_hr_head'))]"/>
+        </record>
+        
+        <record id="group_hr_GM" model="res.groups">
+            <field name="name">General Manager</field>
+            <field name="category_id" ref="base.module_category_human_resources"/>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+            <field name="comment">General Manager of the Company</field>
+            <field name="implied_ids" eval="[
+            	(4, ref('base.group_user')),
+            	(4, ref('hr_attendance.group_hr_attendance_user')),
+            	(4, ref('hr_holidays.group_hr_holidays_user'))
+            ]"/>    
+        </record>
+        
+      
+        <record id="group_leaves_master" model="res.groups">
+			<field name="name">Leave Master</field>
+			<field name="category_id" ref="base.module_category_hidden"/>
+			<field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+			<field name="comment">the user will be able to manage the approved leaves.</field>
+		</record>
+	
+        
+    </data>    
+</odoo>

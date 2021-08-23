@@ -1,0 +1,21 @@
+default_code,name,description,sale_ok,purchase_ok,type,categ_id,list_price,standard_price,supplier_code,supplier_min_qty,supplier_price,supplier_currency
+(Código único,(Nombre del producto),(Descripción,(Si el producto,(Si el producto,(Tipo de producto:,(Categoria,(Precio de,(Precio de coste,(Código único,(Cantidad mínima,(Precio al que,(Moneda con la 
+ para identificar,,detallada del,"puede ser vendido,","puede ser comprado,",consu (Consumible),interna del ,venta del,del producto),del proveedor,a comprar del,se compra un,que se pagará
+ internamente el,,producto),"indicar True, si no","indicar True, si no",service (Servicio),producto),producto),,que proviene,proveedor),producto al ,"al proveedor, "
+ producto),,,False),False),product (Almacenable)),,,,de la migración,,proveedor),"código ISO, Por ej,:"
+,,,,,,,,,de clientes/prov),,,EUR (Euro)
+,,,,,,,,,,,,GBP (Libra esterlina))
+,,,,,,,,,,,,
+,,,,,,,,,,,,
+ Datos de ejemplo:,,,,,,,,,,,,
+,,,,,,,,,,,,
+P100,Producto num. 0,Descripcion 0,,,service,Servicio,"35,05",52,43000006,,,
+P101,Producto num. 1,Descripcion 1,True,,product,Almacenable,"35,05",52,43000008,300,"27,863",EUR
+P102,Producto num. 2,Descripcion 2,,True,consu,,"35,05",52,43000008,,,
+P103,Producto num. 3,Descripcion 3,True,False,consu,Consumible,"12,34","18,54",43000009,,,
+P104,Producto num. 4,Descripcion 4,True,True,product,Almacenable,30,"38,45",,,,
+P105,Producto num. 5,Descripcion 5,False,False,service,Servicio,"21,45",25,43000007,,,
+P106,Producto num. 6,Descripcion 6,False,True,product,Prueba,48,"54,12",,,,
+P107,Producto num. 7,Descripcion 7,True,True,service,Test,"57,9",80,43000008,80,"47,51",GBP
+P108,Producto num. 8,Descripcion 8,True,True,service,Prova8,"57,9",80,43000008,80,"47,51",GBP
+P109,Producto num. 9,Descripcion 9,True,True,service,,"58,9",81,43000009,81,"48,51",GBP

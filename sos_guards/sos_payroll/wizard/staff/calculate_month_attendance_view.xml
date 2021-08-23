@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_calculate_month_attendance" model="ir.ui.view">
+            <field name="name">Calculate Staff Attendance Wizard</field>
+            <field name="model">calculate.month.attendance</field>
+            <field name="arch" type="xml">
+            <form>
+                <label for="date" string="This wizard will calucalate the Staff Month Attendance."/>
+                <group>
+                    <group>
+						<field name="date"/>
+						<field name="total_days"/> 						
+                    </group>
+                     <group>
+						<field name="date_from"/>
+						<field name="date_to"/> 						
+                    </group>                    
+                </group>
+                <footer>
+                    <button name="calculate_attendance" string="Calculate Attendance" type="object" class="oe_highlight"/>
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+            </form>
+            </field>
+        </record>
+         
+         <act_window
+            id="action_calculate_month_attendance"
+            name="Calculate Staff Attendance"
+            res_model="calculate.month.attendance"
+            src_model="sos.guard.attendance1"
+            view_mode="form"
+            multi="True"
+            target="new"
+            key2="client_action_multi"
+        />
+          
+    </data>
+</odoo>

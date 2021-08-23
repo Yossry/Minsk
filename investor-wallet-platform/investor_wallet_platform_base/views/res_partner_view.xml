@@ -1,0 +1,287 @@
+<odoo>
+    <record id="res_partner_view_form_inherit_mail" model="ir.ui.view">
+        <field name="name">res.partner.view.form.inherit.mail</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="mail.res_partner_view_form_inherit_mail"/>
+        <field name="arch" type="xml">
+            <div class="oe_chatter" position="replace"/>
+        </field>
+    </record>
+
+    <record id="view_partner_form_wallet_platform" model="ir.ui.view">
+        <field name="name">res.partner.form.iwp</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="easy_my_coop.view_partner_form_easy_my_coop"/>
+        <field name="arch" type="xml">
+            <button id="action_view_update_partner_info" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </button>
+            <button id="action_view_update_partner_info" position="after">
+                <button name="validation_request" type="object" string="Request validation"  attrs="{'invisible':['|',('state','not in',['draft','refused']),('is_platform_structure','=',False)]}"
+                    groups="easy_my_coop.group_easy_my_coop_manager"/>
+                <button name="validate" type="object" string="Validate" attrs="{'invisible':['|',('state','not in',['to_validate']),('is_platform_structure','=',False)]}"
+                    groups="investor_wallet_platform_base.group_platform_wallet_manager"/>
+                 <button name="refuse" type="object" string="Refuse" attrs="{'invisible':['|',('state','not in',['to_validate']),('is_platform_structure','=',False)]}"
+                    groups="investor_wallet_platform_base.group_platform_wallet_manager"/>
+                <field name="state" widget="statusbar" attrs="{'invisible':[('is_platform_structure','=',False)]}"/>
+            </button>
+
+                    <field name="email" position="attributes">
+                        <attribute name="attrs">{'required': [('is_platform_structure', '=', True)]}</attribute>
+                    </field>
+
+                    <field name="representative" position="before">
+                        <field name="cover_image" widget='image'/>
+                        <field name="is_platform_structure" groups="investor_wallet_platform_base.group_platform_wallet_manager"/>
+                        <field name="can_subscribe" readonly="True" groups="investor_wallet_platform_base.group_platform_wallet_manager"/>
+                        <field name="structure_type" attrs="{'invisible': [('is_platform_structure', '=', False)]}"/>
+                    </field>
+
+                    <field name="cooperator_register_number" position="replace"/>
+                    <field name="coop_candidate" position="replace"/>
+                    <field name="member" position="replace"/>
+                    <field name="cooperator_type" position="replace"/>
+                    <field name="effective_date" position="replace"/>
+                    <field name="industry_id" position="replace"/>
+                    <field name="company_register_number" position="after">
+                        <field name="subscription_maximum_amount" widget='monetary' options="{'currency_field': 'currency_id', 'field_digits': True}" attrs="{'invisible':[('is_platform_structure','=',False)]}"/>
+                    </field>
+                    <field name="company_register_number" position="attributes">
+                        <attribute name="readonly">False</attribute>
+                    </field>
+                    <xpath expr="//page[@name='share']/field[@name='share_ids']/tree/field[@name='effective_date']" position="before">
+                        <field name="structure"/>
+                    </xpath>
+                    <xpath expr="//page[@name='share']/field[@name='share_ids']/tree/field[@name='effective_date']" position="after">
+                        <field name="creation_mode"/>
+                    </xpath>
+                    <page name="share" position="attributes">
+                        <attribute name="attrs">{'invisible': [('is_platform_structure', '=', True)]}</attribute>
+                    </page>
+                    <xpath expr="//page[@name='loan_issue_lines']/field[@name='loan_line_ids']/tree/field[@name='date']" position="after">
+                        <field name="creation_mode"/>
+                    </xpath>
+                    <!-- page contact don't have name so we get it through another attribute -->
+                    <page autofocus="autofocus" position="attributes">
+                        <attribute name="invisible">True</attribute>
+                    </page>
+                    <page name='internal_notes' position="attributes">
+                        <attribute name="invisible">True</attribute>
+                    </page>
+                    <page name='sales_purchases' position="attributes">
+                        <attribute name="invisible">True</attribute>
+                    </page>
+                    <page name="share_subscription" position="after">
+                        <page name="coop_membership" string="Cooperator membership" attrs="{'invisible': [('is_platform_structure', '=', True)]}">
+                            <field name="coop_membership">
+                                <tree>
+                                    <field name="structure"/>
+                                    <field name="effective_date"/>
+                                    <field name="cooperator_number"/>
+                                    <field name="member"/>
+                                    <field name="coop_candidate"/>
+                                    <field name="old_member"/>
+                                    <field name="number_of_share"/>
+                                    <field name="total_value"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page name="structure_info" string="Structure info" attrs="{'invisible': [('is_platform_structure', '=', False)]}">
+                            <group>
+                                <group>
+                                    <field name="display_on_website" groups="investor_wallet_platform_base.group_platform_wallet_manager"/>
+                                    <field name="employee_number"/>
+                                    <field name="industry_id" attrs="{'invisible': [('is_company', '=', False)]}" options="{'no_create': True}"/>
+                                    <field name="board_representative"/>
+                                    <field name="description"/>
+                                    <field name="about_us"/>
+                                    <field name="projects"/>
+                                    <field name="area_char_list" readonly="True" groups="base.group_system"/>
+                                </group>
+                                <group>
+                                    <field name="activity_areas" widget="many2many_tags" options="{'no_create': True}"/>
+                                    <field name="approval"/>
+                                    <field name="is_renewable_energy"/>
+                                    <field name="signature_scan"/>
+                                    <field name="renewable_energy" attrs="{'invisible': [('is_renewable_energy', '=', False)]}"/>
+                                    <field name="purpose_service"/>
+                                    <field name="sustainable_development"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page name="structure_gov_info" string="Governance info" attrs="{'invisible': [('is_platform_structure', '=', False)]}">
+                            <group>
+                                <group>
+                                    <field name="statute_link"/>
+                                    <field name="governance"/>
+                                </group>
+                                <group>
+                                    <field name="labour_on_capital"/>
+                                    <field name="autonomy_of_management"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page name="structure_fin_info" string="Financial info" attrs="{'invisible': [('is_platform_structure', '=', False)]}">
+                            <group>
+                                <group>
+                                    <field name="break_even_date"/>
+                                    <field name="last_dividend"/>
+                                    <field name="total_bs"/>
+                                    <field name="total_outstanding_amount"/>
+                                    <field name="key_numbers"/>
+                                    <field name="governance_risk"/>
+                                    <field name="operational_risk"/>
+                                </group>
+                                <group>
+                                    <field name="annual_report_link"/>
+                                    <field name="last_result"/>
+                                    <field name="equity"/>
+                                    <field name="liquidity_ratio"/>
+                                    <field name="solvency_ratio"/>
+                                    <field name="susbidies_risk"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page  name="structure_config" string="Structure configuration" attrs="{'invisible': [('is_platform_structure', '=', False)]}" groups="investor_wallet_platform_base.group_platform_wallet_manager">
+                            <button name="generate_sequence" type="object" string ="Initialize" attrs="{'invisible': [('initialized', '=', True)]}" groups="investor_wallet_platform_base.group_platform_wallet_manager"/>
+                            <button name="generate_mail_templates" type="object" string ="Create mail templates" groups="investor_wallet_platform_base.group_platform_wallet_manager"/>
+                            <field name="initialized" invisible="True"/>
+                            <group>
+                                <group>
+                                    <field name="account_journal"/>
+                                    <field name="register_sequence"/>
+                                    <field name="operation_sequence"/>
+                                </group>
+                                <group>
+                                    <field name="write_date"/>
+                                    <field name="validation_date"/>
+                                    <field name="validated_by"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                    <field name="mail_serveur_out" context="{'default_structure': active_id}" groups="investor_wallet_platform_base.group_platform_wallet_manager"/>
+                                    <field name="mail_template_ids">
+                                        <tree>
+                                            <field name="name"/>
+                                            <field name="model_id"/>
+                                            <field name="subject"/>
+                                            <field name="email_from"/>
+                                            <field name="email_to"/>
+                                            <field name="partner_to"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group>
+                                </group>
+                            </group>
+                        </page>
+                        <page name="required_approvals" string="Required Approvals" attrs="{'invisible': [('is_platform_structure', '=', False)]}">
+                            <group>
+                                <field name="data_policy_approval_text"/>
+                                <field name="internal_rules_approval_text"/>
+                                <field name="financial_risk_approval_text"/>
+                            </group>
+                        </page>
+                    </page>
+                </field>
+            </record>
+
+    <record id="view_partner_form_wallet_platform_bis" model="ir.ui.view">
+        <field name="name">res.partner.form.iwp_bis</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="easy_my_coop_loan.view_partner_form_loan_issue"/>
+        <field name="arch" type="xml">
+            <page name="loan_issue_lines" position="before">
+                <field name="is_platform_structure" attrs="{'invisible': 1}"/>
+            </page>
+            <page name="loan_issue_lines" position="attributes">
+                <attribute name="attrs">{'invisible': [('is_platform_structure', '=', True)]}</attribute>
+            </page>
+        </field>
+    </record>
+
+    <record id="view_partner_filter" model="ir.ui.view">
+        <field name="name">res.partner.search</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+        <field name="arch" type="xml">
+            <filter name="salesperson" position="before">
+                <filter name="Creation Date" context="{'group_by': 'create_date'}"/>
+            </filter>
+        </field>
+    </record>
+
+    <record id="action_wallet_platform_structure_form" model="ir.actions.act_window">
+        <field name="name">Platform structures</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="domain">[('is_platform_structure','=',True)]</field>
+        <field name="context">{'default_is_platform_structure':1}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to add a contact in your address book.
+                </p><p>
+                OpenERP helps you easily track all activities related to
+                a cooperator: discussions, history of business opportunities,
+                documents, etc.
+            </p>
+        </field>
+    </record>
+
+    <record id="action_wallet_platform_structure_form" model="ir.actions.act_window">
+        <field name="name">Platform structures</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="domain">[('is_platform_structure','=',True)]</field>
+        <field name="context">{'default_is_platform_structure':1}</field>
+    </record>
+
+    <record id="action_iwp_structure_to_validate_form" model="ir.actions.act_window">
+        <field name="name">Platform structures</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="domain">[('is_platform_structure','=',True),('state','=','to_validate')]</field>
+    </record>
+
+    <record id="view_res_partner_filter_coop" model="ir.ui.view">
+        <field name="name">res.partner.select</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="easy_my_coop.view_res_partner_filter_coop"/>
+        <field name="arch" type="xml">
+            <filter name="cooperators" position="attributes">
+                <attribute name="domain">[('membership_structure_ids', '!=', False)]</attribute>
+            </filter>
+            <filter name="old_cooperators" position="attributes">
+                <attribute name="domain">[('old_member_structure_ids', '!=', False)]</attribute>
+            </filter>
+            <filter name="cooperator_candidates" position="attributes">
+                <attribute name="domain">[('candidate_structure_ids', '!=', False)]</attribute>
+            </filter>
+            <filter name="group_by_cooperator_type" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </filter>
+        </field>
+    </record>
+
+    <record id="easy_my_coop.action_partner_cooperator_form" model="ir.actions.act_window">
+        <field name="domain">[]</field>
+    </record>
+
+    <record id="view_res_partner_loaner_filter" model="ir.ui.view">
+        <field name="name">res.partner.form.loan.issue</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="easy_my_coop_loan.view_res_partner_loaner_filter"/>
+        <field name="arch" type="xml">
+            <filter name="loaners" position="attributes">
+                <attribute name="domain">[('loan_structure_ids', '!=', False)]</attribute>
+            </filter>
+        </field>
+    </record>
+</odoo>

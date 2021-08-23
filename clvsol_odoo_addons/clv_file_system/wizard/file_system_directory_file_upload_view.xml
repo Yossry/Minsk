@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="clv_file_system_directory_file_upload_view_form" model="ir.ui.view">
+        <field name="name">clv.file_system.directory.file_upload.form</field>
+        <field name="model">clv.file_system.directory.file_upload</field>
+        <field name="arch" type="xml">
+            <form>
+                <div class="oe_right">
+                </div>
+                <label for="file_system_directory_ids"/>
+                <field name="file_system_directory_ids"/>
+                <group>
+                    <group>
+                        <field name="upload_file" filename="file_name"/>
+                        <field name="file_name" invisible="1"/>
+                    </group>
+                    <group>
+                    </group>
+                </group>
+                <footer>
+                    <button 
+                        type="object"
+                        name="do_file_system_directory_file_upload"
+                        string="File Upload"
+                        class="oe_highlight"
+                        />
+                    <button special="cancel" string="Cancel"/>
+                </footer>
+            </form>
+
+        </field>
+    </record>
+
+    <!-- More button Action -->
+    <act_window 
+        id="clv_file_system_directory_file_upload_action"
+        name="File Upload"
+        src_model="clv.file_system.directory"
+        res_model="clv.file_system.directory.file_upload"
+        view_mode="form, tree"
+        target="new"
+        groups="clv_file_system.group_manager"
+    />
+
+</odoo>

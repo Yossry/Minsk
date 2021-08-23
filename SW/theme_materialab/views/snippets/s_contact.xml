@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template name="Contact" id="s_contact">
+        <!-- ====START CONTACT AREA==== -->
+        <section id="contact" class="map-area oe_structure">
+            <div class="contact_google_map">
+                <div id="contactgoogleMap"></div>
+            </div>
+            <div class="contact-area">
+                <div class="container">
+                    <div class="contact_text col-md-6">
+                        <div class="section_title">
+                            <h2 class="text-left">Get in touch</h2>
+                            <p>feel free to contact us with any questions</p>
+                        </div>
+                        <form action="/website_form/" method="post" data-model_name="crm.lead" data-success_page="/page/website_crm.contactus_thanks" class="s_website_form form-horizontal container-fluid mt32" enctype="multipart/form-data">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+                            <div class="row jsSubmit_button">
+                                <div class="input-field col-md-6">
+                                    <input id="contact_name" type="text" class="validate" name="contact_name" required="True" />
+                                    <label for="contact_name">
+                                        <i class="zmdi zmdi-account"></i>Your Name
+                                        <span>*</span>
+                                    </label>
+                                </div>
+                                <div class="input-field col-md-6">
+                                    <input id="contact_email" type="email" class="validate" name="email_from" required="True" />
+                                    <label for="contact_email"><i class="zmdi zmdi-email"></i>Your Email
+                                        <span>*</span>
+                                    </label>
+                                </div>
+                                <div class="input-field col-md-12">
+                                    <textarea id="textarea1" name="name" class="materialize-textarea" required="True"></textarea>
+                                    <label for="textarea1"><i class="zmdi zmdi-border-color"></i>Your Massage
+                                        <span>*</span>
+                                    </label>
+                                </div>
+                                <div class="col-md-12">
+                                    <button type="submit" class="th_bt btn waves-effect" name="submit_btn">
+                                        send<i class="zmdi zmdi-mail-send"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ====END CONTACT==== -->
+    </template>
+</odoo>

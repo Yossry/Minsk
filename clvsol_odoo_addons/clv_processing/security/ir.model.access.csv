@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_clv_processing_host_user,clv.processing.host.user,model_clv_processing_host,clv_processing.group_user,1,0,0,0
+access_clv_processing_host_manager,clv.processing.manager.host,model_clv_processing_host,clv_processing.group_manager,1,1,1,0
+access_clv_processing_host_supmanager,clv.processing.host.supmanager,model_clv_processing_host,clv_processing.group_supmanager,1,1,1,1
+
+access_clv_processing_template_user,clv.processing.template.user,model_clv_processing_template,clv_processing.group_user,1,0,0,0
+access_clv_processing_template_manager,clv.processing.manager.template,model_clv_processing_template,clv_processing.group_manager,1,1,1,0
+access_clv_processing_template_supmanager,clv.processing.template.supmanager,model_clv_processing_template,clv_processing.group_supmanager,1,1,1,1
+
+access_clv_processing_schedule_user,clv.processing.schedule.user,model_clv_processing_schedule,clv_processing.group_user,1,0,0,0
+access_clv_processing_schedule_manager,clv.processing.manager.schedule,model_clv_processing_schedule,clv_processing.group_manager,1,1,1,0
+access_clv_processing_schedule_supmanager,clv.processing.schedule.supmanager,model_clv_processing_schedule,clv_processing.group_supmanager,1,1,1,1

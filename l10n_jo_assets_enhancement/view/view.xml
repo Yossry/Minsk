@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+
+		<record id="view_account_asset_asset_form" model="ir.ui.view">
+			<field name="name">account.asset.asset.form.inherit</field>
+			<field name="model">account.asset.asset</field>
+			<field name="inherit_id" ref="account_asset.view_account_asset_asset_form" />
+			<field name="arch" type="xml">
+				<field name="prorata" position="replace"> 
+					<field name="prorata" invisible="1"/>
+				</field>
+			</field>
+		</record>
+
+		<record id="view_account_asset_category_form" model="ir.ui.view">
+			<field name="name">account.asset.category.form.inherit</field>
+			<field name="model">account.asset.category</field>
+			<field name="inherit_id" ref="account_asset.view_account_asset_category_form" />
+			<field name="arch" type="xml">
+				<field name="prorata" position="replace"> 
+					<field name="prorata" invisible="1"/>
+				</field>
+			</field>
+		</record>
+
+
+	</data>
+</openerp>
+
+

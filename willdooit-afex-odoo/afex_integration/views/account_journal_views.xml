@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<record id="account_journal_afex_view_form" model="ir.ui.view">
+    <field name="name">Journal Form with Afex</field>
+    <field name="model">account.journal</field>
+    <field name="inherit_id" ref="account.view_account_journal_form"/>
+    <field name="arch" type="xml">
+        <field name="currency_id" position="after">
+            <field name="can_direct_debit" invisible="1"/>
+            <field name="afex_journal" attrs="{'invisible': [('type', 'not in', ['cash', 'bank'])]}"/>
+            <field name="afex_scheduled_payment" attrs="{'invisible': ['|', ('afex_journal', '=', False), ('type', '!=', 'bank')]}"/>
+            <field name="afex_partner_id" domain="[('supplier', '=', True)]" attrs="{'invisible': [('afex_journal', '=', False)], 'required': [('afex_journal', '=', True)]}"
+                   context="{'default_is_company': True, 'default_supplier': True, 'default_customer': False}"/>
+            <field name="afex_fee_account_id" attrs="{'invisible': [('afex_journal', '=', False)], 'required': [('afex_journal', '=', True)]}"/>
+            <field name="afex_direct_debit_journal_id" domain="[('type', '=', 'bank')]" options="{'no_create_edit': True}"
+                   attrs="{'invisible': ['|', ('afex_journal', '=', False), ('can_direct_debit', '=', False)]}"/>
+            <field name="afex_direct_debit" attrs="{'invisible': ['|', ('afex_journal', '=', False), ('can_direct_debit', '=', False)]}"/>
+        </field>
+    </field>
+</record>
+
+</odoo>

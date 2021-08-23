@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        
+        <record id="view_account_invoice_form_inherit" model="ir.ui.view">
+            <field name="name">account.invoice.form.inherit</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                
+                <xpath expr="//field[@name='partner_id']" position="after">
+                     <field name="account_invoice_group_id" domain="[('state','=','draft'),('partner_id','=',partner_id)]" attrs="{'invisible':[('state','=','draft')],'readonly':[('group_state','!=','draft')]}" />
+                     <field name="group_state" invisible="True"/>
+                </xpath>
+                
+            </field>
+        </record>
+        
+        <record id="view_account_invoice_tree_inherit" model="ir.ui.view">
+            <field name="name">account.invoice.tree.inherit</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_tree"/>
+            <field name="arch" type="xml">
+                
+                <xpath expr="//field[@name='number']" position="after">
+                     <field name="account_invoice_group_id" />
+                </xpath>
+                
+            </field>
+        </record>
+    
+    </data>
+</odoo>

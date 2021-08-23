@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_invoices_comp_summary" model="ir.ui.view">
+            <field name="name">Invoices Comp Summary</field>
+            <field name="model">invoices.comp.summary</field>
+            <field name="arch" type="xml">
+            <form string="Salary Summary">
+            	<!--SARFRAZ-->
+                <!-- <label string="This wizard will print report which displays Comparison Summary of the Invoices."/> -->
+                <footer>
+                    <button name="print_report" string="Print" type="object" class="oe_highlight"/>
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+                <group>
+                    <group>
+						<field name="date_from" required="1"/>
+						<field name="date_to" required="1"/>    
+						<field name="report_name"/>   
+                    </group>                    
+                </group>
+                
+                 <notebook tabpos="up" colspan="4">
+				                   				                    
+					<page string="Project Filters" name="projects">
+						<separator string="Print only" colspan="4"/>
+						<field name="project_ids"  widget="many2many_tags" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>
+					</page>
+
+					<page string="Center Filters" name="centers">
+						<separator string="Print only" colspan="4"/>
+						<field name="center_ids"  widget="many2many_tags" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>
+					</page>
+				                    
+                </notebook>
+            </form>
+            </field>
+        </record>
+
+        <record id="action_invoices_comp_summary" model="ir.actions.act_window">
+            <field name="name">Invoices Comp Summary</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">invoices.comp.summary</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+		
+    </data>
+</odoo>

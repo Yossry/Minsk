@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<record id="ledger_summary_report_view" model="ir.ui.view">
+			<field name="name">Ledger Summary Report</field>
+			<field name="model">ledger.summary.report</field>
+			<field name="arch" type="xml">
+				<form string="Ledger Summary Report Wizard">
+					<group>
+						<group>
+							<field name="account_id" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}" />
+							<field name="dimension_id" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}" />
+							<field name="date_start"/>
+						</group>
+						<group>
+							<field name="display_att"/>
+							<field name="interval"/>
+							<field name="interval_count"/>
+						</group>
+					</group>
+					<footer>
+						<button string="Print" name="print_report" type="object" class="oe_highlight"  />
+						<button string="Cancel" class="btn btn-default" special="cancel" />
+					</footer>
+				</form>
+			</field>
+		</record>
+
+		<record id="action_legder_summary_report" model="ir.actions.act_window">
+			<field name="name">Ledger Summary Report</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">ledger.summary.report</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="view_id" ref="ledger_summary_report_view"/>
+			<field name="target">new</field>
+		</record>
+
+	   <menuitem name="Ledger Summary Report" parent="account.menu_finance_legal_statement" sequence="24" action="action_legder_summary_report" id="menu_legder_summary_report"/>
+
+	</data>
+</odoo>

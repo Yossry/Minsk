@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<record model="ir.ui.view" id="clearance_cost_list_view">
+			<field name="name">clearance_cost</field>
+			<field name="model">clearance.cost</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="qut_number" />
+					<field name="is_next" />
+					<field name="is_expired" />
+					<field name="partner_id" />
+					<field name="customs_id" />
+					<field name="customs_declaration_id" />
+					<field name="date" />
+					<field name="price" />
+					<field name="total" />
+					<field name="active"/>
+				</tree>
+			</field>
+		</record>
+
+
+		<record model="ir.ui.view" id="clearance_cost_form_view">
+			<field name="name">clearance_cost</field>
+			<field name="model">clearance.cost</field>
+			<field name="arch" type="xml">
+				<form>
+					<sheet>
+					<div class="oe_button_box" name="button_box">  
+                            <button name="call_job" type="object"  
+                            class="oe_stat_button" icon="fa-pencil-square-o" string="Job">  
+                                 <!-- (If you want to display the count)<field name="field_name_for_count" widget="statinfo"   
+                            string="You String Name" />   -->
+                           </button> 
+                           <button name="call_sale_inquiry" type="object"  
+                            class="oe_stat_button" icon="fa-pencil-square-o" string="Sale Inquiry">  
+                                 <!-- (If you want to display the count)<field name="field_name_for_count" widget="statinfo"   
+                            string="You String Name" />   -->
+                           </button>
+                       </div>
+						<group>
+							<group>
+							    <field name="partner_id"
+                                    options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" 
+                                    string="Clearance Company"/>
+								<field name="qut_number" />
+                                <field name="date" 
+                                       string="Quotation Date"/>
+                                <field name="from_date" />
+                                <field name="to_date" />
+                                <field name="is_expired" />
+								<field name="is_next" readonly="1"/>
+								<field name="customs_id"
+                                    context="{'customs_filter':partner_id}"
+                                    options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" />
+                                <field name="partner_point_ids" widget="many2many_tags" />
+								<field name="shipment_method" />
+								<field name="shipment_type" />
+								<field name="customs_declaration_id"
+									options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" />
+							</group>
+							<group>
+							    <field name="active"/>
+								<field name="price" 
+								       attrs="{'readonly': ['|',('qut_number', '=', ''),('partner_id', '=', False)]}"
+								       string="Rate"/>
+								<field name="currency_id"
+								       options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+								<field name="payment_term_id" options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+							</group>
+						</group>
+						<group>
+							<field name="cost_line_ids">
+								<tree editable="botton">
+									<field name="from_truck" />
+									<field name="to_truck" />
+									<field name="cost" />
+									<field name="currency_id" 
+									       options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+								</tree>
+								<form>
+									<field name="from_truck" />
+									<field name="to_truck" />
+									<field name="cost" />
+								</form>
+							</field>
+						</group>
+						<group>
+							<field name="total" />
+						</group>
+						<group>
+							<field name="note" />
+						</group>
+					</sheet>
+					<div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                 </div>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window"
+			id="clearance_cost_action">
+			<field name="name">Clearance Cost</field>
+			<field name="res_model">clearance.cost</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+
+
+
+	</data>
+</odoo>

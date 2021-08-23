@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <!-- account.tax.template -->
+        <record id="tax_po_16" model="account.tax.template">
+            <field name="sequence">1</field>
+            <field name="description">Purchase 16%</field>
+            <field name="name">Purchase 16%</field>
+            <field name="refund_account_id" ref="account_account_template_85"/> <!-- paid -->
+            <field name="account_id" ref="account_account_template_85"/> <!-- collected -->
+            <field name="price_include" eval="0"/>
+            <field name="amount">16</field>
+            <field name="amount_type">percent</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="active" eval="True"/>
+            <field name="chart_template_id" ref="l10njo_chart_template"/>
+            <field name="tax_group_id" ref="tax_group_po"/>
+        </record>
+        <record id="tax_po_8" model="account.tax.template">
+            <field name="sequence">10</field>
+            <field name="description">Purchase 8%</field>
+            <field name="name">Purchase 8%</field>
+            <field name="refund_account_id" ref="account_account_template_85"/> <!-- paid -->
+            <field name="account_id" ref="account_account_template_85"/> <!-- collected -->
+            <field name="price_include" eval="0"/>
+            <field name="amount">8</field>
+            <field name="amount_type">percent</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="active" eval="True"/>
+            <field name="chart_template_id" ref="l10njo_chart_template"/>
+            <field name="tax_group_id" ref="tax_group_po"/>
+        </record>
+        <record id="tax_po_4" model="account.tax.template">
+            <field name="sequence">10</field>
+            <field name="description">Purchase 4%</field>
+            <field name="name">Purchase 4%</field>
+            <field name="refund_account_id" ref="account_account_template_85"/> <!-- paid -->
+            <field name="account_id" ref="account_account_template_85"/> <!-- collected -->
+            <field name="price_include" eval="0"/>
+            <field name="amount">4</field>
+            <field name="amount_type">percent</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="active" eval="True"/>
+            <field name="chart_template_id" ref="l10njo_chart_template"/>
+            <field name="tax_group_id" ref="tax_group_po"/>
+        </record>
+        <record id="tax_po_0" model="account.tax.template">
+            <field name="sequence">10</field>
+            <field name="description">Purchase 0%</field>
+            <field name="name">Purchase 0%</field>
+            <field name="refund_account_id" ref="account_account_template_85"/> <!-- paid -->
+            <field name="account_id" ref="account_account_template_85"/> <!-- collected -->
+            <field name="price_include" eval="0"/>
+            <field name="amount">0</field>
+            <field name="amount_type">percent</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="active" eval="True"/>
+            <field name="chart_template_id" ref="l10njo_chart_template"/>
+            <field name="tax_group_id" ref="tax_group_po"/>
+        </record>
+        <record id="tax_po_ex" model="account.tax.template">
+            <field name="sequence">10</field>
+            <field name="description">Purchase Exempt</field>
+            <field name="name">Purchase Exempt</field>
+            <field name="refund_account_id" ref="account_account_template_85"/> <!-- paid -->
+            <field name="account_id" ref="account_account_template_85"/> <!-- collected -->
+            <field name="price_include" eval="0"/>
+            <field name="amount">0</field>
+            <field name="amount_type">percent</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="active" eval="True"/>
+            <field name="chart_template_id" ref="l10njo_chart_template"/>
+            <field name="tax_group_id" ref="tax_group_po"/>
+        </record>
+        
+        
+        
+        <record id="tax_so_16" model="account.tax.template">
+            <field name="sequence">1</field>
+            <field name="description">Sale 16%</field>
+            <field name="name">Sale 16%</field>
+            <field name="refund_account_id" ref="account_account_template_40"/> <!-- paid -->
+            <field name="account_id" ref="account_account_template_40"/> <!-- collected -->
+            <field name="price_include" eval="0"/>
+            <field name="amount">16</field>
+            <field name="amount_type">percent</field>
+            <field name="type_tax_use">sale</field>
+            <field name="active" eval="True"/>
+            <field name="chart_template_id" ref="l10njo_chart_template"/>
+            <field name="tax_group_id" ref="tax_group_sale"/>
+        </record>
+        <record id="tax_so_8" model="account.tax.template">
+            <field name="sequence">10</field>
+            <field name="description">Sale 8%</field>
+            <field name="name">Sale 8%</field>
+            <field name="refund_account_id" ref="account_account_template_40"/> <!-- paid -->
+            <field name="account_id" ref="account_account_template_40"/> <!-- collected -->
+            <field name="price_include" eval="0"/>
+            <field name="amount">8</field>
+            <field name="amount_type">percent</field>
+            <field name="type_tax_use">sale</field>
+            <field name="active" eval="True"/>
+            <field name="chart_template_id" ref="l10njo_chart_template"/>
+            <field name="tax_group_id" ref="tax_group_sale"/>
+        </record>
+        <record id="tax_so_4" model="account.tax.template">
+            <field name="sequence">10</field>
+            <field name="description">Sale 4%</field>
+            <field name="name">Sale 4%</field>
+            <field name="refund_account_id" ref="account_account_template_40"/> <!-- paid -->
+            <field name="account_id" ref="account_account_template_40"/> <!-- collected -->
+            <field name="price_include" eval="0"/>
+            <field name="amount">4</field>
+            <field name="amount_type">percent</field>
+            <field name="type_tax_use">sale</field>
+            <field name="active" eval="True"/>
+            <field name="chart_template_id" ref="l10njo_chart_template"/>
+            <field name="tax_group_id" ref="tax_group_sale"/>
+        </record>
+        <record id="tax_so_0" model="account.tax.template">
+            <field name="sequence">10</field>
+            <field name="description">Sale 0%</field>
+            <field name="name">Sale 0%</field>
+            <field name="refund_account_id" ref="account_account_template_40"/> <!-- paid -->
+            <field name="account_id" ref="account_account_template_40"/> <!-- collected -->
+            <field name="price_include" eval="0"/>
+            <field name="amount">0</field>
+            <field name="amount_type">percent</field>
+            <field name="type_tax_use">sale</field>
+            <field name="active" eval="True"/>
+            <field name="chart_template_id" ref="l10njo_chart_template"/>
+            <field name="tax_group_id" ref="tax_group_sale"/>
+        </record>
+        <record id="tax_so_ex" model="account.tax.template">
+            <field name="sequence">10</field>
+            <field name="description">Sale Exempt</field>
+            <field name="name">Sale Exempt</field>
+            <field name="refund_account_id" ref="account_account_template_40"/> <!-- paid -->
+            <field name="account_id" ref="account_account_template_40"/> <!-- collected -->
+            <field name="price_include" eval="0"/>
+            <field name="amount">0</field>
+            <field name="amount_type">percent</field>
+            <field name="type_tax_use">sale</field>
+            <field name="active" eval="True"/>
+            <field name="chart_template_id" ref="l10njo_chart_template"/>
+            <field name="tax_group_id" ref="tax_group_sale"/>
+        </record>
+</odoo>

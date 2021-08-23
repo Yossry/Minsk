@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright 2019 Coop IT Easy
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+    <record id="easy_my_coop.product_template_share_type_1_demo" model="product.template">
+        <field name="structure" ref="res_partner_structure_coopiteasy_demo"/>
+    </record>
+
+    <record id="easy_my_coop.product_template_share_type_2_demo" model="product.template">
+        <field name="structure" ref="res_partner_structure_coopiteasy_demo"/>
+    </record>
+
+    <record id="easy_my_coop.subscription_request_1_demo" model="subscription.request">
+        <field name="structure" ref="res_partner_structure_coopiteasy_demo"/>
+    </record>
+
+    <record id="easy_my_coop.share_line_1_demo" model="share.line">
+        <field name="structure" ref="res_partner_structure_coopiteasy_demo"/>
+    </record>
+
+    <record id="easy_my_coop.share_line_2_demo" model="share.line">
+        <field name="structure" ref="res_partner_structure_coopiteasy_demo"/>
+    </record>
+
+    <record id="product_template_share_type_coopcity_1_demo" model="product.template">
+        <field name="name">Part A - Sympathizer</field>
+        <field name="short_name">Part A</field>
+        <field name="is_share" eval="True"/>
+        <field name="default_share_product" eval="True"/>
+        <field name="force_min_qty" eval="True"/>
+        <field name="minimum_quantity">2</field>
+        <field name="by_individual" eval="True"/>
+        <field name="by_company" eval="False"/>
+        <field name="list_price">30</field>
+        <field name="display_on_website" eval="True"/>
+        <field name="structure" ref="res_partner_structure_coopcity_demo"/>
+    </record>
+
+    <record id="share_line_coopcity_demo" model="share.line">
+        <field name="share_product_id" model="product.template" eval="obj(ref('product_template_share_type_coopcity_1_demo')).product_variant_id.id"/>
+        <field name="share_number">4</field>
+        <field name="share_unit_price">50</field>
+        <field name="partner_id" ref="easy_my_coop.res_partner_cooperator_3_demo"/>
+        <field name="effective_date" eval="datetime.now() - timedelta(days=120)"/>
+        <field name="structure" ref="res_partner_structure_coopcity_demo"/>
+    </record>
+
+    <record id="coop_membership_share_line_1_demo" model="coop.membership">
+        <field name="partner_id" ref="easy_my_coop.res_partner_cooperator_1_demo"/>
+        <field name="structure" ref="res_partner_structure_coopiteasy_demo"/>
+        <field name="cooperator_number">1</field>
+        <field name="member" eval="True"/>
+    </record>
+
+    <record id="coop_membership_share_line_2_demo" model="coop.membership">
+        <field name="partner_id" ref="easy_my_coop.res_partner_cooperator_2_demo"/>
+        <field name="structure" ref="res_partner_structure_coopiteasy_demo"/>
+        <field name="cooperator_number">2</field>
+        <field name="member" eval="True"/>
+    </record>
+
+    <record id="coop_membership_share_line_3_demo" model="coop.membership">
+        <field name="partner_id" ref="easy_my_coop.res_partner_cooperator_3_demo"/>
+        <field name="structure" ref="res_partner_structure_coopcity_demo"/>
+        <field name="cooperator_number">1</field>
+        <field name="member" eval="True"/>
+    </record>
+
+    <record id="subscription_request_2_demo" model="subscription.request">
+        <field name="name">Michel Brel</field>
+        <field name="structure" ref="res_partner_structure_coopcity_demo"/>
+        <field name="email">michel@demo.coop</field>
+        <field name="address">stgillisstraat</field>
+        <field name="zip_code">1111</field>
+        <field name="city">Brussels</field>
+        <field name="country_id" ref="base.be"/>
+        <field name="date" eval="datetime.now() - timedelta(days=12)"/>
+        <field name="source">manual</field>
+        <field name="ordered_parts">1</field>
+        <field name="share_product_id" model="product.template" eval="obj(ref('product_template_share_type_coopcity_1_demo')).product_variant_id.id"/>
+        <field name="lang">en_US</field>
+    </record>
+
+    <record id="easy_my_coop_loan.loan_issue_1_demo" model="loan.issue">
+        <field name="structure" ref="res_partner_structure_coopiteasy_demo"/>
+    </record>
+
+    <record id="easy_my_coop_loan.loan_issue_line_1_demo" model="loan.issue.line">
+        <field name="structure" ref="res_partner_structure_coopiteasy_demo"/>
+    </record>
+
+    <record id="loan_issue_2_demo" model="loan.issue">
+        <field name="name">coopcity loan issue</field>
+        <field name="default_issue" eval="True"/>
+        <field name="subscription_start_date" eval="datetime.today() - timedelta(days=10)"/>
+        <field name="subscription_end_date" eval="datetime.today() + timedelta(days=70)"/>
+        <field name="term_date" eval="datetime.today() + timedelta(days=600)"/>
+        <field name="user_id" ref="easy_my_coop.res_users_manager_emc_demo"/>
+        <field name="rate">0.06</field>
+        <field name="face_value">10</field>
+        <field name="minimum_amount">2000</field>
+        <field name="maximum_amount">5000</field>
+        <field name="interest_payment">end</field>
+        <field name="by_company" eval="True"/>
+        <field name="by_individual" eval="True"/>
+        <field name="display_on_website" eval="True"/>
+        <field name="taxes_rate">0.08</field>
+        <field name="state">ongoing</field>
+        <field name="structure" ref="res_partner_structure_coopcity_demo"/>
+    </record>
+
+    <record id="loan_issue_line_2_demo" model="loan.issue.line">
+        <field name="loan_issue_id" ref="loan_issue_2_demo"/>
+        <field name="quantity">4</field>
+        <field name="partner_id" ref="easy_my_coop.res_partner_cooperator_2_demo"/>
+        <field name="structure" ref="res_partner_structure_coopcity_demo"/>
+    </record>
+
+</odoo>

@@ -1,0 +1,57 @@
+<odoo>
+         <!-- FORM VIEW OF QUALITY CONTROL -->
+         <record id="quality_control_form_view" model="ir.ui.view">
+             <field name="name">quality.control.from.view</field>
+             <field name="model">quality.control</field>
+             <field name="arch" type="xml">
+                 <form string='Quality Control'>
+                     <sheet>
+                         <group col="2">
+                           <field name="machine_id" required='1' readonly='1' options="{'no_create': True, 'no_create_edit':True}"/>
+                         </group>
+                         <group col="4">
+                           <field name="error_number"/>
+                           <field name="error_time" widget='float_time'/>
+                           <field name="error_date"/>
+                         </group>
+                  </sheet>
+              </form>
+          </field>
+      </record>
+          
+      <!-- TREE VIEW OF QUALITY CONTROL -->
+      <record model="ir.ui.view" id="quality_control_tree_view">
+        <field name="name">quality.control.tree.view</field>
+        <field name="model">quality.control</field>
+        <field name="arch" type="xml">
+            <tree string ='Quality Control'>
+               <field name="machine_id" invisible='1'/>
+               <field name="error_number"/>
+               <field name="error_time" widget='float_time'/>
+               <field name="error_date"/>
+            </tree>
+        </field>
+      </record> 
+          
+      <!-- SEARCH VIEW OF QUALITY CONTROL -->
+      <record model="ir.ui.view" id="quality_control_search_view">
+        <field name="name">quality.control.search.view</field>
+        <field name="model">quality.control</field>
+        <field name="arch" type="xml">
+            <search string="Quality Control">
+                <field name="machine_id" string="Machine" filter_domain="[('machine_id','ilike',self)]"/>
+            </search>
+        </field>
+      </record>
+       
+      <!-- ACTION VIEW OF QUALITY CONTROL -->
+      <record id="quality_control_action" model="ir.actions.act_window">
+          <field name="name">Quality Control</field>
+          <field name="res_model">quality.control</field>
+          <field name="view_type">form</field>
+          <field name="view_mode">tree,form</field>
+          <field name="context">{'search_default_machine_id': [active_id], 'default_machine_id': active_id}</field>
+          
+      </record>
+
+</odoo>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="fleet_route_stop_view_tree" model="ir.ui.view">
+        <field name="model">fleet.route.stop</field>
+        <field name="inherit_id"
+               ref="fleet_route.fleet_route_stop_view_tree" />
+        <field name="arch" type="xml">
+            <field name="estimated_time" position="after">
+                <field name="route_id" />
+                <field name="route_abbreviation" />
+            </field>
+        </field>
+    </record>
+
+    <record id="fleet_route_stop_view_form" model="ir.ui.view">
+        <field name="model">fleet.route.stop</field>
+        <field name="inherit_id" ref="fleet_route.fleet_route_stop_view_form" />
+        <field name="arch" type="xml">
+            <field name="estimated_time" position="after">
+                <field name="passenger_count" />
+            </field>
+            <notebook position="inside">
+                <page name="passenger_list" string="Passenger List">
+                    <field name="passenger_ids"
+                           context="{'default_stop_id': active_id}">
+                        <tree editable="top">
+                            <field name="partner_id"
+                                   domain="[('educational_category', '=', 'student')]"/>
+                            <field name="start_date" />
+                            <field name="end_date" />
+                        </tree>
+                    </field>
+                </page>
+            </notebook>
+        </field>
+    </record>
+</odoo>

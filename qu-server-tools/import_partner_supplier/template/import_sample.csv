@@ -1,0 +1,16 @@
+ref,name,comercial,is_company,street,zip,city,state,country,language,currency,category_id,phone,mobile,email,website,vat,supplier,customer,payment_mode,payment_term,iban,fiscal_position,contact_name,contact_function,contact_email,contact_mobile,company_id
+(codigo único,(nombre empresa),(nombre fiscal),(Si es compañía:,(dirección 1),(código postal),(ciudad),(estado / provincia,(código ISO del ,(Idioma del contacto ,(moneda para,(Categoria de cliente),(tel. Fijo),(tel. Móvil),(Email),(Web),(NIF ,(Si es proveedor ,(Si es cliente ,(Tipo de pago: ,(Plazo de pago:,(Ejemplo de IBAN:,(Posicion fiscal,(Si es una ,(La función dentro,(Su correo electrónico,(Su teléfono,(Id de la
+ para identificar,,,"True, si no: False)",,,,Por ej.: ,país de 2 letras,con el que se imprimiran,compra en ,,,,,,Por ej.:,"indicar True,","indicar True,",Indicar nombre ,Indicar nombre ,ES6621000418401234567891),Poner nombre tal y como,compañía se le ,de la empresa,de contacto ,móvil,"compañía,"
+ cada cliente),,,,,,,"Barcelona,",en mayúscula.,"las facturas, etc.",proveedor:,,,,,,ESB13589049),si no False),si no False),como está en Odoo.,como está en Odoo.,,está en Odoo.,puede añadir un,(opcional)),(opcional)),(opcional)),"si es multi,"
+,,,,,,,Kentucky),"Por ej,:",Introducir código ISO,Indicar con código ISO,,,,,,,,,"Tarjeta, Transferencia,",Por ej.:,,Por ej.:,"contacto, indicando",,,,dejar vacío)
+,,,,,,,,"ES (España),",tal como está en Odoo.,Por ej.:,,,,,,,,,"Efectivo, Pagaré)","15 Días, 30 Días,",,"Recargo de Régimen Equivalencia,",el nombre),,,,
+,,,,,,,,"GB (Reino Unido),",Por ej.:,"EUR (Euro),",,,,,,,,,,Pago inmediato),,Retención IRPF 15%),,,,,
+,,,,,,,,CN (China)),es (Español),USD (Dólar americano)),,,,,,,,,,,,,,,,,
+,,,,,,,,,zh_CN (Chino),,,,,,,,,,,,,,,,,,
+ Datos de ejemplo:,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,
+40000003,COMERCIALIZADORA PUBLICITARIA AVANZ,,True,,,,,ES,,,,,,,,ESB85533560,True,False,Domiciliado proveedor,,ES6621000418401234567891,Régimen Nacional,,,,,1
+40000004,Aragones osacar Luis,,True,,,,,ES,,,,,,,,ES47723651P,True,False,Domiciliado proveedor,,,Régimen Nacional,,,,,1
+40000005,GOOGLE IRELAND LIMITED,,True,"Floors Gordon House, Barrow Street",,Dublin,,IE,,,,,,,,IEIE6388047V,True,False,,60 Días,,Régimen Nacional,,,,,1
+41000001,Fundació Universitat Pompeu Fabra,,True,"Plaza de la Mercé, 10-12",8002,Barcelona,,ES,,,,,,,,ESG64030158,True,False,Domiciliado proveedor,,,Régimen Nacional,,,,,1
+41000003,Gallart Sulla Fermi,,True,Plaza de la Mercé,8002,Barcelona,,ES,,,,,,,,ES40307032S,True,False,Domiciliado proveedor,,,Régimen Nacional,,,,,1

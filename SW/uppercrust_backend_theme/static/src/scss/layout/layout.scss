@@ -1,0 +1,163 @@
+// body View -start
+body {
+    font-family: Roboto;
+    font-size: $font-size-1;
+    font-weight: $font-weight-4;
+    color: $Label-value;
+}
+
+// body View - stop
+
+body.o_web_client {
+    background-color: $white;
+    overflow: hidden;
+    @include left-menu();
+    @include kanban_model_open();
+    & > .o_main {
+        & > .o_main_content {
+            & > .o_control_panel {
+                @include control-panel();
+            }
+            &.ad_rightbar {
+                & > .o_content {
+                    margin-right: 0px;
+                    @include slide-animation();
+                    @include pivot_view();
+                    @include graph_view();
+                    @include import_view();
+                    .o_view_controller {
+                        @include slide-animation();
+                        @include list-view();
+                        @include calendar-view();
+                        @include kanban_view();
+                        @include activity_view();
+                        .o_kanban_view.o_kanban_grouped {
+                            margin-right: 260px;
+                        }
+                    }
+                }
+                &.ad_open_search, &.o_open_sidebar {
+                    & > .o_content {
+                            margin-right: 260px;
+                            @include slide-animation();
+                    }
+                    .o_control_panel.o_hidden + .o_content{
+                        margin-right: 0px;
+                    }
+                }
+                &:not(.ad_open_search) {
+                    .o_control_panel {
+                        .o_search_options {
+                            display: flex;
+                            left: auto;
+                            right: -260px;
+                            flex-wrap: wrap;
+                            @include slide-animation();
+                        }
+                    }
+                }
+            }
+        }
+    }
+    & > .modal{
+        .modal-dialog{
+            .modal-content{
+                .o_modal_header{
+                    & > .o_searchview{
+                        .o_mobile_search{
+                            .o_mobile_search_header{
+                                background-color: $brand-secondary;
+                                .o_mobile_search_close{
+                                    margin: 0 !important;
+                                    padding: 16px 0px 11px 38px;
+                                    &:active{
+                                        background-color: $brand-secondary;
+                                    }
+                                }
+                            }
+                            .o_searchview_input_container{
+                                .o_searchview_input{
+                                    barder-bottom: 1px solid $border;
+                                    &:focus{
+                                        @include border-animation();
+                                    }
+                                }
+                                .o_searchview_facet{
+                                    .fa-filter{
+                                        border-radius: 0px;
+                                    }
+                                }
+                            }
+                            .o_mobile_search_filter{
+                                display: block;
+                                margin: 0 !important;
+                                padding: 10px 10px 25% 10px;
+                                .btn-group{
+                                    margin: 0;
+                                    margin-top: 15px;
+                                    border: none;
+                                    .btn-secondary{
+                                        border: none;
+                                        background-color: $brand-secondary;
+                                        color: $white;
+                                    }
+                                    .dropdown-menu.o_dropdown_menu, .o_favorites_menu{
+                                        max-height: 100%;
+                                        width: 100%;
+                                        position: relative !important;
+                                        transform: none !important;
+                                        margin: 0;
+                                        box-shadow: none;
+                                        border: 1px solid $border;
+                                        .dropdown-item{
+                                            &:hover{
+                                                background-color: $tr-hover;
+                                                color: $Label;
+                                            }
+                                        }
+                                        .o_menu_item{
+                                            .dropdown-item{
+                                                padding: 3px 30px;
+                                                color: $Label-value;
+                                                &:before {
+                                                    content: "";
+                                                    height: 20px;
+                                                    width: 20px;
+                                                    position: absolute;
+                                                    left: 4px;
+                                                    border: 2px solid $Label;
+                                                    color: transparent;
+                                                    background-color: transparent;
+                                                    text-align: center;
+                                                }
+                                                &.selected {
+                                                    &:before {
+                                                        content: "\f00c";
+                                                        color: $Label-value;
+                                                        background-color: transparent;
+                                                        text-align: center;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        .dropdown-item-text{
+                                            .o_searchview_extended_delete_prop{
+                                                right: 6px;
+                                            }    
+                                        }
+                                    }
+                                }
+                                .list-unstyled{
+                                    padding-left: 20px;
+                                }
+                            }
+                            .o_mobile_search_show_result{
+                                background-color: $brand-secondary;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

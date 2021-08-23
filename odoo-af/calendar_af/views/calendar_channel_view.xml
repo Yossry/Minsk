@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_calendar_channel_tree" model="ir.ui.view">
+        <field name="name">calendar.channel.tree</field>
+        <field name="model">calendar.channel</field>
+        <field name="arch" type="xml">
+            <tree string="Channels" editable="bottom">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_channel" model="ir.actions.act_window">
+        <field name="name">Channels</field>
+        <field name="res_model">calendar.channel</field>
+        <field name="view_type">form</field>
+        <field name="view_id" ref="view_calendar_channel_tree"/>
+    </record>
+
+    <menuitem action="action_channel" id="menu_action_channel" parent="menu_admin" sequence="10" />
+</odoo>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="clv_person_history_updt_view_form" model="ir.ui.view">
+        <field name="name">clv.person.history_updt.form</field>
+        <field name="model">clv.person.history_updt</field>
+        <field name="arch" type="xml">
+            <form>
+                <div class="oe_right">
+                </div>
+                <label for="person_ids"/>
+                <field name="person_ids"/>
+                <group>
+                    <group>
+                        <field name="date_sign_out"/>
+                    </group>
+                    <group>
+                        <field name="date_sign_in"/>
+                    </group>
+                </group>
+                <footer>
+                    <button 
+                        type="object"
+                        name="do_person_history_updt"
+                        string="Person History Update"
+                        class="oe_highlight"
+                        />
+                    <button special="cancel" string="Cancel"/>
+                </footer>
+            </form>
+
+        </field>
+    </record>
+
+    <!-- More button Action -->
+    <act_window 
+        id="clv_person_history_updt_action"
+        name="Person History Update"
+        src_model="clv.person"
+        res_model="clv.person.history_updt"
+        view_mode="form"
+        key2="client_action_multi"
+        target="new"
+    />
+
+</odoo>

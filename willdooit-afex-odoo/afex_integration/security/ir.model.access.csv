@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_afex_sync_user,afex_sync_fields_bank group_user,model_afex_additional_sync_fields,base.group_user,1,0,0,0
+access_afex_sync_maint,afex_sync_fields_bank group_partner_manager,model_afex_additional_sync_fields,base.group_partner_manager,1,1,1,1
+access_account_payment_afex_fee,afex_payment_fees,model_account_payment_afex_fee,account.group_account_invoice,1,1,1,1
+access_afex_purpose_of_payment,afex_purpose_of_payment group,model_afex_purpose_of_payment,account.group_account_invoice,1,1,1,1
+access_afex_purpose_of_payment_maint,afex_purpose_of_payment group_partner_manager,model_afex_purpose_of_payment,base.group_partner_manager,1,1,1,1

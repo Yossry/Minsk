@@ -1,0 +1,95 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* af_rest_core
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0-20200419\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-04-21 07:08+0000\n"
+"PO-Revision-Date: 2020-04-21 09:16+0200\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: sv_SE\n"
+"X-Generator: Poedit 2.0.6\n"
+
+#. module: af_rest_core
+#: model_terms:ir.ui.view,arch_db:af_rest_core.res_config_settings_view_form
+msgid "AF REST"
+msgstr ""
+
+#. module: af_rest_core
+#: model:ir.model.fields,field_description:af_rest_core.field_res_config_settings__af_environment
+#: model_terms:ir.ui.view,arch_db:af_rest_core.res_config_settings_view_form
+msgid "AF-Environment"
+msgstr ""
+
+#. module: af_rest_core
+#: model:ir.model.fields,field_description:af_rest_core.field_res_config_settings__af_system_id
+#: model_terms:ir.ui.view,arch_db:af_rest_core.res_config_settings_view_form
+msgid "AF-SystemId"
+msgstr ""
+
+#. module: af_rest_core
+#: model_terms:ir.ui.view,arch_db:af_rest_core.res_config_settings_view_form
+msgid "Client ID"
+msgstr "Klient ID"
+
+#. module: af_rest_core
+#: model:ir.model.fields,field_description:af_rest_core.field_res_config_settings__af_client_id
+msgid "Client Id"
+msgstr "Klient Id"
+
+#. module: af_rest_core
+#: model_terms:ir.ui.view,arch_db:af_rest_core.res_config_settings_view_form
+msgid "Client Secret"
+msgstr "Klienthemlighet"
+
+#. module: af_rest_core
+#: model:ir.model.fields,field_description:af_rest_core.field_res_config_settings__af_client_secret
+msgid "Client secret"
+msgstr "Klienthemlighet"
+
+#. module: af_rest_core
+#: model_terms:ir.ui.view,arch_db:af_rest_core.res_config_settings_view_form
+msgid "Common parameters for all AF rest api:s."
+msgstr ""
+
+#. module: af_rest_core
+#: model:ir.model,name:af_rest_core.model_res_config_settings
+msgid "Config Settings"
+msgstr "Konfigurationsinställningar"
+
+#. module: af_rest_core
+#: model:ir.model.fields,field_description:af_rest_core.field_res_config_settings__af_ipf_url
+msgid "IPF API URL"
+msgstr ""
+
+#. module: af_rest_core
+#: model:ir.model.fields,field_description:af_rest_core.field_res_config_settings__af_ipf_port
+msgid "IPF API port"
+msgstr ""
+
+#. module: af_rest_core
+#: model_terms:ir.ui.view,arch_db:af_rest_core.res_config_settings_view_form
+msgid "IPF port"
+msgstr ""
+
+#. module: af_rest_core
+#: model_terms:ir.ui.view,arch_db:af_rest_core.res_config_settings_view_form
+msgid "IPF url"
+msgstr ""
+
+#. module: af_rest_core
+#: model:ir.model.fields,help:af_rest_core.field_res_config_settings__af_client_id
+#: model:ir.model.fields,help:af_rest_core.field_res_config_settings__af_client_secret
+#: model:ir.model.fields,help:af_rest_core.field_res_config_settings__af_environment
+#: model:ir.model.fields,help:af_rest_core.field_res_config_settings__af_ipf_port
+#: model:ir.model.fields,help:af_rest_core.field_res_config_settings__af_ipf_url
+#: model:ir.model.fields,help:af_rest_core.field_res_config_settings__af_system_id
+msgid "If you need help you shouldn't be changing this"
+msgstr "Om du behöver hjälp ska du inte ändra här"

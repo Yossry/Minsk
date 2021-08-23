@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data noupdate="1">
+		<!-- *****   Projects  *******  -->
+		<record id="sos_project_manager_rule" model="ir.rule">
+			<field name="name">SOS Project Access for Managers</field>
+			<field name="model_id" ref="sos.model_sos_project"/>
+			<field name="domain_force">[(1,'=',1)]</field>
+			<field name="global" eval="False"/>
+			<field name="groups" eval="[(4, ref('sos.group_regional_manager')),(4, ref('sos.group_hr_master'))]"/>
+        </record>      
+        
+		<record id="sos_project_user_rule" model="ir.rule">
+			<field name="name">SOS Project Access for Coordinators</field>
+			<field name="model_id" ref="sos.model_sos_project"/>
+			<field name="domain_force">[('coordinator_ids','in',[user.id])]</field>
+			<field name="global" eval="False"/>	
+			<field name="groups" eval="[(4, ref('sos.group_coordinator'))]"/>	
+        </record>
+
+		 <!-- *****   Centers  *******  -->
+        <record id="sos_centers_manager_rule" model="ir.rule">
+			<field name="name">SOS Centers Access for Managers</field>
+			<field name="model_id" ref="sos.model_sos_center"/>
+			<field name="domain_force">[(1 ,'=', 1)]</field>
+			<field name="global" eval="False"/>
+			<field name="groups" eval="[(4, ref('sos.group_hr_master')),(4, ref('sos.group_coordinator'))]"/>
+		</record>     
+		
+		 <record id="sos_centers_regions_rule" model="ir.rule">
+			<field name="name">SOS Centers Access for Regions</field>
+			<field name="model_id" ref="sos.model_sos_center"/>
+			<field name="domain_force">[('user_ids','in',[user.id])]</field>
+			<field name="global" eval="False"/>		
+			<field name="groups" eval="[(4, ref('sos.group_regional_manager'))]"/>
+        </record>
+
+        <!-- *****   Employees  *******  -->
+        <record id="sos_employee_manager_rule" model="ir.rule">
+			<field name="name">SOS Employee Access for Managers</field>
+			<field name="model_id" ref="hr.model_hr_employee"/>
+			<field name="domain_force">[(1 ,'=', 1)]</field>
+			<field name="global" eval="False"/>
+			<field name="groups" eval="[(4, ref('sos.group_hr_master'))]"/>
+		</record>     
+		
+		<record id="sos_employee_regions_rule" model="ir.rule">
+			<field name="name">SOS Employee Access for Regions</field>
+			<field name="model_id" ref="model_hr_employee"/>
+			<field name="domain_force">[('center_id.user_ids','in',[user.id])]</field>
+			<field name="global" eval="False"/>
+			<field name="groups" eval="[(4, ref('sos.group_regional_manager'))]"/>
+		</record>   
+
+		<record id="sos_employee_coordinator_rule" model="ir.rule">
+			<field name="name">SOS Employee Access for Coordinators</field>
+			<field name="model_id" ref="model_hr_employee"/>
+			<field name="domain_force">[('current_post_id.project_id.coordinator_ids','in',[user.id])]</field>
+			<field name="global" eval="False"/>
+			<field name="groups" eval="[(4, ref('sos.group_coordinator'))]"/>
+		</record>   
+
+		<!--
+
+        <record id="sos_employee_rule" model="ir.rule">
+			<field name="name">SOS Employee Access</field>
+			<field name="model_id" ref="hr.model_hr_employee"/>
+			<field name="domain_force">['|','|','|',('center.user_ids','in',[user.id]),('is_guard','!=',True),('current','=',False),('current_post.project_id.coordinator_ids','in',[user.id])]</field>
+			<field name="global" eval="False"/>
+			<field name="groups" eval="[(4, ref('sos.group_regional_manager')),(4, ref('hr.group_hr_user'))]"/>
+		</record>      
+        -->
+            
+        <!-- *****   Guard Post  *******  -->            
+                    
+        <record id="sos_guard_post_manager_rule" model="ir.rule">
+			<field name="name">SOS Guard Post Access for Managers</field>
+			<field name="model_id" ref="sos.model_sos_guard_post"/>
+			<field name="domain_force">[(1 ,'=', 1)]</field>
+			<field name="global" eval="True"/>
+			<field name="groups" eval="[(4, ref('sos.group_hr_master'))]"/> 
+		</record>     
+
+		<!--
+		<record id="sos_guard_post_rule" model="ir.rule">
+			<field name="name">SOS Guard Post Access</field>
+			<field name="model_id" ref="sos.model_sos_guard_post"/>
+			<field name="domain_force">['|',('post_id.center_id.user_ids','in',[user.id]),('project_id.coordinator_ids','in',[user.id])]</field>
+			<field name="global" eval="False"/>
+			<field name="groups" eval="[(4, ref('sos.group_regional_manager')),(4, ref('hr.group_hr_user'))]"/>
+		</record>     
+		-->
+
+		<!-- *****   Posts  *******  -->
+		
+		<record id="sos_post_manager_rule" model="ir.rule">
+			<field name="name">SOS Post Access for Managers</field>
+			<field name="model_id" ref="sos.model_sos_post"/>
+			<field name="domain_force">[(1 ,'=', 1)]</field>
+			<field name="global" eval="False"/>
+			<field name="groups" eval="[(4, ref('sos.group_hr_master'))]"/>
+		</record>     
+
+		<record id="sos_post_regions_rule" model="ir.rule">
+			<field name="name">SOS Posts Access for Regions</field>
+			<field name="model_id" ref="sos.model_sos_post"/>
+			<field name="domain_force">[('center_id.user_ids','in',[user.id])]</field>
+			<field name="global" eval="False"/>
+			<field name="groups" eval="[(4, ref('sos.group_regional_manager'))]"/>
+		</record> 
+		
+		<record id="sos_post_coordinator_rule" model="ir.rule">
+			<field name="name">SOS Posts Access for Coordinators</field>
+			<field name="model_id" ref="sos.model_sos_post"/>
+			<field name="domain_force">[('project_id.coordinator_ids','in',[user.id])]</field>
+			<field name="global" eval="False"/>
+			<field name="groups" eval="[(4, ref('sos.group_coordinator'))]"/>
+		</record> 
+		
+		<!--		
+		<record id="sos_post_rule" model="ir.rule">
+			<field name="name">SOS Posts Access</field>
+			<field name="model_id" ref="sos.model_sos_post"/>
+			<field name="domain_force">['|',('center_id.user_ids','in',[user.id]),('project_id.coordinator_ids','in',[user.id])]</field>
+			<field name="global" eval="False"/>
+			<field name="groups" eval="[(4, ref('sos.group_regional_manager')),(4, ref('hr.group_hr_user'))]"/>
+		</record> 
+		-->
+		<!--
+		<record id="sos_partner_manager_rule" model="ir.rule">
+			<field name="name">SOS Partner Access for Managers</field>
+			<field name="model_id" ref="base.model_res_partner"/>
+			<field name="domain_force">[(1 ,'=', 1)]</field>
+			<field name="global" eval="False"/>
+			<field name="groups" eval="[(4, ref('base.group_hr_manager'))]"/>
+		</record>     
+				
+		<record id="sos_partner_rule" model="ir.rule">
+			<field name="name">SOS Partner Access</field>
+			<field name="model_id" ref="base.model_res_partner"/>
+			<field name="domain_force">['|',('center_id.user_ids','in',[user.id]),('project_id.coordinator_ids','in',[user.id])]</field>
+			<field name="global" eval="False"/>
+			<field name="groups" eval="[(4, ref('sos.group_regional_manager')),(4, ref('hr.group_hr_user'))]"/>
+		</record>         
+		-->
+
+    </data>
+</odoo>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <menuitem name="Events" id="clv_event.menu_base_base_events"
+        parent="clv_base.menu_base_base"
+        groups="clv_event.group_user"
+        sequence="60"
+        action="clv_event.clv_event_action"/>
+
+    <menuitem name="Event" id="clv_event.menu_base_config_event" 
+        parent="clv_base.menu_base_config"
+        groups="clv_event.group_user"
+        sequence="60"/>
+
+    <menuitem name="Categories" id="clv_event.menu_base_config_event_categories" 
+        parent="clv_event.menu_base_config_event"
+        groups="clv_event.group_user"
+        sequence="10"
+        action="clv_event.clv_event_category_action"/>
+
+    <menuitem name="Attendees" id="clv_event.menu_base_config_event_attendees" 
+        parent="clv_event.menu_base_config_event"
+        groups="clv_event.group_user"
+        sequence="20"
+        action="clv_event.clv_event_attendee_action"/>
+
+</odoo>

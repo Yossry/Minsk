@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+	<template id="professional_templates.payment_data">
+		<div class="col-xs-12" style="padding-left:0px; padding-right:0px; margin-top:10px; page-break-inside: avoid;">
+		        <table class="table table-condensed" t-attf-style="color:{{o.text_color}};">
+				<tbody>
+		            <tr t-attf-style="border-top: 1px solid {{o.text_color}};" >
+		                <td t-attf-style="border-top: 1px solid {{o.text_color}} !important;text-align:center;"><strong>Prepared By</strong></td>
+		                <td t-attf-style="border-top: 1px solid {{o.text_color}} !important;text-align:center;"><strong>Accounts Manager</strong></td>
+		                <td t-attf-style="border-top: 1px solid {{o.text_color}} !important;text-align:center;"><strong>Finance Manager</strong></td>
+		                <td t-attf-style="border-top: 1px solid {{o.text_color}} !important;text-align:center;"><strong>General Manager</strong></td>
+
+		            </tr>
+		            
+				</tbody>
+		        </table>
+       </div>
+               
+	</template>
+</data>
+</openerp>
+                      

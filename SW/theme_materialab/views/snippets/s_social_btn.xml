@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template name="Social Button" id="s_social_btn">
+        <!-- ====START SOCIAL LINK==== -->
+        <section class="social_btn oe_structure">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-8 col-md-7">
+                        <h3>Liked Our Service  and works?</h3>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-5">
+                        <a class="th_bt btn waves-effect waves-light" href="/page/contact-us">Hire Us
+                            <i class="zmdi zmdi-long-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ====END SOCIAL LINK==== -->
+    </template>
+</odoo>

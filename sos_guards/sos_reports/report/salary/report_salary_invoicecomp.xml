@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>	
+		<template id ="sos_reports.report_salary_invoicecomp">
+			<t t-call="web.html_container">
+				<t t-call="web.internal_layout">
+				<div class="page">
+					<div class="row">
+					 	 <div class="col-xs-4">
+					 	 	 <img width="40%" style="max-height:125px;" class="img img-responsive" src="/sos_payroll/static/src/img/logo.png"/>
+					 	 </div>
+					 	 <div class="col-xs-3">
+					 	 </div>
+					 	 
+					 	 <div class="col-xs-5" style="font-size:14px; font-weight:bold; text-align:right; align:left;margin-top:20px;">
+					 	 	SECURITY ORGANIZING SYSTEM (PVT) LIMITED
+					 	 </div>
+					 </div>
+				
+					 <div class="row" style="font-size:12px; font-weight:bold; text-align:center; align:left;">
+					 	<div class="col-xs-12">
+					 		Salary-Invoice Comparison Report  from <span t-esc="get_date_formate(data['date_from'])"/> To <span t-esc="get_date_formate(data['date_to'])"/> 
+					 	</div>
+					 </div>
+					 	
+					 	
+					 	 <table class="table table-bordered">
+					 	 	<tr>
+					 	 		<td colspan="2" style="text-align:center;background-color:#E5E4E2;"></td>
+					 	 		
+					 	 		<td colspan="2" style="font-size:12px; font-weight:bold; text-align:center; background-color:#E5E4E2;"> SARLARY</td>
+					 	 		<td colspan="3"  style="font-size:12px; font-weight:bold; text-align:center; background-color:#E5E4E2;"> INVOICE</td>
+					 	 	</tr>
+					 	 	<tr style="font-size:10px; font-weight:bold; text-align:center; background-color:#FFFFCC;">
+					 	 		<td>Sr. </td>
+					 	 		<td>Post Name </td>
+					 	 		<td>Days </td>
+					 	 		<td>Amount </td>
+					 	 		<td>Days </td>
+					 	 		<td>Amount </td>
+					 	 		<td>Difference </td>
+					 	 	</tr>
+					 	 	<t t-foreach="Comp_Vals" t-as="line">
+					 	 		<tr style="font-size:15px; font-weight:bold; text-align:left; background-color:#E5E4E2;">
+					 	 			<td colspan="7"> <span t-esc="line['name']" /> </td>
+					 	 		</tr>
+					 	 		<t t-foreach="line['posts']" t-as="post">
+					 	 			<tr style="background-color:#f8f9f9;">
+					 	 				<td>  <span t-esc="post_index + 1" /></td>
+					 	 				<td>  <span t-esc="post['name']" /></td>
+					 	 				<td>  <span t-esc="post['saldays'] and '{0:,}'.format(int(post['saldays'])) or '0'" /></td>
+					 	 				<td>  <span t-esc="post['saltotal'] and '{0:,}'.format(int(post['saltotal'])) or '0'" /></td>
+					 	 				<td>  <span t-esc="post['invdays'] and '{0:,}'.format(int(post['invdays'])) or '0'" /></td>
+					 	 				<td>  <span t-esc="post['invtotal'] and '{0:,}'.format(int(post['invtotal'])) or '0'" /></td>
+					 	 				<td>  <span t-esc="post['diff'] and '{0:,}'.format(int(post['diff'])) or '0'" /></td>
+					 	 			</tr>
+					 	 		</t>
+					 	 	</t>
+					 	 	<tr style="font-size:12px; font-weight:bold; background-color:#FFFFCC;">
+					 	 		<td colspan="2">Total</td>
+					 	 		<td><span t-esc="Total_Saldays and '{0:,}'.format(int(Total_Saldays)) or '0'" /> </td>
+					 	 		<td><span t-esc="Total_Sal_Amt and '{0:,}'.format(int(Total_Sal_Amt)) or '0'" /> </td>
+					 	 		<td><span t-esc="Total_Invdays and '{0:,}'.format(int(Total_Invdays)) or '0'" /> </td>
+					 	 		<td><span t-esc="Total_Inv_Amt and '{0:,}'.format(int(Total_Inv_Amt)) or '0'" /> </td>
+					 	 		<td> </td>
+					 	 	</tr>
+					 	 		
+					 	 </table>
+				</div>	 
+			</t>
+			</t>
+		</template>
+		
+	</data>
+</odoo>
+

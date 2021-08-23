@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>	
+		<template id ="sos_reports.center_report_pendingrecovery">
+			<t t-call="report.html_container">
+				<div class="page">
+					<div class="row">
+					 	 <div class="col-xs-4">
+					 	 	 <img width="40%" style="max-height:125px;" class="img img-responsive" src="/sos_payroll/static/src/img/logo.png"/>
+					 	 </div>
+					 	 <div class="col-xs-3">
+					 	 </div>
+					 	 
+					 	 <div class="col-xs-5" style="font-size:12px; font-weight:bold; text-align:right; align:left;margin-top:20px;">
+					 	 	SECURITY ORGANIZING SYSTEM (PVT) LIMITED
+					 	 </div>
+					 </div>
+				
+					 <div class="row" style="font-size:10px; font-weight:bold; text-align:left; align:left;">
+					 	<div class="col-xs-12">
+					 		Center Wise Pending Recovery Report
+					 	 	<br> </br>
+					 		From: <span t-esc="get_date_formate(data['date_from'])"/> <br> </br>
+					 		To: <span t-esc="get_date_formate(data['date_to'])"/> 
+					 	</div>
+					 </div>
+					 
+					 
+					 <table class="table table-bordered">
+					 	<thead>
+					 		<tr>
+					 			<th>SR.No</th>
+					 			<th>Center Name</th>
+					 			<th>Pending Amount</th>
+					 		</tr>
+					 	</thead>
+					 	
+					 	<tbody>
+					 		<t t-foreach="Centers" t-as="c">
+					 			<tr style="font-size:10px;">
+					 				<td class="text-left">
+										<span t-esc="c_index + 1" />
+									</td>
+									<td class="text-left">
+										<span t-esc="c['name']" />
+									</td>
+									<td class="text-left">
+										<span t-esc="c['residual'] and '{0:,.0f}'.format(int(c['residual'])) or '-'" />
+									</td>
+					 			</tr>
+					 		</t>
+					 		
+					 		<tr style="font-size:8px; font-weight:bold;">
+					 			<td class="text-right" colspan="2">
+										TOTALS:
+								</td>
+								<td class="text-left">
+									<span t-esc="Total_Residual and '{0:,.0f}'.format(int(Total_Residual)) or '-'" />
+								</td>
+					 		</tr>
+					 	</tbody>
+					 </table>
+					 
+				</div>	 
+			</t>
+		</template>
+		
+	</data>
+</openerp>
+

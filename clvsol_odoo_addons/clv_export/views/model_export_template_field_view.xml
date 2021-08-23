@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+        
+    <record id="clv_model_export_template_field_view_form" model="ir.ui.view">
+        <field name="name">clv.model_export.template.field.form</field>
+        <field name="model">clv.model_export.template.field</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div name="button_box" class="oe_right oe_button_box">
+                    </div>
+                    <notebook>
+                        <page string="Main Info">
+                            <group>
+                                <field name="sequence"/>
+                                <field name="name"/>
+                            </group>
+                            <group>
+                                <field name="model_export_template_id" options="{'no_open': False, 'no_create': True}"/>
+                                <field name="model_export_display"/>
+                            </group>
+                            <group>
+                                <field name="model_id" options="{'no_open': False, 'no_create': True}"/>
+                                <field name="field_id" options="{'no_open': False, 'no_create': True}"/>
+                                <field name="field_name" readonly="True"/>
+                                <field name="field_ttype" readonly="True"/>
+                            </group>
+                        </page>
+                        <page name="settings" string="Settings" groups="clv_base.group_reguser" invisible="False">
+                            <group name="settings_top">
+                                <group name="settings_left">
+                                    <field name="id"/>
+                                </group>
+                                <group name='settings_right'>
+                                    <div class="oe_button_box" name="settings_buttons">
+                                        <!--button name="toggle_active"
+                                                    type="object"
+                                                    class="oe_stat_button"
+                                                    icon="fa-archive"
+                                                    groups="clv_base.group_reguser"
+                                                    >
+                                                <field name="active"
+                                                       widget="boolean_button"
+                                                       options='{"terminology": "archive"}'
+                                                       />
+                                        </button-->
+                                    </div>
+                                </group>
+                                <group name="settings_left_3">
+                                </group>
+                                <group name='settings_right_3'>
+                                    <div class="oe_button_box" name="settings_buttons_3">
+                                    </div>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="clv_model_export_template_field_view_tree" model="ir.ui.view">
+        <field name="name">clv.model_export.template.field.tree</field>
+        <field name="model">clv.model_export.template.field</field>
+        <field name="arch" type="xml">
+            <tree string='Model Export Template Item'>
+                <field name="model_export_template_id"/>
+                <field name="field_id"/>
+                <field name="field_name"/>
+                <field name="field_ttype"/>
+                <field name="sequence"/>
+                <field name="name"/>
+                <field name="model_export_display"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="clv_model_export_template_field_view_search" model="ir.ui.view">
+        <field name="name">clv.model_export.template.field.select</field>
+        <field name="model">clv.model_export.template.field</field>
+        <field name="arch" type="xml">
+            <search string="Search Model Export Template Item">
+                <field name="model_export_template_id"/>
+                <field name="field_id"/>
+                <field name="name"/>
+                <field name="model_export_display"/>
+                <separator/>
+                <filter string="Archived" name="inactive" domain="[('active','=',False)]"/>
+                <group name="group_by" expand="0" string="Group By...">
+                    <filter name="group_by_model_export_template_id" string="Model Export Template" domain="[]" context="{'group_by': 'model_export_template_id'}"/>
+                    <filter name="group_by_field_id" string="Model Export Template Field" domain="[]" context="{'group_by': 'field_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    
+    <record id="clv_model_export_template_field_action" model="ir.actions.act_window">
+        <field name="name">Model Export Template Item</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">clv.model_export.template.field</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="clv_model_export_template_field_view_search" />
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Click to add a new model export template field.
+          </p>
+        </field>
+    </record>
+    
+    <record id="clv_model_export_template_view_form_field" model="ir.ui.view">
+        <field name="name">clv.model_export.template.form</field>
+        <field name="model">clv.model_export.template</field>
+        <field name="inherit_id" ref="clv_export.clv_model_export_template_view_form"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <page name="settings" position="before">
+                <page name="model_export_fields" string="Model Export Template Fields">
+                    <group>
+                        <!--field name="count_model_export_template_fields"/-->
+                        <group>
+                            <button name="clv_export.clv_model_export_template_field_action"
+                                    type="action"
+                                    class="oe_stat_button"
+                                    icon="fa-list"
+                                    context="{'search_default_model_export_template_id': id}"
+                                    >
+                                <div class="o_form_field o_stat_info">
+                                    <span class="o_stat_value">
+                                        <field name="count_model_export_template_fields"/>
+                                    </span>
+                                    <span class="o_stat_text"> Field(s)</span>
+                                </div>
+                            </button>
+                        </group>
+                        <!--label for="model_export_template_field_ids"/-->
+                        <field name="model_export_template_field_ids" colspan="4" nolabel="1">
+                            <!--tree editable="top" string="Model Export Template Fields" create="false"-->
+                            <tree string="Model Export Template Fields" create="true">
+                                <field name="sequence" widget='handle'/>
+                                <field name="field_id" readonly="True"/>
+                                <field name="field_name"/>
+                                <field name="field_ttype"/>
+                                <field name="name"/>
+                                <field name="model_export_display" readonly="True"/>
+                            </tree>
+                        </field>
+                    </group>
+                </page>
+            </page>
+        </field>
+    </record>
+
+</odoo>

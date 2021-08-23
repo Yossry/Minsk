@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_clv_family_user,clv.family.user,model_clv_family,clv_family.group_user,1,0,0,0
+access_clv_family_manager,clv.family.manager,model_clv_family,clv_family.group_manager,1,1,1,0
+access_clv_family_supmanager,clv.family.supmanager,model_clv_family,clv_family.group_supmanager,1,1,1,1
+
+access_clv_family_category_user,clv.family.category.user,model_clv_family_category,clv_family.group_user,1,0,0,0
+access_clv_family_category_manager,clv.family.manager.category,model_clv_family_category,clv_family.group_manager,1,1,1,0
+access_clv_family_category_supmanager,clv.family.category.supmanager,model_clv_family_category,clv_family.group_supmanager,1,1,1,1
+
+access_clv_family_marker_user,clv.family.marker.user,model_clv_family_marker,clv_family.group_user,1,0,0,0
+access_clv_family_marker_manager,clv.family.manager.marker,model_clv_family_marker,clv_family.group_manager,1,1,1,0
+access_clv_family_marker_supmanager,clv.family.marker.supmanager,model_clv_family_marker,clv_family.group_supmanager,1,1,1,1

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+        
+    <record id="clv_insured_view_form_document" model="ir.ui.view">
+        <field name="name">clv.insured.form</field>
+        <field name="model">clv.insured</field>
+        <field name="inherit_id" ref="clv_insured.clv_insured_view_form"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <page name="settings" position="before">
+                <page string="Documents">
+                    <group>
+                        <group>
+                            <field name="count_documents"/>
+                        </group>
+                        <group>
+                            <button name="clv_document.clv_document_action"
+                                    type="action"
+                                    class="oe_stat_button"
+                                    icon="fa-list"
+                                    context="{'search_default_ref_name': name, 'search_default_ref_code': code}"
+                                    attrs="{'invisible': [('document_ids', '=', [])]}"
+                                    >
+                                <div class="o_form_field o_stat_info">
+                                    <span class="o_stat_value">
+                                        <field name="count_documents_2"/>
+                                    </span>
+                                    <span class="o_stat_text"> Document(s)</span>
+                                </div>
+                            </button>
+                        </group>
+                    </group>
+                    <field name="document_ids" colspan="4" nolabel="1"/>
+                </page>
+            </page>
+        </field>
+    </record>
+
+    <record id="clv_insured_view_tree_document" model="ir.ui.view">
+        <field name="name">clv.insured.tree</field>
+        <field name="model">clv.insured</field>
+        <field name="inherit_id" ref="clv_insured.clv_insured_view_tree"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="email" position="before">
+                <field name="count_documents"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

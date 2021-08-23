@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="option_bg_preset_1" name="option_bg_preset_1" inherit_id="website.layout" active="True">
+        <xpath expr="//t[@t-set='html_data']" position="after">
+            <t t-set="body_classname" t-value="'o_connected_user onepage home-1' if env['ir.ui.view'].user_has_groups('base.group_user') else 'onepage home-1'" />
+        </xpath>
+    </template>
+    <template id="option_bg_preset_2" name="option_bg_preset_2" inherit_id="website.layout" active="False">
+        <xpath expr="//t[@t-set='html_data']" position="after">
+            <t t-set="body_classname" t-value="'o_connected_user onepage home-2' if env['ir.ui.view'].user_has_groups('base.group_user') else 'onepage home-2'" />
+        </xpath>
+    </template>
+    <template id="option_bg_preset_3" name="option_bg_preset_3" inherit_id="website.layout" active="False">
+        <xpath expr="//t[@t-set='html_data']" position="after">
+            <t t-set="body_classname" t-value="'o_connected_user onepage home-3' if env['ir.ui.view'].user_has_groups('base.group_user') else 'onepage home-3'" />
+        </xpath>
+    </template>
+    <template id="option_bg_preset_4" name="option_bg_preset_4" inherit_id="website.layout" active="False">
+        <xpath expr="//t[@t-set='html_data']" position="after">
+            <t t-set="body_classname" t-value="'o_connected_user onepage home-4' if env['ir.ui.view'].user_has_groups('base.group_user') else 'onepage home-4'" />
+        </xpath>
+    </template>
+    <template id="option_bg_preset_5" name="option_bg_preset_5" inherit_id="website.layout" active="False">
+        <xpath expr="//t[@t-set='html_data']" position="after">
+            <t t-set="body_classname" t-value="'o_connected_user onepage home-5' if env['ir.ui.view'].user_has_groups('base.group_user') else 'onepage home-5'" />
+        </xpath>
+    </template>
+    <template id="option_bg_preset_6" name="option_bg_preset_6" inherit_id="website.layout" active="False">
+        <xpath expr="//t[@t-set='html_data']" position="after">
+            <t t-set="body_classname" t-value="'o_connected_user onepage home-6' if env['ir.ui.view'].user_has_groups('base.group_user') else 'onepage home-6'" />
+        </xpath>
+    </template>
+    <template id="option_bg_preset_7" name="option_bg_preset_7" inherit_id="website.layout" active="False">
+        <xpath expr="//t[@t-set='html_data']" position="after">
+            <t t-set="body_classname" t-value="'o_connected_user onepage home-7' if env['ir.ui.view'].user_has_groups('base.group_user') else 'onepage home-7'" />
+        </xpath>
+    </template>
+    <template id="option_bg_preset_8" name="option_bg_preset_8" inherit_id="website.layout" active="False">
+        <xpath expr="//t[@t-set='html_data']" position="after">
+            <t t-set="body_classname" t-value="'o_connected_user onepage home-8' if env['ir.ui.view'].user_has_groups('base.group_user') else 'onepage home-8'" />
+        </xpath>
+    </template>
+    <template id="option_bg_preset_9" name="option_bg_preset_9" inherit_id="website.layout" active="False">
+        <xpath expr="//t[@t-set='html_data']" position="after">
+            <t t-set="body_classname" t-value="'o_connected_user onepage home-9' if env['ir.ui.view'].user_has_groups('base.group_user') else 'onepage home-9'" />
+        </xpath>
+    </template>
+    <template id="customize_modal" inherit_id="website.theme_customize" name="theme_default modal">
+        <xpath expr="div" position="replace">
+            <div id="theme_customize_modal" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="loading_backdrop"></div>
+                        <div class="modal-header text-center">
+                            <button type="button" class="close">×</button>
+                            <!-- <a class="btn btn-primary" href="/web#return_label=Website&amp;action=website.action_module_theme">Click here to change theme</a> -->
+                            <hr style="margin: 20px -10px 10px -10px;" />
+                            <h4 class="modal-title">Customize this default theme</h4>
+                        </div>
+                        <div class="modal-body">
+                            <h5 class="modal-h5">LAYOUT</h5>
+                            <table name="layout">
+                                <tr>
+                                    <td class=" text-center" width="50%">
+                                        <label class=" center-block">
+                                            <div class="text-center" style="background-image: url(/theme_default/static/src/img/theme/layout-full.gif); background-size: 100%; line-height: 40px;">FULL WIDTH</div>
+                                            <input name="layoutvar" type="radio" data-xmlid="" />
+                                        </label>
+                                    </td>
+                                    <td class=" text-center">
+                                        <label class=" center-block">
+                                            <div class="text-center" style="background-image: url(/theme_default/static/src/img/theme/layout-boxed.gif); background-size: 100%; line-height: 40px;">BOXED</div>
+                                            <input name="layoutvar" type="radio" data-xmlid="theme_default.option_layout_boxed" />
+                                        </label>
+                                    </td>
+                                </tr>
+                            </table>
+                            <h5 class="modal-h5">MAIN COLOR With Different Header</h5>
+                            <table name="color">
+                                <tr>
+                                    <td>
+                                        <label class="chd-color-combi">
+                                            <div class="foo home1"></div>
+                                            <input id="bgvar-1" name="bgcolorvar" type="radio" data-xmlid="theme_materialab.option_bg_preset_1" />
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label class="chd-color-combi">
+                                            <div class="foo home2"></div>
+                                            <input id="bgvar-2" name="bgcolorvar" type="radio" data-xmlid="theme_materialab.option_bg_preset_2" />
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label class="chd-color-combi">
+                                            <div class="foo home3"></div>
+                                            <input id="bgvar-3" name="bgcolorvar" type="radio" data-xmlid="theme_materialab.option_bg_preset_3" />
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label class="chd-color-combi">
+                                            <div class="foo home4"></div>
+                                            <input id="bgvar-4" name="bgcolorvar" type="radio" data-xmlid="theme_materialab.option_bg_preset_4" />
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label class="chd-color-combi">
+                                            <div class="foo home5"></div>
+                                            <input id="bgvar-4" name="bgcolorvar" type="radio" data-xmlid="theme_materialab.option_bg_preset_5" />
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label class="chd-color-combi">
+                                            <div class="foo home6"></div>
+                                            <input id="bgvar-4" name="bgcolorvar" type="radio" data-xmlid="theme_materialab.option_bg_preset_6" />
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label class="chd-color-combi">
+                                            <div class="foo home7"></div>
+                                            <input id="bgvar-4" name="bgcolorvar" type="radio" data-xmlid="theme_materialab.option_bg_preset_7" />
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label class="chd-color-combi">
+                                            <div class="foo home8"></div>
+                                            <input id="bgvar-4" name="bgcolorvar" type="radio" data-xmlid="theme_materialab.option_bg_preset_8" />
+                                        </label>
+                                        <label>
+                                            Fixed Header
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label class="chd-color-combi">
+                                            <div class="foo home9"></div>
+                                            <input id="bgvar-4" name="bgcolorvar" type="radio" data-xmlid="theme_materialab.option_bg_preset_9" />
+                                        </label>
+                                        <label>
+                                            Boxed View With Header Box
+                                        </label>
+                                    </td>
+                                </tr>
+                            </table>
+                            <h5 class="modal-h5">FONTS COMBINATIONS</h5>
+                            <table name="font">
+                                <tr>
+                                    <td width="50%">
+                                        <label>
+                                            <div>
+                                                <span style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-size:11px">Helvetica</span>
+                                                <span style="font-family:Georgia, 'Times New Roman', Times, serif; font-size:11px">/ Georgia</span>
+                                            </div>
+                                            <input name="theme" type="radio" data-xmlid="" />
+                                        </label>
+                                    </td>
+                                    <td width="50%">
+                                        <label>
+                                            <div>
+                                                <span style="font-family:Georgia, 'Times New Roman', Times, serif; font-size:11px">Georgia</span>
+                                                <span style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-size:11px">/ Helvetica</span>
+                                                <input name="theme" type="radio" data-xmlid="theme_default.option_font" />
+                                            </div>
+                                        </label>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>

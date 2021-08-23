@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+
+<!-- Payslip Advice -->
+
+<record id="view_guards_bank_advice_tree" model="ir.ui.view">
+	<field name="name">guards.payroll.advice.tree</field>
+	<field name="model">guards.payroll.advice</field>
+	<field name="arch" type="xml">
+		<tree string="Bank Advice">
+			<field name="date"/>
+			<field name="number"/>
+			<field name="name"/>
+			<field name="paidon"/>
+			<field name="company_id" groups="base.group_multi_company" widget="selection"/>
+			<field name="bank_id"/>
+			<field name="state"/>
+			<field name="total"/>
+		</tree>
+	</field>
+</record>
+
+<record id="view_guards_bank_advice_form" model="ir.ui.view">
+	<field name="name">guards.payroll.advice.form</field>
+	<field name="model">guards.payroll.advice</field>
+	<field name="arch" type="xml">
+		<form string="Bank Advice">			
+			<header>				
+				<button name="confirm_sheet"  string="Confirm Sheet" states="draft" type="object" class="oe_highlight"/>
+				<button name="compute_advice" string="Compute Advice" states="draft" type="object" class="oe_highlight"/>
+				<button name="cancel_sheet" string="Cancel" states="draft"  type="object"/>
+				<button name="set_to_draft" string="Set to Draft" states="cancel,confirm" type="object"/>
+				<field name="state" widget="statusbar" nolabel="1" statusbar_visible="draft"/>				
+			</header>
+			
+			<sheet>
+				<div class="oe_right oe_button_box" name="buttons"> </div>
+				<group>
+					
+					<label for="Name" class="oe_edit_only" string="Name"/>
+					<h2><field name="name"/></h2>
+					<label for="date" class="oe_edit_only"/>
+					<h2><field name="date"/></h2>
+					<group colspan="3" col="6">
+						<field name="bank_id"/>
+						<field name="number"/>
+					</group>
+				</group>
+				
+				<notebook colspan="4">
+					<page string="Payment Lines">
+						<field name="line_ids" colspan="4" nolabel="1">
+							<tree string="Payment Lines" editable="bottom">
+								<field name="employee_id" on_change="on_change_employee_id(employee_id)"/>
+								<field name="name"/>
+								<field name="ifsc" invisible="1"/>
+								<field name="ifsc_code" attrs="{'invisible':[('ifsc','=', False)]}" />
+								<field name="bysal" sum="Total"/>
+								<field name="debit_credit"/>
+							</tree>
+						</field>
+					</page>
+					
+					<page string="Other Information">
+						<group>
+							<group>
+								<field name="company_id" groups="base.group_multi_company" widget="selection"/>
+								<field name="chaque_nos"/>
+								<field name="paidon"/>
+							</group>
+							<group>
+								<field name="neft"/>
+								<field name="batch_id"  domain="[('available_advice','=', False)]"/>
+								<field name="move_id"/>
+							</group>
+						</group>						
+						<separator colspan="4" string="Letter Details"/>
+						<field name="note" colspan="4" nolabel="1"/>
+					</page>
+					
+				</notebook>
+				
+			</sheet>
+		</form>
+	</field>
+</record>
+
+<record id="view_guards_payroll_advice_filter" model="ir.ui.view">
+	<field name="name">guards.payroll.advice.select</field>
+	<field name="model">guards.payroll.advice</field>
+	<field name="arch" type="xml">
+		<search string="Search Payment advice">
+			<group>
+				<filter name="draft" string="Draft" domain="[('state','=','draft')]" help="Draft Advices"/>
+				<separator/>
+				<filter name="state" string="Confirm" domain="[('state','=','confirm')]" help="Confirm Advices"/>
+				<separator/>
+				<filter name="paidon" string="Paid-On" domain="[('paidon','=',True)]" help="Paid-On Advices"/>
+				<separator orientation="vertical"/>
+				<field name="date"/>
+				<field name="number"/>
+				<field name="name"/>
+				<field name="bank_id"/>
+				<field name="batch_id"/>
+			</group>
+			<newline/>
+			<group expand="0" string="Group By...">
+				<filter string="Bank" name="bank_id" context="{'group_by':'bank_id'}"/>
+				<separator orientation="vertical"/>
+				<filter string="Status" name="state" context="{'group_by':'state'}"/>
+				<separator orientation="vertical" />
+				<filter string="Company" name="company_id" groups="base.group_multi_company" context="{'group_by':'company_id'}"/>
+				<separator/>
+				<filter string="Year" name="year" context="{'group_by':'date:year'}"/>
+				<filter string="Month" name="month" context="{'group_by':'date:month'}"/>
+			</group>
+		</search>
+	</field>
+</record>
+
+<record id="action_view_guards_bank_advice_tree" model="ir.actions.act_window">
+	<field name="name">Payment Advices</field>
+	<field name="res_model">guards.payroll.advice</field>
+	<field name="view_type">form</field>
+	<field name="view_mode">tree,form</field>
+	<field name="view_id" ref="view_guards_bank_advice_tree"/>
+	<field name="context">{'search_default_draft':1}</field>	
+	<field name="search_view_id" ref="view_guards_payroll_advice_filter"/> 
+</record>
+
+
+
+ <!-- Payslip Runs -->
+<record id="guards_payslip_run_filter" model="ir.ui.view">
+	<field name="name">guards.payslip.run.search</field>
+	<field name="model">guards.payslip.run</field>
+	<field name="arch" type="xml">
+		<search string="Search Payslip Batches">
+			<field name="name" string="Payslip Batches"/>
+			<field name="date_start"/>
+			<field name="date_end"/>
+			<separator orientation="vertical"/>
+            <filter name="available_advice" string="To Advice" domain="[('available_advice','=', False)]" help="Payslip Batches ready to be Adviced"/>
+			<filter name="draft" string="Draft" domain="[('state','=','draft')]" help="Draft Payslip Batches"/>
+			<filter name="done_filter" string="Done" domain="[('state','=','close')]" help="Done Payslip Batches"/>
+			<field name="journal_id"/>
+			<separator/>
+			<filter string="Year" name="year" context="{'group_by':'date_start:year'}"/>
+			<filter string="Month" name="month" context="{'group_by':'date_start:month'}"/>
+		</search>
+	</field>
+</record>
+
+<record id="guards_payslip_run_tree" model="ir.ui.view">
+	<field name="name">guards.payslip.run.tree</field>
+	<field name="model">guards.payslip.run</field>
+	<field name="arch" type="xml">
+		<tree string="Payslips Batches">
+			<field name="name"/>
+			<field name="date_start"/>
+			<field name="date_end"/>
+			<field name="journal_id"/>
+			<field name="credit_note"/>
+			<field name="state"/>
+		</tree>
+	</field>
+</record>
+
+
+<record id="guards_payslip_run_form" model="ir.ui.view">
+	<field name="name">guards.payslip.run.form</field>
+	<field name="model">guards.payslip.run</field>
+	<field name="arch" type="xml">
+		<form string="Payslips Batches">
+		<header>
+			<button name="close_payslip_run" type="object" string="Close" states="draft" class="oe_highlight"/>	
+				<!-- Remark by Numan -->
+			<!-- 
+				<button name="%(action_guards_payslip_by_employees)d" type="action" states="draft" string="Generate Payslips" class="oe_highlight"/>  
+			-->
+			<button string="Set to Draft" name="draft_payslip_run" type="object" states="close" />
+			<button name="create_advice" string="Create Advice" type="object" states="close" />
+			<field name="state" widget="statusbar"/>
+		</header>
+		<sheet>
+			<label for="name" class="oe_edit_only"/>
+			<h1>
+				<field name="name"/>
+			</h1>
+			<h2>
+				Period from 
+				<field name="date_start"/> 
+				to 
+				<field name="date_end"/>
+			</h2>
+			<group col="4">
+				<field name="credit_note"/>
+				<field name="paidon"/>
+                <field name="available_advice" readonly="1"/>
+				<field name="journal_id"/>
+			</group>
+			<separator string="Payslips"/>
+				<field name="slip_ids" widget="many2many" domain="[('payslip_run_id','=', False)]"/>
+		</sheet>
+		</form>
+	</field>
+</record>
+
+<record id="action_guards_payslip_run" model="ir.actions.act_window">
+	<field name="name">Payslips Batches</field>
+	<field name="res_model">guards.payslip.run</field>
+	<field name="view_type">form</field>
+	<field name="view_id" ref="guards_payslip_run_tree"/>
+	<field name="context">{'search_default_draft':1}</field>	
+	<field name="search_view_id" ref="guards_payslip_run_filter"/>
+</record>
+
+
+<!--
+
+<report
+	auto="False" 
+	id="payroll_advice" 
+	model="guards.payroll.advice" 
+	name="guards.payroll.advice" 
+	rml="sos_payroll/report/report_payroll_advice.rml"
+	string="Print Advice" />
+
+<report
+	auto="False" 
+	id="payroll_advice_sum" 
+	model="guards.payroll.advice" 
+	name="payroll.guards.payroll.advice.sum" 
+	rml="sos_payroll/report/report_payroll_advice_sum.rml"
+	string="Print Advice Summary" />
+
+-->
+</data>
+</odoo>
+

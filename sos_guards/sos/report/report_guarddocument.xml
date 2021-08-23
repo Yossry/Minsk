@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+	<template id ="report_guarddocument">
+		<t t-call="web.html_container">
+				<t t-call="web.external_layout" style="font-family:georgia,garamond,serif;font-size:10px">
+					<div class="page">
+						<style>
+								.tabhead{font-size:9px;}
+								.tabcol{font-size:9px;}
+								.tabtot{font-size:10px;}
+								 table th { background-color:#d4e3e5;}
+								 tr:nth-child(even) {background-color: #FFEBCD;}
+								 tr:nth-child(odd) {background-color: #cdcdcd;}
+						</style>
+						<h4>Profile Status Report</h4>	 							
+						<h5>	
+							From: <span t-esc="get_date_formate(data['date_from'])"/><br></br>
+							To: <span t-esc="get_date_formate(data['date_to'])"/><br></br>							
+						</h5>	
+							
+							
+							<table class="table table-condensed" width="100%">
+								<thead>
+									<tr class="tabhead">
+										<th class="text-center">Sr.No</th>
+										<th class="text-left">Region/User Name</th>
+										<th class="text-left">Draft</th>
+										<th class="text-left">Done</th>
+										<th class="text-left">HR Review</th>
+										<th class="text-left">MI Review</th>
+										<th class="text-left">Complete</th>
+										<!--
+										<th class="text-right">Total</th>
+										-->
+									</tr>
+								</thead>
+								<tbody>
+									<t t-foreach="TT" t-as="t">
+										<tr class="tabcol">
+											<td class="text-left">
+												<span t-esc="t_index + 1" />
+											</td>
+											<td class="text-left">
+												<span t-esc="t['user']" />
+											</td>
+											<td class="text-left">
+												<span t-esc="t['draft'] or '-'" />
+											</td>
+											<td class="text-left">
+												<span t-esc="t['done'] or '-'" />
+											</td>
+											<td class="text-left">
+												<span t-esc="t['hr_review'] or '-'" />
+											</td>
+											<td class="text-left">
+												<span t-esc="t['mi_review'] or '-'" />
+											</td>
+											<td class="text-left">
+												<span t-esc="t['complete'] or '-'" />
+											</td>
+											<!--
+											<td class="text-right">
+												<span t-esc="t['total'] or '-'" />
+											</td>
+											-->
+										</tr>	
+									</t>
+									<tr style="font-size:13px;">
+										<td class="text-center" colspan="2">
+											Total:
+										</td>
+										<td class="text-left">
+											<span t-esc="Total_Draft or '-'" />
+										</td>
+										<td class="text-left">
+											<span t-esc="Total_Done or '-'" />
+										</td>
+										<td class="text-left">
+											<span t-esc="Total_Hr or '-'" />
+										</td>
+										<td class="text-left">
+											<span t-esc="Total_Mi or '-'" />
+										</td>
+										<td class="text-left">
+											<span t-esc="Total_Complete or '-'" />
+										</td>
+										<!--
+										<td class="text-right">
+											<span t-esc="Total" />
+										</td>
+										-->		
+									</tr>		
+								</tbody>
+							</table>
+							
+							<br />
+							<br />
+							<table class="table table-condensed" width="100%">
+								<thead>
+									<tr class="tabhead">
+										<th class="text-center">S.No</th>
+										<th class="text-left">User Name</th>
+										<th class="text-left">Record</th>
+										<th class="text-left">Old Value</th>
+										<th class="text-left">New Value</th>
+									</tr>
+								</thead>
+								<tbody>
+									<t t-foreach="Rec_ids" t-as="rec">
+										<tr class="tabcol">
+											<td class="text-left">
+												<span t-esc="rec_index + 1" />
+											</td>
+											<td class="text-left">
+												<span t-esc="rec.write_uid.partner_id.name" />
+											</td>
+											<td class="text-left">
+												<span t-esc="rec.mail_message_id.record_name" />
+											</td>
+											<td class="text-left">
+												<span t-esc="rec.old_value_char or '-'" />
+											</td>
+											<td class="text-left">
+												<span t-esc="rec.new_value_char or '-'" />
+											</td>
+										</tr>
+												
+									</t>
+								</tbody>
+							</table>
+					</div>	
+				</t>
+		</t>
+	</template>
+	
+	</data>
+</odoo>

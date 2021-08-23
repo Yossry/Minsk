@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="sale_order_line_payer_tree_view" model="ir.ui.view">
+        <field name="model">sale.order.line.payer</field>
+        <field name="arch" type="xml">
+            <tree string="Payers" editable="top"
+                  decoration-warning="not bank_id">
+                <field name="line_id" invisible="True" />
+                <field name="originator_id" invisible="True" />
+                <field name="payer_id" domain="[('id', 'in', allowed_payers_ids)]"
+                       options="{'no_create': True, 'no_open': True}" />
+                <field name="pay_percentage" />
+                <field name="child_id" invisible="True" />
+                <field name="allowed_payers_ids" widget="many2many_tags" invisible="1"/>
+                <field name="bank_id"
+                       domain="[('partner_id','=',payer_id),'|',('company_id','=',originator_id),('company_id','=',False)]"
+                       options="{'no_create': True, 'no_open': True}" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="sale_order_line_payer_form_view" model="ir.ui.view">
+        <field name="model">sale.order.line.payer</field>
+        <field name="arch" type="xml">
+            <form string="Payer">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="line_id" />
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="child_id" invisible="1" />
+                            <field name="payer_id" domain="[('id', 'in', allowed_payers_ids)]"
+                                   options="{'no_create': True, 'no_open': True}" />
+                            <field name="allowed_payers_ids" widget="many2many_tags" invisible="1" />
+                        </group>
+                        <group>
+                            <field name="pay_percentage" />
+                            <field name="bank_id" domain="[('partner_id', '=', payer_id)]"
+                                   options="{'no_create': True, 'no_open': True}"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>

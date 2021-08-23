@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <menuitem name="Person" id="clv_person.menu_community_history_person" 
+        parent="clv_base.menu_community_history"
+        groups="clv_person.group_user"
+        sequence="10"/>
+
+    <menuitem name="Histories" id="clv_person.menu_community_history_person_histories" 
+        parent="clv_person.menu_community_history_person"
+        groups="clv_person.group_user"
+        sequence="10"
+        action="clv_person_history.clv_person_history_action"/>
+
+</odoo>

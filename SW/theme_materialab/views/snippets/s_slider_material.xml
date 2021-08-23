@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template name="Slider Material" id="s_slider_material">
+        <!-- ====SLIDER START==== -->
+        <section class="slider_area oe_structure oe_structure">
+            <div class="container">
+                <div class="mainSlider">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="dtable">
+                                <div class="dcell">
+                                    <div class="slider_caption text-left">
+                                        <h4 class="fadeInDown_slide animated" style="animation-delay: .1s">We design</h4>
+                                        <h1 class="fadeInRight_slide animated" style="animation-delay: .6s"><span>Creative</span> website</h1>
+                                        <p class="colorWh fadeInUp_slide animated" style="animation-delay: .4s">If you’ve followed along and done the , you’ve created a good starting place. You’re going to
+                                            <br/> need to make sure your pages are optimized properly.</p>
+                                    </div>
+                                    <a class="th_bt btn waves-effect waves-light fadeInRight_slide animated" style="animation-delay: .8s" href="#">
+                                            PURCHASE
+                                    </a>
+                                    <a class="th_bt slider_learn btn waves-effect fadeInRight_slide animated" style="animation-delay: 1s" href="#">
+                                            Learn More
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="dtable">
+                                <div class="dcell">
+                                    <div class="slider_caption text-left">
+                                        <h4 class="fadeInDown_slide animated" style="animation-delay: .1s">We design</h4>
+                                        <h1 class="fadeInRight_slide animated" style="animation-delay: .6s"><span>Creative</span> website</h1>
+                                        <p class="colorWh fadeInUp_slide animated" style="animation-delay: .4s">If you’ve followed along and done the , you’ve created a good starting place. You’re going to
+                                            <br/> need to make sure your pages are optimized properly.</p>
+                                    </div>
+                                    <a class="th_bt btn waves-effect waves-light fadeInRight_slide animated" style="animation-delay: .8s" href="#">
+                                            PURCHASE
+                                    </a>
+                                    <a class="th_bt slider_learn btn waves-effect fadeInRight_slide animated" style="animation-delay: 1s" href="#">
+                                            Learn More
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="dtable">
+                                <div class="dcell">
+                                    <div class="slider_caption text-left">
+                                        <h4 class="fadeInDown_slide animated" style="animation-delay: .1s">We design</h4>
+                                        <h1 class="fadeInRight_slide animated" style="animation-delay: .6s"><span>Creative</span> website</h1>
+                                        <p class="colorWh fadeInUp_slide animated" style="animation-delay: .4s">If you’ve followed along and done the , you’ve created a good starting place. You’re going to
+                                            <br/> need to make sure your pages are optimized properly.</p>
+                                    </div>
+                                    <a class="th_bt btn waves-effect waves-light fadeInRight_slide animated" style="animation-delay: .8s" href="#">
+                                            PURCHASE
+                                    </a>
+                                    <a class="th_bt slider_learn btn waves-effect fadeInRight_slide animated" style="animation-delay: 1s" href="#">
+                                            Learn More
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ====SLIDER END==== -->
+    </template>
+</odoo>

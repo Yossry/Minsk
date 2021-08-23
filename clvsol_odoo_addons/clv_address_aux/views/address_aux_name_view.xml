@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2016 LasLabs Inc.
+     License GPL-3.0 or later (http://www.gnu.org/licenses/gpl). -->
+
+<odoo>
+        
+    <record id="clv_address_aux_view_form_name" model="ir.ui.view">
+        <field name="name">clv.address_aux.form</field>
+        <field name="model">clv.address_aux</field>
+        <field name="inherit_id" ref="clv_address_aux_view_form"/>
+        <field name="priority" eval="10" />
+        <field name="arch" type="xml">
+            <field name="type" position="before">
+                <!--label for="suggested_name" class="oe_edit_only"/>
+                <field name="suggested_name" invisible="False" class="oe_edit_only" nolabel="1"/-->
+                <field name="suggested_name"/>
+            </field>
+            <group name="settings_left_3" position="inside">
+                <field name="automatic_set_name"/>
+            </group>
+            <page name="settings" position="attributes">
+                <attribute name="invisible">False</attribute>
+            </page>
+        </field>
+    </record>
+
+</odoo>

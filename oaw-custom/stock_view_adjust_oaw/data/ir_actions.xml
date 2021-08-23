@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="action_run_ir_action_sequence_stock_picking" model="ir.actions.server">
+        <field name="name">Update line sequence</field>
+        <field name="model_id" ref="stock.model_stock_picking" />
+        <field name="binding_model_id" ref="stock.model_stock_picking" />
+        <field name="state">code</field>
+        <field name="code">records._update_order_line_sequence()</field>
+    </record>
+</odoo>

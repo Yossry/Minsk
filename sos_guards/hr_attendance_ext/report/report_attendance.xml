@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!--
+<template id="web.internal_layout">    
+    <t t-if="not o and doc">
+        <t t-set="o" t-value="doc"/>
+    </t>
+    <t t-if="o and 'company_id' in o">
+        <t t-set="company" t-value="o.company_id"></t>
+    </t>
+    <t t-if="not o or not 'company_id' in o">
+        <t t-set="company" t-value="res_company"></t>
+    </t>
+
+    <div class="header">
+        <div class="row">
+            <div class="col-xs-3">
+                <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 45px;"/>
+            </div>
+            <div class="col-xs-9 text-right" style="margin-top:20px;" t-field="company.report_header"/>
+        </div>
+        <div class="row zero_min_height">
+            <div class="col-xs-12">
+                <div style="border-bottom: 1px solid black;"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6" name="company_address">
+                <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
+            </div>
+            <div class="col-xs-3 col-xs-offset-3 text-right">
+                <ul class="list-inline">
+                    <li><span class="page"/></li>
+                    <li>/</li>
+                    <li><span class="topage"/></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <t t-raw="0" />
+</template>
+-->
+
+<template id ="report_attendance">
+	<t t-call="web.html_container">
+		<t t-call="web.internal_layout">
+			<div class="page" style="font-size: 12px;">
+				
+		        <t t-set="info" t-value="get_header_info"/>
+		        <h5 class="mb16">
+		            Attendance Summary Analysis from <u><t t-esc="info['start_date']"/></u> to <u><t t-esc="info['end_date']"/></u>.
+		        </h5>
+				
+				<table class="table table-bordered mb32" style="table-layout:auto">
+                    <thead>
+                        <tr>
+                            <th>Month</th>
+                            <t t-foreach="get_months" t-as="month">
+                                &lt;th class="text-center" colspan=<t t-esc="month['days']"/>&gt;<t t-esc="month['month_name']"/>&lt;/th&gt;
+                            </t>
+                            <th class="text-center" rowspan="2" colspan="6">Summary</th>
+                        </tr>
+                        
+                        <tr>
+                            <td rowspan="2">
+                                <strong>Employees</strong>
+                            </td>
+                            <t t-foreach="get_day" t-as="day">
+                                &lt;td class="text-center oe_leftfit oe_rightfit" 
+                                style="background-color: <t t-esc="day['color']"/>!important; font-size: 8px; min-width: 22px;"&gt; 
+                                <t t-esc="day['day_str']"/>&lt;/td&gt;
+                            </t>                            
+                        </tr>
+                        <tr>
+                            <t t-foreach="get_day" t-as="day">
+                                &lt;td class="text-center oe_leftfit oe_rightfit" 
+                                style="background-color: <t t-esc="day['color']"/>!important; font-size: 10px" &gt; 
+                                <t t-esc="day['day']"/>&lt;/td&gt;
+                            </t>
+                            <td class="text-center" style="font-size: 8px;min-width: 20px;">P</td>
+                            <td class="text-center" style="font-size: 8px;min-width: 20px;">T</td>
+                            <td class="text-center" style="font-size: 8px;min-width: 20px;">L</td>
+                            <td class="text-center" style="font-size: 8px;min-width: 20px;">A</td>
+                            <td class="text-center" style="font-size: 8px;min-width: 20px;">V</td>
+                            <td class="text-center" style="font-size: 8px;min-width: 20px;">R</td>
+                        </tr>                        
+                    </thead>
+                    
+                    <!--
+                            <tr t-if="'dept' in obj">
+                                <td style="background-color:#ababab">
+                                    <strong><t t-esc="obj['dept']"/></strong>
+                                </td>
+                                <t t-foreach="obj['color']" t-as="c">
+                                    &lt;td style=background-color:<t t-esc="c['color']"/> !important/&gt;
+                                </t>
+                                <td/>
+                            </tr>
+                             style="background-color: ;"
+                            -->
+                    
+                    <tbody>
+                        <t t-foreach="get_data_from_report" t-as="obj">
+                            
+                            <tr t-foreach="obj['data']" t-as="emp">
+                                <td rowspan="2"><span style="font-size: 9px;" t-esc="emp['emp']"/></td> 
+                                                                
+                                <t t-foreach="emp['display']" t-as="details">
+                                    &lt;td background-color:<t t-esc="details['color'] or '#FFEBCD'"/> !important &gt; 
+                                    	<span style="font-size: 8px;" t-esc="details['In'][0]"/> &lt;/td&gt;  
+                                </t>
+          				
+          						
+          						<td rowspan="2" class="text-center" style="font-size: 8px;"><strong><t t-esc="emp['P']"/></strong></td>
+                                <td rowspan="2" class="text-center" style="font-size: 8px;"><strong>-</strong></td>
+                                <td rowspan="2" class="text-center" style="font-size: 8px;"><strong><t t-esc="emp['L']"/></strong></td>
+                                <td rowspan="2" class="text-center" style="font-size: 8px;"><strong>-</strong></td>
+                                <td rowspan="2" class="text-center" style="font-size: 8px;"><strong>-</strong></td>
+                                <td rowspan="2" class="text-center" style="font-size: 8px;"><strong>-</strong></td>
+                                
+          						
+          						<tr  style="background-color: #cdcdcd;">                      
+		      						<t t-foreach="emp['display']" t-as="details">
+		                                &lt;td style=background-color:<t t-esc="details['color']"/> !important &gt; 
+		                                <span style="font-size: 8px;" t-esc="details['Out'][0]"/> &lt;/td&gt;
+		                            </t>                      
+                                </tr>
+                                
+                                
+                            </tr>
+                        </t>
+                    </tbody>
+       				
+                </table>        	
+					
+			</div>
+		</t>
+	</t>
+</template>
+
+</odoo>

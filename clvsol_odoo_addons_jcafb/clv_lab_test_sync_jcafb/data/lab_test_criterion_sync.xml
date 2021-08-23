@@ -1,0 +1,121 @@
+<?xml version="1.0" ?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo noupdate="0">
+
+	<record id="clv_lab_test_criterion_clv_lab_test_criterion_template" model="clv.external_sync.template">
+		<field name="name" eval="&quot;&quot;&quot;clv.lab_test.criterion (clv.lab_test.criterion)&quot;&quot;&quot;"/>
+		<field name="model" eval="&quot;&quot;&quot;clv.lab_test.criterion&quot;&quot;&quot;"/>
+		<field name="method" eval="&quot;&quot;&quot;_object_external_sync&quot;&quot;&quot;"/>
+		<field name="external_model" eval="&quot;&quot;&quot;clv.lab_test.criterion&quot;&quot;&quot;"/>
+		<field name="external_disable_check_missing" eval="True"/>
+	</record>
+	 
+	<record id="clv_lab_test_criterion_clv_lab_test_criterion_template_object_field_name" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;name&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;name&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="clv_lab_test_criterion_clv_lab_test_criterion_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="clv_lab_test_criterion_clv_lab_test_criterion_template_object_field_code" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;code&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;code&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="clv_lab_test_criterion_clv_lab_test_criterion_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="clv_lab_test_criterion_clv_lab_test_criterion_template_object_field_result" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;result&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;result&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="clv_lab_test_criterion_clv_lab_test_criterion_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="clv_lab_test_criterion_clv_lab_test_criterion_template_object_field_unit_id" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;unit_id&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;unit_id&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="clv_lab_test_criterion_clv_lab_test_criterion_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="clv_lab_test_criterion_clv_lab_test_criterion_template_object_field_sequence" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;sequence&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;sequence&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="clv_lab_test_criterion_clv_lab_test_criterion_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="clv_lab_test_criterion_clv_lab_test_criterion_template_object_field_normal_range" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;normal_range&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;normal_range&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="clv_lab_test_criterion_clv_lab_test_criterion_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="clv_lab_test_criterion_clv_lab_test_criterion_template_object_field_result_display" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;result_display&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;result_display&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="clv_lab_test_criterion_clv_lab_test_criterion_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="clv_lab_test_criterion_clv_lab_test_criterion_template_object_field_report_display" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;report_display&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;report_display&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="clv_lab_test_criterion_clv_lab_test_criterion_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+ 	<record id="clv_lab_test_criterion_clv_lab_test_criterion_template_object_field_lab_test_type_id" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;lab_test_type_id&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;lab_test_type_id&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="clv_lab_test_criterion_clv_lab_test_criterion_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="clv_lab_test_criterion_clv_lab_test_criterion_template_object_field_lab_test_result_id" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;lab_test_result_id&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;lab_test_result_id&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="clv_lab_test_criterion_clv_lab_test_criterion_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="clv_lab_test_criterion_clv_lab_test_criterion_template_object_field_lab_test_report_id" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;lab_test_report_id&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;lab_test_report_id&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="clv_lab_test_criterion_clv_lab_test_criterion_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="clv_lab_test_criterion_clv_lab_test_criterion_template_object_field_active" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;active&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;active&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="clv_lab_test_criterion_clv_lab_test_criterion_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="clv_lab_test_criterion_clv_lab_test_criterion_schedule" model="clv.external_sync.schedule">
+		<field name="name" eval="&quot;&quot;&quot;clv.lab_test.criterion (clv.lab_test.criterion)&quot;&quot;&quot;"/>
+		<field name="template_id" eval="clv_lab_test_criterion_clv_lab_test_criterion_template"/>
+	</record>
+	 
+	<record id="clv_external_sync_batch_member_clv_lab_test_criterion" model="clv.external_sync.batch.member">
+		<field name="external_sync_batch_id" ref="clv_external_sync_jcafb.clv_external_sync_batch_default"/>
+		<field name="ref_id" ref="clv_lab_test_criterion_clv_lab_test_criterion_schedule"/>
+	</record>
+	 
+</odoo>

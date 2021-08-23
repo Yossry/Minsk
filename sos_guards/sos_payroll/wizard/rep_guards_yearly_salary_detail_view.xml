@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_guards_yearly_salary_detail" model="ir.ui.view">
+            <field name="name">Employee Yearly Salary</field>
+            <field name="model">guards.yearly.salary.detail</field>
+            <field name="arch" type="xml">
+            <form string="Pay Head Employee Breakup" version="7.0">
+                <label for="date_from" string="This wizard will print report which display a pay head employee breakup for a specified dates."/>
+                <footer>
+                    <button name="print_report" string="Print" type="object" class="oe_highlight"/>
+                    or
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+                <group>
+                    <field name="date_from"/>
+                    <field name="date_to"/>
+                    <separator string="Employees" />
+                    <field name="employee_ids"  nolabel="1" colspan="4" context="{'tree_view_ref':'sos.view_guard_tree'}" > 
+                    	<tree string="Guards">
+							<field name="code"/>
+							<field name="name"/>
+							<field name="fathername"/>
+							<field name="cnic"/>
+							<field name="current"/>
+							<field name="project_id"/>
+							<!-- <field name="current_post"/> -->
+							<!-- <field name="center"/> -->
+							<field name="is_guard" invisible="True" />		   
+	   					</tree>
+	   				</field>	
+                </group>
+            </form>
+            </field>
+        </record>
+
+        <record id="action_guards_yearly_salary_detail" model="ir.actions.act_window">
+            <field name="name">Yearly Salary by Employee</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">guards.yearly.salary.detail</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+		<!--
+        <menuitem
+            name="Yearly Salary by Employee" parent="menu_guards_payroll_reporting"
+            action="action_guards_yearly_salary_detail"
+            sequence="250" icon="STOCK_PRINT"
+            id="menu_guards_yearly_salary_detail"
+           />
+        -->
+   
+        <report
+            auto="False" 
+            id="guards_yearly_salary" 
+            model="guards.yearly.salary.detail" 
+            name="guards.salary.detail.byyear" 
+            rml="sos/report/report_guards_yearly_salary_detail.rml"
+            string="Yearly Salary by Employee" /> 
+   
+
+</data>
+</odoo>

@@ -1,0 +1,9 @@
+*.tar.gz
+*.pyc
+todo.txt
+.project
+.pydevproject
+.settings
+.ropeproject/
+.projectile
+*.swp

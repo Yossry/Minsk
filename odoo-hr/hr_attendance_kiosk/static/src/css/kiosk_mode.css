@@ -1,0 +1,13 @@
+#weather-forecast {
+	max-width: 100%; 
+	max-height: 150px;
+}
+
+.weather-icon {
+	max-width: 48px;
+	max-height: 48px;
+}
+
+#temp {
+	font-size: 30px;
+}

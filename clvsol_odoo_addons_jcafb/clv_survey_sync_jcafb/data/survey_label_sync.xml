@@ -1,0 +1,65 @@
+<?xml version="1.0" ?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo noupdate="0">
+ 
+	<record id="survey_label_survey_label_template" model="clv.external_sync.template">
+		<field name="name" eval="&quot;&quot;&quot;survey.label (survey.label)&quot;&quot;&quot;"/>
+		<field name="model" eval="&quot;&quot;&quot;survey.label&quot;&quot;&quot;"/>
+		<field name="method" eval="&quot;&quot;&quot;_object_external_sync&quot;&quot;&quot;"/>
+		<field name="external_model" eval="&quot;&quot;&quot;survey.label&quot;&quot;&quot;"/>
+		<field name="external_disable_check_missing" eval="True"/>
+	</record>
+	 
+	<record id="survey_label_survey_label_template_object_field_value" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;value&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;value&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="survey_label_survey_label_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="survey_label_survey_label_template_object_field_code" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;code&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;code&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="survey_label_survey_label_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="survey_label_survey_label_template_object_field_question_id" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;question_id&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;question_id&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="survey_label_survey_label_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="survey_label_survey_label_template_object_field_question_id_2" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;question_id_2&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;question_id_2&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="survey_label_survey_label_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="survey_label_survey_label_template_object_field_sequence" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;sequence&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;sequence&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="survey_label_survey_label_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="survey_label_survey_label_schedule" model="clv.external_sync.schedule">
+		<field name="name" eval="&quot;&quot;&quot;survey.label (survey.label)&quot;&quot;&quot;"/>
+		<field name="template_id" eval="survey_label_survey_label_template"/>
+	</record>
+	 
+	<record id="clv_external_sync_batch_member_survey_label" model="clv.external_sync.batch.member">
+		<field name="external_sync_batch_id" ref="clv_external_sync_jcafb.clv_external_sync_batch_default"/>
+		<field name="ref_id" ref="survey_label_survey_label_schedule"/>
+	</record>
+	 
+</odoo>

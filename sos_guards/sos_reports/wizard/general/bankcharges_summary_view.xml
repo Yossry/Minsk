@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_bankcharges_summary" model="ir.ui.view">
+            <field name="name">Bank Charges Summary</field>
+            <field name="model">bankcharges.summary</field>
+            <field name="arch" type="xml">
+            <form string="Bank Charges Summary">
+            <!--SARFRAZ-->
+               <!-- <label string="This wizard will print report which displays Summary of the Bank Charges."/> -->
+                <footer>
+                    <button name="print_report" string="Print" type="object" class="oe_highlight"/>
+                        or
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+                <group>
+                    <group>
+						<field name="date_from" required="1"/>
+						<field name="date_to" required="1"/>    
+						<field name="report_name"/> 						
+                    </group>                    
+                </group>
+                
+                 <notebook tabpos="up" colspan="4" attrs="{'invisible': [('report_name','!=','bankcharges_summary_post_aeroo')]}">
+				                   				                    
+					<page string="Project Filters" name="projects">
+						<separator string="Print only" colspan="4"/>
+						<field name="project_ids"  widget="many2many_tags" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>							
+					</page>
+
+					<page string="Center Filters" name="centers">
+						<separator string="Print only" colspan="4"/>
+						<field name="center_ids"  widget="many2many_tags" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>							
+					</page>
+				                    
+                </notebook>
+            </form>
+            </field>
+        </record>
+
+        <record id="action_bankcharges_summary" model="ir.actions.act_window">
+            <field name="name">Bank Charges Summary</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">bankcharges.summary</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+		
+    </data>
+</odoo>

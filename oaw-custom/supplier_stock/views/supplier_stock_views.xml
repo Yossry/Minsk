@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Internal: KANBAN, FORM-->
+    <record id="view_supplier_stock_kanban" model="ir.ui.view">
+        <field name="name">partner.stock.offer.kanban</field>
+        <field name="model">supplier.stock</field>
+        <field name="arch" type="xml">
+            <kanban default_order="product_id">
+                <field name="currency_name" />
+                <field name="image_medium" />
+                <field name="id" />
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="o_kanban_image">
+                                <img
+                                    t-att-src="kanban_image('supplier.stock', 'image_medium', record.id.value)"
+                                    alt="Product"
+                                />
+                            </div>
+                            <div class="oe_kanban_details">
+                                <h4>
+                                    <a type="open">
+                                        <field name="product_id" />
+                                    </a>
+                                </h4>
+                                <div name="tags" />
+                                <ul>
+                                    <li>Brand: <field name="brand" /></li>
+                                    <li>Retail in <field name="currency_id" />: <field
+                                            name="retail_in_currency"
+                                        /></li>
+                                    <li
+                                        t-if="record.currency_name.raw_value != 'HKD'"
+                                    > Retail in HKD: <field
+                                            name="product_list_price"
+                                        /></li>
+                                    <li>Quantity: <field name="partner_qty" /></li>
+                                    <li>Location: <field name="short_loc_name" /></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <!--Internal form view-->
+    <record id="view_supplier_stock_form" model="ir.ui.view">
+        <field name="name">view.supplier.access.form</field>
+        <field name="model">supplier.stock</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group string="Product Information">
+                        <group>
+                            <field name="partner_id" options="{'no_open':True}" />
+                            <field name="partner_loc_id" />
+                            <field name="new_description" />
+                            <field
+                                name="prod_cat_selection"
+                                options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"
+                            />
+                            <field name="product_id" options="{'no_open':True}" />
+                            <field name="quantity" />
+                            <field name="currency_id" options="{'no_open':True}" />
+                            <field name="retail_in_currency" />
+                        </group>
+                        <group>
+                            <field name="discount_in_curr" />
+                            <field name="price_unit" />
+                            <field name="product_list_price" />
+                            <field name="product_list_price_discount" />
+                            <field name="price_unit_base" />
+                            <field name="price_subtotal" />
+                            <field name="partner_note" />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="view_supplier_stock_tree" model="ir.ui.view">
+        <field name="name">view.supplier.stock.tree</field>
+        <field name="model">supplier.stock</field>
+        <field name="arch" type="xml">
+            <tree string="Partner Stock" editable="top">
+                <field
+                    name="partner_id"
+                    domain="[('supplier','=',True)]"
+                    options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"
+                />
+                <field
+                    name="partner_loc_id"
+                    string="Location"
+                    options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"
+                />
+                <field name="short_loc_name" />
+                <field
+                    name="prod_cat_selection"
+                    context="{'product_selection':True}"
+                    options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"
+                />
+                <field
+                    name="product_id"
+                    context="{'product_selection':True}"
+                    options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"
+                />
+                <field
+                    name="image_medium"
+                    string="Image"
+                    widget="image"
+                    options='{"size": [64, 64]}'
+                />
+                <field name="quantity" string="Qty" />
+                <field name="currency_id" />
+                <field name="retail_in_currency" />
+                <field name="discount_in_curr" />
+                <field name="price_unit" />
+                <field name="product_list_price" />
+                <field name="product_list_price_discount" />
+                <field name="price_unit_base" />
+                <field name="partner_note" />
+                <field name="last_update_date" />
+                <field name="last_update_user_id" />
+            </tree>
+        </field>
+    </record>
+    <record id="supplier_stock_search" model="ir.ui.view">
+        <field name="name">supplier.stock.search</field>
+        <field name="model">supplier.stock</field>
+        <field name="arch" type="xml">
+            <search string="Partner Stock">
+                <field name="partner_id" />
+                <field name="partner_loc_id" />
+                <field name="product_id" />
+                <field name="product_name" />
+                <field name="currency_id" />
+                <group expand="0" string="Group By">
+                    <filter
+                        string="Supplier"
+                        name="supplier"
+                        icon="terp-personal"
+                        domain="[]"
+                        context="{'group_by':'partner_id'}"
+                    />
+                    <filter
+                        string="Supplier Location"
+                        name="supplier_location"
+                        icon="terp-folder-green"
+                        domain="[]"
+                        context="{'group_by':'partner_loc_id'}"
+                    />
+                    <filter
+                        string="Currency"
+                        name="currency"
+                        icon="terp-folder-green"
+                        domain="[]"
+                        context="{'group_by':'currency_id'}"
+                    />
+                    <filter
+                        string="Product"
+                        name="product"
+                        icon="terp-accessories-archiver"
+                        domain="[]"
+                        context="{'group_by':'product_id'}"
+                    />
+                    <filter
+                        string="Group By Brand"
+                        name="group_by_brand"
+                        icon="terp-accessories-archiver"
+                        domain="[]"
+                        context="{'group_by':'prod_cat_selection'}"
+                    />
+                </group>
+                <group expand="0" name='filter' string="Changes">
+                    <filter
+                        name="cheapest_part_stock"
+                        string="Cheapest Partner Stock"
+                        domain="[('lowest_cost','=',True)]"
+                    />
+                    <filter
+                        name="has_duplicates"
+                        string="Multiples"
+                        domain="[('has_duplicates','=',True)]"
+                    />
+                    <filter
+                        name="qty_greate_zero"
+                        string="Qty > 0"
+                        domain="[('quantity','&gt;=',True)]"
+                    />
+                    <!-- For filter Quantity Up-->
+                    <filter
+                        name="qty_up_date"
+                        string="Qty Up"
+                        domain="[('qty_up_date','&gt;=',(context_today()+datetime.timedelta(hours=-24)).strftime('%Y-%m-%d'))]"
+                    />
+                    <!-- For filter Quantity Down-->
+                    <filter
+                        name="qty_up_date"
+                        string="Qty Down"
+                        domain="[('qty_down_date','&gt;=',(context_today()+datetime.timedelta(hours=-24)).strftime('%Y-%m-%d'))]"
+                    />
+                    <!-- For filter Cost Price (price_unit) Up-->
+                    <filter
+                        name="costprice_up_date"
+                        string="Cost Price Up"
+                        domain="[('costprice_up_date','&gt;=',(context_today()+datetime.timedelta(hours=-24)).strftime('%Y-%m-%d'))]"
+                    />
+                    <!-- For filter Cost Price (price_unit) Down-->
+                    <filter
+                        name="costprice_up_date"
+                        string="Cost Price Down"
+                        domain="[('costprice_down_date','&gt;=',(context_today()+datetime.timedelta(hours=-24)).strftime('%Y-%m-%d'))]"
+                    />
+                    <!-- For filter Cost Price (price_unit) Down-->
+                    <filter
+                        name="note_updated"
+                        string="Note Updated"
+                        domain="[('note_updated_date','&gt;=',(context_today()+datetime.timedelta(hours=-24)).strftime('%Y-%m-%d'))]"
+                    />
+                </group>
+                <group expand="0" name='filter' string="Filter">
+                    <filter
+                        name="new_entry"
+                        string="New Entry"
+                        domain="[('create_date','&gt;=',(context_today()+datetime.timedelta(days=-1)).strftime('%Y-%m-%d'))]"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+    <!--act_window, overriding the one in supplier.stock -->
+    <record id="action_supplier_stock" model="ir.actions.act_window">
+        <field name="name">Partner Stock</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">supplier.stock</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_type">form</field>
+        <field name="context">{'product_selection': True}</field>
+        <field name="search_view_id" ref="supplier_stock_search" />
+    </record>
+    <record id="action_supplier_stock_tree" model="ir.actions.act_window.view">
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_supplier_stock_tree" />
+        <field name="act_window_id" ref="action_supplier_stock" />
+    </record>
+    <record id="action_supplier_stock_kanban" model="ir.actions.act_window.view">
+        <field name="view_mode">kanban</field>
+        <field name="view_id" ref="view_supplier_stock_kanban" />
+        <field name="act_window_id" ref="action_supplier_stock" />
+    </record>
+    <record id="action_supplier_stock_form" model="ir.actions.act_window.view">
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_supplier_stock_form" />
+        <field name="act_window_id" ref="action_supplier_stock" />
+    </record>
+    <menuitem
+        action="action_supplier_stock"
+        id="menu_supplier_stock"
+        parent="stock.menu_stock_inventory_control"
+        sequence="3"
+    />
+</odoo>

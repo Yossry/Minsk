@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo noupdate="1">
+
+    <record id="clv_global_settings_export_files_directory_csv" model="ir.config_parameter">
+        <field name="key" eval="&quot;&quot;&quot;clv.global_settings.current_export_files_directory_csv&quot;&quot;&quot;"/>
+        <field name="value" eval="&quot;&quot;&quot;export_files/csv&quot;&quot;&quot;"/>
+    </record>
+
+    <record id="clv_global_settings_export_files_directory_sqlite" model="ir.config_parameter">
+        <field name="key" eval="&quot;&quot;&quot;clv.global_settings.current_export_files_directory_sqlite&quot;&quot;&quot;"/>
+        <field name="value" eval="&quot;&quot;&quot;export_files/sqlite&quot;&quot;&quot;"/>
+    </record>
+
+    <record id="clv_global_settings_export_files_directory_xls" model="ir.config_parameter">
+        <field name="key" eval="&quot;&quot;&quot;clv.global_settings.current_export_files_directory_xls&quot;&quot;&quot;"/>
+        <field name="value" eval="&quot;&quot;&quot;export_files/xls&quot;&quot;&quot;"/>
+    </record>
+
+</odoo>

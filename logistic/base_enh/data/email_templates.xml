@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+    
+    <record id="send_email_sale_inquiry" model="mail.template">
+          <field name="name">Send E-mail Sale inquiry</field>
+          <field name="email_from">${object.sales_person and object.sales_person.email or ''}</field>
+          <field name="subject">Congratz ${object.name}</field>
+          <field name="email_to">${object.partner_id.email|safe}</field>
+          <field name="lang">${object.partner_id.lang}</field>
+          <field name="model_id" ref="base_enh.model_sale_inquiry"/>
+          <field name="auto_delete" eval="True"/>
+          <field name="body_html">
+                <![CDATA[
+                  <p>Dear ${(object.partner_id.name)},<br/><br/>
+                  Sale Inquiry E-mail test!<br/></p>
+                  Regards,<br/>
+                  <!-- ${(object.company_id.name)} -->
+            ]]>
+          </field>
+    </record>
+    
+    </data>
+</odoo>

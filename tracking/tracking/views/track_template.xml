@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="index" name="Tracking Index">&lt;!DOCTYPE html&gt;
+<html>
+    <head>
+        <title>welcome tracking</title>
+
+
+    </head>
+    <body>
+        WELCOME A XLTRACK
+    </body>
+</html>
+</template>
+    <template name="Employee Details" id="website.partner" page="True">
+        <t t-call="website.layout">
+           <div id="page">
+               <h3>Employee Details</h3>
+                   <table class="table table-hover">
+                       <thead>
+                           <tr>
+                              <th>Name</th>
+                              <th>Email</th>
+                           </tr>
+                       </thead>
+                       <tbody>
+                          <tr>
+                             <t t-foreach="partner" t-as="partners">
+                                  <tr>
+                                      <td><t t-esc="partners.name" /></td>
+                                      <td><t t-esc="partners.mail" /></td>
+                                   </tr>
+                             </t>
+                          </tr>
+                       </tbody>
+                     </table>
+                </div>
+              </t>
+          </template>
+</odoo>

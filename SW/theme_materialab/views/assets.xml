@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <template id="css" name="Theme Matrial lab CSS" inherit_id="website.assets_frontend">
+            <xpath expr="link[last()]" position="after">
+                <!-- ====Google font==== -->
+                <link href='https://fonts.googleapis.com/css?family=Merriweather:400,700,700italic,400italic,300italic,300' rel='stylesheet' type='text/css' />
+                <!-- ====Open Sans==== -->
+                <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,600italic,400italic,700italic,300,300italic' rel='stylesheet' type='text/css' />
+                <!-- ====Material==== -->
+                <link type="text/css" rel="stylesheet" href="/theme_materialab/static/lib/css/mdb.min.css" />
+                <link type="text/css" rel="stylesheet" href="/theme_materialab/static/lib/css/material-design-iconic-font.min.css" />
+                <!-- ====Animate css==== -->
+                <link type="text/css" rel="stylesheet" href="/theme_materialab/static/lib/css/animate.css" />
+                <!-- ====Meanmenu css==== -->
+                <link type="text/css" rel="stylesheet" href="/theme_materialab/static/lib/css/meanmenu.min.css" />
+                <!-- ====VenoBox css==== -->
+                <link type="text/css" rel="stylesheet" href="/theme_materialab/static/lib/css/venobox.css" />
+                <!-- ====Owl carousel 2 css==== -->
+                <link type="text/css" rel="stylesheet" href="/theme_materialab/static/lib/css/owl.carousel.css" />
+                <!-- ====Custom css==== -->
+                <link type="text/css" rel="stylesheet" href="/theme_materialab/static/src/css/style.css" />
+                <!-- ====Favicons==== -->
+                <link rel="apple-touch-icon-precomposed" href="/theme_materialab/static/src/img/favicon_app.png" />
+                <link rel="shortcut icon" type="image/png" href="/theme_materialab/static/src/img/favicon.png" />
+            </xpath>
+            <xpath expr="//script[last()]" position="after">
+                <!-- ====Material==== -->
+                <script type="text/javascript" src="/theme_materialab/static/lib/js/mdb.min.js"></script>
+                <!-- ====jQuery Counterup==== -->
+                <script type="text/javascript" src="/theme_materialab/static/lib/js/waypoints.min.js"></script>
+                <script type="text/javascript" src="/theme_materialab/static/lib/js/jquery.counterup.min.js"></script>
+                <!-- ====jQuery Meanmenu==== -->
+                <script type="text/javascript" src="/theme_materialab/static/lib/js/jquery.meanmenu.min.js"></script>
+                <!-- ====jQuery easing==== -->
+                <script type="text/javascript" src="/theme_materialab/static/lib/js/jquery.easing.1.3.min.js"></script>
+                <!-- ====jQuery owl carousel==== -->
+                <script type="text/javascript" src="/theme_materialab/static/lib/js/owl.carousel.min.js"></script>
+                <!-- ====jQuery parallax==== -->
+                <script type="text/javascript" src="/theme_materialab/static/lib/js/jquery.parallax-1.1.3.js"></script>
+                <!-- ====jQuery isotop==== -->
+                <script type="text/javascript" src="/theme_materialab/static/lib/js/isotope.pkgd.min.js"></script>
+                <!-- ====jQuery Packery==== -->
+                <script type="text/javascript" src="/theme_materialab/static/lib/js/packery.js"></script>
+                <!-- ====jQuery VenoBox==== -->
+                <script type="text/javascript" src="/theme_materialab/static/lib/js/venobox.min.js"></script>
+                <!-- ====jQuery appear and knob==== -->
+                <script type="text/javascript" src="/theme_materialab/static/lib/js/jquery.knob.min.js"></script>
+                <!--Opacity & Other IE fix for older browser-->
+                <!-- ====jQuery main script==== -->
+                <script type="text/javascript" src="/theme_materialab/static/src/js/main.js"></script>
+            </xpath>
+        </template>
+    </data>
+</openerp>

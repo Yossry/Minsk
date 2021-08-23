@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		
+		<record id="view_hr_salary_inputs_form" model="ir.ui.view">
+			<field name="name">hr.salary.inputs.form</field>
+			<field name="model">hr.salary.inputs</field>
+			<field name="priority" eval="8" />
+			<field name="arch" type="xml">
+				<form string="Employee Incentives OR Fines">
+					<header>
+						<button name="inputs_validate" type="object" states="draft" string="Validate" class="oe_highlight" groups="account.group_account_user,hr_payroll.group_hr_payroll_manager"/>
+						<button name="inputs_cancel" type="object" states="draft" string="Cancel" groups="base.group_no_one"/>
+						<button name="inputs_set_draft" type="object" states="confirm" string="Set to Draft" groups="base.group_no_one"/>
+						<field name="state" widget="statusbar" nolabel="1" />
+					</header>
+						<sheet>
+							<separator colspan="4" string="Incentives OR Fine Information" />
+							<group>
+								<group>
+									<field name="employee_id" domain = "[('department_id','!=',29),('is_guard','=',False)]" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>
+									<field name="center_id" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>
+								</group>
+								<group>
+									<field name="name"/>
+									<field name="amount"/>
+									<field name="date"/>
+									<field name="over_time_hours" attrs="{'invisible': [('name' , '!=', 'OT')],'required': [('name' , '==', 'OT')]}"/>
+									<field name="per_hour_rate" attrs="{'invisible': [('name' , '!=', 'OT')]}"/>
+									<field name="per_day_rate" attrs="{'invisible': [('name' , 'in', ['BNS','ADV','ARS','FINE','OT','TAR','INCTV','OTD'])]}"/>
+									<field name="working_days" attrs="{'invisible': [('name' , 'in', ['BNS','ADV','ARS','FINE','OT','TAR','INCTV','OTD'])]}"/>
+								</group>
+							</group>
+							<group colspan="4">
+								<field name="description"/>
+							</group>
+						</sheet>
+						<div class="oe_chatter">
+							<field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+							<field name="message_ids" widget="mail_thread" placeholder="Share a note..."/>
+			  			</div>
+				</form>
+			</field>
+		</record>
+		
+		<record id="view_hr_salary_inputs_tree" model="ir.ui.view">
+			<field name="name">hr.salary.inputs.tree</field>
+			<field name="model">hr.salary.inputs</field>
+			<field name="priority" eval="8" />
+			<field name="arch" type="xml">
+				<tree string="Incentives / Fines" editable="top">
+					<field name="employee_id" domain = "[('department_id','!=',29),('is_guard','=',False)]" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>
+					<field name="center_id" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>
+					<field name="name"/>
+					<field name="date"/>
+					<field name="amount"/>
+					<field name="slip_id" readonly="1"/>
+					<field name="state"/>				
+				</tree>
+			</field>
+		</record>
+	
+		<record id="view_hr_salary_inputs_search" model="ir.ui.view">
+			<field name="name">hr.salary.inputs.search</field>
+			<field name="model">hr.salary.inputs</field>
+			<field name="priority" eval="8" />
+			<field name="arch" type="xml">
+				<search string="Employee">
+					<field name="state" string="State" filter_domain="['|', ('state','ilike',self),"/>
+					<filter icon="terp-go-today" string="Draft" name="draft" domain="[('state','=','draft')]" />
+					<filter icon="terp-camera_test" string="Done" name="done" domain="[('state','=','done')]" />
+			
+					<field name="employee_id" />
+					<field name="center_id" />
+			
+					<newline />
+			
+					<group expand="0" string="Group By...">
+						<filter name="group_employee_id" string="Employee" domain="[]" context="{'group_by':'employee_id'}"/>
+						<filter name="group_category" string="Category" domain="[]" context="{'group_by':'name'}" />	
+						<filter name="group_month" string="Date" domain="[]" context="{'group_by':'date:month'}" />											
+					</group>
+			
+				</search>
+			</field>
+		</record>
+	
+		<record model="ir.actions.act_window" id="act_hr_salary_inputs_view">
+			<field name="name">Employee Incentives</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">hr.salary.inputs</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="context">{'search_default_draft':1}</field>
+		</record>
+
+		<record id="action_hr_salary_inputs_approval" model="ir.actions.server">
+			<field name="name">Employee Incentives Approval</field>
+			 <field name="type">ir.actions.server</field>
+			 <field name="state">code</field>
+			<field name="model_id" ref="model_hr_salary_inputs"/>
+			<field name="binding_model_id" ref="model_hr_salary_inputs"/>
+			<field name="code">records.inputs_approve()</field>
+		</record> 
+	
+	</data>
+</odoo>

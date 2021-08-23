@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		
+		<template id ="report_projectguard_details">
+			<t t-call="web.html_container">
+				<t t-call="web.external_layout" style="font-family:georgia,garamond,serif;font-size:10px;">
+					<div class="page">	
+						<div class="row">
+						 	 <div class="col-xs-4">
+						 	 	 <img width="40%" style="max-height:125px;" class="img img-responsive" src="/sos/static/src/img/logo.png"/>
+						 	 </div>
+					 		 <div class="col-xs-3">
+						 	 </div>
+						 	 
+					 	 	<div class="col-xs-5" style="font-size:14px; font-weight:bold; text-align:right; align:left;margin-top:20px;">
+					 	 		SECURITY ORGANIZING SYSTEM (PVT) LIMITED
+					 	 	</div>
+					 	 </div>	
+					<h4> Project Detail Report </h4>
+			
+					<table class="table table-bordered">
+					 	<tr style="background-color: #FFEBCD; font-size:10px;font-weight:bold;">
+					 		<td>Sr</td>
+					 		<td>Center Name </td>
+					 		<td>Total Branches </td>
+					 		<td>Total Guards </td>
+					 	</tr>
+					 		<t t-foreach="Centers" t-as="center">
+							 	<tr style="font-size:14px;font-weight:bold;">
+							 		<td colspan="4"><span t-esc="center['project']"/> </td>
+							 	</tr>
+								 <t t-foreach="center['posts']" t-as="post">
+								 	<tr style="font-size:10px;">
+								 		<td><span t-esc="post_index + 1"/> </td>
+								 		<td><span t-esc="post['name']"/></td>
+								 		<td><span t-esc="post['branch_total']"/></td>
+								 		<td><span t-esc="post['total_guards']"/></td>
+								 	</tr>
+								 </t>
+								 <tr>
+								 	<td colspan="2"> TOTAL </td>
+								 	<td><span t-esc="center['project_brances']"/> </td>
+								 	<td><span t-esc="center['project_guards']"/> </td>
+								 </tr>	
+							 </t>
+							<tr style="font-size:12px;font-weight:bold;">
+								<td colspan="2" style="text-align: center;"> TOTALS </td>
+								<td><span t-esc="Branches"/> </td>
+								<td><span t-esc="Guards"/> </td>
+							</tr> 	
+					 </table>
+				</div>
+				</t>	 	
+			</t>
+		</template>
+	
+	</data>
+</odoo>

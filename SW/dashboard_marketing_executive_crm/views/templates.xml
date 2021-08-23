@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="assets_backend" name="crm_dashboard_assets" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" href="/dashboard_marketing_executive_crm/static/src/css/dashboard_crm.css"/>
+            
+            <script type="text/javascript" src="/dashboard_marketing_executive_crm/static/src/lib/highcharts.js"></script>
+            <script type="text/javascript" src="/dashboard_marketing_executive_crm/static/src/lib/funnel.js"></script>
+            <script type="text/javascript" src="/dashboard_marketing_executive_crm/static/src/lib/exporting.js"></script>
+            <script type="text/javascript" src="/dashboard_marketing_executive_crm/static/src/js/dashboard_crm.js"></script>
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_project_bid_template_form" model="ir.ui.view">
+            <field name="name">project.bid.template.form</field>
+            <field name="model">project.bid.template</field>
+            <field name="inherit_id"
+                   ref="project_bid.view_project_bid_template_form"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <group name="mis" position="inside">
+                    <field name="quotation_template_id"/>
+                    <field name="version_id"/>                    
+                    <field name="revenue_product_id"/>
+                    <field name="expense_product_id"/>
+                </group>
+            </field>
+        </record>
+    </data>
+
+</odoo>

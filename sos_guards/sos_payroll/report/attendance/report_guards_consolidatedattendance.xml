@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>	
+		<template id ="report_guards_consolidatedattendance">
+			<t t-call="web.html_container">
+				<div class="page">
+					<style>
+						table th { background-color:#d4e3e5;}
+					</style>
+					
+					 <div class="row">
+					 	 <div class="col-xs-4">
+					 	 	 <img width="40%" style="max-height:125px;" class="img img-responsive" src="/sos_payroll/static/src/img/logo.png"/>
+					 	 </div>
+					 	 <div class="col-xs-3">
+					 	 </div>
+					 	 
+					 	 <div class="col-xs-5" style="font-size:14px; font-weight:bold; text-align:right; align:left;margin-top:20px;">
+					 	 	SECURITY ORGANIZING SYSTEM (PVT) LIMITED
+					 	 </div>
+					 </div>
+				
+					 <div class="row" style="text-align:right; align:right;">
+					 	<div class="col-xs-12 pull right">
+					 	<h3>	Consolidated Position of Guards Attendance (All Projects) </h3> 
+					 	</div>
+					 </div>
+					  <div class="row" style="text-align:right; align:right;">
+					 	<div class="col-xs-12 pull right">
+					 		 <h4>(Head Office Multan)</h4>
+					 	</div>
+					 </div>
+					 
+					 <table class="table table-condensed" width="100%" style="font-size:10px; font-weight:bold;">
+					 	<tr>
+					 		<td style="text-align:left; margin-left:10px;">Prepared By:</td>
+					 		<td style="text-align:right;">Attendance Date: <span t-esc="get_date_formate(data['date_to'])"/>   </td>
+					 	</tr>
+					 	<tr>
+					 		<td style="text-align:left; margin-left:10px;">Checked By:</td>
+					 		<td style="text-align:right;">  Reporting Date: 
+					 			<t t-esc="context_timestamp(datetime.datetime.now()).strftime('%H:%M:%S')"/> </td>
+					 	</tr>
+					 </table>
+					 
+					 
+					 
+					  <div class="col-xs-12 pull-right" style="padding-left:0px; padding-right:0px; page-break-inside: avoid;">
+					  	<table class="table table-bordered" width="100%">
+					  		<thead>
+					  			<tr style="font-size:10px;">
+					  				<th >Sr </th>
+					  				<th>Project </th>
+					  				<th>Coordinator </th>
+					  				<th>Total Guards </th>
+					  				<th>Present Guards </th>
+					  				<th>Absent Guards</th>
+					  				<th width="40%" style="text-align:center;">Name(s) of Regions And No of Guards</th>
+					  				<th>Shortfall Detail</th>
+					  				<th>Remarks </th>
+					  			</tr>
+					  		</thead>
+					  		<tbody style="font-size:10px;">
+					  			<t t-foreach="Projects" t-as="project">
+					  				<tr>
+					  					<td> <span t-esc="project_index + 1"/> </td>
+					  					<td> <span t-esc="project['name']"/> </td>
+					  					<td> <span t-esc="project['coordinator']"/> </td>
+					  					<td> <span t-esc="project['guard']"/> </td>
+					  					<td> <span t-esc="project['present']"/> </td>
+					  					<td> <span t-esc="project['absent']"/> </td>
+					  					<td> <span t-esc="project['center_guards']"/> </td>
+					  					<td> <span t-esc="project['shortfall']"/> </td>
+					  					<td>
+					  						<t t-if="project['absent'] > 1">
+					  							<span t-esc="project['absent']" /> S/G Absent
+					  						</t>
+					  						<t t-if="project['absent'] == 0">
+					  							100 % Attendance
+					  						</t>
+					  					</td>
+					  				</tr>
+					  			</t>
+					  			<tr style="font-size:10px; font-weight:bold;">
+					  				<td colspan="3"></td>
+					  				<td><span t-esc="Totals"/></td>
+					  				<td><span t-esc="Presents"/></td>
+					  				<td><span t-esc="Absents"/></td>
+					  				<td colspan="3"></td>
+					  			</tr>
+					  		</tbody>
+					  	</table>
+					  </div>
+					  
+					  
+				</div>	 			 	
+			</t>
+		</template>
+		
+	</data>
+</odoo>
+

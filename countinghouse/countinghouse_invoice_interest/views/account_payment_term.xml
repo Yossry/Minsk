@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="view_payment_term_form_interest_settings" model="ir.ui.view">
+        <field name="name">Payment Term Interest Settings</field>
+        <field name="model">account.payment.term</field>
+        <field name="inherit_id" ref="account.view_payment_term_form" />
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="charge_interest"/>
+                <field name="sales_tax_policy" attrs="{'invisible':[('charge_interest','=',False)]}" />
+                <field name="interest_rate" attrs="{'invisible':[('charge_interest','=',False)]}" />
+                <field name="product_id"
+                       attrs="{'invisible':[('charge_interest','=',False)], 'required':[('charge_interest','=',True)]}" />
+            </field>
+        </field>
+    </record>
+
+</odoo>

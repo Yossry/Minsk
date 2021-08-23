@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo noupdate="0">
+
+    <record id="mass_object_Document" model="mass.object">
+        <field name="name">Document</field>
+        <field name="model_id" ref="clv_document.model_clv_document"/>
+        <field name="field_ids" eval="[(6, 0, [
+        	ref('clv_document.field_clv_document_global_tag_ids'),
+            ref('clv_document.field_clv_document_category_ids'),
+            ref('clv_document.field_clv_document_date_deadline'),
+            ref('clv_document.field_clv_document_notes'),
+            ])]"/>
+    </record>
+    <function
+        model="mass.object"
+        name="exec_create_action">
+            <value eval="ref('mass_object_Document')"/>
+    </function>
+
+</odoo>

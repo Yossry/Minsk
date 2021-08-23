@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>	
+		<template id ="sos_reports.report_profitabilitysummaryproject">
+			<t t-call="report.html_container">
+				<div class="page">
+					<div class="row">
+					 	 <div class="col-xs-4">
+					 	 	 <img width="40%" style="max-height:125px;" class="img img-responsive" src="/sos_reports/static/img/logo.png"/>
+					 	 </div>
+					 	 <div class="col-xs-3">
+					 	 </div>
+					 	 
+					 	 <div class="col-xs-5" style="font-size:14px; font-weight:bold; text-align:right; align:left;margin-top:20px;">
+					 	 	SECURITY ORGANIZING SYSTEM (PVT) LIMITED
+					 	 </div>
+					 </div>			
+					 <div class="row" style="font-size:14px; font-weight:bold; text-align:center; align:left;">
+					 	<div class="col-xs-12">
+					 		Project Wise Profitabilty  – Project Wise  From
+					 			<span t-esc="get_date_formate(data['date_from'])"/> To <span t-esc="get_date_formate(data['date_to'])"/>
+					 	</div>
+					 </div>
+					 
+					 <table class="table table-bordered">
+					 	<thead>
+					 		<tr style="font-size:10px; font-weight:bold;background-color:#A6ACAF;">
+					 			<th>Sr#.</th>
+					 			<th>Project Name</th>
+					 			<th>Invoice Amount</th>
+					 			<th>Short Fall</th>
+					 			<th>Credit Note</th>
+					 			<th>Net Invoice</th>
+					 			<th>S/G Salary</th>
+					 			<th>Gross Profit</th>
+					 		</tr>
+					 		
+					 	</thead>
+					 	<tbody>
+					 		
+					 		<t t-foreach="Projects" t-as="project">
+					 			<tr style="font-size:10px;">
+					 				<td class="text-left">
+										<span t-esc="project_index + 1" />
+									</td>
+									<td class="text-left">
+										<span t-esc="project['name']" />
+									</td>
+									<td class="text-left">
+										<span t-esc="project['invoiced'] and '{0:,.0f}'.format(int(project['invoiced'])) or '-'" />
+									</td>
+									<td class="text-left">
+										<span t-esc="project['shortfall'] and '{0:,.0f}'.format(int(project['shortfall'])) or '-'" />
+									</td>
+									<td class="text-left">
+										<span t-esc="project['credit_note'] and '{0:,.0f}'.format(int(project['credit_note'])) or '-'" />
+									</td>
+									<td class="text-left">
+										<span t-esc="project['net_invoiced'] and '{0:,.0f}'.format(int(project['net_invoiced'])) or '-'" />
+									</td>
+									<td class="text-left">
+										<span t-esc="project['salary'] and '{0:,.0f}'.format(int(project['salary'])) or '-'" />
+									</td>
+									<td class="text-left">
+										<span t-esc="project['gross'] and '{0:,.0f}'.format(int(project['gross'])) or '-'" />
+									</td>
+					 			</tr>
+					 		</t>
+					 		
+					 		<tr style="font-size:10px; font-weight:bold;background-color:#707B7C;">
+					 			<td class="text-center" colspan="2">
+										TOTALS:
+								</td>
+								<td class="text-left">
+									<span t-esc="Invoiced and '{0:,.0f}'.format(int(Invoiced)) or '-'" />
+								</td>
+								<td class="text-left">
+									<span t-esc="Shortfall and '{0:,.0f}'.format(int(Shortfall)) or '-'" />
+								</td>
+								<td class="text-left">
+									<span t-esc="Credit_Note and '{0:,.0f}'.format(int(Credit_Note)) or '-'" />
+								</td>
+								<td class="text-left">
+									<span t-esc="Net and '{0:,.0f}'.format(int(Net)) or '-'" />
+								</td>
+								<td class="text-left">
+									<span t-esc="Salary and '{0:,.0f}'.format(int(Salary)) or '-'" />
+								</td>
+								<td class="text-left">
+									<span t-esc="Gross and '{0:,.0f}'.format(int(Gross)) or '-'" />
+								</td>
+										
+							</tr>	
+					 		
+					 	</tbody>
+					 	
+					 </table>
+					 
+				</div>	 
+			</t>
+		</template>
+		
+	</data>
+</openerp>
+

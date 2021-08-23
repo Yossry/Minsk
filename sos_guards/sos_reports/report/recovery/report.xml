@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>             
+    <data>
+		<!-- Pending Recovery Project Wise-->
+		<report
+			id="project_wise_pending_recovery"
+			string= "Project Wise Pending Recovery"
+			model = "sos_reports.pending.recovery.wizard"
+			report_type="qweb-pdf"
+			file="sos_reports.project_report_pendingrecovery"
+			name="sos_reports.project_report_pendingrecovery"
+		/>
+		 
+		<!-- Pending Recovery Center Wise-->
+		<report
+			id="center_wise_pending_recovery"
+			string= "Center Wise Pending Recovery"
+			model = "sos_reports.pending.recovery.wizard"
+			report_type="qweb-pdf"
+			file="sos_reports.center_report_pendingrecovery"
+			name="sos_reports.center_report_pendingrecovery"
+		/>
+		
+		<!-- Pending Recovery Post Wise-->
+		<report
+			id="post_wise_pending_recovery"
+			string= "Post Wise Pending Recovery"
+			model = "sos_reports.pending.recovery.wizard"
+			report_type="qweb-pdf"
+			file="sos_reports.post_report_pendingrecovery"
+			name="sos_reports.post_report_pendingrecovery"
+		/> 
+		  
+	</data>
+</odoo>

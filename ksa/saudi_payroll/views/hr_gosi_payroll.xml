@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data noupdate="0">
+		
+		<record id="hr_rule_gosi_ded" model="hr.salary.rule">
+			<field name="name">Employee GOSI</field>
+			<field name="sequence" eval="120"/>
+			<field name="code">E.G.C</field>
+			<field name="category_id" ref="hr_payroll.DED"/>
+			<field name="condition_select">none</field>
+			<field name="amount_select">code</field>
+			<field name="amount_python_compute">result = - (contract.gosi)</field>
+		</record>
+		<record id="hr_rule_trans_all" model="hr.salary.rule">
+			<field name="name">Transportation Allowance</field>
+			<field name="sequence" eval="120"/>
+			<field name="code">E.A.T</field>
+			<field name="category_id" ref="hr_payroll.ALW"/>
+			<field name="condition_select">none</field>
+			<field name="amount_select">code</field>
+			<field name="amount_python_compute">result = (contract.trans_allow)</field>
+		</record>
+		<record id="hr_rule_house_all" model="hr.salary.rule">
+			<field name="name">Housing Allowance</field>
+			<field name="sequence" eval="120"/>
+			<field name="code">E.A.H</field>
+			<field name="category_id" ref="hr_payroll.ALW"/>
+			<field name="condition_select">none</field>
+			<field name="amount_select">code</field>
+			<field name="amount_python_compute">result = (contract.housing_allow)</field>
+		</record>
+		<record id="hr_rule_high_all" model="hr.salary.rule">
+			<field name="name">A high cost of living allowance</field>
+			<field name="sequence" eval="120"/>
+			<field name="code">E.A.C</field>
+			<field name="category_id" ref="hr_payroll.ALW"/>
+			<field name="condition_select">none</field>
+			<field name="amount_select">code</field>
+			<field name="amount_python_compute">result = (contract.live_allow)</field>
+		</record>
+		<record id="hr_rule_risk_all" model="hr.salary.rule">
+			<field name="name">Risk Allowance</field>
+			<field name="sequence" eval="120"/>
+			<field name="code">E.A.R</field>
+			<field name="category_id" ref="hr_payroll.ALW"/>
+			<field name="condition_select">none</field>
+			<field name="amount_select">code</field>
+			<field name="amount_python_compute">result = (contract.risk_allow)</field>
+		</record>
+		<record id="hr_rule_other_allowance" model="hr.salary.rule">
+			<field name="name">Other Allowance</field>
+			<field name="sequence" eval="120"/>
+			<field name="code">E.A.O</field>
+			<field name="category_id" ref="hr_payroll.ALW"/>
+			<field name="condition_select">none</field>
+			<field name="amount_select">code</field>
+			<field name="amount_python_compute">result = (contract.other_allow)</field>
+		</record>
+	</data>
+</odoo>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+		<record id="view_contract_template_tree" model="ir.ui.view">
+			<field name="name">hr.contract.template.tree</field>
+			<field name="model">hr.contract.template</field>
+			<field name="arch" type="xml">
+				<tree string="Contract Template">
+				    <field name="name"/>
+				    <field name="date"/>
+				    <field name="trial_period"/>
+				    <field name="struct_id"/>
+				    <field name="policy_group_id"/>
+				    <field name="state"/>
+				</tree>
+			</field>
+		</record>
+       
+		<record id="view_contract_template_form" model="ir.ui.view">
+			<field name="name">hr.contract.template.form</field>
+			<field name="model">hr.contract.template</field>
+			<field name="arch" type="xml">
+				<form string="Contract Template">
+				    <header>
+				        <button name="state_approve" type="object" states="draft" string="Approve" class="oe_highlight" groups="hr.group_hr_manager"/>
+				        <button name="state_decline" type="object" states="draft,approve" string="Decline" groups="hr.group_hr_manager" confirm="Are you sure you want to Decline this?"/>
+				        <button name="set_to_draft" type="object" states="decline" string="Reset to New" groups="hr.group_hr_manager"/>
+				        <field name="state" widget="statusbar" statusbar_visible="draft,approve" />
+				    </header>
+					<sheet>
+						<label for="name" class="oe_edit_only"/>
+						<h1>
+						    <field name="name"/>
+						</h1>
+						<group>
+						    <group>
+						    	<field name="company_id"/>
+						        <field name="date"/>
+						        <field name="trial_period"/>
+						    </group>
+						    <group>
+						        <field name="struct_id" options="{'no_quick_create':True,'no_create_edit':True}"/>
+						        <field name="policy_group_id" options="{'no_quick_create':True,'no_create_edit':True}"/>
+						        <field name="journal_id" options="{'no_quick_create':True,'no_create_edit':True}"/>
+						    </group>
+						</group>
+						<group string="Initial Wages">
+						    <field name="wage_ids" nolabel="1">
+						        <tree string="Initial Wages" editable="bottom">
+						            <field name="category_ids" widget="many2many_tags"/>
+						            <field name="job_id"/>
+						            <field name="starting_wage"/>
+						            <field name="is_default"/>
+						        </tree>
+						    </field>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+	        
+		<record id="open_contract_template" model="ir.actions.act_window">
+			<field name="name">Contract Template</field>
+			<field name="res_model">hr.contract.template</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+
+	        
+		<!-- Initial Wages -->
+		<record id="view_contract_template_wage_tree" model="ir.ui.view">
+			<field name="name">hr.contract.template.wage.tree</field>
+			<field name="model">hr.contract.template.wage</field>
+			<field name="arch" type="xml">
+				<tree string="Initial Wages">
+				    <field name="category_ids" widget="many2many_tags"/>
+				    <field name="job_id"/>
+				    <field name="starting_wage"/>
+				    <field name="is_default"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="view_contract_template_wage_form" model="ir.ui.view">
+			<field name="name">hr.contract.template.wage.form</field>
+			<field name="model">hr.contract.template.wage</field>
+			<field name="arch" type="xml">
+				<form string="Initial Wages" version="7.0">
+				    <group>
+				        <group>
+				            <field name="job_id"/>
+				            <field name="starting_wage"/>
+				            <field name="is_default"/>
+				        </group>
+				        <group>
+				            <field name="category_ids" widget="many2many_tags"/>
+				        </group>
+				    </group>
+				</form>
+			</field>
+		</record>
+
+
+ </data>
+</odoo>
+
+

@@ -1,0 +1,4 @@
+# odoo-hr
+
+
+Readme.

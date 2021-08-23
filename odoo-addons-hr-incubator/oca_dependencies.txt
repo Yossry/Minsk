@@ -1,0 +1,7 @@
+# list the OCA project dependencies, one per line
+# add a github url if you need a forked version
+
+bank-payment
+hr
+event
+l10n-france

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+	
+        <record id="sos_pending_recovery_view" model="ir.ui.view">
+            <field name="name">Print Pending Recovery Report</field>
+            <field name="model">pending.recovery.wizard</field>            
+            <field name="arch" type="xml">
+            <form string="Report Options">
+                <separator string="Pending Recovery" colspan="4"/>
+                <!--SARFRAZ-->
+                <!-- <label nolabel="1" colspan="4" string="This report allows you to print or generate a pdf of Pending Recovery Project wise, Center Wise and Select Project or Center Posts..."/> -->
+                <group>
+                	<group>
+                		 <field name="date_from" />
+                         <field name="date_to" />
+                	</group>
+                	<group>
+                		<field name="group_by"/>
+                	</group>	
+                </group>
+                
+                <separator string="For Post Wise Report, Select Projects or Centers Any one of these Two" attrs="{'invisible':[('group_by', 'in', ('sos_project_pending_recovery_report','sos_center_pending_recovery_report'))]}"/>													
+                <group attrs="{'invisible':[('group_by', 'in', ('sos_project_pending_recovery_report','sos_center_pending_recovery_report'))]}">
+                	 <field name="center_ids" string="Centers" widget="many2many_tags" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>
+                </group>
+                <group attrs="{'invisible':[('group_by', 'in', ('sos_project_pending_recovery_report','sos_center_pending_recovery_report'))]}">
+                	<field name="project_ids" string="Projects"  widget="many2many_tags" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>		
+                </group>
+                  
+                <footer>
+                    <button name="print_report" string="Generate Report" type="object" default_focus="1" class="oe_highlight"/>
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+            </form>
+            
+            </field>
+        </record>
+	
+				
+        <record id="action_sos_pending_recovery_report" model="ir.actions.act_window">
+            <field name="name">Print Pending Recovery</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pending.recovery.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="sos_pending_recovery_view"/>
+            <field name="target">new</field>
+        </record>
+		
+    </data>
+</odoo>

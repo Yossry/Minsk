@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--  Copyright 2019 UNIBRAVO. License OPL-1 -->
+
+<odoo>
+    
+    <template id="assets_common" name="Common Assets" inherit_id="web_editor.assets_common">
+        <xpath expr="//link[last()]" position="after">
+            <link rel="stylesheet" type="text/scss" href="/web_bravo12/static/src/scss/fonts.scss"/>
+        </xpath>
+    </template>
+
+    <template id="assets_backend" name="Backend Assets" inherit_id="web.assets_backend">
+        <xpath expr=".">
+            <link rel="stylesheet" href="/web_bravo12/static/src/scss/apps.scss"/>
+            <link rel="stylesheet" href="/web_bravo12/static/src/scss/style.scss"/>
+            <link rel="stylesheet" href="/web_bravo12/static/src/css/media.css"/>
+            <link rel="stylesheet" href="/web_bravo12/static/src/scss/sidebar.scss"/>
+            <link rel="stylesheet" href="/web_bravo12/static/src/scss/buttons.scss"/>
+            <link rel="stylesheet" href="/web_bravo12/static/src/scss/listview.scss"/>
+            <link rel="stylesheet" href="/web_bravo12/static/src/scss/datepicker.scss"/>
+            <script type="application/javascript" src="/web_bravo12/static/src/js/apps.js"/>
+        </xpath>
+        <xpath expr="//link[@href='/web/static/src/scss/form_view_extra.scss']" position="replace">
+            <link rel="stylesheet" type="text/scss" href="/web_bravo12/static/src/scss/formview.scss"/>
+        </xpath>
+    </template>
+    
+</odoo>

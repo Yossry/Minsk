@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="assets_frontend" inherit_id="website.assets_frontend" name="Artesia Template">
+            <xpath expr="." position="inside">
+                <!-- Theme CSS -->
+                <link rel="stylesheet" href="/artesia/static/src/css/style.css" type="text/css"/>
+                <link rel="stylesheet" href="/artesia/static/src/css/custom.css" type="text/css"/>
+                <link rel="stylesheet" href="/artesia/static/src/css/responsive.css"/>
+
+                <!-- COLOR SWITCHER CSS -->
+                <link rel="stylesheet" id="switcher-css" href="/artesia/static/src/color-switcher/switcher.css"/>
+                <link rel="stylesheet" href="/artesia/static/src/theme/light-green.css" title="light-green"/>
+                <link rel="alternate stylesheet" href="/artesia/static/src/theme/red.css" title="red"/>
+                <link rel="alternate stylesheet" href="/artesia/static/src/theme/blue.css" title="blue"/>
+                <link rel="alternate stylesheet" href="/artesia/static/src/theme/bright-green.css" title="bright-green"/>
+                <link rel="alternate stylesheet" href="/artesia/static/src/theme/cyan.css" title="cyan"/>
+                <link rel="alternate stylesheet" href="/artesia/static/src/theme/orange.css" title="orange"/>
+                <link rel="alternate stylesheet" href="/artesia/static/src/theme/black.css" title="black"/>
+                <link rel="alternate stylesheet" href="/artesia/static/src/theme/pink.css" title="pink"/>
+                <link rel="alternate stylesheet" href="/artesia/static/src/theme/purple.css" title="purple"/>
+                <link rel="alternate stylesheet" href="/artesia/static/src/theme/brown.css" title="brown"/>
+
+                <link rel="alternate stylesheet" href="/artesia/static/src/theme/normal.css" title="normal"/>
+                <link rel="alternate stylesheet" href="/artesia/static/src/theme/bold.css" title="bold"/>
+                <link rel="alternate stylesheet" href="/artesia/static/src/theme/italic.css" title="italic"/>
+                <link rel="alternate stylesheet" href="/artesia/static/src/theme/undeline.css" title="undeline"/>
+                <!-- RESPONSIVE -->
+                <meta name="viewport" content="initial-scale=1, user-scalable=no"/>
+            </xpath>
+        </template>
+
+        <template id="clean_script" inherit_id="website.assets_frontend" name="Clean scripts">
+            <xpath expr="/t" position="inside">
+                <!-- Theme JS -->
+                <script type="text/javascript" src="/artesia/static/src/js/custom.js"></script>
+                <script src="/artesia/static/src/js/website_subscribe.js"></script>
+                <script src="/artesia/static/src/color-switcher/color-switch.js"></script>
+                <script src="/artesia/static/src/js/contact_us.js"></script>
+                <script src="/artesia/static/src/js/isotope.pkgd.min.js"></script>
+            </xpath>
+        </template>
+
+        <template id="customize_header" inherit_id="website.layout" name="Customize Header">
+            <xpath expr="//main" position="inside">
+                <div class="demo_changer" t-if="website and menu_data">
+                    <div class="demo-icon"><i class="fa fa-cog fa-spin color-switcher"></i></div>
+                    <div class="form_holder">
+                        <p>Artesia Layout</p>
+                        <div class="layout-center">
+                            <a class="btn btn-default btn-xl btn-normal panel-layout-reset" href="#">Full</a>
+                            <a class="btn btn-default btn-xl btn-normal panel-layout-boxed" href="#">Boxed</a>
+                        </div>
+                        <p>Artesia Color Pane</p>
+                        <div class="predefined_styles">
+                            <a href="#" data-rel="light-green" class="styleswitch"><div class="light-green"></div></a>
+                            <a href="#" data-rel="red" class="styleswitch"><div class="red"></div></a>
+                            <a href="#" data-rel="blue" class="styleswitch"><div class="blue"></div></a>
+                            <a href="#" data-rel="bright-green" class="styleswitch"><div class="bright-green"></div></a>
+                            <a href="#" data-rel="cyan" class="styleswitch"><div class="cyan"></div></a>
+                            <a href="#" data-rel="orange" class="styleswitch"><div class="orange"></div></a>
+                            <a href="#" data-rel="black" class="styleswitch"><div class="black"></div></a>
+                            <a href="#" data-rel="pink" class="styleswitch"><div class="pink"></div></a>
+                            <a href="#" data-rel="purple" class="styleswitch"><div class="purple"></div></a>
+                            <a href="#" data-rel="brown" class="styleswitch"><div class="brown"></div></a>
+                        </div>
+                        <p>Artesia Font Style</p>
+                        <div class="predefined_styles styled-font">
+                            <a href="#" data-rel="normal" class="styleswitch box-size"><span>N</span></a>
+                            <a href="#" data-rel="bold" class="styleswitch box-size"><span class="bold">B</span></a>
+                            <a href="#" data-rel="italic" class="styleswitch box-size"><span class="italic">I</span></a>
+                            <a href="#" data-rel="undeline" class="styleswitch box-size"><span class="underline">U</span></a>
+                        </div>
+                        <p>Artesia Demos</p>
+                        <div class="layout-center">
+                            <ul class="nav demo-set padding-top-20">
+                                <li><a href="/page/homepage-1"><img src="/artesia/static/src/images/demo/demo-first.jpg" class="img-responsive" alt="demo-img"/></a></li>
+                                <li><a href="/page/homepage-2"><img src="/artesia/static/src/images/demo/demo-second.jpg" class="img-responsive" alt="demo-img"/></a></li>
+                                <li><a href="/page/homepage-3"><img src="/artesia/static/src/images/demo/demo-third.jpg" class="img-responsive" alt="demo-img"/></a></li>
+                                <li><a href="/page/homepage-2"><img src="/artesia/static/src/images/demo/demo-fourth.jpg" class="img-responsive" alt="demo-img"/></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div id="myModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">×</button>
+                                <div class="heading-block price-first-lg center">
+                                    <h2>Contact Us</h2>
+                                </div>
+                            </div>
+                            <div class="modal-body">
+                                <section class="contact-section" id="contact_us">
+                                    <div class="container">
+                                        
+                                        <div class="row">
+                                            <div class="col-md-12 col-sm-6 col-xs-12 contact-colmun">
+                                                <div class="contact-area">
+                                                    <form action="/contactform_action" id="contact-form" name="contact_form" class="default-form">
+                                                        <div class="row">
+                                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                                <input type="text" name="name" value="" placeholder="Name" required=""/>
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                                <input type="text" name="mobile" value="" placeholder="Mobile" required=""/>
+                                                            </div>
+                                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                                <input type="email" name="email" value="" placeholder="Email Address" required=""/>
+                                                            </div>
+                                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                                <textarea placeholder="Message" name="message" required=""></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div id='contact_message' class="form-group" style="text-align: center;color: green;"></div>
+                                                        <div class="form-group">
+                                                            <button type="submit" class="submit_button btn-one" data-loading-text="Please wait...">Send Message</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+
+            <!-- Remove Divider In Sign In Page -->
+            <xpath expr="//header//ul[@id='top_menu']/li[3]" position="replace"/>
+
+            <!-- Top Up Page -->
+            <xpath expr="//footer" position="after">
+                <div id="return-to-top">
+                    <a href="#" class="scrollup"></a>
+                </div>
+            </xpath>
+        </template>
+
+        <!-- Remove Divider In homepage -->
+        <template id="top_header" name="Main layout" inherit_id="portal.frontend_layout">
+            <xpath expr="//header//ul[@id='top_menu']/li[hasclass('divider')]" position="replace"/>
+        </template>
+    </data>
+</odoo>

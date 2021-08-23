@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sos_center_postwise_guards_wizard_view" model="ir.ui.view">
+        <field name="name">Center Postwise Detail Report</field>
+        <field name="model">sos.center.postwise.guards.wizard</field>
+        <field name="arch" type="xml">
+			<form string="Center PostWise Guards Detail Report Wizard">
+				<group>	
+					<field name="center_ids" widget="many2many_checkboxes"/>		
+				</group>
+				
+				<footer>
+						<button icon="gtk-execute" string="Print" name="print_report" type="object" class="oe_highlight"  />
+						<button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+			</form>
+		</field>
+    </record>
+
+    
+    <!-- **** Action **** -->
+    <act_window
+            id="action_sos_center_postwise_guards_wizard"
+            name="Post Guards Detail"
+            res_model="sos.center.postwise.guards.wizard"
+            src_model="sos.center"
+            view_mode="form"
+            multi="True"
+            target="new"
+            key2="client_print_multi"
+        />   
+</odoo>

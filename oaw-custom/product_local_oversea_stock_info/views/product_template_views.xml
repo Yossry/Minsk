@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!--Search View -->
+    <record id="product_template_search_view" model="ir.ui.view">
+        <field name="name">product.template.search</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_search_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='categ_id']" position="after">
+                <group expand="0" name='new_receive' string="New Receive">
+                    <filter
+                        name="received_today"
+                        string="Received today"
+                        domain="[('last_in_date','&gt;=',(context_today()+datetime.timedelta(days=-1)).strftime('%Y-%m-%d'))]"
+                    />
+                    <filter
+                        name="received_two_weeks"
+                        string="Received 2 weeks"
+                        domain="[('last_in_date','&gt;=',(context_today()+datetime.timedelta(weeks=-2)).strftime('%Y-%m-%d'))]"
+                    />
+                </group>
+                <group expand="0" name='available' string="Available">
+                    <filter
+                        name="warehouse_internal_location"
+                        string="Local: internal"
+                        domain="[('qty_available','&gt;',0)]"
+                    />
+                    <filter
+                        name="local_w_res"
+                        string="Local w R"
+                        domain="[('qty_local_stock','&gt;',0)]"
+                    />
+                    <filter
+                        name="local_wo_res"
+                        string="Local w/o R"
+                        domain="[('local_stock_not_reserved','&gt;',0)]"
+                    />
+                    <filter
+                        name="overseas"
+                        string="Overseas"
+                        domain="[('overseas_stock','=','Yes')]"
+                    />
+                    <filter
+                        name="local_overseas_w_res"
+                        string="Local&amp;overseas w R"
+                        domain="['|',('qty_local_stock','&gt;',0),('overseas_stock','=','Yes')]"
+                    />
+                    <filter
+                        name="local_overseas_wo_res"
+                        string="Local&amp;overseas w/o R"
+                        domain="['|',('local_stock_not_reserved','&gt;',0),('overseas_stock','=','Yes')]"
+                    />
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

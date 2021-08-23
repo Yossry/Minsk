@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Import master data wizard form -->
+    <record id="view_import_master_data" model="ir.ui.view">
+        <field name="name">import.master.data.form</field>
+        <field name="model">import.master.data</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Import chart of account">
+                <group colspan="4" col="4">
+                    <field name="name" />
+                    <field name="delimeter"/>
+                    <field name="model_id"/>
+                    <field name="key_field_id" domain="[('model_id', '=', model_id)]"/>
+                </group>
+                <group>
+                    <field name="data" filename="name"/>
+                </group>
+                <separator colspan="4"/>
+                <footer>
+                    <button name="action_import" string="Import" type="object" class="oe_highlight"/>
+                    <button special="cancel" string="Cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_import_master_data" model="ir.actions.act_window">
+        <field name="name">Import master data</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">import.master.data</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_import_master_data"/>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_parent_master_data_import" name="Master Data Import"
+        parent="base.menu_administration" sequence="10"/>
+
+    <menuitem id="menu_master_data_import" action="action_import_master_data"
+        parent="menu_parent_master_data_import"/>
+
+</odoo>

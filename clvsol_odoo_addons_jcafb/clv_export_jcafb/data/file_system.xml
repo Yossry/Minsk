@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo noupdate="0">
+ 
+	<record id="clv_file_system_directory_export_files_csv" model="clv.file_system.directory">
+		<field name="name" eval="&quot;&quot;&quot;Export Files (CSV)&quot;&quot;&quot;"/>
+		<field name="directory" eval="&quot;&quot;&quot;/opt/odoo/clvsol_filestore/clvhealth_jcafb/export_files/csv&quot;&quot;&quot;"/>
+	</record>
+
+	<record id="clv_file_system_directory_export_files_sqlite" model="clv.file_system.directory">
+		<field name="name" eval="&quot;&quot;&quot;Export Files (SQLite)&quot;&quot;&quot;"/>
+		<field name="directory" eval="&quot;&quot;&quot;/opt/odoo/clvsol_filestore/clvhealth_jcafb/export_files/sqlite&quot;&quot;&quot;"/>
+	</record>
+
+	<record id="clv_file_system_directory_export_files_xls" model="clv.file_system.directory">
+		<field name="name" eval="&quot;&quot;&quot;Export Files (XLS)&quot;&quot;&quot;"/>
+		<field name="directory" eval="&quot;&quot;&quot;/opt/odoo/clvsol_filestore/clvhealth_jcafb/export_files/xls&quot;&quot;&quot;"/>
+	</record>
+
+</odoo>

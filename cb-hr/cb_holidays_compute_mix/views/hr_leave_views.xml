@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="hr_leave_view_form" model="ir.ui.view">
+        <field name="name">Leave Request - Compute Mix</field>
+        <field name="model">hr.leave</field>
+        <field name="inherit_id" ref="hr_holidays.hr_leave_view_form"/>
+        <field name="arch" type="xml">
+            <field name="holiday_status_id" position="attributes">
+                <attribute name="options">{'no_create': True, "no_open": True}</attribute>
+            </field>
+            <field name="holiday_status_id" position="after">
+                <field name="description" attrs="{'invisible': [('holiday_status_id', '=', False)]}"/>
+            </field>
+            <xpath expr="//sheet/group/group/div/div[hasclass('o_row')][2]"  position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//sheet/group/group/div/div[hasclass('o_row')][3]"  position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//sheet/group/group/div/div[hasclass('o_hr_holidays_dates')]/span"  position="attributes">
+                <attribute name="attrs">{}</attribute>
+            </xpath>
+            <field name="request_date_from" position="after">
+                <field name="date_from_custom" attrs="{'readonly': [('state', 'not in', ('draft', 'confirm'))],
+                 'invisible': [('request_unit_hours', '=', False)]}" class="oe_inline"/>
+            </field>
+            <field name="request_date_from" position="attributes">
+                <attribute name="attrs">
+                    {'readonly': [('state', 'not in', ('draft', 'confirm'))], 'invisible': [('request_unit_hours', '=', True)]}
+                </attribute>
+            </field>
+            <field name="request_date_to" position="attributes">
+                <attribute name="attrs">
+                    {'readonly': [('state', 'not in', ('draft', 'confirm'))], 'invisible': [('request_unit_hours', '=', True)]}
+                </attribute>
+            </field>
+            <field name="request_date_to" position="after">
+                <field name="date_to_custom" attrs="{'readonly': [('state', 'not in', ('draft', 'confirm'))],
+                 'invisible': [('request_unit_hours', '=', False)]}" class="oe_inline"/>
+            </field>
+            <field name="request_date_from_period" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="request_hour_from" position="attributes">
+                <attribute name="attrs">{}</attribute>
+            </field>
+            <field name="request_hour_to" position="attributes">
+                <attribute name="attrs">{}</attribute>
+
+            </field>
+        </field>
+    </record>
+
+    <record id="hr_leave_view_form_manager" model="ir.ui.view">
+        <field name="name">Leave Request - Compute Mix Manager</field>
+        <field name="model">hr.leave</field>
+        <field name="inherit_id" ref="hr_holidays.hr_leave_view_form_manager"/>
+        <field name="arch" type="xml">
+            <field name="mode_company_id" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="category_id" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="mode_company_id" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="payslip_status" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+        </field>
+    </record>
+
+    <record id="hr_leave_view_tree" model="ir.ui.view">
+        <field name="name">hr.leave.tree </field>
+        <field name="model">hr.leave</field>
+        <field name="inherit_id" ref="hr_holidays.hr_leave_view_tree"/>
+        <field name="arch" type="xml">
+            <tree position="inside">
+                <field name="tree_color" invisible="1"/>
+            </tree>
+            <tree position="attributes">
+                <attribute name="colors">background_color_field: tree_color</attribute>
+                <attribute name="decoration-danger"/>
+                <attribute name="decoration-info"/>
+            </tree>
+            <field name="holiday_type" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="payslip_status" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="category_id" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_hr_holidays_filter" model="ir.ui.view">
+        <field name="name">hr.leave.filter</field>
+        <field name="model">hr.leave</field>
+        <field name="inherit_id" ref="hr_holidays.view_hr_holidays_filter"/>
+        <field name="arch" type="xml">
+            <filter name="group_category" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </filter>
+            <filter name="group_second_approver_id" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </filter>
+            <filter name="todo" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </filter>
+            <filter name="gray" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </filter>
+            <filter name="my_team_leaves" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </filter>
+            <filter name="validated" position="after">
+                <filter name="not_rejected" string="Not Rejected" domain="[('state', '!=', 'refuse')]"/>
+            </filter>
+            <filter name="year" position="attributes">
+                <attribute name="domain">[('date_to', '&gt;=', datetime.date.today().strftime('%Y-01-01'))]</attribute>
+            </filter>
+        </field>
+    </record>
+
+</odoo>

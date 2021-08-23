@@ -1,0 +1,36 @@
+
+CSV File Creator -- dokumentation
+2020-03-20
+
+**/usr/share/odoo-af/base_afdemo/data**
+
+## Länk till dokumentation:
+https://www.tutorialspoint.com/makefile/makefile_quick_guide.htm
+https://makefiletutorial.com
+
+
+## Förutsättningar
+Namet på filen ska vara TestData_Config.xlsx och flikarna ska heta saker i stil med något.bra.namn.csv
+Koden skapar csv-filer baserat på namnen av flikarna.
+En flik kan heta nåt annat och kommer då inte med som en fil.
+
+
+## Logga in i Terminalen och knappa in...
+
+## SCRIPT MED FÖRKLARING:
+$ make
+-- skapar alla .csv-filer baserade på vad flikarna heter.
+
+$ make clean
+-- tar bort alla .csv och .tmp filerna.
+
+$ touch TestData_Config.xlsx
+-- ändrar "senast ändrad" datum i filen så koden kan köras igen.
+
+$ sudo chmod 777 -R data
+-- om det spökar... om koden inte fungerar fast den borde.
+
+
+## FELHANTERING, KÄNDA
+- TestData_Config.xlsx = måste heta så. Ändra namnet i koden!
+- Toma flikar. En flik som heter något.bra.namn.csv får inte vara helt tom.

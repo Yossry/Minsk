@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+	<data noupdate="0">    
+		
+		<!-- User Groups --> 
+		<record id="hr_attendance.group_hr_attendance_user" model="res.groups">
+		    <field name="implied_ids" eval="[(3, ref('hr.group_hr_user'))]"/>
+		    <field name="name">Attendance Officer</field>               
+		</record>
+		
+		<record id="hr_holidays.group_hr_holidays_user" model="res.groups">
+		    <field name="name">Leaves Officer</field>
+		    <field name="implied_ids" eval="[(3, ref('hr.group_hr_user'))]"/>
+		</record>
+	</data>    
+</odoo>

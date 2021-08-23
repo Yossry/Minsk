@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- TAGS FOR RETRIEVING THE DEMO Freight Sequence -->
+        <record id="sequence_direct" model="ir.sequence">
+            <field name="name">Direct</field>
+            <field name="code">operation.direct</field>
+            <field name="prefix">DIRECT/%(year)s/%(month)s/%(day)s/</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+            <field name="number_increment">1</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="sequence_master" model="ir.sequence">
+            <field name="name">MASTER</field>
+            <field name="code">operation.master</field>
+            <field name="prefix">MASTER/%(year)s/%(month)s/%(day)s/</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+            <field name="number_increment">1</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="sequence_house" model="ir.sequence">
+            <field name="name">House</field>
+            <field name="code">operation.house</field>
+            <field name="prefix">HOUSE/%(year)s/%(month)s/%(day)s/</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+            <field name="number_increment">1</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+    </data>
+</odoo>

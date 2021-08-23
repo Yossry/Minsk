@@ -1,0 +1,135 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* cb_departments_chart
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-05-05 10:26+0000\n"
+"PO-Revision-Date: 2020-05-05 10:26+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: cb_departments_chart
+#: model_terms:ir.ui.view,arch_db:cb_departments_chart.hr_department_view_form_inherit_org_chart
+msgid "Department's Name"
+msgstr ""
+
+#. module: cb_departments_chart
+#. openerp-web
+#: code:addons/cb_departments_chart/static/src/js/hr_department_chart.js:126
+#, python-format
+msgid "Direct Subordinates of %s"
+msgstr ""
+
+#. module: cb_departments_chart
+#. openerp-web
+#: code:addons/cb_departments_chart/static/src/xml/hr_department_chart.xml:122
+#, python-format
+msgid "Direct subordinates"
+msgstr ""
+
+#. module: cb_departments_chart
+#: model:ir.model,name:cb_departments_chart.model_hr_department
+msgid "HR Department"
+msgstr ""
+
+#. module: cb_departments_chart
+#. openerp-web
+#: code:addons/cb_departments_chart/static/src/xml/hr_department_chart.xml:84
+#, python-format
+msgid "In order to get an organigram, set a manager and save the record."
+msgstr ""
+
+#. module: cb_departments_chart
+#. openerp-web
+#: code:addons/cb_departments_chart/static/src/js/hr_department_chart.js:136
+#, python-format
+msgid "Indirect Subordinates of %s"
+msgstr ""
+
+#. module: cb_departments_chart
+#: model:ir.model.fields,field_description:cb_departments_chart.field_hr_department__child_all_count
+msgid "Indirect Surbordinates Count"
+msgstr ""
+
+#. module: cb_departments_chart
+#. openerp-web
+#: code:addons/cb_departments_chart/static/src/xml/hr_department_chart.xml:132
+#, python-format
+msgid "Indirect subordinates"
+msgstr ""
+
+#. module: cb_departments_chart
+#: model:ir.model.fields,field_description:cb_departments_chart.field_hr_department__image_medium
+msgid "Medium-sized photo"
+msgstr ""
+
+#. module: cb_departments_chart
+#: model:ir.model.fields,help:cb_departments_chart.field_hr_department__image_medium
+msgid "Medium-sized photo of the employee. It is automatically resized as a 128x128px image, with aspect ratio preserved. Use this field in form views or some kanban views."
+msgstr ""
+
+#. module: cb_departments_chart
+#. openerp-web
+#: code:addons/cb_departments_chart/static/src/xml/hr_department_chart.xml:61
+#, python-format
+msgid "More departments"
+msgstr ""
+
+#. module: cb_departments_chart
+#. openerp-web
+#: code:addons/cb_departments_chart/static/src/xml/hr_department_chart.xml:82
+#, python-format
+msgid "No hierarchy position."
+msgstr ""
+
+#. module: cb_departments_chart
+#: model_terms:ir.ui.view,arch_db:cb_departments_chart.hr_department_view_form_inherit_org_chart
+msgid "Organization\n"
+"                            Chart"
+msgstr ""
+
+#. module: cb_departments_chart
+#: model:ir.model.fields,field_description:cb_departments_chart.field_hr_department__image
+msgid "Photo"
+msgstr ""
+
+#. module: cb_departments_chart
+#. openerp-web
+#: code:addons/cb_departments_chart/static/src/xml/hr_department_chart.xml:151
+#, python-format
+msgid "Redirect"
+msgstr ""
+
+#. module: cb_departments_chart
+#. openerp-web
+#: code:addons/cb_departments_chart/static/src/js/hr_department_chart.js:129
+#, python-format
+msgid "Subordinates of %s"
+msgstr ""
+
+#. module: cb_departments_chart
+#. openerp-web
+#: code:addons/cb_departments_chart/static/src/xml/hr_department_chart.xml:83
+#, python-format
+msgid "This department has no parent department or subordinate."
+msgstr ""
+
+#. module: cb_departments_chart
+#: model:ir.model.fields,help:cb_departments_chart.field_hr_department__image
+msgid "This field holds the image used as photo for the department, limited to 1024x1024px."
+msgstr ""
+
+#. module: cb_departments_chart
+#. openerp-web
+#: code:addons/cb_departments_chart/static/src/xml/hr_department_chart.xml:140
+#, python-format
+msgid "Total"
+msgstr ""
+

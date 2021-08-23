@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        
+        <record id="clv_mfile_view_form_code" model="ir.ui.view">
+            <field name="name">clv.mfile.form</field>
+            <field name="model">clv.mfile</field>
+            <field name="inherit_id" ref="clv_mfile.clv_mfile_view_form"/>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <field name="code" position="after">
+                    <field name="code_sequence_03" invisible="True"/>
+                    <field name="code_sequence_04" invisible="True"/>
+                    <field name="code_sequence_06" invisible="True"/>
+                    <field name="code_sequence_09" invisible="True"/>
+                    <field name="code_sequence_10" invisible="True"/>
+                </field>
+                <field name="date_inclusion" position="before">
+                    <field name="code_size"/>
+                </field>
+            </field>
+        </record>
+       
+    </data>
+</odoo>

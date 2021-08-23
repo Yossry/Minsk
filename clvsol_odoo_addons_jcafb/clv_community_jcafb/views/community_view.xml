@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+        
+    <record id="clv_community_view_form_jcafb" model="ir.ui.view">
+        <field name="name">clv.community.form</field>
+        <field name="model">clv.community</field>
+        <field name="inherit_id" ref="clv_community.clv_community_view_form"/>
+        <field name="priority" eval="8" />
+        <field name="arch" type="xml">
+            <div name="title"  position="inside">
+                <label for="employee_id" class="oe_edit_only"/>
+                <h3><field name="employee_id" placeholder="Responsible Empĺoyee..." options="{'no_open': False, 'no_create': True}"/></h3>
+            </div>
+        </field>
+    </record>
+   
+    <record id="clv_community_view_tree_jcafb" model="ir.ui.view">
+        <field name="name">clv.community.tree</field>
+        <field name="model">clv.community</field>
+        <field name="inherit_id" ref="clv_community.clv_community_view_tree"/>
+        <field name="priority" eval="8" />
+        <field name="arch" type="xml">
+            <field name="code" position="after">
+                <field name="employee_id"/>
+            </field>
+        </field>
+    </record>
+   
+    <record id="clv_community_view_search_random" model="ir.ui.view">
+        <field name="name">clv.community.search</field>
+        <field name="model">clv.community</field>
+        <field name="inherit_id" ref="clv_community.clv_community_view_search"/>
+        <field name="priority" eval="8" />
+        <field name="arch" type="xml">
+            <field name="code" position="after">
+                <field name="employee_id"/>
+            </field>
+            <group name="group_by" position="inside">
+                <filter string="Responsible Empĺoyee" domain="[]"  context="{'group_by': 'employee_id'}"/>
+            </group>
+        </field>
+    </record>
+       
+</odoo>

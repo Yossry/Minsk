@@ -1,0 +1,253 @@
+@mixin calendar-view() {
+    .o_calendar_container {
+        padding: 10px;
+        background-color: $white;
+        display: flex;
+        column-count: 2;
+        margin-bottom: 15px;
+        & > .o_calendar_view {
+            display: table-cell;
+            .o_calendar_widget {
+                .fc-view-container {
+                    table {
+                        & > thead.fc-head {
+                            & > tr {
+                                & > td {
+                                    background-color: $white;
+                                    border-color: $border;
+                                    .fc-widget-header {
+                                        background-color: $white;
+                                        color: $font-color;
+                                        border-color: $border;
+                                        & > table {
+                                            & > thead {
+                                                & > tr {
+                                                    & > th {
+                                                        padding: 15px 4px;
+                                                        text-align: center;
+                                                        text-transform: uppercase;
+                                                        color: $Label-value;
+                                                    }
+                                                    .fc-today {
+                                                        background: $tr-hover;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        & > tbody.fc-body {
+                            & > tr {
+                                .fc-widget-content {
+                                    border-color: $border;
+                                    .fc-day-grid {
+                                        .fc-axis {
+                                            background-color: $white;
+                                            color: $Label-value;
+                                            text-align: center;
+                                            font-weight: bold;
+                                        }
+                                    }
+                                    .fc-scroller {
+                                        .fc-time-grid {
+                                            .fc-axis {
+                                                background-color: $white;
+                                                color: $Label-value;
+                                                text-align: center;
+                                                font-weight: bold;
+                                            }
+                                        }
+                                    }
+                                    .fc-divider {
+                                        border-color: $border;
+                                    }
+                                    hr.fc-widget-header {
+                                        background-color: transparent;
+                                    }
+                                }
+                                .fc-today:not(.fc-day-top) {
+                                    background: $tr-hover;
+                                }
+                                .fc-event, .fc-event-dot {
+                                    border-radius: 0px;
+                                }
+                                .fc-week-number {
+                                    background-color: transparent;
+                                    font-weight: bold;
+                                }
+                            }
+                        }
+                    }
+                    & > .fc-month-view {
+                        table {
+                            & > thead.fc-head {
+                                & > tr {
+                                    & > td {
+                                        .fc-widget-header {
+                                            & > table {
+                                                & > thead {
+                                                    & > tr {
+                                                        & > th {
+                                                            padding: 15px 2px;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        & > .o_calendar_sidebar_container {
+            display: table-cell;
+            padding: 32px 5px 0px;
+            vertical-align: top;
+            border: none;
+            border-left: none;
+            .fa-close {
+                top: 0px;
+                right: 5px;
+                background-color: transparent;
+                color: $icon;
+                z-index: 0;
+            }
+            .o_calendar_sidebar {
+                margin-left: 0px;
+                .o_calendar_mini {
+                    .ui-datepicker-inline {
+                        padding: 2px;
+                        border: none;
+                        font-size: $font-size-1;
+                        .ui-datepicker-header {
+                            background-color: $white;
+                            border: none;
+                            border-bottom: 1px solid $border;
+                            color: $Label-value;
+                            .ui-datepicker-title {
+                                flex: 1 1 auto;
+                            }
+                            .ui-datepicker-prev, .ui-datepicker-next {
+                                color: $Label-value;
+                            }
+                        }
+                        .ui-datepicker-calendar {
+                            thead {
+                                border: 2px solid transparent;
+                                & > tr {
+                                    & > th {
+                                        color: $Label-value;
+                                        background-color: $white;
+                                    }
+                                }
+                            }
+                            tbody {
+                                & > tr {
+                                    & > td {
+                                        & > a {
+                                            background-color: $white;
+                                            color: $Label-value;
+                                            animation: none;
+                                        }
+                                        &.ui-datepicker-current-day {
+                                            & > a.ui-state-active {
+                                                background-color: $white;
+                                                @include border-animation();
+                                            }
+                                        }
+                                        &.ui-datepicker-week-end:first-child {
+                                            & > a.ui-state-default {
+                                                color: $font-color;
+                                                background-color: $white;
+                                                background: repeating-linear-gradient(to right, $text-danger 0%, $text-danger 100%) left bottom transparent no-repeat;
+                                                background-size: 100% 1px;
+                                                background-position: center bottom;
+                                                -webkit-animation: line-animate .5s 1;
+                                                -moz-animation: line-animate .5s 1;
+                                                animation: line-animate .5s 1;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .o_google_sync_button {
+                    width: 100%;
+                    margin-top: 3px;
+                    &:hover {
+                        background-color: $brand-secondary;
+                    }
+                }
+            }
+            &.o_sidebar_hidden {
+                padding: 15px;
+                margin-right: 0px;
+                .fa-chevron-left {
+                    right: auto;
+                    left: 0;
+                    width: 100%;
+                    text-align: center;
+                    color: $icon;
+                    padding-top: 15px;
+                }
+            }
+            .o_calendar_filter {
+                border-top: none;
+                h3 {
+                    text-transform: uppercase;
+                    margin-top: 0px;
+                }
+                .o_calendar_filter_items {
+                    .o_calendar_filter_item {
+                        background-color: $white;
+                        margin: 0px;
+                        position: relative;
+                        display: table;
+                        width: 100%;
+                        .custom-checkbox {
+                            float: left;
+                            margin: 2px;
+                            margin-right: 7px;
+                        }
+                        .fa-times {
+                            position: absolute;
+                            top: 0px;
+                            right: 0px;
+                            color: $font-color;
+                            padding: 1px;
+                            font-size: $font-size-3;
+                        }
+                    }
+                }
+                & > .o_field_widget.o_field_many2one {
+                    .o_input_dropdown {
+                        margin-top: 0px;
+                        .o_input {
+                            height: 34px;
+                            border-radius: 0px;
+                            border: none;
+                            border-bottom: 1px solid $border;
+                            &:focus {
+                                @include border-animation();
+                            }
+                        }
+                        .o_dropdown_button {
+                            position: absolute;
+                            top: 6px;
+                            left: auto;
+                            right: 6px;
+                            color: $icon;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

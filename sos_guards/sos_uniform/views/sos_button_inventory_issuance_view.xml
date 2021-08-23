@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		 <record id="sos_button_tailor_issuance_tree" model="ir.ui.view">
+			<field name="name">sos.button.tailor.issuance.tree</field>
+			<field name="model">sos.button.tailor.issuance</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string ="SOS Button Tailor Issuance Tree" name="sos_button_tailor_issuance_tree_view"
+					colors="black:state == 'draft';red:state  == 'cancel';green:state == 'confirm';blue:state == 'done';">
+					<field name="name"/>
+					<field name="date"/>
+					<field name="state"/>
+				</tree>
+			</field>
+		</record>
+
+		 <record id="sos_button_tailor_issuance_form" model="ir.ui.view">
+			<field name="name">sos.button.tailor.issuance.form</field>
+			<field name="model">sos.button.tailor.issuance</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Buttons Tailor Issuance" name="sos_button_tailor_issuance_form_view">
+					<header>
+						<button name="inventory_confirm" type="object" states="draft" string="Confirm" class="oe_highlight" groups="sos_uniform.group_rfid_manager" />
+						<button name="inventory_cancel" type="object" states="draft" string="Cancel" class="oe_highlight" groups="sos_uniform.group_rfid_manager" />
+						<button name="inventory_done" type="object" states="confirm" string="Done" class="oe_highlight" groups="sos_uniform.group_rfid_manager" />
+
+						<field name="state" widget="statusbar" nolabel="1"/>
+					 </header>
+
+					<sheet string="Button Tailor Issuance" name="sos_button_tailor_issuance_form">
+						<group colspan="4">
+							<group>
+								<field name="name"/>
+								<field name="employee_id" domain="[('is_guard','=',True),('current','=',True)]" options="{'no_create': True, 'limit': 10}"/>
+							 </group>
+							 <group>
+								<field name="date"/>
+							 </group>
+						</group>
+
+						<group name='issuance_guard_info'>
+							<group>
+
+								<field name="center_id" options="{'no_create': True, 'limit': 10}"/>
+								<field name="post_id" options="{'no_create': True, 'limit': 10}"/>
+							</group>
+							<group>
+								<field name="project_id" options="{'no_create': True, 'limit': 10}"/>
+							</group>
+						 </group>
+
+						<group colspan="4">
+							<group>
+								<field name="remarks"/>
+							</group>
+						</group>
+
+						<separator/>
+
+						 <group>
+							<field name="dummy" string="Card No."/>
+						 </group>
+
+						<separator/>
+
+						<notebook colspan="4">
+							<page string="Lines" name="lines">
+								<field name="button_ids">
+									<tree string="Buttons" create="false" edit="false" delete="true">
+										<field name="name"/>
+										<field name="state"/>
+									</tree>
+								</field>
+							</page>
+						</notebook>
+
+					</sheet>
+					<div class="oe_chatter">
+						<field name="message_follower_ids" widget="mail_followers" groups="base.group_user" />
+						<field name="message_ids" widget="mail_thread" />
+					</div>
+				</form>
+			</field>
+		</record>
+
+		<record id="sos_button_tailor_issuance_filter" model="ir.ui.view">
+			<field name="name">sos.button.tailor.issuance.filter</field>
+			<field name="model">sos.button.tailor.issuance</field>
+			<field name="arch" type="xml">
+				<search string="Search Button Tailor Inventory">
+					<filter icon="terp-go-today" string="Draft" name="draft" domain="[('state','=','draft')]" />
+					<filter icon="terp-go-today" string="Confirm" name="confirm" domain="[('state','=','stitching')]" />
+					<filter icon="terp-go-today" string="Done" name="done" domain="[('state','=','done')]" />
+
+					<field name="name"/>
+					<field name="date"/>
+
+					<separator/>
+					<group expand="0" string="Group By">
+						<filter string="State" name="state" icon="terp-partner" domain="[]" context="{'group_by':'state'}"/>
+						<filter string="Date" name="date" icon="terp-partner" domain="[]" context="{'group_by':'date'}"/>
+					</group>
+					<separator/>
+						<filter string="Center" name="center_id" icon="terp-partner" domain="[]" context="{'group_by':'center_id'}"/>
+						<filter string="Porject" name="project_id" icon="terp-partner" domain="[]" context="{'group_by':'project_id'}"/>
+						<filter string="Post" name="post_id" icon="terp-partner" domain="[]" context="{'group_by':'post_id'}"/>
+						<filter string="Guard" name="employee_id" icon="terp-partner" domain="[]" context="{'group_by':'employee_id'}"/>
+
+				</search>
+			</field>
+		</record>
+
+		<record id="sos_button_tailor_issuance_action" model="ir.actions.act_window">
+			<field name="name">SOS RFID Card Issuance Action</field>
+			<field name="res_model">sos.button.tailor.issuance</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+					Click to create a new RFID Issuance Entry.
+			</p>
+			</field>
+		</record>
+
+	</data>
+</odoo>

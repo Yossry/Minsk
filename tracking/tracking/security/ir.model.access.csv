@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_res_zona,access_res_zona,model_res_zona,,1,1,1,1
+access_route_order,access_route_order,model_route_order,,1,1,1,1
+access_res_zona2,access_res_zona2,model_res_zona2,,1,1,1,1
+access_quotation_pos_report,quotation.pos.report,model_quotation_pos_report,,1,1,1,1
+access_codigo_comprador,codigo.comprador,model_codigo_comprador,,1,1,1,1
+access_pos_quotation_report_line,pos.quotation.report.line,model_pos_quotation_report_line,,1,1,1,1
+access_pos_quotation_report_product,pos.quotation.report.product,model_pos_quotation_report_product,,1,1,1,1

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="clv_address_view_form_reg_state" model="ir.ui.view">
+        <field name="name">clv.address.form</field>
+        <field name="model">clv.address</field>
+        <field name="inherit_id" ref="clv_address.clv_address_view_form"/>
+        <field name="priority" eval="10"/>
+        <field name="arch" type="xml">
+            <header name="header" position="inside">
+                <field name="reg_state" widget="statusbar"
+                       statusbar_visible="revised,done"/>
+                <separator/>
+                <button name="action_draft" type="object"
+                        string="Draft"
+                        confirm="Change Register State to 'Draft'?"
+                        attrs="{'invisible':[('reg_state','not in',['canceled'])]}"
+                        groups="clv_address.group_manager"/>
+                <button name="action_revised" type="object"
+                        string="Revised"
+                        confirm="Change Register State to 'Revised'?"
+                        attrs="{'invisible':[('reg_state','in',['revised'])]}"
+                        groups="clv_address.group_manager"/>
+                <button name="action_done" type="object"
+                        string="Done"
+                        confirm="Change Register State to 'Done'?"
+                        attrs="{'invisible':[('reg_state','in',['done','canceled'])]}"
+                        groups="clv_address.group_manager"/>
+                <button name="action_cancel" type="object"
+                        string="Cancel"
+                        confirm="Change Register State to 'Cancel'?"
+                        attrs="{'invisible':[('reg_state','in',['canceled'])]}"
+                        groups="clv_address.group_manager"/>
+            </header>
+            <div name="button_box" position="inside">
+            </div>
+        </field>
+    </record>
+
+    <record id="clv_address_view_tree_reg_state" model="ir.ui.view">
+        <field name="name">clv.address.tree</field>
+        <field name="model">clv.address</field>
+        <field name="inherit_id" ref="clv_address.clv_address_view_tree"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="code" position="after">
+                <field name="reg_state"/>
+            </field>
+            <tree name="partner_entities" position="attributes">
+                <attribute name="decoration-muted">reg_state=='draft'</attribute>
+                <attribute name="decoration-primary">reg_state in('done')</attribute>
+                <attribute name="decoration-danger">reg_state=='canceled'</attribute>
+                <attribute name="decoration-it">reg_state in('draft','canceled')</attribute>
+                <attribute name="decoration-bf">reg_state in('done')</attribute>
+            </tree>
+        </field>
+    </record>
+
+    <record id="clv_address_view_search_reg_state" model="ir.ui.view">
+        <field name="name">clv.address.search</field>
+        <field name="model">clv.address</field>
+        <field name="inherit_id" ref="clv_address.clv_address_view_search"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="code" position="after">
+                <field name="reg_state"/>
+            </field>
+            <group name="group_by" position="inside">
+                <filter name="group_by_reg_state" string="Register State" domain="[]" context="{'group_by':'reg_state'}"/>
+            </group>
+        </field>
+    </record>
+
+</odoo>

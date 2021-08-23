@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>	<data>
+
+		<record model="ir.ui.view" id="truck_type_list_view">
+			<field name="name">Truck Type</field>
+			<field name="model">truck.type</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="name" />
+					<field name="note" />
+					<field name="type" widget="many2many_tags"/>
+					<field name="active" />
+				</tree>
+			</field>
+		</record>
+
+
+		<record model="ir.ui.view" id="truck_type_form_view">
+			<field name="name">Truck Type</field>
+			<field name="model">truck.type</field>
+			<field name="arch" type="xml">
+				<form>
+					<sheet>
+					<div class="oe_button_box" name="button_box">  
+                            <button name="call_truck_type_selection" type="object"  
+                            class="oe_stat_button" icon="fa-truck" string="Truck Type Selections">  
+                           <!-- (If you want to display the count)<field name="field_name_for_count" widget="statinfo"   
+                            string="You String Name" />    -->
+                           </button> 
+                       </div>
+	                    <field name="image" widget="image" class="oe_avatar"/>
+						<group>
+							<group>
+								<field name="name" />
+								<field name="type" widget="many2many_tags"
+								        options="{'no_create_edit': True, 'no_create': True}" />
+							</group>
+							<group>
+								<field name="note" />
+								<field name="active" />
+							</group>
+							
+						</group>
+					</sheet>
+					<div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                 </div>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="truck_type_action">
+			<field name="name">Truck Type</field>
+			<field name="res_model">truck.type</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+        
+        <!-- truck type selections views start here -->
+        <record model="ir.ui.view" id="truck_type_selections_list_view">
+            <field name="name">Truck Type Selections</field>
+            <field name="model">truck.type.selections</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                    <field name="active" />
+                </tree>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="truck_type_selections_form_view">
+            <field name="name">Truck Type Selections</field>
+            <field name="model">truck.type.selections</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" />
+                            </group>
+                            <group>
+                                <field name="active" />
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                 </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="truck_type_selections_action">
+            <field name="name">Truck Type Selections</field>
+            <field name="res_model">truck.type.selections</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+		
+
+	</data>
+</odoo>

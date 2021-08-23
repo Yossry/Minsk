@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <record model="ir.actions.act_window" id="action_air_ticket_request_leave_type">
+        <field name="name">Air Ticket Request</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">air.ticket.request</field>
+        <field name="view_type">form</field>
+        <field name="domain">[('leave_type_id', '=', active_id)]</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="edit_holiday_status_form_inherit_qpr_hr" model="ir.ui.view">
+        <field name="name">hr.leave.type.inherited.qpr.hr</field>
+        <field name="model">hr.leave.type</field>
+        <field name="inherit_id" ref="hr_holidays.edit_holiday_status_form"/>
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <button attrs="{'invisible': [('air_ticket', '=', False)]}" class="oe_stat_button" type="action" name="%(action_air_ticket_request_leave_type)d" icon="fa-plane">
+                    <div class="o_stat_info">
+                        <field name="air_ticket_counts"/>
+                        <span class="o_stat_text">AirTickets</span>
+                    </div>
+                </button>
+            </div>
+            <xpath expr="//field[@name='double_validation']" position="after">
+                <field name="is_religious"/>
+                <field name="is_sick_leave"/>
+                <field name="air_ticket"/>
+                <field name="no_of_ticket_allowed" attrs="{'invisible': [('air_ticket','=', False)]}"/><br/>
+                <field name="attachment_required"/>
+                <field name="attachment_required_days" attrs="{'invisible': [('attachment_required','=', False)]}"/><br/>
+             </xpath>
+            <group name="validity" position="after">
+                <group string="Weekly Holidays">
+                    <field name="exclude_weekly_holiday"/>
+                    <field name="resource_calendar_id" attrs="{'invisible': [('exclude_weekly_holiday', '=', False)]}"/>
+                </group>
+            </group>
+        </field>
+    </record>
+
+    <record id="hr_leave_view_form_qatar" model="ir.ui.view">
+        <field name="name">hr.leave.form</field>
+        <field name="model">hr.leave</field>
+        <field name="inherit_id" ref="hr_holidays.hr_leave_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="before">
+                <field name="exit_permit"/>
+                <field name="current_country" string="Country" help="Country During your leave period"/>
+                <field name="phone_during_leave"/>
+                <field name="phone_during_leave1"/>
+                <field name="employee_id" readonly="1" groups="qpr_hr.group_department_manager"/>
+                <field name="is_sick_leave" invisible="1"/>
+                <field name="illness_type" attrs="{'invisible': [('is_sick_leave', '=', False)]}"/>
+
+             </xpath>
+        </field>
+    </record>
+</odoo>

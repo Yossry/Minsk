@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_stock_quant_tree" model="ir.ui.view">
+        <field name="name">view.stock.quant.tree</field>
+        <field name="model">stock.quant</field>
+        <field name="inherit_id" ref="stock_view_adjust_oaw.view_stock_quant_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='image_medium']" position="after">
+                <field name="strap_product_id" domain="[('is_strap', '=', True)]" />
+                <field
+                    name="strap_product_image"
+                    widget="image"
+                    options='{"size": [64, 64]}'
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>

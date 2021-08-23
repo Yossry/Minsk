@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="stock_vci_revaluation_wizard" model="ir.ui.view">
+        <field name="name">stock.vci.revaluation.wizard</field>
+        <field name="model">stock.vci.revaluation.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <p class="oe_grey">
+                    This action will revalue VCI quants using the latest exchange rates.
+                </p>
+                <footer>
+                    <button
+                        name="action_vci_stock_revaluation"
+                        type="object"
+                        string="Run"
+                        class="oe_highlight"
+                    />
+                    or
+                    <button special="cancel" string="Cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+    <act_window
+        name="VCI Stock Revaluation"
+        res_model="stock.vci.revaluation.wizard"
+        key2="client_action_multi"
+        src_model="stock.quant"
+        view_mode="form"
+        target="new"
+        id="action_stock_vci_revaluation_wizard"
+    />
+</odoo>

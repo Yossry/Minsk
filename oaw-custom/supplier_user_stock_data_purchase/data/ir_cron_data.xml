@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record model="ir.cron" id="update_purchase_partner_stock_data">
+        <field name="name">Update Purchase Partner Stock Data</field>
+        <field
+            name="model_id"
+            ref="supplier_user_stock_data_purchase.model_stock_data_purchase_history"
+        />
+        <field name="state">code</field>
+        <field name="code">model.update_purchase_partner_stock_data()</field>
+        <field name="interval_number">15</field>
+        <field name="interval_type">minutes</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False" />
+    </record>
+</odoo>

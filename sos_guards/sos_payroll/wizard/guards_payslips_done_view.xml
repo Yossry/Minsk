@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_guards_payslips_done" model="ir.ui.view">
+            <field name="name">Auto Verify Payslips</field>
+            <field name="model">guards.payslips.done</field>
+            <field name="arch" type="xml">
+            <form string="Auto Verify Payslips" version="7.0">
+                <label for="date_from" string="This wizard will verify Payslips automatically."/>
+                <group string="Dates">
+					<field name="date_from" />
+					<field name="date_to" />
+				</group> 
+                
+                <footer>
+                    <button name="payslip_done" string="Verify" type="object" class="oe_highlight"/>
+                    or
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>                
+            </form>
+            </field>
+        </record>
+
+        <record id="action_guards_payslips_done" model="ir.actions.act_window">
+            <field name="name">Auto Verify Payslips</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">guards.payslips.done</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+		<!--
+        <menuitem
+            name="Auto Verify Payslips" parent="menu_guards_payroll_reporting"
+            action="action_guards_payslips_done"
+            sequence="300" icon="STOCK_PRINT"
+            id="menu_guards_payslips_done"
+           />
+        -->   
+        
+   
+
+</data>
+</odoo>

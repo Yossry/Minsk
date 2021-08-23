@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>        
+
+		 <record id="sos_uniform_return_tree" model="ir.ui.view">
+		 	<field name="name">Uniform Return Tree</field>
+		 	<field name="model">sos.uniform.return</field>
+		 	<field name="priority" eval="15"/>
+		 	<field name="type">tree</field>	
+		 	<field name="arch" type="xml">
+		 		<tree>
+		 			<field name="name"/>
+		 			<field name="date"/>
+		 			<field name="center_id"/>
+					<field name="project_id"/>
+					<field name="employee_id"/>
+		 			<field name="post_id"/>
+		 			<field name="guard_employee_id"/>
+		 			<field name="state"/>
+		 			<field name="dm_type"/>
+		 		</tree>
+		 	</field>	
+		</record>
+
+		 <record id="sos_uniform_return_form" model="ir.ui.view">
+		 	<field name="name">Uniform Return Form</field>
+		 	<field name="model">sos.uniform.return</field>
+		 	<field name="priority" eval="15"/>
+		 	<field name="type">form</field>	
+		 	<field name="arch" type="xml">
+		 		<form string="Uniform Return">
+					<header>
+						<button name="demand_open" type="object" states="draft" string="Open" class="oe_highlight" groups="sos.group_regional_manager,hr.group_hr_user" />
+						<button name="demand_review" type="object" states="open" string="Review" class="oe_highlight" groups="sos_uniform.group_demand_review"/>	  
+						<button name="demand_approve" type="object" states="review" string="Approve" class="oe_highlight" groups="sos_uniform.group_demand_approved"/>
+						<button name="demand_receive" type="object" states="approve" string="Receive" class="oe_highlight" groups="stock.group_stock_manager"/>	  
+						<button name="demand_reject" type="object" states="draft,review,open,receive,approve" string="Reject" class="oe_highlight" groups="hr.group_hr_user"/>	  
+						<field name="state" widget="statusbar" nolabel="1" statusbar_visible="draft,open,review,receive,approve,done,reject"/>	  
+					 </header>
+					 <sheet string="Uniform Returns">
+					 	<group colspan="4">
+					 		<group>
+						 	 	<field name="name"/>
+						 	 	<field name="center_id" attrs="{'readonly':[('state','!=','draft')]}" options="{'no_create': True, 'limit': 10}"/>
+						 	 	<field name="employee_id" attrs="{'readonly':[('state','!=','draft')]}" options="{'no_create': True, 'limit': 10}"/>
+						 	 	<field name="dm_type"/>
+						 	 	<field name="receive_date" groups="stock.group_stock_manager"/>
+						 	 </group>
+						 	 <group>
+						 	 	<field name="date"/>
+						 	 	<field name="project_id" attrs="{'readonly':[('state','!=','draft')]}" options="{'no_create': True, 'limit': 10}"/>
+						 	 	<field name="post_id" domain="[('center_id', '=', center_id),('project_id', '=', project_id),('active', '=', True)]" attrs="{'readonly':[('state','!=','draft')]}" options="{'no_create': True, 'limit': 10}"/>
+						 	 	<!--<field name="guard_id" domain="[('current_post_id', '=', post_id),('current', '=', True)]" 
+						 	 		options="{'no_create': True, 'limit': 10}" attrs="{'readonly':[('state','!=','draft')]}" />-->
+						 	 	<field name="guard_employee_id" domain="[('current_post_id', '=', post_id),('current', '=', True)]" 
+						 	 		options="{'no_create': True, 'limit': 10}" attrs="{'readonly':[('state','!=','draft')]}" />
+						 	 </group>
+						 </group>
+						 		
+						<group colspan="4">	
+							<group>
+								<field name="remarks"/>
+							</group>	  					 
+						</group>
+				
+						<group string="Received Items">
+							<field name="product_ids" colspan="4" nolabel="1" >
+								<tree editable="top" >
+									<!-- field not found in parent model Remark by Numan -->
+								 <!-- 	<field name="name_template" /> -->
+								 	<field name="name" />
+								</tree> 	
+							</field>	
+						</group>
+					<!--	
+						<group string="Received Items">
+							<field name="uniform_return_line" colspan="4" nolabel="1" attrs="{'readonly': [('state', 'in', ['approve', 'receive', 'done', 'reject'])]}">
+								<tree editable="top" >			
+									<field name="item_id"  required="1"    options="{'no_create': True, 'limit': 10}" on_change="onchange_item_id(item_id)"/>
+									<field name="req_size" invisible="1"/>
+									<field name="qty" required="1"/>
+									<field name="date"/>
+									<field name="size"  attrs="{'required': [('req_size', '=', True)]}"/>							
+								</tree>
+							</field>	
+						</group>
+					-->
+					</sheet>
+			
+					<div class="oe_chatter">
+						<field name="message_follower_ids" widget="mail_followers" groups="base.group_user" />
+						<field name="message_ids" widget="mail_thread" />
+					</div>
+				</form>		  
+			</field>
+		</record>
+
+
+
+		<record id="sos_uniform_return_filter" model="ir.ui.view">
+			<field name="name">sos.uniform.return.filter</field>
+			<field name="model">sos.uniform.return</field>
+			<field name="arch" type="xml">
+				<search string="Search Uniform Return">
+					<filter icon="terp-go-today" string="Draft" name="draft" domain="[('state','=','draft')]" />
+					<filter icon="terp-go-today" string="Done" name="done" domain="[('state','=','done')]" />
+					<filter icon="terp-go-today" string="Approve" name="approve" domain="[('state','=','approve')]" />
+					<filter icon="terp-go-today" string="Reject" name="reject" domain="[('state','=','reject')]" />
+					<filter icon="terp-go-today" string="Receive" name="receive" domain="[('state','=','receive')]" />
+			
+					<separator/>
+					<filter icon="terp-go-today" string="New Deployment" name="new_deployment" domain="[('dm_type','=','new_deployment')]" />
+					<filter icon="terp-go-today" string="Complain" name="complain" domain="[('dm_type','=','complain')]" />
+					<filter icon="terp-go-today" string="Additional Guard" name="additional_guard" domain="[('dm_type','=','additional_guard')]" />
+					<filter icon="terp-go-today" string="Replacement" name="replacement" domain="[('dm_type','=','replacement')]" />
+					<separator/>
+			
+					<field name="name"/>
+					<field name="center_id"/>
+					<field name="project_id"/>
+					<field name="date"/>
+					<field name="state"/>
+					<field name="dm_type"/>
+					<separator/>
+			
+					<group expand="0" string="Group By">
+						<filter string="Center" name="center_id" icon="terp-partner" domain="[]" context="{'group_by':'center_id'}"/>
+						<filter string="Project" name="project_id" icon="terp-partner" domain="[]" context="{'group_by':'project_id'}"/>
+						<filter string="Date" name="date" icon="terp-partner" domain="[]" context="{'group_by':'date'}"/>
+						<filter string="State" name="state" icon="terp-partner" domain="[]" context="{'group_by':'state'}"/>
+						<filter string="Type" name="dm_type" icon="terp-partner" domain="[]" context="{'group_by':'dm_type'}"/>
+					</group>
+					  
+				</search>
+			</field>
+		</record>
+
+		<record id="sos_uniform_return_action" model="ir.actions.act_window">
+			<field name="name">Uniform Returns </field>
+			<field name="res_model">sos.uniform.return</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>	
+			<field name="domain">[]</field>
+			<field name="context">{'search_default_draft':1}</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+					Click to create a new Uniform Return  .
+			</p>
+			</field>
+		</record> 
+ 
+	</data>
+</odoo>

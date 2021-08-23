@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template name="why Choose" id="s_whychoose">
+        <!-- ====START WHY CHOOSE==== -->
+        <section class="whychoose oe_structure">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="section_title mb80">
+                            <h5 class="smallHd text-center">check out </h5>
+                            <h2 class="secHd text-center">Our features</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row checkBGFull">
+                    <div class="col-xs-12 col-sm-6 ourFeaturesContent section-padding">
+                        <div class="single_checkCont">
+                            <div class="checkIcon">
+                                <i class="zmdi zmdi-star"></i>
+                            </div>
+                            <div class="checkText">
+                                <h4>cost effectiveness</h4>
+                                <p>A solution which able to increase your sales productivity more than 10+ times comes with less then the price of 2 cup coffee</p>
+                            </div>
+                        </div>
+                        <div class="single_checkCont">
+                            <div class="checkIcon">
+                                <i class="zmdi zmdi-lamp"></i>
+                            </div>
+                            <div class="checkText">
+                                <h4>unique ideas</h4>
+                                <p>Change the way of thinking in regular manner, here we bring a higly level sales analysis report to incraese your revenue.</p>
+                            </div>
+                        </div>
+                        <div class="single_checkCont">
+                            <div class="checkIcon">
+                                <i class="zmdi zmdi-alarm-check"></i>
+                            </div>
+                            <div class="checkText">
+                                <h4>Timely Delivery </h4>
+                                <p>Our solutions is well tested and comes up with timely new updates.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="checkfeature_contbg hidden-xs" style="background-image: url(/theme_materialab/static/src/img/feature_post_img_1.jpg);"></div>
+                </div>
+                <div class="row checkBGFull">
+                    <div class="col-xs-12 col-sm-6 ourFeaturesContent section-padding">
+                        <div class="single_checkCont">
+                            <div class="checkIcon">
+                                <i class="zmdi zmdi-account-add"></i>
+                            </div>
+                            <div class="checkText">
+                                <h4>reliability</h4>
+                                <p>Solutiom from a leading global company, with local supports.</p>
+                            </div>
+                        </div>
+                        <div class="single_checkCont">
+                            <div class="checkIcon">
+                                <i class="zmdi zmdi-accounts"></i>
+                            </div>
+                            <div class="checkText">
+                                <h4>customer relationship</h4>
+                                <p>Our team at Ezeselling is dedicated to resolving any issues encountered promptly, round the clock.</p>
+                            </div>
+                        </div>
+                        <div class="single_checkCont">
+                            <div class="checkIcon">
+                                <i class="zmdi zmdi-sun"></i>
+                            </div>
+                            <div class="checkText">
+                                <h4>quality assurance</h4>
+                                <p>Our service team makes sure you enjoy seamless service backup, so that you will always on track with your business</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="checkfeature_contbg hidden-xs" style="background-image: url(/theme_materialab/static/src/img/feature_post_img_2.jpg);"></div>
+                </div>
+            </div>
+        </section>
+        <!-- ====END WHY CHOOSE==== -->
+    </template>
+</odoo>

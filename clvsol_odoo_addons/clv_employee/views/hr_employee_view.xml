@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<openerp>
+
+    <record id="hr_employee_view_tree" model="ir.ui.view">
+        <field name="name">hr.employee.tree</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_tree"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="code"/>
+                <field name="professional_id"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="hr_employee_view_form" model="ir.ui.view">
+        <field name="name">hr.employee.form</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <div class="oe_title" position="inside">
+                <label for="code" class="oe_edit_only"/>
+                <h2>
+                    <field name="code" placeholder="Employee Code..."/>
+                </h2>
+                <label for="professional_id" class="oe_edit_only"/>
+                <h2>
+                    <field name="professional_id" placeholder="Professional ID..."/>
+                </h2>
+            </div>
+        </field>
+    </record>
+
+    <record id="hr_employee_view_kanban_view" model="ir.ui.view">
+        <field name="name">HR - Employess Kanban</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.hr_kanban_view_employees"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <span t-if="record.job_id.raw_value" position="before">
+                <span t-if="record.code.raw_value" class="o_kanban_record_subtitle"><field name="code"/></span>
+                <span t-if="record.professional_id.raw_value" class="o_kanban_record_subtitle"><field name="professional_id"/></span>
+            </span>
+        </field>
+    </record>
+
+    <record id="hr_employee_view_search" model="ir.ui.view">
+        <field name="name">hr.employee.search</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_filter"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="code"/>
+                <field name="professional_id"/>
+            </field>
+        </field>
+    </record>
+
+</openerp>

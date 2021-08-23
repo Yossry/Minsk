@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+	
+		<!-- Top menu item -->
+		<menuitem name="GMS" id="menu_gms_root" groups="sos.group_hr_master,base.group_user" sequence="1" icon="fa-shopping-cart" web_icon="purchase,static/description/icon.png"/>
+			
+			<!-- Human Resources Main Menu -->
+			<menuitem id="menu_gms_main" parent="menu_gms_root" name="Human Resources" sequence="1"/>
+				<!-- Human Resources Sub Menu -->
+				<menuitem name="Guards" parent="menu_gms_main" id="menu_open_view_guard_list_my" sequence="10" action="open_view_guard_list_my"/>
+				<menuitem name="Multi Step Profile Creation" parent="menu_gms_main" id="sos_guard_multi_step_profile_menu" sequence="11" action="action_sos_guard_multi_step_profile"/>
+				<menuitem name="Guards Exit Form" parent="menu_gms_main" id="menu_guards_exit_form" sequence="12" action="sos_guards_exit_form_action"/>
+				<menuitem name="Black List Guards" parent="menu_gms_main" id="menu_black_list_guards" sequence="14" action="sos_black_listed_guards_action"/>
+				<menuitem name="Guards Account Block" parent="menu_gms_main" id="menu_guards_account_block" sequence="15" action="sos_guards_account_block_action"/>
+				<menuitem name="Centers" parent="menu_gms_main" id="sos_center_mi" sequence="20" action="sos_center_action"/>
+				<menuitem name="Projects" parent="menu_gms_main" id="sos_project_mi" sequence="30" action="sos_project_action"/>
+				<menuitem name="Posts" parent="menu_gms_main" id="sos_post_mi" sequence="40" action="sos_post_action"/>	
+				<!-- <menuitem name="PSS" parent="sos_posts_main_mi" id="sos_pss_mi" sequence="45" action="sos_pss_action"/> -->
+				<menuitem name="Guard Posts" parent="menu_gms_main" id="sos_guard_post_mi" sequence="50" action="sos_guard_post_action"  groups="base.group_user"/>  
+				<menuitem name="Clients Visit" parent="menu_gms_main" id="sos_clients_visit_mi" sequence="100" action="sos_client_visit_action"/>
+				<menuitem name="Armourer Visit" parent="menu_gms_main" id="sos_armourer_visit_mi" sequence="101" action="sos_armourer_visit_action"/>
+				<menuitem name="Employee RFID" parent="menu_gms_main" id="employee_rfid_mi" sequence="250" action="employee_rfid_action"  groups="base.group_user"/> 
+				
+				<!-- Weapon Sub Menu Under Human Resources-->
+				<menuitem name="Weapons" parent="menu_gms_main" id="sos_weapon_main_mi" sequence="102"/>
+					<menuitem name="Weapons" parent="sos_weapon_main_mi" id="sos_weapon_mi" sequence="2" action="sos_weapon_action"/>
+					<menuitem name="Weapon Posts" parent="sos_weapon_main_mi" id="sos_weapon_posts_mi" sequence="4" action="sos_weapon_post_action"/>
+				
+				<!-- Reports Main Menu Under Human Resources -->
+				<menuitem id="menu_gms_reports" name="Reports" parent="menu_gms_main" sequence="120" groups="sos.group_hr_master,base.group_user"/>
+					
+					<!-- Guards Report Sub Menu under Reports Menu-->
+					
+					<menuitem id="menu_gms_guards_reports" name="Guards" parent="menu_gms_reports" sequence="10" groups="sos.group_hr_master,base.group_user"/>
+						<menuitem name="Join Termination" parent="menu_gms_guards_reports" sequence="10" action="action_guards_join_termination" id="menu_guards_join_termination"/>				
+						<menuitem name="Guard Profile Report" parent="sos.menu_gms_guards_reports" sequence="20" action="action_sos_guard_document_report" id="menu_sos_guard_document_report"/>
+						<menuitem name="Guards Bank Account" parent="sos.menu_gms_guards_reports" sequence="22" action="action_guards_bank_account_view" id="menu_guards_bank_account"/>
+						<menuitem name="Docs Complaint Report" parent="sos.menu_gms_guards_reports" sequence="25" action="action_sos_guards_docs_complaint_wizard" id="menu_guards_docs_complaint"/>
+						
+						
+					<!-- Posts Report Sub Menu under Reports Menu-->
+					<menuitem id="menu_gms_post_reports" name="Posts" parent="menu_gms_reports" sequence="20" groups="sos.group_hr_master,base.group_user"/>	
+						<menuitem name="Join Termination" parent="menu_gms_post_reports" sequence="10" action="action_posts_join_termination" id="menu_posts_join_termination"/>				
+						<menuitem action="action_sos_posts_report_wizard" name="Posts Report" id="menu_sos_posts_report" parent="menu_gms_post_reports" sequence="15" groups="sos.group_hr_master,hr.group_hr_user,base.group_user" />
+					
+					<!-- Other Reports Sub Menu under Reports Menu-->
+					<menuitem id="menu_gms_other_reports" name="Others" parent="menu_gms_reports" sequence="30" groups="sos.group_hr_master,base.group_user"/>
+						<menuitem name="Clients Visit Report" parent="sos.menu_gms_other_reports" sequence="10" action="action_daily_clients_visit_rep" id="menu_clients_visit_rep"/>
+						<menuitem name="Armourer Visits Report" parent="sos.menu_gms_other_reports" sequence="15" action="action_daily_armourer_visit_rep" id="menu_armourer_visit_rep"/>
+
+		<!-- Top Level Configuration Main Menu -->
+		<menuitem id="menu_gms_configuration" name="Configuration" parent="menu_gms_root" groups="sos.group_hr_master" sequence="50"/>
+			<menuitem parent="menu_gms_configuration" id="sos_bloodgroup_mi" name="Blood Group" sequence="110" action="sos_bloodgroup_action" />
+			<menuitem parent="menu_gms_configuration" id="sos_city_mi" name="Cities" sequence="111" action="sos_city_action" />
+			<menuitem parent="menu_gms_configuration" id="sos_education_mi" name="Education" sequence="112" action="sos_education_action" />
+			<menuitem parent="menu_gms_configuration" id="menu_action_sos_fiscalyear" name="Fiscal Year"  sequence="121" action="action_sos_fiscalyear"/>
+			<menuitem parent="menu_gms_configuration" id="menu_action_sos_period" name="Accounting Period"  sequence="122" action="action_sos_period"/>
+			<menuitem parent="menu_gms_configuration" id="menu_action_sos_region" name="Regions"  sequence="123" action="sos_region_action"/>
+			<menuitem parent="menu_gms_configuration" id="menu_action_sos_attendance_device" name="Attendance Device"  sequence="130" action="sos_attendance_device_action" groups="sos.group_superusers,sos.group_hr_master,sos.group_coordinator,account.group_account_invoice"/>
+			<menuitem name="App Message" id="menu_app_message" parent="menu_gms_configuration" action="act_app_message" groups="base.group_user" sequence="135"/>
+
+
+		<!-- Menus in Other Modules-->
+			<!-- <menuitem name="Bank Account Logs" parent="sos_accounts.menu_account_customer" id="account_info_log_mi" sequence="65" action="sos_account_info_log_action"  groups="sos.group_superusers"/>      --> 
+			<menuitem name="Staff Salary Sheet" parent="hr.menu_hr_reporting_timesheet" sequence="3" action="act_sos_staff_salary_sheet_wizard" id="menu_staff_salary_report" groups="sos.group_hr_master,base.group_user"/>
+			<menuitem name="Staff Gross Salary Sheet" parent="hr.menu_hr_reporting_timesheet" sequence="4" action="act_sos_staff_gross_salary_sheet_wizard" id="menu_staff_gross_salary_report" groups="sos.group_hr_master,base.group_user"/>
+			
+	</data>
+</openerp>

@@ -1,0 +1,21 @@
+@mixin o-flex-flow($direction, $wrap) {
+    -ms-flex-flow: $direction $wrap;
+    -moz-flex-flow: $direction $wrap;
+    -webkit-flex-flow: $direction $wrap;
+
+    flex-flow: $direction $wrap;
+}
+@mixin o-flex($grow, $schrink, $basis) {
+    -ms-flex: $grow $schrink $basis;
+    -moz-flex: $grow $schrink $basis;
+    -webkit-box-flex: $grow;
+    -webkit-flex: $grow $schrink $basis;
+
+    flex: $grow $schrink $basis;
+}
+@mixin o-justify-content($justify) {
+    -moz-justify-content: $justify;
+    -webkit-justify-content: $justify;
+
+    justify-content: $justify;
+}

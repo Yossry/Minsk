@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <menuitem name="External Syncs" id="clv_external_sync.menu_external_sync_external_sync_external_syncs" 
+        parent="clv_base.menu_external_sync_external_sync"
+        groups="clv_external_sync.group_user"
+        sequence="10"
+        action="clv_external_sync.clv_external_sync_action"/>
+
+    <menuitem name="External Sync" id="clv_external_sync.menu_external_sync_external_sync_external_sync"
+        parent="clv_base.menu_external_sync_external_sync"
+        groups="clv_external_sync.group_user"
+        sequence="20"/>
+
+    <menuitem name="Schedules" id="clv_external_sync.menu_external_sync_external_sync_external_sync_schedules" 
+        parent="clv_external_sync.menu_external_sync_external_sync_external_sync"
+        groups="clv_external_sync.group_user"
+        sequence="40"
+        action="clv_external_sync.clv_external_sync_schedule_action"/>
+
+    <menuitem name="Batches" id="clv_external_sync.menu_external_sync_external_sync_external_sync_batches" 
+        parent="clv_external_sync.menu_external_sync_external_sync_external_sync"
+        groups="clv_external_sync.group_user"
+        sequence="50"
+        action="clv_external_sync.clv_external_sync_batch_action"/>
+
+    <menuitem name="External Sync" id="clv_external_sync.menu_external_sync_config_external_sync"
+        parent="clv_base.menu_external_sync_config"
+        groups="clv_external_sync.group_user"
+        sequence="10"/>
+
+    <menuitem name="Hosts" id="clv_external_sync.menu_external_sync_config_external_sync_hosts" 
+        parent="clv_external_sync.menu_external_sync_config_external_sync"
+        groups="clv_external_sync.group_user"
+        sequence="10"
+        action="clv_external_sync.clv_external_sync_host_action"/>
+
+    <menuitem name="Templates" id="clv_external_sync.menu_external_sync_config_external_sync_templates" 
+        parent="clv_external_sync.menu_external_sync_config_external_sync"
+        groups="clv_external_sync.group_user"
+        sequence="30"
+        action="clv_external_sync.clv_external_sync_template_action"/>
+
+    <menuitem name="Batch Members" id="clv_external_sync.menu_external_sync_config_external_sync_batch_members" 
+        parent="clv_external_sync.menu_external_sync_config_external_sync"
+        groups="clv_external_sync.group_user"
+        sequence="60"
+        action="clv_external_sync.clv_external_sync_batch_member_actions"/>
+
+    <menuitem name="Object Fields" id="menu_external_sync_config_external_sync_object_fields"
+        parent="clv_external_sync.menu_external_sync_config_external_sync"
+        groups="clv_external_sync.group_user"
+        sequence="90"
+        action="clv_external_sync.clv_external_sync_object_field_action"/>
+
+</odoo>

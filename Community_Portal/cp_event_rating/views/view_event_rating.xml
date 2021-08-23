@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="event_rating" inherit_id="website_event.event_description_full" name="Event Rating" active="False" customize_show="True">
+        <xpath expr="//ul[@id='comment']" position="after">
+            <div class="o_shop_discussion_rating">
+                <section class="container mt16 mb16">
+                    <div class="row">
+                        <div class="col-lg-8 offset-lg-2">
+                            <t t-call="portal.message_thread">
+                                <t t-set="object" t-value="event"/>
+                                <t t-set="display_rating" t-value="True"/>
+                            </t>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </xpath>
+    </template>
+
+</odoo>

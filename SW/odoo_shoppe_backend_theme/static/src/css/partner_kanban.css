@@ -1,0 +1,130 @@
+.o_kanban_view.o_res_partner_kanban.o_kanban_ungrouped {
+    background-color: #F9F9F9;
+    margin: 4px 4px;
+}
+.o_main .o_kanban_view .az_box {
+    padding: 22px 0px 0px 0px !important;
+    background-color: #ffffff;
+    min-height: 325px !important;
+    box-shadow: none;
+    width: 325px;
+}
+.o_main .o_kanban_view .az_box i {
+    font-size: 18px;
+    padding-right: 8px;
+}
+.o_main .o_kanban_view .az_box .card_header {
+    height: 67px;
+}
+.o_main .o_kanban_view .az_box .card_header .az_image_box {
+    float: left;
+    width: 100% !important;
+}
+.o_main .o_kanban_view .az_box .card_header .az_image_box .oe_kanban_image {
+    border: 5px solid #eee !important;
+    width: 90px !important;
+    height: 90px !important;
+    margin-top: -12px;
+    margin-left: 15px;
+    background-color: #FFF;
+    -moz-border-radius: 50% !important;
+    -webkit-border-radius: 50% !important;
+    border-radius: 50% !important;
+}
+.o_main .o_kanban_view .az_box .card_header .az_image_box .oe_functional {
+    vertical-align: top;
+    text-align: left;
+    overflow: hidden;
+    width: 65%;
+    word-break: break-word;
+    font-size: 16px;
+    font-weight: bold;
+    color: #FFF;
+    float: right;
+    margin: 0;
+}
+.o_main .o_kanban_view .az_box .card_header .az_image_box .oe_functional .oe_partner_heading {
+    margin-top: 4px;
+}
+.o_main .o_kanban_view .az_box .card_header .az_image_box .oe_functional .oe_partner_company {
+    font-size: 15px !important;
+    font-weight: normal;
+}
+.o_main .o_kanban_view .az_box .card_header .az_image_box .oe_functional .oe_partner_func {
+    font-size: 15px !important;
+    font-weight: bold;
+}
+.o_main .o_kanban_view .az_box .card_details {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 15px;
+    color: #4c4c4c;
+    overflow: hidden;
+    width: 100%;
+    padding: 15px;
+}
+.o_main .o_kanban_view .az_box .card_details .az_location {
+    margin-bottom: 10px;
+    color: #777777;
+    font-size: 16px;
+}
+.o_main .o_kanban_view .az_box .card_details .az_location a {
+    color: #888888;
+}
+.o_main .o_kanban_view .az_box .card_details .az_location i.fa-street-view {
+    font-size: 20px;
+    padding-right: 0px;
+}
+.o_main .o_kanban_view .az_box .card_details .az_location i.fa-map-marker {
+    color: #888888;
+    font-size: 20px;
+}
+
+.o_main .o_kanban_view .az_box .card_details .oe_kanban_partner_links {
+    margin-bottom: 5px;
+}
+.o_main .o_kanban_view .az_box .card_details .oe_kanban_partner_links span.badge {
+    background-color: #FFF;
+    color: #888888;
+}
+.o_main .o_kanban_view .az_box .card_details .oe_kanban_partner_links a {
+    font-size: 15px;
+    color: #777777;
+}
+.o_main .o_kanban_view .az_box .card_details .oe_tag {
+    font-size: 13px !important;
+    padding: 3px 8px !important;
+    margin: 3px 2px 3px 0 !important;
+    color: #777777;
+}
+.o_main .o_kanban_view .az_box .card_details .call_contact {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #E3E3E3;
+    color: #777777;
+    overflow: auto;
+}
+.o_main .o_kanban_view .az_box .card_details .card_contact li {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: #777777;
+    display: flex;
+    min-height: 27px;
+    overflow: hidden;
+}
+.o_main .o_kanban_view .az_box .card_details .card_contact li a {
+    color: #777777;
+    font-size: 13px !important;
+    max-width: 27px;
+    display: contents;
+}
+@media (max-width: 767px) {
+    .o_kanban_view.o_res_partner_kanban.o_kanban_ungrouped {
+        background-color: #F9F9F9;
+    }
+    .o_kanban_view.o_kanban_ungrouped .o_kanban_record {
+        margin: 4px 8px;
+        flex: 1 0 calc(100% - 16px);
+    }
+}

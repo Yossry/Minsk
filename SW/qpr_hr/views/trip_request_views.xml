@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <record model="ir.ui.view" id="trip_request_tree_view">
+        <field name="name">Trip Request tree</field>
+        <field name="model">trip.request</field>
+        <field name="arch" type="xml">
+            <tree string="Trip Request">
+                <field name="employee_id"/>
+                <field name="department_id"/>
+                <field name="city"/>
+                <field name="country_id"/>
+                <field name="from_date"/>
+                <field name="to_date"/>
+                <field name="cost"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="trip_request_form_view">
+        <field name="name">Trip Request form</field>
+        <field name="model">trip.request</field>
+        <field name="arch" type="xml">
+            <form string="Trip Request">
+                <header>
+                    <button string="Confirm" name="action_confirm" states="draft" type="object" class="oe_highlight"/>
+                    <button string="Approve" name="action_approve" states="confirmed,approved" type="object" groups="hr.group_hr_user" class="oe_highlight"/>
+                    <button string="Reject" name="action_reject" states="confirmed" type="object" groups="hr.group_hr_user"/>
+                    <widget name="attach_document" string="Attach Document" action="message_post" highlight="1" groups="hr_holidays.group_hr_holidays_manager"/>
+                    <button name="action_send_mail_to_agent" string="Send Email" type="object" states="confirmed" class="btn-primary" groups="hr_holidays.group_hr_holidays_manager"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,approved,approved_ceo,rejected"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group string="Staff Details">
+                            <field name="employee_id" domain="[('department_id', '=', department_id)]"/>
+                            <field name="department_id" readonly="1" force_save="1"/>
+                            <field name="ceo" readonly="1" force_save="1"/>
+                        </group>
+                        <group string="Business Trip Details">
+                            <field name="from_date"/>
+                            <field name="to_date"/>
+                            <field name="days"/>
+                            <field name="city"/>
+                            <field name="state_id"/>
+                            <field name="country_id"/>
+                        </group>
+                        <group string="Pupose Of Trip">
+                            <field name="trip_purpose" widget='radio'/>
+                            <field name="other_purpose"/>
+                        </group>
+                        <group string='Budget Details'>
+                            <field name="budgeted" widget='radio'/>
+                            <field name="dieam"/>
+                            <field name="cost"/>
+                            <field name="air_fare"/>
+                            <field name="other_allowence"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_trip_request">
+        <field name="name">Trip Request</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">trip.request</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Trip Request"
+        id="menu_trip_request"
+        action="action_trip_request"
+        parent="hr.menu_hr_root"
+        sequence="4"
+        groups="hr.group_hr_manager"/>
+</odoo>

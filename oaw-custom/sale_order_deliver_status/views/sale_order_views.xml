@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_order_tree" model="ir.ui.view">
+        <field name="name">sale.order.tree</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_tree" />
+        <field name="arch" type="xml">
+            <field name="invoice_status" position="after">
+                <field name="delivery_status" />
+                <field name="order_status" />
+            </field>
+            <xpath expr="//tree" position="attributes">
+                <attribute name="decoration-info">order_status == 'open'</attribute>
+            </xpath>
+        </field>
+    </record>
+    <record id="sale_order_view_search_inherit_sale" model="ir.ui.view">
+        <field name="name">sale.order.search.inherit.sale</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.sale_order_view_search_inherit_sale" />
+        <field name="arch" type="xml">
+            <filter name="to_invoice" position="before">
+                <filter
+                    string="Open"
+                    name="open"
+                    domain="[('order_status','=','open')]"
+                />
+                <filter
+                    string="Done"
+                    name="done"
+                    domain="[('order_status','=','done')]"
+                />
+                <separator />
+                <filter
+                    string="To Deliver"
+                    name="to_deliver"
+                    domain="[('delivery_status','in',('waiting','partial'))]"
+                />
+            </filter>
+        </field>
+    </record>
+</odoo>

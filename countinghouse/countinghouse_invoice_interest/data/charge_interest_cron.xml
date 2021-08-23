@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record model="ir.cron" id="charge_interest_overdue_invoices">
+        <field name="name">Charge Interest On Overdue Invoices</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="nextcall" eval="(DateTime.now() + timedelta(days= +1)).strftime('%Y-%m-%d 2:15:05')"/>
+        <field name="doall" eval="False"/>
+        <field name="model_id" ref="model_account_invoice"/>
+        <field name="code" eval="account_invoice.cron_add_interest_charges"/>
+        <field name="args" eval="'()'"/>
+    </record>
+
+</odoo>

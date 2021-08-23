@@ -1,0 +1,59 @@
+/**********************************************************************************
+*  Copyright (C) 2019 UNIBRAVO
+**********************************************************************************/
+// Calendar and Date Picker
+
+.o_calendar_container .o_calendar_sidebar_container .ui-datepicker table .ui-state-active {
+    background: none;
+    background-color: $brand-primary !important;
+    color: white !important;
+}
+.o_calendar_container .o_calendar_sidebar_container .ui-datepicker table .ui-state-default {
+    color: $brand-primary;
+}
+
+.datepicker {
+    .table-sm {
+        > thead {
+            color: white;
+            background-color: $brand-primary;
+
+            > tr {
+                &:first-child {
+                    th:hover {
+                        color: white;
+                        background-color: darken($brand-primary, 10%);
+                    }
+                }
+
+                &:last-child {
+                    color: $o-datepicker-week-color;
+                    background-color: $o-datepicker-week-bg-color;
+                }
+                > th {
+                    border-radius: 0;
+                }
+            }
+        }
+
+        > tbody {
+            > tr {
+                > td {
+                    &.active, .active {
+                        background-color: $o-brand-primary;
+                        border-radius: 100px;
+                    }
+
+                    &.today:before {
+                        border-bottom-color: $o-brand-primary;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.datepicker .table-sm > tbody > tr > td.active, .datepicker .table-sm > tbody > tr > td .active {
+    background-color: $brand-primary;
+	border-radius: 0;
+}

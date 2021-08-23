@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="aarsol_account_report_general_ledger_view" model="ir.ui.view">
+        <field name="name">Customized General Ledger</field>
+        <field name="model">aarsol.account.report.general.ledger</field>
+        <field name="arch" type="xml">
+        	<form>
+				<group>
+					<group>
+						<field name="company_id" invisible="1"/>
+						<field name="date_from"/>
+						<field name="date_to"/>
+					</group>
+					<group>
+						<field name="target_move" widget="radio"/>
+						<field name="sortby" widget="radio"/>
+						<field name="display_account" widget="radio"/>
+						<field name="initial_balance"/>
+						<newline/>
+					</group>
+				</group>
+
+				<group>
+					<field name="journal_ids" widget="many2many_tags" options="{'no_create': True}"/>
+				</group>
+
+				<group>
+					<field name="account_ids" options="{'no_create': True, 'limit': 10}"/>
+				</group>
+
+				<group>
+					<field name="dimension_ids">
+						<tree string="Ledger Dimensions" editable="top">
+							<field name="ac_id" invisible="1"/>
+							<field name="nd_id" options="{'no_create': True, 'limit': 10}"/>
+							<field name="code_id" domain="[('nd_id','=',nd_id)]" options="{'no_create': True, 'limit': 10}"/>
+						</tree>
+					</field>
+				</group>
+
+				<group>
+					<group>
+						<field name="dimension_group"  options="{'no_create': True, 'limit': 10}"/>
+					</group>
+					<group></group>
+				</group>
+
+				<footer>
+					<button name="check_report" string="Print" type="object" default_focus="1" class="oe_highlight"/>
+					<button string="Cancel" class="btn btn-default" special="cancel" />
+				</footer>
+        	</form>
+        </field>
+    </record>
+
+
+	 <record id="action_aarsol_account_general_ledger" model="ir.actions.act_window">
+        <field name="name">Customized General Ledger</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">aarsol.account.report.general.ledger</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="aarsol_account_report_general_ledger_view"/>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="account.model_account_account" />
+        <field name="binding_type">report</field>
+    </record>
+
+	<!-- menu -->
+	<menuitem id="menu_customized_account_reports" parent="account.menu_finance_reports" name="Customized Reports" sequence="80" />
+    	<menuitem id="menu_aarsol_general_ledger" name="Customized General Ledger" parent="menu_customized_account_reports" action="action_aarsol_account_general_ledger" groups="account.group_account_user"/>
+
+
+	<record id="ledger_dimension_view" model="ir.ui.view">
+		<field name="name">Ledger Dimensions</field>
+		<field name="model">ledger.dimension</field>
+		<field name="arch" type="xml">
+		<form string="Ledger Dimension">
+			<sheet>
+				<group>
+					<field name="name"/>
+					<field name="ac_lines">
+						<tree string="Ledger Dimensions" editable="top">
+							<field name="ac_id" invisible="1"/>
+							<field name="nd_id" options="{'no_create': True, 'limit': 10}"/>
+							<field name="code_id" domain="[('nd_id','=',nd_id)]" options="{'no_create': True, 'limit': 10}"/>
+						</tree>
+					</field>
+				</group>
+			</sheet>
+		</form>
+		</field>
+	</record>
+
+</odoo>

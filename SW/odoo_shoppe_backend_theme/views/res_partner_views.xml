@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_res_partner_kanban_view_inherit" model="ir.ui.view" >
+        <field name="name">res.partner.kanban.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.res_partner_kanban_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//t[@t-name='kanban-box']" position="replace">
+                <t t-name="kanban-box">
+                    <div class="oe_kanban_global_click o_res_partner_kanban" style="display: none;">
+                        <div class="o_kanban_image">
+                            <t t-if="record.image_small.raw_value">
+                                <img t-att-src="kanban_image('res.partner', 'image_small', record.id.value)" alt="image"/>
+                            </t>
+                            <t t-if="!record.image_small.raw_value">
+                                <t t-if="record.type.raw_value === 'delivery'">
+                                    <img t-att-src='_s + "/base/static/src/img/truck.png"' class="o_kanban_image oe_kanban_avatar_smallbox" alt="image"/>
+                                </t>
+                                <t t-if="record.type.raw_value === 'invoice'">
+                                    <img t-att-src='_s + "/base/static/src/img/money.png"' class="o_kanban_image oe_kanban_avatar_smallbox" alt="image"/>
+                                 </t>
+                                <t t-if="record.type.raw_value != 'invoice' &amp;&amp; record.type.raw_value != 'delivery'">
+                                    <t t-if="record.is_company.raw_value === true">
+                                        <img t-att-src='_s + "/base/static/src/img/company_image.png"' alt="image"/>
+                                    </t>
+                                    <t t-if="record.is_company.raw_value === false">
+                                        <img t-att-src='_s + "/base/static/src/img/avatar.png"' alt="image"/>
+                                    </t>
+                                </t>
+                            </t>
+                        </div>
+                        <div class="oe_kanban_details">
+                            <strong class="oe_partner_heading"><field name="display_name"/></strong>
+                            <ul>
+                                <li t-if="record.parent_id.raw_value and !record.function.raw_value"><field name="parent_id"/></li>
+                                <li t-if="!record.parent_id.raw_value and record.function.raw_value"><field name="function"/></li>
+                                <li t-if="record.parent_id.raw_value and record.function.raw_value"><field name="function"/> at <field name="parent_id"/></li>
+                                <li t-if="record.city.raw_value and !record.country_id.raw_value"><field name="city"/></li>
+                                <li t-if="!record.city.raw_value and record.country_id.raw_value"><field name="country_id"/></li>
+                                <li t-if="record.city.raw_value and record.country_id.raw_value"><field name="city"/>, <field name="country_id"/></li>
+                                <li t-if="record.email.raw_value" class="o_text_overflow"><field name="email"/></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="oe_kanban_vignette oe_semantic_html_override az_box">
+                        <div class="card_header">
+                            <a type="open" class="az_image_box">
+                                <t t-if="record.image_small.raw_value">
+                                    <img t-att-src="kanban_image('res.partner', 'image_small', record.id.value)" class="oe_kanban_image" alt="image"/>
+                                </t>
+                                <t t-if="!record.image_small.raw_value">
+                                    <t t-if="record.is_company.raw_value === true">
+                                        <img t-att-src='_s + "/base/static/src/img/company_image.png"' class="oe_kanban_image" alt="image"/>
+                                    </t>
+                                    <t t-if="record.is_company.raw_value === false">
+                                        <img t-att-src='_s + "/base/static/src/img/avatar.png"' class="oe_kanban_image" alt="image"/>
+                                    </t>
+                                </t>
+                                <div class="oe_functional">
+                                    <h4 class="oe_partner_heading">
+                                        <field name="name"/>
+                                    </h4>
+                                    <h4 class="oe_partner_company" t-if="record.parent_id.raw_value">
+                                        <field name="parent_id"/>
+                                    </h4>
+                                    <h4 class="oe_partner_func" t-if="record.function.raw_value">
+                                        <field name="function"/>
+                                    </h4>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="card_details">
+                            <div class="az_location text-center">
+                                <t t-if="record.city.raw_value and !record.country_id.raw_value">
+                                    <a t-attf-href="http://maps.google.com/?q=#{record.street.raw_value} #{record.city.raw_value} #{record.zip.raw_value}" target="_blank">
+                                        <i class="fa fa-street-view" aria-label="Street view" title="Street view"></i>
+                                        <field name="city"/>
+                                    </a>
+                                </t>
+                                <t t-if="!record.city.raw_value and record.country_id.raw_value">
+                                    <a t-attf-href="http://maps.google.com/?q=#{record.street.raw_value} #{record.city.raw_value} #{record.zip.raw_value}" target="_blank">
+                                        <i class="fa fa-street-view" aria-label="Street view" title="Street view"></i>
+                                        <field name="country_id"/>
+                                    </a>
+                                </t>
+                                <t t-if="record.city.raw_value and record.country_id.raw_value">
+                                    <a t-attf-href="http://maps.google.com/?q=#{record.street.raw_value} #{record.city.raw_value} #{record.zip.raw_value}" target="_blank">
+                                        <i class="fa fa-street-view" aria-label="Street view" title="Street view"></i>
+                                        <field name="city"/>, <field name="country_id"/>
+                                    </a>
+                                </t>
+                            </div>
+                            <div class="oe_kanban_partner_links"/>
+                            <div class="o_kanban_tags_section oe_kanban_partner_categories" style="    margin-left: 7px;"/>
+                            <div class="call_contact row">
+                                <div class="col-md-6 col-sm-6 col-xs-12" t-if="record.phone.raw_value">
+                                    <i class="fa fa-phone" aria-label="Phone" title="Phone"></i>
+                                    <field name="phone"/> &amp;nbsp;
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12" t-if="record.mobile.raw_value">
+                                    <i class="fa fa-mobile pl10 bl" aria-label="Mobile" title="Mobile"></i>
+                                    <field name="mobile"/>
+                                </div>
+                            </div>
+                            <ul class="card_contact">
+                                <li t-if="record.email.raw_value">
+                                    <a t-attf-href="mailto:#{record.email.raw_value}">
+                                        <i class="fa fa-envelope" aria-label="Envelope" title="Envelope"></i><field name="email"/></a>
+                                </li>
+                                <li t-if="record.website.raw_value">
+                                    <a t-att-href="record.website.raw_value" target="_blank">
+                                        <i class="fa fa-globe" aria-label="Globe" title="Globe"></i><field name="website"/></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </t>
+            </xpath>
+        </field>
+    </record>
+</odoo>

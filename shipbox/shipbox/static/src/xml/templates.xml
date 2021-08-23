@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <!--<t t-name="FieldScale">-->
+        <!--<div>-->
+            <!--<span t-if="widget.get('effective_readonly')"/>-->
+
+            <!--<input t-if="!widget.get('effective_readonly')" class="o_form_input"-->
+                <!--t-att-barcode_events="widget.options.barcode_events"-->
+                <!--t-att-type="widget.password ? 'password' : 'text'"-->
+                <!--t-att-id="widget.id_for_label"-->
+                <!--t-att-tabindex="widget.node.attrs.tabindex"-->
+                <!--t-att-autofocus="widget.node.attrs.autofocus"-->
+                <!--t-att-placeholder="widget.node.attrs.placeholder"-->
+                <!--t-att-autocomplete="widget.password ? 'new-password' : widget.node.attrs.autocomplete"-->
+                <!--t-att-maxlength="widget.field.size" />-->
+
+            <!--<div class="shipbox_scale btn btn-small btn-link" style="display: block; font-size: 120%; background: #fff; border: 1px solid #666; text-align: left;">-->
+                <!--From Scale: <span class="shipbox_scale_reading"/>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</t>-->
+
+    <t t-name="ShipboxCoreWidget">
+        <li class="shipbox_systray">
+            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#">
+                <i class="fa fa-tachometer"/> <span class="badge shipbox_scale_reading_auto"/>
+            </a>
+            <ul class="dropdown-menu" role="menu" style="color: #666;"/>
+        </li>
+    </t>
+</templates>

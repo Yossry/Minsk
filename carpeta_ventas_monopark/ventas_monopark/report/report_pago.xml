@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_payment_receipt_document_inherit" inherit_id="account.report_payment_receipt_document">
+        <xpath expr="//t[@t-call='web.external_layout']" position="replace">
+            <t t-call="web.basic_layout">
+                <t t-set="xml" t-value="o.l10n_mx_edi_get_xml_etree()"/>
+                <t t-set="tfd" t-value="o.l10n_mx_edi_get_tfd_etree(xml)"/>
+                <t t-set="p" t-value="docs.l10n_mx_edi_get_pago_etree(xml)" />
+            	<div class="header">
+                    <div style="width:100%;">
+                        <table class="table" style="border-top:6px solid #F77B22;" border="0">
+                            <tr>
+                                <td style="width:50%;padding:4px;" class="text-center">
+                                	 <img t-attf-src="data:image/*;base64,{{o.company_id.logo}}" style="max-height:80px;max-width:120px;"/>
+                                </td>
+                                <td style="width:50%;padding:4px;background:#f1f1f1;font-size:9pt;">
+
+                                    <div class="text-center">
+                                        <table style="width:90%;">
+                                            <tr>
+                                                <th style="border: inset 0pt;padding:0 10px 0 0 !important;font-size:8pt;text-align:right;">
+                                                    NO. CERTIFICADO
+                                                </th>
+                                                <td style="border: inset 0pt;padding:0 !important;font-size:8pt;text-align:left;">
+                                                    <span t-esc="xml.get('NoCertificado')"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="border: inset 0pt;padding:0 10px 0 0 !important;font-size:8pt;text-align:right;">
+                                                    CERTIFICADO SAT
+                                                </th>
+                                                <td style="border: inset 0pt;padding:0 !important;font-size:8pt;text-align:left;">
+                                                    <span t-esc="tfd.get('NoCertificadoSAT')"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="border: inset 0pt;padding:0 10px 0 0 !important;font-size:8pt;text-align:right;">
+                                                    CERTIFICACIÓN
+                                                </th>
+                                                <td style="border: inset 0pt;padding:0 !important;font-size:8pt;text-align:left;">
+                                                    <span t-esc="xml.get('Fecha')"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="border: inset 0pt;padding:0 10px 0 0 !important;font-size:8pt;text-align:right;">
+                                                    RFC
+                                                </th>
+                                                <td style="border: inset 0pt;padding:0 !important;font-size:8pt;text-align:left;">
+                                                    <span t-esc="xml.Emisor.get('Rfc')"/>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
+                                    <div class="text-center">
+                                        <span style="width:100%;color:#F77B22;text-align:center;">CRISTÓBAL FRANCISCO DUEÑEZ BARBA</span><br/>
+                                        <span>auxiliar@monopark.com.mx</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:50%;padding:4px;background:#F77B22;color:#fff;border-rigth:1px solid #fff;" class="text-center">
+                                    <h3>
+                                        <strong>Pago </strong><span t-field="o.name"/>
+                                    </h3>
+                                    <b><span t-field="o.l10n_mx_edi_cfdi_uuid"/></b>
+                                </td>
+                                <td style="width:50%;padding:4px;background:#F77B22;color:#fff;font-size:10pt;border-left:1px solid #fff">
+                                    <strong><span>Monopark</span></strong>
+                                    <br/>
+                                    <span t-field="o.company_id.street"/>
+                                    <t>
+                                        <span> Col. <span t-field="o.company_id.l10n_mx_edi_colony"/></span>
+                                    </t>
+                                    <br/>
+                                    <t t-if="o.company_id.zip">
+                                        <span> C.P.<span t-field="o.company_id.zip"/></span>
+                                        <span> </span>
+                                    </t>
+                                    <span t-field="o.company_id.city"/>
+                                    <span> </span>
+                                    <span t-field="o.company_id.state_id.code"/>
+                                    <span> </span>
+                                    <span t-field="o.company_id.country_id"/>
+                                    <br/>
+                                    <span t-field="o.company_id.phone"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <br/>
+                <div class="page">
+                    <br/>
+                    <br/>
+                    <div id="informations" class="row mt32 mb32" style="border-bottom:6px solid #F77B22;">
+                        <div class="col-auto mw-100 mb-4" t-if="xml.Receptor.get('Nombre')" name="receptor" style="font-size:10pt;">
+                            <strong>Receptor</strong>
+                            <br/>
+                            <span t-esc="xml.Receptor.get('Nombre')"/>
+                            <br/>
+                            <span>RFC: <span t-esc="xml.Receptor.get('Rfc')"/> </span>
+                            <t t-if="o.partner_id.street_name">
+                                <span t-field="o.partner_id.street_name" />
+                            </t>
+                            <t t-if="o.partner_id.street_number">
+                                <span>No. <span t-field="o.partner_id.street_number" /> </span>
+                            </t>
+                            <t t-if="o.partner_id.l10n_mx_edi_colony">
+                                <span>Col. <span t-field="o.partner_id.l10n_mx_edi_colony" /> </span>
+                            </t>
+                            <br/>
+                            <t t-if="o.partner_id.zip">
+                                <span>CP. <span t-field="o.partner_id.zip" /> </span>
+                            </t>
+                            <t t-if="o.partner_id.city">
+                                <span t-field="o.partner_id.city" />
+                                <span t-field="o.partner_id.state_id.name" />
+                                <span t-field="o.partner_id.country_id.name" />
+                            </t>
+                            <br/>
+                            <t t-if="o.partner_id.phone">
+                                <span>Tel. <span t-field="o.partner_id.phone" /> </span>
+                            </t>
+                        </div>
+                        <div class="col-auto mw-100 mb-2" t-if="o.partner_id.property_account_position_id or xml.get('Fecha')" style="font-size:10pt;">
+                            <t t-if="o.partner_id.property_account_position_id">
+                                <strong>Régimen Fiscal</strong>
+                                <br/>
+                                <span t-field="o.partner_id.property_account_position_id"/>
+                                <br/>
+                            </t>
+
+                            <t t-if="xml.get('Fecha')">
+                                <strong>Fecha</strong>
+                                <br/>
+                                <span t-esc="xml.get('Fecha')"/>
+                                <br/>
+                            </t>
+                            <t t-if="xml.Receptor.get('UsoCFDI')">
+                                <strong>Uso CFDI</strong>
+                                <br/>
+                                <span t-esc="xml.Receptor.get('UsoCFDI')"/>
+                            </t>
+                        </div>
+
+                        <div class="col-auto mw-100 mb-2" t-if="xml.get('LugarExpedicion')" style="font-size:10pt;">
+                            <t t-if="xml.get('LugarExpedicion')">
+                                <strong>Lugar de Expedición</strong>
+                                <br/>
+                                <span t-esc="xml.get('LugarExpedicion')"/>
+                                <br/>
+                            </t>
+                            <strong>Efecto de comprobante</strong>
+                            <br/>
+                            <span>Pago</span>
+                        </div>
+
+                        <div class="col-auto mw-100 mb-2" t-if="xml.get('LugarExpedicion')" style="font-size:10pt;">
+                            <t t-if="xml.get('LugarExpedicion')">
+                                <strong>Posición fiscal</strong>
+                                <br/>
+                                <span t-field="o.partner_id.property_account_position_id.name"/>
+                                <br/>
+                            </t>
+                           
+                        </div>
+                    </div>
+                    <table class="table table-sm">
+                        <thead>
+                            <tr style="background:#f1f1f1;">
+                                <th><span>Cantidad</span></th>
+                                <th><span>Cve Unidad</span></th>
+                                <th><span>Cve SAT</span></th>
+                                <th><span>Descripción</span></th>
+                                <th><span>Precio Unitario</span></th>
+                                <th><span>Importe</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span t-esc="xml.Conceptos.Concepto.get('Cantidad')"/></td>
+                                <td><span t-esc="xml.Conceptos.Concepto.get('ClaveUnidad')"/></td>
+                                <td><span>84111506</span></td>
+                                <td><span t-esc="xml.Conceptos.Concepto.get('Descripcion')"/></td>
+                                <td><span t-esc="xml.Conceptos.Concepto.get('ValorUnitario')"/></td>
+                                <td><span t-esc="xml.Conceptos.Concepto.get('Importe')"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br/>
+                    <table class="table table-sm">
+                        <thead>
+                            <tr style="background:#f1f1f1;">
+                                <td>
+                                    <strong>Fecha</strong>
+                                    <br/>
+                                    <span t-esc="p.Pago.get('FechaPago')"/>
+                                </td>
+                                <td>
+                                    <strong>Forma de pago</strong>
+                                    <br/>
+                                    <span t-esc="p.Pago.get('FormaDePagoP')"/>
+                                    <span> - </span>
+                                    <span t-field="o.l10n_mx_edi_payment_method_id"/>
+                                </td>
+                                <td>
+                                  <strong>Moneda</strong>
+                                  <br/>
+                                  <span t-esc="p.Pago.get('MonedaP')"/>
+                                </td>
+                                <td>
+                                  <strong>Monto</strong>
+                                  <br/>
+                                  <span>$</span><span t-esc="'{0:,.2f}'.format(float(p.Pago.get('Monto')))"/>
+                                </td>
+                                <td>
+                                  <strong>Tipo cambio</strong>
+                                </td>
+                                <td>
+                                  <strong>No. Operacion</strong>
+                                </td>
+                            </tr>
+                        </thead>
+                    </table>
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <td>Folio</td>
+                                <td>IdDocumento</td>
+                                <td>No. Parc</td>
+                                <td>Mét. pago DR</td>
+                                <td>Moneda</td>
+                                <td>Saldo anterior  </td>
+                                <td>Pagado  </td>
+                                <td>Saldo insoluto  </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="o.complemento()" t-as="r">
+                                <t t-if="r['folio']" >
+                                    <td><span t-esc="r['folio']"/></td>
+                                    <td><span t-esc="r['id_documento']"/></td>
+                                    <td><span t-esc="r['no_parc']"/></td>
+                                    <td><span t-esc="r['metodo_de_pago_dr']"/></td>
+                                    <td><span t-esc="r['moneda']"/></td>
+
+                                    <td style="font-size:11pt;"> 
+                                    <span>$</span>
+                                    <span t-esc="'{:,.2f}'.format(float(r['saldo_anterior']))"/>
+                                    </td>
+                                    <td style="font-size:11pt;">
+                                    <span>$</span><span t-esc="'{:,.2f}'.format(float(r['pagado']))"/>
+                                    </td>
+                                    <td style="font-size:11pt;">
+                                    <span>$</span>
+                                    <span t-esc="'{:,.2f}'.format(float(r['saldo_insoluto']))"/>
+                                    </td>
+                                </t>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <t t-if="o.l10n_mx_edi_cfdi_uuid">
+                        <div class="row" id="complement">
+                            <div class="barcode col-3">
+                                <t t-set="sello" t-value="xml.get('Sello', 'No identificado')[-8:]"/>
+                                <img alt="Barcode" t-att-src="'/report/barcode/?type=QR&amp;value=%s' % quote_plus('https://verificacfdi.facturaelectronica.sat.gob.mx/default.aspx?' + keep_query(re=o.l10n_mx_edi_cfdi_supplier_rfc, rr=o.l10n_mx_edi_cfdi_customer_rfc,tt=0,id=o.l10n_mx_edi_cfdi_uuid) + '&amp;fe=%s' % quote_plus(sello, 'utf-8', 'strict', '=/').replace('%2B', '+'))"/>
+                            </div>
+                            <div class="complement-details col-9">
+                                <div class="digital-stamp">
+                                    <span>Digital stamp of the emitter</span>
+                                </div>
+                                <div class="digital-stamp-content">
+                                    <span t-esc="xml.get('Sello', 'No identificado')"/>
+                                </div>
+                                <div class="digital-stamp">
+                                    <span>Digital stamp SAT</span>
+                                </div>
+                                <div class="digital-stamp-content">
+                                    <span t-esc="tfd.get('SelloSAT', 'No identificado')"/>
+                                </div>
+                                <div class="digital-stamp">
+                                    <span>Original chain complement of digital certification SAT</span>
+                                </div>
+                                <div class="digital-stamp-content">
+                                    <span class="nowrap" t-esc="tfd_original_string"/>
+                                </div>
+                                <div t-if="xml.Emisor.xpath('cfdi:ExpedidoEn', namespaces=xml.nsmap)" class="digital-stamp">
+                                    <span>Issued from</span>
+                                </div>
+                                <div t-if="xml.Emisor.xpath('cfdi:ExpedidoEn', namespaces=xml.nsmap)" class="digital-stamp-content">
+                                    <span t-esc="xml.get('LugarExpedicion', 'No identificado')"/>
+                                </div>
+                                <div class="digital-stamp">
+                                    <span>Extra Info</span>
+                                </div>
+                                <div class="digital-stamp-content">
+                                    <span>Emitter certificate:</span> <span t-esc="xml.get('NoCertificado')"/>
+                                    <span> | SAT Certificate:</span> <span t-esc="tfd.get('NoCertificadoSAT')"/>
+                                    <span> | Expedition place:</span> <span t-esc="xml.get('LugarExpedicion')"/>
+                                    <span> | Fiscal Regime:</span><span t-esc="xml.Emisor.get('RegimenFiscal', '')"/>
+                                    <span> | Emission Date:</span> <span t-esc="xml.get('Fecha', '').replace('T', ' ')"/>
+                                    <span> | Certification Date:</span> <span t-esc="tfd.get('FechaTimbrado', '').replace('T', ' ')"/>
+                                    <span> | Fiscal Folio:</span> <span t-esc="tfd.get('UUID')"/>
+                                </div>
+                                <div class="digital-stamp-content text-center">
+                                    <strong>This document is a printed representation of a CFDI</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </div>    
+            </t>
+        </xpath>
+    </template>
+</odoo>

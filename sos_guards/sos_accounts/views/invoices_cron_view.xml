@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<record id="view_invoices_cron_tree" model="ir.ui.view">
+			<field name="name">invoices.cron.tree</field>
+			<field name="model">invoices.cron</field>
+			<field name="priority" eval="8" />
+			<field name="arch" type="xml">
+				<tree string="Invoices Crons" create="false" edit="false" delete="false">
+					<field name="post_id"/>
+					<field name="date_from"/>
+					<field name="date_to"/>
+					<field name="project_id"/>
+					<field name="invoice_id"/>
+					<field name="state"/>
+				</tree>
+			</field>
+		
+		</record>
+	
+		<record id="view_invoices_cron_form" model="ir.ui.view">
+				<field name="name">invoices.cron.form</field>
+				<field name="model">invoices.cron</field>
+				<field name="priority" eval="8" />
+				<field name="arch" type="xml">
+					<form string="Invoices Crons">
+						<group>
+							<group>
+								<field name="post_id" context="{'form_view_ref': 'sos.sos_post_form_view','tree_view_ref': 'sos.sos_post_tree_view','filter_view_ref': 'sos.sos_post_filter_view'}"/>
+								<field name="date_from"/>
+								<field name="date_to"/>
+								<field name="project_id"/>
+							</group>
+							<group>
+								<field name="center_id"/>
+								<field name="invoice_id"/>
+								<field name="state"/>
+							</group>
+						</group>
+					</form>
+				</field>
+		</record>
+
+		<record id="view_invoices_cron_search" model="ir.ui.view">
+			<field name="name">invoices.cron.search</field>
+			<field name="model">invoices.cron</field>
+			<field name="priority" eval="8" />
+			<field name="arch" type="xml">
+				<search string="Invoices Crons">
+					<filter string="Draft" name="draft" domain="[('state','=','draft')]" />
+					<filter string="Done" name="done" domain="[('state','=','done')]" />
+
+					<field name="post_id" />
+				
+					<newline />
+				
+					<group expand="0" string="Group By...">
+						<filter string="Post" name="post_id" domain="[]" context="{'group_by':'post_id'}"/>
+						<filter string="Project" name="project_id" domain="[]" context="{'group_by':'project_id'}"/>
+						<filter string="Center" name="center_id" domain="[]" context="{'group_by':'center_id'}"/>
+						<filter string="Status" name="state" domain="[]" context="{'group_by':'state'}" />	
+						<filter string="Date (Year)" name="date_from" domain="[]" context="{'group_by':'date_from:year'}" />
+						<filter string="Date (Month)" name="date_from" domain="[]" context="{'group_by':'date_from:month'}" />																						
+					</group>
+				
+				</search>
+			</field>
+		</record>
+	
+		<record model="ir.actions.act_window" id="act_invoices_cron_view">
+			<field name="name">Invoices Crons</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">invoices.cron</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="context">{'search_default_draft':1}</field>
+		</record>
+
+		<menuitem action="act_invoices_cron_view" id="menu_invoices_cron" parent="menu_account_customer"  sequence="61"/>
+	
+	</data>
+</odoo>

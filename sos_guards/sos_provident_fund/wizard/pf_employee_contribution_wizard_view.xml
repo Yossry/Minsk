@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+		<record id="pf_employee_contribution_view" model="ir.ui.view">
+			<field name="name">PF Employee Contribution</field>
+			<field name="model">pf.employee.contribution.wizard</field>            
+			<field name="arch" type="xml">
+			<form string="Report Options">
+            	<separator string="Salary" colspan="4"/>
+            	<label for="date_from" nolabel="1" colspan="4" string="This report allows you to print or generate a pdf of Guards PF...."/>
+            	
+            	<group>
+            		<group>
+            			<field name="date_from" />
+            			<field name="date_to" />
+						<field name="category" />
+						<field name="from_resign_date"  attrs="{'invisible': [('category', '=', 'Current')], 'required': [('category', '=', 'Inactive')]}"/>
+						<field name="to_resign_date"  attrs="{'invisible': [('category', '=', 'Current')], 'required': [('category', '=', 'Inactive')]}"/>
+						<field name="all_projects" />
+            			<field name="all_centers" />
+					</group>
+            		<group>	
+    				</group>	
+				</group>
+				
+				
+                <notebook tabpos="up" colspan="4">
+                    <page string="Project Filters" name="projects">
+						<separator string="Print only" colspan="4"/>
+						<field name="project_ids"  widget="many2many_checkboxes" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>
+                    </page>
+                    
+                    <page string="Center Filters" name="centers">
+						<separator string="Print only" colspan="4"/>
+						<field name="center_ids" widget="many2many_checkboxes" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>
+				    </page>
+                    
+                     <page string="Post Filters" name="posts">
+						<separator string="Print only" colspan="4"/>
+						<field name="post_ids" colspan="4" nolabel="1">
+							<tree>									
+								<field name="name"/>
+								<field name="center_id" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>									
+								<field name="project_id" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>									
+								<field name="city"/>									
+							</tree>
+						</field>
+                    </page>
+                    
+                    <page string="Guards Filters" name="guards">
+						<separator string="Print only" colspan="4"/>
+						<field name="guard_ids" colspan="4" nolabel="1" domain="[('is_guard','=', True),'|',('current','=', True),('current','=', False)]" context="{'search_view_ref':'sos.view_guard_filter'}">
+						<tree>
+							<field name="code"/>	
+							<field name="name"/>	
+							<field name="cnic"/>	
+							<field name="current_post_id"/>
+							<field name="project_id"/>	
+							<field name="center_id"/> 
+							<field name="is_guard" invisible="True" />
+						</tree>
+						</field>
+					</page>
+					
+                </notebook>
+                <footer>
+                    <button name="print_report" string="Generate Report" type="object" default_focus="1" class="oe_highlight"/>
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+            </form>
+            
+            </field>
+        </record>
+	
+				
+         <record id="action_pf_employee_contribution_wizard" model="ir.actions.act_window">
+            <field name="name">PF Employee Contribution</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pf.employee.contribution.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="pf_employee_contribution_view"/>
+            <field name="target">new</field>
+        </record>
+		
+		
+    </data>
+</odoo>

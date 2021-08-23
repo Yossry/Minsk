@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="sos_guard_multi_step_profile_view" model="ir.ui.view">
+		    <field name="name">Multi Step Profile Creation</field>
+		    <field name="model">sos.guard.multi.step.profile</field>
+		    <field name="arch" type="xml">
+				<form string="Multi Step Profile Creation">
+					
+					<!-- General Information -->
+					<group name="general_information" string="General Information" attrs="{'invisible':[('button_value','!=',1)]}">
+						<group>
+							<field name="button_value" invisible="1"/>
+							<field name="name" string="Name"/>
+							<field name="father_name"/>
+							<field name="mothername"/>
+						
+						</group>
+						<group>
+							<field name="birthday"/>
+							<field name="cnic"/>
+							<field name="cnic_expiry"/>
+							<field name="is_guard"/>
+						</group>
+					</group>
+				
+					<!-- Public Information -->
+					<group name="public_information" string="Public Information" attrs="{'invisible':[('button_value','!=',2)]}">
+						<group>
+							<label for="street" string="Permanent Address"/>
+								<div>
+									<field name="street"/>
+									<field name="street2"/>
+
+								</div>
+							<field name="center_id" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}" widget="selection"/>
+
+						</group>
+					
+						<group>
+							<field name="work_phone"/>
+							<field name="mobile_phone"/>
+							<field name="department_id" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}" widget="selection"/>
+							<field name="job_id" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}" widget="selection"/>
+						</group>
+					</group>
+					
+					<!-- Personal Information -->
+					<group name="personal_info" string="Personal Information" attrs="{'invisible':[('button_value','!=',3)]}">
+						<group>
+							<field name="bank_id" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}" widget="selection"/>
+							<field name="bankacctitle"/>
+							<field name="bankacc"/>
+							<field name="accowner"/>
+							<field name="branch"/>
+							<field name="acc_creation_date"/>
+						</group>
+						<group>
+							<label for="street" string="Current Address"/>
+								<div>
+									<field name="home_street"/>
+									<field name="home_street2"/>
+								</div>
+								
+								<!--<field name="education_id" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}" widget="selection"/>-->
+								<field name="bloodgroup_id" string='Blood Group' options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}" widget="selection"/>
+								<field name="identity"/>
+								<field name="height"/>
+								<field name="weight"/>
+						</group>
+						
+						<group>
+							<field name="gender"/>
+						</group>
+						<group>
+							<field name="marital"/>
+						</group>
+						
+					</group>
+					
+					<!-- HR Setting -->
+					<group name="hr_setting" string="HR Setting" attrs="{'invisible':[('button_value','!=',4)]}">
+						<group>
+							<field name="basicpay"/>
+							<field name="dutybonus"/>
+							<field name="wpallowance"/>
+							<field name="annualleaves"/>
+						</group>
+						
+						<group>
+							<field name="guard_contract_id" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>
+							<field name="appointmentdate"/>
+							<field name="resigdate"/>
+						</group>
+					</group>
+					
+					<!-- Political Info-->
+					<group name="political_info" string="Political Information" attrs="{'invisible':[('button_value','!=',5)]}">
+						<group>
+							<field name="policestation"/>
+							<field name="postoffice"/>
+							<field name="areanazim"/>
+							<field name="wknownperson"/>
+							<field name="unioncouncil"/>
+							<field name="na_no"/>
+							<field name="pa_no"/>
+							<field name="voteno"/>
+						</group>
+						
+						<group>
+							<field name="kin"/>
+							<field name="wifename"/>
+							<field name="childno"/>
+							<field name="boys"/>
+							<field name="girls"/>
+						</group>
+					</group>
+					
+					<!-- documents-->
+					<group name="documents" string="Documents" attrs="{'invisible':[('button_value','!=',6)]}">
+						<group>
+							<field name="dischargebook"/>
+							<field name="educertificate"/>
+							<field name="policeverification"/>
+							<field name="policeattest"/>
+						</group>
+						
+						<group>
+							<field name="nadraattest"/>
+							<field name="pensionbook"/>
+							<field name="cniccopy"/>
+							<field name="nadraattestdate"/>
+						</group>
+					</group>
+					
+					<!-- Army Info -->
+					<group name="army_info" string="Army Information" attrs="{'invisible':[('button_value','!=',7)]}">
+						<group>
+							<field name="joindate"/>
+							<field name="unitname"/>
+							<field name="armyno"/>
+							<field name="lastunit"/>
+							<field name="lastcenter"/>
+							<field name="lastdesig"/>
+							<field name="serviceperiod"/>
+						</group>
+						
+						<group>
+							<field name="recordcenter"/>
+							<field name="dischargedate"/>
+							<field name="rank"/>
+							<field name="trade"/>
+							<field name="forcetype"/>
+							<field name="prevforces"/>
+							<field name="officername"/>
+						</group>
+						
+					</group>
+					
+					<!-- References -->
+					<group name="references" string="References" attrs="{'invisible':[('button_value','!=',8)]}">
+						<group>
+							<field name="ref_name"/>
+							<field name="ref_fathername"/>
+							<field name="ref_cnic"/>
+							<field name="ref_profession"/>
+							<field name="ref_birthdate"/>
+							<field name="ref_phone"/>
+							<field name="ref_mobile"/>
+						</group>
+						
+						<group>
+							<field name="ref_street"/>
+							<field name="ref_street2"/>
+							<field name="ref_city"/>
+							<field name="ref_country_id"/>
+							<field name="ref_email"/>
+							<field name="ref_fax"/>
+						</group>
+					</group>
+					
+					
+					<!-- Guard Thumbs -->
+					<group name="guard_thumbs" string="Guard Fingers" attrs="{'invisible':[('button_value','!=',9)]}">
+						<group string="Left Hand Fingers" name="left_hand_fingers">
+				 		 	<field name="l_thumb" widget='image' class="oe_left oe_avatar" options='{"size": [70, 70]}'/>
+				 		 	<field name="l_index_finger" widget='image' class="oe_left oe_avatar" options='{"size": [70, 70]}'/>
+				 		 	<field name="l_middle_finger" widget='image' class="oe_left oe_avatar" options='{"size": [70, 70]}'/>
+				 		 	<field name="l_ring_finger" widget='image' class="oe_left oe_avatar" options='{"size": [70, 70]}'/>
+				 		 	<field name="l_baby_finger" widget='image' class="oe_left oe_avatar" options='{"size": [70, 70]}'/>
+			 		 		
+			 		  </group>
+			 		  
+			 		   <group string="Right Hand Fingers" name="right_hand_fingers">
+							<field name="r_thumb"  widget='image' class="oe_left oe_avatar" options='{"size": [70, 70]}'/>
+				 		 	<field name="r_index_finger"  widget='image' class="oe_left oe_avatar" options='{"size": [70, 70]}'/>
+				 		 	<field name="r_middle_finger"  widget='image' class="oe_left oe_avatar" options='{"size": [70, 70]}'/>
+				 		 	<field name="r_ring_finger"  widget='image' class="oe_left oe_avatar" options='{"size": [70, 70]}'/>
+				 		 	<field name="r_baby_finger"  widget='image' class="oe_left oe_avatar" options='{"size": [70, 70]}'/>	
+			 		    </group>		
+					</group>			
+							
+					
+					<!-- SHOW VALUE-->
+					<group name="show_val">
+						<group>
+							<field name="show_value"/>
+						</group>
+						<group>
+							<field name="button_value" attrs="{'invisible':[('show_value','!=',True)]}"/>
+						</group>
+					</group>
+				
+					<footer>
+						<button string="General Info" name="general_info" type="object" class="oe_highlight"  attrs="{'invisible':[('button_value','!=',0)]}"/>
+						<button string="Public Info" name="public_info" type="object" class="oe_highlight"  attrs="{'invisible':[('button_value','!=',1)]}"/>
+						<button string="Personal Info" name="personal_info" type="object" class="oe_highlight"  attrs="{'invisible':[('button_value','!=',2)]}"/>
+						<button string="HR Setting" name="hr_setting" type="object" class="oe_highlight"  attrs="{'invisible':[('button_value','!=',3)]}"/>
+						<button string="Political Info" name="political_info" type="object" class="oe_highlight"  attrs="{'invisible':[('button_value','!=',4)]}"/>
+						<button string="Documents" name="documents_verify" type="object" class="oe_highlight"  attrs="{'invisible':[('button_value','!=',5)]}"/>
+						<button string="Army Info" name="army_info" type="object" class="oe_highlight"  attrs="{'invisible':[('button_value','!=',6)]}"/>
+						<button string="References" name="guard_references" type="object" class="oe_highlight"  attrs="{'invisible':[('button_value','!=',7)]}"/>
+						<button string="Thumb Expressions" name="guard_thumbs" type="object" class="oe_highlight"  attrs="{'invisible':[('button_value','!=',8)]}"/>
+						<button string="Create Record" name="create_employee" type="object" class="oe_highlight"  />
+						<button string="Cancel" class="oe_link" special="cancel" />
+		            </footer>
+				</form>
+			</field>
+		</record>
+
+		<record id="action_sos_guard_multi_step_profile" model="ir.actions.act_window">
+		    <field name="name">Multi Step Profile Creation</field>
+		    <field name="type">ir.actions.act_window</field>
+		    <field name="res_model">sos.guard.multi.step.profile</field>
+		    <field name="view_type">form</field>
+		    <field name="view_mode">form</field>
+		    <field name="view_id" ref="sos_guard_multi_step_profile_view"/>
+		    <field name="target">inline</field>
+		</record>
+	
+	</data>	
+</odoo>

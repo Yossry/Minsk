@@ -1,0 +1,15 @@
+Asientos rocketroi
+
+Efectos
+1. Si es proveïdor van tots a credit
+2. Si es client van tots a debit
+3. Si tenen quantitat negativa eliminar modo de pago
+
+Odoo
+1. Copiar diari Miscellaneous Operations i anomenar-lo Histórico amb codi 'HIST'
+2. Posar regles inactives de multicompanyia
+2.1 ELiminar contactes d'spaceboost
+2.2 Importar clients d'import_partner_multicompany.csv
+3. Importar efectes
+4. Importar apunts
+

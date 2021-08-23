@@ -1,0 +1,38 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* calender_timereport
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0-20200419\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-04-21 07:24+0000\n"
+"PO-Revision-Date: 2020-04-21 09:25+0200\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: sv_SE\n"
+"X-Generator: Poedit 2.0.6\n"
+
+#. module: calender_timereport
+#: model:ir.model,name:calender_timereport.model_calendar_event
+msgid "Event"
+msgstr "Evenemang"
+
+#. module: calender_timereport
+#: model:ir.model.fields,field_description:calender_timereport.field_calendar_event__project_id
+msgid "Project"
+msgstr "Projekt"
+
+#. module: calender_timereport
+#: model:ir.model.fields,field_description:calender_timereport.field_calendar_event__task_id
+msgid "Task"
+msgstr "Aktivitet"
+
+#. module: calender_timereport
+#: model_terms:ir.ui.view,arch_db:calender_timereport.view_calendar_event_form
+msgid "Time Report"
+msgstr "Tidrapport"

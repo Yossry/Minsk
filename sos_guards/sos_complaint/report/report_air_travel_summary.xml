@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<template id ="report_air_travel_summary">
+			<t t-call="web.html_container">
+					<t t-call="web.external_layout" style="font-family:georgia,garamond,serif;font-size:10px">
+						<div class="page">
+							<style>
+									.tabhead{font-family:georgia,garamond,serif;font-size:10px;}
+									.tabcol{font-size:14px;}
+									table th { background-color:#d4e3e5;}
+									tr:nth-child(even) {background-color: #FFEBCD;}
+									tr:nth-child(odd) {background-color: #cdcdcd;}
+							</style>
+							<div width="100%"><center><h3> Air Travel Summary Report </h3></center> </div>
+							
+							<t t-if="data['need_full_report']==False"> 
+								<div width="100%"><center><h4> From <span t-esc="get_date_formate(data['date_from'])"/> To  <span t-esc="get_date_formate(data['date_to'])"/> </h4></center> </div>
+							</t>
+							<t t-if="data['need_full_report']==True"> 
+								<div width="100%"><center><h4> Complete Report </h4></center> </div>
+							</t>
+							
+							<table class="table table-condensed" width="100%">
+								<tr style="font-size:12px; font-weight:bold">
+									<td>SR#. </td>
+									<td>Booking Date </td>
+									<td>Travel Date </td>
+									<td>From </td>
+									<td>To </td>
+									<td>Traveler Name </td>
+									<td> Fare </td>
+									<td>Cancellation Charges </td>
+									<td>Total Amount </td>
+								</tr>
+								
+								<t t-foreach="recs" t-as="rec">
+									<tr>
+										<td> <span t-esc="rec_index + 1" /> </td>
+										<td> <span t-field="rec.booking_date"  t-field-options='{"format": "d-MM-Y"}'/> </td>
+										<td> <span t-field="rec.departure_date" t-field-options='{"format": "d-MM-Y"}'/> </td>
+										<td> <span t-field="rec.place_from" /> </td>
+										<td> <span t-field="rec.place_to" /> </td>
+										
+										<td>
+											<t t-if="rec.traveler_type=='SOS Employees'"> 
+												<span t-esc="rec.sos_traveler_name.name" />
+											</t>
+											<t t-if="rec.traveler_type=='Other Then SOS'"> 
+												<span t-esc="rec.vistor_name" />
+											</t>
+										</td>
+										
+										<td> <span t-esc="rec.fare" /> </td>
+										<td> <span t-esc="'{0:,.1f}'.format(rec.cancellation_amt)" /> </td>
+										
+										<td> 
+											<t t-if="rec.ticket_cancellation== True"> 
+												<span t-esc="'{0:,.1f}'.format(rec.cancellation_amt)" />
+											</t>
+											
+											<t t-if=" not rec.ticket_cancellation== True"> 
+												<span t-esc="'{0:,.1f}'.format(rec.fare)" />
+											</t>		 
+										</td>
+										
+									</tr>
+								</t>
+								
+								
+								<tr style="font-size:12px; font-weight:bold">
+									<td colspan="6">Total</td>
+									<td> <span t-esc="'{0:,.1f}'.format(stat['total_fare'])"/> </td>
+									<td> <span t-esc="'{0:,.1f}'.format(stat['total_cancel'])" /> </td>
+									<td> <span t-esc="'{0:,.1f}'.format(stat['total'])" /> </td>
+								</tr>
+										
+							</table>
+							
+							
+						</div>
+					</t>
+			</t>
+		</template>
+	
+	</data>
+</odoo>

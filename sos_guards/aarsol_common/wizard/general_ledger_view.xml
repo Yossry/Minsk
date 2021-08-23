@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<record id="account.account_common_report_view" model="ir.ui.view">
+    <field name="name">Common Report</field>
+    <field name="model">account.common.report</field>
+    <field name="arch" type="xml">
+    <form string="Report Options">
+        <field name="company_id" invisible="1"/>
+        <group>
+        	<group>
+        		<field name="date_from"/>
+	            <field name="date_to"/>
+        	</group>
+        	<group>
+        		<field name="target_move" widget="radio"/>
+        	</group>           
+        </group>
+        <group>
+            <field name="journal_ids" widget="many2many_tags" options="{'no_create': True}"/>
+        </group>
+        <footer>
+            <button name="check_report" string="Print" type="object" default_focus="1" class="oe_highlight"/>
+            <button string="Cancel" class="btn btn-default" special="cancel" />
+        </footer>
+    </form>
+    </field>
+</record>
+    
+<record id="account.account_report_general_ledger_view" model="ir.ui.view">
+    <field name="name">General Ledger</field>
+    <field name="model">account.report.general.ledger</field>
+    <field name="inherit_id" ref="account.account_common_report_view"/>
+    <field name="arch" type="xml">
+    <data>
+		<xpath expr="//field[@name='target_move']" position="after">
+		    <field name="sortby" widget="radio"/>
+		    <field name="display_account" widget="radio"/>
+		    <field name="initial_balance"/>		    
+		</xpath>
+	
+		<xpath expr="//footer" position="before">
+			<group>
+		        <field name="account_ids" options="{'no_create': True, 'limit': 10}"/>
+		    </group>
+			
+		</xpath>
+    </data>
+    </field>
+</record>
+</odoo>

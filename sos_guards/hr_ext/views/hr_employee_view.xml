@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+	<data>
+
+	<!--SARFRAZ-->
+	<!--
+		<record id="hr_kanban_view_employees" model="ir.ui.view">
+			<field name="name">hr.employee.kanban.ext</field>
+			<field name="model">hr.employee</field>	
+			<field name="inherit_id" ref="hr.hr_kanban_view_employees" />
+			<field name="arch" type="xml">
+				<xpath expr="//div[@class='o_kanban_button']" position="replace">
+					<div class="o_kanban_button" style="text-align: right;margin-right: 30px;">	
+					    <span><b><field name="code"/></b></span>
+					</div>
+				</xpath>	
+				<xpath expr="//li[@id='last_login']" position="after">
+					<li t-if="record.department_id.raw_value"><field name="department_id"/></li>
+				</xpath>	
+			</field>
+		</record>
+       -->
+		<record id="view_employee_form" model="ir.ui.view">
+			<field name="name">hr.employee.form.ext</field>
+			<field name="model">hr.employee</field>
+			<field name="inherit_id" ref="hr.view_employee_form"/>
+			<field name="arch" type="xml">
+				<data>        
+				    <xpath expr="//sheet" position="before">
+				       <header>                    
+				           <field name="status" widget="statusbar" statusbar_visible="new,active,terminated,inactive"/>
+				        </header>
+				    </xpath>           
+				                          
+				    <xpath expr="//page[1]" position="replace">
+					 	<page name="general" string="General Information">
+					 		<group>
+								<group string="General Information">
+									<field name="code"/>
+									<field name="user_id" string="Login User"  context="{'form_view_ref': 'base.view_users_form'}" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True}"/>
+									<field name="country_id" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True}"/>
+									<field name="birthday" string="Birth Date" required="1"/>	
+									<field name="age"/>
+									<field name="mobile_phone"/>	
+									<field name="work_phone"/>
+									<field name="work_email"/>														
+								</group>
+					
+								<group string="Passport Information">
+										<field name="emp_passport_id"/>
+										<field name="passport_expire_date"/>
+										<field name="passport_days_to_expire"/>	
+										<hr/><hr/>					
+										<field name="blood_group"/>
+							
+								</group>
+								<group name="national_id" string="National Identity">	
+									<field name="cnic"/>
+									<field name="cnic_expiry_date"/>
+									<field name="cnic_days_to_expire"/>	
+									<hr/><hr/>								
+								</group>
+						
+								<group name="edu_id" string="Education">	
+									<field name="education_id" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True}"/>
+									<field name="apply_provident_fund"/>				
+														
+								</group>											
+							</group>
+						
+					 	</page>
+					 	<page name="official" string="Official Information">			
+							<group col="4" colspan="4">
+								<group colspan="2" string="HR Settings">
+									<field name="joining_date"/>
+									<field name="coach_id" invisible="1"/>
+									<field name="work_type"/>
+									<field name="department_id" attrs="{'invisible': [('status','=','pending_inactive')]}" required="1" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True}"/>
+									<field name="job_id" readonly="1" domain="[('department_id','=',department_id)]" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True}"/>
+									<field name="contract_type_id" options="{'no_quick_create':True,'no_create_edit':True}"/>
+						    		<field name="parent_id" string="Reporting To" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True}"/>
+						    		<field name="saved_department_id" attrs="{'invisible': [('status','!=','pending_inactive')]}"/>													
+								</group>
+								<group name="active_group" colspan="2" string="Medical Insurrance">										 
+									<field name="address_home_id" invisible="1"/>	
+									<field name="bank_account_id" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True}"/>	
+			
+									<field name="contract_date_start"/>
+													
+									<field name="insurance_id" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True}"/>
+									<field name="medical_insurance_expire_date"/>
+									<field name="insurance_class"/>
+									<field name="insurance_deduction"/>						
+								</group>
+						
+								<group name="misc" colspan="2" string="Miscellaneous">
+									<field name="religion" string="Religion"/>					
+									<field name="gender"/>							
+									<field name="marital"/>
+									<field name="dependents_no"/>
+
+									<field name="import_identifier"/>
+									<field name="full_import_identifier" readonly="1"/>						
+								</group>						
+							</group>
+						</page>	
+				 	</xpath>
+				 	
+				 	<!--	 	
+				 	<xpath expr="//page[2]" position="replace">		
+						<page name="contact_details" string="Contact Details">
+							<separator string="Work Contact Details"/>
+							<group>
+			
+								<group>
+									<field name="mobile_phone"/>
+									<field name="work_phone"/>
+									<field name="work_email"/>
+									<field name="work_extension"/>
+								</group>
+			
+								<group>
+									<field name="work_address_street"/>
+									<field name="work_city"/>
+									<field name="work_country"/>	
+								</group>
+							</group>
+		
+							<separator string="Emergency Contact"/>
+							<group>
+								<group>
+									<field name="c_name_1" string="Name (Contact-1)"/>
+									<field name="c_email_1"/>	
+								</group>	
+								<group>
+									<field name="c_mobile_1"/>
+									<field name="c_phone_1"/>
+									<field name="c_extension_1"/>							
+								</group>
+			
+								<group>
+									<field name="c_name_2" string="Name (Contact-2)"/>
+									<field name="c_email_2"/>
+								</group>
+								<group>
+									<field name="c_mobile_2"/>
+									<field name="c_phone_2"/>
+									<field name="c_extension_2"/>
+								</group>
+							</group>
+		
+							<separator string="Home Contact"/>
+							<group>
+								<group>
+									<field name="c_home_name"/>
+									<field name="c_home_address1" string="Address"/>
+									<field name="c_home_address2" string="Address2"/>
+								</group>
+								<group>
+									<field name="c_home_mobile" string="Mobile"/>
+									<field name="c_home_phone" string="Phone"/>
+									<field name="c_home_phone2" string="Phone2"/>
+								</group>	
+								<group>
+									<field name="c_personal_email" string="Email"/>
+									<field name="c_home_city" string="City"/>
+									<field name="c_home_country" string="Country"/>
+								</group>
+							</group>	
+								
+						</page> 	
+					 </xpath>
+					-->
+			
+			
+					 <xpath expr="//page[3]" position="replace">		
+						<page name="experiences" string="Experiences">
+							<field name="experience_ids" colspan="4" string="Experiences">
+								<tree>
+									<field name="name"/>
+									<field name="position"/>
+									<field name="reporting_to"/>
+									<field name="start_date"/>
+									<field name="end_date"/>
+									<field name="total_experience"/>						
+								</tree>
+								<form>
+									<sheet>
+										 <div class="oe_title">
+										    <label for="name" class="oe_edit_only"/>
+										    <h1>
+										        <field name="name" placeholder="Company's Name"/>
+										    </h1>
+								    	</div>
+										<group>
+											<group>
+												<field name="position" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True}"/>
+												<field name="reporting_to" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True}"/>
+												<field name="salary"/>																		
+											</group>
+						
+											<group >
+												<field name="start_date"/>
+												<field name="end_date"/>
+												<field name="total_experience"/>
+											</group>								
+										</group>
+					
+										<separator/>
+										<group>
+											<group>
+												<field name="reason_to_leave"/>
+											</group>
+											<group>
+												<field name="responsibilities"/>
+											</group>
+										</group>		
+									</sheet>
+								</form>
+							</field>
+						</page>				
+			
+						<page name="health_insurance" string="Health Insurance">
+							<field name="health_insurance_ids" colspan="4" string="Health Insurance">
+								<tree editable="top">
+									<field name="company_name" />
+									<field name="policy_number" />
+									<field name="insurance_class" />
+									<field name="amount" />
+									<field name="salary_deduction" />
+									<field name="valid_from" />
+									<field name="valid_till" />						
+								</tree>
+								<form>
+									<sheet>		
+										<group colspan="4">
+											<group>
+												<field name="company_name" />
+												<field name="policy_number" />
+												<field name="insurance_class" />
+											</group>
+											<group>
+												<field name="amount" />
+												<field name="salary_deduction" />
+												<field name="valid_from" />
+												<field name="valid_till" />	
+											</group>
+										</group>		
+						
+										<notebook>						
+											<page string="Members Covered">
+												<field name="covered_members" colspan="4" nolabel="1"  string="Covered Members">
+													<tree string="Members" editable="top">
+														<field name="member_name" />
+														<field name="relationship" />						
+													</tree>
+												</field>
+											</page>		
+										</notebook>		
+										<newline/>
+										<group>
+											<field name="benefits_covered" />	
+										</group>
+									</sheet>
+								</form>
+							</field>
+						</page>	
+			
+					 </xpath>  
+				</data>
+			</field>
+		</record>
+
+
+		<record id="view_employee_tree" model="ir.ui.view">
+			<field name="name">hr.employee.tree.ext</field>
+			<field name="model">hr.employee</field>
+			<field name="inherit_id" ref="hr.view_employee_tree"/>
+			<field name="arch" type="xml">
+			<data>
+				<xpath expr="//field[@name='name']" position="before">		
+					<field name="code"/>
+				 </xpath>
+				 
+				 <xpath expr="//field[@name='job_id']" position="after">		
+					<field name="contract_type_id"/>
+				 </xpath>		
+			</data>
+			</field>
+		</record>
+
+		<record id="view_employee_wizard_tree" model="ir.ui.view">
+			 <field name="name">hr.employee.tree.wizard</field>
+			 <field name="model">hr.employee</field>
+			 <field name="priority">20</field>
+			 <field name="arch" type="xml">
+				 <tree string="Policy Groups">
+				     <field name="code"/>
+				     <field name="name"/>
+				     <field name="department_id"/>
+				     <field name="job_id"/>             
+				 </tree>
+			 </field>
+		</record>
+
+		<!--
+		<record id="view_employee_filter" model="ir.ui.view">
+			<field name="name">hr.view.employee.filter.ext</field>
+			<field name="model">hr.employee</field>
+			<field name="inherit_id" ref="hr.view_employee_filter"/>
+			<field name="arch" type="xml">
+			<data>
+				 <xpath expr="//field[@name='name']" position="replace">
+				 	<field name="name" string="Employees" filter_domain="['|',('code','ilike',self),('name','ilike',self)]"/>		
+				 </xpath>
+		
+				 
+				 <xpath expr="//group" position="inside">				 	
+					<filter string="Education" name ='group_education' icon="terp-personal" domain="[]" context="{'group_by':'education_id'}"/>	
+					<filter string="Insurance Class" name='group_insurance_class' icon="terp-personal" domain="[]" context="{'group_by':'insurance_class'}"/>
+					<filter string="Contract Type" name='group_contract_type' icon="terp-personal" domain="[]" context="{'group_by':'contract_type_id'}"/>				
+				 </xpath>		
+			</data>
+			</field>
+		</record>
+-->
+
+
+
+        
+	</data>
+</odoo>

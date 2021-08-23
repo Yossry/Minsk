@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<template id ="report_rent_car_summary">
+			<t t-call="web.html_container">
+					<t t-call="web.external_layout" style="font-family:georgia,garamond,serif;font-size:10px">
+						<div class="page">
+							<style>
+									.tabhead{font-family:georgia,garamond,serif;font-size:10px;}
+									.tabcol{font-size:14px;}
+									table th { background-color:#d4e3e5;}
+									tr:nth-child(even) {background-color: #FFEBCD;}
+									tr:nth-child(odd) {background-color: #cdcdcd;}
+							</style>
+							<div width="100%"><center><h3> Rent A Car Summary Report </h3></center> </div>
+							
+							<t t-if="data['need_full_report']==False"> 
+								<div width="100%"><center><h4> From <span t-esc="get_date_formate(data['date_from'])"/> To  <span t-esc="get_date_formate(data['date_to'])"/> </h4></center> </div>
+							</t>
+							<t t-if="data['need_full_report']==True"> 
+								<div width="100%"><center><h4> Complete Report </h4></center> </div>
+							</t>
+							
+							<table class="table table-condensed" width="100%">
+								<tr style="font-size:12px; font-weight:bold">
+									<td>SR#. </td>
+									<td class="text-right">Hiring Date </td>
+									<td class="text-right">Return Date </td>
+									<td>Fuel Option </td>
+									<td class="text-right">Fuel Amount </td>
+									<td class="text-right">Days </td>
+									<td class="text-right">Rent Per Day </td>
+									<td class="text-right">Total Rent </td>
+									<td>Traveler Name </td>
+									<td>Travel Agent </td>
+									<td>Contact </td>
+									<td>vehicle_type </td>
+									<td class="text-right">Total Amount</td>
+								</tr>
+								
+								<t t-foreach="recs" t-as="rec">
+									<tr style="font-size:12px;">
+										<td> <span t-esc="rec_index + 1" /> </td>
+										<td class="text-right"> <span t-field="rec.hiring_date"  t-field-options='{"format": "d-MM-Y"}'/> </td>
+										<td class="text-right"> <span t-field="rec.return_date" t-field-options='{"format": "d-MM-Y"}'/> </td>
+										<td class="text-right"> <span t-field="rec.fuel_option" /> </td>
+										<td class="text-right"> <span t-field="rec.fuel_amount" /> </td>
+										<td class="text-right"> <span t-field="rec.days" /> </td>
+										<td class="text-right"> <span t-field="rec.rent_per_day" /> </td>
+										<td class="text-right"> <span t-field="rec.total_rent" /> </td>
+										
+										<td>
+											<t t-if="rec.traveler_type=='SOS Employees'"> 
+												<span t-esc="rec.sos_traveler_name.name" />
+											</t>
+											<t t-if="rec.traveler_type=='Other Then SOS'"> 
+												<span t-esc="rec.vistor_name" />
+											</t>
+										</td>
+										
+										<td> <span t-field="rec.travel_agent.name" /> </td>
+										<td> <span t-field="rec.contact" /> </td>
+										<td> <span t-field="rec.vehicle_type" /> </td>
+										<td class="text-right"> <span t-field="rec.total_amount" /> </td>
+									</tr>
+								</t>
+								
+								<tr style="font-size:12px; font-weight:bold">
+									<td colspan="4">Total</td>
+									<td class="text-right"> <span t-esc="'{0:,.1f}'.format(stat['total_fuel'])"/> </td>
+									<td colspan="3" class="text-right"> <span t-esc="'{0:,.1f}'.format(stat['total_rent'])" /> </td>
+									<td colspan="5" class="text-right"> <span t-esc="'{0:,.1f}'.format(stat['total_amt'])" /> </td>
+								</tr>	
+							</table>
+							
+							
+						</div>
+					</t>
+			</t>
+		</template>
+	
+	</data>
+</odoo>

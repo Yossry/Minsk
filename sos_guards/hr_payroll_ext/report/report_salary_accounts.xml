@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+
+	<template id ="report_salaryaccounts">
+		<t t-call="web.html_container">
+				<t t-call="web.internal_layout" style="font-family:georgia,garamond,serif;font-size:10px">
+					<div class="page">
+						<style>
+								.tabhead{font-size:7px;}
+								.tabcol{font-size:9px;}
+								.tabtot{font-size:10px;}
+								 table th { background-color:#d4e3e5;}
+								 tr:nth-child(even) {background-color: #FFEBCD;}
+								 tr:nth-child(odd) {background-color: #cdcdcd;}
+						</style>
+						<h4>Salary Accounts of <span t-esc="Company.name"/></h4>	 							
+						<h5>	
+							From: <span t-esc="date_from"/><br></br>
+							To: <span t-esc="date_to"/><br></br>							
+						</h5>	
+
+							<table class="table table-condensed" width="100%">
+								<thead style="font-size:10px;font-weight:bold;">
+									<th>S.No </th>
+									<th>ODOO# </th>
+									<th>Account Name </th>
+									<th>Debit Amount </th>
+									<th>Credit Amount</th>
+								</thead>
+								
+								<tbody>
+									<t t-foreach="Accounts" t-as="acc">
+										<tr>
+											<td> <span t-esc="acc_index + 1" /> </td>
+											<td> <span t-esc="acc['code']" /> </td>
+											<td> <span t-esc="acc['account']" /> </td>
+											<td> <span t-esc="acc['debit_amount']" /> </td>
+											<td> <span t-esc="acc['credit_amount']" /> </td>
+										</tr>
+									</t>
+									<tr style="font-size:10px;font-weight:bold;">
+										<td colspan="3" style="text-align:right;"> TOTAL </td>
+										<td><span t-esc="Total_Debit" /></td>
+										<td><span t-esc="Total_Credit" /></td>
+									</tr>	
+								</tbody>
+										
+							</table>
+
+					</div>
+				</t>
+		</t>
+	</template>
+	
+	</data>
+</openerp>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template name="Service Area" id="s_service_area">
+        <!-- ====START SERVICE AREA==== -->
+        <section class="service_area section-padding oe_structure">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="section_title mb80">
+                            <h5 class="smallHd text-center">Some of our Features</h5>
+                            <h2 class="secHd text-center">What we offer</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="single_service text-center">
+                            <i class="zmdi zmdi-edit"></i>
+                            <h3>Setup store in seconds</h3>
+                            <p>Your online / Offline store made easy, personalised and modern
+Fully integrated with logistics solutions, Get ready to profit in just a few clicks</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="single_service text-center">
+                            <i class="zmdi zmdi-print"></i>
+                            <h3>Super Easy Management</h3>
+                            <p>You can easily manage your customer-merchant transactions without hassles. We make sure you are always a step ahead. No complexities. No restrictions</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="single_service text-center">
+                            <i class="zmdi zmdi-favorite"></i>
+                            <h3>Security</h3>
+                            <p>Ezeselling is a Level 1 PCI compliant and uses a 128 bit SSL encryption to ensure every information debit and credit card is secure while in use</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="single_service text-center">
+                            <i class="zmdi zmdi-tab-unselected"></i>
+                            <h3>Easy Payment and Shipment</h3>
+                            <p>Ezeselling comes up with several pre-installed payment gateways and shipping agency for getting payment for good and deliver. You just need to enter credentials and start using it.</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="single_service text-center">
+                            <i class="zmdi zmdi-code-setting"></i>
+                            <h3>Analytics - Report</h3>
+                            <p>A 360 - degree view of the sales activities - monthly sales, daily sales, inventory details- with drill - down capabilities. It also allows you have a view on who has visited your site and products ordered.</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="single_service text-center">
+                            <i class="zmdi zmdi-brush"></i>
+                            <h3>Multiple Responsive Themes</h3>
+                            <p>Personalise your store front by selecting the theme that best represents your style. Present your customers with the best view of your store, regardless of device<br/></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ====END SERVICE AREA==== -->
+    </template>
+</odoo>

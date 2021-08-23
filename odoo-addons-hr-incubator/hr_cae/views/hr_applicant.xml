@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright 2019 Coop IT Easy
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+
+    <record id="view_applicant_form" model="ir.ui.view">
+        <field name="name">hr.applicant.form</field>
+        <field name="model">hr.applicant</field>
+        <field name="inherit_id" ref="hr_recruitment.crm_case_form_view_job"/>
+        <field name="arch" type="xml">
+
+            <!-- group Contract -->
+            <xpath expr="//field[@name='partner_id']/.." position="attributes">
+                <attribute name="name">contract</attribute>
+                <attribute name="string">Contract</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='partner_id']" position="before">
+                <field name="title"/>
+            </xpath>
+
+            <xpath expr="//group[@name='contract']//field[@name='type_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+            <!-- group Responsible -->
+            <xpath expr="//field[@name='user_id']/.." position="attributes">
+                <attribute name="name">responsible</attribute>
+                <attribute name="string">Responsible</attribute>
+            </xpath>
+
+            <!-- group Job -->
+            <xpath expr="//field[@name='job_id']/.." position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='job_id']/.." position="after">
+                <group string="Job" name="job">
+                    <field name="department_id"/>
+                    <field name="job_id"/>
+                    <field name="job"/>
+                    <field name="job_description"/>
+                    <field name="equipment"/>
+                    <field name="type_id"/>
+                    <field name="certificate_date"/>
+                </group>
+            </xpath>
+
+            <!-- group Job Position -->
+            <xpath expr="//field[@name='salary_expected']/../.." position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='salary_expected']/../.." position="after">
+                <group string="Job Position" name="job_position">
+                    <field name="turnover_minimum"/>
+                    <label for="salary_expected"/>
+                    <div>
+                        <field name="salary_expected" class="oe_inline"/>
+                        <span class="oe_inline" attrs="{'invisible':[('salary_expected_extra','=',False)]}"> + </span>
+                        <field name="salary_expected_extra" class="oe_inline" placeholder="Extra advantages..."/>
+                    </div>
+                </group>
+                <group string="Professional Experience" name="professional_experience">
+                    <field name="origin_status_id"/>
+                    <field name="professional_experience"/>
+                </group>
+            </xpath>
+
+
+        </field>
+    </record>
+</odoo>

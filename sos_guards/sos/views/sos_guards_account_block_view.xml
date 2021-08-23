@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data> 
+			<record model="ir.ui.view" id="sos_guards_account_block_tree_view">
+			<field name="name">sos.guards.account.block.tree.view</field>
+			<field name="model">sos.guards.account.block</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Guards Account Block">
+					<field name="employee_id"/>
+					<field name="code" />
+					<field name="project_id"/>
+					<field name="center_id"/>
+					<field name="post_id"/>
+					<field name="date"/>
+					<field name="bank_id"/>
+					<field name="bankacctitle"/>
+					<field name="bankacc"/>
+					<field name="accowner"/>
+					<field name="state"/>
+				</tree>
+			</field>
+		</record>
+		
+		
+		<record model="ir.ui.view" id="sos_guards_account_block_form_view">
+			<field name="name">sos.guards.account.block.form.view</field>
+			<field name="model">sos.guards.account.block</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">	
+				<form string="Guards Account Block">
+					<header>
+						<button name="block_account" type="object" states="draft" string="Block Account" class="oe_highlight"/>	
+						<field name="state" widget="statusbar" nolabel="1" />
+					</header>
+					<sheet>
+					<group>
+						<group>
+							<field name="project_id" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>
+							<field name="center_id" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>
+							<field name="post_id" domain="[('project_id','=', project_id), ('center_id','=', center_id)]" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>
+							<field name="employee_id" domain="[('current_post_id','=', post_id),('current', '=', True),('is_guard', '=', True)]" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>	
+							<field name="code"/>
+							<field name="guard_count"/>
+							
+						</group>
+						<group>
+							<field name="date"/>
+							<field name="bank_id" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>
+							<field name="bankacctitle"/>
+							<field name="accowner" />
+							<field name="bankacc" readonly="0"/>
+						</group>
+					</group>
+					
+					<group>
+						<field name="remarks"/>
+					</group>
+					
+				</sheet>
+					<div class="oe_chatter">
+						<field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+						<field name="message_ids" widget="mail_thread" placeholder="Share a note..."/>
+		      		</div>
+				</form>
+			</field>
+		</record>
+		
+		
+		<record id="sos_guards_account_block_filter" model="ir.ui.view">
+		<field name="name">sos.guards.account.block.filter</field>
+		<field name="model">sos.guards.account.block</field>
+		<field name="arch" type="xml">
+			<search string="Guards Account Block Filter">
+			
+				<field name="date"/>
+				<field name="employee_id"/>
+				<field name="code"/>
+				<field name="bankacctitle"/>
+				<field name="bankacc"/>
+				<field name="accowner"/>
+				<separator/>
+				
+				<group expand="0" string="Group By">
+					<filter string="Date" name="date" icon="terp-partner" domain="[]" context="{'group_by':'date'}"/>
+					<filter string="Project" name="project_id" icon="terp-partner" domain="[]" context="{'group_by':'project_id'}"/>
+					<filter string="Center" name="center_id" icon="terp-partner" domain="[]" context="{'group_by':'center_id'}"/>
+					<filter string="Post" name="post_id" icon="terp-partner" domain="[]" context="{'group_by':'post_id'}"/>
+					<filter string="Bank" name="bank_id" icon="terp-partner" domain="[]" context="{'group_by':'bank_id'}"/>
+				</group>
+			</search>
+		</field>
+		</record>
+
+
+		<record id="sos_guards_account_block_action" model="ir.actions.act_window">
+			<field name="name">Guards Account Block</field>
+			<field name="res_model">sos.guards.account.block</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+					Click to create a new Record.
+				</p>
+			</field>
+	</record>
+  
+    </data>
+</odoo>

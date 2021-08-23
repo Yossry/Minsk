@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    
+		<record id="view_guards_payslip_approved" model="ir.ui.view">
+			<field name="name">guards_payslip_approved</field>
+			<field name="model">guards.payslip.approved</field>
+			<field name="arch" type="xml">
+				<form string="Payslips Approval" version="7.0">  
+					<group>
+						<field name="slip_ids" colspan="4" nolabel="1"  domain="[('state', '=', 'draft')]">								
+							<tree  colors="blue:state == 'draft';black:state in ('done','verify');gray:state == 'cancel'">									
+								<field name="number"/>
+								<field name="employee_id"/>
+								<field name="name"/>
+								<field name="total" sum="Total"/>
+								<field name="date_from"/>
+								<field name="date_to"/>
+								<field name="state"/>								
+							</tree>
+
+						</field>
+					</group>
+					<footer>
+						<button string="Approve" name="slip_approved" type="object" class="oe_highlight"  />
+						<button string="Cancel" class="oe_link" special="cancel" />
+					</footer>
+			   </form>
+			</field>
+		</record>
+
+		<act_window
+				id="action_guards_payslip_approved"
+				name="Slips Approval"
+				res_model="guards.payslip.approved"
+				src_model="guards.payslip"
+				view_mode="form"
+				multi="True"
+				target="new"
+				key2="client_action_multi"
+			/>
+
+    </data>
+</odoo>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+		<record id="view_sos_staff_salary_sheet_wizard" model="ir.ui.view">
+			<field name="name">sos.staff.salary.sheet.wizard.view</field>
+			<field name="model">sos.staff.salary.sheet.wizard</field>
+			<field name="arch" type="xml">
+				<form string="Salary Sheet Wizard">
+					<group>
+						<group>
+							<field name="date_from" class="oe_inline"/> 
+						</group>
+						<group>
+							<field name="date_to" class="oe_inline"/>
+						</group>
+						
+						<group>
+							<field name="report_required" />
+						</group>
+						<group>
+							<field name="segment_wise" />
+						</group>
+						
+					</group>
+					<footer>
+						<button name="print_report" string="Generate Report" type="object" default_focus="1" class="oe_highlight"/>
+						<button string="Cancel" class="oe_link" special="cancel" />
+					</footer> 
+				</form>
+			</field>
+		</record>
+        
+        <record id="act_sos_staff_salary_sheet_wizard" model="ir.actions.act_window">
+            <field name="name">Salary Sheet</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sos.staff.salary.sheet.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_sos_staff_salary_sheet_wizard"/>
+            <field name="target">new</field>
+        </record>
+
+	</data>
+</odoo>

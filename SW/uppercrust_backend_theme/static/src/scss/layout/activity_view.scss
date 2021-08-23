@@ -1,0 +1,52 @@
+@mixin activity_view(){
+	.o_activity_view{
+		padding: 10px;
+		display: table;
+		.table-bordered th, .table-bordered td{
+			border: 1px solid $border;
+		}
+		.o_res_name_cell{
+			color: $brand-secondary;
+			&:hover, &:visited, &:active, &:focus{
+				color: darken($brand-secondary, 7%);
+			}
+		}
+		.o_activity_summary_cell{
+			&.planned{
+				background-color: $brand-success;
+			}
+			&.today{
+				background-color: $text-warning;
+			}
+			&.overdue{
+				background-color: $text-danger;	
+			}
+			.o_kanban_inline_block{
+				.dropdown-menu{
+					border: 1px solid $border;
+					padding: 5px;
+					.o_activity_log{
+						.o_activity_label{
+							border: 1px solid $border;
+						}
+						.list-group-item{
+							.o_activity_title{
+								color: $Label;
+							}
+						}
+					}
+					.o_activity_form{
+						textarea{
+							border: none;
+							border-bottom: 1px solid $border;
+							&:focus{
+								@include border-animation();
+								box-shadow: none;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

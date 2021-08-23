@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_order_form" model="ir.ui.view">
+        <field name="name">sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="arch" type="xml">
+            <field name="note" position="before">
+                <group>
+                    <field name="payment_method" />
+                    <field name="payment_desc" />
+                    <field name="picking_date" />
+                    <field name="other_inquiry" />
+                </group>
+            </field>
+        </field>
+    </record>
+    <record id="view_quotation_tree_with_onboarding_e1" model="ir.ui.view">
+        <field name="name">view.quotation.tree.with.onboarding.e1</field>
+        <field name="model">sale.order</field>
+        <field
+            name="inherit_id"
+            ref="sale_view_adjust_oaw.view_quotation_tree_with_onboarding_e1"
+        />
+        <field name="arch" type="xml">
+            <field name="prepare" position="after">
+                <field name="payment_method" />
+                <field name="picking_date" />
+            </field>
+        </field>
+    </record>
+    <record id="view_order_tree" model="ir.ui.view">
+        <field name="name">sale.order.tree</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale_view_adjust_oaw.view_order_tree" />
+        <field name="arch" type="xml">
+            <field name="open_issue" position="after">
+                <field name="payment_method" />
+                <field name="picking_date" />
+            </field>
+        </field>
+    </record>
+</odoo>

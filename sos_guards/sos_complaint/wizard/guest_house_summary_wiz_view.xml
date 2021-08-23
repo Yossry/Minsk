@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="guest_house_summary_wiz_view" model="ir.ui.view">
+        <field name="name">Guest House Summary</field>
+        <field name="model">guest.house.summary.wiz</field>
+        <field name="arch" type="xml">
+			<form string="Guest House Summary Wizard">
+				<group>
+					<group>
+						<field name="need_full_report"/>	
+					</group>
+					<group attrs="{'invisible': [('need_full_report', '=', True)]}">
+						<field name="check_in" string="Check In (From)"/>
+						<field name="check_out" string="Check Out (To)"/>
+					</group>
+				</group>
+				
+				<footer>
+					<button string="Print" name="print_report" type="object" class="oe_highlight"  />
+					<button string="Cancel" class="oe_link" special="cancel" />
+               </footer>
+			</form>
+		</field>
+    </record>
+
+    <record id="action_guest_house_summary_wiz" model="ir.actions.act_window">
+        <field name="name">Guest House Summary Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">guest.house.summary.wiz</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="guest_house_summary_wiz_view"/>
+        <field name="target">new</field>
+    </record>
+</odoo>

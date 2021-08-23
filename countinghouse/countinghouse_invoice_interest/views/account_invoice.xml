@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record model="ir.ui.view" id="account_invoice_interest_charges">
+        <field name="name">Account Invoice Interest Charges</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account.invoice_form"/>
+        <field name="arch" type="xml">
+            <data>
+                <header position="inside">
+                    <field name="show_interest_btn" invisible="1"/>
+                    <button string="Charge Interest" type="object" name="charge_interest"
+                            groups="account.group_account_invoice"
+                            class="fa fa-money"
+                            attrs="{'invisible': [('show_interest_btn','=', False)]}"/>
+                </header>
+
+                <field name="move_id" position="after">
+                    <field name="interest_charged" readonly="1"
+                           attrs="{'invisible': [('type','=', 'in_invoice')]}"/>
+                    <field name="charge_date"
+                            attrs="{'invisible': [('type','=', 'in_invoice')]}"/>
+                </field>
+
+            </data>
+        </field>
+    </record>
+
+</odoo>

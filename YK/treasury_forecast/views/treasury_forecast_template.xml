@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+
+<odoo>
+<data>
+
+    <record id="view_treasury_forecast_template_form" model="ir.ui.view">
+        <field name="name">Treasury Forecast Template Form View</field>
+        <field name="model">treasury.forecast.template</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+              <sheet>
+                <group string="Treasury Template">
+                  <group>
+                    <field name="name"/>
+                    <field name="bank_statement_id"
+                           required='True'/>
+                    <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>
+                  </group>
+                </group>
+                <notebook>
+                  <page string="Recurring costs and revenues">
+                      <field name="recurring_line_ids">
+                          <tree editable="bottom">
+                            <field name="name"/>
+                            <field name="ref"/>
+                            <field name="day"/>
+                            <field name="partner_id"/>
+                            <field name="amount"/>
+                          </tree>
+                      </field>
+                  </page>
+                </notebook>
+              </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_treasury_forecast_recurring_costs_list" model="ir.ui.view">
+        <field name="name">view_treasury_forecast_recurring_costs.list</field>
+        <field name="model">treasury.forecast.line.template</field>
+        <field name="arch" type="xml">
+            <tree>
+              <field name="name"/>
+              <field name="ref"/>
+              <field name="day"/>
+              <field name="partner_id"/>
+              <field name="amount"/>
+            </tree>
+        </field>
+    </record>
+
+</data>
+</odoo>

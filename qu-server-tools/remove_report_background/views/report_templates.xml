@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2018 Xavier Piernas <xavier.piernas@qubiq.es>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <template inherit_id="web.report_assets_common" id="report_assets_common">
+    	<xpath expr="//link[@href='/web/static/src/scss/layout_background.scss']" position="after">
+        	<link rel="stylesheet" type="text/scss" href="/remove_report_background/static/src/scss/layout_background.scss"/>
+        </xpath>
+    </template>
+</odoo>

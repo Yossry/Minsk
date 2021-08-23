@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template name="Project Area" id="s_project_area">
+        <!-- ====START PROJECT AREA==== -->
+        <section class="project_area section-padding oe_structure">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <div class="single_fact text-center">
+                            <div class="fact_icon">
+                                <div class="RXcircleEffect"></div>
+                                <i class="zmdi zmdi-case-check"></i>
+                            </div>
+                            <h2><span class="counter">61</span>+</h2>
+                            <p>Total Stores</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <div class="single_fact text-center">
+                            <div class="fact_icon">
+                                <div class="RXcircleEffect"></div>
+                                <i class="zmdi zmdi-code-smartphone"></i>
+                            </div>
+                            <h2><span class="counter">37</span>+</h2>
+                            <p>E-commerce Store</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <div class="single_fact text-center">
+                            <div class="fact_icon">
+                                <div class="RXcircleEffect"></div>
+                                <i class="zmdi zmdi-palette"></i>
+                            </div>
+                            <h2><span class="counter">100</span>+</h2>
+                            <p>Beautiful Themes</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <div class="single_fact text-center">
+                            <div class="fact_icon">
+                                <div class="RXcircleEffect"></div>
+                                <i class="zmdi zmdi-accounts"></i>
+                            </div>
+                            <h2><span class="counter">78</span></h2>
+                            <p>Happy clients</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ====END START PROJECT AREA==== -->
+    </template>
+</odoo>

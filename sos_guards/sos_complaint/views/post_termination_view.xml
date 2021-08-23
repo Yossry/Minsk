@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+
+   		<!--Complaint form view -->
+		<record id="view_post_termination_form" model="ir.ui.view">
+			<field name="name">sos.post.termination.form</field>
+			<field name="model">sos.post.termination</field>
+			<field name="arch" type="xml">
+				<form string="Termination">
+				   <header>
+						<button name="termination_open" states="draft" string="Open" class="oe_highlight" type="object"/>
+						<button name="termination_done" states="open" string="Done" class="oe_highlight" type="object"/>
+						<field name="state" widget="statusbar" nolabel="1" />
+				   </header>
+
+				   <sheet>
+					   <div class="oe_title">
+						   <h1>
+							   <field name="name" readonly="1" nolabel="1"/>
+						   </h1>
+					   </div>
+					   <div class="oe_right oe_button_box" name="button_box">
+
+					   </div>
+					   <group>
+							<group string="General">
+								<field name="req_date"/>
+								<field name="terminate_date" attrs="{'readonly': [('state','!=','draft')]}"/>
+
+							</group>
+
+							<group string="Branch Location">
+								<field name="center_id" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}" attrs="{'readonly': [('state','!=','draft')]}" />
+								<field name="project_id" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}" attrs="{'readonly': [('state','!=','draft')]}"/>
+								<field name="post_id"   domain="[('active','=',True),('project_id','=',project_id),('center_id','=',center_id)]" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}" />
+							</group>
+
+							<group string="Strength">
+								<field name="guards"/>
+								<field name="project_strength"/>
+							</group>
+
+							<group string="Staff">
+								<field name="received_by" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}" attrs="{'readonly': [('state','!=','draft')]}"/>
+								<field name="received_medium"/>
+								<field name="coordinator_id" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}" attrs="{'readonly': [('state','!=','draft')]}"/>
+								<field name="supervisor_id" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}" attrs="{'readonly': [('state','!=','draft')]}"/>
+								<field name="officer_id" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}" attrs="{'readonly': [('state','!=','draft')]}"/>
+							</group>
+
+					   </group>
+					   <field name="remarks"/>
+				   </sheet>
+				   <div class="oe_chatter">
+						<field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+						<field name="message_ids" widget="mail_thread" placeholder="Share a note..."/>
+					</div>
+			   </form>
+		   </field>
+		</record>
+
+		<record id="view_post_termination_tree" model="ir.ui.view">
+		   <field name="name">sos.post.termination.tree</field>
+		   <field name="model">sos.post.termination</field>
+		   <field name="arch" type="xml">
+			   <tree colors="black:state == 'draft';red:state  == 'open';green:state == 'done';" string="Post Terminations">
+				   <field name="name"/>
+				   <field name="project_id"/>
+				   <field name="center_id"/>
+				   <field name="terminate_date"/>
+				   <field name="guards" />
+				   <field name="state" />
+				   <field name="received_by" invisible="1" />
+			   </tree>
+		   </field>
+		</record>
+
+		<record id="view_post_termination_filter" model="ir.ui.view">
+			<field name="name">sos.post.termination.select</field>
+			<field name="model">sos.post.termination</field>
+			<field name="arch" type="xml">
+				<search string="Post Termination">
+					<field name="name" string="Post Termination" filter_domain="[('name','ilike',self)]"/>
+				   	<separator/>
+
+				   	<field name="received_by" string="Received By"/>
+				   	<field name="project_id" string="Project"/>
+				   	<field name="center_id" string="Center"/>
+				   	<field name="post_id" string="Post"/>
+
+				   	<filter icon="terp-go-today" string="Draft" name="draft" domain="[('state','=','draft')]" />
+				   	<filter icon="terp-go-today" string="Open" name="open" domain="[('state','=','open')]" />
+				   	<filter icon="terp-go-today" string="Done" name="done" domain="[('state','=','done')]" />
+				   	<separator/>
+
+				   <group expand="0" string="Group By...">
+					   	<filter string="Project" name="project_id" context="{'group_by': 'project_id'}"/>
+						<filter string="Center" name="center_id" context="{'group_by': 'center_id'}"/>
+						<separator/>
+						<filter string="Received By" name="received_by" context="{'group_by': 'received_by'}"/>
+						<filter string="Coordinator" name="coordinator_id" context="{'group_by': 'coordinator_id'}"/>
+						<filter string="Supervisor" name="supervisor_id" context="{'group_by': 'supervisor_id'}"/>
+				   </group>
+
+			   </search>
+			</field>
+		</record>
+
+		<record id="open_view_post_termination_list_my" model="ir.actions.act_window">
+			<field name="name">Post Termination</field>
+			<field name="res_model">sos.post.termination</field>
+			<field name="view_type">form</field>
+			<field eval="False" name="view_id"/>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="search_view_id" ref="view_post_termination_filter"/>
+			<field name="help" type="html">
+			  <p class="oe_view_nocontent_create">
+				Click to add a new Post Termination.
+			  </p><p>
+				With just a quick glance on the AARSOL ERP screen, you
+				can easily find all the information you need for each Termination;
+				contact data, Current Status, etc.
+			  </p>
+			</field>
+		</record>
+
+		<record id="open_view_post_termination_list_my_view1" model="ir.actions.act_window.view">
+			<field eval="1" name="sequence"/>
+			<field name="view_mode">tree</field>
+			<field name="view_id" ref="view_post_termination_tree"/>
+			<field name="act_window_id" ref="open_view_post_termination_list_my"/>
+		</record>
+
+		<record id="open_view_post_termination_list_my_view2" model="ir.actions.act_window.view">
+			<field eval="2" name="sequence"/>
+			<field name="view_mode">form</field>
+			<field name="view_id" ref="view_post_termination_form"/>
+			<field name="act_window_id" ref="open_view_post_termination_list_my"/>
+		</record>
+
+		<menuitem parent="sos.menu_gms_main" id="sos_post_termination_mi" name="Post Terminations" sequence="120" action="open_view_post_termination_list_my"  groups="sos.group_hr_master,sos.group_coordinator"/>
+	</data>
+</odoo>

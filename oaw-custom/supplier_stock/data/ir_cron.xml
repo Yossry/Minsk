@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record model="ir.cron" id="supplier_stock_update_base_cost">
+        <field name="name">Supplier Stock Update HKD Value Cron</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="model_id" ref="model_supplier_stock" />
+        <field name="function">update_price_unit_base</field>
+    </record>
+</odoo>

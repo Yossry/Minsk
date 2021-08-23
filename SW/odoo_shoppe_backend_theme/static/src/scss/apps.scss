@@ -1,0 +1,282 @@
+// App Theme
+.o_web_client {
+    .o_main .o_main_content {
+        @include media-breakpoint-down(sm) {
+            overflow: auto;
+            .o_content {
+                overflow: initial;
+            }
+        }
+    }
+}
+
+@include media-breakpoint-down(sm) {
+    .o_main_navbar {
+        display: flex;
+        > .o_menu_sections {
+            overflow: auto;
+        }
+        > .dropdown {
+            display: flex;
+            .o_menu_sections, .o_menu_systray {
+                padding: 0;
+            }
+        }
+        .o_menu_systray {
+            margin-left: auto;
+        }
+        .o_menu_brand, .o_menu_sections, .oe_topbar_name {
+            display: none;
+        }
+        .o_mail_systray_dropdown.show {
+            display: flex;
+            flex-direction: column;
+            border: none;
+            box-shadow: none;
+            position: fixed;
+            z-index: 100;
+            width: 100vw;
+            top: $o-navbar-height !important;
+            height: calc(100vh - #{$o-navbar-height});
+            max-height: calc(100vh - #{$o-navbar-height});
+            transform: none !important;
+            .o_mail_preview_image {
+                align-items: center;
+                display: flex;
+                flex-direction: row;
+                img {
+                    display: block;
+                    height: auto;
+                }
+            }
+        }
+        .o_debug_manager {
+            .dropdown-menu.show {
+                display: flex;
+                flex-direction: column;
+                border: none;
+                box-shadow: none;
+                position: fixed;
+                z-index: 100;
+                width: 100vw;
+                top: $o-navbar-height !important;
+                height: calc(100vh - #{$o-navbar-height});
+                max-height: calc(100vh - #{$o-navbar-height});
+                transform: none !important;
+            }
+        }
+        .o_user_menu {
+            > .dropdown-toggle {
+                padding: 0 10px;
+                white-space: nowrap;
+                &::before, &::after {
+                    content: normal;
+                }
+            }
+            .dropdown-menu.show {
+                display: flex;
+                flex-direction: column;
+                border: none;
+                box-shadow: none;
+                position: fixed;
+                z-index: 100;
+                width: 100vw;
+                top: $o-navbar-height !important;
+                height: calc(100vh - #{$o-navbar-height});
+                max-height: calc(100vh - #{$o-navbar-height});
+                transform: none !important;
+            }
+        }
+        .dropdown-menu .dropdown-item {
+            padding: {
+                bottom: 0.5rem;
+                top: 0.5rem;
+            }
+        }
+        .o_menu_sections.show {
+            display: flex;
+            flex-direction: column;
+            border: none;
+            box-shadow: none;
+            position: fixed;
+            z-index: 100;
+            width: 100vw;
+            background-color: #FFF;
+            top: $o-navbar-height !important;
+            height: calc(100vh - #{$o-navbar-height});
+            max-height: calc(100vh - #{$o-navbar-height});
+            transform: none !important;
+            .dropdown-toggle, .dropdown-item {
+                padding: 0;
+                height: 46px;
+                line-height: 46px;
+                background: none;
+                span {
+                    padding-left: 15px;
+                    font-size: initial;
+                }   
+            } 
+            .small_device_menu {
+                .fa {
+                    padding-top: 15px;
+                    padding-right: 15px;
+                }
+                .dropdown-menu {
+                    padding: 0;
+                    width: 100%;
+                    border: none;
+                    min-width: auto;
+                    box-shadow: none;
+                    background: none;
+                    position: relative !important;
+                    max-height: inherit;
+                    transform: none !important;
+                }
+                @for $index from 1 through 5 {
+                    .o_menu_entry_level_#{$index} {
+                        $padding: ($index - 1) * 1.5rem;
+                        margin-left: ($index - 1) * 1.5rem;
+                        width: calc(100% - #{$padding});
+                    }
+                }
+                @for $index from 2 through 5 {
+                    .o_menu_header_level_#{$index} {
+                        $padding: ($index - 1) * 1.5rem;
+                        margin-left: ($index - 1) * 1.5rem;
+                        width: calc(100% - #{$padding});
+                    }
+                }
+            }
+            
+        }
+    }
+}
+
+.o_menu_apps {
+    .dropdown-menu.show {
+        display: flex;
+        flex-direction: column;
+        border: none;
+        box-shadow: none;
+        position: fixed;
+        z-index: 100;
+        width: 100vw;
+        top: $o-navbar-height !important;
+        height: calc(100vh - #{$o-navbar-height});
+        max-height: calc(100vh - #{$o-navbar-height});
+        transform: none !important;
+        align-content: flex-start;
+        overflow: inital;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        @include media-breakpoint-up(lg) {
+            padding: {
+                left: 20vw;
+                right: 20vw;
+            }
+        }
+        .form-row {
+            width: 100%;
+        }
+    }
+}
+
+.o_menu_apps {
+    .full {
+        width: 46px;
+        font-size: 18px;
+        text-align: center;
+    }
+    .dropdown-menu.show {
+        .apps_menu_search_box {
+            margin-top: 25px;
+            .apps_menu_search {
+                input[type=search] {
+                    background-color: rgba(255, 255, 255, 0.8);
+                    height: 37px;
+                    padding: 10px;
+                    border: none;
+                    border-top-left-radius: 3px;
+                    border-bottom-left-radius: 3px;
+                }
+                .input-group-append {
+                    margin-left: 0px;
+                    .input-group-text {
+                        background-color: rgba(255, 255, 255, 0.8);
+                        box-shadow: none;
+                        border: none;
+                        padding-right: 15px;
+                    }
+                }
+                input:focus {
+                    box-shadow: none;
+                    border: none;
+                }
+            }
+            &.has-results {
+                height: 100%;
+                .apps_menu_search_results {
+                    height: calc(100% - 3em);
+                    .search_menu_result {
+                        display: block;
+                        cursor: pointer;
+                        font-size: 16px;
+                        background-position: left;
+                        background-repeat: no-repeat;
+                        background-size: contain;
+                        padding: 5px 1rem 5px 4rem;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        color: #eee;
+                        font-family: "Roboto", sans-serif;
+                        &:hover, &:active, &.active {
+                            background-color: rgba(255, 255, 255, 0.3);
+                        }
+                    }
+                }
+            }
+            @include media-breakpoint-down(md) {
+                padding-right: 5px;
+            }
+        }
+        .o_app {
+            display: flex;
+            margin-top: 20px;
+            align-items: center;
+            flex-direction: column;
+            justify-content: flex-start;
+            width: percentage(1/3);
+            @include media-breakpoint-up(sm) {
+                width: percentage(1/4);
+            }
+            @include media-breakpoint-up(md) {
+                width: percentage(1/6);
+            }
+            &:hover, &:active, &.active {
+                background: none;
+                .o-app-icon {
+                    box-shadow: 0 8px 15px -10px black;
+                    transform: translateY(-1px);
+                }
+            }
+            > .o-app-icon {
+                height: auto;
+                max-width: 7rem;
+                width: 100%;
+            }
+            > .o-app-name {
+                color: #eee;
+                font-family: "Roboto", sans-serif;
+                font-size: 14px;
+                padding-top: 5px;
+            }
+        }
+        .has-results ~ .o_app {
+            // Hide apps when display results
+            display: none;
+        }
+    }
+}

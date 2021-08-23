@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+	
+		<record id="hr_attendance_view_filter" model="ir.ui.view">
+			<field name="name">hr_attendance_view_filter</field>
+			<field name="model">hr.attendance</field>
+			<field name="inherit_id" ref="hr_attendance.hr_attendance_view_filter"/>
+			<field name="arch" type="xml">
+				<data>
+					 <xpath expr="//field[@name='employee_id']" position="replace">
+					 	<field name="employee_id" string="Employee" filter_domain="['|',('employee_id.code','=',self),('employee_id.name','ilike',self)]"/>		
+					 </xpath>
+					 <xpath expr="//filter[@name='check_in_filter']" position="after">
+					 	<separator/>
+				        <filter string="No Check In" name ='no_check_in' domain="[('check_in', '=', False)]" />
+				     </xpath>   
+				</data>    
+			</field>
+		</record>
+	
+		<record id="hr_my_attendance_action" model="ir.actions.act_window">
+			<field name="name">My Attendance</field>
+			<field name="res_model">hr.attendance</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[('employee_id.user_id.id', '=', uid)]</field>
+			<field name="search_view_id" ref="hr_attendance.hr_attendance_view_filter" />
+			<field name="help" type="html">
+				<p>Your attendance records will be displayed here.</p>
+				<p>Please make sure you're using the correct filter if you expected to see any.</p>
+			</field>
+		</record>
+		
+		
+		<record id="view_hr_employee_attendance_form" model="ir.ui.view">
+			<field name="name">hr.employee.attendance.form</field>
+			<field name="model">hr.employee.attendance</field>
+			<field name="type">form</field>	
+			<field name="arch" type="xml">
+				<form string="Employee attendance">
+					 <header>
+							<field name="state" widget="statusbar"/>
+					</header>
+					 <sheet string="Attendances">
+					 	<group>
+					 		<group>
+					 			<field name="name" readonly="1" />
+								<field name="employee_id" readonly="1"/>
+					 		</group>
+					 		<group>
+								<field name="action"/>
+								<field name="state"  readonly="1"/>
+					 		</group>
+					 	</group>
+					 </sheet>
+					<div class="oe_chatter">
+						<field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+						<field name="message_ids" widget="mail_thread" placeholder="Share a note..."/>
+				  	</div>
+				</form> 
+			</field>
+		</record>
+
+		<!-- Employee Attendance -->	
+		<record id="view_hr_employee_attendance_tree" model="ir.ui.view">
+			<field name="name">hr.employee.attendance.tree</field>
+			<field name="model">hr.employee.attendance</field>
+			<field name="arch" type="xml">
+				<tree string="Employee attendance">
+					<field name="name" readonly="1"/>
+					<field name="employee_id" readonly="1"/>
+					<field name="action"/>
+					<field name="state" readonly="1"/>
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="view_hr_employee_attendance_filter">
+			<field name="name">view_hr_employee_attendance_filter</field>
+			<field name="model">hr.employee.attendance</field>
+			<field name="arch" type="xml">
+				<search string="Hr Attendance Search">
+					<field name="name" string="Attendance"/>
+					<field name="action"/>
+					<filter icon="terp-go-today" string="Today" name="today" domain="[('name','&gt;=',current_date),('name','&lt;=',current_date)]" />
+					<filter icon="terp-go-today" string="Draft" name="draft" domain="[('state','=','draft')]" />
+					<filter icon="terp-go-today" string="Counted" name="counted" domain="[('state','=','counted')]" />
+					<filter icon="terp-go-today" string="Done" name="done" domain="[('state','=','done')]" />
+					<separator/>
+					<filter icon="terp-go-today" string="Present" name="present" domain="[('action','=','present')]" />
+					<filter icon="terp-go-today" string="Absent" name="absent" domain="[('action','=','absent')]" />
+					<filter icon="terp-go-today" string="Leave" name="leave" domain="[('action','=','leave')]" />
+					<field name="employee_id"/>
+			
+					<group expand="0" string="Group By...">				
+						<filter name="employee" string="Employee" icon="terp-personal" domain="[]" context="{'group_by':'employee_id'}"/>
+						<separator/>
+						<filter name='group_month' string="Month" icon="terp-go-today" domain="[]" context="{'group_by':'name:month'}"/>
+						<filter name='group_day' string="Day" icon="terp-go-today" domain="[]" context="{'group_by':'name:day'}"/>
+						<separator/>
+						<filter name="status" string="Status" icon="terp-personal" domain="[]" context="{'group_by':'state'}"/>
+						<filter name="attendance" string="Attendance" icon="terp-personal" domain="[]" context="{'group_by':'action'}"/>
+					</group>
+				</search>
+			</field>
+		</record>
+
+		<record id="open_view_hr_employee_attendance" model="ir.actions.act_window">
+			<field name="name">Employee Attendance</field>
+			<field name="res_model">hr.employee.attendance</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="context">{"search_default_draft":1}</field>
+			<field name="search_view_id" ref="view_hr_employee_attendance_filter" />
+			<field name="help">Employee Attendance.</field>
+		</record>
+
+		
+		<record id="act_employee_attendance_list" model="ir.actions.act_window">
+		   <field name="res_model">hr.employee.attendance</field>
+		   <field name="name">Atendance</field>
+		   <field name="view_type">form</field>
+		   <field name="view_mode">tree,form</field>
+		   <field name="context">{'search_default_employee_id': [active_id], 'default_employee_id': active_id}</field>
+		</record>  
+
+		
+
+		<act_window 
+			id="action_employee_attendance_confirm" multi="True"
+			key2="client_action_multi" name="Confirm Draft Attendance"
+			res_model="hr.employee.attendance" src_model="hr.employee.attendance"
+			view_mode="form" target="new" view_type="form" />
+		
+		<!--
+		<record id="view_employee_form_attendance_inherit" model="ir.ui.view">
+			<field name="name">Attendance Inherit</field>
+			<field name="model">hr.employee</field>
+			<field name="inherit_id" ref="hr.view_employee_form"/>
+			<field name="arch" type="xml">
+			<data>
+				 <xpath expr="//div[@name='button_box']" position="inside">
+				 	<button name="%(act_employee_attendance_list)d" 
+						class="oe_stat_button" 
+						icon="fa-calendar" 
+						type="action">
+						<field name="attendance_count" widget="statinfo" string="Attendance" help="Attendance Detail" groups="base.group_user"/>
+					</button>	
+				 	
+				 </xpath>		
+			</data>
+			</field>
+		</record>
+		-->	
+
+	
+
+	</data>
+</odoo>
+
+

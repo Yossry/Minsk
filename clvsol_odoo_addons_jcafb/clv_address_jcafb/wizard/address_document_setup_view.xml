@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="clv_address_document_setup_view_form" model="ir.ui.view">
+        <field name="name">clv.address.document_setup.form</field>
+        <field name="model">clv.address.document_setup</field>
+        <field name="arch" type="xml">
+            <form>
+                <div class="oe_right">
+                </div>
+                <label for="address_ids"/>
+                <field name="address_ids" options="{'no_open': False, 'no_create': True}"/>
+                <label for="document_type_ids"/>
+                <field name="document_type_ids" options="{'no_open': False, 'no_create': True}" context="{'search_default_phase_id': phase_id}"/>
+                <group>
+                    <group>
+                        <field name="category_id" options="{'no_open': False, 'no_create': True}"/>
+                        <field name="date_foreseen"/>
+                        <field name="date_deadline"/>
+                        <field name="phase_id" options="{'no_open': False, 'no_create': True}"/>
+                    </group>
+                </group>
+                <footer>
+                    <button 
+                        type="object"
+                        name="do_address_document_setup"
+                        string="Document Set Up"
+                        class="oe_highlight"
+                        />
+                    <button special="cancel" string="Cancel"/>
+                </footer>
+            </form>
+
+        </field>
+    </record>
+
+    <!-- More button Action -->
+    <act_window 
+        id="clv_address_document_setup_action"
+        name="Document Set Up [Address]"
+        src_model="clv.address"
+        res_model="clv.address.document_setup"
+        view_mode="form"
+        key2="client_action_multi"
+        target="new"
+    />
+
+</odoo>

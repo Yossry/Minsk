@@ -1,0 +1,5 @@
+OCA_server-tools https://github.com/it-projects-llc/server-tools.git
+OCA_web https://github.com/it-projects-llc/web
+access-addons https://github.com/it-projects-llc/access-addons.git
+mail-addons https://github.com/it-projects-llc/mail-addons
+misc-addons https://github.com/it-projects-llc/misc-addons

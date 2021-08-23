@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="report_kiosktransaction">
+    <t t-call="web.html_container">
+        <t t-call="web.external_layout">
+            <div class="page">
+                <h3 class="mb32">Kiosk Transaction</h3>
+
+                <table class="table mb32">
+                    <thead>
+                        <tr>
+                            <th>Reference</th>
+                            <th>Date</th>
+                            <th>RRN</th>
+                            <th>STAN</th>
+                            <th>Amount</th>
+                            <th width="12%">Service Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="datas" t-as="key">
+                            <tr class="bg-info">
+                                <th colspan="6" style="line-height: 0.8">
+                                    <i><t t-esc="datas[key]['name']"/></i>
+                                </th>
+                            </tr>
+                            <t t-foreach="datas[key]['service']" t-as="sub">
+                                <tr class="bg-warning">
+                                    <td colspan="6" style="line-height: 0.5">
+                                        <t t-esc="datas[key]['service'][sub]['name']"/>
+                                    </td>
+                                </tr>
+                                <t t-foreach="datas[key]['service'][sub]['transactions']" t-as="t">
+                                    <tr>
+                                        <td><span t-esc="t['reference']"/></td>
+                                        <td><span t-esc="t['date']"/></td>
+                                        <td><span t-esc="t['rrn']"/></td>
+                                        <td><span t-esc="t['stan']"/></td>
+                                        <td class="text-right"><span t-esc="t['amount']"/></td>
+                                        <td class="text-right"><span t-esc="t['service_amount']"/></td>
+                                    </tr>
+                                </t>
+                                <tr style="border-top: 1px solid; background-color: white;">
+                                    <td colspan="4" class="text-right">
+                                        <strong>Total:</strong>
+                                    </td>
+                                    <td style="border-top: 2px solid;" class="text-right">
+                                        <strong><span t-esc="datas[key]['service'][sub]['amount']"/></strong>
+                                    </td>
+                                    <td style="border-top: 2px solid;" class="text-right">
+                                        <strong><span t-esc="datas[key]['service'][sub]['service_amount']"/></strong>
+                                    </td>
+                                </tr>
+                            </t>
+                        </t>
+                    </tbody>
+                </table>
+                <table class="table pull-right" style="width: 50%;">
+                    <thead>
+                        <tr>
+                            <th>Provider</th>
+                            <th>Amount</th>
+                            <th>Service Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <t t-set="amount" t-value="0"/>
+                        <t t-set="service_amount" t-value="0"/>
+                        <t t-foreach="datas" t-as="key">
+                            <tr>
+                                <td>
+                                    <i><t t-esc="datas[key]['name']"/></i>
+                                </td>
+                                <td>
+                                    <i><t t-esc="datas[key]['amount']"/></i>
+                                </td>
+                                <td>
+                                    <i><t t-esc="datas[key]['service_amount']"/></i>
+                                </td>
+                            </tr>
+                            <t t-set="amount" t-value="amount + datas[key]['amount']"/>
+                            <t t-set="service_amount" t-value="service_amount + datas[key]['service_amount']"/>
+                        </t>
+                        <tr style="border-top: 1px solid;">
+                            <td>
+                                Total
+                            </td>
+                            <td>
+                                <i><t t-esc="amount"/></i>
+                            </td>
+                            <td>
+                                <i><t t-esc="service_amount"/></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </t>
+    </t>
+</template>
+
+</odoo>

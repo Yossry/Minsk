@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>	
+		<template id ="report_pssattendance">
+			<t t-call="report.html_container">
+				<div class="page">
+					<style>
+						table th { background-color:#d4e3e5;}
+					</style>
+					
+					 <div class="row">
+					 	 <div class="col-xs-4">
+					 	 	 <img width="40%" style="max-height:125px;" class="img img-responsive" src="/sos_payroll/static/src/img/logo.png"/>
+					 	 </div>
+					 	 <div class="col-xs-3">
+					 	 </div>
+					 	 
+					 	 <div class="col-xs-5" style="font-size:14px; font-weight:bold; text-align:right; align:left;margin-top:20px;">
+					 	 	SECURITY ORGANIZING SYSTEM (PVT) LIMITED
+					 	 </div>
+					 </div>
+				
+					 <div class="row" style="font-size:12px; font-weight:bold; text-align:center; align:left;">
+					 	<div class="col-xs-12">
+					 		Attendance Report From  <span t-esc="get_date_formate(data['date_from'])"/> To <span t-esc="get_date_formate(data['date_to'])"/> 
+					 	</div>
+					 </div>
+					 
+					<table class="table table-bordered">
+						<thead>
+							<th>SR# </th>
+							<th>Employee </th>
+							<th>Attendance Time </th>							
+							<th>Location Code </th>
+							<th>Location Name </th>
+							<!--
+							<th>Branch Status </th>
+							<th>ATM Status </th>
+							<th>ATM Light and Camera </th>
+							<th>Cor.out Light and Camera </th>
+							<th>Br.indoor Light </th>
+							<th>Gen and Other Access Status </th>
+							<th>Skimming Device at ATM </th>
+							<th>Contact </th>
+							-->
+							<th>Remarks </th>
+						</thead>
+						<tbody>
+							<t t-foreach="Att" t-as="att">
+								<tr>
+									<td colspan="14" style="font-size:14px; font-weight:bold;background-color:#d4eeea;" >Center: <span t-esc="att['Center']" /> </td>
+								</tr>
+								
+								<t t-foreach="att['Lines']" t-as="line">
+									<tr>
+										<td><span t-esc="line_index + 1" /> </td>
+										<td><span t-esc="line.employee_id.name" /> </td>								
+										<td><span t-esc="datetime.datetime.strptime(line.device_datetime, '%Y-%m-%d %H:%M:%S')+relativedelta(hours=+5)" /> </td>
+										<td><span t-esc="line.pss_id.code" /> </td>
+										<td><span t-esc="line.pss_id.name" /> </td>
+										<!--
+										<td><span t-esc="line.branch_status and 'OK' or 'Not'" /> </td>
+										<td><span t-esc="line.atm_status and 'OK' or 'Not'" /> </td>
+										<td><span t-esc="line.atm_light_camera and 'OK' or 'Not'" /> </td>
+										<td><span t-esc="line.cor_light_camera and 'OK' or 'Not'" /> </td>
+										<td><span t-esc="line.br_indoor_light and 'OK' or 'Not'" /> </td>
+										<td><span t-esc="line.gen_status and 'OK' or 'Not'" /> </td>
+										<td><span t-esc="line.skimming_device and 'OK' or 'Not'" /> </td>
+										<td><span t-esc="line.employee_id.mobile_phone" /> </td>
+										-->
+										<td> <span t-esc="line.remarks"/> </td>
+									</tr>
+								</t>
+								
+									
+							</t>
+						</tbody>	
+					</table>
+					
+				</div>	 			 	
+			</t>
+		</template>
+		
+	</data>
+</openerp>
+

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <menuitem name="Global Settings" id="clv_base.menu_base_global_settings_global_settings"
+        parent="clv_base.menu_base_global_settings"
+        groups="clv_base.group_manager"
+        sequence="90"
+        action="clv_base.clv_global_settings_action"/>
+
+</odoo>

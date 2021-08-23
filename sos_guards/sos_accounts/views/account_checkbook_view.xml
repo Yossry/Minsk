@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_account_checkbook_tree" model="ir.ui.view">
+            <field name="name">account.checkbook.tree</field>
+            <field name="model">account.checkbook</field>
+            <field name="arch" type="xml">
+                <tree string="Checkbooks" colors="blue:state == 'draft';black:state in ('active');red:state == 'hrejected';gray:state == 'used'">
+                    <field name="name"/>
+                    <field name="start_number"/>
+                    <field name="end_number"/>
+                    <field name="block_manual_number"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_account_checkbook_form" model="ir.ui.view">
+            <field name="name">account.checkbook.form</field>
+            <field name="model">account.checkbook</field>
+            <field name="arch" type="xml">
+                <form string="Checkbooks"> 
+                    <header string="Checkbooks">
+                    	<button name="create_cheque_entries" type="object" states="draft" string="Create Cheques" class="oe_highlight"/>
+                        <field name="state" widget="statusbar" clickable="True"/>
+                    </header>
+                    <sheet string="Checkbooks">
+                        <group>
+                        	<group>
+                        		<field name="name" invisible="0"/>
+                        		<field name="date"/>
+                        		<field name="block_manual_number"/>
+                        	</group>
+                        	<group>
+                            	<field name="start_number"/>
+                            	<field name="end_number"/>
+                            	
+                            </group>	
+                        </group>
+                        
+                        <notebook colspan="4">
+							<page string="Cheques">
+								<field name="check_ids">
+									<tree colors="blue:state == 'draft';black:state in ('active');red:state == 'used'">
+										<field name="name"/>
+										<field name="check_number"/>
+										<field name="used_date"/>
+										<field name="description"/>
+										<field name="state"/>
+									</tree>
+								</field>
+							</page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        
+        <!-- Check Book Action -->
+        <record model="ir.actions.act_window" id="action_check_book">
+            <field name="name">Cheque Books</field>
+            <field name="res_model">account.checkbook</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+
+        <menuitem action="action_check_book" id="menu_check_book" sequence="300" parent="account.menu_finance_entries"/>
+            
+            
+            
+       <!-- Cheques Tree View -->
+       <record id="view_account_checkbook_line_tree" model="ir.ui.view">
+            <field name="name">account.checkbook.line.tree</field>
+            <field name="model">account.checkbook.line</field>
+            <field name="arch" type="xml">
+               <tree string="Cheques" colors="blue:state == 'draft';black:state in ('active');gray:state == 'used'" create="false" edit="false">
+					<field name="name"/>
+					<field name="check_number"/>
+					<field name="checkbook_id"/>
+					<field name="used_date"/>
+					<field name="description"/>
+					<field name="state"/>
+				</tree>
+            </field>
+        </record>
+        
+        <!-- Cheques Search View -->
+        <record model="ir.ui.view" id="view_account_checkbook_line_search">
+            <field name="name">account.checkbook.line.search</field>
+            <field name="model">account.checkbook.line</field>
+            <field name="arch" type="xml">
+                <search string="Cheques">
+                    <field name="name"/>
+                    <field name="check_number"/>
+                    <field name="state"/>
+                    <field name="used_date"/>
+                    
+                    <group expand="0" string="Group By...">
+                        <filter string="Used Date" name="used_date" context="{'group_by':'used_date'}"/>
+                        <filter string="Cheque book" name="checkbook_id" context="{'group_by':'checkbook_id'}"/>
+                        <filter string="State" name="state" context="{'group_by':'state'}"/>
+                    </group>
+                    
+                </search>
+            </field>
+        </record> 
+        
+        
+		<!-- Cheques Action -->
+		<record model="ir.actions.act_window" id="action_check_book_line">
+			<field name="name">Cheques </field>
+			<field name="res_model">account.checkbook.line</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree</field>
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+		</record>
+        
+	<menuitem action="action_check_book_line" id="menu_check_book_line" sequence="305" parent="account.menu_finance_entries"/>     
+            
+    </data>
+</odoo>        

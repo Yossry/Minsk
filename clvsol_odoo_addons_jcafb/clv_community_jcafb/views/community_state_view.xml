@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="clv_community_view_form_state" model="ir.ui.view">
+        <field name="name">clv.community.form</field>
+        <field name="model">clv.community</field>
+        <field name="inherit_id" ref="clv_community.clv_community_view_form"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <header name="header" position="inside">
+                <field name="state" widget="statusbar"
+                       statusbar_visible="draft,confirm,done,cancel"/>
+                <button name="action_draft" type="object"
+                        string="Unconfirm"
+                        attrs="{'invisible':[('state','not in',['cancel'])]}"
+                        groups="clv_community.group_manager"/>
+                <button name="action_confirm" type="object"
+                        string="Confirm"
+                        attrs="{'invisible':[('state','not in',['draft'])]}"
+                        groups="clv_community.group_manager"/>
+                <button name="action_done" type="object"
+                        string="Done"
+                        attrs="{'invisible':[('state','not in',['confirm'])]}"
+                        groups="clv_community.group_manager"/>
+                <button name="action_cancel" type="object"
+                        string="Cancel"
+                        attrs="{'invisible':[('state','not in',['draft','confirm'])]}"
+                        groups="clv_community.group_manager"/>
+           </header>
+            <!--div name="button_box_2" position="inside">
+                <button name="action_draft" type="object"
+                        string="Unconfirmed"
+                        attrs="{'invisible':[('state','not in',['cancel'])]}"
+                        groups="clv_community.group_manager"/>
+                <button name="action_confirm" type="object"
+                        string="Confirmed"
+                        attrs="{'invisible':[('state','not in',['draft'])]}"
+                        groups="clv_community.group_manager"/>
+                <button name="action_done" type="object"
+                        string="Done"
+                        attrs="{'invisible':[('state','not in',['confirm'])]}"
+                        groups="clv_community.group_manager"/>
+                <button name="action_cancel" type="object"
+                        string="Cancelled"
+                        attrs="{'invisible':[('state','not in',['draft','confirm'])]}"
+                        groups="clv_community.group_manager"/>
+            </div-->
+        </field>
+    </record>
+
+    <record id="clv_community_view_tree_state" model="ir.ui.view">
+        <field name="name">clv.community.tree</field>
+        <field name="model">clv.community</field>
+        <field name="inherit_id" ref="clv_community.clv_community_view_tree"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="code" position="after">
+                <field name="state"/>
+            </field>
+            <tree name="communitys" position="attributes">
+                <attribute name="decoration-muted">state=='draft'</attribute>
+                <attribute name="decoration-success">state=='done'</attribute>
+                <attribute name="decoration-primary">state in('confirm')</attribute>
+                <attribute name="decoration-danger">state=='cancel'</attribute>
+                <attribute name="decoration-it">state in('draft','cancel')</attribute>
+                <attribute name="decoration-bf">state in('done')</attribute>
+            </tree>
+        </field>
+    </record>
+
+    <record id="clv_community_view_search_state" model="ir.ui.view">
+        <field name="name">clv.community.search</field>
+        <field name="model">clv.community</field>
+        <field name="inherit_id" ref="clv_community.clv_community_view_search"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="code" position="after">
+                <field name="state"/>
+            </field>
+            <group name="group_by" position="inside">
+                <filter string="State" domain="[]" context="{'group_by':'state'}"/>
+            </group>
+        </field>
+    </record>
+
+</odoo>

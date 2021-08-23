@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data noupdate="1">    			
+   			
+		<record model="ir.sequence" id="seq_uniform_demand_id">
+		    <field name="name">Demand Number</field>
+		    <field name="code">sos.uniform.demand</field>
+		    <field name="prefix">UNI/%(y)s/%(woy)s/</field>
+		    <field name="padding">4</field>
+		</record>
+		
+		<record model="ir.sequence" id="seq_jacket_demand_id">
+		    <field name="name">Demand Number</field>
+		    <field name="code">sos.jacket.demand</field>
+		    <field name="prefix">J/%(y)s/%(woy)s/</field>
+		    <field name="padding">4</field>
+		</record>
+
+		<record model="ir.sequence" id="seq_weapon_demand_id">
+			<field name="name">Weapon Demand Number</field>
+			<field name="code">sos.weapon.demand</field>
+			<field name="prefix">W/%(y)s/%(woy)s/</field>
+			<field name="padding">4</field>
+		</record>
+			
+		<record model="ir.sequence" id="seq_safety_demand_id">
+			<field name="name">Safety Demand Number</field>
+			<field name="code">sos.safety.demand</field>
+			<field name="prefix">S/%(y)s/%(woy)s/</field>
+			<field name="padding">4</field>
+		</record>
+		
+		<record model="ir.sequence" id="seq_uniform_return_id">
+			<field name="name">Uniform Return Number</field>
+			<field name="code">sos.uniform.return</field>
+			<field name="prefix">RET/%(y)s/%(woy)s/</field>
+			<field name="padding">4</field>
+		</record>
+		
+		<record model="ir.sequence" id="seq_stationery_demand_id">
+			<field name="name">Stationery Demand Number</field>
+			<field name="code">sos.stationery.demand</field>
+			<field name="prefix">ST/%(y)s/%(woy)s/</field>
+			<field name="padding">4</field>
+		</record>
+
+		<record id="mt_uniform_demand" model="mail.message.subtype">
+            <field name="name">Uniform Demand</field>
+            <field name="res_model">sos.uniform.demand</field>
+            <field name="default" eval="False"/>
+            <field name="description">Uniform Demand Status</field>
+        </record>
+
+		<record id="mt_jacket_demand" model="mail.message.subtype">
+            <field name="name">Jacket Demand</field>
+            <field name="res_model">sos.jacket.demand</field>
+            <field name="default" eval="False"/>
+            <field name="description">Jacket Demand Status</field>
+        </record>
+
+		<record id="mt_weapon_demand" model="mail.message.subtype">
+            <field name="name">Weapon Demand</field>
+            <field name="res_model">sos.weapon.demand</field>
+            <field name="default" eval="False"/>
+            <field name="description">Weapon Demand Status</field>
+        </record>
+
+		<record id="mt_stationary_demand" model="mail.message.subtype">
+            <field name="name">Stationary Demand</field>
+            <field name="res_model">sos.stationary.demand</field>
+            <field name="default" eval="False"/>
+            <field name="description">Stationary Demand Status</field>
+        </record>
+
+		<record id="mt_safety_demand" model="mail.message.subtype">
+            <field name="name">Safety Demand</field>
+            <field name="res_model">sos.safety.demand</field>
+            <field name="default" eval="False"/>
+            <field name="description">Safety Demand Status</field>
+        </record>
+       
+       <record model="ir.sequence" id="seq_general_approval_id">
+			<field name="name">Approval Number</field>
+			<field name="code">sos.general.approval</field>
+			<field name="prefix">Approval/%(year)s/</field>
+			<field name="padding">4</field>
+		</record>
+	</data>
+</odoo>

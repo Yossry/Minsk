@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo noupdate="1">
+	
+	<record id="clv_lab_test_crystal_01" model="clv.lab_test.crystal">
+		<field name="name" eval="&quot;&quot;&quot;Ausentes&quot;&quot;&quot;"/>
+	</record>
+ 
+	<record id="clv_lab_test_crystal_02" model="clv.lab_test.crystal">
+		<field name="name" eval="&quot;&quot;&quot;Raros de Oxalato de Cálcio&quot;&quot;&quot;"/>
+	</record>
+ 
+	<record id="clv_lab_test_crystal_03" model="clv.lab_test.crystal">
+		<field name="name" eval="&quot;&quot;&quot;Frequentes de Oxalato de Cálcio&quot;&quot;&quot;"/>
+	</record>
+ 
+	<record id="clv_lab_test_crystal_04" model="clv.lab_test.crystal">
+		<field name="name" eval="&quot;&quot;&quot;Numerosos de Urato Amorfo&quot;&quot;&quot;"/>
+	</record>
+ 
+	<record id="clv_lab_test_crystal_05" model="clv.lab_test.crystal">
+		<field name="name" eval="&quot;&quot;&quot;Raros de Fosfato Amorfo&quot;&quot;&quot;"/>
+	</record>
+ 
+	<record id="clv_lab_test_crystal_06" model="clv.lab_test.crystal">
+		<field name="name" eval="&quot;&quot;&quot;Raros de Fosfato Triplo&quot;&quot;&quot;"/>
+	</record>
+ 
+	<record id="clv_lab_test_crystal_07" model="clv.lab_test.crystal">
+		<field name="name" eval="&quot;&quot;&quot;Numerosos de Fosfato Amorfo&quot;&quot;&quot;"/>
+	</record>
+ 
+	<record id="clv_lab_test_crystal_08" model="clv.lab_test.crystal">
+		<field name="name" eval="&quot;&quot;&quot;Frequentes de Fosfato Amorfo&quot;&quot;&quot;"/>
+	</record>
+ 
+	<record id="clv_lab_test_crystal_09" model="clv.lab_test.crystal">
+		<field name="name" eval="&quot;&quot;&quot;Raros de Ácido Úrico&quot;&quot;&quot;"/>
+	</record>
+	 
+</odoo>

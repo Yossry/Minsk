@@ -1,0 +1,23 @@
+<odoo>
+    <record id="supplier_stock_search" model="ir.ui.view">
+        <field name="name">product.template.search.update.filter</field>
+        <field name="model">supplier.stock</field>
+        <field name="inherit_id" ref="supplier_stock.supplier_stock_search" />
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='product']" position="after">
+                <!-- For Overseas Currency Amount Price Change in 24h -->
+                <filter
+                    name="currency_price_change_date"
+                    string="Overseas Price Change"
+                    domain="[('currency_price_change_date','&gt;=',(context_today()+datetime.timedelta(hours=-24)).strftime('%Y-%m-%d'))]"
+                />
+                <!-- For New Overseas Entry Filter-->
+                <filter
+                    name="new_entry_date"
+                    string="New To Overseas Stock 24"
+                    domain="[('new_entry_date','&gt;=',(context_today()+datetime.timedelta(hours=-24)).strftime('%Y-%m-%d'))]"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,15 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+project_bid_template_bid_manager,project.bid.template bid manager,model_project_bid_template,group_project_bid_manager,1,1,1,1
+project_bid_template_bid_user,project.bid.template bid user,model_project_bid_template,group_project_bid_user,1,0,0,0
+project_bid_bid_manager,project.bid bid manager,model_project_bid,group_project_bid_manager,1,1,1,1
+project_bid_bid_user,project.bid bid user,model_project_bid,group_project_bid_user,1,1,1,1
+project_bid_component_bid_manager,project.bid.component bid manager,model_project_bid_component,group_project_bid_manager,1,1,1,1
+project_bid_component_bid_user,project.bid.component bid user,model_project_bid_component,group_project_bid_user,1,1,1,1
+project_bid_component_material_bid_manager,project.bid.component.material bid manager,model_project_bid_component_material,group_project_bid_manager,1,1,1,1
+project_bid_component_material_bid_user,project.bid.component.material bid user,model_project_bid_component_material,group_project_bid_user,1,1,1,1
+project_bid_component_labor_bid_manager,project.bid.component.labor bid manager,model_project_bid_component_labor,group_project_bid_manager,1,1,1,1
+project_bid_component_labor_bid_user,project.bid.component.labor bid user,model_project_bid_component_labor,group_project_bid_user,1,1,1,1
+project_bid_other_labor_bid_manager,project.bid.other.labor bid manager,model_project_bid_other_labor,group_project_bid_manager,1,1,1,1
+project_bid_other_labor_bid_user,project.bid.other.labor bid user,model_project_bid_other_labor,group_project_bid_user,1,1,1,1
+project_bid_other_expense_bid_manager,project.bid.other.expense bid manager,model_project_bid_other_expenses,group_project_bid_manager,1,1,1,1
+project_bid_other_expense_bid_user,project.bid.other.expense bid user,model_project_bid_other_expenses,group_project_bid_user,1,1,1,1

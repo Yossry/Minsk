@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+
+
+access_payment_invoice_line_outstand_manager,payment.invoice.line.outstand,model_payment_invoice_line_outstand,base.group_user,1,1,1,1
+

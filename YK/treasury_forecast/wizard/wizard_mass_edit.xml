@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo><data>
+        <record id="mass_edit_treasury_data_wizard_form" model="ir.ui.view">
+            <field name="name">Edit treasury lines</field>
+            <field name="model">bank.statement.line.mass.edit</field>
+            <field name="arch" type="xml">
+                <form string="Edit fields">
+                    <group colspan="2">
+                      <field name="statement_id"/>
+                    </group>
+                    <footer>
+                        <button name="button_edit_data"
+                                string="Confirm"
+                                type="object"
+                                class="oe_highlight" />
+                        or
+                        <button special="cancel"
+                                string="_Cancel"
+                                class="oe_link" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window id="action_mass_edit_treasury_data"
+                    name="Edit treasury lines"
+                    res_model="bank.statement.line.mass.edit"
+                    src_model="account.bank.statement.line"
+                    view_type="form"
+                    view_mode="form"
+                    multi="True"
+                    view_id="mass_edit_treasury_data_wizard_form"
+                    target="new" />
+
+</data></odoo>

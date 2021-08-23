@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- # Copyright 2008 Luis Falcon <lfalcon@gnusolidario.org>
+     Copyright 2016 LasLabs Inc.
+     License GPL-3.0 or later (http://www.gnu.org/licenses/gpl). -->
+
+<odoo>
+
+    <record id="clv_patient_view_tree" model="ir.ui.view">
+        <field name="name">clv.patient.tree</field>
+        <field name="model">clv.patient</field>
+        <field name="inherit_id" ref="clv_entity.clv_abstract_entity_view_tree"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="attributes">
+                <attribute name="string">Patients</attribute>
+            </xpath>
+            <xpath expr="//field[@name='email']" position="after">
+                <!--field name="identification_code" /-->
+                <!--field name="age" /-->
+                <!--field name="gender" /-->
+            </xpath>
+        </field>
+    </record>
+
+    <record id="clv_patient_view_form" model="ir.ui.view">
+        <field name="name">clv.patient.form</field>
+        <field name="model">clv.patient</field>
+        <field name="inherit_id" ref="clv_entity.clv_abstract_entity_view_form"/>
+        <field name="mode">primary</field>
+        <field name="priority" eval="100"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="attributes">
+                <attribute name="string">Patient</attribute>
+            </xpath>
+            <xpath expr="//group[@name='main_data']">
+                <group name="main">
+                    <field name="parent_id"
+                           colspan="2"
+                           string="Legal Representative"
+                           domain="[('customer','=',True)]"
+                           />
+                </group>
+            </xpath>
+            <xpath expr="//img[@name='kanban_image_default_person']" position="replace">
+                <img name="kanban_image_default_person"
+                     t-if="record.is_company.raw_value === false"
+                     t-attf-src='{{ _s }}/clv_patient/static/src/img/patient-avatar.png'
+                />
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page name="clv_patient" string="Patient" autofocus="True">
+                    <!--group name="group_clv_buttons" class="oe_button_box" col="6">
+                        <button name="toggle_is_pregnant"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-venus"
+                            >
+                            <field name="is_pregnant"
+                                   widget="boolean_button"
+                                   options='{"terminology": {"string_true": "Pregnant",
+                                                             "string_hover_true": "Switch to Not Pregnant",
+                                                             "string_false": "Not Pregnant",
+                                                             "string_hover_false": "Switch to Pregnant"}}'
+                            />
+                        </button>
+                    </group-->
+                    <group name="group_clv_general" string="General">
+                        <group name="group_clv_general_left">
+                            <!--field name="identification_code" /-->
+                            <!--field name="gender" /-->
+                        </group>
+                        <group name="group_clv_general_right">
+                            <!--field name="birthdate_date" /-->
+                            <!--field name="date_death" /-->
+                            <!--field name="age" /-->
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+            <!--xpath expr="//field[@name='age']" position="after">
+                <label for="weight"/>
+                <div>
+                    <field name='weight' class="oe_inline"/>
+                    <field name='weight_uom'
+                           class="oe_inline"
+                           placeholder="UoM"/>
+                </div>
+            </xpath-->
+        </field>
+    </record>
+
+    <record id="clv_patient_view_kanban" model="ir.ui.view">
+        <field name="name">clv.patient.kanban</field>
+        <field name="model">clv.patient</field>
+        <field name="inherit_id" ref="clv_entity.clv_abstract_entity_view_kanban"/>
+        <field name="mode">primary</field>
+        <field name="priority" eval="100"/>
+        <field name="arch" type="xml">
+            <xpath expr="//kanban" position="attributes">
+                <attribute name="string">Patients</attribute>
+            </xpath>
+            <xpath expr="//templates" position="before">
+                <!--field name="birthdate_date" /-->
+            </xpath>
+            <xpath expr="//ul[@name='entity_details']/li" position="before">
+                <!--li name="field_dob" t-if="record.birthdate_date.raw_value">
+                    <strong>DOB:</strong> <field name="birthdate_date"/>
+                </li-->
+                <!--li name="field_age_gender" t-if="record.birthdate_date.raw_value &amp;&amp; record.gender.raw_value">
+                    <field name="age"/> - <field name="gender"/>
+                </li-->
+                <!--li name="field_gender" t-if="! record.birthdate_date.raw_value &amp;&amp; record.gender.raw_value">
+                    <field name="gender"/>
+                </li-->
+            </xpath>
+            <xpath expr="//img[@name='kanban_image_entity']" position="replace">
+                <img name="kanban_image_entity"
+                     t-att-src="kanban_image('clv.patient', 'image_small', record.id.raw_value)"
+                />
+            </xpath>
+            <xpath expr="//img[@name='kanban_image_default_person']" position="replace">
+                <img name="kanban_image_default_person"
+                     t-if="record.is_company.raw_value === false"
+                     t-attf-src='{{ _s }}/clv/static/src/img/patient-avatar.png'
+                />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="clv_patient_view_search" model="ir.ui.view">
+        <field name="name">clv.patient.search</field>
+        <field name="model">clv.patient</field>
+        <field name="inherit_id" ref="clv_entity.clv_abstract_entity_view_search"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <xpath expr="//search" position="attributes">
+                <attribute name="string">Patients</attribute>
+            </xpath>
+            <xpath expr="//field[@name='category_id']" position="after">
+                <!--field name="birthdate_date" /-->
+                <!--field name="age_years" /-->
+                <!--field name="identification_code" /-->
+            </xpath>
+            <xpath expr="//filter" position="after">
+                <!--filter string="DoB"
+                        domain="[]"
+                        context="{'group_by':'birthdate_date'}" /-->
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="clv_patient_action">
+        <field name="name">Patients</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">clv.patient</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,kanban,form</field>
+    </record>
+
+</odoo>

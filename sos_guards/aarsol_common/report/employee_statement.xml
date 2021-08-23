@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<report
+		id="employeestatement"
+		string= "Employee Statement"
+		model = "res.partner"
+		report_type="qweb-html"
+		file="aarsol_common.employee_statement"
+		name="aarsol_common.employee_statement"
+		menu="False"
+	/>
+
+
+<template id="employee_statement">
+    <t t-call="web.html_container">
+        <t t-set="data_report_margin_top" t-value="24"/>
+        <t t-set="data_report_header_spacing" t-value="20"/>
+        <t t-set="data_report_dpi" t-value="110"/>
+        <t t-foreach="docs" t-as="o">
+            <t t-call="web.internal_layout">
+                <div class="page">
+                
+                	<style>						
+						table th { background-color:#d4e3e5;padding: 10px;}
+						tr:nth-child(even) {background-color: #FFEBCD;}
+						tr:nth-child(odd) {background-color: #cdcdcd;}
+					</style>
+					
+                    <h2>Employee Statement</h2>
+
+                    <div class="row" style="font-size:12px;">
+                        <div class="col-xs-6">
+                        	<strong>Employee: </strong>
+                            <span t-esc="o.code"/> - <span t-esc="o.name"/>                            
+                        </div>
+                        <div class="col-xs-3">
+		                    <t t-if="data['date_from']"><strong>Date From :</strong> <span t-esc="data['date_from']"/><br/></t>
+		                    <t t-if="data['date_to']"><strong>Date To :</strong> <span t-esc="data['date_to']"/></t>
+		                </div>
+                    </div>
+					<t t-set="th_style" t-value="'border-bottom: 1px solid #ddd !important; white-space:nowrap;'"/>
+      				<table class="table  table-condensed" t-attf-style="color:#111111;" >
+             			<thead t-attf-style="background-color:#111111; page-break-inside: avoid; color:#000000;">
+				            <tr t-attf-style="page-break-inside: avoid !important; border-bottom: 1px solid #111111 !important;">
+				                <th t-attf-style="{{th_style}}"><i class="fa fa-list-ol"></i></th>
+				                <th t-attf-style="{{th_style}}"><i class="fa fa-calendar"> Date</i></th> 
+				                <th t-attf-style="{{th_style}}"><i class="fa fa-bars"> JRNL</i></th>
+				                <th t-attf-style="{{th_style}}"><i class="fa fa-database"> Acc #</i></th> 
+				                <th t-attf-style="{{th_style}}"><i class="fa fa-database"> Acc Name</i></th> 
+				                <th t-attf-style="{{th_style}}"><i class="fa fa-th-large"> Ref</i></th> 
+				                                               
+				                <th class="text-right" t-attf-style="{{th_style}}"><i class="fa fa-credit-card"> Debit</i></th>
+				                <th class="text-right" t-attf-style="{{th_style}}"><i class="fa fa-credit-card"> Credit</i></th>                                                
+				                <th class="text-right" t-attf-style="{{th_style}}"><i class="fa fa-balance-scale"> Balance</i></th>
+				            </tr>
+				     	</thead>             
+                   
+                        <tbody> 
+                        	
+                        	<t t-foreach="lines(o)" t-as="line">                            
+		                        <tr t-attf-style="background-color:#F2F2F2 if line_parity in 'odd' else #FFFFFF; page-break-inside: avoid !important;">
+		                            
+		                            <td style="font-size:12px;"><span t-esc="line_index + 1"/></td>
+		                            <td style="font-size:12px;width:10%;"><span t-esc="get_date_formate(line['date'])"/></td>
+		                            <td style="font-size:12px;"><span t-esc="line['code']"/></td>
+		                            <td style="font-size:12px;"><span t-esc="line['a_code']"/></td>
+		                            <td style="font-size:12px;"><span t-esc="line['a_name']"/></td>
+		                            <td style="font-size:12px;"><span t-esc="line['displayed_name']"/></td>
+									<td style="text-align:right">
+										<span t-esc="line['debit'] and ('{0:,.2f}'.format(line['debit']) if int(line['debit']) > 0 else '({0:,.2f})'.format(abs(line['debit']))) or '-'" />	
+		                            </td>
+		                            <td style="text-align:right;font-size:12px;">
+										<span t-esc="line['credit'] and ('{0:,.2f}'.format(line['credit']) if int(line['credit']) > 0 else '({0:,.2f})'.format(abs(line['credit']))) or '-'" />
+		                            </td>
+		                            <td style="text-align:right;font-size:12px;">
+										<span t-esc="line['progress'] and ('{0:,.2f}'.format(line['progress']) if int(line['progress']) > 0 else '({0:,.2f})'.format(abs(line['progress']))) or '-'" />
+		                            </td> 
+		                        </tr>
+		                     </t> 
+		                     
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </t>
+</template>
+</odoo>

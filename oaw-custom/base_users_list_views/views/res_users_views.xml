@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_users_form" model="ir.ui.view">
+        <field name="name">res.users.form</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button
+                    string="Assign Supplier Access"
+                    type="object"
+                    name="action_assign_supplier"
+                />
+            </xpath>
+        </field>
+    </record>
+    <record id="view_timecheck_users_tree" model="ir.ui.view">
+        <field name="name">view.timecheck.users.tree</field>
+        <field name="model">res.users</field>
+        <field name="arch" type="xml">
+            <tree string="Timecheck Users" editable="top">
+                <field name="commercial_partner_id" string="Company" />
+                <field
+                    name="partner_id"
+                    options="{'no_create_edit': True,'no_open':True}"
+                />
+                <field name="timecheck_group" />
+                <field name="is_timecheck_light" />
+                <field name="is_timecheck_light_date" />
+                <button
+                    name="action_view_user_open"
+                    type="object"
+                    icon="fa-sign-in"
+                    string="Open its User Form"
+                />
+                <field name="login" />
+                <field name="new_password" />
+                <field name="show_password" readonly="True" />
+                <field name="login_date" />
+            </tree>
+        </field>
+    </record>
+    <record id="view_supplier_users_tree" model="ir.ui.view">
+        <field name="name">view.supplier.user.tree</field>
+        <field name="model">res.users</field>
+        <field name="arch" type="xml">
+            <tree string="Supplier Users" editable="top">
+                <field name="commercial_partner_id" string="Company" />
+                <field
+                    name="partner_id"
+                    options="{'no_create_edit': True,'no_open':True}"
+                />
+                <button
+                    name="action_view_user_open"
+                    type="object"
+                    icon="fa-sign-in"
+                    string="Open its User Form"
+                />
+                <field name="login" />
+                <field name="new_password" />
+                <field name="show_password" readonly="True" />
+                <field name="login_date" />
+            </tree>
+        </field>
+    </record>
+    <record id="external_user_search" model="ir.ui.view">
+        <field name="name">external.user.search</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_search" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="before">
+                <field name="commercial_partner_id" string="Company" />
+            </xpath>
+        </field>
+    </record>
+    <record id="action_view_timecheck_users" model="ir.actions.act_window">
+        <field name="name">TimeCheck Users</field>
+        <field name="res_model">res.users</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_timecheck_users_tree" />
+        <field
+            name="domain"
+        >[('has_supplier_access', '=', False), '|', ('is_supplier', '=', True), ('is_customer', '=', True)]</field>
+        <field name="limit">80</field>
+    </record>
+    <record id="action_view_supplier_users" model="ir.actions.act_window">
+        <field name="name">Supplier Users</field>
+        <field name="res_model">res.users</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_supplier_users_tree" />
+        <field name="domain">[('has_supplier_access', '=', True)]</field>
+        <field name="limit">80</field>
+    </record>
+    <menuitem
+        id="users_external"
+        parent="base.menu_users"
+        action="action_view_timecheck_users"
+        sequence="10"
+    />
+    <menuitem
+        id="supplier_user"
+        parent="base.menu_users"
+        action="action_view_supplier_users"
+        sequence="11"
+    />
+</odoo>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+<data>
+	<record id="view_attendance_log_tree" model="ir.ui.view">
+		<field name="name">attendance.log.tree</field>
+		<field name="model">sos.attendance.log</field>
+		<field name="priority" eval="8" />
+		<field name="arch" type="xml">
+			<tree string="Attendance Logs">
+				<field name="name" readonly="1"/>
+				<field name="project_id" readonly="1"/>
+				<field name="center_id" readonly="1"/>
+				<field name="post_id" readonly="1"/>
+				<field name="employee_id" readonly="1"/>
+				<field name="action" readonly="1"/>
+				<field name="date" readonly="1" />
+				<field name="user_id" readonly="1"/>
+				<field name="state" readonly="1"/>				
+			</tree>
+		</field>
+		
+	</record>
+	
+	<record id="view_attendance_log_form" model="ir.ui.view">
+		<field name="name">attendance.log.form</field>
+		<field name="model">sos.attendance.log</field>
+		<field name="priority" eval="8" />
+		<field name="arch" type="xml">
+			<form string="Attendances Log">
+			 <sheet string="Attendances Log">
+			 	<group>
+			 		<group>
+			 			<field name="name" readonly="1" />
+						<field name="employee_id" readonly="1"/>
+						<field name="post_id" readonly="1"/>
+						<field name="project_id" readonly="1" />
+			 		</group>
+			 		<group>
+			 			<field name="center_id" readonly="1"/>
+						<field name="action" readonly="1"/>
+						<field name="state"  readonly="1"/>
+						<field name="date" readonly="1" />
+						<field name="user_id" readonly="1"/>
+			 		</group>
+			 	</group>
+			 </sheet>
+			 
+			 <div class="oe_chatter">
+				<field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+				<field name="message_ids" widget="mail_thread" placeholder="Share a note..."/>
+			</div>
+		</form> 
+		</field>
+			
+	</record>
+	
+	<record model="ir.ui.view" id="view_sos_attendance_log_filter">
+		<field name="name">view_attendance_log_filter</field>
+		<field name="model">sos.attendance.log</field>
+		<field name="arch" type="xml">
+			<search string="Attendance Log Search">
+				<field name="name" string="Attendance"/>
+				<field name="action"/>
+				<filter icon="terp-go-today" string="Today" name="today" domain="[('name','&gt;=',current_date),('name','&lt;=',current_date)]" />
+				<filter icon="terp-go-today" string="Draft" name="draft" domain="[('state','=','draft')]" />
+				<filter icon="terp-go-today" string="Counted" name="counted" domain="[('state','=','counted')]" />
+				<filter icon="terp-go-today" string="Done" name="done" domain="[('state','=','done')]" />
+				<separator/>
+				<filter icon="terp-go-today" string="Present" name="present" domain="[('action','=','present')]" />
+				<filter icon="terp-go-today" string="Absent" name="absent" domain="[('action','=','absent')]" />
+				<filter icon="terp-go-today" string="Double" name="double" domain="[('action','=','double')]" />
+				<filter icon="terp-go-today" string="Leave" name="leave" domain="[('action','=','leave')]" />
+				<filter icon="terp-go-today" string="Extra" name="extra" domain="[('action','=','extra')]" />
+				<filter icon="terp-go-today" string="Extra_Double" name="extra_double" domain="[('action','=','extra_double')]" />
+				<field name="employee_id"/>
+				<field name="project_id"/>
+				<field name="post_id"/>
+				<field name="center_id"/>
+				<group expand="0" string="Group By...">
+					<filter name="center" string="Center" icon="terp-personal" domain="[]" context="{'group_by':'center_id'}"/>
+					<filter name="project" string="Project" icon="terp-personal" domain="[]" context="{'group_by':'project_id'}"/>
+					<filter name="post" string="Post" icon="terp-personal" domain="[]" context="{'group_by':'post_id'}"/>
+					<filter name="employee" string="Employee" icon="terp-personal" domain="[]" context="{'group_by':'employee_id'}"/>
+					<separator/>
+					<filter name="month" string="Month" icon="terp-go-today" domain="[]" context="{'group_by':'name:month'}"/>
+					<filter name="week" string="Week" icon="terp-go-today" domain="[]" context="{'group_by':'name:week'}"/>
+					<filter name="day" string="Day" icon="terp-go-today" domain="[]" context="{'group_by':'name:day'}"/>
+					<separator/>
+					<filter name="status" string="Status" icon="terp-personal" domain="[]" context="{'group_by':'state'}"/>
+					<filter name="attendance" string="Attendance" icon="terp-personal" domain="[]" context="{'group_by':'action'}"/>
+				</group>
+			</search>
+		</field>
+	</record>
+
+	<record model="ir.actions.act_window" id="act_attendance_log_view">
+		<field name="name">Attendance Deletion Logs</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">sos.attendance.log</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form</field>
+		<field name="context">{}</field>
+	</record>
+	
+	
+</data>
+</odoo>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+
+<template id ="report_guards_appointmentletter">
+	<t t-call="web.html_container">
+		<t t-foreach="docs" t-as="doc">
+			<t t-call="web.external_layout" style="font-family:georgia,garamond,serif;font-size:10px">
+				<div class="page">
+					<table class="table table-condensed" width="100%" style="padding-top: 1px;">
+						<tr>
+							<td rowspan="4" width="40%">
+								 <img width="40%" style="max-height:125px;" class="img img-responsive" src="/sos/static/img/logo.png"/>
+							</td>
+							<td  style="text-align:right; font-style: Times New Roman; font-size:18px; font-weight:bold; color:red; text-decoration: underline; padding-right:10px;"> 
+								SECURITY ORGANIZING SYSTEM PAKISTAN (Pvt.) Ltd.
+							</td>
+						</tr>
+						
+						<tr>
+							<td  style="text-align:right; font-style: Times New Roman; font-size:16px; font-weight:bold; padding-right:10px;">
+								SOS House, 1131-C, Mumtazabad, Multan.
+							</td>
+						</tr>
+						
+						<tr>
+							<td style="text-align:right; font-style: Times New Roman; font-size:16px; font-weight:bold; padding-right:10px;">
+								Tel : +92-61-6529918-6526935
+							</td>
+						</tr>
+						
+						<tr>
+							<td style="text-align:right; font-style: Times New Roman; font-size:16px; font-weight:bold; padding-right:10px;"> 
+								Fax: +92-61-4230055
+							</td>
+						</tr>
+						<tr>
+							<td style="text-align:left; font-style: Times New Roman; font-size:16px; color:red; padding-left:10px;">ISO9001:2000</td>
+							<td style="text-align:right; font-style: Times New Roman; font-size:16px; font-weight:bold; text-decoration: underline; padding-right:10px;">
+								E.mail : sospakistan@hotmail.com
+							</td>
+						</tr>
+						
+					</table>
+					
+					<div class="col-xs-12" style="padding-left:20px; text-align:left; font-style: Times New Roman; font-size:16px; font-weight:bold; margin-top:50px">
+						TO, 
+					</div>
+					<div class="col-xs-12" style="padding-left:20px; margin-top:20px; margin-left:20px;">
+						-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+					</div>
+					<div class="col-xs-12" style="padding-left:20px; margin-top:20px; margin-left:20px;">
+						-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+					</div>
+					<div class="col-xs-12" style="padding-left:20px; margin-top:20px; margin-left:20px;">
+						-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+					</div>
+					
+					
+					<div class="col-xs-12" style="text-align:center; font-style: Times New Roman; font-size:20px; text-decoration: underline; margin-top:20px; font-weight:bold;">
+						APPOINTMENT LETTER
+					</div>
+					
+					<div class="col-xs-12" style="padding-left:20px; text-align:left; font-style: Times New Roman; font-size:14px; font-weight:bold;">
+						Mr. <span style="text-decoration: underline;" t-esc="doc.name" />  
+						S/O <span style="text-decoration: underline;" t-esc="doc.fathername" />
+					</div>
+					
+					<div class="col-xs-12" style="padding-left:20px; text-align:left; font-style: Times New Roman; font-size:14px; font-weight:bold; margin-top:15px;">
+						CNIC: <span style="text-decoration: underline; padding-left:40px;" t-esc="doc.cnic" />
+					</div>
+					<div class="col-xs-12" style="padding-left:20px; text-align:left; font-style: Times New Roman; font-size:14px; font-weight:bold; margin-top:15px;">
+						Address: <span style="text-decoration: underline; padding-left:20px;" t-esc="doc.street" /> , <span style="text-decoration: underline; padding-left:2px;" t-esc="doc.street2" />
+					</div>
+					
+					
+					
+					<div class="col-xs-12" style="padding-left:20px; text-align:left; font-style: Times New Roman; font-size:16px; margin-top:100px;">
+						Is appointed as Security Supervisor/Guard at _________________________________________
+					</div>
+					
+					<div class="col-xs-12" style="padding-left:20px; text-align:left; font-style: Times New Roman; font-size:16px; margin-top:15px;">
+						In place of ______________________________ w.e.f. <span style="text-decoration: underline;" t-field="doc.appointmentdate" t-field-options='{"format": "d-MM-Y"}' />
+					</div>
+					
+					<div class="col-xs-12" style="padding-left:20px; text-align:left; font-style: Times New Roman; font-size:16px; margin-top:30px;">
+						Temporary / permanent basis.
+					</div>
+					
+					<div class="col-xs-12" style="padding-left:20px; text-align:left; font-style: Times New Roman; font-size:16px; margin-top:50px;">
+						 ______________________________
+					</div>
+					<div class="col-xs-12" style="padding-left:20px; text-align:left; font-style: Times New Roman; font-size:16px; font-weight:bold; margin-top:20px;">
+						Area Supervisor
+					</div>
+					
+					<div class="col-xs-12" style="padding-left:20px; text-align:left; font-style: Times New Roman; font-size:16px; font-weight:bold; margin-top:50px;">
+						Date: ______________________________
+					</div>
+					
+					<div class="col-xs-12" style="padding-left:20px; text-align:left; font-style: Times New Roman; font-size:16px; font-weight:bold; margin-top:30px;">
+						Ref: _______________________________
+					</div>
+					
+				</div>
+			</t>
+		</t>
+	</t>
+</template>
+	
+</data>
+</odoo>

@@ -1,0 +1,189 @@
+<?xml version="1.0"?>
+<odoo>
+<data>
+<!--SARFRAZ-->
+<!--
+	<record id="view_hr_holidays_form" model="ir.ui.view">
+		<field name="name">hr.holidays.inherited.form</field>
+		<field name="model">hr.holidays</field>
+		<field name="type">form</field>
+		<field name="inherit_id" ref="hr_holidays.edit_holiday_new" />
+		<field name="arch" type="xml">
+			<button name="action_validate" position="replace">
+				<button string="Validate" name="action_validate" states="confirm"
+					type="object" groups="hr_holidays.group_hr_holidays_manager"
+					class="oe_highlight" />
+			</button>
+			
+			<button name="action_approve" position="replace">
+				<field name="current_user_is_approver" invisible="True" />
+				<button string="Approve" name="action_approve" type="object"
+					attrs="{'invisible': ['|', ('current_user_is_approver', '!=', True), ('state', '!=', 'confirm')]}"
+					class="oe_highlight" />
+			</button> 
+			
+			<field name="payslip_status" position="after">
+				<field name="pending_approver" />
+			</field> 
+			
+			<xpath expr="//sheet/group[1]" position="after">
+				<notebook>
+					<page string="Approbations">
+						<field name="approbations">
+							<tree>
+								<field name="approver" />
+								<field name="date" />
+							</tree>
+						</field>
+					</page>
+				</notebook>
+			</xpath> 
+		</field>
+	</record>
+	-->
+	<menuitem id="hr_holidays.menu_hr_holidays_approvals" name="Leaves to Approve"
+			parent="hr_holidays.menu_hr_holidays_root" sequence="3" groups="base.group_user" />
+			
+	<!-- SARFRAZ -->
+	<!--
+	<record id="view_hr_holidays_filter" model="ir.ui.view">
+		<field name="name">hr.holidays.inherited.filter</field>
+		<field name="model">hr.holidays</field>
+		<field name="type">form</field>
+		<field name="inherit_id" ref="hr_holidays.view_hr_holidays_filter" />
+		<field name="arch" type="xml">
+			<xpath expr="//filter[@name='approve']" position="before">
+				<filter domain="['|',('pending_approver_user','=', uid), ('pending_transfered_approver_user','=', uid)]" string="Approvable" name="approvable"/>
+				 <separator/>
+			</xpath>
+			<xpath expr="//filter[@name='allocations']" position="after">
+				<filter domain="[('state','=', 'validate'),('holiday_status_id.id','in', ['4','9'])]" string="Relation Officer" name="relation_officer"/>
+				 <separator/>
+			</xpath>	
+		</field>
+	</record>
+    		
+
+		<record id="open_holidays_approve" model="ir.actions.act_window">
+			<field name="name">Holidays Requests to Validate</field>
+			<field name="res_model">hr.holidays</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form,calendar</field>
+			<field name="context">{'default_type':'remove'}</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+					Click here to create a new leave request.
+				</p>
+			</field>
+			<field name="domain">['|', ('pending_approver_user','=', uid), ('pending_transfered_approver_user','=', uid), ('type','=','remove')]</field>
+			<field name="search_view_id" ref="hr_holidays.view_hr_holidays_filter" />
+		</record>
+
+		<menuitem id="hr_holidays.menu_open_department_leave_approve"
+			name="Leaves" parent="hr_holidays.menu_hr_holidays_approvals" groups="base.group_user"
+			action="open_holidays_approve" sequence="1" />
+
+		<record id="open_holidays_allocation_approve" model="ir.actions.act_window">
+			<field name="name">Holidays Allocations to Validate</field>
+			<field name="res_model">hr.holidays</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form,calendar</field>
+			<field name="context">{'default_type':'add'}</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+					Click here to create a new holidays allocation request.
+				</p>
+			</field>
+			<field name="domain">[('type','=','add'), ('pending_approver_user', '=', uid)]</field>
+			<field name="search_view_id" ref="hr_holidays.view_hr_holidays_filter" />
+		</record>
+
+		<menuitem id="hr_holidays.menu_open_department_leave_allocation_approve"
+			groups="base.group_user" name="Leaves Allocation"
+			parent="hr_holidays.menu_hr_holidays_approvals" action="open_holidays_allocation_approve"
+			sequence="2" />
+			
+		
+	 <record model="ir.ui.view" id="view_hr_holidays_remaining_leaves_user_pivot">
+        <field name="name">hr.holidays.remaining.leaves.user.pivot</field>
+        <field name="model">hr.holidays.remaining.leaves.user</field>
+        <field name="priority">20</field>
+        <field name="arch" type="xml">
+            <pivot string="Remaining Leaves Summary">
+                <field name="name" type="row"/>
+                <field name="leave_type" type="col"/>
+                <field name="no_of_leaves" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+
+    <record model="ir.actions.act_window" id="action_hr_available_holidays_report">
+        <field name="name">Remaining Leaves</field>
+        <field name="res_model">hr.holidays.remaining.leaves.user</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,graph,pivot</field>
+        <field name="view_id"></field>  
+        
+    </record>
+
+	<record model="ir.actions.act_window.view" id="action_window_available_leave_tree">
+        <field name="sequence" eval="2"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="hr_holidays.view_hr_holidays_remaining_leaves_user_tree"/>
+        <field name="act_window_id" ref="action_hr_available_holidays_report"/>
+    </record>
+    <record model="ir.actions.act_window.view" id="action_window_available_leave_pivot">
+        <field name="sequence" eval="2"/>
+        <field name="view_mode">pivot</field>
+        <field name="view_id" ref="view_hr_holidays_remaining_leaves_user_pivot"/>
+        <field name="act_window_id" ref="action_hr_available_holidays_report"/>
+    </record>
+	<record model="ir.actions.act_window.view" id="action_window_available_leave_graph">
+        <field name="sequence" eval="2"/>
+        <field name="view_mode">graph</field>
+        <field name="view_id" ref="hr_holidays.view_hr_holidays_remaining_leaves_user_graph"/>
+        <field name="act_window_id" ref="action_hr_available_holidays_report"/>
+    </record>
+    
+    <menuitem
+        name="Remaining Leaves" 
+        id="hr_holidays.menu_hr_available_holidays_report_tree" 
+        action="action_hr_available_holidays_report" 
+        parent="hr_holidays.menu_hr_holidays_report" sequence="5" />
+
+
+	 <record model="ir.actions.act_window" id="action_hr_holidays_report">
+        <field name="name">Leaves Analysis</field>
+        <field name="res_model">hr.holidays</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">graph,pivot,calendar,form</field>
+        <field name="view_id"></field> 
+        <field name="context">{'search_default_leaves':1}</field>
+        <field name="search_view_id" ref="hr_holidays.view_hr_holidays_filter"/>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="action_window_leave_pivot">
+        <field name="sequence" eval="2"/>
+        <field name="view_mode">pivot</field>
+        <field name="view_id" ref="hr_holidays.view_holiday_pivot"/>
+        <field name="act_window_id" ref="action_hr_holidays_report"/>
+    </record>
+    <record model="ir.actions.act_window.view" id="action_window_leave_graph">
+        <field name="sequence" eval="2"/>
+        <field name="view_mode">graph</field>
+        <field name="view_id" ref="hr_holidays.view_holiday_graph"/>
+        <field name="act_window_id" ref="action_hr_holidays_report"/>
+    </record>
+
+    <menuitem
+        name="Leaves Analysis" 
+        id="menu_hr_holidays_report_tree" 
+        action="action_hr_holidays_report" 
+        parent="hr_holidays.menu_hr_holidays_report" sequence="5" />
+        
+        -->
+
+</data>
+</odoo>
+

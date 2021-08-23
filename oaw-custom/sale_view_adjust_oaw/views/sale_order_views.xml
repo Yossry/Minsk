@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_order_form" model="ir.ui.view">
+        <field name="name">view.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_done']" position="attributes">
+                <attribute name="string">Mark as Done</attribute>
+            </xpath>
+            <xpath expr="//field[@name='state']" position="attributes">
+                <attribute name="statusbar_visible">draft,sent,sale,done</attribute>
+            </xpath>
+            <xpath expr="//field[@name='order_line']//tree//control" position="replace">
+                <control>
+                    <create string="Add a product" />
+                </control>
+            </xpath>
+            <xpath expr="//field[@name='partner_id']" position="replace">
+                <field
+                    name="partner_id"
+                    widget="res_partner_many2one"
+                    domain="[('customer','=',True)]"
+                    context="{'search_default_customer':1, 'show_address': 1, 'show_vat': True}"
+                    options='{"always_reload":True, "no_create_edit":True,"no_quick_create":True}'
+                />
+            </xpath>
+            <xpath
+                expr="//field[@name='order_line']//tree//field[@name='product_id']"
+                position="replace"
+            >
+                <field
+                    name="product_id"
+                    context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom, 'company_id': parent.company_id}"
+                    attrs="{'readonly': [('product_updatable', '=', False)],'required': [('display_type', '=', False)],                                                }"
+                    options='{"no_create_edit":True,"no_quick_create":True}'
+                    force_save="1"
+                />
+            </xpath>
+            <xpath
+                expr="//field[@name='order_line']//tree//field[@name='product_id']"
+                position="before"
+            >
+                <field name="line_sequence" />
+                <field
+                    name="image_medium"
+                    widget="image"
+                    options='{"size": [64, 64]}'
+                />
+            </xpath>
+            <xpath
+                expr="//field[@name='order_line']//tree//field[@name='name']"
+                position="replace"
+            />
+            <xpath
+                expr="//field[@name='order_line']//tree//field[@name='price_subtotal']"
+                position="after"
+            >
+                <field name="note_client_name" />
+                <field name="note_client_price" />
+                <field name="name" widget="section_and_note_text" />
+            </xpath>
+            <xpath expr="//field[@name='is_mto']" position="after">
+                <field name="sub_consigned" />
+                <field name="prepare" />
+                <field name="open_issue" />
+            </xpath>
+            <xpath expr="//field[@name='payment_term_id']" position="after">
+                <field name="client_order_ref" string="Remark" />
+                <field name="invoice_status" />
+                <field name="origin" />
+            </xpath>
+            <xpath expr="//field[@name='payment_term_id']" position="attributes">
+                <attribute name='invisible'>1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='note']" position="attributes">
+                <attribute name="placeholder">Internal Notes</attribute>
+            </xpath>
+            <xpath expr="//page[@name='other_information']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+            <xpath expr="//field[@name='origin']" position="after">
+                <field name="team_id" />
+                <field name="require_payment" />
+            </xpath>
+        </field>
+    </record>
+    <record id="sale_management.sale_order_form_quote" model="ir.ui.view">
+        <field name="active">False</field>
+    </record>
+    <record id="view_quotation_tree_with_onboarding_e1" model="ir.ui.view">
+        <field name="name">view.quotation.tree.with.onboarding.e1</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree_with_onboarding" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="is_mto" />
+                <field name="sub_consigned" />
+                <field name="prepare" />
+                <field name="client_order_ref" string="Remark" />
+            </xpath>
+            <xpath expr="//field[@name='expected_date']" position="after">
+                <field name="website_id" invisible="1" />
+                <field name="pricelist_id" />
+                <field name="invoice_status" states="sale,done" invisible="1" />
+                <field groups="base.group_no_one" name="origin" />
+            </xpath>
+            <xpath expr="//tree" position="attributes">
+                <attribute name="decoration-info">website_id!=False</attribute>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_order_tree" model="ir.ui.view">
+        <field name="name">sale.order.tree</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="attributes">
+                <attribute name="editable">top</attribute>
+            </xpath>
+            <xpath expr="//field[@name='name']" position="after">
+                <button
+                    name="action_open_order"
+                    type="object"
+                    icon="fa-dedent"
+                    string="Open its Sales Order"
+                />
+            </xpath>
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="open_issue" />
+                <field name="client_order_ref" string="Remark" />
+            </xpath>
+            <xpath expr="//field[@name='expected_date']" position="after">
+                <field name="pricelist_id" />
+            </xpath>
+            <xpath expr="//field[@name='amount_total']" position="after">
+                <field name="checked" />
+            </xpath>
+        </field>
+    </record>
+    <record id="sale_order_view_search_inherit_quotation" model="ir.ui.view">
+        <field name="name">sale.order.search.inherit.quotation</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.sale_order_view_search_inherit_quotation" />
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='sales']" position="after">
+                <filter
+                    string="Not Cancelled"
+                    name="not_cancelled"
+                    domain="[('state','!=','cancel')]"
+                    help="Sales orders that haven't been cancelled"
+                />
+                <filter
+                    name="sub_consigned"
+                    string="Sub Consigned"
+                    domain="[('sub_consigned','=',True)]"
+                />
+            </xpath>
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="pricelist_id" />
+            </xpath>
+        </field>
+    </record>
+    <record id="sale.action_quotations_with_onboarding" model="ir.actions.act_window">
+        <field name="context">{'search_default_not_cancelled': 1}</field>
+    </record>
+    <record id="sale.action_quotations" model="ir.actions.act_window">
+        <field name="context">{'search_default_not_cancelled': 1}</field>
+    </record>
+</odoo>

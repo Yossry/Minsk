@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<record id="res_company_afex_view_form" model="ir.ui.view">
+    <field name="name">res.company.afex.view.form</field>
+    <field name="model">res.company</field>
+    <field name="inherit_id" ref="base.view_company_form"/>
+    <field name="arch" type="xml">
+        <field name="currency_id" position="after">
+            <field name="afex_api_key" groups="account.group_account_manager" password="True"/>
+            <field name="afex_allow_earliest_value_date" groups="account.group_account_manager"/>
+            <field name="afex_value_date_type" attrs="{'readonly': [('afex_allow_earliest_value_date', '=', False)]}"
+                   force_save="1" groups="account.group_account_manager"/>
+        </field>
+    </field>
+</record>
+
+</odoo>

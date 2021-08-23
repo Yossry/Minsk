@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Import chart of account wizard form -->
+    <record id="view_import_chart_account" model="ir.ui.view">
+        <field name="name">import.chart.account.form</field>
+        <field name="model">import.chart.account</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Import chart of account">
+                <group colspan="4" col="4">
+                    <field name="name" />
+                    <field name="delimeter"/>
+                    <field name="company_id"/>
+                </group>
+                <group>
+                    <field name="data" filename="name"/>
+                </group>
+                <separator colspan="4"/>
+                <footer>
+                    <button name="action_import" string="Import" type="object" class="oe_highlight"/>
+                    <button special="cancel" string="Cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_import_chart_account" model="ir.actions.act_window">
+        <field name="name">Import chart account</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">import.chart.account</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_import_chart_account"/>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_definition_import_chart_account" sequence="99"
+        parent="account.menu_finance_configuration" action="action_import_chart_account"/>
+
+</odoo>

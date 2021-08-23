@@ -1,0 +1,87 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* partner_web_domain
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-18 14:37+0000\n"
+"PO-Revision-Date: 2020-02-18 14:37+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: partner_web_domain
+#: model:ir.model,name:partner_web_domain.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: partner_web_domain
+#: model:ir.model.fields,field_description:partner_web_domain.field_partner_web_domain__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: partner_web_domain
+#: model:ir.model.fields,field_description:partner_web_domain.field_partner_web_domain__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: partner_web_domain
+#: model:ir.model.fields,field_description:partner_web_domain.field_partner_web_domain__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: partner_web_domain
+#: model:ir.model.fields,field_description:partner_web_domain.field_partner_web_domain__id
+msgid "ID"
+msgstr ""
+
+#. module: partner_web_domain
+#: model:ir.model.fields,field_description:partner_web_domain.field_partner_web_domain____last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: partner_web_domain
+#: model:ir.model.fields,field_description:partner_web_domain.field_partner_web_domain__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: partner_web_domain
+#: model:ir.model.fields,field_description:partner_web_domain.field_partner_web_domain__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: partner_web_domain
+#: model:ir.model.fields,field_description:partner_web_domain.field_partner_web_domain__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: partner_web_domain
+#: model:ir.model.fields,field_description:partner_web_domain.field_partner_web_domain__partner_id
+msgid "Partner"
+msgstr "Empresa"
+
+#. module: partner_web_domain
+#: model:ir.model.fields,field_description:partner_web_domain.field_partner_web_domain__sequence
+msgid "Sequence"
+msgstr "Secuencia"
+
+#. module: partner_web_domain
+#: model:ir.model,name:partner_web_domain.model_partner_web_domain
+msgid "Web domain line"
+msgstr "Línea dominio web"
+
+#. module: partner_web_domain
+#: model:ir.model.fields,field_description:partner_web_domain.field_res_partner__partner_web_domain_ids
+#: model:ir.model.fields,field_description:partner_web_domain.field_res_users__partner_web_domain_ids
+msgid "Web domain lines"
+msgstr "Líneas de dominios web"
+
+#. module: partner_web_domain
+#: model_terms:ir.ui.view,arch_db:partner_web_domain.view_partner_form
+msgid "Web domains"
+msgstr "Dominios web"

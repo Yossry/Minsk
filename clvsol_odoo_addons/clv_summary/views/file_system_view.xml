@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="clv_summary_view_form_file_system" model="ir.ui.view">
+        <field name="name">clv.summary.form</field>
+        <field name="model">clv.summary</field>
+        <field name="inherit_id" ref="clv_summary.clv_summary_view_form"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <group name="group_title_right" position="inside">
+                <field name="file_name" invisible="1"/>
+                <field name="file_content" filename="file_name"/>
+                <field name="stored_file_name" invisible="1"/>
+                <field name="directory_id" options="{'no_open': False, 'no_create': True}" invisible="1"/>
+            </group>
+        </field>
+    </record>
+
+    <record id="clv_summary_view_tree_file_system" model="ir.ui.view">
+        <field name="name">clv.summary.tree</field>
+        <field name="model">clv.summary</field>
+        <field name="inherit_id" ref="clv_summary.clv_summary_view_tree"/>
+        <field name="priority" eval="20"/>
+        <field name="arch" type="xml">
+            <field name="date_summary" position="after">
+                <field name="file_name" invisible="1"/>
+                <field name="file_content" filename="file_name" widget="binary"/>
+                <field name="stored_file_name" invisible="1"/>
+                <field name="directory_id" invisible="1"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

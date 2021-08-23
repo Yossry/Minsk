@@ -1,0 +1,196 @@
+46;"Qatar Municipality Corporation"
+Services:
+6;"Toll Tax"
+7;"Driving Licence Fee"
+******************************************************
+{"params": {
+	"token":"3b7ef1da437f4106876aeb2d763ba173",
+ "create_vals":
+"{'reference':'TEST0001','date':'{% now 'iso-8601', '' %}', 'state':'done','status_msg':'Approved Transaction','source': 'Self Attendant Kiosk','merchant':'GO City Explore LLC','kiosk_id':2,'stn_no':'STAN0011001','rrn_no':'RRN0011001','amount':'71','service_id':6,'service_provider_id':46,'channel_id':8,'customer_name':'Abhishek Test01', 'customer_email':'test_abhishek.kumar@qpr.qa','customer_zip':'20171','customer_city': 'Doha','customer_phone':'+97466203915'}"
+}
+}
+
+{"params": {
+	"token":"3b7ef1da437f4106876aeb2d763ba173",
+ "create_vals":
+"{'reference':'TEST0002','date':'{% now 'iso-8601', '' %}', 'state':'done','status_msg':'Approved Transaction','source': 'Self Attendant Kiosk','merchant':'GO City Explore LLC','kiosk_id':1,'stn_no':'STAN0011002','rrn_no':'RRN0011002','amount':'91','service_id':6,'service_provider_id':46,'channel_id':9,'customer_name':'Abhishek Test01', 'customer_email':'test_abhishek.kumar@qpr.qa','customer_zip':'20171','customer_city': 'Doha','customer_phone':'+97466203915'}"
+}
+}
+
+{"params": {
+	"token":"3b7ef1da437f4106876aeb2d763ba173",
+ "create_vals":
+"{'reference':'TEST0003','date':'{% now 'iso-8601', '' %}', 'state':'done','status_msg':'Approved Transaction','source': 'Self Attendant Kiosk','merchant':'GO City Explore LLC','kiosk_id':2,'stn_no':'STAN0011003','rrn_no':'RRN0011003','amount':'25','service_id':6,'service_provider_id':46,'channel_id':8,'customer_name':'Abhishek Test01', 'customer_email':'test_abhishek.kumar@qpr.qa','customer_zip':'20171','customer_city': 'Doha','customer_phone':'+97466203915'}"
+}
+}
+
+{"params": {
+	"token":"3b7ef1da437f4106876aeb2d763ba173",
+ "create_vals":
+"{'reference':'TEST0004','date':'{% now 'iso-8601', '' %}', 'state':'done','status_msg':'Approved Transaction','source': 'Self Attendant Kiosk','merchant':'GO City Explore LLC','kiosk_id':2,'stn_no':'STAN0011004','rrn_no':'RRN0011004','amount':'220','service_id':6,'service_provider_id':46,'channel_id':8,'customer_name':'Abhishek Test01', 'customer_email':'test_abhishek.kumar@qpr.qa','customer_zip':'20171','customer_city': 'Doha','customer_phone':'+97466203915'}"
+}
+}
+
+{"params": {
+	"token":"3b7ef1da437f4106876aeb2d763ba173",
+ "create_vals":
+"{'reference':'TEST0005','date':'{% now 'iso-8601', '' %}', 'state':'done','status_msg':'Approved Transaction','source': 'Self Attendant Kiosk','merchant':'GO City Explore LLC','kiosk_id':2,'stn_no':'STAN0011005','rrn_no':'RRN0011005','amount':'205','service_id':7,'service_provider_id':46,'channel_id':9,'customer_name':'Abhishek Test01', 'customer_email':'test_abhishek.kumar@qpr.qa','customer_zip':'20171','customer_city': 'Doha','customer_phone':'+97466203915'}"
+}
+}
+
+{"params": {
+	"token":"3b7ef1da437f4106876aeb2d763ba173",
+ "create_vals":
+"{'reference':'TEST0006','date':'{% now 'iso-8601', '' %}', 'state':'done','status_msg':'Approved Transaction','source': 'Self Attendant Kiosk','merchant':'GO City Explore LLC','kiosk_id':1,'stn_no':'STAN0011006','rrn_no':'RRN0011006','amount':'85','service_id':7,'service_provider_id':46,'channel_id':8,'customer_name':'Abhishek Test01', 'customer_email':'test_abhishek.kumar@qpr.qa','customer_zip':'20171','customer_city': 'Doha','customer_phone':'+97466203915'}"
+}
+}
+********************************************************
+
+
+
+---- Provder & Service ID---------
+43;"Kahramaa"
+Services:
+2;"Electricity Bill"
+
+
+******************************************************
+{"params": {
+	"token":"3b7ef1da437f4106876aeb2d763ba173",
+ "create_vals":
+"{'reference':'ELECT0001','date':'{% now 'iso-8601', '' %}', 'state':'done','status_msg':'Approved Transaction','source': 'Self Attendant Kiosk','merchant':'GO City Explore LLC','kiosk_id':2,'stn_no':'STAN00ELE001','rrn_no':'RRN00ELE001','amount':'120','service_id':2,'service_provider_id':43,'channel_id':9,'customer_name':'Abhishek Test01', 'customer_email':'test_abhishek.kumar@qpr.qa','customer_zip':'20171','customer_city': 'Doha','customer_phone':'+97466203915'}"
+}
+}
+
+{"params": {
+	"token":"3b7ef1da437f4106876aeb2d763ba173",
+ "create_vals":
+"{'reference':'ELECT0002','date':'{% now 'iso-8601', '' %}', 'state':'done','status_msg':'Approved Transaction','source': 'Self Attendant Kiosk','merchant':'GO City Explore LLC','kiosk_id':1,'stn_no':'STAN00ELE002','rrn_no':'RRN00ELE002','amount':'50','service_id':2,'service_provider_id':43,'channel_id':9,'customer_name':'IK Test01', 'customer_email':'test_abhishek.kumar@qpr.qa','customer_zip':'20171','customer_city': 'Doha','customer_phone':'+97466203915'}"
+}
+}
+
+{"params": {
+	"token":"3b7ef1da437f4106876aeb2d763ba173",
+ "create_vals":
+"{'reference':'ELECT0003','date':'{% now 'iso-8601', '' %}', 'state':'done','status_msg':'Approved Transaction','source': 'Self Attendant Kiosk','merchant':'GO City Explore LLC','kiosk_id':1,'stn_no':'STAN00ELE003','rrn_no':'RRN00ELE003','amount':'300','service_id':2,'service_provider_id':43,'channel_id':9,'customer_name':'Suresh Test01', 'customer_email':'test_abhishek.kumar@qpr.qa','customer_zip':'20171','customer_city': 'Doha','customer_phone':'+97466203915'}"
+}
+}
+
+{"params": {
+	"token":"3b7ef1da437f4106876aeb2d763ba173",
+ "create_vals":
+"{'reference':'ELECT0004','date':'{% now 'iso-8601', '' %}', 'state':'done','status_msg':'Approved Transaction','source': 'Self Attendant Kiosk','merchant':'GO City Explore LLC','kiosk_id':2,'stn_no':'STAN00ELE004','rrn_no':'RRN00ELE004','amount':'450','service_id':2,'service_provider_id':43,'channel_id':8,'customer_name':'Danish Test01', 'customer_email':'test_abhishek.kumar@qpr.qa','customer_zip':'20171','customer_city': 'Doha','customer_phone':'+97466203915'}"
+}
+}
+
+********************************************************
+
+
+
+
+
+44;"Qatar General Water Corporation"
+Services :
+3;"Water Supply Bill"
+
+******************************************************
+{"params": {
+	"token":"3b7ef1da437f4106876aeb2d763ba173",
+ "create_vals":
+"{'reference':'WAT002011','date':'{% now 'iso-8601', '' %}', 'state':'done','status_msg':'Approved Transaction','source': 'Self Attendant Kiosk','merchant':'GO City Explore LLC','kiosk_id':2,'stn_no':'STAN00ELE433','rrn_no':'RRN00ELE041','amount':'90','service_id':3,'service_provider_id':44,'channel_id':9,'customer_name':'Abhishek Test01', 'customer_email':'test_abhishek.kumar@qpr.qa','customer_zip':'20171','customer_city': 'Doha','customer_phone':'+97466203915'}"
+}
+}
+
+{"params": {
+	"token":"3b7ef1da437f4106876aeb2d763ba173",
+ "create_vals":
+"{'reference':'WAT002012','date':'{% now 'iso-8601', '' %}', 'state':'done','status_msg':'Approved Transaction','source': 'Self Attendant Kiosk','merchant':'GO City Explore LLC','kiosk_id':1,'stn_no':'STAN00ELE433','rrn_no':'RRN00ELE042','amount':'50','service_id':3,'service_provider_id':44,'channel_id':9,'customer_name':'IK Test01', 'customer_email':'test_abhishek.kumar@qpr.qa','customer_zip':'20171','customer_city': 'Doha','customer_phone':'+97466203915'}"
+}
+}
+
+{"params": {
+	"token":"3b7ef1da437f4106876aeb2d763ba173",
+ "create_vals":
+"{'reference':'WAT002013','date':'{% now 'iso-8601', '' %}', 'state':'done','status_msg':'Approved Transaction','source': 'Self Attendant Kiosk','merchant':'GO City Explore LLC','kiosk_id':1,'stn_no':'STAN00ELE444','rrn_no':'RRN00ELE043','amount':'39','service_id':3,'service_provider_id':44,'channel_id':8,'customer_name':'Suresh Test01', 'customer_email':'test_abhishek.kumar@qpr.qa','customer_zip':'20171','customer_city': 'Doha','customer_phone':'+97466203915'}"
+}
+}
+
+{"params": {
+	"token":"3b7ef1da437f4106876aeb2d763ba173",
+ "create_vals":
+"{'reference':'WAT002014','date':'{% now 'iso-8601', '' %}', 'state':'done','status_msg':'Approved Transaction','source': 'Self Attendant Kiosk','merchant':'GO City Explore LLC','kiosk_id':2,'stn_no':'STAN00ELE445','rrn_no':'RRN00ELE044','amount':'172','service_id':3,'service_provider_id':44,'channel_id':8,'customer_name':'Danish Test01', 'customer_email':'test_abhishek.kumar@qpr.qa','customer_zip':'20171','customer_city': 'Doha','customer_phone':'+97466203915'}"
+}
+}
+
+********************************************************
+
+
+
+45;"Ooredoo"
+Services:
+4;"Flexi Recharge"
+5;"Data Recharge"
+
+******************************************************
+{"params": {
+	"token":"3b7ef1da437f4106876aeb2d763ba173",
+ "create_vals":
+"{'reference':'ORDO100001','date':'{% now 'iso-8601', '' %}', 'state':'done','status_msg':'Approved Transaction','source': 'Self Attendant Kiosk','merchant':'GO City Explore LLC','kiosk_id':2,'stn_no':'ORIDO000001','rrn_no':'RRO0011001','amount':'25','service_id':4,'service_provider_id':45,'channel_id':8,'customer_name':'Abhishek Test01', 'customer_email':'test_abhishek.kumar@qpr.qa','customer_zip':'20171','customer_city': 'Doha','customer_phone':'+97466203915'}"
+}
+}
+
+{"params": {
+	"token":"3b7ef1da437f4106876aeb2d763ba173",
+ "create_vals":
+"{'reference':'ORDO100002','date':'{% now 'iso-8601', '' %}', 'state':'done','status_msg':'Approved Transaction','source': 'Self Attendant Kiosk','merchant':'GO City Explore LLC','kiosk_id':1,'stn_no':'ORIDO000002','rrn_no':'RRO0011002','amount':'60','service_id':5,'service_provider_id':45,'channel_id':9,'customer_name':'Abhishek Test01', 'customer_email':'test_abhishek.kumar@qpr.qa','customer_zip':'20171','customer_city': 'Doha','customer_phone':'+97466203915'}"
+}
+}
+
+{"params": {
+	"token":"3b7ef1da437f4106876aeb2d763ba173",
+ "create_vals":
+"{'reference':'ORDO100004','date':'{% now 'iso-8601', '' %}', 'state':'done','status_msg':'Approved Transaction','source': 'Self Attendant Kiosk','merchant':'GO City Explore LLC','kiosk_id':2,'stn_no':'ORIDO000003','rrn_no':'RRO0011003','amount':'25','service_id':4,'service_provider_id':45,'channel_id':8,'customer_name':'Abhishek Test01', 'customer_email':'test_abhishek.kumar@qpr.qa','customer_zip':'20171','customer_city': 'Doha','customer_phone':'+97466203915'}"
+}
+}
+
+{"params": {
+	"token":"3b7ef1da437f4106876aeb2d763ba173",
+ "create_vals":
+"{'reference':'ORDO100003','date':'{% now 'iso-8601', '' %}', 'state':'done','status_msg':'Approved Transaction','source': 'Self Attendant Kiosk','merchant':'GO City Explore LLC','kiosk_id':2,'stn_no':'ORIDO000004','rrn_no':'RRO0011004','amount':'20','service_id':5,'service_provider_id':45,'channel_id':8,'customer_name':'Abhishek Test01', 'customer_email':'test_abhishek.kumar@qpr.qa','customer_zip':'20171','customer_city': 'Doha','customer_phone':'+97466203915'}"
+}
+}
+
+{"params": {
+	"token":"3b7ef1da437f4106876aeb2d763ba173",
+ "create_vals":
+"{'reference':'ORDO100005','date':'{% now 'iso-8601', '' %}', 'state':'done','status_msg':'Approved Transaction','source': 'Self Attendant Kiosk','merchant':'GO City Explore LLC','kiosk_id':2,'stn_no':'ORIDO000005','rrn_no':'RRO0011005','amount':'15','service_id':5,'service_provider_id':45,'channel_id':9,'customer_name':'Abhishek Test01', 'customer_email':'test_abhishek.kumar@qpr.qa','customer_zip':'20171','customer_city': 'Doha','customer_phone':'+97466203915'}"
+}
+}
+
+{"params": {
+	"token":"3b7ef1da437f4106876aeb2d763ba173",
+ "create_vals":
+"{'reference':'ORDO100006','date':'{% now 'iso-8601', '' %}', 'state':'done','status_msg':'Approved Transaction','source': 'Self Attendant Kiosk','merchant':'GO City Explore LLC','kiosk_id':1,'stn_no':'ORIDO000005','rrn_no':'RRNO011006','amount':'25','service_id':4,'service_provider_id':45,'channel_id':8,'customer_name':'Abhishek Test01', 'customer_email':'test_abhishek.kumar@qpr.qa','customer_zip':'20171','customer_city': 'Doha','customer_phone':'+97466203915'}"
+}
+}
+********************************************************
+
+
+
+
+
+
+47;"Qatar Immigration Services"
+Services:
+---NIL--
+
+
+
+
+Banking Channel (Payment Gateway)
+9;"CNB"
+8;"QIB"
+
+Kiosk Terminal
+2;"KIOSK @ Airport"
+1;"KIOSK@J.W. Mariotts"

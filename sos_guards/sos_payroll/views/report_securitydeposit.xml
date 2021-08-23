@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+	<template id ="report_securitydeposit">
+		<t t-call="web.html_container">
+				<t t-call="web.external_layout" style="font-family:georgia,garamond,serif;font-size:10px">
+					<div class="page">
+						<style>
+								.tabhead{font-family:georgia,garamond,serif;font-size:14px;}
+								.tabcol{font-family:georgia,garamond,serif;font-size:13px;}
+								table th { background-color:#d4e3e5;}
+								tr:nth-child(even) {background-color: #FFEBCD;}
+								tr:nth-child(odd) {background-color: #cdcdcd;}
+						</style>
+						<div width="100%"><center><h3>Guards Security Deposit Report</h3></center> </div>
+						
+						<table class="table" width="100%">
+							<tr class="tabcol">
+								<td class="text-center">
+									<h3> From
+									<span t-esc="get_date_formate(data['date_from'])" />
+									To
+									<span t-esc="get_date_formate(data['date_to'])" />
+									</h3> 
+								</td>
+							</tr>
+						</table>
+						
+						<table class="table" width="100%">
+								<thead>
+								<tr class="tabhead">
+									<th class="text-center"  style="border: 1px solid black">SR.No</th>
+									<th class="text-center"  style="border: 1px solid black">Project Name</th>
+									<th class="text-center"  style="border: 1px solid black">Amount</th>
+								</tr>
+							</thead>
+							<tbody>	
+								<t t-foreach="Project" t-as="p">
+									<tr class="tabcol">
+										<td class="text-left">
+											<span t-esc="p_index + 1" />
+										</td>
+										<td class="text-left">
+											<span t-esc="p['name']" />
+										</td>
+										<td class="text-center">
+											<span t-esc="abs(p['amount'])" />
+										</td>
+									</tr>
+								</t>
+									<tr style="font-size:20px;">
+										<td class="text-right" colspan="2">
+											Total:
+										</td>
+										<td class="text-center">
+											<span t-esc="Pro_Total or '-'" />
+										</td>
+									</tr>
+								</tbody>	
+							</table>
+						
+						
+							<!-- Lines Table -->						
+							<table class="table" width="100%">
+								<thead>
+									<tr class="tabhead">
+										<th>Sr.No</th>
+										<th>Ref.</th>
+										<th>Name</th>
+										<th>Appointment Date</th>
+										<th>Project</th>
+										<th>Center</th>
+										<th>Post</th>
+										<th>Amount</th>
+										<th>Deposited Amt</th>
+										<th>Remaining Amt</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr t-foreach="PayslipLines" t-as="line">
+										<td>
+											<span t-esc="line_index+1" />
+										</td>
+										<td>
+											<span t-esc="line.employee_id.code" />
+										</td>	
+										<td>
+											<span t-esc="line.employee_id.name_related" />
+										</td>
+										<td>
+											<span t-esc="get_date_formate(line.employee_id.appointmentdate)" />
+										</td>
+										<td>
+											<span t-esc="line.project_id.name" />
+										</td>
+										<td>
+											<span t-esc="line.employee_id.center_id.name" />
+										</td>
+										<td>
+											<span t-esc="line.post_id.name" />
+										</td>
+										<td>
+											<span t-esc="abs(line.amount)" />
+										</td>
+										<td>
+											<span t-esc="get_deposited_amount(line.employee_id.id)" />
+										</td>
+										<td>
+											<span t-esc="(TotalDeposited) - (get_deposited_amount(line.employee_id.id))" />
+										</td>
+									</tr>
+								</tbody>	
+							</table>
+							<div style="width:400px;background:#d4e3e5; margin-left:400px;"><h4>Total:<span style="margin-left:250px;" t-esc="Total" /></h4></div>
+					</div>
+				</t>
+		</t>
+	</template>
+	
+	</data>
+</odoo>

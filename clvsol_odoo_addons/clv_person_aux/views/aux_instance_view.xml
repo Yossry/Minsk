@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+        
+    <record id="clv_person_aux_view_form_aux_instance" model="ir.ui.view">
+        <field name="name">clv.person_aux.form</field>
+        <field name="model">clv.person_aux</field>
+        <field name="inherit_id" ref="clv_person_aux_view_form"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <label for="name" position="before">
+                <label for="aux_instance_id" class="oe_edit_only"/>
+                <h4><field name="aux_instance_id" options="{'no_open': True, 'no_create': True}"/></h4>
+            </label>
+        </field>
+    </record>
+
+    <record id="clv_person_aux_view_tree_aux_instance" model="ir.ui.view">
+        <field name="name">clv.person_aux.tree</field>
+        <field name="model">clv.person_aux</field>
+        <field name="inherit_id" ref="clv_person_aux_view_tree"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="name" position="before">
+                <field name="aux_instance_id"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="clv_person_aux_view_search_aux_instance" model="ir.ui.view">
+        <field name="name">clv.person_aux.search</field>
+        <field name="model">clv.person_aux</field>
+        <field name="inherit_id" ref="clv_person_aux_view_search"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="code" position="after">
+                <field name="aux_instance_id"/>
+            </field>
+            <group name="group_by" position="inside">
+                <filter name="group_by_aux_instance_id" string="Aux Instance" context="{'group_by': 'aux_instance_id'}"/>
+            </group>
+        </field>
+    </record>
+
+</odoo>

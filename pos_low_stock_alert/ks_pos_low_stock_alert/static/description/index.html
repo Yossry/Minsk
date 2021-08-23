@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Odoo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+</head>
+<!-- odoo description page css -->
+<style>
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .h1,
+    .h2,
+    .h3,
+    .h4,
+    .h5,
+    .h6 {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 400;
+        line-height: 1.1;
+        color: #21272b;
+    }
+
+    ul {
+        color: #616161;
+    }
+
+    * {
+        font-family: "Montserrat", sans-serif;
+    }
+</style>
+
+<body>
+    <!-- Use Odd and even section for repeating sections (on line no. 224 and 275) 
+        and ask sukhjinder singh to fix down arrow image on last section
+    -->
+    <div class="p-md-5" style="padding: 20px">
+        <div class="container">
+            <!-- Header -->
+            <div class="row  mb-sm-4 mb-3 pb-3 justify-content-md-between justify-content-center">
+
+                <div class="text-center mr-5">
+                    <a href="https://ksolves.com/">
+                        <img src="images/ksolves-logo.png" alt="ksolves-logo">
+                    </a>
+                    <div class="mt-3"
+                    style="font-size: 10px;">
+                    <a href="https://www.facebook.com/Ksolves.India" class="text-dark ml-3"> <i
+                            class="fa fa-facebook fa-2x"></i> </a>
+                    <a href="https://www.linkedin.com/company/ksolves" class="text-dark ml-3"> <i
+                            class="fa fa-linkedin fa-2x"></i> </a>
+                    <a href="https://www.youtube.com/channel/UCplv9V47g9VidekGN6Wp1ew" class="text-dark ml-3"> <i
+                            class="fa fa-youtube-play fa-2x"></i> </a>
+                    <a href="https://twitter.com/ksolves_india" class="text-dark ml-3"> <i
+                            class="fa fa-twitter fa-2x"></i> </a>
+
+                </div>
+
+                </div>
+                <div class="mt-md-0 mt-3">
+                    <div class="d-flex align-items-center ">
+                        <h6 class="mb-0 mt-2" style="font-size: 14px;min-width:90px">Community: </h6>
+                       <div class="row mx-0">
+                            <span class="text-white ml-2 mt-2" style="padding: .3em .8em;
+                                            background-color: #875A7B !important;
+                                            font-size: 10px;
+                                            border-radius: 2px;">
+                            <b> v 12.0 <i class="fa fa-check ml-1 "></i></b>
+                        </span>
+                        <span class="text-white ml-2 mt-2" style="padding: .3em .8em;
+                                            background-color: #875A7B !important;
+                                            font-size: 10px;
+                                            border-radius: 2px;">
+                            <b> v 11.0 <i class="fa fa-check ml-1 "></i></b>
+                        </span>
+                        <span class="text-white ml-2 mt-2" style="padding: .3em .8em;
+                                            background-color: #875A7B !important;
+                                            font-size: 10px;
+                                            border-radius: 2px;">
+                            <b> v 10.0 <i class="fa fa-check ml-1 "></i></b>
+                        </span>
+                       </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Overviww Section  -->
+            <div class="row  border-left-0 position-relative align-items-center px-sm-5 py-sm-5 px-1 py-4 ml-3"
+                style="border: 1px solid #b5b5b5; border-radius: 35px; border-top-left-radius: 0; border-bottom-left-radius: 0;">
+
+                <img src="images/play.png" alt="ksolves" class="position-absolute"
+                    style="top: 0px; width: 33px; left: 0; transform: translateY(-50%) translateX(-100%) !important;">
+
+                <img src="images/play.png" alt="ksolves" class="position-absolute"
+                    style="top: 50%;transform: translateY(-50%) translateX(50%) rotate(90deg) !important;width: 33px;right: 0;">
+
+                <div class="col-lg-6 text-center">
+                    <h2 class="mb-3">OVERVIEW</h2>
+
+                    <div class="mb-3"><img src="images/line.png" alt=""></div>
+
+                    <p style="font-size: 18px; letter-spacing: 0.2px;" class="px-sm-4 p-2">
+                        Make your POS session smoother than ever by keeping a close tab on the stock of your products and highlighting the ones going below the minimum quantity defined.
+                    </p>
+                </div>
+
+                <div class="col-lg-5">
+                    <img src="images/overview.png" alt="Overview Ksolves" class="w-100">
+                </div>
+            </div>
+            <!-- Features Section -->
+            <div class="row  position-relative border-right-0 px-sm-5 py-sm-5 px-1 py-4 ml-3"
+                style="border: 1px solid #b5b5b5;margin-top: -1px ;transform: translateX(-35px);;border-radius: 35px;border-top-right-radius: 0;border-bottom-right-radius: 0;">
+
+                <img src="images/play.png" alt="ksolves" class="position-absolute"
+                    style="top: 50%;transform: translateY(-50%) translateX(-50%) rotate(90deg) !important;width: 33px;left: 0;">
+
+                <div class="col-lg-5 text-center order-lg-0 order-1">
+                    <img src="images/features.png" alt="POS Low Stock Alert features" style="width:80%;">
+                </div>
+                <div class="col-lg-7 order-lg-1 order-0">
+                    <h2 class="text-center mb-3">FEATURES</h2>
+                    <div class="text-center mb-3">
+                        <img src="images/line.png" alt="">
+                    </div>
+                    <ul class="list-unstyled pl-0" style="font-size:18px;">
+                        <li class="d-flex align-items-baseline mb-2">
+                            <img src="images/hand.png" alt="hand pointer" style="width:16px;margin-right:10px">
+                            <span>Display the available quantity of all products in a POS session.</span>
+                        </li>
+
+                        <li class="d-flex align-items-baseline mb-2">
+                            <img src="images/hand.png" alt="hand pointer" style="width:16px;margin-right:10px">
+                            <span>Differentiate between in stock products, the products going below the minimum quantity defined, and the out-of-stock products on the basis of colors.</span>
+                        </li>
+                        <li class="d-flex align-items-baseline mb-2">
+                            <img src="images/hand.png" alt="hand pointer" style="width:16px;margin-right:10px">
+                            <span>In stock products’ stock is highlighted in green color.</span>
+                        </li>
+                        <li class="d-flex align-items-baseline mb-2">
+                            <img src="images/hand.png" alt="hand pointer" style="width:16px;margin-right:10px">
+                            <span>Products who have their quantity equal to or less than the minimum quantity defined have their stock highlighted in red color.</span>
+                        </li>
+                        <li class="d-flex align-items-baseline mb-2">
+                            <img src="images/hand.png" alt="hand pointer" style="width:16px;margin-right:10px">
+                            <span>Out-of-stock products listing is faded in translucent white with an overlay Out-of-Stock being displayed on them in the foreground.</span>
+                        </li>
+                        <li class="d-flex align-items-baseline mb-2">
+                            <img src="images/hand.png" alt="hand pointer" style="width:16px;margin-right:10px">
+                            <span>Flexibility to restrict order even when a product is out-of-stock.</span>
+                        </li>
+                        <li class="d-flex align-items-baseline mb-2">
+                            <img src="images/hand.png" alt="hand pointer" style="width:16px;margin-right:10px">
+                            <span>The products listing is sorted in such a way to ensure that out of stock products are always listed towards the end.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- How it Works -->
+            <div class="row border-left-0 align-items-center position-relative px-sm-5 py-sm-5 px-1 py-4 ml-3"
+                style="border: 1px solid #b5b5b5;border-radius: 35px;border-top-left-radius: 0;border-bottom-left-radius: 0;margin-top: -1px;">
+                <div class="position-absolute font-weight-bold d-flex align-items-center justify-content-center text-light"
+                    style="top: 50%;transform: translateY(-50%) translateX(50%) !important;right: 0;background: #9c7092;width: 33px;height: 33px;border-radius: 50%;font-size: 20px;
+                        ">
+                    1
+                </div>
+
+                <div class="ml-sm-0" style="margin-left: -20px;">
+                    <h2 class="text-center w-100 mb-3 mt-2">HOW IT WORKS</h2>
+                    <div class="text-center w-100 mb-3"><img src="images/line.png" alt=""></div>
+                    <div>
+                        <ul class="list-unstyled pl-0" style="font-size:18px;">
+                            <li class="d-flex align-items-baseline mb-2">
+                                <img src="images/hand.png" alt="hand pointer" style="width:16px;margin-right:10px">
+                                <span>The POS Low Stock Alert App comes automatically enabled once it is installed from the app store. </span>
+                            </li>
+                            <li class="d-flex align-items-baseline mb-2">
+                                <img src="images/hand.png" alt="hand pointer" style="width:16px;margin-right:10px">
+                                <span>After installation, head to the Point of Sales menu in the menubar to configure the app as per your requirement. Under Point of Sales, choose the Shop that you want to configure Ksolves’ POS Low Stock Alert app.</span>
+                            </li>
+                            <li class="d-flex align-items-baseline mb-2">
+                                <img src="images/hand.png" alt="hand pointer" style="width:16px;margin-right:10px">
+                                <span>Once you have chosen the Shop you wish to configure our app with, click on the More Option (three vertical dots) and then select the Settings menu.</span>
+                            </li>
+                        </ul>
+                        <img src="images/app_screen/1.png" alt="POS Dashboard" class="w-100 my-3"
+                            style="padding-left: 26px;max-width: 800px;">
+                    </div>
+                </div>
+            </div>
+            <!-- Odd Section-->
+            <div class="row border-right-0 position-relative px-sm-5 py-sm-5 px-1 py-4 ml-3"
+                style="border: 1px solid #b5b5b5;transform: translateX(-35px);border-radius: 35px;border-top-right-radius: 0;border-bottom-right-radius: 0;margin-top: -1px;">
+
+                <div class="position-absolute rounded-circle text-white font-weight-bold d-flex align-items-center justify-content-center"
+                    style="top: 50%;transform: translateY(-50%) translateX(-50%) !important;left: 0;background: #9c7092;width: 33px;height: 33px;font-size: 20px;">
+                    2
+                </div>
+
+                <div class="pl-sm-4 ml-sm-2 pl-3">
+                    <ul class="list-unstyled pl-0" style="font-size:18px;">
+                        <li class="d-flex align-items-baseline mb-2">
+                            <img src="images/hand.png" alt="hand pointer" style="width:16px;margin-right:10px">
+                            <span>Under Settings menu, there’s a subsection for POS Low Stock Alert app wherein you have the option of checking/unchecking two fields namely,
+                                Display Product Stock and Allow order when a product is Out-of-stock, and input the numerical value for Minimum Stock Alert.
+                            </span>
+                        </li>
+                        <img src="images/app_screen/2.png" alt="POS Settings" class="w-100 my-3"
+                            style="padding-left: 26px;max-width: 800px;">
+                        <div class="font-weight-bold text-dark" style="font-size: 14px;margin-left: 26px;">Note: As per default settings, the Display Product Stock and the Allow order when a product is Out-of-stock will be automatically checked on a fresh installation.
+                            Also, the Minimum Stock Alert will be set at numerical zero.</div>
+                    </ul>
+                </div>
+
+            </div>
+            <!-- Even Section-->
+            <div class="row align-items-center position-relative border-left-0 px-sm-5 py-sm-5 px-1 py-4 ml-3" style="border: 1px solid #b5b5b5;border-radius: 35px;border-top-left-radius: 0;border-bottom-left-radius: 0;margin-top: -1px;
+                ">
+                <div class="position-absolute rounded-circle text-light font-weight-bold d-flex justify-content-center align-items-center"
+                    style="top: 50%;transform: translateY(-50%) translateX(50%) !important;right: 0;background: #9c7092;width: 33px;height: 33px;font-size: 20px;">
+                    3
+                </div>
+
+                <div class="ml-sm-0" style="margin-left: -18px">
+                    <ul class="list-unstyled pl-0" style="font-size:18px;">
+                        <li class="d-flex align-items-baseline mb-2">
+                            <img src="images/hand.png" alt="hand pointer" style="width:16px;margin-right:10px">
+                            <span>On checking the Display Product Stock, the products available in a POS session will display their respective stock quantity on their product listing in green color.</span>
+                        </li>
+                    </ul>
+                    <img src="images/app_screen/3.png" alt="Available Products" class="w-100 my-3"
+                        style="padding-left: 26px;max-width: 800px;">
+                </div>
+            </div>
+            <!-- Odd Section-->
+            <div class="row border-right-0 position-relative px-sm-5 py-sm-5 px-1 py-4 ml-3"
+                style="border: 1px solid #b5b5b5;transform: translateX(-35px);border-radius: 35px;border-top-right-radius: 0;border-bottom-right-radius: 0;margin-top: -1px;">
+                <div class="position-absolute rounded-circle text-white font-weight-bold d-flex align-items-center justify-content-center"
+                    style="top: 50%;transform: translateY(-50%) translateX(-50%) !important;left: 0;background: #9c7092;width: 33px;height: 33px;font-size: 20px;">
+                    4
+                </div>
+
+                <div class="pl-sm-4 ml-sm-2 pl-3">
+                    <ul class="list-unstyled pl-0" style="font-size:18px;">
+                        <li class="d-flex align-items-baseline mb-2">
+                            <img src="images/hand.png" alt="hand pointer" style="width:16px;margin-right:10px">
+                            <span>On checking the Allow order when a product is out-of-stock, the POS user will be able to add even an out-of-stock product to order. In this scenario, the product’s stock can be a negative value.
+                            </span>
+                        </li>
+                        <img src="images/app_screen/4.png" alt="Negative Quantity Products" class="w-100 my-3"
+                            style="padding-left: 26px;max-width: 800px;">
+                    </ul>
+                </div>
+            </div>
+            <!-- Even Section-->
+            <div class="row align-items-center position-relative border-left-0 px-sm-5 py-sm-5 px-1 py-4 ml-3" style="border: 1px solid #b5b5b5;border-radius: 35px;border-top-left-radius: 0;border-bottom-left-radius: 0;margin-top: -1px;
+                ">
+                <div class="position-absolute rounded-circle text-light font-weight-bold d-flex justify-content-center align-items-center"
+                    style="top: 50%;transform: translateY(-50%) translateX(50%) !important;right: 0;background: #9c7092;width: 33px;height: 33px;font-size: 20px;">
+                    5
+                </div>
+
+                <div class="ml-sm-0" style="margin-left: -18px">
+                    <ul class="list-unstyled pl-0" style="font-size:18px;">
+                        <li class="d-flex align-items-baseline mb-2">
+                            <img src="images/hand.png" alt="hand pointer" style="width:16px;margin-right:10px">
+                            <span>The User can define the Minimum Stock quantity for all products in the Input field provided for Minimum Stock Alert.</span>
+                        </li>
+                    </ul>
+                    <img src="images/app_screen/5.png" alt="POS Settings" class="w-100 my-3"
+                        style="padding-left: 26px;max-width: 800px;">
+                </div>
+            </div>
+            <!-- Odd Section-->
+            <div class="row border-right-0 position-relative px-sm-5 py-sm-5 px-1 py-4 ml-3"
+                style="border: 1px solid #b5b5b5;transform: translateX(-35px);border-radius: 35px;border-top-right-radius: 0;border-bottom-right-radius: 0;margin-top: -1px;">
+                <div class="position-absolute rounded-circle text-white font-weight-bold d-flex align-items-center justify-content-center"
+                    style="top: 50%;transform: translateY(-50%) translateX(-50%) !important;left: 0;background: #9c7092;width: 33px;height: 33px;font-size: 20px;">
+                    6
+                </div>
+
+                <div class="pl-sm-4 ml-sm-2 pl-3">
+                    <ul class="list-unstyled pl-0" style="font-size:18px;">
+                        <li class="d-flex align-items-baseline mb-2">
+                            <img src="images/hand.png" alt="hand pointer" style="width:16px;margin-right:10px">
+                            <span>When a product’s quantity becomes equal to or goes below the minimum quantity defined, the said products stock will be highlighted in red.
+                            </span>
+                        </li>
+                        <img src="images/app_screen/6.png" alt="Unavailable Products" class="w-100 my-3"
+                            style="padding-left: 26px;max-width: 800px;">
+                    </ul>
+                </div>
+            </div>
+            <!-- Even Section-->
+            <div class="row align-items-center position-relative border-left-0 px-sm-5 py-sm-5 px-1 py-4 ml-3" style="border: 1px solid #b5b5b5;border-radius: 35px;border-top-left-radius: 0;border-bottom-left-radius: 0;margin-top: -1px;
+                ">
+                <div class="position-absolute rounded-circle text-light font-weight-bold d-flex justify-content-center align-items-center"
+                    style="top: 50%;transform: translateY(-50%) translateX(50%) !important;right: 0;background: #9c7092;width: 33px;height: 33px;font-size: 20px;">
+                    7
+                </div>
+                <div class="ml-sm-0" style="margin-left: -18px">
+                    <ul class="list-unstyled pl-0" style="font-size:18px;">
+                        <li class="d-flex align-items-baseline mb-2">
+                            <img src="images/hand.png" alt="hand pointer" style="width:16px;margin-right:10px">
+                            <span>When a product becomes out-of-stock, its product listing is faded in translucent white with an overlay Out-of-Stock being displayed on it in the foreground.
+                                This use case only occurs when you have unchecked the Allow order when a product is out-of-stock option in the POS shop settings.</span>
+                        </li>
+                    </ul>
+                    <img src="images/app_screen/7.png" alt="Out of Stock" class="w-100 my-3"
+                        style="padding-left: 26px;max-width: 800px;">
+                    <div class="font-weight-bold text-dark" style="font-size: 14px;margin-left: 26px;">Note: A POS user will not be able to add out-of-stock products to order if they have unchecked the Allow order when a product is out-of-stock option.</div>
+                </div>
+            </div>
+            <!-- Odd Section-->
+            <div class="row border-right-0 position-relative px-sm-5 py-sm-5 px-1 py-4 ml-3"
+                style="border: 1px solid #b5b5b5;transform: translateX(-35px);border-radius: 35px;border-top-right-radius: 0;border-bottom-right-radius: 0;margin-top: -1px;">
+                <div class="position-absolute rounded-circle text-white font-weight-bold d-flex align-items-center justify-content-center"
+                    style="top: 50%;transform: translateY(-50%) translateX(-50%) !important;left: 0;background: #9c7092;width: 33px;height: 33px;font-size: 20px;">
+                    8
+                </div>
+                <div class="pl-sm-4 ml-sm-2 pl-3">
+                    <ul class="list-unstyled pl-0" style="font-size:18px;">
+                        <li class="d-flex align-items-baseline mb-2">
+                            <img src="images/hand.png" alt="hand pointer" style="width:16px;margin-right:10px">
+                            <span>If a POS user tries to order a quantity of a product more than the available stock quantity of the said product, then a warning message pop-up will be displayed indicating that the user is trying to order more than the available quantity.
+                            </span>
+                        </li>
+                        <img src="images/app_screen/8.png" alt="Popup" class="w-100 my-3"
+                            style="padding-left: 26px;max-width: 800px;">
+                        <div class="font-weight-bold text-dark" style="font-size: 14px;margin-left: 26px;">Note: This use case only arises if the POS user has unchecked the Allow order when a product is Out-of-stock option.</div>
+                    </ul>
+                    <img src="images/play.png" alt="arrow" class="position-absolute" style="bottom: 0px; width: 33px; right: 0; transform: translateY(50%) translateX(100%) rotate(90deg) !important;">
+                </div>
+            </div>
+
+            <!-- Popular Apps -->
+            <div class="row px-sm-5 py-sm-5 px-1 py-4">
+                <h2 class="w-100 text-center mb-3">Ksolves Other Apps</h2>
+                <div class="text-center w-100 mb-3">
+                    <img src="images/line.png" alt="ksolves">
+                </div>
+                <div class="col-sm-4 mt-3">
+                    <a href="https://apps.odoo.com/apps/modules/12.0/ks_dashboard_ninja/" class="d-block"
+                        target="_blank">
+                        <img src="images/dn.jpg" alt="Dashboard Ninja" class="w-100">
+                    </a>
+                </div>
+                <div class="col-sm-4 mt-3">
+                    <a href="https://apps.odoo.com/apps/modules/12.0/ks_low_stock_alert/" class="d-block" target="_blank">
+                        <img src="images/lsa.jpeg" alt="Low stock alert" class="w-100">
+                    </a>
+                </div>
+                <div class="col-sm-4 mt-3">
+                    <a href="https://apps.odoo.com/apps/themes/12.0/dynamic_transparent_theme/" class="d-block"
+                        target="_blank">
+                        <img src="images/tt.jpg" alt="Transparent Theme" class="w-100">
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Ksolves Odoo Services -->
+            <div class="row px-sm-5 py-sm-5 px-1 py-4">
+                <h2 class="w-100 text-center mb-3">Ksolves Odoo Services</h2>
+                <div class="text-center w-100 mb-3">
+                    <img src="images/line.png" alt="ksolves">
+                </div>
+                <div class="col-sm-6 col-lg-4" style="margin-bottom: 20px;">
+                    <div style="border: 1px solid black; ;padding: 30px;" class="text-center h-100">
+                        <h4>
+                            Odoo <br />Implementation
+                        </h4>
+                        <img src="images/support.png" alt="support" style="margin:10px;">
+                        <p>
+                            Have some implementation in mind,we have got you covered.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4" style="margin-bottom: 20px;">
+                    <div class="text-center h-100" style="border: 1px solid black; ;padding: 30px;">
+                        <h4>
+                            Odoo <br />Community Apps
+                        </h4>
+                        <img src="images/apps.png" alt="support" style="margin:10px;">
+
+                        <p>
+                            We have a diverse range of Odoo Apps to make your Odoo experience better than ever.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4" style="margin-bottom: 20px;">
+                    <div class="text-center h-100" style="border: 1px solid black; ;padding: 30px;">
+                        <h4>
+                            Odoo Support & Maintenance
+                        </h4>
+                        <img src="images/support2.png" alt="support" style="margin:10px;">
+
+                        <p>
+                            We provide exceptional support and maintenance services for Odoo services.
+
+                        </p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4" style="margin-bottom: 20px;">
+                    <div class="text-center h-100" style="border: 1px solid black; ;padding: 30px;">
+                        <h4>
+                            Odoo <br />Customization
+                        </h4>
+                        <img src="images/custom.png" alt="support" style="margin:10px;">
+
+                        <p>
+                            Your requirements, our customized implementation. Have something unique in mind, get in
+                            touch with us.
+
+                        </p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4" style="margin-bottom: 20px;">
+                    <div class="text-center h-100" style="border: 1px solid black; ;padding: 30px;">
+                        <h4>
+                            Odoo <br />Integration Services
+                        </h4>
+                        <img src="images/integrated.png" alt="support" style="margin:10px;">
+
+                        <p>
+                            With our world-class web and API services in Odoo, our integration services are one of the
+                            best in the market.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4" style="margin-bottom: 20px;">
+                    <div class="text-center h-100" style="border: 1px solid black; ;padding: 30px;">
+                        <h4>
+                            Odoo Developer Outsourcing
+                        </h4>
+                        <img src="images/develop.png" alt="support" style="margin:10px;">
+
+                        <p>
+                            Need an experienced, talented Odoo developer? Our developers are the best when it comes to
+                            technical knowledge and communication skills.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+            <!-- Ksolves Footer -->
+            <div>
+                <div class="row mx-0 justify-content-sm-between justify-content-center"
+                    style="border-top: 1px solid black;">
+                    <div class="mb-sm-0 mb-3">
+                        <i class="fa fa-envelope fa-2x" style="
+                                                            margin-right: 10px;
+                                                            color: #333;
+                                                            transform: translateY(3px);"></i>
+                        <span style="font-size: 18px;">sales@ksolves.com</span>
+                    </div>
+                    <div class="d-none d-sm-block">
+                        <div class="bg-white" style="width: 50px;height: 1px;margin-top: -1px"></div>
+                        <div style="border-right: 1px solid black;height: 50px;transform: translateX(-50%);">
+                        </div>
+                    </div>
+                    <div>
+                        <i class="fa fa-mobile fa-2x"
+                            style="margin-right: 10px;color: #333;transform: translateY(4px) scale(1.2);"></i>
+                        <span style="font-size: 18px;">+91 120-4299799‬</span>
+                    </div>
+                </div>
+                <div class="m-auto" style="max-width: 600px;">
+
+                    <p style="line-height: 30px;text-align: center;margin-top: 20px;">
+                        Incepted in 2012, Ksolves has made its presence felt across various verticals, including Odoo
+                        implementation, cloud-based technologies like AWS and Salesforce cloud, Serverless application
+                        development, Hybrid and native mobile applications and Application architecture consulting etc.
+                    </p>
+
+                </div>
+            </div>
+
+            <!-- container End -->
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    @Author: KSOLVES India Private Limited
+    @Email: sales@ksolves.com
+-->
+
+<templates id="ks_pos_low_stock_alert.template" inherit_id="point_of_sale.template">
+    <t t-extend="Product">
+        <t t-jquery=".product-img" t-operation="before">
+            <t t-if="(product.type == 'product' and (widget.pos.config.allow_order_when_product_out_of_stock == false) and product.qty_available lte 0)">
+                <div class="overlay">
+                    <span class="text">Out-Of-Stock</span>
+                </div>
+            </t>
+        </t>
+
+        <t t-jquery=".product-img" t-operation="prepend">
+            <t t-if="(product.type == 'product' and widget.pos.config.display_stock)">
+                <span t-attf-class="quantity-count {{product.qty_available lte widget.pos.config.minimum_stock_alert ? 'warn' : 'normal'}}">
+                    <t t-esc="product.qty_available"/>
+                </span>
+            </t>
+        </t>
+    </t>
+</templates>

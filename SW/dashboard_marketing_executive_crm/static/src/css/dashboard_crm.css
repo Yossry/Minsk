@@ -1,0 +1,127 @@
+@font-face {
+    font-family: 'Avenir Next LT Pro Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Avenir Next LT Pro Regular'), url('fonts/AvenirNextLTPro-Regular.woff') format('woff');
+}
+.row-in-br {
+    border-right: 1px solid rgba(120,130,140,.13);
+}
+.row-in-bottom {
+    border-top: 1px solid rgba(120,130,140,.13);
+    margin-top:10px;
+    padding-top:27px;
+}
+.white-box .box-title {
+    margin: 0 0 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+.white-box {
+    background: #fff;
+    padding: 25px;
+    margin-bottom: 15px;
+}
+.two-part li i {
+    font-size: 50px;
+}
+
+
+.icon-user,
+.icon-people,
+.icon-layers,
+.icon-clock{
+    font-family: simple-line-icons;
+    speak: none;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+} 
+
+.two-part li {
+    width: 48.8%;
+}
+.list-inline>li {
+    display: inline-block;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+.two-part li span {
+    font-size: 30px;
+    font-weight: 100;
+    font-family: Poppins,sans-serif;
+}
+.steamline .sl-left img {
+    max-width: 40px;
+}
+.steamline .sl-right {
+    padding-left: 35px;
+}
+.steamline {
+    position: relative;
+    border-left: 1px solid rgba(120,130,140,.13);
+    margin-left: 20px;
+}
+.steamline .sl-item {
+    margin-top: 8px;
+    margin-bottom: 30px;
+}
+#section-line-1 .steamline .sl-left {
+    margin-left: -7px;
+}
+.sl-date {
+    font-size: 10px;
+    color: #98a6ad;
+}
+.steamline .sl-left {
+    float: left;
+    margin-left: -20px;
+    z-index: 1;
+    margin-right: 15px;
+}
+
+#chart_employee_issues{
+    height:225px;
+}
+#chart_timesheet{
+    height:100px;
+}
+#chart_employee_tasks{
+    height:357px;
+}
+.chart-timesheet-link.active,.chart-issues-link.active,.chart-tasks-link.active{
+    font-weight: 800;
+    color:#000;
+}
+#projects_selectbox {
+    padding:3px;
+    margin: 0;
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    border-radius:4px;
+    -webkit-box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+    -moz-box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+    box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+    background: #f8f8f8;
+    color:#888;
+    border:none;
+    outline:none;
+    display: inline-block;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    appearance:none;
+    cursor:pointer;
+    width:40%;
+    margin:20px;
+    float:right;
+}
+
+/* Targetting Webkit browsers only. FF will show the dropdown arrow with so much padding. */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    #projects_selectbox {padding-right:18px}
+}

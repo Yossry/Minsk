@@ -1,0 +1,93 @@
+<odoo>
+    <data>
+       <template id="design_report_invoice" inherit_id="web.external_layout_standard">
+      <xpath expr="//div[hasclass('header')]" position="replace">
+        <div class="header">
+          <table style="border-top: 8px solid #f36306;">
+            <tr>
+              <td style="width:50%;">
+                  <div class="col-3 mb4">
+                      <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height: 45px;" alt="Logo"/>
+                  </div>
+              </td>
+              <td style="width:50%;background-color:#f1efee;padding:5px;">
+                  <div class="col-12" name="company_address">
+                      <div t-field="company.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: true}"/>
+                  </div>
+              </td>
+            </tr>
+            <tr>
+                <th style="background-color:#f36306;color:#fff;border-right:2px solid #fff; padding:5px;text-align:center;font-size:18pt;">
+                  <h2>
+                        <!--<span t-if="o.type == 'out_invoice' and o.state in ('open', 'in_payment', 'paid')">Invoice</span>
+                        <span t-if="o.type == 'out_invoice' and o.state == 'draft'">Draft Invoice</span>
+                        <span t-if="o.type == 'out_invoice' and o.state == 'cancel'">Cancelled Invoice</span>
+                        <span t-if="o.type == 'out_refund'">Credit Note</span>
+                        <span t-if="o.type == 'in_refund'">Vendor Credit Note</span>
+                        <span t-if="o.type == 'in_invoice'">Vendor Bill</span>
+                        <span t-field="o.number"/>-->
+                    </h2>
+                </th>
+                <td style="background-color:#f36306;color:#fff;border-left:2px solid #fff;padding:5px;font-size:8pt;font-weight: 600;"> <t t-call="web.address_layout"/></td>
+            </tr>
+          </table>
+        </div> 
+      </xpath>
+      <xpath expr="//div[hasclass('article')]" position="replace">
+        <div class="article o_report_layout_standard" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
+          <t t-raw="0"/>
+        </div>
+      </xpath>
+    </template>
+
+    <template id="design_report_invoice_dos" inherit_id="web.address_layout">
+      <xpath expr="//div[hasclass('address')]" position="replace">
+        <div class="address">
+          <t t-if="information_block">
+            <t t-set="colclas" t-value="'col-5 offset-1'"/>
+            <div name="information_block" class="col-6">
+                <t t-raw="information_block"/>
+            </div>
+          </t>
+          <div name="address" t-att-class="colclass">
+            <t t-raw="address"/>
+          </div>
+        </div>
+        <br/>
+      </xpath>
+    </template>
+    <!-- <template id="design_report_invoice_tres" inherit_id="account.report_invoice_document">
+      <xpath expr="//div[@id='informations']" position="replace">
+        <h2>
+          
+        </h2>
+        <div id="informations" class="row mt32 mb32" style="border-top:6px solid #f36306;padding-top:30px;">
+                        <div class="col-auto mw-100 mb-2" t-if="o.name" name="description">
+                            <strong>Description:</strong>
+                            <p class="m-0" t-field="o.name"/>
+                        </div>
+                        <div class="col-auto mw-100 mb-2" t-if="o.date_invoice" name="invoice_date">
+                            <strong>Invoice Date:</strong>
+                            <p class="m-0" t-field="o.date_invoice"/>
+                        </div>
+                        <div class="col-auto mw-100 mb-2" t-if="o.date_due and o.type == 'out_invoice' and o.state in ('open', 'in_payment', 'paid')" name="due_date">
+                            <strong>Due Date:</strong>
+                            <p class="m-0" t-field="o.date_due"/>
+                        </div>
+                        <div class="col-auto mw-100 mb-2" t-if="o.origin" name="origin">
+                            <strong>Source:</strong>
+                            <p class="m-0" t-field="o.origin"/>
+                        </div>
+                        <div class="col-auto mw-100 mb-2" t-if="o.partner_id.ref" name="customer_code">
+                            <strong>Customer Code:</strong>
+                            <p class="m-0" t-field="o.partner_id.ref"/>
+                        </div>
+                        <div name="reference" class="col-auto mw-100 mb-2" t-if="o.reference">
+                            <strong>Reference:</strong>
+                            <p class="m-0" t-field="o.reference"/>
+                        </div>
+                    </div>
+      </xpath>
+    </template>  -->   
+</data>
+</odoo>

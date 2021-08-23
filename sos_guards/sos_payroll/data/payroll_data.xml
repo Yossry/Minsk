@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+      
+        <!-- Account-related subtypes for messaging / Chatter -->
+        <record id="mt_invoice_reviewed" model="mail.message.subtype">
+            <field name="name">Reviewed</field>
+            <field name="res_model">sos.invoice</field>
+            <field name="description">Invoice reviewed</field>
+        </record>
+        <record id="mt_invoice_checked" model="mail.message.subtype">
+            <field name="name">Checked</field>
+            <field name="res_model">sos.invoice</field>
+            <field name="description">Invoice cheked</field>
+        </record>
+    </data>
+</openerp>

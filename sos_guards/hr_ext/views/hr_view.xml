@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<!--
+		For a many2many field, a list of tuples is expected. Here is the list of tuple that are accepted, with the corresponding semantics:
+		(0, 0,  { values }) link to a new record that needs to be created with the given values dictionary
+		(1, ID, { values }) update the linked record with id = ID (write values on it)
+		(2, ID) remove and delete the linked record with id = ID (calls unlink on ID, that will delete the object completely, and the link to it as well)
+		(3, ID) cut the link to the linked record with id = ID (delete the relationship between the two objects but does not delete the target object itself)
+		(4, ID) link to existing record with id = ID (adds a relationship)
+		(5) unlink all (like using (3,ID) for all linked records)
+		(6, 0, [IDs]) replace the list of linked IDs (like using (5) then (4,ID) for each ID in the list of IDs)
+
+		-->
+
+
+		<!--
+		<record id="view_general_configuration_birthday" model="ir.ui.view">
+			<field name="name">General Settings</field>
+			<field name="model">base.config.settings</field>
+			<field name="inherit_id" ref="base_setup.view_general_configuration"/>
+			<field name="arch" type="xml">
+				<xpath expr="//group" position="after">
+				    <group>
+				        <label for="birthday_mail_template" />
+				        <div>
+				            <div>
+				                <field name="birthday_mail_template" class="oe_inline" />
+				            </div>
+				        </div>
+				    </group>
+				</xpath>
+			</field>
+		</record>
+		-->
+
+		<record id="view_department_form" model="ir.ui.view">
+			<field name="name">hr.department.form</field>
+			<field name="model">hr.department</field>
+			<field name="inherit_id" ref="hr.view_department_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='name']" position="after">
+					<field name="code"/>
+				</xpath>
+				<xpath expr="//sheet/group" position="after">
+					<group>
+						<field name="user_ids"/>
+					</group>
+				</xpath>
+			</field>
+		</record>
+
+		<record id="view_department_tree" model="ir.ui.view">
+			<field name="name">hr.department.tree</field>
+			<field name="model">hr.department</field>
+			<field name="inherit_id" ref="hr.view_department_tree"/>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='display_name']" position="before">
+					<field name="code"/>
+				</xpath>		
+			</field>
+		</record>
+
+		<record id="view_users_form" model="ir.ui.view">
+			<field name="name">res.users.form</field>
+			<field name="model">res.users</field>
+			<field name="inherit_id" ref="base.view_users_form" />
+			<field name="arch" type="xml">
+				<xpath expr="//page[@name='access_rights']" position="after">
+				    <page name="departments" string='Departments'>
+				    	<group>
+				    		<field name="dept_ids" />
+				    	</group>
+				    </page>
+				</xpath>
+			</field>
+		</record>
+			 
+		<!--     
+		<record id="view_partner_form_bithdate" model="ir.ui.view">
+			<field name="name">res.partner.form</field>
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="base.view_partner_form" />
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='website']" position="after">
+				    <field name='birthdate'/>
+				</xpath>
+			</field>
+		</record>     
+		-->
+     
+	</data>
+</odoo>
+
+

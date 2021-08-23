@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<odoo>
+  <data>
+    <function model="res.users" name="update_default_theme"/>
+  </data>
+</odoo>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<record id="view_hr_documents_expire_type_tree" model="ir.ui.view">
+			<field name="name">hr.documents.expire.type.tree</field>
+			<field name="model">hr.documents.expire.type</field>
+			<field name="arch" type="xml">
+			<tree string="Documents Type for Expiry" editable="top">
+				<field name="name" />
+				<field name="model_id"/>		
+				<field name="document_id" domain="[('model_id','=',model_id),('name','not in',('create_date','write_date')),'|',('ttype','=','date'),('ttype','=','datetime')]"/>
+				<field name="code_id" domain="[('model_id','=',model_id),('name','not in',('create_uid','write_uid')),'|',('ttype','=','char'),('ttype','=','integer')]"/>
+				<field name="remind_days" />
+			</tree>
+			</field>
+		</record>
+
+		<record id="view_hr_documents_expire_tree" model="ir.ui.view">
+			<field name="name">hr.documents.expire.tree</field>
+			<field name="model">hr.documents.expire</field>
+			<field name="arch" type="xml">
+			<tree string="Documents Expiry">
+				<field name="name" />
+				<field name="code" />
+				<field name="company_id" />
+				<field name="date_expiry" />
+				<field name="refers_to"/>		
+				<field name="document_id"/>
+				<field name="remind_days" />
+				<field name="days_left" />								
+			</tree>
+			</field>
+		</record>
+
+		<record id="view_hr_documents_expire_form" model="ir.ui.view">
+			<field name="name">hr.documents.expire.form</field>
+			<field name="model">hr.documents.expire</field>
+			<field name="arch" type="xml">
+			<form string="Documents Expiry">
+			<sheet>		
+				<group colspan="4">
+					<group>
+						<field name="name" />
+						<field name="code" />
+						<field name="company_id" />
+						<field name="date_expiry" />
+						<field name="remind_days" />
+					</group>
+					<group>
+						<field name="refers_to"/>
+						<field name="document_id"/>		
+					</group>
+				</group>		
+			</sheet>
+			<div class="oe_chatter">
+				<field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+				<field name="message_ids" widget="mail_thread" placeholder="Share a note..."/>
+			</div>
+			</form>
+			</field>
+		</record>
+
+		<record id="view_hr_documents_expire_search" model="ir.ui.view">
+			<field name="name">hr.documents.expire.search</field>
+			<field name="model">hr.documents.expire</field>
+			<field name="arch" type="xml">
+				<search string="Documents Expiry">
+					<field name="name"/>
+					<field name="code"/>			
+					<filter string="Expired Documents" name="expired" domain="[('days_left','&lt;=',0)]"/> 
+					<filter string="Near to Expire" name="expiring" domain="[('expiring','=', True)]"/> 
+					<newline/>
+					<group expand="0" string="Group By..." colspan="12" col="10">				
+						<filter name="group_company_id" icon="terp-project" string="Company" context="{'group_by':'company_id'}"/>
+						<filter name='group_document_id' icon="terp-project" string="Document ID" context="{'group_by':'document_id'}"/>				
+						<filter name='group_expiry_date' icon="terp-project" string="Date Expiry" context="{'group_by':'date_expiry:month'}"/>	
+					</group>
+				</search>		
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="act_hr_documents_expire_view">
+			<field name="name">Documents Expiry</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">hr.documents.expire</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="search_view_id" ref="view_hr_documents_expire_search" />
+			<field name="domain">[]</field>	
+		</record>
+
+		<record model="ir.actions.act_window" id="act_hr_documents_expire_type_view">
+			<field name="name">Documents Type for Expiry</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">hr.documents.expire.type</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+
+	</data>
+</odoo>
+
+

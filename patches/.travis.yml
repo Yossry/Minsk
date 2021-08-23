@@ -1,0 +1,67 @@
+language: python
+sudo: false
+cache:
+  apt: true
+  directories:
+    - $HOME/.cache/pip
+
+python:
+  - "3.5"
+
+addons:
+  postgresql: "9.6"
+  apt:
+# only add the two lines below if you need wkhtmltopdf for your tests
+#    sources:
+#      - pov-wkhtmltopdf
+#    Search your sources alias here:
+#      https://github.com/travis-ci/apt-source-whitelist/blob/master/ubuntu.json
+    packages:
+      - expect-dev  # provides unbuffer utility
+      - python-lxml  # because pip installation is slow
+      - python-simplejson
+      - python-serial
+      - python-yaml
+      - cups
+      - libcups2-dev
+#     Search your packages here:
+#       https://github.com/travis-ci/apt-package-whitelist/blob/master/ubuntu-precise
+#      - wkhtmltopdf  # only add if needed and check the before_install section below
+
+# set up an X server to run wkhtmltopdf.
+#before_install:
+#  - "export DISPLAY=:911.0"
+#  - "sh -e /etc/init.d/xvfb start"
+
+env:
+  global:
+  - VERSION="11.0" TESTS="0" LINT_CHECK="0" TRANSIFEX="0"
+  - TRANSIFEX_USER='jjscarafia'
+  # to get secure, run 'travis encrypt TRANSIFEX_PASSWORD=[transifex_password] -r [github_repo]'
+  # example of github repo 'ingadhoc/odoo-infrastructure'
+  - secure: GlBV703hLeSvDipL4AjCcwHciPuXb6oUUpBMWoSSUfmCOMM2XHSoYuVItAlSkTO86uCLXHCtxwWm0itlK4+P9Ky1jMjyrH/GubDmjJAa8BcHfSGJTdbSV/DdxHfB5xZKDlYT6mt1Hi3oMs2jD8BtR3unrE5VofloCiOwHFD/QwWITgi61WS9LkFl5VyKZjDX5iATGRDneTY4YFegcTWGDbcJuY3E1xNj0c+Z+Qxa0rdOBoaJy0NuZNaN23BFcP3cNq5LpownnNKeVIaZ7UhE7fB6NKaxi9wpAz8Oxtpg+7NCsH0msq3aGjM2eQqUo0ljthmf4ucd6svv0A8WjWG/NVmdQEsySplFvCQEaDRf/Si5+YuNMQRRZ1rzRQAHSoPnpivcKslhyFBWdTyhsZTjgvPhKfO7zf3v9v5YuliLqN1zuGArQzmZ0oP7uzO3D4GyaT02B/gmpF9c91PA1zYClhB/8Blwj1dtfqkQtgCdS0rx+pR1xpCukrGbxTlWoOz1Stynd+yRgWzBRZP1hUw0moKMFN4NlXu6wiEMTvmUhMJx0oBJNw+7233jGyy8rGA09es7499NzUebav4RRBbHLYDO2+5d3ajeKqVYWWQBRcMGpquK3FNfZ5REC5mBzTDjLU+w3sRE4ZFxEqXZky9lJF0omXGA0LvDsc2YCDZrV/s=
+  - TRANSIFEX_ORGANIZATION='adhoc'
+  - TRANSIFEX_TEAM='46451'
+
+  matrix:
+  # - LINT_CHECK="0" (we dont want lint checks on patches, it make harder to have them and more difficult to keep track of changes and differences)
+  - TRANSIFEX="1"
+  - TESTS="1" ODOO_REPO="odoo/odoo"
+# either use the two lines above or the two below. Don't change the default if
+# it's not necessary (it is only necessary if modules in your repository can't
+# be installed in the same database. And you get a huge speed penalty in your
+# tests)
+#  - TESTS="1.0" ODOO_REPO="OCA/OCB" UNIT_TEST="1"
+#  - TESTS="1.0" ODOO_REPO="odoo/odoo" UNIT_TEST="1"
+
+
+install:
+  - git clone --depth=1 https://github.com/ingadhoc/maintainer-quality-tools.git ${HOME}/maintainer-quality-tools
+  - export PATH=${HOME}/maintainer-quality-tools/travis:${PATH}
+  - travis_install_nightly
+
+script:
+  - travis_run_tests
+
+after_success:
+  - travis_after_tests_success

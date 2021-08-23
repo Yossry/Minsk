@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright 2019 Coop IT Easy
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+
+    <record id="res_partner_user_iwp_demo" model="res.partner">
+        <field name="name">User Coop IT Easy IWP</field>
+        <field name="customer" eval="False"/>
+        <field name="is_company" eval="False"/>
+        <field name="email">user.iwp@coop.coop</field>
+        <field name="street">Rue de la colocation, 23</field>
+        <field name="city">Bruxelles</field>
+        <field name="zip">1030</field>
+        <field name="structure" ref="res_partner_structure_coopiteasy_demo"/>
+        <field name="country_id" ref="base.be"/>
+    </record>
+
+    <record id="res_users_user_iwp_demo" model="res.users">
+        <field name="partner_id" ref="res_partner_user_iwp_demo"/>
+        <field name="login">user-iwp</field>
+        <field name="password">demo</field>
+        <field name="groups_id" eval="[(4, ref('investor_wallet_platform_base.group_platform_wallet_user'))]"/>
+        <field name="structure" ref="res_partner_structure_coopiteasy_demo"/>
+    </record>
+
+    <record id="res_partner_manager_iwp_demo" model="res.partner">
+        <field name="name">Manager IWP</field>
+        <field name="customer" eval="False"/>
+        <field name="is_company" eval="False"/>
+        <field name="email">manager.iwp@coop.coop</field>
+        <field name="street">Rue de la colocation, 24</field>
+        <field name="city">Liège</field>
+        <field name="zip">4100</field>
+        <field name="country_id" ref="base.be"/>
+    </record>
+
+    <record id="res_users_manager_iwp_demo" model="res.users">
+        <field name="partner_id" ref="res_partner_manager_iwp_demo"/>
+        <field name="login">manager-iwp</field>
+        <field name="password">demo</field>
+        <field name="groups_id" eval="[(4, ref('investor_wallet_platform_base.group_platform_wallet_manager'))]"/>
+    </record>
+
+    <record id="easy_my_coop.res_partner_user_emc_demo" model="res.partner">
+        <field name="structure" ref="res_partner_structure_coopiteasy_demo"/>
+    </record>
+
+    <record id="easy_my_coop.res_users_user_emc_demo" model="res.users">
+        <field name="structure" ref="res_partner_structure_coopiteasy_demo"/>
+    </record>
+
+    <record id="easy_my_coop.res_partner_manager_emc_demo" model="res.partner">
+        <field name="structure" ref="res_partner_structure_coopiteasy_demo"/>
+    </record>
+
+    <record id="easy_my_coop.res_users_manager_emc_demo" model="res.users">
+        <field name="structure" ref="res_partner_structure_coopiteasy_demo"/>
+    </record>
+</odoo>

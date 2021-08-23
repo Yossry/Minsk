@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    @Author: KSOLVES India Private Limited
+    @Email: sales@ksolves.com
+-->
+
+<odoo>
+    <data>
+        <template id="ks_pos_low_stock_alert.assets" inherit_id="point_of_sale.assets" name="point_of_sale assets">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/ks_pos_low_stock_alert/static/src/css/ks_low_stock.css"/>
+                <script type="text/javascript" src="/ks_pos_low_stock_alert/static/src/js/ks_utils.js"></script>
+                <script type="text/javascript" src="/ks_pos_low_stock_alert/static/src/js/ks_low_stock.js"></script>
+            </xpath>
+        </template>
+    </data>
+</odoo>

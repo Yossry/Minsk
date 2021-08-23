@@ -1,0 +1,60 @@
+.o_web_client {
+    .o_main {
+        .o_main_content.ad_rightbar {
+            & > .o_content {
+                .o_hr_attendance_kiosk_mode_container {
+                    .o_hr_attendance_kiosk_mode {
+                        border-radius: 0px;
+                        .o_hr_attendance_user_badge{
+                            background: linear-gradient(to right bottom, $brand-primary, $brand-secondary);
+                        }
+                        .o_hr_attendance_sign_in_out_icon {
+                            border-radius: 0px;
+                            border: none;
+                            box-shadow: none;
+                            color: $brand-primary;
+                            &:hover{
+                                color: $brand-secondary;
+                                background-color: transparent;
+                            }
+                        }
+                        .o_hr_attendance_PINbox {
+                            border: none;
+                            border-bottom: 1px solid $border;
+                            &:valid, &:focus {
+                                @include border-animation();
+                            }
+                        }
+                        .o_hr_attendance_back_button {
+                            .btn{
+                                background-color: $white;
+                            }
+                        }
+                        .o_hr_attendance_pin_pad {
+                            .o_hr_attendance_pin_pad_border {
+                            }
+                        }
+                    }
+                }
+                .o_hr_attendance_message_container {
+                    .o_hr_attendance_message {
+                        border-radius: 0px;
+                    }
+                    .o_hr_attendance_button_dismiss {
+                        height: 40px;
+                    }
+                }
+            }
+        }
+    }
+    &.o_fullscreen{
+        .o_main{
+            margin-left: 0px;
+            .o_main_content.ad_rightbar{
+                .o_content{
+                    margin-bottom: 0px;
+                }
+            }
+        }
+    }
+}

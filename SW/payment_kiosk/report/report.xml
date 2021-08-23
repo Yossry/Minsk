@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<odoo>
+
+        <report
+            id="action_report_kiosktransaction"
+            string="Kiosk Transaction Report"
+            model="payment.kiosk"
+            report_type="qweb-pdf"
+            name="payment_kiosk.report_kiosktransaction"
+            file="payment_kiosk.report_kiosktransaction"
+            menu="False"/>
+
+</odoo>

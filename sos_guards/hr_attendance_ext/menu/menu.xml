@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>	
+
+		<!-- inherit View-->
+		<menuitem id="hr_attendance.menu_hr_attendance_settings" name="Configuration" parent="hr_attendance.menu_hr_attendance_root"
+		    sequence="99" action="hr_attendance.action_hr_attendance_settings" groups="hr_attendance.group_hr_attendance_manager,hr.group_hr_manager"/>
+		
+		<!-- Attendance -->	
+		<record id="hr_attendance.menu_hr_attendance_manage_attendances" model="ir.ui.menu">
+			<field name="groups_id" eval="[(4,ref('hr_holidays.group_hr_holidays_user'))]"/>
+		</record>
+		<record id="hr_attendance.menu_hr_attendance_view_attendances" model="ir.ui.menu">
+			<field name="groups_id" eval="[(4,ref('hr_holidays.group_hr_holidays_user'))]"/>
+		</record>
+		<record id="hr_attendance.menu_hr_attendance_view_employees_kanban" model="ir.ui.menu">
+			<field name="groups_id" eval="[(4,ref('hr_holidays.group_hr_holidays_user'))]"/>
+		</record>
+
+		<record id="hr_attendance.menu_hr_attendance_kiosk_mode" model="ir.ui.menu">
+			<field name="groups_id" eval="[(6,0,[ref('base.group_no_one')])]"/>
+		</record>
+		
+		
+		<!-- My Attendances -->
+		<menuitem id="hr_attendance.menu_hr_attendance_my_attendances" name="My Attendances" parent="hr_attendance.menu_hr_attendance_root" 
+			sequence="10" action="hr_my_attendance_action"/>
+			
+			<menuitem id="menu_hr_attendance_my_attendances" name="My Attendances" parent="hr_attendance.menu_hr_attendance_my_attendances" 
+				sequence="10" action="hr_my_attendance_action"/>
+			
+			<menuitem name="Attendance Dashboard" id="attendance_dashboard_menu2" action="attendance_dashboard_action" 
+				parent="hr_attendance.menu_hr_attendance_my_attendances" sequence="30"/>
+		
+		<!-- Attendance Reports -->    
+		<menuitem name="Reports" id="hr_attendance.menu_hr_attendance_report" parent="hr_attendance.menu_hr_attendance_root" groups="hr.group_hr_user,hr_holidays.group_hr_holidays_user" sequence="50"/>
+		 	<menuitem name="Attendance Report" action="action_attendance_wizard" id="menu_hr_attendance" sequence="15" 
+		 		parent="hr_attendance.menu_hr_attendance_report" groups="hr.group_hr_user,hr_holidays.group_hr_holidays_user"/>		
+			<menuitem name="Daily Attendance Report" action="action_daily_attendance_wizard" id="menu_hr_daily_attendance" sequence="10" 
+				parent="hr_attendance.menu_hr_attendance_report" groups="hr.group_hr_user,hr_holidays.group_hr_holidays_user"/>
+			
+			<menuitem id="menu_hr_attendance_analysis" name="Analysis" parent="hr_attendance.menu_hr_attendance_report" sequence="30" 
+				groups="hr.group_hr_user,hr_attendance.group_hr_attendance_user" action="hr_attendance.hr_attendance_action_graph"/>	 
+		
+		 <!-- Attendance Dashboard Menu in HR -->
+		<menuitem name="Attendance Dashboard" id="attendance_dashboard_menu" action="attendance_dashboard_action" parent="hr.menu_hr_main" sequence="100"/>	
+		<menuitem name="Attendance" id="menu_employee_attendance" sequence="7" parent="hr.menu_hr_root"/>
+	 	<menuitem name="Attendances" parent="menu_employee_attendance" action="open_view_hr_employee_attendance" sequence="5" 	id="menu_hr_attendance" groups="hr_attendance.group_hr_attendance_user"/>
+		
+			<menuitem name="Monthly Attendance" parent="sos_payroll.staff_attendance_main_menu" action="open_view_hr_employee_month_attendance" sequence="6" 
+				id="menu_hr_month_attendance" groups="hr_attendance.group_hr_attendance_user,base.group_user"/>
+		
+					
+	</data>	 
+</odoo>

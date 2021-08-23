@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="kingfisher_form_view_for_biz_product_images" model="ir.ui.view">
+        <field name="name">biztech.product.images</field>
+        <field name="model">biztech.product.images</field>
+        <field name="arch" type="xml">
+            <form string="Multiple Image">
+                <group>
+                    <field name="name"/>
+                    <field name="alt"/>
+                    <field name="attach_type" widget='radio'/>
+                    <field name="image" 
+                            widget="image" class="oe_avatar"
+                           height='64' width="64" options='{"preview_image":"image_medium"}'
+                           attrs="{'invisible': [('attach_type', '=', 'video')]}"/>
+                    <field name="video_type" attrs="{'invisible': [('attach_type', '=', 'image')]}"/>
+                </group>
+                <group col="4">
+                    <field name="cover_image" 
+                        widget="image" class="oe_avatar"
+                        height="64" width="64" options='{"preview_image":"image_medium"}'
+                        attrs="{'invisible': ['|', ('attach_type', '=', 'image'), ('video_type', '=', 'youtube')]}"/>
+                    <!-- <label string="It is required"
+                        attrs="{'invisible': ['|', ('attach_type', '=', 'image'), ('video_type', '=', 'youtube')]}"/> -->
+                </group>
+                <group>
+                    <field name="video_id"
+                        attrs="{'invisible': ['|', ('attach_type', '=', 'image'), ('video_type', '=', 'html5video')]}"/>
+
+                    <field name="video_ogv"
+                        attrs="{'invisible': ['|', ('attach_type', '=', 'image'), ('video_type', 'in', ('youtube', 'vimeo'))]}"/>
+                    <field name="video_webm"
+                        attrs="{'invisible': ['|', ('attach_type', '=', 'image'), ('video_type', 'in', ('youtube', 'vimeo'))]}"/>
+                    <field name="video_mp4"
+                        attrs="{'invisible': ['|', ('attach_type', '=', 'image'), ('video_type', 'in', ('youtube', 'vimeo'))]}"/>
+
+                    <field name="sequence"/>
+                    <field name="more_view_exclude"/>
+                </group>
+            </form>
+        </field>
+    </record>
+       
+        <record id="kingfisher_list_view_for_biz_product_images" model="ir.ui.view">
+            <field name="name">biztech.product.images</field>
+            <field name="model">biztech.product.images</field>
+            <field name="arch" type="xml">
+                <tree name="Multiple Image">
+                    <field name="name"/>
+                    <field name="alt"/>
+                    <field name="attach_type"/>
+                    <field name="image" widget='image' height='64px' width="64"
+                        attrs="{'invisible': [('attach_type', '=', 'video')]}" options='{"preview_image":"image_medium"}'/>
+
+                    <field name="video_type" attrs="{'invisible': [('attach_type', '=', 'image')]}"/>
+                    <field name="video_id" attrs="{'invisible': [('attach_type', '=', 'image')]}"/>
+                    <field name="sequence"/>
+                    <field name="more_view_exclude"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <!-- Product Form View Inherited -->
+        <record id="view_product_template_form_multiple_image" model="ir.ui.view">
+            <field name="name">product.template.form.view.inherited</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='options']" position="inside">
+                    <field name="multi_image" nolabel="1"/>
+                    <label for="multi_image"/>
+                </xpath>
+                <xpath expr="//div[@name='options']" position="inside">
+                    <div>
+                        <field name="is_flip_image" nolabel="1"/>
+                        <label for="is_flip_image"/>
+                    </div>
+                </xpath>
+                <xpath expr="//notebook" position="inside">
+                    <page attrs="{'invisible':[('multi_image','!=',True)]}" name="product multi image" string="Product Multiple Images">
+                        <field name="images" nolabel="1" context="{'default_product_id': id, 'tree_view_ref':'kingfisher.kingfisher_list_view_for_biz_product_images', 'form_view_ref':'kingfisher.kingfisher_form_view_for_biz_product_images'}"/>
+                    </page>
+                    <page attrs="{'invisible':[('is_flip_image','!=',True)]}" name="flip_image_page" string="Product Flip Image">
+                        <h4>Add flip image which will be visible on product hover in website</h4>
+                        <field name="flip_image" widget='image' height="74px"/>
+                    </page>
+                </xpath>
+                <field name="website_style_ids" position="after">
+                    <field name="product_style_tag_id"/>
+                </field>
+            </field>
+        </record>
+
+        <!-- Product Tag Form View-->
+        <record id="form_view_for_biztech_product_tags" model="ir.ui.view">
+            <field name="name">Biztech Product Tags Form View</field>
+            <field name="model">biztech.product.tags</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="sequence" string="Sequence"/>
+                            </group>
+                            <group>
+                                <field name="active"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Products">
+                                <field name="product_ids"/>
+                            </page>
+                        </notebook> 
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Product Tag List View-->
+        <record id="list_view_for_biztech_product_tags" model="ir.ui.view">
+            <field name="name">Biztech Product Tags List View</field>
+            <field name="model">biztech.product.tags</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="sequence" string="Sequence"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Action for product tags -->
+        <record id="action_for_biztech_product_tags" model="ir.actions.act_window">
+            <field name="name">Product Tags</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">biztech.product.tags</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">list,form</field>
+        </record>
+
+        <!-- Menu for Product Tags -->
+        <menuitem name="Product Tags"
+                  id="biztech_product_tags"
+                  parent="sale.menu_sale_config"
+                  sequence="70"
+                  action="action_for_biztech_product_tags"/>
+
+
+<!-- Product Sorting -->
+        <!-- Product sorting form view -->
+        <record id="biztech_form_view_for_product_sorting" model="ir.ui.view">
+            <field name="name">Biztech Product Sorting Form View</field>
+            <field name="model">biztech.product.sortby</field>
+            <field name="arch" type="xml">
+                <form name="Product Sorting">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="sort_on"/>
+                            </group>
+                            <group>
+                                <field name="sort_type" string="Order By"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Product sorting list View -->
+        <record id="biztech_list_view_for_product_sorting" model="ir.ui.view">
+            <field name="name">Biztech Product Sorting List View</field>
+            <field name="model">biztech.product.sortby</field>
+            <field name="arch" type="xml">
+                <tree name="Product Sorting">
+                    <field name="name"/>
+                    <field name="sort_on"/>
+                    <field name="sort_type"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Action for product sorting -->
+        <record id="action_for_product_sorting" model="ir.actions.act_window">
+            <field name="name">Product Sorting</field>
+            <field name="res_model">biztech.product.sortby</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">list,form</field>
+        </record>
+        
+        <!-- Menu for product sorting -->
+        <menuitem name="Product Sorting"
+                  id="sub_menu_sort_by"
+                  parent="sale.menu_sale_config"
+                  sequence="80"
+                  action="action_for_product_sorting"/>
+
+        <!-- Product Public Category -->
+        <record id="view_product_public_category_inherit" model="ir.ui.view">
+            <field name="name">Inherited Product Public Category Form View</field>
+            <field name="model">product.public.category</field>
+            <field name="inherit_id" ref="website_sale.product_public_category_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='sequence']" position="after">
+                    <field name="include_in_megamenu"/>
+                </xpath>
+                <xpath expr="//div[hasclass('oe_left')]" position="attributes">
+                    <attribute name="style">width:500px;</attribute>
+                </xpath>
+                <xpath expr="//div[hasclass('oe_left')]/group" position="after">
+                    <group attrs="{'invisible': [('include_in_megamenu', '=', False)]}">
+                        <field name="menu_id" 
+                            domain= "[('is_megamenu', '=', True)]"
+                            attrs="{'required': [('include_in_megamenu', '=', True)]}"/>
+                        <field name="description"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Website product paging -->
+        <record id="action_product_per_page" model="ir.actions.act_window">
+            <field name="name">Website Product Pagination</field>
+            <field name="res_model">product.per.page</field>
+            <field name="view_mode">list,form</field>
+            <field name="context">{'search_default_my_websites':1}</field>
+        </record>
+
+        <record id="list_view_product_per_page" model="ir.ui.view">
+            <field name="name">Product Per Page List View</field>
+            <field name="model">product.per.page</field>
+            <field name="arch" type="xml">
+                <tree string="Website Product Pagination" create="false" delete="false">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="form_view_product_per_page" model="ir.ui.view">
+            <field name="name">Product Per Page Form View</field>
+            <field name="model">product.per.page</field>
+            <field name="arch" type="xml">
+                <form string="Website Product Pagination" create="false" delete="false">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="no_ids"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="form_view_product_per_page_no" model="ir.ui.view">
+            <field name="name">Product Per Page No Form View</field>
+            <field name="model">product.per.page.no</field>
+            <field name="arch" type="xml">
+                <form string="Product Per Page No">
+                    <group>
+                        <field name="name"/>
+                        <field name="set_default_check"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="list_view_product_per_page_no" model="ir.ui.view">
+            <field name="name">Product Per Page No List View</field>
+            <field name="model">product.per.page.no</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom">
+                    <field name="name"/>
+                    <field name="set_default_check"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <!-- Menu for Product Pagination -->
+        <menuitem name="Website Product Paging"
+                  id="view_res_config_ppp"
+                  parent="sale.menu_sale_config"
+                  sequence="70"
+                  action="action_product_per_page"/>
+
+        <!-- Product style tag Form View-->
+        <record id="form_view_for_biztech_product_style_tag" model="ir.ui.view">
+            <field name="name">Biztech Product Style Tag Form View</field>
+            <field name="model">biztech.product.style.tag</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                            <group>
+                                <field name="color"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Product Tag List View-->
+        <record id="list_view_for_biztech_product_style_tag" model="ir.ui.view">
+            <field name="name">Biztech Product Style Tag List View</field>
+            <field name="model">biztech.product.style.tag</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="color"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Action for product  style tag -->
+        <record id="action_for_biztech_product_style_tag" model="ir.actions.act_window">
+            <field name="name">Product Style Tags</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">biztech.product.style.tag</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">list,form</field>
+        </record>
+
+        <!-- Menu for Product Tags -->
+        <menuitem name="Product Style Tag"
+                  id="biztech_product_style_tag"
+                  parent="sale.menu_sale_config"
+                  sequence="80"
+                  action="action_for_biztech_product_style_tag"/>
+
+
+        <!-- Website Menu List view -->
+        <record id="website.menu_tree" model="ir.ui.view">
+            <field name="name">website.menu.tree</field>
+            <field name="model">website.menu</field>
+            <field name="field_parent">child_id</field>
+            <field name="arch" type="xml">
+                <tree string="Website menu">
+                    <field name="sequence" widget="handle"/>
+                    <field name="website_id" options="{'no_create': True}"/>
+                    <field name="name"/>
+                    <field name="is_megamenu"/>
+                    <field name="url"/>
+                    <field name="new_window"/>
+                    <field name="parent_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Website Menu Form view -->
+        <record id="website.website_menus_form_view" model="ir.ui.view">
+            <field name="name">Website Menu Form View Inherited</field>
+            <field name="model">website.menu</field>
+            <field name="field_parent">child_id</field>
+            <field name="arch" type="xml">
+                <form string="Website menu">
+                    <sheet>
+                        <group>
+                            <field name="website_id" options="{'no_create': True}"/>
+                            <field name="name"/>
+                            <field name="url"/>
+                            <field name="new_window"/>
+                            <field name="parent_id" domain="[('is_megamenu', '=', False)]"/>
+                        </group>
+                        <group attrs="{'invisible': [('parent_id', '=', False)]}">
+                            <field name="is_megamenu"/>
+                        </group>
+                        <group attrs="{'invisible': ['|', ('is_megamenu', '=', False), ('parent_id', '=', False)]}">
+                            <field name="megamenu_type"/>
+
+                            <field name="megamenu_bg"/>
+                            <field name="megamenu_bg_img_color"
+                                   widget="radio"
+                                   attrs="{'invisible': [('megamenu_bg', '=', False)]}"/>
+                            <field name="megamenu_bg_image_filename" invisible="1"/>
+                            <field name="megamenu_bg_image"
+                                widget="image"
+                                height='64px'
+                                filename="megamenu_bg_image_filename"
+                                attrs="{'invisible': ['|', ('megamenu_bg', '=', False), ('megamenu_bg_img_color', '=', 'bg_color')],
+                                        'required': [('megamenu_bg', '!=', False), ('megamenu_bg_img_color', '=', 'bg_img')]}"/>
+                            <field name="megamenu_bg_color"
+                                placeholder="#ccc"
+                                attrs="{'invisible': ['|', ('megamenu_bg', '=', False), ('megamenu_bg_img_color', '=', 'bg_img')],
+                                        'required': [('megamenu_bg', '!=', False), ('megamenu_bg_img_color', '=', 'bg_color')]}"/>
+
+                            <field name="category_slider"/>
+                            <field name="carousel_header_name"
+                                   attrs="{'invisible': [('category_slider', '=', False)]}"/>
+                            <field name="category_slider_position"
+                                   attrs="{'invisible': [('category_slider', '=', False)]}"/>
+
+                            <field name="menu_icon"/>
+                            <field name="menu_icon_image" widget="image"
+                                   height='64px'
+                                   attrs="{'invisible': [('menu_icon', '=', False)],
+                                   'required': [('menu_icon', '=', True)]}"/>
+
+                            <field name="customize_menu_colors"/>
+                            <field name="main_category_color"
+                                   attrs="{'invisible': [('customize_menu_colors', '=', False)],
+                                           'required': [('customize_menu_colors', '=', True)]}"/>
+                            <field name="sub_category_color"
+                                   attrs="{'invisible': [('customize_menu_colors', '=', False)],
+                                           'required': [('customize_menu_colors', '=', True)]}"/>
+
+                            <field name="display_menu_footer"/>
+                            <field name="menu_footer"
+                                   widget="html"
+                                   attrs="{'invisible': [('display_menu_footer', '=', False)],
+                                           'required': [('display_menu_footer', '=', True)]}"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Website Menu Action -->
+        <record id="website.action_website_menu" model="ir.actions.act_window">
+            <field name="name">Website Menu</field>
+            <field name="res_model">website.menu</field>
+            <field name="view_mode">list,form</field>
+            <field name="context">{'search_default_my_websites':1}</field>
+        </record>
+
+            <!-- New rating feature for displying only stars in any view for odoo 11 -->
+        <template id="inherited_message_thread" inherit_id="portal.message_thread">
+            <xpath expr="//div[@id='discussion']" position="attributes">
+                <attribute name="t-att-data-rating_val">rating_val or 6</attribute>
+                <attribute name="t-att-data-only_rating">only_rating or 0</attribute>
+            </xpath>
+        </template>
+
+
+</odoo>

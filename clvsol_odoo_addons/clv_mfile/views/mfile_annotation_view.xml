@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+        
+    <record id="clv_mfile_view_form_mfile_annotation" model="ir.ui.view">
+        <field name="name">clv.mfile.form</field>
+        <field name="model">clv.mfile</field>
+        <field name="inherit_id" ref="clv_mfile_view_form"/>
+        <field name="priority" eval="30" />
+        <field name="arch" type="xml">
+            <page name="settings" position="before">
+                <page string="Annotations" groups="clv_base.group_annuser">
+                    <group>
+                        <field name="annotation_ids" colspan="4" nolabel="1" />
+                    </group>
+                </page>
+            </page>
+        </field>
+    </record>
+
+    <record id="clv_mfile_annotation_view_form" model="ir.ui.view">
+        <field name="name">clv.mfile.annotation.form</field>
+        <field name="model">clv.mfile.annotation</field>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div name="button_box" class="oe_right oe_button_box">
+                        <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive" groups="clv_base.group_reguser">
+                            <field name="active" widget="boolean_button" options='{"terminology": "archive"}'/>
+                        </button>
+                    </div>
+                    <div name="center" class="oe_center">
+                        <!-- Put here related fields -->
+                    </div>
+                    <label for="mfile_id" class="oe_edit_only"/>
+                    <h2> <field name="mfile_id" default_focus="1" placeholder="Address..." readonly="True"/></h2>
+                    <label for="name" class="oe_edit_only"/>
+                    <h2><field name="name" default_focus="1" placeholder="Subject..."/></h2>
+                    <label for="body" class="oe_edit_only"/>
+                    <h3><field name="body" colspan="4" nolabel="1" placeholder="Annotations..."/></h3>
+                    <group>
+                        <field name="date_annotation"/>
+                        <field name="author"/>
+                        <field name="code" placeholder="Annotation Code..."/>
+                        <field name="code_sequence" invisible="True"/>
+                    </group>
+                    <div name="button_box_2" class="oe_right oe_button_box">
+                    </div>
+                    <notebook>
+                        <page name="settings" string="Settings" groups="clv_base.group_reguser" invisible="True">
+                            <group name="settings">
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="clv_mfile_annotation_view_tree" model="ir.ui.view">
+        <field name="name">clv.mfile.annotation.tree</field>
+        <field name="model">clv.mfile.annotation</field>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <tree string="Annotations">
+                <field name="name"/>
+                <field name="code"/>
+                <field name="author"/>
+                <field name="date_annotation"/>
+                <field name="body"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="clv_mfile_annotation_view_search" model="ir.ui.view">
+        <field name="name">clv.mfile.annotation.search</field>
+        <field name="model">clv.mfile.annotation</field>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="author"/>
+                <field name="date_annotation"/>
+                <field name="body"/>
+                <separator/>
+                <filter string="Archived" name="inactive" domain="[('active','=',False)]"/>
+                <group expand="0" string="Group By...">
+                    <filter string="Address" domain="[]" context="{'group_by':'mfile_id'}"/>
+                    <filter string="Author" domain="[]" context="{'group_by':'author'}"/>
+                    <filter string="Date" domain="[]" context="{'group_by':'date_annotation'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    
+    <record id="clv_mfile_annotation_action" model="ir.actions.act_window">
+        <field name="name">Annotations</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">clv.mfile.annotation</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="clv_mfile_annotation_view_search"/>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="view_id" eval="False"/>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Click to add a new media file annotation.
+          </p>
+        </field>
+    </record>
+        
+</odoo>

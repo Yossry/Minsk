@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<record id="res_partner_bank_afex_view_form" model="ir.ui.view">
+    <field name="name">Partner Bank with Afex</field>
+    <field name="model">res.partner.bank</field>
+    <field name="inherit_id" ref="base.view_partner_bank_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//field[@name='bank_id']/.." position="after">
+            <group>
+                <field name="is_afex"/>
+                <field name="afex_unique_id" readonly="True"/>
+                <field name="afex_sync_status" attrs="{'invisible': [('is_afex', '=', False)]}"/>
+                <field name="afex_corporate" attrs="{'invisible': [('is_afex', '=', False)]}"/>
+                <field name="afex_bank_country_id" attrs="{'invisible': [('is_afex', '=', False)]}"/>
+                <field name="afex_int_bank_country_id" attrs="{'invisible': [('is_afex', '=', False)]}"/>
+                <field name="afex_payment_notify_email" attrs="{'invisible': [('is_afex', '=', False)]}"/>
+                <field name="afex_purpose_of_payment_id" widget="selection" force_save="1"
+                       attrs="{'readonly': ['|', '|', ('afex_bank_country_id', '=', False),
+                                            ('currency_id', '=', False), ('partner_country_id', '=', False)],
+                               'invisible': [('is_afex', '=', False)]}"
+                       domain="[('afex_bank_country_id', '=', afex_bank_country_id), ('currency_id', '=', currency_id),
+                                ('partner_country_id', '=', partner_country_id)]"/>
+                <field name="partner_country_id" invisible="1"/>
+                <field name="add_afex_info_ids" attrs="{'invisible': [('is_afex', '=', False)]}" context="{'default_bank_id': id}">
+                    <tree editable="bottom">
+                        <field name="bank_id" invisible="1"/>
+                        <field name="field"/>
+                        <field name="value"/>
+                    </tree>
+                    <form>
+                        <sheet>
+                            <group>
+                                <field name="bank_id" invisible="1"/>
+                                <field name="field"/>
+                                <field name="value"/>
+                            </group>
+                        </sheet>
+                    </form>
+                </field>
+            </group>
+        </xpath>
+    </field>
+</record>
+
+<record id="res_partner_afex_view_form" model="ir.ui.view">
+    <field name="name">afex_in_res_partner</field>
+    <field name="model">res.partner</field>
+    <field name="inherit_id" ref="account.view_partner_property_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//group[@name='banks']/button" position="after">
+            <field name="afex_sync_status" attrs="{'invisible': ['!', ('afex_sync_status', 'in', ('done', 'needed'))]}"/>
+        </xpath>
+    </field>
+</record>
+
+<record id="afex_partner_server_sync" model="ir.actions.server">
+    <field name="name">AFEX Sync</field>
+    <field name="type">ir.actions.server</field>
+    <field name="state">code</field>
+    <field name="model_id" ref="base.model_res_partner"/>
+    <field name="binding_model_id" ref="base.model_res_partner"/>
+    <field name="code">
+records.sync_partners_afex()
+    </field>
+</record>
+
+</odoo>

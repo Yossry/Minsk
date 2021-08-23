@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_product_manager_product_product,Full access on product.product for Product Manager,product.model_product_product,group_product_manager,1,1,1,1
+access_product_manager_product_template,Full access on product.template for Product Manager,product.model_product_template,group_product_manager,1,1,1,1
+access_product_manager_product_category,Full access on product.category for Product Manager,product.model_product_category,group_product_manager,1,1,1,1
+access_product_manager_product_supplierinfo,Full access on product.supplierinfo for Product Manager,product.model_product_supplierinfo,group_product_manager,1,1,1,1
+access_product_manager_product_attribute,Full access on product.attribute for Product Manager,product.model_product_attribute,group_product_manager,1,1,1,1
+access_product_manager_product_attribute_value,Full access on product.attribute.value for Product Manager,product.model_product_attribute_value,group_product_manager,1,1,1,1

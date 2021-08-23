@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>	
+		<template id ="sos_uniform.report_uniform">
+			<t t-call="web.html_container">
+				<t t-call="web.external_layout" style="font-family:georgia,garamond,serif;font-size:10px">
+					<div class="page">
+						<style>
+							 tr:nth-child(even) {background-color: #FFEBCD;}
+							 tr:nth-child(odd) {background-color: #cdcdcd;}
+						</style>
+						
+						<h4>Uniform Report</h4>
+						<h5>
+							From: <span t-esc="get_date_formate(data['date_from'])"/><br></br>
+							To: <span t-esc="get_date_formate(data['date_to'])"/><br></br>
+						</h5>
+						
+						<table class="table table-condensed" width="100%">
+							<tr style="font-size:12px; font-weight:bold; background-color:#E5E8E8;">
+								<td colspan="2"> DATE: </td>
+								<td colspan="3">
+									<t t-esc="context_timestamp(datetime.datetime.now()).strftime('%H:%M:%S')"/> </td>
+								<td> STATUS: </td>
+								<td colspan="5" style="text-align:center;"><span t-esc="data['state']"/> </td>
+							</tr>
+							<tr style="font-size:10px; font-weight:bold; background-color:#A6ACAF;">
+								<td>SR#. </td>
+								<td>Date </td>
+								<td>Center </td>
+								<td>Project </td>
+								<td>Posts </td>
+								<td>Status </td>
+								<td>Guard </td>
+								<td>ERP ID </td>
+								<td>Item </td>
+								<td>Qty </td>
+								<td>Size </td>
+							</tr>
+							
+							<t t-foreach="Demands" t-as="dmd">
+								<tr>
+									<td> <span t-esc="dmd_index + 1" /> </td>
+									<td> <span t-field="dmd.date" t-field-options='{"format": "d-MM-y"}' /> </td>
+									<td> <span t-esc="dmd.center_id.name" /> </td>
+									<td> <span t-esc="dmd.project_id.name" /> </td>
+									<td> <span t-esc="dmd.post_id.name" /> </td>
+									<td> <span t-esc="dmd.state" /> </td>
+									<td colspan="5" style="background-color:#F2F4F4;"> </td>
+								</tr>	
+									
+									<t t-if="dmd.uniform_demand_line">
+										<t t-foreach="dmd.uniform_demand_line" t-as="line">
+									 		<tr>
+									 			<td colspan="6"> </td>
+									 			<td> <span t-esc="line.guard_id.name" /> </td>
+									 			<td> <span t-esc="line.guard_id.code" /> </td>
+									 			<td> <span t-esc="line.item_id.name" /> </td>
+									 			<td> <span t-esc="line.qty" /> </td>
+									 			<td> <span t-esc="line.size" /> </td>
+									 		</tr>
+									 	</t>	
+									 </t>
+								
+							</t>
+						</table>			
+					</div>
+				</t>		 
+			</t>
+		</template>
+		
+	</data>
+</odoo>
+

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="guards_payroll_advice_summary_wiz_view" model="ir.ui.view">
+		    <field name="name">Guards Payroll Advice Summary</field>
+		    <field name="model">guards.payroll.advice.summary.wiz</field>
+		    <field name="arch" type="xml">
+				<form string="Guards Payroll Advice Summary Wiz">
+					<group>
+						<group>
+							<field name="advice_id" invisible="0" readonly="1" />
+						</group>
+						<group>
+						</group>
+						
+					</group>
+					<footer>
+							<button string="Print" name="print_report" type="object" class="oe_highlight"  />
+							<button string="Cancel" class="oe_link" special="cancel" />
+		                </footer>
+				</form>
+			</field>
+		</record>
+
+		<act_window
+			id="action_guards_payroll_summary_wiz"
+			name="Print Advice Summary"
+			res_model="guards.payroll.advice.summary.wiz"
+			src_model="guards.payroll.advice"
+			view_mode="form"
+			multi="True"
+			target="new"
+			key2="client_print_multi"
+			/>
+	
+	</data>
+</odoo>

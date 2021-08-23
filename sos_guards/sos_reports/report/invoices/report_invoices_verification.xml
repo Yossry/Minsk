@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>	
+		<template id ="sos_reports.report_invoicesverification">
+			<t t-call="web.html_container">
+			<t t-call="web.external_layout" style="font-family:georgia,garamond,serif;font-size:10px">
+				<div class="page">
+					<div class="row">
+					 	 <div class="col-xs-4">
+					 	 	 <img width="40%" style="max-height:125px;" class="img img-responsive" src="/sos_payroll/static/src/img/logo.png"/>
+					 	 </div>
+					 	 <div class="col-xs-3">
+					 	 </div>
+					 	 
+					 	 <div class="col-xs-5" style="font-size:14px; font-weight:bold; text-align:right; align:left;margin-top:20px;">
+					 	 	SECURITY ORGANIZING SYSTEM (PVT) LIMITED
+					 	 </div>
+					 </div>			
+					 <div class="row" style="font-size:14px; font-weight:bold; text-align:center; align:left;">
+					 	<div class="col-xs-12">
+					 		Invoices Verification – Project Wise(
+					 		<span t-esc="data['project_id'][1]"/>
+					 		)
+					 	</div>
+					 </div>
+					 <table class="table table-bordered">
+					 	<thead>
+					 		<tr style="font-size:12px; font-weight:bold;background-color:#FFEBCD;">
+					 			<th>SR.No </th>
+					 			<th>ID </th>
+					 			<th>Date Invoice </th>
+					 			<th>Date Due </th>
+					 			<th>Date From </th>
+					 			<th>Date To </th>
+					 			<th>For Month </th>
+					 			<th>Total </th>
+					 			<th>State</th>
+					 		</tr>
+					 		
+					 	</thead>
+					 	
+					 	<tbody>
+					 		<t t-foreach="Invoices" t-as="inv">
+					 			<tr style="font-size:16px; font-weight:bold;background-color:#00EBCD;">
+					 				<td class="text-left" colspan="9">
+										<span t-esc="inv['name']" />
+									</td>
+					 			</tr>
+					 			
+					 			<t t-foreach="inv['invoices']" t-as="line">
+					 				<tr>
+					 					<td class="text-left">
+					 						<span t-esc="line_index + 1" />
+					 					</td>
+					 					<td class="text-left">
+					 						<span t-esc="line.id" />
+					 					</td>
+					 					<td class="text-left">
+					 						<span t-field="line.date_invoice" t-field-options='{"format": "d-MM-y"}' />
+					 					</td>
+					 					<td class="text-left">
+					 						<span t-field="line.date_due" t-field-options='{"format": "d-MM-y"}' />
+					 					</td>
+					 					<td class="text-left">
+					 						<span t-field="line.date_from" t-field-options='{"format": "d-MM-y"}' />
+					 					</td>
+					 					<td class="text-left">
+					 						<span t-field="line.date_to" t-field-options='{"format": "d-MM-y"}' />
+					 					</td>
+					 					<td class="text-left">
+					 						<span t-esc="line.for_month" />
+					 					</td>
+					 					<td class="text-left">
+					 						<span t-esc="line.amount_total and '{0:,.0f}'.format(int(line.amount_total)) or '-'" />
+					 					</td>
+					 					<td class="text-left">
+					 						<span t-esc="line.state" />
+					 					</td>
+					 				</tr>
+					 				
+					 				<t t-if="line.state == 'paid'">
+									 	<t t-foreach="line.payment_ids" t-as="payment">	
+						 					<tr style="background-color:#FF00CD;">
+						 						<td class="text-center" colspan="2">
+						 							<span t-field="payment.payment_date" t-field-options='{"format": "d-MM-y"}' />
+						 						</td>
+						 						<td class="text-left">
+						 							<span t-esc="payment.id" />
+						 						</td>
+						 						<td class="text-left">
+						 							<span t-esc="payment.name" />
+						 						</td>
+						 						<td class="text-left" colspan="3">
+						 							<span t-esc="payment.journal_id.name" />
+						 						</td>
+						 						<td class="text-left">
+						 							<span t-esc="payment.amount" />
+						 						</td>
+						 						<td class="text-left">
+						 							<span t-esc="payment.amount" />
+						 						</td>
+						 					</tr>
+						 				</t> <!-- payments loop End -->	
+					 				</t> <!-- payment if condition -->
+					 			</t> <!-- Invoice Loop End-->
+					 		</t> <!-- Posts loop End-->
+					 	</tbody>
+					 	
+					 </table>
+					 
+				</div>	 
+			</t>
+			</t>
+		</template>
+		
+	</data>
+</odoo>
+

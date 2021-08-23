@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2018 Xavier Piernas <xavier.piernas@qubiq.es>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <template id="report_picking" inherit_id="stock.report_picking">
+    	<xpath expr="//div[@class='row']/div[1]/div[1]/div" position="attributes">
+    		<attribute name="t-options">{'widget': 'contact', 'fields': ['address', 'phone'], 'no_marker': True, 'phone_icons': True}</attribute>
+    	</xpath>
+    	<xpath expr="//div[@class='row']/div[1]/div[1]/div" position="before">
+    		<div>
+                <t t-if="o.move_ids_without_package[0].partner_id.parent_id">
+                    <span t-field="o.move_ids_without_package[0].partner_id.parent_id.name"/>,
+                </t>
+                <span t-field="o.move_ids_without_package[0].partner_id.name"/>
+            </div>
+    	</xpath>
+    	<xpath expr="//div[@class='row']/div[1]/div[2]/div" position="attributes">
+    		<attribute name="t-options">{'widget': 'contact', 'fields': ['address', 'phone'], 'no_marker': True, 'phone_icons': True}</attribute>
+    	</xpath>
+    	<xpath expr="//div[@class='row']/div[1]/div[2]/div" position="before">
+    		<div>
+                <t t-if="o.picking_type_id.warehouse_id.partner_id.parent_id">
+                    <span t-field="o.picking_type_id.warehouse_id.partner_id.parent_id.name"/>,
+                </t>
+                <span t-field="o.picking_type_id.warehouse_id.partner_id.name"/>
+            </div>
+    	</xpath>
+    	<xpath expr="//div[@class='row']/div[2]/div[4]/div" position="attributes">
+    		<attribute name="t-options">{'widget': 'contact', 'fields': ['address', 'phone'], 'no_marker': True, 'phone_icons': True}</attribute>
+    	</xpath>
+    	<xpath expr="//div[@class='row']/div[2]/div[4]/div" position="before">
+    		<div>
+                <t t-if="o.partner_id.parent_id">
+                    <span t-field="o.partner_id.parent_id.name"/>,
+                </t>
+                <span t-field="o.partner_id.name"/>
+            </div>
+    	</xpath>
+    </template>
+    <template id="report_delivery_document" inherit_id="stock.report_delivery_document">
+    	<xpath expr="//t[@name='partner_header'][1]/t[@t-set='address']/div" position="attributes">
+    		<attribute name="t-options">{'widget': 'contact', 'fields': ['address', 'phone'], 'no_marker': True}</attribute>
+    	</xpath>
+    	<xpath expr="//t[@name='partner_header'][1]/t[@t-set='address']/div" position="before">
+    		<div>
+                <t t-if="o.move_lines[0].partner_id.parent_id">
+                    <span t-field="o.move_lines[0].partner_id.parent_id.name"/>,
+                </t>
+                <span t-field="o.move_lines[0].partner_id.name"/>
+            </div>
+    	</xpath>
+    </template>
+</odoo>

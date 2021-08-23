@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+     <data>
+
+         <record id="account_post_ledger_view" model="ir.ui.view">
+            <field name="name">Post Ledger</field>
+            <field name="model">account.post.ledger</field>
+             <field name="arch" type="xml">
+        	<form string="Report Options">
+        		<group>
+            		<field name="date_from"/>
+		            <field name="date_to"/>
+		            <field name="initial_balance"/>
+    		    </group>
+				<field name="post_ids" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>
+            <footer>
+                <button name="print_report" string="Print" type="object" default_focus="1" class="oe_highlight"/>
+                <button string="Cancel" class="oe_link" special="cancel" />
+            </footer>
+        </form>
+        </field>
+        </record>
+
+         <record id="action_account_post_ledger" model="ir.actions.act_window">
+             <field name="name">Post Ledger</field>
+             <field name="res_model">account.post.ledger</field>
+             <field name="type">ir.actions.act_window</field>
+             <field name="view_type">form</field>
+             <field name="view_mode">tree,form</field>
+             <field name="view_id" ref="account_post_ledger_view"/>
+             <field name="context">{}</field>
+             <field name="target">new</field>
+       </record>
+
+       <record model="ir.values" id="ir_values_account_post_ledger">
+           <field name="key2" eval="'client_print_multi'"/>
+           <field name="model" eval="'sos.post'"/>
+           <field name="name">Print Post Ledger</field>
+           <field name="value" eval="'ir.actions.act_window,%d'%action_account_post_ledger"/>
+       </record>
+
+		<!--
+        <menuitem name="Post Ledger" action="action_account_post_ledger" groups="account.group_account_manager,account.group_account_user"
+            id="menu_account_post_ledger" parent="account.menu_account_reports"/>
+		-->
+
+     </data>
+ </odoo>

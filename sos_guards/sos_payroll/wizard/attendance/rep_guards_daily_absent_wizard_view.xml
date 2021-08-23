@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+			   
+        <record id="sos_guards_daily_absent_form" model="ir.ui.view">
+            <field name="name">Print Guards Daily Absent</field>
+            <field name="model">guards.daily.absent.wizard</field>                     
+            <field name="arch" type="xml">
+            <form string="Guards Daily Absent" version="7.0">
+				<field name="date_from" />
+				<field name="date_to" />
+	
+				<field name="center_id" options="{'no_quick_create':True,'no_create_edit':True}"/> 
+				<footer>
+					<button name="print_report" string="Generate Report" type="object" default_focus="1" class="oe_highlight"/>
+					<button string="Cancel" class="oe_link" special="cancel" />
+				</footer> 	
+              </form>  
+            </field>
+        </record>
+	
+				
+        <record id="action_sos_guards_daily_absent" model="ir.actions.act_window">
+            <field name="name">Print Guards Daily Absent</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">guards.daily.absent.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="sos_guards_daily_absent_form"/>
+            <field name="target">new</field>
+        </record>
+		
+    </data>
+</odoo>

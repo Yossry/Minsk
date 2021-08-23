@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="sos_guards_new_join_termination_report_view" model="ir.ui.view">
+            <field name="name">Guards Join and Termination Report</field>
+            <field name="model">sos.guards.new.join.termination.report</field>
+            <field name="arch" type="xml">
+            <form string="Guards Join and Termination Report" version="7.0">
+                <label string="This wizard will print report which displays List of Guards Join and Termination Report."/>
+                <footer>
+                    <button name="print_report" string="Print" type="object" class="oe_highlight"/>
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+                <group>
+                	<field name="date_from"/>
+                	<field name="date_to"/>
+                	<field name="center"/>
+                </group>
+            </form>
+            </field>
+        </record> 
+        
+	<record id="action_sos_guards_new_join_termination_report" model="ir.actions.act_window">
+            <field name="name">Guards New Join and Termination Report</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sos.guards.new.join.termination.report</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="sos_guards_new_join_termination_report_view"/>
+            <field name="target">new</field>
+        </record>
+       
+        
+        
+    </data>
+</odoo>

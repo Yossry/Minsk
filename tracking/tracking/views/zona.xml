@@ -1,0 +1,66 @@
+<openerp>
+  <data>
+    <record id="view_zona_search" model="ir.ui.view">
+            <field name="name">view.zona.search</field>
+            <field name="model">res.zona</field>
+            <field name="arch" type="xml">
+                <search string="Zonas Preventa">
+                    <field name="name"/>
+                    <newline/>
+                    <group expand="0" string="Group By...">
+                         <filter string="zona" icon="terp-partner" name="filter_zona" domain="[]" context="{'group_by':'name'}"/>
+                        <separator orientation="vertical"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="view_zona_form" model="ir.ui.view">
+            <field name="name">view.zona.form</field>
+            <field name="model">res.zona</field>
+            <field name="arch" type="xml">
+                <form string="Zonas Preventa">
+                    <sheet>
+                        <group >
+                            <field name="codigo" />
+                            <field name="name" />
+                            <field name="user_id" />
+                            <field name="pos_id" />
+                            <field name="type" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_zona_tree" model="ir.ui.view">
+            <field name="name">view.zona.tree</field>
+            <field name="model">res.zona</field>
+            <field name="arch" type="xml">
+                <tree string="Zonas Preventa">
+                    <field name="name"/>
+                    <field name="user_id" />
+                    <field name="pos_id" />
+                    <field name="type" />
+                </tree>
+            </field>
+        </record>
+
+
+
+        <record id="zona_action_generic" model="ir.actions.act_window">
+            <field name="name">Zonas Preventa</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.zona</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <menuitem action="zona_action_generic" name="Zonas Preventa"
+                  id="menu_zonas"
+                  parent="sale.product_menu_catalog"
+                  sequence="3"
+      />
+
+  </data>
+</openerp>

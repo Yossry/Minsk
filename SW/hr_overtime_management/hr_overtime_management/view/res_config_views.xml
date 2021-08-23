@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<record id="res_config_settings_view_form" model="ir.ui.view">
+		<field name="name">res.config.settings</field>
+		<field name="model">res.config.settings</field>
+		<field name="inherit_id"
+			ref="hr_payroll.res_config_settings_view_form" />
+		<field name="arch" type="xml">
+			<div data-key="hr_payroll" position="inside">
+				<h2>
+				Overtime
+				<span class="fa fa-lg fa-building-o"
+						title="Values set here are company-specific."
+						groups="base.group_multi_company" />
+				</h2>
+				<div class="row mt16 o_settings_container">
+					<div class="col-md-6 col-xs-12 o_setting_box">
+
+						<div class="o_setting_right_pane">
+							<label for="overtime_type" />
+							<div class="content-group">
+								<div class="mt16">
+									<field name="overtime_type" />
+								</div>
+							</div>
+						</div>
+					</div>
+					
+						<div class="col-md-6 col-xs-12 o_setting_box" attrs="{'invisible':[('overtime_type','!=','request')]}">
+							<div class="o_setting_right_pane">
+								<label for="users_to_notify_ot_ids" />
+								<div class="content-group">
+									<div class="mt16">
+										<field name="users_to_notify_ot_ids"
+											widget="many2many_tags"
+											options="{'no_create': True,'no_quick_create': True,'no_open': True, 'no_create_edit': True}" />
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-6 col-xs-12 o_setting_box" attrs="{'invisible':[('overtime_type','!=','request')]}">
+
+							<div class="o_setting_right_pane">
+								<label for="overtime_analytic" />
+								<div class="content-group">
+									<div class="mt16">
+										<field name="overtime_analytic" />
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 col-xs-12 o_setting_box"
+							attrs="{'invisible':['|',('overtime_analytic','!=','with_entries'),('overtime_type','!=','request')]}">
+
+							<div class="o_setting_right_pane">
+								<label for="overtime_account_id" />
+								<div class="content-group">
+									<div class="mt16">
+										<field name="overtime_account_id"
+											attrs="{'required':[('overtime_analytic','=','with_entries'),('overtime_type','=','request')]}"
+											options="{'no_create': True,'no_quick_create': True,'no_open': True, 'no_create_edit': True}" />
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+		</field>
+	</record>
+
+</odoo>

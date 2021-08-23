@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<record id="res_partner_limit_access_group" model="res.groups">
+			<field name="name">Limit Access Contact</field>
+		</record>
+
+
+	</data>
+</odoo>

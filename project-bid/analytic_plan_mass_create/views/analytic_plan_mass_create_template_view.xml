@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_analytic_plan_mass_create_template_tree" model="ir.ui.view">
+        <field name="name">analytic.plan.mass.create.template.tree</field>
+        <field name="model">analytic.plan.mass.create.template</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Template">
+                <field name="name"/>
+                <field name="labor_cost_product_id"/>
+                <field name="material_cost_product_id"/>
+                <field name="revenue_product_id"/>
+                <field name="version_id"/>
+                <field name="currency_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_analytic_plan_mass_create_template_form" model="ir.ui.view">
+        <field name="name">analytic.plan.mass.create.template.form</field>
+        <field name="model">analytic.plan.mass.create.template</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Analytic Plan Mass Create Template" version="7.0">
+                <group>
+                    <field name="name" placeholder="Template name..."/>
+                </group>
+                <group>
+                    <field name="version_id"/>
+                    <field name="currency_id"/>
+                </group>
+                <group>
+                    <field name="labor_cost_product_id"/>
+                    <field name="material_cost_product_id"/>
+                    <field name="revenue_product_id"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_analytic_plan_mass_create_template_filter" model="ir.ui.view">
+        <field name="name">analytic.plan.mass.create.template.select</field>
+        <field name="model">analytic.plan.mass.create.template</field>
+        <field name="type">search</field>
+        <field name="arch" type="xml">
+            <search string="Search bid templates">
+                <group>
+                    <field name="name"/>
+                    <field name="labor_cost_product_id"/>
+                    <field name="material_cost_product_id"/>
+                    <field name="revenue_product_id"/>
+                    <field name="version_id"/>
+                    <field name="currency_id"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_analytic_plan_mass_create_template_open_form" model="ir.actions.act_window">
+        <field name="name">Analytic Plan Mass Create Templates</field>
+        <field name="res_model">analytic.plan.mass.create.template</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_analytic_plan_mass_create_template_filter" />
+    </record>
+
+    <record model="ir.actions.act_window.view" id="action_analytic_plan_mass_create_template_open_form_view">
+        <field name="sequence" eval="1"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_analytic_plan_mass_create_template_tree"/>
+        <field name="act_window_id" ref="action_analytic_plan_mass_create_template_open_form"/>
+    </record>
+
+    <menuitem groups="analytic.group_analytic_accounting"
+              action="action_analytic_plan_mass_create_template_open_form"
+              id="analytic_plan_mass_create_template_entries"
+              parent="account.menu_analytic_accounting"/>
+
+</odoo>

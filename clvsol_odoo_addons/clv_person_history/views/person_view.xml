@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+        
+    <record id="clv_person_view_form_person_history" model="ir.ui.view">
+        <field name="name">clv.person.form</field>
+        <field name="model">clv.person</field>
+        <field name="inherit_id" ref="clv_person.clv_person_view_form"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <page name="settings" position="before">
+                <page string="Persons (History)">
+                    <group>
+                        <group>
+                            <field name="count_person_histories"/>
+                        </group>
+                        <group>
+                            <button name="clv_person_history.clv_person_history_action"
+                                    type="action"
+                                    class="oe_stat_button"
+                                    icon="fa-list"
+                                    context="{'search_default_person_id': id}"
+                                    attrs="{'invisible': [('person_history_ids', '=', [])]}"
+                                    >
+                                <div class="o_form_field o_stat_info">
+                                    <span class="o_stat_value">
+                                        <field name="count_person_histories"/>
+                                    </span>
+                                    <span class="o_stat_text"> Person History(ies)</span>
+                                </div>
+                            </button>
+                        </group>
+                    </group>
+                    <field name="person_history_ids" colspan="4" nolabel="1"/>
+                </page>
+            </page>
+        </field>
+    </record>
+
+    <record id="clv_person_history_view_form_person" model="ir.ui.view">
+        <field name="name">clv.person.history.form</field>
+        <field name="model">clv.person.history</field>
+        <field name="inherit_id" ref="clv_person_history.clv_person_history_view_form"/>
+        <field name="priority" eval="6"/>
+        <field name="arch" type="xml">
+            <group name="history" position="after">
+                <group name="person">
+                    <field name="person_id" options="{'no_open': False, 'no_create': True}"/>
+                    <field name="category_ids" widget="many2many_tags" options="{'no_open': False, 'no_create': True}"/>
+                    <field name="marker_ids" widget="many2many_tags" options="{'no_open': False, 'no_create': True}"/>
+                </group>
+                <group name="person_2">
+                    <field name="responsible_id" options="{'no_open': False, 'no_create': True}"/>
+                    <field name="caregiver_id" options="{'no_open': False, 'no_create': True}"/>
+                </group>
+            </group>
+        </field>
+    </record>
+
+    <record id="clv_person_history_view_tree_person" model="ir.ui.view">
+        <field name="name">clv.person.history.tree</field>
+        <field name="model">clv.person.history</field>
+        <field name="inherit_id" ref="clv_person_history.clv_person_history_view_tree"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="date_sign_out" position="after">
+                <field name="person_id"/>
+                <field name="category_names"/>
+                <field name="category_names_suport" invisible="True"/>
+                <field name="marker_names"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="clv_person_history_view_search_person" model="ir.ui.view">
+        <field name="name">clv.person.history.search</field>
+        <field name="model">clv.person.history</field>
+        <field name="inherit_id" ref="clv_person_history.clv_person_history_view_search"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="date_sign_out" position="after">
+                <field name="person_id"/>
+                <field name="category_ids"/>
+                <field name="category_names"/>
+                <field name="marker_ids"/>
+                <field name="marker_names"/>
+            </field>
+            <group name="group_by" position="inside">
+                <filter name="group_by_person_id" string="Person" context="{'group_by': 'person_id'}"/>
+                <filter name="group_by_category_names" string="Categories" context="{'group_by': 'category_names'}"/>
+                <filter name="group_by_marker_names" string="Markers" context="{'group_by': 'marker_names'}"/>
+            </group>
+        </field>
+    </record>
+
+</odoo>

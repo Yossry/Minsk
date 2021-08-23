@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2019 Coop IT Easy SCRLfs <http://coopiteasy.be>
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+<odoo>
+
+    <template id="selection_field" name="Selection Field">
+        <!--
+        To use this template, `form`, `name` and `field` variable
+        should be set.
+        -->
+
+        <div t-attf-class="form-group field-{{name}}"
+            t-att-style="'display: none;' if field.hidden else None">
+            <label t-attf-for="{{name}}"><t t-esc="field.label"/></label>
+            <select t-attf-id="{{name}}"
+                class="form-control form-control-sm"
+                t-attf-name="{{name}}"
+                t-att-autofocus="'autofocus' if autofocus else None"
+                t-att-required="'required' if field.required else None">
+                <option t-foreach="field.choices() or []" t-as="choice"
+                    t-att="choice.att"
+                    t-att-selected="'selected' if choice.value == form.data.get(name, form.initial.get(name)) else None"
+                    t-att-value="choice.value">
+                    <t t-raw="choice.display"/>
+                </option>
+            </select>
+            <div t-if="field.content" t-attf-class="field-{{name}}-content">
+                <t t-raw="field.content"/>
+            </div>
+        </div>
+        <p class="alert alert-danger" t-if="name in form.errors" role="alert">
+            <t t-esc="str(form.errors[name])"/>
+        </p>
+
+    </template>
+
+
+    <template id="input_field" name="Input field">
+        <!--
+        To use this template, `form`, `name` and `field` variable
+        should be set.
+        -->
+
+        <div t-attf-class="form-group field-{{name}}"
+            t-att-style="'display: none;' if field.hidden else None">
+            <label t-attf-for="{{name}}"><t t-esc="field.label" /></label>
+            <input t-attf-id="{{name}}"
+                class="form-control form-control-sm"
+                t-att="field.att or {}"
+                t-attf-type="{{field.input_type}}"
+                t-attf-name="{{name}}"
+                t-att-autofocus="'autofocus' if autofocus else None"
+                t-att-value="form.data.get(name, form.initial.get(name))"
+                t-att-required="'required' if field.required else None"
+                t-att-readonly="'readonly' if field.readonly else None"/>
+            <div t-if="field.content" t-attf-class="field-{{name}}-content">
+                <t t-raw="field.content"/>
+            </div>
+        </div>
+        <p class="alert alert-danger" t-if="name in form.errors" role="alert">
+            <t t-esc="str(form.errors[name])"/>
+        </p>
+
+    </template>
+
+
+    <template id="checkbox_field" name="Checkbox field">
+        <!--
+        To use this template, `form`, `name` and `field` variable
+        should be set.
+        -->
+
+        <div t-attf-class="form-group form-check field-{{name}}"
+            t-att-style="'display: none;' if field.hidden else None">
+            <input t-attf-id="{{name}}"
+                class="form-check-input"
+                type="checkbox"
+                t-attf-name="{{name}}"
+                t-att-checked="'checked' if form.data.get(name, form.initial.get(name)) else None"
+                t-att="field.att or {}"
+                t-att-autofocus="'autofocus' if autofocus else None"
+                t-att-required="'required' if field.required else None"
+                t-att-readonly="'readonly' if field.readonly else None"/>
+            <label t-attf-for="{{name}}" class="form-check-label">
+                <t t-esc="field.label" />
+            </label>
+            <div t-if="field.content" t-attf-class="field-{{name}}-content">
+                <t t-raw="field.content"/>
+            </div>
+        </div>
+        <p class="alert alert-danger" t-if="name in form.errors" role="alert">
+            <t t-esc="str(form.errors[name])"/>
+        </p>
+
+    </template>
+
+</odoo>

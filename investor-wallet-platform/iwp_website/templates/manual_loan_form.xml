@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2020 Coop IT Easy SCRLfs <http://coopiteasy.be>
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+<odoo>
+
+    <template id="new_manual_loan_form" name="New Manual Loan Form">
+        <t t-call="portal.portal_layout">
+            <t t-set="additional_title">Create new manual loan</t>
+            <t t-set="no_breadcrumbs" t-value="True"/>
+            <div class="row justify-content-center">
+                <div class="col-xs-12 col-sm-10  col-md-8 col-lg-6">
+                    <h3 class="text-center mt-4">
+                        New manual loan for <t t-esc="struct.name"/>
+                    </h3>
+                    <form t-if="not success" class="oe_manual_loan_form" method="post">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                        <t t-foreach="form.fields" t-as="field_name">
+                            <t t-call="{{form.fields[field_name].template}}">
+                                <t t-set="name" t-value="field_name"/>
+                                <t t-set="field" t-value="form.fields[field_name]"/>
+                            </t>
+                        </t>
+
+                        <button type="submit" class="btn btn-primary">
+                            Envoyer
+                        </button>
+                    </form>
+                    <p t-else="" class="alert alert-success">
+                        Your manual loan has been registered.
+                    </p>
+                </div>
+            </div>
+        </t>
+    </template>
+
+</odoo>

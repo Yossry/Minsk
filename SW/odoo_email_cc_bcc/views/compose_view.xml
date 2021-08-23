@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="company_email_settings" model="ir.ui.view">
+        <field name="name">res.company.form.vat.inherit</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Compose Mail Settings">
+                    <group>
+                        <group>
+                            <field name="display_cc"/>
+                            <field name="display_bcc"/>
+                            <field name="display_reply_to"/>
+                            <field name="display_cc_recipients"/>
+                            <field name="display_bcc_recipients"/>
+                        </group>
+                        <group>
+                            <field name="default_cc" attrs="{'invisible':[('display_cc','=',False)],}"/>
+                            <field name="default_bcc" attrs="{'invisible':[('display_bcc','=',False)]}"/>
+                            <field name="default_reply_to" attrs="{'invisible':[('display_reply_to','=',False)]}"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+        <!-- Add mass mail campaign to the mail.compose.message form view -->
+        <record model="ir.ui.view" id="email_compose_form_mass_mailing">
+            <field name="name">mail.compose.message.form.mass_mailing</field>
+            <field name="model">mail.compose.message</field>
+            <field name="inherit_id" ref="mail.email_compose_message_wizard_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='reply_to']" position="replace">
+                    <field name="reply_to" placeholder="Email address to redirect replies..." attrs="{'required':[('no_auto_thread', '=', True), ('composition_mode', '=', 'mass_mail')]}" />
+                </xpath>
+                <xpath expr="//field[@name='subject']" position="before">
+                    <field name="display_cc" invisible="1"/>
+                    <field name="display_bcc" invisible="1"/>
+                    <field name="display_cc_recipients" invisible="1"/>
+                    <field name="display_bcc_recipients" invisible="1"/>
+                    <field name="display_reply_to" invisible="1"/>
+                    <label for="email_to"  groups="base.group_user"/>
+                    <div groups="base.group_user">
+                        <field name="email_to" context="{'force_email':True, 'show_email':True}"/>
+                    </div>
+                   <label for="email_cc"  groups="base.group_user" attrs="{'invisible':[('display_cc','=',False)]}"/>
+                    <div groups="base.group_user">
+                        <field name="email_cc" context="{'force_email':True, 'show_email':True}" attrs="{'invisible':[('display_cc','=',False)]}"/>
+                    </div>
+                    <label for="cc_recipient_ids"  groups="base.group_user" attrs="{'invisible':[('display_cc_recipients','=',False)]}"/>
+                    <div groups="base.group_user" attrs="{'invisible':[('display_cc_recipients','=',False)]}">
+                        <field name="cc_recipient_ids" widget="many2many_tags_email" context="{'force_email':True, 'show_email':True}"/>
+                    </div>
+                    <label for="email_bcc"  groups="base.group_user" attrs="{'invisible':[('display_bcc','=',False)]}"/>
+                    <div groups="base.group_user">
+                        <field name="email_bcc" context="{'force_email':True, 'show_email':True}" attrs="{'invisible':[('display_bcc','=',False)]}"/>
+                    </div>
+                    <label for="bcc_recipient_ids"  groups="base.group_user" attrs="{'invisible':[('display_bcc_recipients','=',False)]}"/>
+                    <div groups="base.group_user">
+                        <field name="bcc_recipient_ids" widget="many2many_tags_email" context="{'force_email':True, 'show_email':True}"  attrs="{'invisible':[('display_bcc_recipients','=',False)]}"/>
+                    </div>
+                </xpath>
+
+            </field>
+        </record>
+
+
+
+</odoo>

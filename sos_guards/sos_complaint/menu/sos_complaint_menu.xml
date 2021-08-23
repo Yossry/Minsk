@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+		<menuitem name="Additional Guard Report" parent="sos.menu_gms_guards_reports" sequence="15" action="action_additional_guard_report" id="menu_additional_guard_report"/>
+			<menuitem id="menu_gms_reservation" name="Reservation Approval" parent="sos_uniform.menu_gms_store" sequence="30" groups="sos.group_hr_master,base.group_user,base.group_user"/>
+			<menuitem name="Travel Agent" parent="menu_gms_reservation" sequence="5" action="view_sos_travel_agent_action" id="menu_sos_travel_agent"/>
+			<menuitem name="Air Reservation Approval" parent="menu_gms_reservation" sequence="10" action="view_sos_air_reservation_action" id="menu_air_reservation_approval"/>
+			<menuitem name="Rent A Car Approval" parent="menu_gms_reservation" sequence="15" action="view_sos_car_approval_action" id="menu_sos_car_approval"/>
+			<menuitem name="Guest House Approval" parent="menu_gms_reservation" sequence="20" action="view_sos_guest_house_approval_action" id="menu_sos_guest_house_approval"/>
+
+			<menuitem id="menu_gms_reservation_reports" name="Reservation Reports" parent="sos_uniform.menu_gms_store" sequence="50" groups="sos.group_hr_master,base.group_user,base.group_user"/>
+				
+				<menuitem name="Air Travel Summary" parent="menu_gms_reservation_reports" sequence="5" action="action_air_travel_summary_wiz" id="menu_sos_air_travel_summary_report"/>
+				<menuitem name="Guest House Summary" parent="menu_gms_reservation_reports" sequence="10" action="action_guest_house_summary_wiz" id="menu_sos_guest_house_summary_report"/>
+				<menuitem name="Rent A Car Summary" parent="menu_gms_reservation_reports" sequence="15" action="action_rent_car_summary_wiz" id="menu_sos_rent_car_summary_report"/>						
+				
+							
+  </data>
+</odoo>

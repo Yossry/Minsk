@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="clv_lab_test_result_edit_eur20_view_form" model="ir.ui.view">
+        <field name="name">clv.lab_test.result.edit_eur20.form</field>
+        <field name="model">clv.lab_test.result.edit_eur20</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_right">
+                    </div>
+                    <group  name="group_top">
+                        <field name="result_id" options="{'no_open': True, 'no_create': True, 'readonly': True}"/>
+                        <field name="lab_test_type_id" options="{'no_open': True, 'no_create': True, 'readonly': True}"/>
+                        <field name="lab_test_request_id" options="{'no_open': True, 'no_create': True, 'readonly': True}"/>
+                    </group>
+                    <group name="group_bottom">
+                        <group>
+                            <field name="EUR20_data_entrada_material"/>
+                            <field name="EUR20_liberacao_resultado"/>
+                            <field name="EUR20_examinador"/>
+                            <field name="EUR20_volume"/>
+                            <field name="EUR20_densidade"/>
+                            <field name="EUR20_aspecto"/>
+                            <field name="EUR20_cor"/>
+                            <field name="EUR20_odor"/>
+                        </group>
+                        <group>
+                            <field name="EUR20_ph"/>
+                            <field name="EUR20_proteinas"/>
+                            <field name="EUR20_glicose"/>
+                            <field name="EUR20_cetona"/>
+                            <field name="EUR20_pigmentos_biliares"/>
+                            <field name="EUR20_sangue"/>
+                            <field name="EUR20_urobilinogenio"/>
+                            <field name="EUR20_nitrito"/>
+                        </group>
+                        <group>
+                            <field name="EUR20_celulas_epiteliais"/>
+                            <field name="EUR20_muco"/>
+                            <field name="EUR20_lab_test_crystal_names"/>
+                            <field name="EUR20_cristais" invisible='True'/>
+                            <field name="EUR20_lab_test_crystal_ids">
+                                <tree>
+                                    <field name="name"/>
+                                </tree>
+                            </field>
+                            <field name="EUR20_leucocitos"/>
+                            <field name="EUR20_hemacias"/>
+                        </group>
+                        <group>
+                            <field name="EUR20_cilindros"/>
+                            <field name="EUR20_cilindros_hialinos"/>
+                            <field name="EUR20_cilindros_granulosos"/>
+                            <field name="EUR20_cilindros_leucocitarios"/>
+                            <field name="EUR20_cilindros_hematicos"/>
+                            <field name="EUR20_cilindros_cereos"/>
+                            <field name="EUR20_outros_tipos_de_cilindros"/>
+                        </group>
+                        <label for="EUR20_obs"/>
+                        <field name="EUR20_obs"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button 
+                        type="object"
+                        name="do_result_updt_EUR20"
+                        string="Result Update"
+                        class="oe_highlight"
+                        />
+                    <button special="cancel" string="Cancel"/>
+                </footer>
+            </form>
+
+        </field>
+    </record>
+
+    <act_window 
+        id="clv_lab_test_result_edit_eur20_action"
+        name="Lab Test Result Edit (EUR20)"
+        res_model="clv.lab_test.result.edit_eur20"
+        view_mode="form"
+        target="new"
+    />
+
+</odoo>

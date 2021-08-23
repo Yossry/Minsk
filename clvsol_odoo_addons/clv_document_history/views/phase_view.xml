@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+        
+    <record id="clv_phase_view_form_document" model="ir.ui.view">
+        <field name="name">clv.phase.form</field>
+        <field name="model">clv.phase</field>
+        <field name="inherit_id" ref="clv_phase.clv_phase_view_form"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <page name="phase_for" position="inside">
+                <group string="Documents">
+                    <group>
+                        <button name="clv_document.clv_document_action"
+                                type="action"
+                                class="oe_stat_button"
+                                icon="fa-list"
+                                context="{'search_default_phase_id': id}"
+                                attrs="{'invisible': [('document_ids', '=', [])]}"
+                                >
+                            <div class="o_form_field o_stat_info">
+                                <span class="o_stat_value">
+                                    <field name="count_documents"/>
+                                </span>
+                                <span class="o_stat_text"> Document(s)</span>
+                            </div>
+                        </button>
+                    </group>
+                    <group>
+                    </group>
+                    <field name="document_ids" colspan="4" nolabel="1"/>
+                </group>
+            </page>
+        </field>
+    </record>
+
+    <record id="clv_document_view_form_phase" model="ir.ui.view">
+        <field name="name">clv.document.form</field>
+        <field name="model">clv.document</field>
+        <field name="inherit_id" ref="clv_document.clv_document_view_form"/>
+        <field name="priority" eval="6"/>
+        <field name="arch" type="xml">
+            <group name="group_right" position="after">
+                <group>
+                    <field name="phase_id" options='{"no_open": True, "no_create": True}'/>
+                </group>
+            </group>
+        </field>
+    </record>
+
+    <record id="clv_document_view_tree_phase" model="ir.ui.view">
+        <field name="name">clv.document.tree</field>
+        <field name="model">clv.document</field>
+        <field name="inherit_id" ref="clv_document.clv_document_view_tree"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="code" position="before">
+                <field name="phase_id" groups="clv_phase.group_user"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="clv_document_view_search_phase" model="ir.ui.view">
+        <field name="name">clv.document.search</field>
+        <field name="model">clv.document</field>
+        <field name="inherit_id" ref="clv_document.clv_document_view_search"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="code" position="after">
+                <field name="phase_id"/>
+            </field>
+            <group name="group_by" position="inside">
+                <filter name="group_by_phase_id" string="Phase" context="{'group_by': 'phase_id'}"/>
+            </group>
+        </field>
+    </record>
+
+    <record id="clv_document_type_view_form_phase" model="ir.ui.view">
+        <field name="name">clv.document.type.form</field>
+        <field name="model">clv.document.type</field>
+        <field name="inherit_id" ref="clv_document.clv_document_type_view_form"/>
+        <field name="priority" eval="6"/>
+        <field name="arch" type="xml">
+            <group name="group_right" position="after">
+                <group>
+                    <field name="phase_id" options='{"no_open": True, "no_create": True}'/>
+                </group>
+            </group>
+        </field>
+    </record>
+
+    <record id="clv_document_type_view_tree_phase" model="ir.ui.view">
+        <field name="name">clv.document.type.tree</field>
+        <field name="model">clv.document.type</field>
+        <field name="inherit_id" ref="clv_document.clv_document_type_view_tree"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="code" position="before">
+                <field name="phase_id" groups="clv_phase.group_user"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="clv_document_type_view_search_phase" model="ir.ui.view">
+        <field name="name">clv.document.type.search</field>
+        <field name="model">clv.document.type</field>
+        <field name="inherit_id" ref="clv_document.clv_document_type_view_search"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="code" position="after">
+                <field name="phase_id"/>
+            </field>
+            <group name="group_by" position="inside">
+                <filter name="group_by_phase_id" string="Phase" context="{'group_by': 'phase_id'}"/>
+            </group>
+        </field>
+    </record>
+
+    <record id="clv_document_item_view_form_phase" model="ir.ui.view">
+        <field name="name">clv.document.item.form</field>
+        <field name="model">clv.document.item</field>
+        <field name="inherit_id" ref="clv_document.clv_document_item_view_form"/>
+        <field name="priority" eval="6"/>
+        <field name="arch" type="xml">
+            <field name="document_type_id" position="after">
+                <field name="document_type_phase_id" options='{"no_open": True, "no_create": True}'/>
+            </field>
+            <field name="document_id" position="after">
+                <field name="document_phase_id" options='{"no_open": True, "no_create": True}'/>
+            </field>
+        </field>
+    </record>
+
+    <record id="clv_document_item_view_tree_phase" model="ir.ui.view">
+        <field name="name">clv.document.item.tree</field>
+        <field name="model">clv.document.item</field>
+        <field name="inherit_id" ref="clv_document.clv_document_item_view_tree"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="document_type_id" position="after">
+                <field name="document_type_phase_id"/>
+            </field>
+            <field name="document_id" position="after">
+                <field name="document_phase_id"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="clv_document_item_view_search_phase" model="ir.ui.view">
+        <field name="name">clv.document.item.search</field>
+        <field name="model">clv.document.item</field>
+        <field name="inherit_id" ref="clv_document.clv_document_item_view_search"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="document_type_id" position="after">
+                <field name="document_type_phase_id"/>
+            </field>
+            <field name="document_id" position="after">
+                <field name="document_phase_id"/>
+            </field>
+            <group name="group_by" position="inside">
+                <filter name="group_by_document_type_phase_id" string="Document Type Phase" context="{'group_by': 'document_type_phase_id'}"/>
+                <filter name="group_by_document_phase_id" string="Document Phase" context="{'group_by': 'document_phase_id'}"/>
+            </group>
+        </field>
+    </record>
+
+</odoo>

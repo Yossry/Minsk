@@ -1,0 +1,16 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_freight_port_group_hr_freight_user,freight.port.group.freight.user,freight.model_freight_port,base.group_user,1,1,1,1
+access_freight_vessel_group_hr_freight_user,freight.vessel.group.freight.user,freight.model_freight_vessel,base.group_user,1,1,1,1
+access_freight_airline_group_hr_freight_user,freight.airline.group.freight.user,freight.model_freight_airline,base.group_user,1,1,1,1
+access_freight_trucker_group_hr_freight_user,freight.trucker.group.freight.user,freight.model_freight_trucker,base.group_user,1,1,1,1
+access_freight_incoterms_group_hr_freight_user,freight.incoterms.group.freight.user,freight.model_freight_incoterms,base.group_user,1,1,1,1
+access_freight_package_group_hr_freight_user,freight.package.group.freight.user,freight.model_freight_package,base.group_user,1,1,1,1
+access_freight_move_type_group_hr_freight_user,freight.move.type.group.freight.user,freight.model_freight_move_type,base.group_user,1,1,1,1
+access_freight_operation_group_hr_freight_user,freight.operation.group.freight.user,freight.model_freight_operation,base.group_user,1,1,1,1
+access_freight_order_group_hr_freight_user,freight.order.group.freight.user,freight.model_freight_order,base.group_user,1,1,1,1
+access_freight_package_line_group_hr_freight_user,freight.package.line.group.freight.user,freight.model_freight_package_line,base.group_user,1,1,1,1
+access_freight_item_line_group_hr_freight_user,freight.item.line.group.freight.user,freight.model_freight_item_line,base.group_user,1,1,1,1
+access_freight_route_group_hr_freight_user,freight.route.group.freight.user,freight.model_freight_route,base.group_user,1,1,1,1
+access_freight_service_group_hr_freight_user,freight.service.group.freight.user,freight.model_freight_service,base.group_user,1,1,1,1
+access_shipment_stage_group_hr_freight_user,shipment.stage.group.freight.user,freight.model_shipment_stage,base.group_user,1,1,1,1
+access_hr_dashboard_freight_user,freight.dashboard.group.freight.user,freight.model_freight_dashboard,base.group_user,1,1,1,1

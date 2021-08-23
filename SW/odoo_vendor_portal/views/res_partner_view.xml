@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2015-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- "License URL : <https://store.webkul.com/license.html/>" -->
+
+<odoo>
+	<data>
+
+		<record id="view_res_partner_filter" model="ir.ui.view">
+			<field name="name">res.partner.select</field>
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="base.view_res_partner_filter"/>
+			<field name="arch" type="xml">
+				<xpath expr="//filter[@name='supplier']" position="after">
+					<filter string="Registered Vendors" name="vendors_reg" domain="[('vendor_reg','=',1), ('parent_id', '=', False)]"/>
+				</xpath>
+			</field>
+		</record>
+
+
+		<record id="id_wk_vendor_portal_action" model="ir.actions.act_window">
+			<field name="name">vendor login account</field>
+			<field name="res_model">vendor.login.account</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="view_id" ref="id_wk_vendor_portal_account_wzard"/>
+			<field name="target">new</field>
+		</record>
+
+		<record id="id_wk_vendor_portal_action2" model="ir.actions.act_window">
+			<field name="name">vendor login account</field>
+			<field name="res_model">vendor.login.account</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="view_id" ref="id_wk_vendor_portal_account_wzard2"/>
+			<field name="target">new</field>
+		</record>
+
+		<record id="res_partner_view_wk_vendor_login_account_buttons" model="ir.ui.view">
+			<field name="name">res.partner.view.ek.vendor.login.account.buttons</field>
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="base.view_partner_form"/>
+			<field name="priority" eval="30"/>
+			<field name="arch" type="xml">
+				<div name="button_box" position="inside">
+					<button class="oe_stat_button"
+							name="%(id_wk_vendor_portal_action)d"
+							type="action"
+							attrs="{'invisible': ['|',('supplier', '=', False),('vendor_reg', '!=', True)]}" 
+							icon="fa-user-plus" 
+							help="Manage vendor registration">
+							<field name="vendor_reg" invisible='1' />
+							<span>Registered</span>
+					</button>
+					<button class="oe_stat_button"
+							name="%(id_wk_vendor_portal_action2)d"
+							type="action"
+							attrs="{'invisible': ['|',('supplier', '=', False),('vendor_reg', '!=', False)]}" 
+							icon="fa-user-plus" 
+							help="Manage vendor registration">
+							<field name="vendor_reg" invisible='1'/>
+							<span>Make portal user</span>
+					</button>
+				</div>
+			</field>
+		</record>
+
+	</data>
+</odoo>

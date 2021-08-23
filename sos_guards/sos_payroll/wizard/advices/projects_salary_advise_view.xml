@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+		<record id="projects_salary_advise_rep" model="ir.ui.view">
+            <field name="name">Project Salary Advise (Advice)</field>
+            <field name="model">projects.salary.advice.rep</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Projects Salary Advice">
+                	<group>
+		            	<group>
+			        	</group>
+						<group>
+							<field name="advice_id" invisible="1" options="{'no_quick_create':True,'no_create_edit':True}"/>
+						</group>
+					</group>	
+	                
+                   <footer>
+						<button string="Print" name="print_report" type="object" class="oe_highlight" />
+						<button string="Cancel" class="oe_link" special="cancel" />
+                   </footer>
+                </form>
+            </field>
+        </record>
+         
+         <act_window
+		    id="action_projects_advice_rep"
+		    name="Projects Salary Advise (Advice)"
+		    res_model="projects.salary.advice.rep"
+		    src_model="guards.payroll.advice"
+		    view_mode="form"
+		    multi="True"
+		    target="new"
+		    key2="client_print_multi"
+		/> 
+       
+    </data>
+</odoo>

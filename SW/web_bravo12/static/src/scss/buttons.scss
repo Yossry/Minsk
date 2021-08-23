@@ -1,0 +1,81 @@
+/**********************************************************************************
+*  Copyright (C) 2019 UNIBRAVO
+**********************************************************************************/
+// Buttons
+
+.btn {
+    display: inline-block;
+    font-weight: 500;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+    border-radius: 0px;
+}
+
+.btn-primary {
+    color: #fff;
+    font-weight: 600;
+    background-color: $brand-secondary;
+    border-color: $brand-secondary;
+    text-transform: uppercase;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: $brand-secondary-dark;
+    border-color: $brand-secondary-dark;
+}
+
+.btn-secondary {
+    border: none;
+    text-transform: uppercase;
+    color: cadetblue;
+}
+
+.btn:active, .btn.active {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    background-color: #eee !important;
+}
+
+.btn-group.open .dropdown-toggle {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    background-color: #eee !important;
+}
+
+.btn-group > .btn:first-child {
+    font-weight: 600;
+}
+
+.btn-link {
+    color: $brand-secondary;
+}
+
+.o_button_icon {
+    color: $brand-primary !important;
+}
+
+.oe_highlight {
+    color: white !important;
+    background-color: $brand-primary !important;
+}
+
+.dropdown-menu {
+    border-radius: 0px;
+}
+
+.o_dropdown_toggler_btn, .o_dropdown_toggler_btn:hover, .o_dropdown_toggler_btn:focus, .o_dropdown_toggler_btn:hover, .o_dropdown_toggler_btn:focus, .btn-icon, .o_graph_button {
+    text-transform: none !important;
+    color: $gray-dark !important;
+    background-color: transparent !important;
+    border: none !important;
+}
+
+.o_field_widget {
+    &.o_field_many2one .o_external_button {
+        color: $brand-secondary
+    }
+}

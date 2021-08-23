@@ -1,0 +1,15 @@
+@mixin list-xs() {
+    .o_main {
+        .ad_rightbar {
+            .o_content > .o_view_controller, .o_view_controller {
+                .table-responsive {
+                    padding: 0px 10px;
+                }
+            }
+        }
+    }
+}
+
+.o_web_client.ad_mobile {
+    @include list-xs();
+}

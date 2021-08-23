@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    
+        <record id="view_complaints_summary" model="ir.ui.view">
+            <field name="name">complaints.summary</field>
+            <field name="model">complaints.summary</field>
+            <field name="arch" type="xml">
+            <form string="Complaints Summary">
+                <label for="start_date" string="This wizard will print report which displays Complaints Summary for specified dates."/>
+                <footer>
+                    <button name="print_report" string="Print" type="object" class="oe_highlight"/>
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+                <group>
+                    <field name="start_date"/>
+                    <field name="end_date"/> 
+                    <field name="order_by"/>
+		    
+                </group>
+                
+                <notebook  colspan="4">
+					
+					<page string="Projects Filter" name="projects">
+						<separator string="Print only" colspan="4"/>
+						<field name="project_ids" colspan="4" nolabel="1" widget="many2many_tags"/>							
+					</page>
+
+					<page string="Centers Filter" name="centers">
+						<separator string="Print only" colspan="4"/>
+						<field name="center_ids" colspan="4" nolabel="1" widget="many2many_tags"/>							
+					</page>
+					
+					<page string="Coordinators Filter" name="coordinators">
+						<separator string="Print only" colspan="4"/>
+						<field name="coordinator_ids" colspan="4" nolabel="1" widget="many2many_tags"/>
+					</page>
+					
+					<page string="status" name="status">
+						<separator string="Print only" colspan="4"/>
+						<field name="state" colspan="4" nolabel="1"  widget="radio"/>						
+					</page>
+				</notebook>
+			
+            </form>
+            </field>
+        </record>
+	    
+	    <act_window
+            id="action_complaints_summary"
+            name="Complaints Summary"
+            res_model="complaints.summary"
+            src_model="sos.complaint"
+            view_mode="form"
+            multi="False"
+            target="new"
+            key2="client_print_multi"
+        />
+        
+    </data>
+</odoo>

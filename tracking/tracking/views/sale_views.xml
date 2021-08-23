@@ -1,0 +1,21 @@
+<openerp>
+  <data>
+      <record id="view_sale_form_inherit" model="ir.ui.view">
+            <field name="name">view.sale.form.add.text.field</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet/notebook/page/group/group[@name='sales_person']/field[@name='client_order_ref']" position="after">
+                    <field name="reason_rejection"/>
+                </xpath>
+                <xpath expr="//sheet/group/group/field[@name='partner_shipping_id']" position="after">
+                    <field name="zona"/>
+                </xpath>
+                <xpath expr="//button[@name='action_done']" position="after">
+                <button name="recompute_coupon_lines2" string="Update Promotions2" type="object" attrs="{'invisible': [('state', 'in', ['sale', 'done', 'cancel'])]}"/>
+            </xpath>
+            </field>
+    </record>
+
+  </data>
+</openerp>

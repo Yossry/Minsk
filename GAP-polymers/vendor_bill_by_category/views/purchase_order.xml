@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        
+        <record id="view_purchase_order_form_inherit" model="ir.ui.view">
+            <field name="name">purchase.order.form.inherit</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+                
+                <xpath expr="//button[@name='action_view_invoice']" position="after">
+                    <button name="%(vendor_bill_by_category.view_purchase_invoice_category_wizard_action)d" string="Create Bill By Category" type="action" attrs="{'invisible': ['|', ('state', 'not in', ('purchase')), ('invoice_status', 'in', ('no', 'invoiced'))]}"/>
+                    <button name="%(vendor_bill_by_category.view_purchase_invoice_category_wizard_action)d" string="Create Bill By Category" type="action" class="oe_highlight" attrs="{'invisible': ['|', '|', ('state', 'not in', ('purchase')), ('invoice_status', 'not in', ('no', 'invoiced')), ('order_line', '=', [])]}"/>
+                </xpath>
+                
+            </field>
+        </record>
+    
+    </data>
+</odoo>

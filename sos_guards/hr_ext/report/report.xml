@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<!-- Employee Profile Report -->
+		<report
+			id="report_employee_profile"
+			string= "Employee Report"
+			model = "employee.profile.wizard"
+			report_type="qweb-pdf"
+			file="hr_ext.report_employeeprofile"
+			name="hr_ext.report_employeeprofile"
+			menu="True"
+		/>
+		<!-- Employee Profile Report -->
+		<report
+			id="report_employee_contract"
+			string= "Contract Report"
+			model = "employee.contract.wizard"
+			report_type="qweb-pdf"
+			file="hr_ext.report_employeecontract"
+			name="hr_ext.report_employeecontract"
+			menu="True"
+		/>
+		
+		
+		<!-- Exipred Docs Report -->
+		<report
+			id="report_expired_docs"
+			string= "Expire Docs Report"
+			model = "expire.docs.wizard"
+			report_type="qweb-pdf"
+			file="hr_ext.report_expiredocs"
+			name="hr_ext.report_expiredocs"
+			menu="True"
+		/>					
+
+	</data>
+</odoo>
+

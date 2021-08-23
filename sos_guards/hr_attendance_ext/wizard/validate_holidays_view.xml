@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        
+        <record id="view_holidays_validate" model="ir.ui.view">
+            <field name="name">hr.holidays.validate.view</field>
+            <field name="model">hr.holidays.validate</field>
+            <field name="arch" type="xml">
+                <form string="Leaves to Validate">
+                    <group colspan="4" string="Holidays">
+                        <field name="holiday_ids" nolabel="1"/>
+                    </group>
+                    <newline/>
+                    <footer>
+                        <button name="do_validate" type="object" string="Validate Overtimes" class="oe_highlight"/>
+                        <button special="cancel" string="Close"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        
+        <record id="action_holidays_to_validate" model="ir.actions.act_window">
+            <field name="name">Validate Holidays</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.holidays.validate</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_holidays_validate"/>
+            <field name="context">{}</field>
+            <field name="groups_id" eval="[(4,ref('hr_holidays.group_hr_holidays_user'))]"/>
+            <field name="target">new</field>
+            <field name="binding_model_id" ref="hr_holidays.model_hr_leave" />
+        </record>
+       
+    </data>
+</odoo>

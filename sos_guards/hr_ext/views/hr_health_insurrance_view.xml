@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<record id="view_hr_health_insurance_search" model="ir.ui.view">
+			<field name="name">hr.health.insurance.search</field>
+			<field name="model">hr.health.insurance</field>
+			<field name="priority" eval="8" />
+			<field name="arch" type="xml">
+				<search string="Health Insurance">
+					<group col="10" colspan="4">
+						 <field name="company_name"/>
+						 <field name="policy_number"/>
+						 <field name="amount"/>
+						 <field name="salary_deduction"/>
+					</group>
+					<newline/>
+					<group expand="0" string="Group By..." colspan="12" col="10">				
+						<filter name='group_company_id' icon="terp-project" string="Insurance Company" context="{'group_by':'company_name'}"/>
+						<filter name='group_amount' icon="terp-project" string="Amount" context="{'group_by':'amount'}"/>
+						<filter name='group_salary_deduction' icon="terp-project" string="Deduction" context="{'group_by':'salary_deduction'}"/>	
+						
+					</group>
+				</search>		
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="act_hr_health_insurance_view">
+			<field name="name">Health Insurance</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">hr.health.insurance</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="search_view_id" ref="view_hr_health_insurance_search" />
+			<field name="domain">[]</field>
+			
+		</record>
+
+
+		<record id="view_hr_health_insurance_tree" model="ir.ui.view">
+			<field name="name">hr.health.insurance.tree</field>
+			<field name="model">hr.health.insurance</field>
+			<field name="priority" eval="8" />
+			<field name="arch" type="xml">
+			<tree string="Health Insurance">
+				<field name="company_name" />
+				<field name="policy_number" />
+				<field name="insurance_class" />
+				<field name="amount" />
+				<field name="salary_deduction" />
+				<field name="valid_from" />
+				<field name="valid_till" />				
+			</tree>
+			</field>
+		</record>
+		<record id="view_hr_health_insurance_form" model="ir.ui.view">
+			<field name="name">hr.health.insurance.form</field>
+			<field name="model">hr.health.insurance</field>
+			<field name="priority" eval="8" />
+			<field name="arch" type="xml">
+			<form string="Health Insurance">
+			<sheet>		
+				<group colspan="4">
+					<group>
+						<field name="company_name" />
+						<field name="policy_number" />
+						<field name="insurance_class" />
+					</group>
+					<group>
+						<field name="amount" />
+						<field name="salary_deduction" />
+						<field name="valid_from" />
+						<field name="valid_till" />	
+					</group>
+				</group>
+				
+								
+				<notebook>						
+					<page string="Members Covered">
+						<field name="covered_members" colspan="4" nolabel="1"  string="Covered Members">
+							<tree string="Members" editable="top">
+								<field name="member_name" />
+								<field name="relationship" />						
+							</tree>
+						</field>
+					</page>		
+				</notebook>
+				
+				<newline/>
+				<group>
+					<field name="benefits_covered" />	
+				</group>
+			</sheet>
+			</form>
+			</field>
+		</record>
+
+		<record id="view_hr_health_insurance_search" model="ir.ui.view">
+			<field name="name">hr.health.insurance.search</field>
+			<field name="model">hr.health.insurance</field>
+			<field name="priority" eval="8" />
+			<field name="arch" type="xml">
+				<search string="Health Insurance">
+					<group col="10" colspan="4">
+						 <field name="company_name"/>
+						 <field name="policy_number"/>
+						 <field name="amount"/>
+						 <field name="salary_deduction"/>
+					</group>
+					<newline/>
+					<group expand="0" string="Group By..." colspan="12" col="10">				
+						<filter name='group_company_id' icon="terp-project" string="Insurance Company" context="{'group_by':'company_name'}"/>
+						<filter name='group_amount' icon="terp-project" string="Amount" context="{'group_by':'amount'}"/>
+						<filter name='group_salary_deduction' icon="terp-project" string="Deduction" context="{'group_by':'salary_deduction'}"/>	
+					</group>
+				</search>		
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="act_hr_health_insurance_view">
+			<field name="name">Health Insurance</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">hr.health.insurance</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="search_view_id" ref="view_hr_health_insurance_search" />
+			<field name="domain">[]</field>
+			
+		</record>
+
+	</data>
+</odoo>

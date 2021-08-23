@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<record model="ir.ui.view" id="container_size_list_view">
+			<field name="name">container_size</field>
+			<field name="model">container.size</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="size" />
+					<field name="note" />
+					<field name="TEU" />
+					<field name="active" />
+					<field name="type"/>
+				</tree>
+			</field>
+		</record>
+
+
+		<record model="ir.ui.view" id="container_size_form_view">
+			<field name="name">container_size</field>
+			<field name="model">container.size</field>
+			<field name="arch" type="xml">
+				<form>
+					<sheet>
+					<field name="image" widget="image" class="oe_avatar"/> 
+						<group>
+							<group>
+								<field name="size" />
+								<field name="type"/>
+							</group>
+							<group>
+								<field name="note" />
+								<field name="TEU" />
+                                <field name="active" />
+							</group>
+							
+						</group>
+					</sheet>
+					<div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                 </div>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="container_size_action">
+			<field name="name">Container size</field>
+			<field name="res_model">container.size</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+
+		
+
+	</data>
+</odoo>

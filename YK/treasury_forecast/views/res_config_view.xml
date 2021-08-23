@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_treasury_config_settings" model="ir.ui.view">
+            <field name="name">res.config.settings.view.form.inherit.treasury</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="base.res_config_settings_view_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('settings')]" position="inside" >
+                    <div class="app_settings_block" data-string="Treasury" string="Treasury"
+                         data-key="treasury_forecast" groups="account.group_account_manager">
+                        <h2>Treasury</h2>
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-xs-12 col-md-6 o_setting_box">
+                                <div class="o_setting_left_pane"/>
+                                    <div class="o_setting_right_pane">
+                                        <label for="fc_account_ids"/>
+                                        <field name="fc_account_ids" widget="many2many_tags"/>
+                                        <div class="text-muted">
+                                            Select here the accounts for treasury planning
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="action_treasury_config_settings" model="ir.actions.act_window">
+            <field name="name">Settings</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.config.settings</field>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+            <field name="context">{'module' : 'treasury_forecast'}</field>
+        </record>
+
+        <menuitem id="menu_financ_manag_config"
+                  name="Settings"
+                  parent="menu_financ_manag_settings"
+                  action="action_treasury_config_settings"
+                  groups="base.group_system"/>
+
+</data>
+</odoo>

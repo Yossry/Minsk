@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template
+        id="assets_backend_advance_search"
+        name="supplier_user_access assets"
+        inherit_id="web.assets_backend"
+    >
+        <xpath expr="." position="inside">
+            <script
+                type="text/javascript"
+                src="/supplier_user_access/static/src/js/enable_advance_search.js"
+            />
+        </xpath>
+    </template>
+</odoo>

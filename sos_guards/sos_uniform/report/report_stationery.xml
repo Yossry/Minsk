@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>	
+		<template id ="sos_uniform.report_stationery">
+			<t t-call="web.html_container">
+				<t t-call="web.external_layout" style="font-family:georgia,garamond,serif;font-size:10px">
+					<div class="page">
+						<style>
+							 tr:nth-child(even) {background-color: #FFEBCD;}
+							 tr:nth-child(odd) {background-color: #cdcdcd;}
+						</style>
+						
+						<h4>Stationery Report</h4>
+						<h5>
+							From: <span t-esc="get_date_formate(data['date_from'])"/><br></br>
+							To: <span t-esc="get_date_formate(data['date_to'])"/><br></br>
+						</h5>
+						
+						<table class="table table-condensed" width="100%">
+							<tr style="font-size:10px; font-weight:bold; background-color:#E5E8E8;">
+								<td colspan="6" style="text-align:left; padding-left:10px;"><u> Regional Office</u></td>
+							</tr>
+							<tr style="font-size:10px; font-weight:bold; background-color:#E5E8E8;">
+								<td colspan="2" style="text-align:left; padding-left:10px;"> DATE: </td>
+								<td colspan="4" style="text-align:left;">
+									<t t-esc="context_timestamp(datetime.datetime.now()).strftime('%H:%M:%S')"/></td>
+							</tr>
+							<tr style="font-size:10px; font-weight:bold; background-color:#A6ACAF;">
+								<td>SR#. </td>
+								<td>Date </td>
+								<td>Center </td>
+								<td>Item </td>
+								<td>Qty </td>
+								<td>Size </td>
+							</tr>
+							
+							<t t-foreach="Stats" t-as="stat">
+								<tr>
+									<td> <span t-esc="stat_index + 1" /> </td>
+									<td> <span t-field="stat.date" t-field-options='{"format": "d-MM-y"}' /> </td>
+									<td> <span t-esc="stat.center_id.name" /> </td>
+									<td colspan="3" style="background-color:#d8d8cd;"> </td>
+								</tr>	
+									
+									<t t-if="stat.stationery_demand_line">
+										<t t-foreach="stat.stationery_demand_line" t-as="line">
+									 		<tr>
+									 			<td colspan="3"> </td>
+									 			<td> <span t-esc="line.item_id.name" /> </td>
+									 			<td> <span t-esc="line.qty" /> </td>
+									 			<td> <span t-esc="line.size" /> </td>
+									 		</tr>
+									 	</t>	
+									 </t>
+								
+							</t>
+						</table>			
+					</div>
+				</t>		 
+			</t>
+		</template>
+		
+	</data>
+</odoo>
+

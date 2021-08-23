@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="additional_guard_report_view" model="ir.ui.view">
+        <field name="name">Additional Guard</field>
+        <field name="model">additional.guard.report</field>
+        <field name="arch" type="xml">
+			<form string="Additional Guard Report Wizard">
+				
+					<group>
+						<group>
+								<field name="date_from"/>
+								<field name="date_to"/>
+						</group>
+						<group>
+						</group>
+					</group>
+				
+				<footer>
+						<button icon="gtk-execute" string="Print" name="print_report" type="object" class="oe_highlight"  />
+						<button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+			</form>
+		</field>
+    </record>
+
+    <record id="action_additional_guard_report" model="ir.actions.act_window">
+        <field name="name">Additional Guard Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">additional.guard.report</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="additional_guard_report_view"/>
+        <field name="target">new</field>
+    </record>
+</odoo>

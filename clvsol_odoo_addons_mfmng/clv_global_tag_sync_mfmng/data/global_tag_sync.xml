@@ -1,0 +1,81 @@
+<?xml version="1.0" ?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo noupdate="0">
+ 
+	<record id="clv_global_tag_clv_global_tag_template" model="clv.external_sync.template">
+		<field name="name" eval="&quot;&quot;&quot;clv.global_tag (clv.global_tag)&quot;&quot;&quot;"/>
+		<field name="model" eval="&quot;&quot;&quot;clv.global_tag&quot;&quot;&quot;"/>
+		<field name="method" eval="&quot;&quot;&quot;_object_external_sync&quot;&quot;&quot;"/>
+		<field name="external_model" eval="&quot;&quot;&quot;clv.global_tag&quot;&quot;&quot;"/>
+		<field name="external_disable_check_missing" eval="True"/>
+	</record>
+	 
+	<record id="clv_global_tag_clv_global_tag_template_object_field_parent_id" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;parent_id&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;parent_id&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="clv_global_tag_clv_global_tag_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="clv_global_tag_clv_global_tag_template_object_field_name" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;name&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;name&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="clv_global_tag_clv_global_tag_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="clv_global_tag_clv_global_tag_template_object_field_code" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;code&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;code&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="clv_global_tag_clv_global_tag_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="clv_global_tag_clv_global_tag_template_object_field_description" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;description&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;description&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="clv_global_tag_clv_global_tag_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="clv_global_tag_clv_global_tag_template_object_field_notes" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;notes&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;notes&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="clv_global_tag_clv_global_tag_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="clv_global_tag_clv_global_tag_template_object_field_color" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;color&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;color&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="clv_global_tag_clv_global_tag_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="clv_global_tag_clv_global_tag_template_object_field_active" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;active&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;active&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="clv_global_tag_clv_global_tag_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="clv_global_tag_clv_global_tag_schedule" model="clv.external_sync.schedule">
+		<field name="name" eval="&quot;&quot;&quot;clv.global_tag (clv.global_tag)&quot;&quot;&quot;"/>
+		<field name="template_id" eval="clv_global_tag_clv_global_tag_template"/>
+	</record>
+	 
+	<record id="clv_external_sync_batch_member_clv_global_tag" model="clv.external_sync.batch.member">
+		<field name="external_sync_batch_id" ref="clv_external_sync_mfmng.clv_external_sync_batch_default"/>
+		<field name="ref_id" ref="clv_global_tag_clv_global_tag_schedule"/>
+	</record>
+	 
+</odoo>

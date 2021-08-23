@@ -1,0 +1,18 @@
+.shipbox_systray .dropdown-toggle .shipbox_scale_reading_auto {
+    background-color: #666;
+    border-color: #000;
+    color: #FFF;
+}
+.shipbox_systray .dropdown-menu li {
+    white-space: nowrap;
+    font-size: 85%;
+    border-bottom: 1px solid #eee;
+}
+
+.o_field_scale {
+    position: relative;
+}
+.o_field_scale .btn {
+    position: absolute;
+    right: 120px;
+}

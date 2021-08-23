@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<odoo noupdate="1">
+    <data>
+
+    <record model="ir.rule" id="treasury_forecast_multi_company">
+      <field name="name">Treasury Forecast multi-company</field>
+      <field name="model_id" ref="model_treasury_forecast"/>
+      <field name="domain_force">['|',
+          ('company_id','=',False),
+          ('company_id','child_of',[user.company_id.id])]</field>
+      <field name="global" eval="True"/>
+      <field name="active" eval="True"/>
+      <field name="perm_read" eval="True"/>
+      <field name="perm_write" eval="True"/>
+      <field name="perm_create" eval="True"/>
+      <field name="perm_unlink" eval="True"/>
+    </record>
+
+    <record model="ir.rule" id="treasury_tempate_multi_company">
+      <field name="name">Treasury Forecast Template multi-company</field>
+      <field name="model_id" ref="model_treasury_forecast_template"/>
+      <field name="domain_force">['|',
+          ('company_id','=',False),
+          ('company_id','child_of',[user.company_id.id])]</field>
+      <field name="global" eval="True"/>
+      <field name="active" eval="True"/>
+      <field name="perm_read" eval="True"/>
+      <field name="perm_write" eval="True"/>
+      <field name="perm_create" eval="True"/>
+      <field name="perm_unlink" eval="True"/>
+    </record>
+
+</data>
+        </odoo>

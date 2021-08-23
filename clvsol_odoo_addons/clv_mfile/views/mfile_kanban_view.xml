@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="clv_mfile_view_form_kanban" model="ir.ui.view">
+        <field name="name">clv.mfile.form</field>
+        <field name="model">clv.mfile</field>
+        <field name="inherit_id" ref="clv_mfile.clv_mfile_view_form"/>
+        <field name="priority" eval="8" />
+        <field name="arch" type="xml">
+            <div name="title" position="before">
+                <field name="image" widget='image' class="oe_avatar" options='{"preview_image": "image_medium"}'/>
+            </div>
+        </field>
+    </record>
+
+    <record id="clv_mfile_view_kanban" model="ir.ui.view">
+        <field name="name">clv.mfile.kanban</field>
+        <field name="model">clv.mfile</field>
+        <field name="priority">10</field>
+        <field name="arch" type="xml">
+            <!--kanban class="o_hr_employee_kanban"-->
+            <kanban>
+                <field name="id"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_hr_kanban_record">
+                            <div class="o_kanban_image_fill_left">
+                                <img alt="Avatar" t-att-src="kanban_image('clv.mfile', 'image_medium',record.id.raw_value)"/>
+                            </div>
+                            <!-- Medium employee's picture -->
+                            <!--div class="o_kanban_image_fill_left d-none d-md-block" t-attf-style="background-image: url(#{kanban_image('clv.mfile', 'image_medium', record.id.raw_value)})" role="img"/-->
+                            <!-- Employee's picture optimized for mobile -->
+                            <!--div class="o_kanban_image d-md-none rounded-circle" t-attf-style="background-image: url(#{kanban_image('clv.mfile', 'image_small', record.id.raw_value)})" role="img"/-->
+                            <div class="oe_kanban_details">
+                                <div class="o_kanban_record_top">
+                                    <div class="o_kanban_record_headings">
+                                        <!--strong class="o_kanban_record_title"-->
+                                        <strong>
+                                            <span style="color:blue !important;">
+                                            <!--span style="color:black !important-->
+                                                <field name="name"/>
+                                            </span>
+                                        </strong>
+                                        <span t-if="record.format_ids.raw_value" class="o_kanban_record_subtitle"><field name="format_ids"/></span>
+                                        <span t-if="record.category_ids.raw_value" class="o_kanban_record_subtitle"><field name="category_ids"/></span>
+                                        <span t-if="record.marker_ids.raw_value" class="o_kanban_record_subtitle"><field name="marker_ids"/></span>
+                                        <span t-if="record.global_tag_ids.raw_value" class="o_kanban_record_subtitle"><field name="global_tag_ids"/></span>
+                                    </div>
+                                </div>
+                                <ul name="kanban_ul">
+                                    <li t-if="record.code.raw_value"><field name="code"/></li>
+                                    <li t-if="record.path.raw_value"><field name="path"/></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+
+        </field>
+    </record>
+
+    <record id="clv_mfile_action" model="ir.actions.act_window">
+        <field name="name">Media Files</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">clv.mfile</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="search_view_id" ref="clv_mfile_view_search"/>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Click to add a new media file.
+          </p>
+        </field>
+    </record>
+        
+</odoo>

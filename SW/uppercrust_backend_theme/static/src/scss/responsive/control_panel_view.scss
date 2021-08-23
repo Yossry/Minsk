@@ -1,0 +1,492 @@
+@mixin button-primary() {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    visibility: visible;
+    vertical-align: middle;
+    background-color: $brand-secondary;
+    border: 1px solid $brand-secondary;
+    text-align: center;
+    margin: auto;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    color: $white;
+    font-size: large;
+    padding: 0;
+    font-family: 'fontawesome';
+    border-radius: 50%;
+}
+
+@mixin button-secondary() {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    visibility: visible;
+    vertical-align: middle;
+    color: $brand-secondary;
+    background-color: $white;
+    border: 1px solid $brand-secondary;
+    text-align: center;
+    margin: auto;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    color: $brand-secondary;
+    font-size: 14px;
+    padding: 0;
+    font-family: 'fontawesome';
+    border-radius: 50%;
+}
+
+@mixin control-panel-xs() {
+    .o_main {
+        .o_main_content.ad_rightbar {
+            & > .o_control_panel {
+                flex-flow: nowrap;
+                .ad_bottom_panel {
+                    padding-left: 0px;
+                    left: 0;
+                    @include slide-animation();
+                    .o_cp_left {
+                        padding: 0px;
+                        position: fixed;
+                        right: 0;
+                        bottom: 65px;
+                        width: auto;
+                        display: flex;
+                        flex-wrap: wrap-reverse;
+                        @include slide-animation();
+                        &:not(.oe_ent_button){
+                            .o_cp_buttons {
+                                text-align: center;
+                                visibility: hidden;
+                                padding: 0;
+                                &:after {
+                                    content: "";
+                                    background-color: transparent;
+                                    height: 59px;
+                                    bottom: 0;
+                                    position: absolute;
+                                    left: 22px;
+                                    right: 0;
+                                    margin-right: 21px;
+                                    top: auto;
+                                    visibility: visible;
+                                }
+                                ul.dropdown-menu {
+                                    visibility: visible;
+                                }
+                                button.btn.btn-default, button.btn.btn-primary {
+                                    padding: 0px;
+                                }
+                                button {
+                                    &:first-child:before {
+                                        visibility: visible;
+                                        box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);
+                                    }
+                                    &:not(:first-child) {
+                                        display: none;
+                                        &:before {
+                                            visibility: hidden;
+                                            box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);
+                                        }
+                                    }
+                                }
+                                & > div:not(.o_calendar_buttons), .o_form_buttons_view, .o_list_buttons, .o_form_buttons_edit {
+                                    display: flex;
+                                    flex-wrap: wrap-reverse;
+                                    width: 100px;
+                                    justify-content: center;
+                                }
+                                .o_calendar_buttons {
+                                    visibility: visible;
+                                    padding: 0px;
+                                    position: fixed;
+                                    z-index: 999;
+                                    left: 0;
+                                    right: 0;
+                                    bottom: 8px;
+                                    @include slide-animation();
+                                    button.btn.btn-primary, button.btn.btn-default, button.btn.btn-secondary {
+                                        padding: 6px 10px;
+                                        display: initial;
+                                    }
+                                }
+                                .o-kanban-button-new, .o_list_button_add {
+                                    visibility: hidden;
+                                    font-size: $font-size-n;
+                                    z-index: 9999;
+                                    &:before {
+                                        content: "\f067";
+                                        @include button-primary();
+                                    }
+                                }
+                                .o_form_button_create {
+                                    visibility: hidden;
+                                    font-size: $font-size-n;
+                                    &:before {
+                                        content: "\f067";
+                                        @include button-secondary();
+                                    }
+                                }
+                                .o_button_import {
+                                    display: none;
+                                    visibility: hidden;
+                                    font-size: $font-size-n;
+                                    &:before {
+                                        content: "\f019";
+                                        @include button-secondary();
+                                    }
+                                }
+                                .o_form_button_edit {
+                                    visibility: hidden;
+                                    font-size: $font-size-n;
+                                    margin-right: 0;
+                                    &:before {
+                                        content: "\f040";
+                                        @include button-primary();
+                                    }
+                                }
+                                .o_form_button_save {
+                                    visibility: hidden;
+                                    font-size: $font-size-n;
+                                    &:before {
+                                        content: "\f0c7";
+                                        @include button-primary();
+                                    }
+                                }
+                                .o_form_button_cancel {
+                                    visibility: hidden;
+                                    font-size: $font-size-n;
+                                    &:before {
+                                        content: "\f00d";
+                                        @include button-secondary();
+                                    }
+                                }
+                                // Import view
+                                .o_import_validate {
+                                    visibility: hidden;
+                                    font-size: $font-size-n;
+                                    &:before {
+                                        content: "\f00d";
+                                        @include button-primary();
+                                    }
+                                }
+                                .o_import_import {
+                                    visibility: hidden;
+                                    font-size: $font-size-n;
+                                    &:before {
+                                        content: "\f00d";
+                                        @include button-secondary();
+                                    }
+                                }
+                                .o_import_cancel {
+                                    visibility: hidden;
+                                    font-size: $font-size-n;
+                                    &:before {
+                                        content: "\f00d";
+                                        @include button-secondary();
+                                    }
+                                }
+                                // Pivot view and Graph view
+                                & > div.btn-group:first-child {
+                                    position: fixed;
+                                    left: auto;
+                                    right: 15px;
+                                    bottom: 10px;
+                                    width: auto;
+                                    @include slide-animation();
+                                    div.dropdown-menu {
+                                        visibility: visible;
+                                    }
+                                    button {
+                                        visibility: visible;
+                                        padding: 6px 10px;
+                                        display: block;
+                                        &:before {
+                                            box-shadow: none;
+                                        }
+                                    }
+                                }
+                                & > div.btn-group:last-child {
+                                    position: fixed;
+                                    right: auto;
+                                    left: 15px;
+                                    bottom: 10px;
+                                    width: auto;
+                                    @include slide-animation();
+                                    button {
+                                        visibility: visible;
+                                        padding: 6px 10px;
+                                        display: block;
+                                        &:before {
+                                            visibility: visible;
+                                            box-shadow: none;
+                                        }
+                                    }
+                                }
+                                &.cp_open {
+                                    &:after {
+                                        display: none;
+                                    }
+                                    button:not(.o_button_import) {
+                                        display: block;
+                                        &:before {
+                                            visibility: visible;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .o_cp_right {
+                        padding: 5px;
+                        margin: auto;
+                        width: 100%;
+                        .o_cp_pager {
+                            float: none;
+                            text-align: center;
+                        }
+                    }
+                }
+                .o_mobile_search{
+                    @include slide-animation();
+                    .o_searchview_input_container{
+                        .o_searchview_facet{
+                            margin-bottom: 5px;
+                        }
+                    }
+                }
+                .o_mobile_search_show_result{
+                    transition: inherit;
+                }
+                .o_search_options {
+                    .o_filters_menu {
+                        .o_filter_condition {
+                            max-width: 100%;
+                        }
+                    }
+                    .o_favorites_menu {
+                        .o_save_name, .o_add_to_dashboard {
+                            max-width: 100%;
+                        }
+                    }
+                }
+                &.o_breadcrumb_full {
+                    ol.breadcrumb {
+                        li.active {
+                            max-width: 80%;
+                        }
+                    }
+                }
+                ol.breadcrumb {
+                    flex: 1 1 100%;
+                    flex-direction: row;
+                    padding: 14px 0px 14px 35px;
+                    li:not(:nth-last-child(2)):not(.active) {
+                        display: none;
+                    }
+                    li:nth-last-child(2) {
+                        font-size: $font-size-n;
+                        display: block;
+                        float: left;
+                        margin: 0;
+                        padding: 5px 10px 5px 5px;
+                        color: $brand-secondary;
+                        &:before {
+                            content: '\f053';
+                            font-size: 14px;
+                            display: inline-block;
+                            font: normal normal normal 14px/1 FontAwesome;
+                            color: $brand-secondary;
+                            padding: 0;
+                        }
+                    }
+                    li.active {
+                        padding-left: 0px;
+                        position: absolute;
+                        left: 65px;
+                        right: 65px;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        text-align: center;
+                        @include slide-animation();
+                        &:before {
+                            display: none;
+                        }
+                    }
+                }
+                .o_cp_searchview {
+                    margin: 0px;
+                    padding: 0px;
+                    min-height: 100%;
+                    width: auto;
+                    padding: 0 5px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 52px;
+                    .fa.fa-search{
+                        font-size: $font-size-8;
+                    }
+                    .o_searchview{
+                        padding: 0;
+                        margin: 0;
+                        width: auto;
+                        height: 100%;
+                        display: inline-flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        .o_enable_searchview{
+                            border: none;
+                        }
+                    }
+                }
+                & > .ad_mobile_searchview {
+                    display: none;
+                }
+                .ad_mobile_searchview {
+                    border: none;
+                }
+                .o_cp_switch_buttons{
+                    display: flex;
+                    padding: 0 12px;
+                    .btn.btn-link.btn-sm{
+                        margin: 0;
+                    }
+                }
+                & > .o_cp_switch_buttons {
+                    &.show {
+                        .dropdown-menu {
+                            min-width: 100%;
+                            left: 0;
+                            transform: none !important;
+                            right: 0;
+                            bottom: 0;
+                            margin-top: 0;
+                            position: fixed !important;
+                            z-index: 9999;
+                            top: 53px !important;
+                            border: none;
+                            button:before {
+                                font-size: $font-size-9;
+                            }
+                        }
+                    }
+                }
+                .o_cp_sidebar {
+                    .o_drw_in {
+                        right: 0px;
+                        left: 20px;
+                        width: auto;
+                        @include slide-animation();
+                    }
+                }
+            }
+            &.ad_open_search {
+                .o_content{
+                    margin-right: 0;
+                }
+                .o_view_controller{
+                    left: 0;
+                    right: 0;
+                }
+            }
+            &.o_open_sidebar {
+                .o_content{
+                    margin-right: 0;
+                }
+                .o_view_controller {
+                    right: 100%;
+                    left: -100%;
+                }
+            }
+        }
+    }
+    &:not(.ad_full_view) {
+        .o_main {
+            .o_main_content.ad_rightbar {
+                & > .o_control_panel {
+                    .o_cp_sidebar {
+                        .o_drw_in {
+                            right: -65px;
+                            left: 85px;
+                            width: 100%;
+                            @include slide-animation();
+                        }
+                    }
+                    .breadcrumb-item.active{
+                        left: 130px;
+                        right: 0px;
+                        @include slide-animation()
+                    }
+                }
+                .o_control_panel {
+                    .o_mobile_search, .o_mobile_search_show_result{
+                        left: 65px;
+                        @include slide-animation();
+                    }
+                    .o_mobile_search_show_result{
+                        right: -65px;
+                    }
+                    .ad_bottom_panel {
+                        left: 65px;
+                        @include slide-animation();
+                        .o_cp_left {
+                            right: -65px;
+                            @include slide-animation();
+                            .o_cp_buttons {
+                                .o_calendar_buttons {
+                                    left: 65px;
+                                    right: -65px;
+                                    @include slide-animation();
+                                }
+                                & > div.btn-group:first-child {
+                                    right: -50px;
+                                    @include slide-animation();
+                                }
+                                & > div.btn-group:last-child {
+                                    left: 80px;
+                                    @include slide-animation();
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+body.o_web_client.ad_mobile {
+    @include control-panel-xs();
+    -webkit-overflow-scrolling: touch;
+    background-color: $white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes overflow-search {
+    from {
+        overflow: hidden;
+    }
+    to {
+        overflow: hidden;
+    }
+}
+
+/* Standard syntax */
+@keyframes overflow-search {
+    from {
+        overflow: hidden;
+    }
+    to {
+        overflow: hidden;
+    }
+}

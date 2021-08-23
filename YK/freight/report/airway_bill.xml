@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="airway_bill">
+            <t t-call="web.html_container">
+
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.internal_layout">
+                    <div class="page">
+                        <h2 align="center">Air Waybill</h2>
+                    </div>
+                    <div class="row mt32">
+                        <div>
+                            <table width="100%" style="margin-top:25px" class="table table-bordered">
+                                <tr>
+                                    <td><strong>Shipper:</strong><br/>
+                                        <span t-esc="o.shipper_id.name"/><br/>
+                                        <span t-esc="o.shipper_id.street"/><br/>
+                                        <span t-esc="o.shipper_id.city"/><br/>
+                                        <span t-esc="o.shipper_id.state_id.name"/>
+                                        <span t-esc="o.shipper_id.country_id.name"/><br/>
+                                    </td>
+                                    <td><strong>Consignee:</strong><br/>
+                                        <span t-esc="o.consignee_id.name"/><br/>
+                                        <span t-esc="o.consignee_id.street"/><br/>
+                                        <span t-esc="o.consignee_id.city"/><br/>
+                                        <span t-esc="o.consignee_id.state_id.name"/>
+                                        <span t-esc="o.consignee_id.country_id.name"/><br/>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table width="100%" style="margin-top:25px" class="table table-bordered">
+                                <tr>
+                                    <td><strong>Gateway</strong></td>
+                                    <td><span t-field="o.source_location_id.name"/></td>
+                                    <td><strong>Destination</strong></td>
+                                    <td><span t-field="o.source_location_id.name"/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>MAWB No</strong></td>
+                                    <td><span t-esc="o.mawb_no"/></td>
+                                    <td><strong>Flight No</strong></td>
+                                    <td><span t-esc="o.flight_no"/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Tracking Number</strong></td>
+                                    <td><span t-esc="o.tracking_number"/></td>
+                                    <td><strong>Bill Number</strong></td>
+                                    <td><span t-esc="o.name"/></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                        <table width="100%" style="margin-top:25px" class="table table-bordered">
+                                <tr>
+                                    <td colspan="5" align="center">Order Information</td>
+                                </tr>
+                                <tr>
+                                    <th style="padding:10px;">Description</th>
+                                    <th style="padding:10px;">Packages</th>
+                                    <th style="padding:10px;">Qty</th>
+                                    <th style="padding:10px;">Volume</th>
+                                    <th style="padding:10px;">Gross Weight</th>
+                                </tr>
+                            <tbody>
+                                <tr t-foreach="o.freight_packages" t-as="aml">
+                                    <td style="padding:10px">
+                                        <span t-esc="aml.name"></span>
+                                    </td>
+                                    <td style="padding:10px">
+                                        <span t-field="aml.package.name"></span>
+                                    </td>
+                                    <td style="padding:10px">
+                                        <span t-esc="aml.qty"></span>
+                                    </td>
+                                    <td style="padding:10px">
+                                        <span t-field="aml.volume"></span>
+                                    </td>
+                                    <td style="padding:10px">
+                                        <span t-esc="aml.gross_weight"></span>
+                                    </td>
+                                </tr>
+							</tbody>
+                    </table>
+                        <table width="100%" style="margin-top:25px" class="table table-bordered">
+                                <tr>
+                                    <td colspan="5"><span>It is agreed that the goods described herein are accepted in apparent good order and condition
+                                (except as noted) for carriage SUBJECT TO TH E CONDITION S OF CONTRACT ON THE
+                                REVERSE HEREOF, ALL GOODS MAY BE CARRIED BY ANY OTHER MEANS INCLUDING ROAD
+                                OR ANY OTHER CARRIER UNLESS SPECIFIC CONTRARY INSTRUCTIONS ARE GIVEN
+                                HEREON BY THE SHIPPER, AND SHIPPER AGREES THAT THE SHIPMENT MAY BE CARRIED
+                                VIA INTERMEDIATE STOPPING PLACES WHICH THE CARRIER DEEMS APPROPRIATE THE
+                                SHIPPER'S ATTENTION IS DRAWN TO THE NOTICE CONCERNING CARRIER'S LIMITATION
+                                OF LIABILITY. Shipper may increase such limitation of liability by declaring a higher value for
+                                carriage and paying a supplemental charge if required.</span></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5"><span>Shipper certifies that the particulars on the face hereof are correct and that insofar as any part of the consignment
+                            contains dangerous goods, such part is property decribed by name and is in proper condition for carriage by air
+                            according to the applicable Dangerous Goods Regulations.</span></td>
+                                </tr>
+                        </table>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

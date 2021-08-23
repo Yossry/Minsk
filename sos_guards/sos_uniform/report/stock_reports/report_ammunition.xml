@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>	
+		<template id ="sos_uniform.report_ammunition">
+			<t t-call="web.html_container">
+				<t t-call="web.external_layout" style="font-family:georgia,garamond,serif;font-size:10px">
+					<div class="page">
+						<style>
+							 tr:nth-child(even) {background-color: #FFEBCD;}
+							 tr:nth-child(odd) {background-color: #cdcdcd;}
+						</style>
+						
+						<h4> Ammunition Issuance Report</h4>
+						<h5>
+							From: <span t-esc="get_date_formate(data['date_from'])"/><br></br>
+							To: <span t-esc="get_date_formate(data['date_to'])"/><br></br>
+						</h5>
+						
+						
+						<!-- New Deployment-->
+						<h4 style="page-break-inside: avoid;">NEW Deployment</h4>
+						<table class="table table-condensed" width="100%">
+							<tr style="font-size:10px; font-weight:bold; background-color:#A6ACAF;">
+								<td>Date </td>
+								<td>Post </td>
+								<td>Region </td>
+								<td>Type </td>
+								<td>Demand NO </td>
+								<td>30-Bore Rounds </td>
+								<td>12-Bore Rounds </td>
+								<td>7MM Rounds </td>
+								<td>8MM Rounds </td>
+								<td>44MM Rounds </td>
+								<td>9MM Rounds </td>
+								<td>222 Rounds </td>
+								<td>Mouzer Rounds </td>
+							</tr>
+							
+							<tbody>
+								<tr t-foreach="New_Demands" t-as="demand" style="font-size:12px; page-break-inside: avoid;">
+									<td> <span t-esc="demand['date']" /></td>
+									<td> <span t-esc="demand['post']" /></td>
+									<td> <span t-esc="demand['center']" /></td>
+									<td> <span t-esc="demand['type']" /></td>
+									<td> <span t-esc="demand['demand_no']" /></td>
+									<td> <span t-esc="demand['30_bore']" /></td>
+									<td> <span t-esc="demand['12_bore']" /></td>
+									<td> <span t-esc="demand['7mm']" /></td>
+									<td> <span t-esc="demand['8mm']" /></td>
+									<td> <span t-esc="demand['44mm']" /></td>
+									<td> <span t-esc="demand['9mm']" /></td>
+									<td> <span t-esc="demand['222']" /></td>
+									<td> <span t-esc="demand['mouzer']" /></td>
+								</tr>
+								
+								<tr style="font-size:10px; font-weight:bold; background-color:#A6ACAF; page-break-inside: avoid;">
+									<td colspan="5" class="text-center">T   O   T   A    L   S</td>
+									<td class="text-left"><span t-esc="New_Demand_Total['total_30_bore']"/> </td> 
+					  	 			<td class="text-left"><span t-esc="New_Demand_Total['total_12_bore']"/> </td>
+					  	 			<td class="text-left"><span t-esc="New_Demand_Total['total_7mm']"/> </td>
+					  	 			<td class="text-left"><span t-esc="New_Demand_Total['total_8mm']"/> </td>
+					  	 			<td class="text-left"><span t-esc="New_Demand_Total['total_44mm']"/> </td>
+					  	 			<td class="text-left"><span t-esc="New_Demand_Total['total_9mm']"/> </td>
+					  	 			<td class="text-left"><span t-esc="New_Demand_Total['total_222']"/> </td>
+					  	 			<td class="text-left"><span t-esc="New_Demand_Total['total_mouzer']"/> </td>
+								</tr>
+							</tbody>
+						</table>
+						
+						
+						<!-- Complain -->
+						<h4 style="page-break-inside: avoid;">Complain</h4>
+						<table class="table table-condensed" width="100%">
+							<tr style="font-size:10px; font-weight:bold; background-color:#A6ACAF;">
+								<td>Date </td>
+								<td>Post </td>
+								<td>Region </td>
+								<td>Type </td>
+								<td>Demand NO </td>
+								<td>30-Bore Rounds </td>
+								<td>12-Bore Rounds </td>
+								<td>7MM Rounds </td>
+								<td>8MM Rounds </td>
+								<td>44MM Rounds </td>
+								<td>9MM Rounds </td>
+								<td>222 Rounds </td>
+								<td>Mouzer Rounds </td>
+							</tr>
+							
+							<tbody>
+								<tr t-foreach="Complain_Demands" t-as="demand" style="font-size:12px; page-break-inside: avoid;">
+									<td> <span t-esc="demand['date']" /></td>
+									<td> <span t-esc="demand['post']" /></td>
+									<td> <span t-esc="demand['center']" /></td>
+									<td> <span t-esc="demand['type']" /></td>
+									<td> <span t-esc="demand['demand_no']" /></td>
+									<td> <span t-esc="demand['30_bore']" /></td>
+									<td> <span t-esc="demand['12_bore']" /></td>
+									<td> <span t-esc="demand['7mm']" /></td>
+									<td> <span t-esc="demand['8mm']" /></td>
+									<td> <span t-esc="demand['44mm']" /></td>
+									<td> <span t-esc="demand['9mm']" /></td>
+									<td> <span t-esc="demand['222']" /></td>
+									<td> <span t-esc="demand['mouzer']" /></td>
+								</tr>
+								
+								<tr style="font-size:10px; font-weight:bold; background-color:#A6ACAF; page-break-inside: avoid;">
+									<td colspan="5" class="text-center">T   O   T   A    L   S</td>
+									<td class="text-left"><span t-esc="Complain_Demand_Total['total_30_bore']"/> </td> 
+					  	 			<td class="text-left"><span t-esc="Complain_Demand_Total['total_12_bore']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Complain_Demand_Total['total_7mm']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Complain_Demand_Total['total_8mm']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Complain_Demand_Total['total_44mm']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Complain_Demand_Total['total_9mm']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Complain_Demand_Total['total_222']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Complain_Demand_Total['total_mouzer']"/> </td>
+								</tr>
+							</tbody>
+						</table>
+						
+						
+						<!-- Additional Guards -->
+						<h4 style="page-break-inside: avoid;">Additional Guards</h4>
+						<table class="table table-condensed" width="100%">
+							<tr style="font-size:10px; font-weight:bold; background-color:#A6ACAF;">
+								<td>Date </td>
+								<td>Post </td>
+								<td>Region </td>
+								<td>Type </td>
+								<td>Demand NO </td>
+								<td>30-Bore Rounds </td>
+								<td>12-Bore Rounds </td>
+								<td>7MM Rounds </td>
+								<td>8MM Rounds </td>
+								<td>44MM Rounds </td>
+								<td>9MM Rounds </td>
+								<td>222 Rounds </td>
+								<td>Mouzer Rounds </td>
+							</tr>
+							
+							<tbody>
+								<tr t-foreach="Add_Guard_Demands" t-as="demand" style="font-size:12px; page-break-inside: avoid;">
+									<td> <span t-esc="demand['date']" /></td>
+									<td> <span t-esc="demand['post']" /></td>
+									<td> <span t-esc="demand['center']" /></td>
+									<td> <span t-esc="demand['type']" /></td>
+									<td> <span t-esc="demand['demand_no']" /></td>
+									<td> <span t-esc="demand['30_bore']" /></td>
+									<td> <span t-esc="demand['12_bore']" /></td>
+									<td> <span t-esc="demand['7mm']" /></td>
+									<td> <span t-esc="demand['8mm']" /></td>
+									<td> <span t-esc="demand['44mm']" /></td>
+									<td> <span t-esc="demand['9mm']" /></td>
+									<td> <span t-esc="demand['222']" /></td>
+									<td> <span t-esc="demand['mouzer']" /></td>
+								</tr>
+								
+								<tr style="font-size:10px; font-weight:bold; background-color:#A6ACAF; page-break-inside: avoid;">
+									<td colspan="5" class="text-center">T   O   T   A    L   S</td>
+									<td class="text-left"><span t-esc="Add_Guard_Demand_Total['total_30_bore']"/> </td> 
+					  	 			<td class="text-left"><span t-esc="Add_Guard_Demand_Total['total_12_bore']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Add_Guard_Demand_Total['total_7mm']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Add_Guard_Demand_Total['total_8mm']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Add_Guard_Demand_Total['total_44mm']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Add_Guard_Demand_Total['total_9mm']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Add_Guard_Demand_Total['total_222']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Add_Guard_Demand_Total['total_mouzer']"/> </td>
+								</tr>
+							</tbody>
+						</table>						
+					
+						<!-- Replacement -->
+						<h4 style="page-break-inside: avoid;">Replacement</h4>
+						<table class="table table-condensed" width="100%">
+							<tr style="font-size:10px; font-weight:bold; background-color:#A6ACAF;">
+								<td>Date </td>
+								<td>Post </td>
+								<td>Region </td>
+								<td>Type </td>
+								<td>Demand NO </td>
+								<td>30-Bore Rounds </td>
+								<td>12-Bore Rounds </td>
+								<td>7MM Rounds </td>
+								<td>8MM Rounds </td>
+								<td>44MM Rounds </td>
+								<td>9MM Rounds </td>
+								<td>222 Rounds </td>
+								<td>Mouzer Rounds </td>
+							</tr>
+							
+							<tbody>
+								<tr t-foreach="Replacement_Demands" t-as="demand" style="font-size:12px; page-break-inside: avoid;">
+									<td> <span t-esc="demand['date']" /></td>
+									<td> <span t-esc="demand['post']" /></td>
+									<td> <span t-esc="demand['center']" /></td>
+									<td> <span t-esc="demand['type']" /></td>
+									<td> <span t-esc="demand['demand_no']" /></td>
+									<td> <span t-esc="demand['30_bore']" /></td>
+									<td> <span t-esc="demand['12_bore']" /></td>
+									<td> <span t-esc="demand['7mm']" /></td>
+									<td> <span t-esc="demand['8mm']" /></td>
+									<td> <span t-esc="demand['44mm']" /></td>
+									<td> <span t-esc="demand['9mm']" /></td>
+									<td> <span t-esc="demand['222']" /></td>
+									<td> <span t-esc="demand['mouzer']" /></td>
+								</tr>
+								
+								<tr style="font-size:10px; font-weight:bold; background-color:#A6ACAF; page-break-inside: avoid;">
+									<td colspan="5" class="text-center">T   O   T   A    L   S</td>
+									<td class="text-left"><span t-esc="Replacement_Demand_Total['total_30_bore']"/> </td> 
+					  	 			<td class="text-left"><span t-esc="Replacement_Demand_Total['total_12_bore']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Replacement_Demand_Total['total_7mm']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Replacement_Demand_Total['total_8mm']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Replacement_Demand_Total['total_44mm']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Replacement_Demand_Total['total_9mm']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Replacement_Demand_Total['total_222']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Replacement_Demand_Total['total_mouzer']"/> </td>
+								</tr>
+							</tbody>
+						</table>			
+						
+									
+					</div>
+				</t>		 
+			</t>
+		</template>
+		
+	</data>
+</odoo>
+

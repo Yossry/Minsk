@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <record model="ir.ui.view" id="view_project_task_form_cust">
+        <field name="name">project.task.form.cust</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <!-- <xpath expr="//field[@name='user_id']" position="attributes">
+                <attribute name="required">1</attribute>
+            </xpath> -->
+            <xpath expr="//group[1]" position="after">
+                <group>
+                    <group>
+                        <field name="module_name" />
+                        <field name="task_type" />
+                        <field name="scope_status" />
+                    </group>
+                    <group>
+                        <field name="estimated_efforts" />
+                        <field name="customer_owner" />
+                    </group>
+                </group>
+                <label for="internal_notes" />
+                <field name="internal_notes"/><br/>
+                <label for="external_notes" />
+                <field name="external_notes"/>
+            </xpath>
+        </field>
+    </record>
+
+
+
+    <record model="ir.ui.view" id="view_project_task_tree_cust">
+        <field name="name">project.task.tree.cust</field>
+        <field name="model">project.task</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="project_id" />
+                <field name="user_id" />
+                <field name="module_name" />
+                <field name="task_type" />
+                <field name="scope_status" />
+                <field name="estimated_efforts" />
+                <field name="customer_owner" />
+                <field name="internal_notes" />
+                <field name="external_notes" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="project_task_view_search" model="ir.ui.view">
+        <field name="name">project.task.view.search</field>
+        <field name="model">project.task</field>
+        <field name="arch" type="xml">
+            <search string="project task">
+                <field name="project_id"/>
+                <field name="user_id"/>
+           		<group expand="1" string="Group By...">
+                    <filter string="Project" icon="terp-personal" name="group_project_id" context="{'group_by':'project_id'}"/>
+                    <filter string="Assigned to" icon="terp-personal" name="group_user_id" context="{'group_by':'user_id'}"/>
+				</group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_project_task_cus" model="ir.actions.act_window">
+        <field name="name">Tasks and sub-tasks</field>
+        <field name="res_model">project.task</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_project_task_tree_cust"/>
+        <field name="context">{'search_default_group_project_id': 1}</field>
+        <field name="search_view_id" ref="project_task_view_search"/>  
+    </record>
+
+    <menuitem name="Tasks and Issue Logs" 
+              id="menu_task_issue" 
+              parent="project.menu_main_pm"
+              groups="project.group_project_user"/>
+
+    <menuitem name="Tasks" 
+              id="menu_project_task_cus" 
+              parent="menu_task_issue"
+              action="action_project_task_cus"
+              groups="project.group_project_user"/>
+
+    <record model="ir.ui.view" id="view_issue_log_tree_cust">
+        <field name="name">issue.log.tree.cust</field>
+        <field name="model">issue.log</field>
+        <field name="arch" type="xml">
+            <tree editable="top" string="Isuue Log">
+                <field name="issue_detail" />
+                <field name="Project_name" required="1" />
+                <field name="module_name" />
+                <field name="assigned_to" />
+                <field name="raised_date" />
+                <field name="planned_date" />
+                <field name="completed_date" />
+                <field name="complexity" />
+                <field name="internal_notes" />
+                <field name="external_notes" />
+                <field name="status" />
+            </tree>
+        </field>
+    </record>
+
+    
+
+    <record id="action_issue_log_cus" model="ir.actions.act_window">
+        <field name="name">Isuue Log</field>
+        <field name="res_model">issue.log</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_issue_log_tree_cust"/>
+        <!-- <field name="context">{'search_default_group_project_id': 1}</field>
+        <field name="search_view_id" ref="project_task_view_search"/>   -->
+    </record>
+
+    <record model="ir.ui.view" id="view_issue_log_tree_cust2">
+        <field name="name">issue.log.tree.cust2</field>
+        <field name="model">issue.log</field>
+        <field name="arch" type="xml">
+            <tree string="Isuue Log">
+                <field name="issue_detail" />
+                <field name="Project_name" />
+                <field name="module_name" />
+                <field name="assigned_to" />
+                <field name="raised_date" />
+                <field name="planned_date" />
+                <field name="completed_date" />
+                <field name="complexity" />
+                <field name="internal_notes" />
+                <field name="external_notes" />
+                <field name="status" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="issue_log_view_search" model="ir.ui.view">
+        <field name="name">issue.log.view.search</field>
+        <field name="model">issue.log</field>
+        <field name="arch" type="xml">
+            <search string="issue log">
+                <field name="Project_name"/>
+                <field name="assigned_to"/>
+           		<group expand="1" string="Group By...">
+                    <filter string="Project" icon="terp-personal" name="group_Project_name" context="{'group_by':'Project_name'}"/>
+                    <filter string="Assigned to" icon="terp-personal" name="group_assigned_to" context="{'group_by':'assigned_to'}"/>
+				</group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_issue_log_cus2" model="ir.actions.act_window">
+        <field name="name">Issue Log</field>
+        <field name="res_model">issue.log</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_issue_log_tree_cust2"/>
+        <field name="context">{'search_default_group_Project_name': 1}</field>
+        <field name="search_view_id" ref="issue_log_view_search"/>  
+    </record>
+
+    <menuitem name="Issue Log" 
+              id="menu_issue_log_cus" 
+              parent="menu_task_issue"
+              action="action_issue_log_cus2"
+              groups="project.group_project_user"/>
+
+
+    <record model="ir.ui.view" id="view_task_type_form_cust">
+        <field name="name">task.type.form.cust</field>
+        <field name="model">task.type</field>
+        <field name="arch" type="xml">
+            <form string="Task Type">
+                <sheet>
+                    <group>
+                        <field name="name" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+
+    <record model="ir.ui.view" id="view_task_type_tree_cust">
+        <field name="name">task.type.tree.cust</field>
+        <field name="model">task.type</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_task_type_cus" model="ir.actions.act_window">
+        <field name="name">Tasks Type</field>
+        <field name="res_model">task.type</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field> 
+    </record>
+
+    <menuitem name="Tasks Type" 
+              id="menu_task_type_cus" 
+              parent="project.menu_project_config"
+              action="action_task_type_cus"/>
+
+    
+</odoo>

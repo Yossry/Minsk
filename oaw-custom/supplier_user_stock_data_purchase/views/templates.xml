@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template
+        id="sale_order_portal_template"
+        inherit_id="sale.sale_order_portal_template"
+        name="Sales Order Portal Template"
+    >
+        <xpath expr="//t[@t-set='o_portal_fullwidth_alert']" position="attributes">
+            <attribute name="groups">sales_team.group_sale_manager</attribute>
+        </xpath>
+        <xpath
+            expr="//div[@t-call='sale.sale_order_portal_content']"
+            position="replace"
+        >
+            <t t-set="doc" t-value="sale_order" />
+            <div class="card-body">
+                <div
+                    t-call="quotation_report_adjust.report_chr123_saleorder_document"
+                />
+            </div>
+        </xpath>
+    </template>
+</odoo>

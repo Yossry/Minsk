@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="profit_loss_report_wizard" model="ir.ui.view">
+        <field name="name">profit.loss.report.wizard</field>
+        <field name="model">profit.loss.report.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group string="Date Range">
+                    <field name="from_date" />
+                    <field name="to_date" />
+                </group>
+                <group string="Report Filters">
+                    <field name="product_id" widget="many2many_tags" />
+                    <field name="lot_id" widget="many2many_tags" />
+                    <field name="partner_id" widget="many2many_tags" />
+                    <field
+                        name="supplier_id"
+                        widget="many2many_tags"
+                        groups="base.group_sale_manager"
+                    />
+                    <field name="reference" />
+                </group>
+                <footer>
+                    <button
+                        name="action_generate_profit_loss_records"
+                        type="object"
+                        string="Generate Records"
+                        class="oe_highlight"
+                    />
+                    or
+                    <button special="cancel" class="oe_link" string="Cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_profit_loss_report_wizard" model="ir.actions.act_window">
+        <field name="name">Generate Profit &amp; Loss Report</field>
+        <field name="res_model">profit.loss.report.wizard</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="profit_loss_report_wizard" />
+        <field name="target">new</field>
+    </record>
+    <menuitem
+        action="action_profit_loss_report_wizard"
+        id="menu_profit_loss_report_wizard"
+        parent="profit_loss_report_menu"
+        groups="account.group_account_invoice"
+        sequence="7"
+    />
+</odoo>

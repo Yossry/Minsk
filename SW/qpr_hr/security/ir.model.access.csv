@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_air_ticket_request,access_air_ticket_request,model_air_ticket_request,base.group_user,1,1,1,1
+access_trip_request,access_trip_request,model_trip_request,base.group_user,1,1,0,0
+access_trip_request_hr_officer,access_trip_request_officer,model_trip_request,hr.group_hr_user,1,1,1,1
+access_hr_leave_restriction,access_hr_leave_restriction,model_hr_leave_restriction,base.group_user,1,0,0,0
+access_hr_leave_restriction_manager,access_hr_leave_restriction_manager,model_hr_leave_restriction,hr.group_hr_manager,1,1,1,1
+access_leave_restriction_period,access_leave_restriction_period,model_leave_restriction_period,base.group_user,1,0,0,0 
+access_leave_restriction_period_manager,access_leave_restriction_period_manager,model_leave_restriction_period,hr.group_hr_manager,1,1,1,1
+access_ticket_quotation,access_ticket_quotation,model_ticket_quotation,base.group_user,1,0,0,0
+access_ticket_quotation_manager,access_ticket_quotation_manager,model_ticket_quotation,hr.group_hr_manager,1,1,1,1
+access_resource_calendar_leaves,access_resource_calendar_leaves,resource.model_resource_calendar_leaves,qpr_hr.group_department_manager,1,0,0,0

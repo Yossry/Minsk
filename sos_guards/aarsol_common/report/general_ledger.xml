@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="account.report_generalledger">
+    <t t-call="web.html_container">
+		<!--
+        <t t-set="data_report_margin_top" t-value="12"/>
+        <t t-set="data_report_header_spacing" t-value="10"/>
+        <t t-set="data_report_dpi" t-value="110"/>
+		-->	
+		<t t-set="data_report_margin_top" t-value="24"/>
+		<t t-set="data_report_header_spacing" t-value="20"/>
+		<t t-set="data_report_dpi" t-value="110"/>
+        <t t-call="web.internal_layout">
+            <div class="page">
+                <h3>General ledger</h3>
+
+                <div class="row mt32">
+                    <div class="col-xs-3">
+                        <strong>Journals:</strong>
+                          <p t-esc="', '.join([ lt or '' for lt in print_journal ])"/>
+                    </div>
+                    <div class="col-xs-3">
+                        <strong>Display Account</strong>
+                        <p>
+                            <span t-if="data['display_account'] == 'all'">All accounts'</span>
+                            <span t-if="data['display_account'] == 'movement'">With movements</span>
+                            <span t-if="data['display_account'] == 'not_zero'">With balance not equal to zero</span>
+                        </p>
+                    </div>
+                    <div class="col-xs-3">
+                        <strong>Target Moves:</strong>
+                        <p t-if="data['target_move'] == 'all'">All Entries</p>
+                        <p t-if="data['target_move'] == 'posted'">All Posted Entries</p>
+                    </div>
+					 <div class="col-xs-3">
+                        <strong>Sorted By:</strong>
+                        <p t-if="data['sortby'] == 'sort_date'">Date</p>
+                        <p t-if="data['sortby'] == 'sort_journal_partner'">Journal and Partner</p>
+                    </div>
+                </div>
+                <div class="row mb32">
+                    <div class="col-xs-3">
+                        <strong>Accounts:</strong>
+						  <span t-if="data['account_ids']">	
+							<p t-esc="', '.join([ lt.code+'-'+lt.name or '' for lt in print_account ])"/>
+						  </span>	
+						  <span t-if="not data['account_ids']">	<p>ALL</p></span>	
+
+                    </div>
+                    <div id="date" class="col-xs-3">
+                        <t t-if="data['date_from']"><strong>Date from :</strong> <span t-esc="data['date_from']"/><br/></t>
+                        <t t-if="data['date_to']"><strong>Date to :</strong> <span t-esc="data['date_to']"/></t>
+                    </div>					
+
+                </div>
+
+                <table class="table table-condensed">
+                    <thead>
+                        <tr class="text-center">
+                            <th width="7%">Date</th>
+                            <th>JRNL</th>
+                            <th>Partner</th> 
+                            <th>Ref</th>
+                            <th>Move</th>
+                            <th>Entry Label</th>
+                            <th class="text-right">Debit</th>
+                            <th class="text-right">Credit</th>
+                            <th class="text-right">Balance</th>                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="Accounts" t-as="account">
+                            <tr style="font-weight: bold;">
+                                <td colspan="6">
+                                    <span t-esc="'..'"/>  <!-- style="color: white;" -->
+                                    <span t-esc="account['code']"/>
+                                    <span t-esc="account['name']"/>
+                                </td>
+                                <td class="text-right">
+									<span t-esc="account['debit'] and ('{0:,.2f}'.format(account['debit']) if int(account['debit']) > 0 else '({0:,.2f})'.format(abs(account['debit']))) or '-'" />
+                                </td>
+                                <td class="text-right">
+									<span t-esc="account['credit'] and ('{0:,.2f}'.format(account['credit']) if int(account['credit']) > 0 else '({0:,.2f})'.format(abs(account['credit']))) or '-'" />
+                                </td>
+                                <td class="text-right">
+									<span t-esc="account['balance'] and ('{0:,.2f}'.format(account['balance']) if int(account['balance']) > 0 else '({0:,.2f})'.format(abs(account['balance']))) or '-'" />
+                                </td>
+                                
+                            </tr>
+                            <tr t-foreach="account['move_lines']" t-as="line">
+                                <td width="7%"><span t-esc="line['ldate']"/></td>
+                                <td><span t-esc="line['lcode']"/></td>
+                                <td><span t-esc="line['partner_name']"/></td> 
+                                <td><span t-if="line['lref']" t-esc="line['lref']"/></td>
+                                <td><span t-esc="line['move_name']"/></td>
+                                <td><span t-esc="line['lname']"/></td>
+                                <td class="text-right">
+									<span t-esc="line['debit'] and ('{0:,.2f}'.format(line['debit']) if int(line['debit']) > 0 else '({0:,.2f})'.format(abs(line['debit']))) or '-'" />	
+                                </td>
+                                <td class="text-right">
+									<span t-esc="line['credit'] and ('{0:,.2f}'.format(line['credit']) if int(line['credit']) > 0 else '({0:,.2f})'.format(abs(line['credit']))) or '-'" />
+                                </td>
+                                <td class="text-right">
+									<span t-esc="line['balance'] and ('{0:,.2f}'.format(line['balance']) if int(line['balance']) > 0 else '({0:,.2f})'.format(abs(line['balance']))) or '-'" />
+                                </td>
+                                
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+        </t>
+    </t>
+</template>
+</odoo>

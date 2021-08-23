@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="dhl_logistic_list_view">
+            <field name="name">dhl.logistic</field>
+            <field name="model">dhl.logistic</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="company_from_id" />
+                    <field name="date_from" />
+                    <field name="country_from_id" />
+                    <field name="state_from_id" />
+                    <field name="city_from_id" />
+                    <field name="phone_from" />
+                    <field name="add_one_from" />
+                    <field name="add_two_from" />
+                    <field name="contact_person_from_ids" />
+                </tree>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="dhl_logistic_form_view">
+            <field name="name">dhl.logistic</field>
+            <field name="model">dhl.logistic</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                            <field name="name"/>
+                            <field name="tracking_number"/>
+                            <field name="bill_number"/>
+                            <field name="rate"/>
+                            <field name="cost"/>
+                            <field name="currency_id" options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+                            <field name="courier_id" domain="[('is_courier','=',True)]" options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+                            <field name="job_ids" widget="many2many_tags" options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+                            <field name="pick_up_with_us"/>
+                            <field name="employee_id" attrs="{'invisible':[('pick_up_with_us','!=',True)]}" options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+                            <field name="courier_employee_id" domain="[('parent_id','=',courier_id)]" attrs="{'invisible':[('pick_up_with_us','=',True)]}" options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+                             </group>
+                        </group>
+                        <group>
+                            <group string="From">
+                                <field name="company_from_id"  domain="[('is_courier','=',True)]"
+                                       options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"
+                                       required="1"/>
+                                <field name="date_from" />
+                                <field name="country_from_id" 
+                                       options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"
+                                       required="1"/>
+                                <field name="state_from_id" 
+                                       options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+                                <field name="city_from_id" 
+                                       options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"
+                                       required="1"/>
+                                <field name="phone_from" 
+                                       required="1"/>
+                                <field name="add_one_from" required="1"/>
+                                <field name="add_two_from" required="1"/>
+                                     <label for="contact_person_from_ids" />
+                                     <field name="contact_person_from_ids" nolabel='1'>
+                                      <tree >
+                                            <field name="name" required="1"/>
+                                            <field name="mobile" required="1"/>
+                                        </tree>
+                                        <form></form>
+                                     </field>
+                            </group>
+                            <group string="To"> 
+                                    <field name="company_to_id" 
+                                           options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" 
+                                           required="1"/>
+                                    <field name="country_to_id" 
+                                           options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" 
+                                           required="1"/>
+                                    <field name="state_to_id" 
+                                           options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+                                    <field name="city_to_id" 
+                                           options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"
+                                           required="1"/>
+                                    <field name="phone_to" required="1"/>
+                                    <field name="add_one_to" required="1"/>
+                                    <field name="add_two_to" required="1"/>
+                                    <field name="space_btwn" readonly="1" string="     "/>
+                                         <label for="contact_person_to_ids" />
+                                         <field name="contact_person_to_ids" nolabel='1'>
+                                          <tree editable="botton">
+                                                <field name="name" required="1"/>
+                                                <field name="mobile" required="1"/>
+                                            </tree>
+                                            <form></form>
+                                         </field>
+                            </group>
+                        </group>
+                        <group string="Document Type"> 
+                            <field name="document_type_ids" nolabel="1" >
+                                <tree editable="botton">
+                                        <field name="qty" required="1"/>
+                                        <field name="weight" string="Weight kg" required="1"/>
+                                        <field name="dimensions_cm" string="Dimensions cm" required="1"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                 </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window"
+            id="dhl_logistic_action">
+            <field name="name">Courier</field>
+            <field name="res_model">dhl.logistic</field>
+            <field name="view_mode">kanban,tree,form</field>
+        </record>
+
+
+
+
+    </data>
+</odoo>

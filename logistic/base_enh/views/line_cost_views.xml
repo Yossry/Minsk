@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>	<data>
+
+		<record model="ir.ui.view" id="line_cost_list_view">
+			<field name="name">line_cost</field>
+			<field name="model">line.cost</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="line_id" />
+					<field name="quot_number" />
+					<field name="date" />
+					<field name="country_loading_id" />
+					<field name="state_loading_id" />
+					<field name="city_loading_id" />
+					<field name="place_loading_id" />
+					<field name="transport_loading_id" />
+					<field name="port_loading_id" />
+					<field name="country_dest_id" />
+					<field name="state_dest_id" />
+					<field name="city_dest_id" />
+					<field name="port_dest_id" />
+					<field name="transport_dest_id" />
+					<field name="delivery_place_id" />
+					<field name="start_date" />
+					<field name="expiry_date" />
+					<field name="is_expired" />
+					<field name="is_next" />
+					<field name="active"/>
+				</tree>
+			</field>
+		</record>
+
+
+		<record model="ir.ui.view" id="line_cost_form_view">
+			<field name="name">line_cost</field>
+			<field name="model">line.cost</field>
+			<field name="arch" type="xml">
+				<form>
+				<field name="type" invisible="1"/>
+					<sheet>
+					<div class="oe_button_box" name="button_box">  
+                            <button name="call_job" type="object"  
+                            class="oe_stat_button" icon="fa-pencil-square-o" string="Job">  
+                                 <!-- (If you want to display the count)<field name="field_name_for_count" widget="statinfo"   
+                            string="You String Name" />   -->
+                           </button> 
+                           <button name="call_sale_inquiry" type="object"  
+                            class="oe_stat_button" icon="fa-pencil-square-o" string="Sale Inquiry">  
+                                 <!-- (If you want to display the count)<field name="field_name_for_count" widget="statinfo"   
+                            string="You String Name" />   -->
+                           </button>
+                       </div>
+					<group>
+					   <group>
+					       <field name="line_id"
+                                    options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" />
+                            <field name="quot_number" />
+                            <field name="date" />
+					   </group>
+					   <group>
+					       <group>
+					           <field name="active"/>
+					           <field name="is_expired" />
+                               <field name="is_next" />
+					       </group>
+					   </group>
+					</group>
+					<notebook>
+					   <page string="General Info">
+						<group>
+							<group>
+								<field name="country_loading_id"
+									options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" />
+								<field name="state_loading_id"
+									domain="[('country_id','=',country_loading_id)]"
+									options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" 
+									attrs="{'readonly':[('country_loading_id','=',False)]}"/>
+								<field name="city_loading_id"
+									domain="[('country_id','=',country_loading_id),'|',('state_id','=',state_loading_id),('state_id','=',False)]"
+									options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" 
+									attrs="{'readonly':[('country_loading_id','=',False)]}"/>
+								<field name="place_loading_id"
+									domain="[('country_id','=',country_loading_id),('city_id','=',city_loading_id)]"
+									options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" 
+									attrs="{'readonly':[('city_loading_id','=',False)],'required':[('city_loading_id','!=',False)]}"/>
+								<field name="transport_loading_id"
+									options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"
+									attrs="{'readonly':[('place_loading_id','=',False)],'required':[('place_loading_id','!=',False)]}"/>
+									
+								<field name="port_loading_id"
+									domain="[('country_id','=',country_loading_id)]"
+									options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" 
+									attrs="{'readonly':[('country_loading_id','=',False)]}"/>
+								<field name="terminal_loading_id"
+								       options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"
+								       domain="[('country_id','=',country_loading_id),('is_port','=',True),('port_id','=',port_loading_id)]"
+								       attrs="{'readonly':[('port_loading_id','=',False)],'required':[('port_loading_id','!=',False)]}"/>
+								<field name="transt_time" attrs="{'readonly':[('terminal_loading_id','=',False)]}" />
+								<field name="start_date"  attrs="{'readonly':[('terminal_loading_id','=',False)]}"/>
+								<field name="expiry_date" attrs="{'readonly':[('terminal_loading_id','=',False)]}"/>
+							</group>
+							<group>
+								<field name="country_dest_id"
+									options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" />
+								<field name="state_dest_id"
+									domain="[('country_id','=',country_dest_id)]"
+									options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" 
+									attrs="{'readonly':[('country_dest_id','=',False)]}"/>
+								<field name="city_dest_id"
+									domain="[('country_id','=',country_dest_id),'|',('state_id','=',state_dest_id),('state_id','=',False)]"
+									options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" 
+									attrs="{'readonly':[('country_dest_id','=',False)]}"/>
+								<field name="place_dest_id"
+									domain="[('country_id','=',country_dest_id),'|',('state_id','=',state_dest_id),('state_id','=',False)]"
+									options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" 
+									attrs="{'readonly':[('city_dest_id','=',False)],'required':[('city_dest_id','!=',False)]}"/>
+								<field name="port_dest_id"
+									domain="[('country_id','=',country_dest_id)]"
+									options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" 
+									attrs="{'readonly':[('country_dest_id','=',False)]}"/>
+								<field name="delivery_place_id"
+                                    domain="[('country_id','=',country_dest_id),('city_id','=',city_dest_id),('is_delivery_place','=',True)]"
+                                    options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" 
+                                    attrs="{'readonly':[('country_dest_id','=',False)]}"/>
+								<field name="terminal_des_same_id"
+                                        options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"
+                                       domain="[('country_id','=',country_dest_id),('port_id','=',port_dest_id),('is_port','=',True)]"
+                                       attrs="{'readonly':[('port_dest_id','=',False)]}" required="1"/>
+								<field name="transport_dest_id" attrs="{'readonly':[('delivery_place_id','=',False)],'required':[('delivery_place_id','!=',False)]}"
+                                    options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" />
+								<field name="customer_id" attrs="{'readonly':[('terminal_des_same_id','=',False)]}"
+									domain="[('customer','=',True),('is_company','=',True)]"
+									options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" />
+								<field name="fak"  attrs="{'readonly':[('terminal_des_same_id','=',False)]}"/>
+								<field name="commodity_id"
+									attrs="{'invisible':[('fak','=',True)],'required':[('fak','!=',True)]}"
+									options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" 
+									widget="many2many_tags"
+									domain="[('id','in',commodity_domain_ids)]"/>
+								<field name="commodity_domain_ids" widget="many2many_tags" invisible="True"/>
+							</group>
+						</group>
+						<group string="Last Delivery">
+    						<field name="is_same_country" attrs="{'readonly':[('terminal_des_same_id','=',False)]}"/>
+						</group>
+						<group>
+						<group attrs="{'invisible':[('is_same_country','=',True)]}">
+                                <field name="country_diff_dest_id" 
+                                attrs="{'required':[('is_same_country','!=',True)]}"
+                                       options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+                                <field name="state_diff_dest_id"
+                                       domain="[('country_id','=',country_diff_dest_id)]"
+                                       options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"
+                                       attrs="{'readonly':[('country_diff_dest_id','=',False)]}"/>
+                                <field name="city_diff_dest_id"
+                                       domain="[('country_id','=',country_diff_dest_id),'|',('state_id','=',state_diff_dest_id),('state_id','=',False)]"
+                                       options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"
+                                       attrs="{'readonly':[('country_diff_dest_id','=',False)],'required':[('country_diff_dest_id','!=',False)]}"/>
+                                <field name="delivery_diff_place_id" 
+                                       domain="[('country_id','=',country_diff_dest_id),('is_delivery_place','=',True),'|',('state_id','=',state_diff_dest_id),('state_id','=',False),'|',('city_id','=',city_diff_dest_id),('city_id','=',False)]"
+                                       options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"
+                                       attrs="{'readonly':[('city_diff_dest_id','=',False)],'required':[('city_diff_dest_id','!=',False)]}"/>
+                                <!-- <field name="place_diff_dest_id" 
+                                       domain="[('country_id','=',country_diff_dest_id)]"
+                                       options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"
+                                       attrs="{'readonly':[('country_diff_dest_id','=',False)]}"/> -->
+                            </group>
+                            </group>
+						</page>
+						<page string="Line Cost">
+							<field nolabel="1" name="line_cost_ids">
+								<tree editable="botton">
+									<field name="line_type" invisible="1" />
+									<field name="line_cost_id" invisible="1" />
+									<field name="partner_id" invisible="1" />
+									<field name="transport_dest_id" invisible="1" />
+									<field name="transport_loading_id" invisible="1" />
+									<field name="sea_lines_id"
+										domain="[('partner_id','=',partner_id),('type','=',line_type)]"
+										options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" />
+									<field name="min_qty" />
+									<field name="currency_id"/>
+									<field name="rate" />
+									<field name="agency" />
+									<field name="is_insurance_cost" />
+									<field name="is_clearance_cost" />
+									<field name="insurance_price" attrs="{'readonly':[('is_insurance_cost','=',False)]}"/>
+									<field name="clearance_price" attrs="{'readonly':[('is_clearance_cost','=',False)]}"/>
+									<field name="transport_loading_price" attrs="{'readonly':[('transport_loading_id','=',False)],'required':[('transport_loading_id','!=',False)]}"/>
+									<field name="transport_discharge_price" attrs="{'readonly':[('transport_dest_id','=',False)],'required':[('transport_dest_id','!=',False)]}"/>
+									<field name="product_id"
+										options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" />
+									<field name="value" attrs="{'readonly':[('product_id','=',False)]}" />
+									<field name="total" />
+
+								</tree>
+							</field>
+							<group><group><field name="product_discount_id" options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+								<field name="discount" 
+								       attrs="{'readonly':[('product_discount_id','=',False)]}"/>
+								<field name="bill_fees"
+                                    options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" />
+                                <field name="currency_id" string="Main Currency" options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+                                <field name="payment_term_id" options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+						</group></group></page>
+						<page string="Additional Cost">
+						<group>
+							<field name="additional_cost_ids" nolabel="1">
+								<tree editable="botton">
+									<field name="product_id" domian="[('id_add_cost','=',True)]"
+									options="{'no_open':True,'no_create':True,'no_create_edit':True}" />
+									<field name="currency_id"/>
+									<field name="cost" />
+								</tree>
+							</field>
+						</group>
+                        </page>
+                        <page string="Notes">
+    						<field name="line_cost_note_ids">
+    						  <tree editable="botton">
+    							<field name="note" />
+    							<field name="create_uid"/>
+    							<field name="create_date"/>
+    							<field name="write_uid"/>
+    							<field name="write_date"/>
+    						  </tree>
+    						</field>
+						</page>
+					</notebook>
+					</sheet>
+					<div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                 </div>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="line_cost_action">
+			<field name="name">Line Cost</field>
+			<field name="res_model">line.cost</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+
+
+
+	</data>
+</odoo>

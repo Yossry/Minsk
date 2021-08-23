@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+        
+    <record id="clv_phase_view_form_event" model="ir.ui.view">
+        <field name="name">clv.phase.form</field>
+        <field name="model">clv.phase</field>
+        <field name="inherit_id" ref="clv_phase.clv_phase_view_form"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <page name="phase_for" position="inside">
+                <group string="Events">
+                    <group>
+                        <button name="clv_event.clv_event_action"
+                                type="action"
+                                class="oe_stat_button"
+                                icon="fa-list"
+                                context="{'search_default_phase_id': id}"
+                                attrs="{'invisible': [('event_ids', '=', [])]}"
+                                >
+                            <div class="o_form_field o_stat_info">
+                                <span class="o_stat_value">
+                                    <field name="count_events"/>
+                                </span>
+                                <span class="o_stat_text"> Event(s)</span>
+                            </div>
+                        </button>
+                    </group>
+                    <group>
+                    </group>
+                    <field name="event_ids" colspan="4" nolabel="1"/>
+                </group>
+            </page>
+        </field>
+    </record>
+
+    <record id="clv_event_view_form_phase" model="ir.ui.view">
+        <field name="name">clv.event.form</field>
+        <field name="model">clv.event</field>
+        <field name="inherit_id" ref="clv_event.clv_event_view_form"/>
+        <field name="priority" eval="6"/>
+        <field name="arch" type="xml">
+            <group name="group_right" position="after">
+                <group>
+                    <field name="phase_id" options='{"no_open": True, "no_create": True}'/>
+                </group>
+            </group>
+        </field>
+    </record>
+
+    <record id="clv_event_view_tree_phase" model="ir.ui.view">
+        <field name="name">clv.event.tree</field>
+        <field name="model">clv.event</field>
+        <field name="inherit_id" ref="clv_event.clv_event_view_tree"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="code" position="before">
+                <field name="phase_id" groups="clv_phase.group_user"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="clv_event_view_search_phase" model="ir.ui.view">
+        <field name="name">clv.event.search</field>
+        <field name="model">clv.event</field>
+        <field name="inherit_id" ref="clv_event.clv_event_view_search"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="code" position="after">
+                <field name="phase_id"/>
+            </field>
+            <group name="group_by" position="inside">
+                <filter name="group_by_phase_id" string="Phase" context="{'group_by': 'phase_id'}"/>
+            </group>
+        </field>
+    </record>
+
+    <record id="clv_event_attendee_view_form_phase" model="ir.ui.view">
+        <field name="name">clv.event.attendee.form</field>
+        <field name="model">clv.event.attendee</field>
+        <field name="inherit_id" ref="clv_event.clv_event_attendee_view_form"/>
+        <field name="priority" eval="6"/>
+        <field name="arch" type="xml">
+            <field name="event_id" position="after">
+                <field name="event_phase_id" options='{"no_open": True, "no_create": True}'/>
+            </field>
+        </field>
+    </record>
+
+    <record id="clv_event_attendee_view_tree_phase" model="ir.ui.view">
+        <field name="name">clv.event.attendee.tree</field>
+        <field name="model">clv.event.attendee</field>
+        <field name="inherit_id" ref="clv_event.clv_event_attendee_view_tree"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="event_id" position="after">
+                <field name="event_phase_id" groups="clv_phase.group_user"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="clv_event_attendee_view_search_phase" model="ir.ui.view">
+        <field name="name">clv.event.attendee.search</field>
+        <field name="model">clv.event.attendee</field>
+        <field name="inherit_id" ref="clv_event.clv_event_attendee_view_search"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="event_id" position="after">
+                <field name="event_phase_id"/>
+            </field>
+            <group name="group_by" position="inside">
+                <filter name="group_by_event_phase_id" string="Event Phase" context="{'group_by': 'event_phase_id'}"/>
+            </group>
+        </field>
+    </record>
+
+</odoo>

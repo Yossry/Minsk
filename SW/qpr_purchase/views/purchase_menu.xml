@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record id="purchase_requisition.menu_purchase_requisition_pro_mgt" model='ir.ui.menu'>
+            <field name="name">Request For Material/Service</field>
+            <field name="sequence">-1</field>
+        </record>
+        <record model="ir.actions.act_window" id="purchase_requisition.action_purchase_requisition">
+            <field name="name">Request For Material/Service</field>
+        </record>
+        <menuitem name="Purchase"
+            id="menu_purchase_root_employee"
+            groups="group_qpr_employee_pr"
+            web_icon="purchase,static/description/icon.png"
+            sequence="25"/>
+
+        <menuitem name="Request For Material/Service"
+            id="menu_purchase_requisition_pro_mgt_employee"
+            groups="group_qpr_employee_pr"
+            parent="menu_purchase_root_employee"
+            action="purchase_requisition.action_purchase_requisition"
+            sequence="1"/>
+
+        <record model="ir.actions.act_window" id="purchase_requisition.tender_type_action">
+            <field name="name">Request For Material/Service Type</field>
+        </record>
+    </data>
+</odoo>

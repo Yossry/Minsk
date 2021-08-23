@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="invoice_form" model="ir.ui.view">
+        <field name="name">account.invoice.form</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account.invoice_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Payments" name="payment">
+                    <field name="payment_move_line_ids">
+                        <tree string="Payments">
+                            <field name="date" />
+                            <field name="move_id" />
+                            <field name="ref" />
+                            <field name="name" />
+                            <field name="journal_id" />
+                            <field name="debit" />
+                            <field name="credit" />
+                            <field name="amount_currency" />
+                            <field name="currency_id" />
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+    <record id="invoice_supplier_form" model="ir.ui.view">
+        <field name="name">account.invoice.supplier.form</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account.invoice_supplier_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Payments" name="payment">
+                    <field name="payment_move_line_ids">
+                        <tree string="Payments">
+                            <field name="date" />
+                            <field name="move_id" />
+                            <field name="ref" />
+                            <field name="name" />
+                            <field name="journal_id" />
+                            <field name="debit" />
+                            <field name="credit" />
+                            <field name="amount_currency" />
+                            <field name="currency_id" />
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

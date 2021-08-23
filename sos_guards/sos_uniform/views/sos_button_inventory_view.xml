@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		 <record id="sos_button_inventory_tree" model="ir.ui.view">
+			<field name="name">sos.button.inventory.tree</field>
+			<field name="model">sos.button.inventory</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string ="SOS Button Inventory Tree" name="sos_button_inventory_tree_view"
+					colors="black:state == 'draft';red:state  == 'stitching';green:state == 'main_store';blue:state == 'branch_store';">
+					<field name="name"/>
+					<field name="state"/>
+				</tree>
+			</field>
+		</record>
+
+		 <record id="sos_button_inventory_form" model="ir.ui.view">
+			<field name="name">sos.button.inventory.form</field>
+			<field name="model">sos.button.inventory</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Buttons Inventory" name="sos_button_inventory_form_view">
+					<header>
+						<field name="state" widget="statusbar" nolabel="1"/>
+					 </header>
+
+					<sheet string="RFID Card Inventory" name="sos_button_inventory">
+						<group colspan="4">
+							<group>
+								<field name="name"/>
+							</group>
+							<group>
+								<field name="entry_date"/>
+							</group>
+						 </group>
+
+						<group colspan="4">
+							<group>
+								<field name="remarks"/>
+							</group>
+						</group>
+
+					</sheet>
+					<div class="oe_chatter">
+						<field name="message_follower_ids" widget="mail_followers" groups="base.group_user" />
+						<field name="message_ids" widget="mail_thread" />
+					</div>
+				</form>
+			</field>
+		</record>
+
+		<record id="sos_button_inventory_filter" model="ir.ui.view">
+			<field name="name">sos.button.inventory.filter</field>
+			<field name="model">sos.button.inventory</field>
+			<field name="arch" type="xml">
+				<search string="Search Button Inventory">
+					<filter icon="terp-go-today" string="Not Used" name="draft" domain="[('state','=','draft')]" />
+					<filter icon="terp-go-today" string="For Stitching" name="for_stitching" domain="[('state','=','stitching')]" />
+					<filter icon="terp-go-today" string="Main Store" name="main_store" domain="[('state','=','main_store')]" />
+					<filter icon="terp-go-today" string="Branch Store" name="branch_store" domain="[('state','=','branch_store')]" />
+					<filter icon="terp-go-today" string="Guard" name="guard" domain="[('state','=','guard')]" />
+
+					<field name="name"/>
+					<field name="entry_date"/>
+					<field name="state"/>
+					<separator/>
+					<group expand="0" string="Group By">
+						<filter string="State" name="state" icon="terp-partner" domain="[]" context="{'group_by':'state'}"/>
+						<filter string="Date (Yearly)" name="Yearly" icon="terp-partner" domain="[]" context="{'group_by':'entry_date:year'}"/>
+						<filter string="Date (Monthly)" name="month" icon="terp-partner" domain="[]" context="{'group_by':'entry_date:month'}"/>
+						<filter string="Date (Weekly)" name="week" icon="terp-partner" domain="[]" context="{'group_by':'entry_date:week'}"/>
+						<filter string="Date (Daily)" name="day" icon="terp-partner" domain="[]" context="{'group_by':'entry_date:day'}"/>
+					</group>
+
+				</search>
+			</field>
+		</record>
+
+		<record id="sos_button_inventory_action" model="ir.actions.act_window">
+			<field name="name">SOS RFID Card Inventory Action</field>
+			<field name="res_model">sos.button.inventory</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[]</field>
+		<!--<field name="context">{'search_default_draft':1}</field> -->
+			<field name="context">{}</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+					Click to create a new Card Entry.
+			</p>
+			</field>
+		</record>
+
+		</data>
+</odoo>

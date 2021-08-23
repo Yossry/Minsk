@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+<template id="report_postledger">
+    <t t-call="report.html_container">
+		<t t-foreach="get_partners(data)" t-as="partner">
+		    <t t-call="report.internal_layout">
+		        <div class="page">
+		            <h2>Partner Ledger</h2>
+
+		          
+		            <div class="row">
+		                <div class="col-xs-3">
+		                    <strong><span t-esc="partner.name"/></strong>
+		                    <p>
+		                       
+		                        <p>
+		                            Date from : <span t-esc="get_start_date(data)"/><br />
+		                            Date to : <span t-esc="get_end_date(data)"/> 
+		                        </p>
+		                    </p>
+		                </div>                   
+		            </div>
+
+		            <table class="table table-condensed">
+		                <thead>
+		                    <tr>
+		                        <th>Date</th>
+		                        <th>JRNL</th>
+		                        <th>Ref</th>
+								<th>Name</th>		                        
+		                        <th class="text-right">Debit</th>
+		                        <th class="text-right">Credit</th>		                                               
+								<th class="text-right">Balance</th>		                                               
+		                    </tr>
+		                </thead>
+					
+		                <tbody>		                   
+		                    <tr t-foreach="lines(partner)" t-as="line">
+		                        <td>
+		                            <span t-esc="formatLang(line['ldate'], date=True)"/>
+		                        </td>
+		                        <td>
+		                            <span t-esc="line['lcode']"/>
+		                        </td>
+		                        <td>
+		                            <span t-esc="line['mname']"/>
+		                        </td>
+								<td>
+		                           <span t-esc="line['lname']"/>
+		                        </td>			                        
+		                        <td class="text-right">
+		                            <span t-esc="formatLang((line['debit']))"/>
+		                        </td>
+		                        <td class="text-right">
+		                            <span t-esc="formatLang((line['credit']))"/>
+		                        </td>		                       
+		                        <td class="text-right">
+		                            <span t-esc="formatLang((line['balance']))"/>
+		                        </td>		                       
+
+		                    </tr> 		                   
+		                </tbody>
+		            </table>
+		        </div>
+		    </t>
+		</t>
+    </t>
+</template>
+</data>
+</openerp>

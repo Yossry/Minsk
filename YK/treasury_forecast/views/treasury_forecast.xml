@@ -1,0 +1,172 @@
+<?xml version="1.0"?>
+<odoo><data>
+
+      <!-- Act window for statement lines smart button on forecast view  -->
+    <record id="action_forecast_bank_lines" model="ir.actions.act_window">
+      <field name="name">Bank lines</field>
+      <field name="res_model">account.bank.statement.line</field>
+      <field name="view_mode">tree</field>
+      <field name="context">{}</field>
+    </record>
+
+    <record id="view_treasury_forecast_form" model="ir.ui.view" >
+        <field name="name">Treasury Forecast Form View</field>
+        <field name="model">treasury.forecast</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+              <header>
+                <button name="refresh_page"
+                        type="object"
+                        string="Reload"/>
+                <button name="compute_forecast_data"
+                        type="object"
+                        string="Update forecast data"/>
+                <field name="state" widget="statusbar" clickable="True"/>
+                <button name="compute_forecast_lines"
+                        type="object"
+                        class="oe_edit_only"
+                        string="Compute forecast lines"
+                        confirm="Do you really want to compute the forecast lines?"/>
+                <button name="sett_mass_date"
+                        type="object"
+                        class="oe_edit_only"
+                        string="Set mass date"
+                        confirm="With this operation, the treasury date of all open moves will be set
+                        as defined in the field 'Set mass date'.
+
+                        Please consider carefully before executing this operation!"/>
+              </header>
+
+              <sheet>
+                <div class="oe_button_box" name="button_box">
+                  <button class="oe_stat_button"
+                    string="Bank lines"
+                    type="action"
+                    context="{'search_default_treasury_forecast_id': active_id,
+                             'default_treasury_forecast_id': active_id}"
+                    name="%(action_forecast_bank_lines)d"
+                    icon="fa-bars"/>
+                </div>
+                <group col="6">
+                  <group colspan='2'>
+                    <field name="name"/>
+                    <field name="date_start"/>
+                    <field name="date_end"/>
+                    <field name="forecast_template_id"/>
+                  </group>
+                  <group colspan='2'>
+                    <field name="previous_forecast_id"/>
+                    <field name="initial_balance"/>
+                    <field name="final_balance"/>
+                    <field name="periodic_saldo"/>
+                  </group>
+                  <group colspan='2'>
+                    <field name="force_initial_balance"/>
+                    <field name="set_mass_date"/>
+                    <field name="hide_analysis"/>
+                    <field name="company_id" readonly="True" groups="base.group_multi_company"/>
+                  </group>
+                </group>
+                <group>
+                  <field name="forecast_analysis"
+                         widget="html"
+                         nolabel="1"
+                         attrs="{'invisible': [('hide_analysis', '!=', False)]}"/>
+                </group>
+
+
+                <notebook>
+                    <page name='receivable' string="Receivables">
+                      <field name="receivable_ids">
+                        <tree editable="True">
+                            <field name="move_id" readonly="1"/>
+                            <field name="journal_id" options="{&quot;no_open&quot;:True}" readonly="1"/>
+                            <field name="name"/>
+                            <field name="ref" invisible="1"/>
+                            <field name="statement_id" invisible="1"/>
+                            <field name="partner_id" readonly="1"/>
+                            <field name="full_reconcile_id" invisible="1"/>
+                            <field name="balance"/>
+                            <field name="amount_residual"/>
+                            <field name="date_maturity"/>
+                            <field name="treasury_date"/>
+                        </tree>
+                      </field>
+                    </page>
+                    <page name='payables' string="Payables">
+                      <field name="payable_ids">
+                        <tree editable="True">
+                            <field name="move_id" readonly="1"/>
+                            <field name="journal_id" options="{&quot;no_open&quot;:True}" readonly="1"/>
+                            <field name="name"/>
+                            <field name="ref" invisible="1"/>
+                            <field name="statement_id" invisible="1"/>
+                            <field name="partner_id" readonly="1"/>
+                            <field name="full_reconcile_id" invisible="1" />
+                            <field name="balance"/>
+                            <field name="amount_residual"/>
+                            <field name="date_maturity"/>
+                            <field name="treasury_date"/>
+                        </tree>
+                      </field>
+                    </page>
+                    <page name='recurrent_costs' string="Costs/revenues">
+                      <field name="recurrent_cost_ids"
+                             context="{'default_cf_forecast': 'True',
+                                       'date': date_start,}">
+                      <tree editable="True" decoration-muted="journal_entry_ids">
+                        <field name="journal_entry_ids" invisible="1"/>
+                        <field name="name"/>
+                        <field name="partner_id" />
+                        <field name="ref" />
+                        <field name="amount"/>
+                        <field name="amount_main_currency" label="Amount Cur."/>
+                        <field name="date"/>
+                        <field name="treasury_forecast_id" invisible="True"/>
+                        <field name="statement_id"
+                               domain="[('state', '!=', 'confirm')]"/>
+                        <field name="cf_forecast" string="FC"/>
+                        <button name="exclude_from_forecast"
+                                type="object"
+                                icon="fa-close"
+                                attrs="{'invisible':[('cf_forecast','!=',True)]}"/>
+                      </tree>
+                    </field>
+                    </page>
+                </notebook>
+              </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_treasury_forecast_tree" model="ir.ui.view" >
+        <field name="name">view_treasury_forecast_tree</field>
+        <field name="model">treasury.forecast</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Treasury planning">
+              <field name="name"/>
+              <field name="date_start"/>
+              <field name="date_end"/>
+              <field name="initial_balance"/>
+              <field name="final_balance"/>
+              <field name="periodic_saldo"/>
+              <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="view_bank_statement_line_search_edit_treasury" model="ir.ui.view">
+        <field name="name">view_bank_statement_line_search_edit_treasury</field>
+        <field name="model">account.bank.statement.line</field>
+        <field name="inherit_id" ref="account.view_bank_statement_line_search"/>
+        <field name="arch" type="xml">
+          <xpath expr="/search" position="inside">
+              <field name="treasury_forecast_id"/>
+          </xpath>
+        </field>
+    </record>
+
+</data></odoo>
