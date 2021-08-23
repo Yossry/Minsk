@@ -1,0 +1,143 @@
+@mixin list-view() {
+    .o_list_view.table {
+        border-bottom: none;
+        padding: 10px;
+        thead {
+            background: $white;
+            color: $Label-value;
+            border-bottom: none;
+            & > tr {
+                height: 38px;
+                & > th {
+                    border: none;
+                    text-transform: uppercase;
+                    vertical-align: middle;
+                }
+            }
+        }
+        tbody {
+            tr.o_group_header {
+                background-image: none;
+                background-color: $brand-optinal !important;
+            }
+            & > tr:nth-of-type(odd) {
+                background-color: $white;
+            }
+            & > tr {
+                height: 38px;
+                & > td {
+                    border-top: 1px solid $border;
+                    vertical-align: middle;
+                    &.o_data_cell {
+                        & > .o_labelcell {
+                            border-radius: 0;
+                            font-size: $font-size-12;
+                            font-weight: $font-weight-4;
+                            width: 90px;
+                            display: inherit;
+                            padding: 5px;
+                        }
+                    }
+                    &.o_field_x2many_list_row_add {
+                        text-align: center;
+                        margin: auto;
+                        & > a {
+                            /*width: auto;*/
+                            width: 100%;
+                            padding-top: 5px;
+                            padding-bottom: 5px;
+                            vertical-align: middle;
+                            text-align: center;
+                            height: 100%;
+                            text-transform: uppercase;
+                            font-weight: $font-weight-5;
+                            &:before {
+                                content: "\f067";
+                                font-family: FontAwesome;
+                                margin-right: 5px;
+                            }
+                            &:hover, &:active, &:focus{
+                                color: darken($brand-secondary, 7%);
+                            }
+                        }
+                    }
+                }
+                &:hover, &:focus-within {
+                    background: $tr-hover;
+                }
+                &.text-info {
+                    color: $text-info;
+                }
+                &.text-danger {
+                    color: $text-danger;
+                }
+                &.text-success {
+                    color: $text-success;
+                }
+                &.text-warning {
+                    color: $text-warning;
+                }
+                &.text-primary {
+                    color: $text-primary;
+                }
+                &.text-muted {
+                    color: $text-muted;
+                }
+                &.o_selected_row {
+                    & > td {
+                        span{
+                            vertical-align: middle;
+                            display: table-cell;
+                        }
+                        & *:not(.badge) {
+                            background-color: transparent;
+                        }
+                        .o_date_calender, .o_phone_phone, .o_email_envelope, .o_url_globe {
+                            display: none;
+                        }
+                    }
+                    .o_data_cell {
+                        padding: 0px;
+                        height: inherit;
+                    }
+                    .o_external_button {
+                        padding: 2px;
+                        margin: 0;
+                        color: $brand-secondary;
+                        background-color: transparent;
+                        box-shadow: none;
+                        &:hover {
+                            color: darken($brand-secondary, 7%);
+                            background-color: transparent;
+                        }
+                    }
+                }
+
+            }
+        }
+        tfoot {
+            background-color: $white;
+            border-top: none;
+            & > tr {
+                height: 38px;
+                border-bottom: 1px solid $border;
+            }
+        }
+        &.o_list_view_grouped {
+            & > tbody {
+                & > tr {
+                    &.o_group_header {
+                        background-color: $tr-hover !important;
+                    }
+                }
+            }
+        }
+        &.o_editable_list{
+            .o_data_row.o_selected_row{
+                .custom-checkbox{
+                    padding-left: 26px !important;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <template id="assets_backend" name="URL Access Restriction" inherit_id="web.assets_backend">
+    <xpath expr="." position="inside">
+      <script src="/url_access_restriction/static/src/js/url_access_restriction.js"></script>
+      <link href="/url_access_restriction/static/src/css/style.css" rel="stylesheet" />
+    </xpath>
+  </template>
+</odoo>

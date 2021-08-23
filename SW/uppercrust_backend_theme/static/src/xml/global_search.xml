@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+    <t t-name="AddRecord">
+        <li class="record_li">
+            <span>Add a record</span>
+        </li>
+    </t>
+    <t t-name="GlobalSearch">
+        <li title='Global Search' class="dropdown user-dropdown pull-left input-group mb0 o_global_search">
+            <input class="global-search o_input" placeholder="Search" type="text"/>
+            <div class="cu_close"><i class="fa fa-times"></i> </div>
+            <div class="cu_search"><i class="fa fa-search"></i> </div>
+        </li>
+    </t>
+    <div t-name="GlobalSearch.AutoComplete" class="oe-global-autocomplete oe-autocomplete pull-left">
+        <ul>
+        </ul>
+    </div>  
+</templates>

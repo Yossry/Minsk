@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright 2019 Coop IT Easy
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+    <record id="hr_contract_view_form" model="ir.ui.view">
+        <field name="name">hr_contract_view_form</field>
+        <field name="model">hr.contract</field>
+        <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+        <field name="arch" type="xml">
+
+            <field name="state" position="before">
+                <button name="%(create_amendment_wizard_view_action)d"
+                        string="Create Amendment Contract"
+                        type="action"
+                        attrs="{'invisible': [('has_termination_contract', '=', True)]}"
+                        class="oe_read_only"/>
+                <button name="create_termination"
+                        string="Create Termination Contract"
+                        type="object"
+                        attrs="{'invisible': [('has_termination_contract', '=', True)]}"
+                        class="oe_read_only"/>
+            </field>
+
+            <button name="toggle_active" position="after">
+                <button name="action_get_attachment_tree_view" class="oe_stat_button" icon="fa-book" type="object">
+                    <field name="attachment_number" widget="statinfo" string="Documents"/>
+                </button>
+            </button>
+
+            <field name="employee_id" position="attributes">
+                <attribute name="attrs">{'readonly':[('echelon', '!=', 'main')]}</attribute>
+            </field>
+
+            <field name="job_id" position="after">
+                <field name="date_initial_start"/>
+            </field>
+
+            <field name="type_id" position="attributes">
+                <attribute name="options">{'no_create': True}</attribute>
+            </field>
+
+            <field name="type_id" position="before">
+                <div style="width:35%"/> <!--Managing label width-->
+                <field name="echelon"/>
+            </field>
+
+            <field name="type_id" position="after">
+                <field name="state_admin"/>
+                <field name="reason"/>
+                <field name="tag_ids" widget="many2many_tags" options="{'edit': False}"/>
+            </field>
+
+            <field name="date_start" position="after">
+                <label for="duration"/>
+                <div class="o_row" name="duration">
+                    <field name="duration" nolabel="1"/>
+                    <span>month(s)</span>
+                </div>
+            </field>
+
+            <field name="trial_date_end" position="after">
+                <field name="date_signature"/>
+                <field name="date_mailing"/>
+            </field>
+
+            <xpath expr="//field[@name='resource_calendar_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+            <xpath expr="//div[@name='wage']/span" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+            <xpath expr="//div[@name='wage']/span" position="after">
+                <span>€ / month</span>
+            </xpath>
+
+            <field name="advantages" position="after">
+                <label for="hours"/>
+                <div class="o_row" name="hours">
+                    <field name="hours" nolabel="1"/>
+                    <span>/ month</span>
+                </div>
+                <label for="hourly_wage"/>
+                <div class="o_row" name="hourly_wage">
+                    <field name="hourly_wage" nolabel="1"/>
+                    <span>€ / hour</span>
+                </div>
+                <label for="turnover_minimum"/>
+                <div class="o_row" name="turnover_minimum">
+                    <field name="turnover_minimum" nolabel="1"/>
+                    <span>€ / month</span>
+                </div>
+            </field>
+
+            <xpath expr="//page[@name='information']" position="after">
+                <page string="Amendments" name="tree">
+                    <group>
+                        <field name="has_termination_contract" invisible="1"/>
+                        <field name="contract_ids" nolabel="1" context="{'tree_view_ref': 'hr_cae_contract.hr_contract_details_view_tree'}"/>
+                    </group>
+                </page>
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="hr_contract_view_tree" model="ir.ui.view">
+        <field name="name">hr_contract_view_tree</field>
+        <field name="model">hr.contract</field>
+        <field name="inherit_id" ref="hr_contract.hr_contract_view_tree"/>
+        <field name="arch" type="xml">
+
+            <field name="type_id" position="before">
+                <field name="amendment_index"/>
+                <field name="echelon"/>
+            </field>
+
+            <field name="resource_calendar_id" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+
+            <field name="date_end" position="after">
+                <field name="state"/>
+            </field>
+
+
+        </field>
+    </record>
+
+    <record id="hr_contract_details_view_tree" model="ir.ui.view">
+        <field name="name">hr_contract_details_view_tree</field>
+        <field name="model">hr.contract</field>
+        <field name="arch" type="xml">
+            <tree decoration-muted="state=='termination'" default_order="amendment_index desc">
+                <field name="amendment_index"/>
+                <field name="echelon"/>
+                <field name="type_id"/>
+                <field name="wage"/>
+                <field name="hours"/>
+                <field name="hourly_wage"/>
+                <field name="turnover_minimum"/>
+                <field name="date_start"/>
+                <field name="date_end"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="hr_contract_type_view_form" model="ir.ui.view">
+            <field name="name">hr.contract.type.form</field>
+            <field name="model">hr.contract.type</field>
+            <field name="inherit_id" ref="hr_contract.hr_contract_type_view_form"/>
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <field name="echelon"/>
+                    <field name="max_usage" attrs="{'invisible': [('echelon', '!=', 'amendment')]}"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="hr_contract_type_view_tree" model="ir.ui.view">
+            <field name="name">hr.contract.type.tree</field>
+            <field name="model">hr.contract.type</field>
+            <field name="inherit_id" ref="hr_contract.hr_contract_type_view_tree"/>
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <field name="echelon"/>
+                    <field name="max_usage"/>
+                </field>
+            </field>
+        </record>
+
+    <record id="action_hr_contract_main" model="ir.actions.act_window">
+            <field name="name">Contracts</field>
+            <field name="res_model">hr.contract</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form,activity</field>
+            <field name="domain">[('employee_id', '!=', False), ('echelon', '=', 'main')]</field>
+            <field name="context">{'search_default_current':1, 'search_default_group_by_state': 1}</field>
+            <field name="search_view_id" ref="hr_contract.hr_contract_view_search"/>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Create a new contract
+              </p>
+            </field>
+        </record>
+
+        <record id="action_hr_contract_amendment" model="ir.actions.act_window">
+            <field name="name">Contracts</field>
+            <field name="res_model">hr.contract</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form,activity</field>
+            <field name="domain">[('employee_id', '!=', False), ('echelon', '=', 'amendment')]</field>
+            <field name="context">{'search_default_current':1, 'search_default_group_by_state': 1}</field>
+            <field name="search_view_id" ref="hr_contract.hr_contract_view_search"/>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Create a new contract
+              </p>
+            </field>
+        </record>
+
+    <record id="action_hr_contract_termination" model="ir.actions.act_window">
+            <field name="name">Contracts</field>
+            <field name="res_model">hr.contract</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form,activity</field>
+            <field name="domain">[('employee_id', '!=', False), ('echelon', '=', 'termination')]</field>
+            <field name="context">{'search_default_current':1, 'search_default_group_by_state': 1}</field>
+            <field name="search_view_id" ref="hr_contract.hr_contract_view_search"/>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Create a new contract
+              </p>
+            </field>
+        </record>
+
+    <menuitem id="menu_hr_contracts" name="Contracts" parent="hr.menu_hr_root" groups="hr_contract.group_hr_contract_manager" sequence="4"/>
+    <menuitem id="menu_hr_contracts_all" name="All Contracts" parent="menu_hr_contracts" action="hr_contract.action_hr_contract" sequence="1"/>
+    <menuitem id="menu_hr_contracts_main" name="Main Contracts" parent="menu_hr_contracts" action="action_hr_contract_main" sequence="2"/>
+    <menuitem id="menu_hr_contracts_amendment" name="Amendment Contracts" parent="menu_hr_contracts" action="action_hr_contract_amendment" sequence="3"/>
+    <menuitem id="menu_hr_contracts_termination" name="Termination Contracts" parent="menu_hr_contracts" action="action_hr_contract_termination" sequence="4"/>
+
+    <!-- Overriding menu's of hr_contract to -->
+    <!-- Change group of the type menuitem to have it appear -->
+    <menuitem
+            id="hr_contract.hr_menu_contract_type"
+            action="hr_contract.action_hr_contract_type"
+            parent="hr.menu_human_resources_configuration"
+            sequence="3"
+            groups="hr_contract.group_hr_contract_manager"/>
+    <!-- Remove the groups from the normal Contracts menuitem to have it disappear (replaced by menu_hr_contracts) -->
+    <menuitem
+        id="hr_contract.hr_menu_contract"
+        name="Contracts"
+        action="hr_contract.action_hr_contract"
+        sequence="4"/>
+
+</odoo>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data> 
+			<record model="ir.ui.view" id="sos_weapon_tree_view">
+			<field name="name">sos.weapon.tree.view</field>
+			<field name="model">sos.weapon</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Weapon List" name="weapon_tree" create="true" edit="false" delete="false">
+					<field name="code"/>
+					<field name="name"/>
+					<field name="purchase_date"/>
+					<field name="weapon_lience"/>
+					<field name="project_id" />
+					<field name="center_id" />
+					<field name="post_id" />
+					<field name="city"/>
+					<field name="state"/>
+				</tree>
+			</field>
+		</record>
+
+
+		<record model="ir.ui.view" id="sos_weapon_form_view">
+			<field name="name">sos.weapon.form.view</field>
+			<field name="model">sos.weapon</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">	
+				<form string="Weapons Form" name="weapon_form" create="true" edit="true" delete="false">
+					<header>	
+						<field name="state" widget="statusbar" nolabel="1" />
+					</header>
+					<sheet>
+					<group>
+						<group>
+							<field name="name" placeholder=" Name..." invisible='0'/>
+							<field name="code"  required="1" string="ERP ID"/>
+							<field name="date"/>
+							<field name="current"/>
+														
+						</group>
+						<group>	<field name="center_id" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>
+								<field name="project_id" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}" />
+								<field name="post_id" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>
+						</group>
+					</group>
+					
+					<separator string="Weapons Detail"/>
+					<group>
+						<group>
+							<field name="weapon_type"/>
+							<field name="weapon_make"/>
+							<field name="weapon_lience"/>
+							<field name="weapon_condition"/>
+						</group>
+						
+						<group>
+							<field name="purchase_date"/>
+							<field name="city" placeholder="City... Islamabad"/>
+							<field name="purchased_by"/>
+							<field name="purchase_value"/>
+						</group>
+					</group>
+					
+					<notebook>
+						<page name="posts" string="Posts">
+						   <group>							   
+							   <field name="post_ids" options="{'always_reload': true}">	
+									<tree create="false" edit="false" delete="false">
+										<field name="center_id" invisible="1"/>	
+										<field name="project_id" invisible="0"/>		
+										<field name="post_id"/>
+										<field name="fromdate" />
+										<field name="todate" />
+										<field name="current" invisible="1"/>
+									</tree>
+								</field>									   
+						   </group>
+					   </page>
+					   <page name="weapon_repairing" string="Repaing History">
+						   <group>							   
+							   <field name="repair_ids">	
+									<tree create="false" edit="false" delete="false">
+										<field name="code"/>			
+										<field name="weapon_id"/>
+										<field name="checked_by"/>
+										<field name="fault" />
+										<field name="date" />
+									</tree>
+								</field>									   
+						   </group>
+					   </page>
+					   
+					  <page name="weapon_other" string="Other Info">
+					  </page>
+					</notebook>
+				</sheet>
+					<div class="oe_chatter">
+						<field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+						<field name="message_ids" widget="mail_thread" placeholder="Share a note..."/>
+		      		</div>
+				</form>
+			</field>
+		</record>
+		
+
+		<record id="sos_weapon_filter" model="ir.ui.view">
+		<field name="name">sos.weapon.filter</field>
+		<field name="model">sos.weapon</field>
+		<field name="arch" type="xml">
+			<search string="Post Weapon Filter">
+				<filter icon="terp-go-today" string="Store" name="draft" domain="[('state','=','store')]" />			
+				<filter icon="terp-go-today" string="Posted" name="posted" domain="[('state','=','post')]" />
+				<filter icon="terp-go-today" string="Repair" name="repair" domain="[('state','=','repair')]" />
+				<filter icon="terp-go-today" string="Out of Order" name="out_of_order" domain="[('state','=','out_of_order')]" />
+				<field name="date"/>
+				<field name="center_id"/>
+				<field name="project_id"/>
+				<field name="post_id"/>
+				<field name="city"/>
+				<separator/>
+					<group expand="0" string="Group By">
+						<filter string="Center" name="groupby_centers" icon="terp-partner" domain="[]" context="{'group_by':'center_id'}"/>
+						<filter string="Project" name="groupby_projects" icon="terp-partner" domain="[]" context="{'group_by':'project_id'}"/>
+						<filter string="Post" name="groupby_post" icon="terp-partner" domain="[]" context="{'group_by':'post_id'}"/>
+						<filter string="Date" name="groupby_date" icon="terp-partner" domain="[]" context="{'group_by':'date'}"/>
+						<filter string="State" name="groupby_state" icon="terp-partner" domain="[]" context="{'group_by':'state'}"/>
+					</group>
+			</search>
+		</field>
+		</record>
+
+		<record id="sos_weapon_action" model="ir.actions.act_window">
+			<field name="name">Weapons</field>
+			<field name="res_model">sos.weapon</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+					Click To Create A New Record.
+				</p>
+			</field>
+	</record>
+
+    </data>
+</odoo>

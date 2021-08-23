@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_calendar_mapped_dates_tree" model="ir.ui.view">
+        <field name="name">calendar.mapped_dates.tree</field>
+        <field name="model">calendar.mapped_dates</field>
+        <field name="arch" type="xml">
+            <tree string="Meeting type" editable="bottom">
+                <field name="name"/>
+                <field name="from_date"/>
+                <field name="to_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_mapped_dates" model="ir.actions.act_window">
+        <field name="name">Mapped dates</field>
+        <field name="res_model">calendar.mapped_dates</field>
+        <field name="view_type">form</field>
+        <field name="view_id" ref="view_calendar_mapped_dates_tree"/>
+    </record>
+
+    <menuitem action="action_mapped_dates" id="menu_mapped_dates" parent="menu_admin" sequence="10" />
+</odoo>

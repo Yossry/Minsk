@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+	<t t-name="DashboardAttendance">
+		<div class="container-fluid o_attendance_dashboard">
+		    <div class="row">
+		        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 o_attendance_dashboard_col">
+		            <div class="col-xs-12 text-center o_attendance_dashboard_emp"></div>
+		            <div class="col-xs-12 text-center o_attendance_dashboard_empinfo"></div>
+		        </div>
+		        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 o_attendance_dashboard_col"> 
+		            <div class="text-center o_attendance_dashboard_analysis"></div>                    
+		        </div>
+		    </div>
+		</div>
+	</t>
+
+	<t t-name="DashboardAttUser">
+		<div class="text-center o_attendance_dashboard_emp">
+		   <div class="o_attendance_dashboard_header">
+		        Employee Attendance Analysis                 
+		    </div>
+		    <div class="form-group">
+				<label for="userid">Employee ID</label>
+				<input class="form-control input" id="userid" name="userid" type="text" t-att-value="widget.data.empid"/>
+			  </div>
+		    <div>
+		        <a class="btn btn-primary btn-block o_analyze_button" role="button"><strong>Analyze Attendance</strong></a>
+		    </div>
+		    <div class="clearfix"/>
+		</div>        
+	</t>
+
+	<t t-name="DashboardAttUsers">       
+		<div class="col-xs-12 text-left o_attendance_dashboard_empinfo">
+		    <t t-set="div_style" t-value="'white-space:nowrap; float:left; padding:4px;font-size:12px;'"></t> 
+			<div class="col-xs-12" t-attf-style="{{div_style}}">
+		         <strong style="white-space:nowrap;">Designation:</strong>
+		         <p><t t-esc="widget.data.designation"></t> </p>
+		    </div>
+		    <div class="col-xs-12" t-attf-style="{{div_style}}"> 
+		         <strong style="white-space:nowrap;">Department:</strong>
+		         <p><t t-esc="widget.data.department"></t> </p> 
+		    </div>
+		    <div class="col-xs-12" t-attf-style="{{div_style}}"> 
+		         <strong style="white-space:nowrap;">Nationality:</strong>
+		         <p><t t-esc="widget.data.nationality"></t> </p> 
+		    </div>
+		    <div class="col-xs-12" t-attf-style="{{div_style}}"> 
+		         <strong style="white-space:nowrap;">Joining Date:</strong>
+		         <p><t t-esc="widget.data.joining_date"></t> </p> 
+		    </div>
+		    <div class="col-xs-12" t-attf-style="{{div_style}}"> 
+		         <strong style="white-space:nowrap;">Duration:</strong>
+		         <p><t t-esc="widget.data.duration"></t> </p> 
+		    </div>
+		    <div class="col-xs-12" t-attf-style="{{div_style}}"> 
+		         <strong style="white-space:nowrap;">Reporting To:</strong>
+		         <p style='white-space:nowrap; float:left; padding:4px;font-size:12px;'><t t-esc="widget.data.reporting"></t> </p> 
+		    </div>
+		</div>    
+	</t>
+	
+	<t t-name="DashboardAttAnalysis">
+		<style type="text/css">
+			 td{
+				padding:0px;
+				color:black;
+				font-size:8.0pt;
+				font-weight:400;
+				font-style:normal;
+				text-decoration:none;
+				font-family:Calibri, sans-serif;
+				text-align:center;
+				vertical-align:middle;
+				background:#F2F2F2;
+				white-space:nowrap;
+			}
+			td.heading{
+				font-weight:600;	
+				#background:#D9D9D9;
+			}
+			td.heading2{
+				font-size:10.0pt;
+				font-weight:600;
+				text-align:center;	
+				white-space:normal;
+			}
+			td.attdays{
+				font-size:9.0pt;
+				font-weight:400;	
+				background:#D9D9D9;
+				border:.5pt solid gray;
+				border-top:none;
+				border-left:none
+			}
+			td.att{
+				font-size:6.0pt;
+				border:.5pt solid gray;
+				border-top:none;
+				border-left:none;				
+			}
+			
+			</style>
+		
+		<div class="text-center o_attendance_dashboard_analysis" style="padding: 5px;">
+		 	
+		 	<div style='padding-left:5px;background:#F2F2F2;text-align:center;'>
+				<table border='0' cellpadding='0' cellspacing='0' style='border-collapse:collapse;table-layout:fixed;width:100%'>
+				 <tr style='height:18.9pt'>			  
+				  <td colspan='20' style='padding-left: 5px;font-size:12.0pt;font-weight:700;text-align:left;border-bottom:.5pt solid gray;'>
+				  	Monthly Attendance</td>
+				  <td colspan='20' style='font-size:12.0pt;font-weight:600;text-align:right;border-bottom:.5pt solid gray;'>
+				  	<t t-esc="widget.data.english_name"></t> - <t t-esc="widget.data.code"></t></td>
+				  
+				 </tr>
+	 
+				 <tr style='height:15.0pt'>			  
+				  <td colspan='3' style='padding-left: 3px;font-weight:700;text-align:left;border:.5pt solid gray;background:#D9D9D9;border-top:none'>Date</td>
+				  <t t-foreach="widget.data.days" t-as="p">
+					<td class='attdays'><b><t t-esc="p"></t></b></td>					
+				  </t>  
+				  <td style='background:#D9D9D9'>&#160;</td>
+				  <td style='font-weight:700;border:.5pt solid gray;'>P</td>
+				  <td style='font-weight:700;border:.5pt solid gray;background:#FCE4D6;border-left:none'>T</td>
+				  <td style='font-weight:700;border:.5pt solid gray;background:#E2EFDA;border-left:none'>L</td>
+				  <td style='font-weight:700;border:.5pt solid gray;background:#F8CBAD;border-left:none'>A</td>
+				  <td style='font-weight:700;border:.5pt solid gray;background:#D9E1F2;border-left:none'>V</td>
+				  <td style='font-weight:700;border:.5pt solid gray;background:#D9D9D9;border-left:none'>R</td>
+				  <!--<td rowspan='2'>&#160;</td> -->
+				 </tr>
+				 
+				 <t t-foreach="widget.data.attendance" t-as="month">
+					<tr style='height:15.0pt'>			  
+				  		<td rowspan='2' colspan='3' style='padding-left: 5px;font-size:9.0pt;font-weight:500;text-align:left;
+				  			border:.5pt solid gray;background:#D9D9D9;border-top:none'><t t-esc="month.name"></t></td>
+						<t t-foreach="month.days" t-as="day">
+							<span t-if="day.Color != ''">
+								<td class='att'><span data-html="true" t-att-style="'background-color:Red; color:white'" t-att-title="day.TT"><t t-esc="day.In"></t></span></td>
+							</span>
+							<span t-if="day.Color == ''">
+								<td class='att'><span data-html="true" t-att-title="day.TT"><t t-esc="day.In"></t></span></td>
+							</span>
+						</t>
+						
+						<td rowspan='2' style='color:#D9D9D9;background:#D9D9D9;border:.5pt solid gray;border-top:none'>31</td>
+				  		<td rowspan='2' style='border:.5pt solid gray; border-top:none'><t t-esc="month.P"></t></td>
+				  		<td rowspan='2' style='border:.5pt solid gray; border-top:none'><t t-esc="month.T or '-'"></t></td>
+				  		<td rowspan='2' style='border:.5pt solid gray; border-top:none'><t t-esc="month.L or '-'"></t></td>
+				  		<td rowspan='2' style='border:.5pt solid gray; border-top:none'><t t-esc="month.A or '-'"></t></td>
+				  		<td rowspan='2' style='border:.5pt solid gray; border-top:none'><t t-esc="month.V or '-'"></t></td>
+				  		<td rowspan='2' style='border:.5pt solid gray; border-top:none'><t t-esc="month.R or '-'"></t></td>
+				  		<!--<td rowspan='2'>&#160;</td> -->
+				 	</tr>
+				 	<tr style='height:15.0pt'>			  							
+				 		<t t-foreach="month.days" t-as="day">
+							<td class='att'><span data-html="true" t-att-title="day.TT"><t t-esc="day.Out"></t></span></td>
+						</t>
+					</tr>	
+				</t>
+				 
+	 
+	 
+				 <tr style='height:15.0pt'>			  
+				  <td style='border:.5pt solid gray;background:gray;border-top:none'>&#160;</td>
+				  <td colspan='34' style='border:.5pt solid gray;background:gray;border-top:none;border-left:none'>&#160;</td>
+				  
+				  <td style='border:.5pt solid gray;background:#F2F2F2;border-top:none;border-left:none'><t t-esc="widget.data.emp_present_total"></t></td>
+				  <td style='border:.5pt solid gray;background:#F2F2F2;border-top:none;border-left:none'>..</td>
+				  <td style='border:.5pt solid gray;background:#F2F2F2;border-top:none;border-left:none'><t t-esc="widget.data.emp_leave_total"></t></td>
+				  <td style='border:.5pt solid gray;background:#F2F2F2;border-top:none;border-left:none'>..</td>
+				  <td style='border:.5pt solid gray;background:#F2F2F2;border-top:none;border-left:none'>..</td>
+				  <td style='border:.5pt solid gray;background:#F2F2F2;border-top:none;border-left:none'>..</td>
+				  <!--<td>&#160;</td> -->
+				 </tr>
+				 
+				 <!--
+				 <tr style='height:14.4pt'>
+				  <td style='height:14.4pt'>&#160;</td>
+				</tr> -->
+			</table>
+
+		</div>
+	
+	
+		<div style='padding-left:30px;background:#F2F2F2;text-align:center;padding-top: 6px;'>
+			<table border='0' cellpadding='0' cellspacing='0' style='border-collapse:collapse;table-layout:fixed;width: 100%;'>
+				 <tr style='height:14.4pt'>
+			 		<td class='heading2' style='width:14%'>Work Days</td>
+			 		<td>&#160;</td>  
+				  	<td class='heading2' style='width:14%'>Non-Work Days</td>
+					<td>&#160;</td>  
+					<td class='heading2' style='width:14%'>Late</td>
+					<td>&#160;</td>  
+					<td class='heading2' style='width:14%'>Leaves</td>
+					<td>&#160;</td>
+					<td class='heading2' style='width:14%'>Absent</td>
+					<td>&#160;</td>
+					<td class='heading2' style='width:14%'>Vacations</td>
+					<td>&#160;</td>
+					<td class='heading2' style='width:14%'>Last Evaluation</td>
+					<td>&#160;</td>
+				 </tr>
+				 
+				 <tr style='height:2.0pt'>
+				 	<td style='height:2.0pt'>&#160;</td>  
+				 </tr>
+				 
+				 <tr style='height:45.0pt'>						 					  
+					  <td style='color:#7B7B7B;font-size:30.0pt;font-weight:700;border-top:.5pt solid gray;border-right:.5pt solid gray;border-bottom:.5pt solid gray;border-left:.5pt solid gray;'><t t-esc="widget.data.emp_present_total"></t></td>
+					  <td>&#160;</td>
+					  <td style='color:#ED7D31;font-size:30.0pt;font-weight:700;border-top:.5pt solid #7F7F7F;border-left:.5pt solid gray;border-right:.5pt solid gray;border-bottom:.5pt solid gray'>..</td>
+					  <td>&#160;</td>
+					  <td style='width:72pt;color:#833C0C;font-size:30.0pt;font-weight:700;background:#FCE4D6;'>..</td>
+					  <td>&#160;</td>
+					  <td style='width:72pt;color:#9C6500;font-size:30.0pt;font-weight:700;background:#FFEB9C;'><t t-esc="widget.data.emp_leave_total"></t></td>
+					  <td>&#160;</td>
+					  <td style='width:72pt;color:#9C0006;font-size:30.0pt;font-weight:700;background:#FFC7CE;'>..</td>
+					  <td>&#160;</td>
+					  <td style='width:72pt;color:#222B35;font-size:30.0pt;font-weight:700;background:#BDD7EE;'>..</td>
+					  <td>&#160;</td>
+					  <td style='width:66pt;color:#525252;font-size:12.0pt;font-weight:700;background:#DBDBDB;white-space:normal;'>-- % in Year 2016</td>
+					  <td>&#160;</td>  
+				 </tr>
+				 
+				 <tr style='height:15.0pt'>						  
+					  <td>--%</td>
+					  <td>&#160;</td>
+					  
+					  <td>--%</td>
+					  <td>&#160;</td>
+					  
+					  <td>--%</td>
+					  <td>&#160;</td>
+					  
+					  <td>--%</td>
+					  <td>&#160;</td>
+					  
+					  <td>--%</td>
+					  <td>&#160;</td>
+					  
+					  <td>--%</td>	  
+				  </tr> 
+				 
+			</table>	 
+		</div>
+			      
+	 </div>
+	</t>
+
+
+</templates>
+

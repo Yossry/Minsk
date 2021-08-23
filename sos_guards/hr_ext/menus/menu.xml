@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<menuitem name="Departments" action="hr.open_module_tree_department" id="hr.menu_hr_department_tree" parent="hr.menu_hr_main" 
+			sequence="1" groups="hr.group_hr_user,hr_payroll.group_hr_payroll_manager"/>
+		<menuitem name="Employee" action="hr.open_view_employee_list_my" id="hr.menu_open_view_employee_list_my" sequence="2" parent="hr.menu_hr_main"/>
+
+
+		<menuitem name="Contracts" action="hr_contract.action_hr_contract" id="hr_contract.hr_menu_contract_contract" parent="hr_contract.hr_menu_contract" 
+			sequence="10" groups="hr.group_hr_user"/> 
+		<menuitem name="Expiring Contracts" action="open_expiring_contracts" id="menu_expiring_contracts" parent="hr_contract.hr_menu_contract" groups="hr.group_hr_user" sequence="20"/>
+		<menuitem name="Draft Contracts" action="open_draft_contracts" id="menu_draft_contracts" parent="hr_contract.hr_menu_contract"  groups="hr.group_hr_user" sequence="30"/>
+		<menuitem name="Contract Template" action="open_contract_template" id="menu_hr_contract_template" parent="hr_contract.hr_menu_contract" sequence="40"/>
+
+		<menuitem name="General" id="menu_hr_general_configuration" parent="hr.menu_human_resources_configuration" sequence="5"/>
+			<menuitem name="Termination Reasons" id="menu_hr_employee_termination_reason" action="open_termination_reason" parent="menu_hr_general_configuration" sequence="5"/>
+			<menuitem name="Job Positions" id="menu_hr_job" action="hr.action_hr_job" parent="menu_hr_general_configuration" sequence="7"/>
+				
+		<menuitem name="Document Expiry Type" parent="hr.menu_human_resources_configuration" id="menu_hr_documents_expire_type_view"  
+			sequence="40" groups="hr.group_hr_manager" action="act_hr_documents_expire_type_view"/>
+			
+		<menuitem name="Policies" parent="hr.menu_human_resources_configuration" id="menu_hr_policy_configuration"  sequence="50" groups="hr_payroll.group_hr_payroll_manager"/>
+			<menuitem parent="menu_hr_policy_configuration" sequence="5" action="open_policy_group" id="menu_hr_policy_group"/>
+			<menuitem parent="menu_hr_policy_configuration" sequence="15" action="open_absence_policy" id="menu_hr_absence_policy"/>
+			<menuitem parent="menu_hr_policy_configuration" sequence="10" action="open_ot_policy" id="menu_hr_ot_policy"/>
+
+		<menuitem name="Documents Expiry" action="act_hr_documents_expire_view" id="menu_hr_documents_expiry" sequence="11" parent="hr.menu_hr_main" 
+			groups="hr.group_hr_manager"/>
+		
+		<!-- HR Reports menu-->
+		<menuitem id="menu_hr_reporting" name="HR Reports" parent="hr.menu_hr_root" sequence="100" groups="hr.group_hr_manager,hr.group_hr_user"/>
+			<menuitem name="Employee Profile Report" action="act_employee_profile_wizard" id="menu_employee_profile_wizard" parent="menu_hr_reporting" sequence="5"/>
+			<menuitem name="Employee Contract Report" action="act_employee_contract_wizard" id="menu_employee_contract_wizard" parent="menu_hr_reporting" sequence="7"/>
+			<menuitem name="Expire Docs Report" action="act_expire_docs_wizard" id="menu_expire_docs_wizard" parent="menu_hr_reporting" sequence="13"/>
+
+		
+	 </data>
+</odoo>
+
+
+

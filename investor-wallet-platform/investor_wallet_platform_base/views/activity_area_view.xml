@@ -1,0 +1,39 @@
+<odoo>
+	<record id="view_activity_area_wallet_platform" model="ir.ui.view">
+	    <field name="name">activity.area.form</field>
+	    <field name="model">activity.area</field>
+	    <field name="arch" type="xml">
+	    	<form string="Activity area">
+                <group>
+	                <group>
+		                <field name="name"/>
+                        <field name="full_name"/>
+          			</group>
+          			<group>
+	          			<field name="country_id"/>
+          			</group>
+          		</group>
+            </form>
+	    </field>
+	</record>
+	
+	<record id="view_activity_area_tree" model="ir.ui.view">
+	    <field name="name">activity.area.tree</field>
+	    <field name="model">activity.area</field>
+	    <field name="arch" type="xml">
+	    	<tree string="Activity areas">
+	        	<field name="name"/>
+	   			<field name="country_id"/>
+            </tree>
+	    </field>
+	</record>
+
+	<record id="action_wallet_platform_activity_area" model="ir.actions.act_window">
+	    <field name="name">Activity area</field>
+	    <field name="type">ir.actions.act_window</field>
+	    <field name="res_model">activity.area</field>
+	    <field name="view_type">form</field>
+	    <field name="view_mode">tree,form</field>
+	</record>
+	
+</odoo>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template
+        id="assets_backend"
+        name="base_company_logo_visibility assets"
+        inherit_id="web.assets_backend"
+    >
+        <xpath expr="." position="inside">
+            <script
+                type="text/javascript"
+                src="/base_company_logo_visibility/static/src/js/show_company_logo.js"
+            />
+        </xpath>
+    </template>
+</odoo>

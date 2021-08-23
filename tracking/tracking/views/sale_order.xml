@@ -1,0 +1,15 @@
+<openerp>
+  <data>
+      <record id="view_saled_form_inherit" model="ir.ui.view">
+            <field name="name">view.sale.form.add.text.field</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header/button[@name='print_quotation']" position="after">
+                   <button name="open_uxltra" string="open xltrack" type="object" />
+                </xpath>
+            </field>
+    </record>
+
+  </data>
+</openerp>

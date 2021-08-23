@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="product_category_form_view" model="ir.ui.view">
+        <field name="name">product.category.form</field>
+        <field name="model">product.category</field>
+        <field
+            name="inherit_id"
+            ref="supplier_user_access.product_category_form_view"
+        />
+        <field name="arch" type="xml">
+            <field name="supplier_access" position="after">
+                <field name="stock_data_purchase_price" />
+            </field>
+        </field>
+    </record>
+    <record id="product_category_list_view" model="ir.ui.view">
+        <field name="name">product.category.list</field>
+        <field name="model">product.category</field>
+        <field name="inherit_id" ref="product.product_category_list_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="attributes">
+                <attribute name="editable">top</attribute>
+            </xpath>
+            <field name="display_name" position="after">
+                <field name="supplier_access" />
+                <field name="stock_data_purchase_price" />
+            </field>
+        </field>
+    </record>
+</odoo>

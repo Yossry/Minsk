@@ -1,0 +1,196 @@
+/* Copyright 2019 UNIBRAVO.
+ * License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl). */
+
+// Fonts
+
+$font-family-sans-serif: 'Roboto';
+$font-size-base: $o-font-size-base;
+$line-height-base: $o-line-height-base;
+
+$font-family-sans-serif: 'Roboto';
+$font-size-base: $o-font-size-base;
+$line-height-base: $o-line-height-base;
+
+$h1-font-size: $o-font-size-base * 2.4;
+$h2-font-size: $o-font-size-base * 1.5;
+$h3-font-size: $o-font-size-base * 1.3;
+$h4-font-size: $o-font-size-base * 1.2;
+$h5-font-size: $o-font-size-base * 1.1;
+
+$headings-font-weight: 400;
+$headings-color: $gray-900;
+
+// Color system
+
+$white:    #fff !default;
+$black:    #444 !default;
+$gray:                   #777;
+$gray-base:              #333;
+$gray-dark:              #666;
+$gray-light:             #AEA79F;
+$gray-lighter: lighten($gray-base, 93.5%);
+$gray-darker: lighten($gray-base, 13.5%);
+
+// Links
+
+$link-color: darken($o-brand-primary, 5%);
+$link-hover-decoration: none;
+
+// Dropdowns
+
+$dropdown-border-color: $gray-300;
+$dropdown-divider-bg: $gray-300;
+
+$dropdown-link-color: $o-main-text-color;
+$dropdown-link-hover-color: $gray-900;
+$dropdown-link-hover-bg: $gray-200;
+
+$dropdown-link-active-color: $gray-900;
+$dropdown-link-active-bg: $gray-300;
+
+// Navs
+
+$nav-tabs-border-color: transparent;
+$nav-tabs-link-hover-border-color:  $gray-light;
+$nav-tabs-link-active-color:        $o-brand-primary;
+$nav-tabs-link-active-bg:           $gray-200;
+$nav-tabs-link-active-border-color: transparent;
+
+// Odoo Enterprise colors
+//------------------------
+$o-enterprise-primary-color: #706775;
+$brand-primary: #706775;
+$brand-secondary: #00A09D;
+$brand-primary-dark: darken($brand-primary, 10%);
+$brand-secondary-dark: darken($brand-secondary, 10%);
+
+body {
+    font-family: "Roboto";
+}
+
+a {
+    color: $brand-secondary;
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+}
+
+a:hover {
+    color: $brand-secondary-dark;
+    text-decoration: none;
+}
+
+.o_loading {
+    background-color: $brand-primary;
+}
+
+.o_main_navbar {
+    font-size: 14px;
+    background-color : $brand-primary;
+    border-bottom: 1px solid #f39797 !important;
+    box-shadow: inset 2px #f39797;
+}
+
+.o_main_navbar > a:hover, .o_main_navbar > a:focus, .o_main_navbar > button:hover, .o_main_navbar > button:focus {
+
+    background-color: $brand-primary-dark;
+    color: inherit;
+
+}
+
+.o_main_navbar > ul > li > a:hover, .o_main_navbar > ul > li > label:hover {
+    background-color: $brand-primary-dark;
+}
+
+.o_main_navbar .show .dropdown-toggle {
+
+    background-color: $brand-primary-dark;
+
+}
+
+// Add file button
+.o_control_panel .o_cp_sidebar .o_hidden_input_file .o_form_binary_form span {
+    color: $gray-dark !important;
+}
+
+// Filter search label
+
+.o_searchview {
+    .o_searchview_facet {
+
+         background-color: white;
+
+        .o_searchview_facet_label {
+            background-color: $brand-primary;
+        }
+    }
+}
+
+.o_searchview .o_searchview_input {
+    outline: none;
+}
+
+.o_control_panel {
+    background-color: white;
+}
+
+.breadcrumb {
+    background-color: inherit;
+}
+
+.o_main_navbar .o_user_menu .oe_topbar_avatar {
+    height: 40px !important;
+}
+
+.o_mail_discuss .o_mail_discuss_sidebar {
+    background-color: #303446;
+    color: #e6e6e6;
+    font-weight: bold;
+}
+
+// Input
+
+input[type="text"], input[type="password"], input[type="number"],
+textarea, select, .o_form_view.o_form_editable .o_form_field_many2manytags,
+.o_searchview {
+    border: 0;
+    border-radius: 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.o_web_client input:focus, .o_web_client textarea:focus, .o_web_client select:focus {
+    outline: none;
+}
+
+.o_input {
+    border: 1px solid #ccc;
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;
+    color: $gray;
+}
+
+.o_required_modifier {
+    &.o_input, .o_input {
+        background-color: transparent !important;
+    }
+}
+
+.input-group > .form-control {
+	background-color: transparent;
+    color: #fff;
+    border-radius: 5px !important;
+}
+
+.input-group-text {
+	background-color: transparent;
+	color: #fff;
+	border: 0px;
+}
+
+
+// Chat window
+
+.o_thread_window .o_thread_window_header {
+	background-color: $brand-primary;
+}

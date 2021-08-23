@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_guards_extra_attendance_form" model="ir.ui.view">
+            <field name="name">Mark Extra Guards Attendance</field>
+            <field name="model">guards.extra.attendance.mark</field>
+            <field name="arch" type="xml">
+            <form string="Mark Guards Extra/Double Attendance">
+                <group>
+                    <group>
+                    	<field name="name"/>   
+                    </group>	
+                                   
+                </group>
+				
+
+				<field name="line_ids">
+					<tree editable="top">
+						<field name="post_id"  options="{'no_quick_create':True,'no_create_edit':True}"/>
+						<field name="center_id" readonly="1" />  
+                    	<field name="project_id" readonly="1" /> 
+						<field name="employee_id" domain="[('center_id','=',center_id),('current','=',True),('is_guard','=',True)]" 
+							options="{'no_quick_create':True,'no_create_edit':True}"
+							context="{'form_view_ref': 'sos.view_guard_form','tree_view_ref': 'sos.view_guard_tree','search_view_ref': 'sos.view_guard_filter'}"/>  
+						<field name="action"/>  
+					</tree>
+				</field> 
+               
+                <footer>
+                    <button name="mark_attendance" string="Mark Attendance" type="object" class="oe_highlight"/>
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+            </form>
+            </field>
+        </record>
+
+        <record id="action_guards_extra_attendance" model="ir.actions.act_window">
+            <field name="name">Mark Extra/Double Attendance</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">guards.extra.attendance.mark</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        
+        
+
+    </data>
+</odoo>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+			   
+        <record id="sos_pss_attendance_wizard_form" model="ir.ui.view">
+            <field name="name">Print PSS Attendance</field>
+            <field name="model">sos.pss.attendance.wizard</field>                     
+            <field name="arch" type="xml">
+            <form>
+            	<group>
+					<field name="date_from" />
+					<field name="date_to" />
+				</group>
+				<notebook>
+					<page string="Center" name="centers">
+						<separator string="Print only" colspan="4"/>
+						<field name="center_ids"  widget="many2many_tags" options="{'no_create_edit': True}"/>
+					</page>
+				</notebook>	
+				
+					<footer>
+						<button name="print_report" string="Generate Report" type="object" default_focus="1" class="oe_highlight"/>
+						<button string="Cancel" class="oe_link" special="cancel" />
+					</footer>		
+              </form>  
+            </field>
+        </record>
+				
+        <record id="action_sos_pss_attendance_wizard" model="ir.actions.act_window">
+            <field name="name">Print PSS Attendance</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sos.pss.attendance.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="sos_pss_attendance_wizard_form"/>
+            <field name="target">new</field>
+        </record>
+		
+    </data>
+</odoo>

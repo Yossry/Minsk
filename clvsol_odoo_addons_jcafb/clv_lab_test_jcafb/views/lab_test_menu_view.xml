@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <menuitem name="Lab Test" id="clv_lab_test.menu_health_health_lab_test"
+        parent="clv_base.menu_health_health"
+        groups="clv_lab_test.group_user"
+        sequence="20"/>
+
+    <menuitem name="Requests" id="clv_lab_test.menu_health_health_lab_test_requests"
+        parent="clv_lab_test.menu_health_health_lab_test"
+        groups="clv_lab_test.group_user"
+        sequence="10"
+        action="clv_lab_test.clv_lab_test_request_action"/>
+
+    <menuitem name="Results" id="clv_lab_test.menu_health_health_lab_test_results"
+        parent="clv_lab_test.menu_health_health_lab_test"
+        groups="clv_lab_test.group_user"
+        sequence="30"
+        action="clv_lab_test.clv_lab_test_result_action"/>
+
+    <menuitem name="Reports" id="clv_lab_test.menu_health_health_lab_test_reports"
+        parent="clv_lab_test.menu_health_health_lab_test"
+        groups="clv_lab_test.group_user"
+        sequence="40"
+        action="clv_lab_test.clv_lab_test_report_action"/>
+
+    <menuitem name="Lab Test" id="clv_lab_test.menu_health_config_lab_test" 
+        parent="clv_base.menu_health_config"
+        groups="clv_lab_test.group_user"
+        sequence="20"/>
+
+    <menuitem name="Units" id="menu_community_config_config_lab_test_units"
+        parent="clv_lab_test.menu_health_config_lab_test"
+        groups="clv_lab_test.group_user"
+        sequence="10"
+        action="clv_lab_test.clv_lab_test_unit_action"/>
+
+    <menuitem name="Criteria" id="menu_community_config_config_lab_test_criterias"
+        parent="clv_lab_test.menu_health_config_lab_test"
+        groups="clv_lab_test.group_user"
+        sequence="20"
+        action="clv_lab_test.clv_lab_test_criterion_action"/>
+
+    <menuitem name="Types" id="clv_lab_test.menu_health_config_lab_test_types"
+        parent="clv_lab_test.menu_health_config_lab_test"
+        groups="clv_lab_test.group_user"
+        sequence="30"
+        action="clv_lab_test.clv_lab_test_type_action"/>
+
+    <!--menuitem name="Direct Mail" id="clv_lab_test.menu_health_health_lab_test_requests_direct_mail"
+        parent="clv_lab_test.menu_health_health_lab_test_requests"
+        groups="clv_lab_test.group_user"
+        sequence="30"
+        action="clv_lab_test_jcafb.clv_lab_test_request_direct_mail_actions"/-->
+
+    <menuitem name="Parasites" id="clv_lab_test.menu_health_config_lab_test_parasites"
+        parent="clv_lab_test.menu_health_config_lab_test"
+        groups="clv_lab_test.group_user"
+        sequence="40"
+        action="clv_lab_test_jcafb.clv_lab_test_parasite_action"/>
+
+    <menuitem name="Crystals" id="clv_lab_test.menu_health_config_lab_test_crystals"
+        parent="clv_lab_test.menu_health_config_lab_test"
+        groups="clv_lab_test.group_user"
+        sequence="50"
+        action="clv_lab_test_jcafb.clv_lab_test_crystal_action"/>
+
+</odoo>

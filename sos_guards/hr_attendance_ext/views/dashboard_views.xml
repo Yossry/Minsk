@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="attendance_dashboard_action" model="ir.actions.client">
+        <field name="name">Attendance Dashboard</field>
+        <field name="tag">attendance_dashboard.main</field>
+    </record>
+    
+    <template id="assets_backend" name="Attendance Dashboard Assets" inherit_id="web.assets_backend" priority="77">
+        <xpath expr="." position="inside">
+            <link href="/hr_attendance_ext/static/src/less/dashboard.less" rel="stylesheet" type="text/less"/>
+            <script type="text/javascript" src="/hr_attendance_ext/static/src/js/dashboard.js"></script>
+        </xpath>
+    </template>
+    
+   
+    
+</odoo>

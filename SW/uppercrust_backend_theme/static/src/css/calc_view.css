@@ -1,0 +1,32 @@
+body.o_web_client > .o_main > .o_main_content > .o_control_panel > .o_search_options .o_dropdown.ad_active.show > .dropdown-menu{
+	height: calc(100vh - 140px);
+}
+body.o_web_client > .o_main > .o_main_content > .o_control_panel .o_cp_sidebar > .btn-group > .o_dropdown > div.dropdown-menu{
+	max-height: calc(100vh - 145px);
+}
+.o_web_client header .o_main_navbar .o_quick_menu > li.o_gb_search > ul.dropdown-menu > li.o_global_search .oe-global-autocomplete > ul{
+	height: calc(100vh - 90px);
+}
+.o_thread_composer.o_chat_mini_composer .o_composer .o_mail_emoji_container{
+	max-height: calc(100vh - 400px);
+}
+.o_search_options .o_favorites_menu , .o_search_options .o_filters_menu, .o_search_options .o_group_by_menu{
+	max-height: calc(100vh - 125px);
+}
+body.o_web_client .o_main .o_main_content.ad_rightbar > .o_content .o_view_controller .o_form_view .oe_chatter.o_chatter > .o_chat_composer .o_composer_container .o_composer .o_mail_emoji_container, .o_web_client .o_main .o_main_content.ad_rightbar > .o_content .o_reconciliation .o_form_view .oe_chatter.o_chatter > .o_chat_composer .o_composer_container .o_composer .o_mail_emoji_container{
+	max-height: calc(100vh - 300px);
+}
+body.o_web_client.modal-open .modal-dialog .modal-content .modal-body.o_act_window .o_modal_header .o_search_options > .btn-group ul.dropdown-menu {
+	max-height: calc(100vh - 300px);
+}
+body.o_web_client.ad_mobile .o_main .o_main_content.ad_rightbar > .o_content .o_hr_attendance_kiosk_mode_container .o_hr_attendance_kiosk_mode .o_hr_attendance_back_button {
+	left: calc(50% - 20px);
+}
+body.o_web_client.ad_mobile:not(.ad_full_view) .o_main .ad_rightbar{
+	flex-basis: calc(100% + 65px);
+}
+@media only screen and (max-width: 767px) {
+	body.o_web_client:not(.ad_mobile):not(.ad_full_view) .o_main .ad_rightbar{
+		flex-basis: calc(100% + 65px);
+	}
+}

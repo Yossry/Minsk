@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_clv_event_user,clv.event.user,model_clv_event,clv_event.group_user,1,0,0,0
+access_clv_event_manager,clv.event.manager,model_clv_event,clv_event.group_manager,1,1,1,0
+access_clv_event_supmanager,clv.event.supmanager,model_clv_event,clv_event.group_supmanager,1,1,1,1
+
+access_clv_event_category_user,clv.event.category.user,model_clv_event_category,clv_event.group_user,1,0,0,0
+access_clv_event_category_manager,clv.event.manager.category,model_clv_event_category,clv_event.group_manager,1,1,1,0
+access_clv_event_category_supmanager,clv.event.category.supmanager,model_clv_event_category,clv_event.group_supmanager,1,1,1,1
+
+access_clv_event_attendee_user,clv.event.attendee.user,model_clv_event_attendee,clv_event.group_user,1,0,0,0
+access_clv_event_attendee_manager,clv.event.manager.attendee,model_clv_event_attendee,clv_event.group_manager,1,1,1,0
+access_clv_event_attendee_supmanager,clv.event.attendee.supmanager,model_clv_event_attendee,clv_event.group_supmanager,1,1,1,1

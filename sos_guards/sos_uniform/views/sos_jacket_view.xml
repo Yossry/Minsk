@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		 <record id="sos_jacket_demand_tree" model="ir.ui.view">
+			<field name="name">Jackets Demand Tree</field>
+			<field name="model">sos.jacket.demand</field>
+			<field name="priority" eval="15"/>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="name"/>
+					<field name="date"/>
+					<field name="new_posts"/>
+					<field name="new_guards"/>
+					<field name="existing_guards"/>
+					<field name="dm_type"/>
+				</tree>
+			</field>
+		</record>
+
+		 <record id="sos_jacket_demand_form" model="ir.ui.view">
+			<field name="name">Jacket Demand Form</field>
+			<field name="model">sos.jacket.demand</field>
+			<field name="priority" eval="15"/>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Jacket Demand">
+					<header>
+						<button name="demand_recommended" type="object" states="draft" string="RM" class="oe_highlight" groups="sos.group_regional_manager,sos.group_coordinator" />
+						<button name="demand_reviewed" type="object" states="recommended" string="Coordinator" class="oe_highlight" groups="sos_uniform.group_demand_review"/>
+						<button name="demand_approved" type="object" states="reviewed" string="HOC" class="oe_highlight" groups="sos_uniform.group_demand_approve"/>
+						<button name="demand_admin" type="object" states="approved" string="Admin" class="oe_highlight" groups="sos_uniform.group_admin_approve" />
+						<button name="demand_dispatch" type="object" states="adm" string="Store" class="oe_highlight" groups="stock.group_stock_manager"/>
+						<button name="demand_delivered" type="object" states="dispatch" string="Deliver" class="oe_highlight" groups="sos.group_regional_manager,sos.group_coordinator" />
+						<button name="demand_rejected" type="object" states="draft,reviewed,recommended,dispatch,approved" string="Rejected" class="oe_highlight" groups="base.group_user"/>
+						<field name="state" widget="statusbar" nolabel="1" statusbar_visible="draft,recommended,reviewed,adm,dispatch,approved,done,rejected"/>
+					 </header>
+					<sheet string="Jacket Demand">
+						<group colspan="4">
+							<group>
+								<field name="name"/>
+								<field name="center_id" options="{'no_create': True, 'limit': 10}"/>
+								<field name="employee_id" options="{'no_create': True, 'limit': 10}"/>
+								<field name="dm_type"/>
+							 </group>
+							 <group>
+								<field name="date"/>
+								<field name="project_id" attrs="{'readonly':[('state','!=','draft')]}" options="{'no_create': True, 'limit': 10}"/>
+								<field name="post_id" domain="[('center_id', '=', center_id),('project_id', '=', project_id),('active', '=', True)]" attrs="{'readonly':[('state','!=','draft')]}" options="{'no_create': True, 'limit': 10}"/>
+							 </group>
+						 </group>
+
+						<group colspan="4">
+								<group>
+									 <field name="new_posts"/>
+									 <field name="new_guards"/>
+									 <field name="move_id" groups="account.group_account_manager"/>
+								</group>
+								<group>
+								  <field name="existing_guards"/>
+								  <field name="no_of_guards"/>
+
+
+								</group>
+						</group>
+
+						<group colspan="4">
+							<group>
+								<field name="remarks"/>
+							</group>
+						</group>
+
+						<group string="Required Items">
+							<field name="jacket_demand_line" colspan="4" nolabel="1" attrs="{'readonly': [('state', 'in', ['dispatch', 'done', 'reject','cancel'])]}">
+								<tree editable="top" >
+									<field name="guard_id" attrs="{'readonly': [('state' , '=', 'dispatch'),('guard_id', '=', False)]}"
+										domain="[('current_post_id', '=', parent.post_id),('current', '=', True)]"
+										options="{'no_create': True, 'limit': 10}"
+										context="{'form_view_ref': 'sos.view_guard_form','tree_view_ref': 'sos.view_guard_tree','filter_view_ref': 'sos.view_guard_filter'}"/>
+									<field name="item" attrs="{'readonly': [('state' , '=', 'dispatch')]}" required="1" options="{'no_create': True, 'limit': 10}"/>
+
+									<field name="qty" required="1"  attrs="{'readonly': [('state' , '=', 'dispatch')]}" />
+									<field name="date" attrs="{'readonly': [('state' , '=', 'dispatch')]}" />
+									<field name="size" attrs="{'readonly': [('state' , '=', 'dispatch')]}" />
+									<field name="state" invisible="1"/>
+									<field name="approved_qty" attrs="{'invisible': [('state', 'in', ['draft','open'])],'readonly': [('state' , 'not in', ['review','approve','adm'])]}" />
+
+								</tree>
+								<form>
+									<group>
+										<group>
+										 <field name="guard_id" context="{'form_view_ref': 'sos.view_guard_form','tree_view_ref': 'sos.view_guard_tree','filter_view_ref': 'sos.view_guard_filter'}"/>
+										 <field name="item"/>
+										 <field name="date"/>
+										</group>
+										<group>
+										  <field name="qty"/>
+										  <field name="size"/>
+										</group>
+									</group>
+									 <field name="stock_lines">
+										<tree create="false" edit="false" delete="false">
+											<field name="date" />
+											<field name="name"/>
+											<field name="location_id"/>
+											<field name="product_id" />
+											<field name="product_qty" />
+											<field name="state" invisible="1"/>
+										</tree>
+									</field>
+								</form>
+							</field>
+						</group>
+
+
+
+
+						<group string="Dispatch Items"  attrs="{'invisible': [('state', 'in', ['draft', 'open', 'reject'])]}">
+							<button name="demand_required_item_dispatch" type="object" string="Enter Dispatch Items" attrs="{'invisible': [('state','in', ['draft','open','reject','cancel'])]}"/>
+							<field name="jacket_dispatch_line" colspan="4" nolabel="1">
+								<tree editable="top" >
+									<field name="product_id" domain="[('categ_id.name', '=', 'Guards Uniform')]" options="{'no_create': True, 'limit': 10}"/>
+									<field name="product_uom"/>
+									<field name="stock_qty" />
+									<field name="product_qty" required="1" />
+								</tree>
+							</field>
+						</group>
+
+
+
+						<group string="Dispatch Moves">
+							<field name="dispatch_ids" readonly="1" colspan="4" nolabel="1">
+								<tree colors="grey:state == 'cancel';green:location_id == 12" string="Moves" create="false">
+										<field name="product_id"/>
+										<field name="product_uom_qty"/>
+										<field name="product_uom"  string="Unit of Measure" groups="product.group_uom"/>
+										<field name="location_id"/>
+										<field name="location_dest_id"/>
+										<field name="emp_id"/>
+										<field name="date" string="Date"/>
+										<field name="state" invisible="1"/>
+									</tree>
+							</field>
+						</group>
+
+
+
+
+
+						<!--
+						<field name="product_ids" colspan="4" nolabel="1" attrs="{'invisible': ['|','|','|','|',('state', '=', 'draft'),('state', '=', 'recommended'),('state', '=', 'reviewed'),('state', '=', 'approved'),('state', '=', 'rejected')]}" />
+						<field name="guard_ids" colspan="4" nolabel="1">
+							<tree>
+								<field name="code"/>
+							   <field name="name"/>
+							   <field name="fathername"/>
+							   <field name="cnic"/>
+							   <field name="current"/>
+							   <field name="project_id"/>
+							   <field name="current_post_id"/>
+							   <field name="center_id"/>
+							   <field name="points"/>
+							</tree>
+						</field>
+						-->
+					</sheet>
+					<div class="oe_chatter">
+						<field name="message_follower_ids" widget="mail_followers" groups="base.group_user" />
+						<field name="message_ids" widget="mail_thread" />
+					</div>
+				</form>
+			</field>
+		</record>
+
+		<record id="sos_jacket_demand_filter" model="ir.ui.view">
+			<field name="name">sos.jacket.demand.filter</field>
+			<field name="model">sos.jacket.demand</field>
+			<field name="arch" type="xml">
+				<search string="Search jacket Demand">
+					<filter icon="terp-go-today" string="Draft" name="draft" domain="[('state','=','draft')]" />
+					<filter icon="terp-go-today" string="Done" name="done" domain="[('state','=','done')]" />
+					<filter icon="terp-go-today" string="Approved" name="done" domain="[('state','=','approved')]" />
+					<filter icon="terp-go-today" string="Rejected" name="done" domain="[('state','=','rejected')]" />
+					<separator/>
+					<filter icon="terp-go-today" string="New Deployment" name="new_deployment" domain="[('dm_type','=','new_deployment')]" />
+					<filter icon="terp-go-today" string="Complain" name="complain" domain="[('dm_type','=','complain')]" />
+					<filter icon="terp-go-today" string="Additional Guard" name="additional_guard" domain="[('dm_type','=','additional_guard')]" />
+					<filter icon="terp-go-today" string="Replacement" name="replacement" domain="[('dm_type','=','replacement')]" />
+					<separator/>
+
+					<field name="name"/>
+					<field name="center_id"/>
+					<field name="project_id"/>
+					<field name="date"/>
+					<field name="state"/>
+					<field name="dm_type"/>
+
+					<separator/>
+					<group expand="0" string="Group By">
+						<filter string="Center" name="center_id" icon="terp-partner" domain="[]" context="{'group_by':'center_id'}"/>
+						<filter string="Project" name="project_id" icon="terp-partner" domain="[]" context="{'group_by':'project_id'}"/>
+						<filter string="Date" name="date" icon="terp-partner" domain="[]" context="{'group_by':'date'}"/>
+						<filter string="State" name="state" icon="terp-partner" domain="[]" context="{'group_by':'state'}"/>
+						<filter string="Type" name="dm_type" icon="terp-partner" domain="[]" context="{'group_by':'dm_type'}"/>
+					</group>
+
+				</search>
+			</field>
+		</record>
+
+		<record id="sos_jacket_demand_action" model="ir.actions.act_window">
+			<field name="name">Jacket / Jersery Demand</field>
+			<field name="res_model">sos.jacket.demand</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+					Click to create a new Jackets / Jersery Demand.
+			</p>
+			</field>
+		</record>
+
+		</data>
+</odoo>

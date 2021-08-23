@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="clv_summary_event_view_form" model="ir.ui.view">
+        <field name="name">clv.summary.event.form</field>
+        <field name="model">clv.summary.event</field>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="summary_id" options="{'no_open': False, 'no_create': True}"/>
+                        <field name="event_id" options="{'no_open': False, 'no_create': True}"/>
+                        <field name="event_category_ids" widget="many2many_tags" options="{'color_field': 'color','no_open': False, 'no_create': True}"/>
+                        <field name="event_state"/>
+                        <field name="event_phase_id"/>
+                        <field name="event_global_tag_ids" widget="many2many_tags" options="{'color_field': 'color','no_open': False, 'no_create': True}"/>
+                    </group>
+                    <notebook>
+                        <page name="settings" string="Settings" groups="clv_base.group_reguser" invisible="True">
+                            <group name="settings">
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="clv_summary_event_view_tree" model="ir.ui.view">
+        <field name="name">clv.summary.event.tree</field>
+        <field name="model">clv.summary.event</field>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <tree name="events" string="Summary Events">
+                <field name="summary_id" invisible="True"/>
+                <field name="event_id"/>
+                <field name="event_category_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                <field name="event_state"/>
+                <field name="event_phase_id"/>
+                <field name="event_global_tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="clv_summary_event_view_tree_state" model="ir.ui.view">
+        <field name="name">clv.summary.event.tree</field>
+        <field name="model">clv.summary.event</field>
+        <field name="inherit_id" ref="clv_summary_event_view_tree"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <tree name="events" position="attributes">
+                <attribute name="decoration-muted">event_state=='draft'</attribute>
+                <attribute name="decoration-success">event_state=='done'</attribute>
+                <attribute name="decoration-primary">event_state in('confirm')</attribute>
+                <attribute name="decoration-danger">event_state=='cancel'</attribute>
+                <attribute name="decoration-it">event_state in('draft','cancel')</attribute>
+                <attribute name="decoration-bf">event_state in('done')</attribute>
+            </tree>
+        </field>
+    </record>
+
+    <record id="clv_summary_event_view_search" model="ir.ui.view">
+        <field name="name">clv.summary.event.search</field>
+        <field name="model">clv.summary.event</field>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <search string="Summary Events">
+                <field name="summary_id"/>
+                <field name="event_id"/>
+                <field name="event_category_ids"/>
+                <field name="event_state"/>
+                <field name="event_phase_id"/>
+                <field name="event_global_tag_ids"/>
+                <newline/>
+                <group name= "group_by" expand="0" string="Group By...">
+                    <filter name= "group_by_summary_id" string="Summary" domain="[]" context="{'group_by':'summary_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="clv_summary_view_form_summary_event" model="ir.ui.view">
+        <field name="name">clv.summary.form</field>
+        <field name="model">clv.summary</field>
+        <field name="inherit_id" ref="clv_summary.clv_summary_view_form"/>
+        <field name="priority" eval="10"/>
+        <field name="arch" type="xml">
+            <group name="group_bottom" position="inside">
+                <field name="summary_event_ids" colspan="4" nolabel="0"/>
+            </group>
+        </field>
+    </record>
+
+</odoo>

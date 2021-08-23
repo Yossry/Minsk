@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<!--Inspection Guard form view -->
+		<record id="view_inspection_guard_form" model="ir.ui.view">
+		<field name="name">sos.inspection.guards.form</field>
+		<field name="model">sos.inspection.guards</field>
+		<field name="arch" type="xml">
+			<form string="Guards">
+			   <sheet>
+
+				   <group>
+						<group string="Personal">
+							<field name="name"/>
+							<field name="fathername"/>
+							<field name="guard_status"/>
+							<field name="cnic"/>
+							<field name="contact_no"/>
+						</group>
+
+						<group string="Salary Information">
+							<field name="salary_rate"/>
+							<field name="last_working_days"/>
+							<field name="last_salary"/>
+						</group>
+
+						<group string="Uniform and Accessories Information">
+							<group string="Accessories Qty">
+								<field name="uniform"/>
+								<field name="shoes"/>
+								<field name="cap"/>
+								<field name="belt"/>
+							</group>
+
+							<group string="Uniform">
+								<field name="issuance_date"/>
+								<field name="size"/>
+							</group>
+						</group>
+
+				   </group>
+
+			   </sheet>
+		   </form>
+		</field>
+		</record>
+   
+		<record id="view_inspection_guard_tree" model="ir.ui.view">
+		<field name="name">sos.inspection.guards.tree</field>
+		<field name="model">sos.inspection.guards</field>
+		<field name="arch" type="xml">
+		   <tree string="Guards">
+				<field name="name"/>
+				<field name="fathername"/>
+				<field name="guard_status"/>
+				<field name="cnic"/>
+				<field name="contact_no"/>
+				<field name="salary_rate"/>
+				<field name="last_working_days"/>
+				<field name="last_salary"/>
+		   </tree>
+		</field>
+		</record>
+
+		<!--Inspection Weapon form view -->
+		<record id="view_inspection_weapon_form" model="ir.ui.view">
+		<field name="name">sos.inspection.weapon.form</field>
+		<field name="model">sos.inspection.weapon</field>
+		<field name="arch" type="xml">
+			<form string="Guards">
+			   <sheet>
+				   <group>
+						<group>
+							<field name="weapon_type"/>
+							<field name="weapon_serial"/>
+							<field name="weapon_license"/>
+						</group>
+
+						<group>
+							<field name="issuance_date"/>
+							<field name="issued_from"/>
+							<field name="weapon_condition"/>
+						</group>
+
+				   </group>
+
+			   </sheet>
+		   </form>
+		</field>
+		</record>
+
+		<record id="view_inspection_weapon_tree" model="ir.ui.view">
+		   <field name="name">sos.inspection.weapon.tree</field>
+		   <field name="model">sos.inspection.weapon</field>
+		   <field name="arch" type="xml">
+			   <tree string="Weapons">
+					<field name="weapon_type"/>
+					<field name="weapon_serial"/>
+					<field name="weapon_license"/>
+					<field name="issuance_date"/>
+					<field name="issued_from"/>
+					<field name="weapon_condition"/>
+			   </tree>
+		   </field>
+		</record>
+
+		<!--Inspection Ammunation form view -->
+		<record id="view_inspection_ammunation_form" model="ir.ui.view">
+		<field name="name">sos.inspection.ammunation.form</field>
+		<field name="model">sos.inspection.ammunation</field>
+		<field name="arch" type="xml">
+			<form string="Ammunation">
+			   <sheet>
+				   <group>
+						<group>
+							<field name="rounds_issued"/>
+							<field name="rounds_held"/>
+							<field name="rounds_required"/>
+							<field name="rounds_condition"/>
+						</group>
+
+						<group>
+							<field name="spare_magazine"/>
+							<field name="belt"/>
+						</group>
+
+				   </group>
+
+			   </sheet>
+		   </form>
+		</field>
+		</record>
+
+		<record id="view_inspection_ammunation_tree" model="ir.ui.view">
+		   <field name="name">sos.inspection.ammunation.tree</field>
+		   <field name="model">sos.inspection.ammunation</field>
+		   <field name="arch" type="xml">
+			   <tree string="Ammunation">
+					<field name="rounds_issued"/>
+					<field name="rounds_held"/>
+					<field name="rounds_required"/>
+					<field name="rounds_condition"/>
+					<field name="spare_magazine"/>
+					<field name="belt"/>
+			   </tree>
+		   </field>
+		</record>
+
+		<!--Inspection form view -->
+		<record id="view_inspection_form" model="ir.ui.view">
+		<field name="name">sos.inspection.form</field>
+		<field name="model">sos.inspection</field>
+		<field name="arch" type="xml">
+			<form string="Inspection">
+			   <sheet>
+				   <group>
+						<group>
+							<field name="center_id"/>
+							<field name="project_id"/>
+						</group>
+
+						<group>
+							<field name="post_id" domain="[('project_id','=',project_id),('center_id','=',center_id)]"/>
+							<field name="inspection_date"/>
+						</group>
+
+				   </group>
+					<field name="employee_ids"/>
+					<field name="weapon_ids"/>
+					<field name="ammunation_ids"/>
+			   </sheet>
+		   </form>
+		</field>
+		</record>
+
+		<record id="view_inspection_tree" model="ir.ui.view">
+		   <field name="name">sos.inspection.tree</field>
+		   <field name="model">sos.inspection</field>
+		   <field name="arch" type="xml">
+			   <tree string="Inspections">
+					<field name="center_id"/>
+					<field name="project_id"/>
+					<field name="post_id"/>
+					<field name="inspection_date"/>
+			   </tree>
+		   </field>
+		</record>
+
+
+		<record id="view_inspection_filter" model="ir.ui.view">
+			<field name="name">sos.inspection.select</field>
+			<field name="model">sos.inspection</field>
+			<field name="arch" type="xml">
+				<search string="Inspection">
+
+				   <field name="center_id"/>
+					<field name="project_id"/>
+					<field name="post_id"/>
+					<field name="inspection_date"/>
+
+				   <group expand="0" string="Group By...">
+						<filter string="Project" name="project_id" context="{'group_by': 'project_id'}"/>
+						<filter string="Center" name="center_id" context="{'group_by': 'center_id'}"/>
+						<filter string="Post" name="post_id" context="{'group_by': 'post_id'}"/>
+						<filter string="Inspection date" name="inspection_date" context="{'group_by': 'inspection_date'}"/>
+
+				   </group>
+
+			   </search>
+			</field>
+		</record>
+
+		<record id="open_view_inspection_list_my" model="ir.actions.act_window">
+			<field name="name">Inspections</field>
+			<field name="res_model">sos.inspection</field>
+			<field name="view_type">form</field>
+			<field eval="False" name="view_id"/>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="search_view_id" ref="view_inspection_filter"/>
+			<field name="help" type="html">
+			  <p class="oe_view_nocontent_create">
+				Click to add a new Inspection.
+			  </p><p>
+				With just a quick glance on the AARSOL ERP screen, you
+				can easily find all the information you need for each Inspection;
+
+			  </p>
+			</field>
+		</record>
+
+		<record id="open_view_inspection_list_my_view1" model="ir.actions.act_window.view">
+			<field eval="1" name="sequence"/>
+			<field name="view_mode">tree</field>
+			<field name="view_id" ref="view_inspection_tree"/>
+			<field name="act_window_id" ref="open_view_inspection_list_my"/>
+		</record>
+
+		<record id="open_view_inspection_list_my_view2" model="ir.actions.act_window.view">
+			<field eval="2" name="sequence"/>
+			<field name="view_mode">form</field>
+			<field name="view_id" ref="view_inspection_form"/>
+			<field name="act_window_id" ref="open_view_inspection_list_my"/>
+		</record>
+
+		<menuitem parent="sos.menu_gms_main" id="sos_inspection_mi" name="Inspections" sequence="120" action="open_view_inspection_list_my" />
+
+	</data>
+</odoo>

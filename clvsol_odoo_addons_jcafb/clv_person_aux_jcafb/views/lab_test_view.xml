@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+        
+    <record id="clv_person_aux_view_form_lab_test_request" model="ir.ui.view">
+        <field name="name">clv.person_aux.form</field>
+        <field name="model">clv.person_aux</field>
+        <field name="inherit_id" ref="clv_person_aux.clv_person_aux_view_form"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <page name="settings" position="before">
+                <page string="Lab Test Requests">
+                    <group>
+                        <group>
+                            <field name="count_lab_test_requests"/>
+                        </group>
+                        <group>
+                            <button name="clv_lab_test.clv_lab_test_request_action"
+                                    type="action"
+                                    class="oe_stat_button"
+                                    icon="fa-list"
+                                    context="{'search_default_ref_name': name, 'search_default_ref_code': code}"
+                                    attrs="{'invisible': [('lab_test_request_ids', '=', [])]}"
+                                    >
+                                <div class="o_form_field o_stat_info">
+                                    <span class="o_stat_value">
+                                        <field name="count_lab_test_requests_2"/>
+                                    </span>
+                                    <span class="o_stat_text"> Lab Test Request(s)</span>
+                                </div>
+                            </button>
+                        </group>
+                    </group>
+                    <field name="lab_test_request_ids" colspan="4" nolabel="1"/>
+                </page>
+            </page>
+        </field>
+    </record>
+
+    <record id="clv_person_aux_view_tree_lab_test_request" model="ir.ui.view">
+        <field name="name">clv.person_aux.tree</field>
+        <field name="model">clv.person_aux</field>
+        <field name="inherit_id" ref="clv_person_aux.clv_person_aux_view_tree"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="email" position="before">
+                <field name="count_lab_test_requests"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="clv_person_aux_view_form_lab_test_result" model="ir.ui.view">
+        <field name="name">clv.person_aux.form</field>
+        <field name="model">clv.person_aux</field>
+        <field name="inherit_id" ref="clv_person_aux.clv_person_aux_view_form"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <page name="settings" position="before">
+                <page string="Lab Test Results">
+                    <group>
+                        <group>
+                            <field name="count_lab_test_results"/>
+                        </group>
+                        <group>
+                            <button name="clv_lab_test.clv_lab_test_result_action"
+                                    type="action"
+                                    class="oe_stat_button"
+                                    icon="fa-list"
+                                    context="{'search_default_ref_name': name, 'search_default_ref_code': code}"
+                                    attrs="{'invisible': [('lab_test_result_ids', '=', [])]}"
+                                    >
+                                <div class="o_form_field o_stat_info">
+                                    <span class="o_stat_value">
+                                        <field name="count_lab_test_results_2"/>
+                                    </span>
+                                    <span class="o_stat_text"> Lab Test Result(s)</span>
+                                </div>
+                            </button>
+                        </group>
+                    </group>
+                    <field name="lab_test_result_ids" colspan="4" nolabel="1"/>
+                </page>
+            </page>
+        </field>
+    </record>
+
+    <record id="clv_person_aux_view_tree_lab_test_result" model="ir.ui.view">
+        <field name="name">clv.person_aux.tree</field>
+        <field name="model">clv.person_aux</field>
+        <field name="inherit_id" ref="clv_person_aux.clv_person_aux_view_tree"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="email" position="before">
+                <field name="count_lab_test_results"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="clv_person_aux_view_form_lab_test_report" model="ir.ui.view">
+        <field name="name">clv.person_aux.form</field>
+        <field name="model">clv.person_aux</field>
+        <field name="inherit_id" ref="clv_person_aux.clv_person_aux_view_form"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <page name="settings" position="before">
+                <page string="Lab Test Reports">
+                    <group>
+                        <group>
+                            <field name="count_lab_test_reports"/>
+                        </group>
+                        <group>
+                            <button name="clv_lab_test.clv_lab_test_report_action"
+                                    type="action"
+                                    class="oe_stat_button"
+                                    icon="fa-list"
+                                    context="{'search_default_ref_name': name, 'search_default_ref_code': code}"
+                                    attrs="{'invisible': [('lab_test_report_ids', '=', [])]}"
+                                    >
+                                <div class="o_form_field o_stat_info">
+                                    <span class="o_stat_value">
+                                        <field name="count_lab_test_reports_2"/>
+                                    </span>
+                                    <span class="o_stat_text"> Lab Test Report(s)</span>
+                                </div>
+                            </button>
+                        </group>
+                    </group>
+                    <field name="lab_test_report_ids" colspan="4" nolabel="1"/>
+                </page>
+            </page>
+        </field>
+    </record>
+
+    <record id="clv_person_aux_view_tree_lab_test_report" model="ir.ui.view">
+        <field name="name">clv.person_aux.tree</field>
+        <field name="model">clv.person_aux</field>
+        <field name="inherit_id" ref="clv_person_aux.clv_person_aux_view_tree"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="email" position="before">
+                <field name="count_lab_test_reports"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

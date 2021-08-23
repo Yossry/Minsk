@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="update_update_product_sale_info_action" model="ir.actions.server">
+        <field name="name">Update Sales Values</field>
+        <field name="model_id" ref="product.model_product_template" />
+        <field name="binding_model_id" ref="product.model_product_template" />
+        <field name="state">code</field>
+        <field name="code">action = records._update_sale_info()</field>
+    </record>
+</odoo>

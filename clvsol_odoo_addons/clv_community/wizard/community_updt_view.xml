@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="clv_event_updt_view_form" model="ir.ui.view">
+        <field name="name">clv.event.updt.form</field>
+        <field name="model">clv.event.updt</field>
+        <field name="arch" type="xml">
+            <form>
+                <div class="oe_right">
+                </div>
+                <label for="event_ids"/>
+                <field name="event_ids"/>
+                <group>
+                    <group>
+                        <field name="global_tag_ids_selection"/>
+                    </group>
+                    <group>
+                        <field name="global_tag_ids" options="{'no_open': False, 'no_create': True}" nolabel='1'/>
+                    </group>
+                    <group>
+                        <field name="category_ids_selection"/>
+                    </group>
+                    <group name="category_ids">
+                        <field name="category_ids" options="{'no_open': False, 'no_create': True}" nolabel='1'/>
+                    </group>
+                </group>
+                <footer>
+                    <button 
+                        type="object"
+                        name="do_event_updt"
+                        string="Events Update"
+                        class="oe_highlight"
+                        />
+                    <button special="cancel" string="Cancel"/>
+                </footer>
+            </form>
+
+        </field>
+    </record>
+
+    <!-- More button Action -->
+    <act_window 
+        id="clv_event_updt_action"
+        name="Event Update"
+        src_model="clv.event"
+        res_model="clv.event.updt"
+        view_mode="form, tree"
+        key2="client_action_multi"
+        target="new"
+    />
+
+</odoo>

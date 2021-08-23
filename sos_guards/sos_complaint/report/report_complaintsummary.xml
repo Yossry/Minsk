@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<template id ="report_complaintsummary">
+			<t t-call="web.html_container">
+					<t t-call="web.external_layout" style="font-family:georgia,garamond,serif;font-size:10px">
+						<div class="page">
+							<style>
+								.tabhead{font-family:georgia,garamond,serif;font-size:10px;}
+								.tabcol{font-size:14px;}
+								table th { background-color:#d4e3e5;}
+								tr:nth-child(even) {background-color: #FFEBCD;}
+								tr:nth-child(odd) {background-color: #cdcdcd;}
+							</style>
+						
+							<h3>Complaint Report</h3>
+							<h5>
+								From: <span t-esc="get_date_formate(data['start_date'])"/><br></br>
+								To: <span t-esc="get_date_formate(data['end_date'])"/><br></br>
+							</h5>
+						
+							<table class="table table-condensed" width="100%">
+								<tr style="font-size:12px; font-weight:bold">
+									<td>SR#. </td>
+									<td>No. </td>
+									<td>User </td>
+									<td>Complainant </td>
+									<td>Center </td>
+									<td>Post </td>
+									<td>Coordinator </td>
+									<td>Nature </td>
+									<td>Source </td>
+									<td width="20%">Action </td>
+									<td width="6%">Date </td>
+									<td>State </td>
+								</tr>
+								<t t-foreach="Complaints" t-as="complaint">
+									<tr>
+										<td> <span t-esc="complaint_index + 1" /> </td>
+										<td> <span t-esc="complaint.name" /> </td>
+										<td> <span t-esc="complaint.create_uid.name" /> </td>
+										<td> <span t-esc="complaint.complainant" /> </td>
+										<td> <span t-esc="complaint.center_id.code" /> </td>
+										<td> <span t-esc="complaint.post_id.name" /> </td>
+										<td> <span t-esc="complaint.coordinator_id.name" /> </td>
+										<td> <span t-esc="complaint.complaint_nature" /> </td>
+										<td> <span t-esc="complaint.source" /> </td>
+										<td> <span t-esc="complaint.action_detail" /> </td>
+										<td> <span t-field="complaint.complaint_time" t-field-options='{"format": "d-MM-Y"}' /> </td>
+										<td> <span t-esc="complaint.state" /> </td>
+									</tr>
+								</t>
+							
+							</table>
+						</div>
+					</t>
+			</t>
+		</template>
+	
+	</data>
+</odoo>

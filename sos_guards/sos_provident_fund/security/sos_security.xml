@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+		 <record id="sos_pf_return_form_regions_rule" model="ir.rule">
+			<field name="name">SOS PF Return Form Access for Regions</field>
+			<field name="model_id" ref="sos_provident_fund.model_sos_guards_pf_return_form"/>
+			<field name="domain_force">[('center_id.user_ids','in',[user.id])]</field>
+			<field name="global" eval="False"/>
+			<field name="groups" eval="[(4, ref('sos.group_regional_manager'))]"/>
+        </record>
+    </data>
+</odoo>

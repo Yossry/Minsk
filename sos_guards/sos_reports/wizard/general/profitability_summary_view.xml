@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_profitability_summary" model="ir.ui.view">
+            <field name="name">Profitability Summary</field>
+            <field name="model">profitability.summary</field>
+            <field name="arch" type="xml">
+            <form string="Profitability Summary">
+            	<!--SARFRAZ-->
+               <!-- <label string="This wizard will print report which displays Profitability Summary."/> -->
+                <footer>
+                    <button name="print_report" string="Print" type="object" class="oe_highlight"/>
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+                <group>
+                    <group>
+						<field name="date_from" required="1"/>  
+						<field name="date_to" required="1"/>  
+					</group>
+					<group>
+						<field name="report_name" required="1"/>   
+						<field name="center_id"  attrs="{'required': [('report_name', '=', 'profitability_summary_project_center_aeroo')],
+							'invisible': [('report_name', '!=', 'profitability_summary_project_center_aeroo')]}" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>   
+						<field name="project_id"  attrs="{'required': [('report_name', '=', 'profitability_summary_center_project_aeroo')],
+							'invisible': [('report_name', '!=', 'profitability_summary_center_project_aeroo')]}" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>   						
+                    </group>                    
+                </group>         
+                 
+            </form>
+            </field>
+        </record>
+
+        <record id="action_profitability_summary" model="ir.actions.act_window">
+            <field name="name">Profitability Summary</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">profitability.summary</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        
+    </data>
+</odoo>
+
+
+

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="clv_global_log_view_form" model="ir.ui.view">
+        <field name="name">clv.global_log.form</field>
+        <field name="model">clv.global_log</field>
+        <field name="inherit_id" ref="clv_base.clv_abstract_log_view_form" />
+        <field name="mode">primary</field>
+        <field name="priority" eval="100" />
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="attributes">
+                <attribute name="string">Global Log</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="clv_global_log_view_tree" model="ir.ui.view">
+        <field name="name">clv.global_log.tree</field>
+        <field name="model">clv.global_log</field>
+        <field name="inherit_id" ref="clv_base.clv_abstract_log_view_tree" />
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="attributes">
+                <attribute name="string">Global Logs</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="clv_global_log_view_search" model="ir.ui.view">
+        <field name="name">clv.global_log.search</field>
+        <field name="model">clv.global_log</field>
+        <field name="inherit_id" ref="clv_base.clv_abstract_log_view_search" />
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <xpath expr="//search" position="attributes">
+                <attribute name="string">Global Logs</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="clv_global_log_action">
+        <field name="name">Global Logs</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">clv.global_log</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

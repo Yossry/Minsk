@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="clv_person_marker_view_form" model="ir.ui.view">
+        <field name="name">clv.person.marker.form</field>
+        <field name="model">clv.person.marker</field>
+        <field name="inherit_id" ref="clv_base.clv_abstract_marker_view_form"/>
+        <field name="mode">primary</field>
+        <field name="priority" eval="100"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="attributes">
+                <attribute name="string">Person Marker</attribute>
+            </xpath>
+            <page name="settings" position="before">
+                <page string="Persons">
+                    <group>
+                        <field name="person_ids" colspan="4" nolabel="1"/>
+                    </group>
+                </page>
+            </page>
+        </field>
+    </record>
+
+    <record id="clv_person_marker_view_tree" model="ir.ui.view">
+        <field name="name">clv.person.marker.tree</field>
+        <field name="model">clv.person.marker</field>
+        <field name="inherit_id" ref="clv_base.clv_abstract_marker_view_tree" />
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="attributes">
+                <attribute name="string">Person Markers</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="clv_person_marker_view_search" model="ir.ui.view">
+        <field name="name">clv.person.marker.search</field>
+        <field name="model">clv.person.marker</field>
+        <field name="inherit_id" ref="clv_base.clv_abstract_marker_view_search" />
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <xpath expr="//search" position="attributes">
+                <attribute name="string">Person Markers</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="clv_person_marker_action" model="ir.actions.act_window">
+        <field name="name">Person Markers</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">clv.person.marker</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="clv_person_marker_view_search"/>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="view_id" eval="False"/>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Click to add a new person marker.
+          </p>
+        </field>
+    </record>
+    
+    <record id="clv_person_view_tree_marker" model="ir.ui.view">
+        <field name="name">clv.person.tree</field>
+        <field name="model">clv.person</field>
+        <field name="inherit_id" ref="clv_person_view_tree"/>
+        <field name="priority" eval="20"/>
+        <field name="arch" type="xml">
+            <field name="code" position="after">
+                <field name="marker_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="clv_person_view_form_marker" model="ir.ui.view">
+        <field name="name">clv.person.form</field>
+        <field name="model">clv.person</field>
+        <field name="inherit_id" ref="clv_person_view_form"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <label for="name" position="before">
+                <label for="marker_ids" class="oe_edit_only"/>
+                <h4><field name="marker_ids" widget="many2many_tags" placeholder="Markers..." options="{'color_field': 'color', 'no_open': False, 'no_create': True}"/></h4>
+            </label>
+        </field>
+    </record>
+
+    <record id="clv_person_view_search_marker" model="ir.ui.view">
+        <field name="name">clv.person.search</field>
+        <field name="model">clv.person</field>
+        <field name="inherit_id" ref="clv_person_view_search"/>
+        <field name="priority" eval="20"/>
+        <field name="arch" type="xml">
+            <field name="code" position="after">
+                <field name="marker_ids"/>
+                <field name="marker_names"/>
+            </field>
+            <group name="group_by" position="inside">
+                <filter name="filter_person_marker" string="Markers" context="{'group_by': 'marker_names'}"/>
+            </group>
+        </field>
+    </record>
+
+</odoo>

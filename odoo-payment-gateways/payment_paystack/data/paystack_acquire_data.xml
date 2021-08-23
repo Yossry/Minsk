@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="payment_acquirer_paystack" model="payment.acquirer">
+            <field name="name">Paystack</field>
+            <field name="image" type="base64" file="payment_paystack/static/src/img/paystack_icon.png"/>
+            <field name="provider">paystack</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="view_template_id" ref="paystack_acquirer_button"/>
+            <field name="environment">test</field>
+            <field name="terminal_id">0000000001</field>
+            <field name="paystack_secret_key">Add Your Paystack Secret Key Here</field>
+            <field name="pre_msg"><![CDATA[
+<p>You will be redirected to the Paystack website after clicking on the payment button.</p>]]></field>
+        </record>
+    </data>
+</openerp>
+
+

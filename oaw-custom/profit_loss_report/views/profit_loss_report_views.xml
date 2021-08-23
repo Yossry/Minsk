@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="profit_loss_report_tree_view" model="ir.ui.view">
+        <field name="name">profit.loss.report.tree.view</field>
+        <field name="model">profit.loss.report</field>
+        <field name="arch" type="xml">
+            <tree create="false" delete="false" editable="top">
+                <field name="in_move_id" invisible="1" />
+                <field name="in_move_date" invisible="1" />
+                <field name="in_period_id" />
+                <field name="in_move_quant_owner_id" />
+                <field name="stock_type" />
+                <field name="product_id" />
+                <field name="image_medium" widget="image" />
+                <field name="categ_id" invisible="1" />
+                <field name="categ_name" />
+                <field name="lot_id" />
+                <field name="date_order" />
+                <field name="user_id" />
+                <field name="sale_order_id" />
+                <field name="invoice_id" />
+                <field name="list_price" />
+                <field name="discount" />
+                <field name="net_price" />
+                <field name="net_price_currency_id" />
+                <field name="partner_id" />
+                <field name="partner_ref" invisible="1" />
+                <field name="customer_payment_reference" />
+                <field name="customer_payment_currency_rate" />
+                <field name="sale_base_price" />
+                <field name="base_amount" />
+                <field name="out_move_id" invisible="1" />
+                <field name="out_move_date" />
+                <field name="sale_order_note" />
+                <field name="sale_state" />
+                <field name="state" />
+                <field name="supplier_id" />
+                <field name="supplier_ref" invisible="1" />
+                <field name="reference" />
+                <field name="supplier_payment_ref" />
+                <field name="supplier_payment_dates" />
+                <field name="supplier_payment_ids" widget="many2many_tags" />
+                <field name="purchase_currency_id" />
+                <field name="purchase_currency_price" />
+                <field name="exchange_rate" />
+                <field name="purchase_base_price" />
+                <field name="purchase_order_id" />
+                <field name="purchase_invoice_id" />
+                <field name="supplier_payment_state" />
+                <field name="base_profit" />
+                <field name="base_profit_percent" />
+            </tree>
+        </field>
+    </record>
+    <record id="profit_loss_report_search_view" model="ir.ui.view">
+        <field name="name">profit.loss.report.search</field>
+        <field name="model">profit.loss.report</field>
+        <field name="arch" type="xml">
+            <search string="Profit &amp; Loss Search">
+                <field name="product_id" />
+                <field name="lot_id" />
+                <field name="partner_id" />
+                <field name="customer_payment_reference" />
+                <field name="supplier_id" />
+                <field name="reference" />
+                <group expand="0" name='state' string="Status">
+                    <filter
+                        string="PO DONE"
+                        name="purch_done"
+                        domain="[('state','=','purch_done')]"
+                    />
+                    <filter
+                        string="SO DONE"
+                        name="sale_done"
+                        domain="[('state','=','sale_done')]"
+                    />
+                    <filter
+                        string="SO and PO DONE"
+                        name="sale_purch_done"
+                        domain="[('state','=','sale_purch_done')]"
+                    />
+                </group>
+                <group
+                    expand="0"
+                    name='supplier_payment_state'
+                    string="Supplier Payment Status"
+                >
+                    <filter
+                        string="To Be Paid"
+                        name="to_pay"
+                        domain="[('supplier_payment_state','=','to_pay')]"
+                    />
+                    <filter
+                        string="Done"
+                        name="done"
+                        domain="[('supplier_payment_state','=','done')]"
+                    />
+                </group>
+                <group expand="0" string="Group By">
+                    <filter
+                        string="Period"
+                        domain="[]"
+                        name="group_by_in_period_id"
+                        context="{'group_by':'in_period_id'}"
+                    />
+                    <filter
+                        string="Owner"
+                        domain="[]"
+                        name="group_by_in_in_move_quant_owner_id"
+                        context="{'group_by':'in_move_quant_owner_id'}"
+                    />
+                    <filter
+                        string="Stock Type"
+                        domain="[]"
+                        name="group_by_in_stock_type"
+                        context="{'group_by':'stock_type'}"
+                    />
+                    <filter
+                        string="Brand"
+                        domain="[]"
+                        name="group_by_in_categ_name"
+                        context="{'group_by':'categ_name'}"
+                    />
+                    <filter
+                        string="Customer"
+                        domain="[]"
+                        name="group_by_in_partner_id"
+                        context="{'group_by':'partner_id'}"
+                    />
+                    <filter
+                        string="Customer Payment Information."
+                        domain="[]"
+                        name="group_by_in_customer_payment_reference"
+                        context="{'group_by':'customer_payment_reference'}"
+                    />
+                    <filter
+                        string="Supplier"
+                        domain="[]"
+                        name="group_by_in_supplier_id"
+                        context="{'group_by':'supplier_id'}"
+                    />
+                    <filter
+                        string="Supplier Invoice No."
+                        domain="[]"
+                        name="group_by_in_reference"
+                        context="{'group_by':'reference'}"
+                    />
+                    <filter
+                        string="Supplier Payment Status"
+                        domain="[]"
+                        name="group_by_in_supplier_payment_state"
+                        context="{'group_by':'supplier_payment_state'}"
+                    />
+                    <filter
+                        string="Status"
+                        domain="[]"
+                        name="group_by_in_state"
+                        context="{'group_by':'state'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="profit_loss_report_action" model="ir.actions.act_window">
+        <field name="name">Profit &amp; Loss Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">profit.loss.report</field>
+        <field name="view_mode">tree</field>
+        <field name="view_type">form</field>
+        <field name="view_id" ref="profit_loss_report_tree_view" />
+        <field name="context">{}</field>
+    </record>
+    <menuitem
+        id="menu_base_reporting"
+        name="Reporting"
+        groups="sales_team.group_sale_salesman"
+        sequence="50"
+    />
+    <menuitem
+        id="profit_loss_report_menu"
+        name="Profit &amp; Loss Report"
+        groups="account.group_account_invoice"
+        parent="menu_base_reporting"
+        sequence="10"
+    />
+    <menuitem
+        id="menu_profit_loss_report"
+        action="profit_loss_report_action"
+        groups="account.group_account_invoice"
+        parent="profit_loss_report_menu"
+        sequence="5"
+    />
+</odoo>

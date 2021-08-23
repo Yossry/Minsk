@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="clv_verification_batch_member_view_form" model="ir.ui.view">
+        <field name="name">clv.verification.batch.member.form</field>
+        <field name="model">clv.verification.batch.member</field>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div name="button_box" class="oe_right oe_button_box">
+                    </div>
+                    <div name="title" class="oe_title">
+                        <group>
+                            <field name="verification_batch_id" options="{'no_open': False, 'no_create': True}"/>
+                            <field name="sequence"/>
+                        </group>
+                        <label for="notes" class="oe_edit_only"/>
+                        <field name="notes" communityholder="Notes..."/>
+                    </div>
+                    <notebook>
+                        <page name="settings" string="Settings" groups="clv_base.group_reguser" invisible="False">
+                            <group name="settings">
+                                <field name="id"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="clv_verification_batch_member_view_tree" model="ir.ui.view">
+        <field name="name">clv.verification.batch.member.tree</field>
+        <field name="model">clv.verification.batch.member</field>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sequence" widget="handle"/>
+                <field name="verification_batch_id"/>
+                <field name="notes"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="clv_verification_batch_member_view_search" model="ir.ui.view">
+        <field name="name">clv.verification.batch.member.search</field>
+        <field name="model">clv.verification.batch.member</field>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <search>
+                <field name="verification_batch_id"/>
+                <field name="notes"/>
+                <newline/>
+                <!--filter string="Archived" name="inactive" domain="[('active','=',False)]"/-->
+                <group name="group_by" expand="0" string="Group By...">
+                    <filter name="filter_verification_batch_id" string="Verification Batch" domain="[]" context="{'group_by':'verification_batch_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="clv_verification_batch_member_actions" model="ir.actions.act_window">
+        <field name="name">Verification Batch Member</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">clv.verification.batch.member</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="clv_verification_batch_member_view_search"/>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Click to add a new verification batch member.
+          </p>
+        </field>
+    </record>
+    
+    <record id="clv_verification_batch_view_form_verification_batch_member" model="ir.ui.view">
+        <field name="name">clv.verification.batch.form</field>
+        <field name="model">clv.verification.batch</field>
+        <field name="inherit_id" ref="clv_verification.clv_verification_batch_view_form"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <page name="settings" position="before">
+                <page string="Members">
+                    <group>
+                        <field name="count_verification_batch_members"/>
+                    </group>
+                    <field name="verification_batch_member_ids" colspan="4" nolabel="1"/>
+                </page>
+            </page>
+        </field>
+    </record>
+
+    <record id="clv_verification_batch_view_tree_verification_batch_member" model="ir.ui.view">
+        <field name="name">clv.verification.batch.tree</field>
+        <field name="model">clv.verification.batch</field>
+        <field name="inherit_id" ref="clv_verification.clv_verification_batch_view_tree"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="code" position="after">
+                <field name="count_verification_batch_members"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>
+

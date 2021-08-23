@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2019-     Coop IT Easy SCRLfs <http://coopiteasy.be>
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+<odoo>
+    <template id="assets" name="Investor Wallet Platform Website Assets"
+        inherit_id="web.assets_frontend">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet"
+                href="/iwp_website/static/src/less/design.less"/>
+            <script type="text/javascript"
+                src="/iwp_website/static/src/js/form.js"/>
+        </xpath>
+    </template>
+</odoo>

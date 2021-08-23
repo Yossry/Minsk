@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+        
+    <record id="clv_family_view_form_verification_outcome" model="ir.ui.view">
+        <field name="name">clv.family.form</field>
+        <field name="model">clv.family</field>
+        <field name="inherit_id" ref="clv_family.clv_family_view_form"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="notes" position="after">
+                <h1><label for="verification_state" string="Verification State: "/>[<field name="verification_state" style="color:blue; background:White;"/>]</h1>
+                <label for="verification_marker_ids" class="oe_edit_only"/>
+                <h4><field name="verification_marker_ids" widget="many2many_tags" placeholder="Verification Markers..." options="{'color_field': 'color', 'no_open': False, 'no_create': True}"/></h4>
+            </field>
+            <page name="settings" position="before">
+                <page string="Verification Outcomes">
+                    <group>
+                        <group>
+                            <field name="count_verification_outcomes"/>
+                        </group>
+                        <group>
+                            <button name="clv_verification.clv_verification_outcome_action"
+                                    type="action"
+                                    class="oe_stat_button"
+                                    icon="fa-list"
+                                    context="{'search_default_model': 'clv.family', 'search_default_res_id': id}"
+                                    attrs="{'invisible': [('verification_outcome_ids', '=', [])]}"
+                                    >
+                                <div class="o_form_field o_stat_info">
+                                    <span class="o_stat_value">
+                                        <field name="count_verification_outcomes_2"/>
+                                    </span>
+                                    <span class="o_stat_text"> Verification Outcome(s)</span>
+                                </div>
+                            </button>
+                        </group>
+                    </group>
+                    <field name="verification_outcome_ids" colspan="4" nolabel="1"/>
+                </page>
+            </page>
+        </field>
+    </record>
+
+    <record id="clv_family_view_tree_verification_outcome" model="ir.ui.view">
+        <field name="name">clv.family.tree</field>
+        <field name="model">clv.family</field>
+        <field name="inherit_id" ref="clv_family.clv_family_view_tree"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="email" position="before">
+                <field name="verification_state"/>
+                <field name="verification_marker_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="clv_family_view_search_verification_outcome" model="ir.ui.view">
+        <field name="name">clv.family.search</field>
+        <field name="model">clv.family</field>
+        <field name="inherit_id" ref="clv_family.clv_family_view_search"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="code" position="after">
+                <field name="verification_state"/>
+                <field name="verification_marker_ids"/>
+                <field name="verification_marker_names"/>
+            </field>
+            <group name="group_by" position="inside">
+                <filter name="group_by_verification_state" string="Verification State" context="{'group_by': 'verification_state'}"/>
+                <filter name="filter_verification_marker" string="Verification Markers" context="{'group_by': 'verification_marker_names'}"/>
+            </group>
+        </field>
+    </record>
+
+</odoo>

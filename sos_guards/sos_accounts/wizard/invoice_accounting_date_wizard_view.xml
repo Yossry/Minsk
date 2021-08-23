@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        
+        <record id="view_invoice_accounting_date_wizard" model="ir.ui.view">
+            <field name="name">sos.invoice.accounting.date.wizard.view</field>
+            <field name="model">invoice.accounting.date.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Invoice Date Change Wizard">
+		            	<group>
+		            		<group>
+								<field name="date_invoice"/>
+								<field name="date_from"/>
+								<field name="date_to"/>
+							</group>
+		            		<group>
+								<field name="invoice_id" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}" />
+							</group>	
+						</group>
+					<footer>
+						<button name="change_date" string="OK" type="object" default_focus="1" class="oe_highlight"/>
+						<button string="Cancel" class="oe_link" special="cancel" />
+					</footer> 
+                </form>
+            </field>
+        </record>
+        
+        <record id="act_invoice_accounting_date_wizard" model="ir.actions.act_window">
+            <field name="name">Invoice Date Change</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">invoice.accounting.date.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_invoice_accounting_date_wizard"/>
+            <field name="target">new</field>
+        </record>
+        
+         <record id="invoice_accounting_date_wizard_multi" model="ir.values">
+            <field name="name">Invoice Accounting Date Wizard</field>
+            <field name="model_id" ref="model_invoice_accounting_date_wizard"/>
+            <field name="value" eval="'ir.actions.act_window,' + str(ref('act_invoice_accounting_date_wizard'))"/>
+            <field name="key">action</field>
+            <field name="key2">client_action_multi</field>
+            <field name="model">account.invoice</field>
+         </record>   
+
+	</data>
+</openerp>

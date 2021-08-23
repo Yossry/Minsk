@@ -1,0 +1,152 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* website_timecheck_supplier
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-19 05:16+0000\n"
+"PO-Revision-Date: 2020-03-19 05:16+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: website_timecheck_supplier
+#: model_terms:ir.ui.view,arch_db:website_timecheck_supplier.product
+#: model_terms:ir.ui.view,arch_db:website_timecheck_supplier.products_item
+msgid "<span style=\"color: red; font-weight:bold;\">Special Offer: </span>"
+msgstr "<span style=\"color: red; font-weight:bold;\">特價:</span>"
+
+#. module: website_timecheck_supplier
+#: model_terms:ir.ui.view,arch_db:website_timecheck_supplier.products
+msgid "All Categories"
+msgstr "所有品牌"
+
+#. module: website_timecheck_supplier
+#: model_terms:ir.ui.view,arch_db:website_timecheck_supplier.products
+msgid "All Products"
+msgstr "所有產品"
+
+#. module: website_timecheck_supplier
+#: model_terms:ir.ui.view,arch_db:website_timecheck_supplier.product
+msgid "Back to Shop"
+msgstr "回到商店"
+
+#. module: website_timecheck_supplier
+#: model:ir.model.fields,field_description:website_timecheck_supplier.field_supplier_stock__category_name
+msgid "Brand"
+msgstr "品牌"
+
+#. module: website_timecheck_supplier
+#: model_terms:ir.ui.view,arch_db:website_timecheck_supplier.products
+msgid "Click <i>'New'</i> in the top-right corner to create your first product."
+msgstr "點選右上角<i>的『新建』</i>來創建您的第一件產品。"
+
+#. module: website_timecheck_supplier
+#: model:ir.model,name:website_timecheck_supplier.model_res_partner
+msgid "Contact"
+msgstr "聯絡人"
+
+#. module: website_timecheck_supplier
+#: model:ir.model.fields,field_description:website_timecheck_supplier.field_supplier_stock__custom_image
+msgid "Custom Image"
+msgstr "自定義圖像"
+
+#. module: website_timecheck_supplier
+#: model_terms:ir.ui.view,arch_db:website_timecheck_supplier.products
+msgid "Filter <i class=\"dropdown-toggle\"/>"
+msgstr "篩選 <i class=\"dropdown-toggle\"/>"
+
+#. module: website_timecheck_supplier
+#: model:ir.model.fields,field_description:website_timecheck_supplier.field_supplier_stock__image
+msgid "Image"
+msgstr "圖像"
+
+#. module: website_timecheck_supplier
+#: model:ir.model.fields,field_description:website_timecheck_supplier.field_supplier_stock__default_code
+msgid "Internal Reference"
+msgstr "內部參照"
+
+#. module: website_timecheck_supplier
+#: model:ir.model.fields,field_description:website_timecheck_supplier.field_supplier_stock__name
+msgid "Name"
+msgstr "名稱"
+
+#. module: website_timecheck_supplier
+#: model:ir.model.fields,field_description:website_timecheck_supplier.field_supplier_stock__new_arrival
+#: model_terms:ir.ui.view,arch_db:website_timecheck_supplier.products
+msgid "New Arrival"
+msgstr "最新貨品"
+
+#. module: website_timecheck_supplier
+#: model_terms:ir.ui.view,arch_db:website_timecheck_supplier.products
+msgid "No product defined."
+msgstr "沒有產品定義。"
+
+#. module: website_timecheck_supplier
+#: model_terms:ir.ui.view,arch_db:website_timecheck_supplier.products
+msgid "No results found for \""
+msgstr "找不到結果 \""
+
+#. module: website_timecheck_supplier
+#: model_terms:ir.ui.view,arch_db:website_timecheck_supplier.product
+msgid "Product Name"
+msgstr "產品名稱"
+
+#. module: website_timecheck_supplier
+#: model_terms:ir.ui.view,arch_db:website_timecheck_supplier.product
+msgid "Products"
+msgstr "產品"
+
+#. module: website_timecheck_supplier
+#: model_terms:ir.ui.view,arch_db:website_timecheck_supplier.product
+#: model_terms:ir.ui.view,arch_db:website_timecheck_supplier.products_item
+msgid "Retail in"
+msgstr "公價"
+
+#. module: website_timecheck_supplier
+#: model_terms:ir.ui.view,arch_db:website_timecheck_supplier.products_item
+msgid "Sale"
+msgstr "銷售"
+
+#. module: website_timecheck_supplier
+#: model_terms:ir.ui.view,arch_db:website_timecheck_supplier.products
+msgid "Shop"
+msgstr "商店"
+
+#. module: website_timecheck_supplier
+#: model:ir.model.fields,field_description:website_timecheck_supplier.field_supplier_stock__website_size_x
+msgid "Size X"
+msgstr "尺寸 X"
+
+#. module: website_timecheck_supplier
+#: model:ir.model.fields,field_description:website_timecheck_supplier.field_supplier_stock__website_size_y
+msgid "Size Y"
+msgstr "尺寸 Y"
+
+#. module: website_timecheck_supplier
+#: model:ir.model.fields,field_description:website_timecheck_supplier.field_supplier_stock__special_offer
+#: model_terms:ir.ui.view,arch_db:website_timecheck_supplier.products
+msgid "Special Offer"
+msgstr "特價商品"
+
+#. module: website_timecheck_supplier
+#: model:ir.model.fields,field_description:website_timecheck_supplier.field_supplier_stock__website_style_ids
+msgid "Styles"
+msgstr "樣式"
+
+#. module: website_timecheck_supplier
+#: model:ir.model.fields,help:website_timecheck_supplier.field_supplier_stock__image
+msgid "This field holds the image used as image for the product, limited to 1024x1024px."
+msgstr "該字段保存產品的圖像，限制到  1024x1024px."
+
+#. module: website_timecheck_supplier
+#: model:ir.model.fields,field_description:website_timecheck_supplier.field_res_partner__website_url
+#: model:ir.model.fields,field_description:website_timecheck_supplier.field_res_users__website_url
+msgid "Website Url"
+msgstr "網站網址"
+

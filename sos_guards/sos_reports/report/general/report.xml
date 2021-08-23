@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>             
+    <data>
+    	<!-- Post Ledger -->
+		<!--
+    	<report
+            id="action_report_post_ledger"
+            model="sos.post"
+            string="Post Ledger"
+            report_type="qweb-pdf"
+            name="sos_reports.report_postledger"
+            file="sos_reports.report_postledger"
+            menu="False"
+        />
+        -->
+    	
+    	<!-- GST Project Wise Summary -->
+		<report
+			id="action_report_gst_summaryproject"
+			string= "GST Summary Project Wise"
+			model = "gst.summary"
+			report_type="qweb-pdf"
+			file="sos_reports.report_gst_summaryproject"
+			name="sos_reports.report_gst_summaryproject"
+		/>
+
+		<!-- GST Center Wise Summary -->
+		<report
+			id="action_report_gst_summarycenter"
+			string= "GST Summary Center Wise"
+			model = "gst.summary"
+			report_type="qweb-pdf"
+			file="sos_reports.report_gst_summarycenter"
+			name="sos_reports.report_gst_summarycenter"
+		/>
+
+		<!-- GST Post Wise Summary -->
+		<report
+			id="action_report_gst_summarypost"
+			string= "GST Summary Post Wise"
+			model = "gst.summary"
+			report_type="qweb-pdf"
+			file="sos_reports.report_gst_summarypost"
+			name="sos_reports.report_gst_summarypost"
+		/>
+		<!-- GST Percentage Wise Summary -->
+		<report
+			id="action_report_gst_summarypercentage"
+			string= "GST Summary Percentage Wise"
+			model = "gst.summary"
+			report_type="qweb-pdf"
+			file="sos_reports.report_gst_summarypercentage"
+			name="sos_reports.report_gst_summarypercentage"
+		/>
+		
+		
+		<!-- Common Project Wise Summary -->
+		<!--
+		<report
+			id="report_common_summary_project"
+			string= "Common Summary Project Wise"
+			model = "bankcharges.summary"
+			report_type="qweb-pdf"
+			file="sos_reports.report_common_summaryproject"
+			name="sos_reports.report_common_summaryproject"
+		/>
+		-->
+
+		<!-- Common Center Wise Summary -->
+		<!--
+		<report
+			id="report_common_summary_center"
+			string= "Common Summary Center Wise"
+			model = "bankcharges.summary"
+			report_type="qweb-pdf"
+			file="sos_reports.report_common_summarycenter"
+			name="sos_reports.report_common_summarycenter"
+		/>
+		-->
+		<!-- Common Post Wise Summary -->
+		<!--
+		<report
+			id="report_common_summary_post"
+			string= "Common Summary Post Wise"
+			model = "bankcharges.summary"
+			report_type="qweb-pdf"
+			file="sos_reports.report_common_summarypost"
+			name="sos_reports.report_common_summarypost"
+		/>
+		-->
+		
+		<!-- Penalty Post Wise Summary *-->
+		<!--
+		<report
+			id="report_penalty_summary_post"
+			string= "Penalty Summary Post Wise"
+			model = "bankcharges.summary"
+			report_type="qweb-pdf"
+			file="sos_reports.report_penalty_summarypost"
+			name="sos_reports.report_penalty_summarypost"
+		/>
+		-->
+		
+		
+		<!-- Profitability Project Wise Summary -->
+		<!--
+		<report
+			id="report_profitability_summary_project"
+			string= "Profitability Summary Project Wise"
+			model = "profitability.summary"
+			report_type="qweb-pdf"
+			file="sos_reports.report_profitabilitysummaryproject"
+			name="sos_reports.report_profitabilitysummaryproject"
+		/>
+		-->
+		<!-- Profitability Center Wise Summary -->
+		<!--
+		<report
+			id="report_profitability_summary_center"
+			string= "Profitability Summary Center Wise"
+			model = "profitability.summary"
+			report_type="qweb-pdf"
+			file="sos_reports.report_profitabilitysummarycenter"
+			name="sos_reports.report_profitabilitysummarycenter"
+		/>
+		-->
+		<!-- Profitability Project Center Wise Summary -->
+		<!--
+		<report
+			id="report_profitability_summary_projectcenter"
+			string= "Profitability Summary Project Center Wise"
+			model = "profitability.summary"
+			report_type="qweb-pdf"
+			file="sos_reports.report_profitability_summaryprojectcenter"
+			name="sos_reports.report_profitability_summaryprojectcenter"
+		/>
+		-->
+		<!-- Profitability Center Project Wise Summary -->
+		<!--
+		<report
+			id="report_profitability_summary_centerproject"
+			string= "Profitability Summary Center Project Wise"
+			model = "profitability.summary"
+			report_type="qweb-pdf"
+			file="sos_reports.report_profitability_summarycenterproject"
+			name="sos_reports.report_profitability_summarycenterproject"
+		/>
+		-->
+    	
+    	
+		<!-- Guards Working Details -->
+		<!--
+		<report
+			id="guards_working_detail_report"
+			string= "Guards Working Detail Report"
+			model = "sos_reports.guards.working.detail.wizard"
+			report_type="qweb-pdf"
+			file="sos_reports.report_guards_working_detail"
+			name="sos_reports.report_guards_working_detail"
+		/>
+		-->
+		  
+	</data>
+</odoo>

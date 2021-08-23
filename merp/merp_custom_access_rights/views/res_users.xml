@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Update User form -->
+    <record model="ir.ui.view" id="res_user_form">
+        <field name="name">Users Preferences</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="merp_base.res_user_form" />
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//group[@name='merp']" position="inside">
+                    <label for="stock_location_id" colspan="3"/>
+                    <field name="stock_location_id" nolabel="1" colspan="5"/>
+                    <label for="allow_to_change_force_source_location" colspan="3"/>
+                    <field name="allow_to_change_force_source_location" nolabel="1" colspan="5"/>
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+</odoo>

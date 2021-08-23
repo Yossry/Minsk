@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2019-     Coop IT Easy SCRLfs <http://coopiteasy.be>
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+<odoo>
+    <template id="subscribe_to_loan_issue" name="Subscribe to Loan Issue">
+        <t t-call="portal.portal_layout">
+            <t t-set="additional_title">
+                Subscription to Loan Issue of <t t-esc="struct.name"/>
+            </t>
+            <t t-set="no_breadcrumbs" t-value="True"/>
+            <div class="row justify-content-center">
+                <div class="col-xs-12 col-sm-10  col-md-8 col-lg-6">
+                    <h3 class="text-center mt-4">
+                        Subscription to Loan Issue of <t t-esc="struct.name"/>
+                    </h3>
+                    <form class="oe_loan_issue_form" method="post">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                        <t t-foreach="form.fields" t-as="field_name">
+                            <t t-call="{{form.fields[field_name].template}}">
+                                <t t-set="name" t-value="field_name"/>
+                                <t t-set="field" t-value="form.fields[field_name]"/>
+                            </t>
+                        </t>
+
+                        <p class="alert alert-danger"
+                            t-if="'__all__' in form.errors" role="alert">
+                            <t t-esc="form.errors['__all__']"/>
+                        </p>
+
+                        <button type="submit" class="btn btn-primary">Envoyer</button>
+                    </form>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

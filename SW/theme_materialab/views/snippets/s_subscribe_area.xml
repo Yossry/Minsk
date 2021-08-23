@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template name="Subscribe Area" id="s_subscribe_area">
+        <!-- ====START SUBSCRIBE==== -->
+        <section class="subscribe_area section-padding oe_structure">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="section_title mb80">
+                            <h5 class="smallHd text-center">SUBSCRIBE TO</h5>
+                            <h2 class="secHd text-center">get latest news from us</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2">
+                        <div class="subform">
+                            <form action="index.html" method="get">
+                                <div class="input-field">
+                                    <input id="last_name" type="email" class="validate" />
+                                    <label for="last_name"><i class="zmdi zmdi-email"></i>Enter your email</label>
+                                </div>
+                                <button class="th_bt btn waves-effect waves-light" type="submit">
+                                    Subscribe<i class="zmdi zmdi-cloud-done"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ====END SUBSCRIBE==== -->
+    </template>
+</odoo>

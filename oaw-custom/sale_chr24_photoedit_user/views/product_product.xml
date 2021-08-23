@@ -1,0 +1,225 @@
+<odoo>
+    <!--Tree View for sale_chr24_photoedit     -->
+    <record id="chono24_view_tree" model="ir.ui.view">
+        <field name="name">chono24.view.tree</field>
+        <field name="model">product.product</field>
+        <field name="arch" type="xml">
+            <tree
+                string="Chrono24 Offer"
+                default_order="id desc"
+                editable="top"
+                delete="false"
+            >
+                <field name="default_code" string="Code" readonly="1" />
+                <button
+                    name="action_view_product_open"
+                    type="object"
+                    icon="fa-sign-in"
+                    string="Open its Product Form"
+                />
+                <field
+                    name="image_medium"
+                    string="Image"
+                    widget="image"
+                    options='{"size": [64, 64]}'
+                />
+                <field name="list_price" string="Retail HKD" readonly="1" />
+                <field name="qty_reserved" string="Qty Reserved" />
+                <field name="qty_local_stock" widget="integer" string="HK Stock" />
+                <field name="qty_overseas" string="Qty Overseas" />
+                <field name="chrono24_price" string="Chr24 Price" />
+                <field name="chrono24_updated" />
+                <field name="chrono" readonly="1" />
+                <field name="chronoNote" />
+            </tree>
+        </field>
+    </record>
+    <!--Search View for sale_chr24_photoedit     -->
+    <record id="chono24_view_search" model="ir.ui.view">
+        <field name="name">chono24.view.search</field>
+        <field name="model">product.product</field>
+        <field name="priority" eval="23" />
+        <field name="arch" type="xml">
+            <search>
+                <filter
+                    name="updated_chrono24"
+                    string="Chrono24 updated"
+                    domain="[('chrono24_updated','=',True)]"
+                />
+                <filter
+                    name="c24_unset"
+                    string="Chrono24"
+                    domain="[('chrono', '=', True)]"
+                />
+                <filter
+                    name="chrono_deac"
+                    string="Chrono24 deactive"
+                    domain="[('chrono24_updated','=',True),('qty_local_stock','=',0)]"
+                />
+            </search>
+        </field>
+    </record>
+    <!--The action-->
+    <record id="action_chono24_view" model="ir.actions.act_window">
+        <field name="name">Chrono24 Update</field>
+        <field name="res_model">product.product</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="chono24_view_tree" />
+        <field name="context">{}</field>
+        <field name="search_view_id" ref="chono24_view_search" />
+        <field name="limit">80</field>
+    </record>
+    <menuitem
+        id="menu_chron24_view_root"
+        name="Chrono24 and Products"
+        sequence="2"
+        groups="group_chr24_photoedit"
+    />
+    <menuitem
+        id="menu_chron24_photoedit_view"
+        parent="menu_chron24_view_root"
+        name="Chrono24 and Products"
+        sequence="2"
+        groups="group_chr24_photoedit"
+    />
+    <menuitem
+        id="menu_chron24_view"
+        parent="menu_chron24_photoedit_view"
+        action="action_chono24_view"
+        sequence="2"
+        groups="group_chr24_photoedit"
+    />
+    <record id="chrono24_view_form" model="ir.ui.view">
+        <field name="name">product.template.common.form</field>
+        <field name="model">product.product</field>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <form string="Product">
+                <header>
+
+                </header>
+                <sheet>
+                    <field name='product_variant_count' invisible='1' />
+                    <field name='is_product_variant' invisible='1' />
+                    <field name='attribute_line_ids' invisible='1' />
+                    <field name="id" invisible="True" />
+                    <field name="image_medium" widget="image" class="oe_avatar" />
+                    <div class="oe_title">
+                        <label class="oe_edit_only" for="name" string="Product Name" />
+                        <h1>
+                            <field name="name" placeholder="Product Name" />
+                        </h1>
+                        <div name="options" groups="base.group_user">
+                            <div>
+                                <field name="sale_ok" readonly="True" />
+                                <label for="sale_ok" />
+                            </div>
+                            <div>
+                                <field name="purchase_ok" readonly="True" />
+                                <label for="purchase_ok" />
+                            </div>
+                        </div>
+                    </div>
+                    <notebook>
+                        <page
+                            name="shop"
+                            string="eCommerce"
+                            attrs="{'invisible': [('sale_ok','=',False)]}"
+                        >
+                            <group name="extra_images" string="Extra Images">
+                                <field
+                                    name="product_image_ids"
+                                    class="o_website_sale_image_list"
+                                    context="{'default_name': name, 'default_product_tmpl_id': active_id}"
+                                    nolabel="1"
+                                >
+                                    <kanban
+                                        string="Product Images"
+                                        class="o_attachments_previews"
+                                    >
+                                        <field name="id" />
+                                        <field name="name" />
+                                        <field name="image" />
+                                        <templates>
+                                            <t t-name="kanban-box">
+                                                <div
+                                                    class="o_attachment oe_kanban_global_click o_website_sale_image_card"
+                                                >
+                                                    <div class="o_attachment_wrap">
+                                                        <div class="o_image_box">
+                                                            <div
+                                                                class="o_attachment_image"
+                                                                t-attf-style="background-image:url({{kanban_image('product.image', 'image', record.id.raw_value)}});"
+                                                            />
+                                                            <div
+                                                                t-attf-class="o_image_overlay"
+                                                                t-att-title="record.name.value"
+                                                            />
+                                                            <div
+                                                                class="o_website_sale_image_card_title"
+                                                                t-att-title="record.name.value"
+                                                            >
+                                                                <field name="name" />
+                                                            </div>
+                                                        </div>
+                                                        <t
+                                                            t-set="size"
+                                                            t-value="[record.image.value][0]"
+                                                        />
+                                                        <t
+                                                            t-set="size_status"
+                                                            t-value="'normal'"
+                                                            t-if="size.indexOf('Bytes') !== -1 or ( size.indexOf('Kb') !== -1 and size[2]=='.')"
+                                                        />
+                                                        <t
+                                                            t-set="size_status"
+                                                            t-value="'warning'"
+                                                            t-elif="( size.indexOf('Kb') !== -1 and size[3]=='.')"
+                                                        />
+                                                        <t
+                                                            t-set="size_status"
+                                                            t-value="'danger'"
+                                                            t-else=""
+                                                        />
+                                                        <t
+                                                            t-set="message"
+                                                            t-value="'Acceptable file size'"
+                                                            t-if="size_status == 'normal'"
+                                                        />
+                                                        <t
+                                                            t-set="message"
+                                                            t-value="'Huge file size. The image should be optimized/reduced.'"
+                                                            t-elif="size_status == 'warning'"
+                                                        />
+                                                        <t
+                                                            t-set="message"
+                                                            t-value="'Optimization required! Reduce the image size or increase your compression settings.'"
+                                                            t-else=""
+                                                        />
+                                                        <span
+                                                            t-attf-class="o_website_sale_image_card_size badge badge-#{size_status}"
+                                                            t-att-title="message"
+                                                        >
+                                                            <t
+                                                                t-esc="record.image.value"
+                                                            />
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </t>
+                                        </templates>
+                                    </kanban>
+                                </field>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+</odoo>

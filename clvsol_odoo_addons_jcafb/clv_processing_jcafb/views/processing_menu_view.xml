@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <menuitem name="Processing" id="clv_processing.menu_processing_processing_processing"
+        parent="clv_base.menu_processing_processing"
+        groups="clv_processing.group_user"
+        sequence="20"/>
+
+    <menuitem name="Schedules" id="clv_processing.menu_processing_processing_processing_schedules" 
+        parent="clv_processing.menu_processing_processing_processing"
+        groups="clv_processing.group_user"
+        sequence="40"
+        action="clv_processing.clv_processing_schedule_action"/>
+
+    <!--menuitem name="Batches" id="clv_processing.menu_processing_processing_processing_batches" 
+        parent="clv_processing.menu_processing_processing_processing"
+        groups="clv_processing.group_user"
+        sequence="50"
+        action="clv_processing.clv_processing_batch_action"/-->
+
+    <menuitem name="Processing" id="clv_processing.menu_processing_config_processing"
+        parent="clv_base.menu_processing_config"
+        groups="clv_processing.group_user"
+        sequence="10"/>
+
+    <menuitem name="Hosts" id="clv_processing.menu_processing_config_processing_hosts" 
+        parent="clv_processing.menu_processing_config_processing"
+        groups="clv_processing.group_user"
+        sequence="10"
+        action="clv_processing.clv_processing_host_action"/>
+
+    <menuitem name="Templates" id="clv_processing.menu_processing_config_processing_templates" 
+        parent="clv_processing.menu_processing_config_processing"
+        groups="clv_processing.group_user"
+        sequence="30"
+        action="clv_processing.clv_processing_template_action"/>
+
+    <!--menuitem name="Batch Members" id="clv_processing.menu_processing_config_processing_batch_members" 
+        parent="clv_processing.menu_processing_config_processing"
+        groups="clv_processing.group_user"
+        sequence="60"
+        action="clv_processing.clv_processing_batch_member_actions"/-->
+
+</odoo>

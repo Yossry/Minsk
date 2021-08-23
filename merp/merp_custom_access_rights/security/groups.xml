@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Ventor Menu Management -->
+    <record model="ir.module.category" id="module_category_merp_menu_application">
+        <field name="name">Ventor Menu Management</field>
+        <field name="sequence">0</field>
+        <field name="visible" eval="0"/>
+    </record>
+
+    <record id="merp_menu_warehouse_operations" model="res.groups">
+        <field name="name">Warehouse Operations Menu</field>
+        <field name="category_id" ref="module_category_merp_menu_application"/>
+        <field name="users" eval="[(4, ref('base.user_root'))]"/>
+    </record>
+
+    <record id="merp_menu_inventory_adjustments" model="res.groups">
+        <field name="name">Inventory Adjustments Menu</field>
+        <field name="category_id" ref="module_category_merp_menu_application"/>
+        <field name="users" eval="[(4, ref('base.user_root'))]"/>
+    </record>
+
+    <record id="merp_menu_one_loc_inventory" model="res.groups">
+        <field name="name">One Location Inventory Menu</field>
+        <field name="category_id" ref="module_category_merp_menu_application"/>
+        <field name="users" eval="[(4, ref('base.user_root'))]"/>
+    </record>
+
+    <record id="merp_menu_picking_wave" model="res.groups">
+        <field name="name">Batch Picking Menu</field>
+        <field name="category_id" ref="module_category_merp_menu_application"/>
+        <field name="users" eval="[(4, ref('base.user_root'))]"/>
+    </record>
+
+    <record id="merp_menu_instant_inventory" model="res.groups">
+        <field name="name">Instant Inventory Menu</field>
+        <field name="category_id" ref="module_category_merp_menu_application"/>
+        <field name="users" eval="[(4, ref('base.user_root'))]"/>
+    </record>
+
+    <record id="merp_menu_instant_move" model="res.groups">
+        <field name="name">Internal Transfers Menu</field>
+        <field name="category_id" ref="module_category_merp_menu_application"/>
+        <field name="users" eval="[(4, ref('base.user_root'))]"/>
+    </record>
+
+    <record id="merp_menu_manufacturing" model="res.groups">
+        <field name="name">Manufacturing Menu</field>
+        <field name="category_id" ref="module_category_merp_menu_application"/>
+        <field name="users" eval="[(4, ref('base.user_root'))]"/>
+    </record>
+
+    <record id="merp_menu_create_purchase_order" model="res.groups">
+        <field name="name">Create Purchase Order Menu</field>
+        <field name="category_id" ref="module_category_merp_menu_application"/>
+        <field name="users" eval="[(4, ref('base.user_root'))]"/>
+    </record>
+
+    <record id="merp_menu_create_sales_order" model="res.groups">
+        <field name="name">Create Sales Order Menu</field>
+        <field name="category_id" ref="module_category_merp_menu_application"/>
+        <field name="users" eval="[(4, ref('base.user_root'))]"/>
+    </record>
+
+    <record id="merp_menu_info" model="res.groups">
+        <field name="name">Quick Info Menu</field>
+        <field name="category_id" ref="module_category_merp_menu_application"/>
+        <field name="users" eval="[(4, ref('base.user_root'))]"/>
+    </record>
+
+    <!-- Ventor Access Rights -->
+    <record model="ir.module.category" id="module_category_merp_access_application">
+        <field name="name">Ventor Access Rights</field>
+        <field name="sequence">1</field>
+        <field name="visible" eval="0"/>
+    </record>
+
+    <record id="merp_menu_allow_update_product_on_hand" model="res.groups">
+        <field name="name">Quick Info: Update product on hand</field>
+        <field name="category_id" ref="module_category_merp_access_application"/>
+        <field name="implied_ids" eval="[(6, 0, [ref('merp_menu_info')])]"/>
+        <field name="users" eval="[(4, ref('base.user_root'))]"/>
+    </record>
+
+    <record id="merp_debug" model="res.groups">
+        <field name="name">Debug: Technical Features</field>
+        <field name="category_id" ref="module_category_merp_access_application"/>
+        <field name="users" eval="[(4, ref('base.user_root'))]"/>
+    </record>
+
+    <record id="merp_ventor_settings" model="res.groups">
+        <field name="name">Ventor Settings Access</field>
+        <field name="category_id" ref="module_category_merp_access_application"/>
+        <field name="users" eval="[(4, ref('base.user_root'))]"/>
+    </record>
+
+    <record id="merp_picking_wave_allow_done" model="res.groups">
+        <field name="name">Batch Picking: Close batch picking</field>
+        <field name="category_id" ref="module_category_merp_access_application"/>
+        <field name="users" eval="[(4, ref('base.user_root'))]"/>
+    </record>
+
+    <record id="merp_inventory_allow_ready_state" model="res.groups">
+        <field name="name">Inventory Adjustments: Waiting for Validation</field>
+        <field name="category_id" ref="module_category_merp_access_application"/>
+        <field name="implied_ids" eval="[(6, 0, [ref('merp_menu_inventory_adjustments')])]"/>
+        <field name="users" eval="[(4, ref('base.user_root'))]"/>
+    </record>
+
+    <!-- Ventor Roles -->
+    <record model="ir.module.category" id="module_category_ventor_roles">
+        <field name="name">Ventor Roles</field>
+        <field name="sequence">1</field>
+    </record>
+
+    <data noupdate="1">
+
+    <record id="ventor_role_wh_worker" model="res.groups">
+        <field name="name">Warehouse worker</field>
+        <field name="category_id" ref="module_category_ventor_roles"/>
+        <field name="implied_ids"
+               eval="[(4, ref('merp_menu_warehouse_operations')), (4, ref('merp_menu_picking_wave'))]"/>
+    </record>
+
+    <record id="ventor_role_wh_manager" model="res.groups">
+        <field name="name">Warehouse manager</field>
+        <field name="category_id" ref="module_category_ventor_roles"/>
+        <field name="implied_ids"
+               eval="[(4, ref('ventor_role_wh_worker')), (4, ref('merp_menu_inventory_adjustments')), (4, ref('merp_menu_info')), (4, ref('merp_menu_instant_inventory')), (4, ref('merp_menu_instant_move'))]"/>
+    </record>
+
+    <record id="ventor_role_admin" model="res.groups">
+        <field name="name">Admin</field>
+        <field name="category_id" ref="module_category_ventor_roles"/>
+        <field name="implied_ids"
+               eval="[(4, ref('ventor_role_wh_manager')), (4, ref('merp_menu_create_sales_order')), (4, ref('merp_menu_create_purchase_order')), (4, ref('merp_menu_allow_update_product_on_hand')), (4, ref('merp_debug')), (4, ref('merp_ventor_settings')), (4, ref('merp_picking_wave_allow_done'))]"/>
+        <field name="users" eval="[(4, ref('base.user_root'))]"/>
+    </record>
+
+    </data>
+
+</odoo>

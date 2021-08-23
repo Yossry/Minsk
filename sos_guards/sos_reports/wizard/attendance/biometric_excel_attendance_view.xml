@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+			   
+        <record id="biometric_excel_attendance_view" model="ir.ui.view">
+            <field name="name">BioMetric Excel Attendance</field>
+            <field name="model">biometric.excel.attendance</field>                     
+            <field name="arch" type="xml">
+            <form string="BioMetric Excel Attendance">
+				<sheet>
+					<group>
+						<group>
+							<field name="start_date" string="Date From"/>
+						</group>
+						<group>
+							<field name="end_date" string="Date To" />
+						</group>
+					</group>
+					
+					<notebook>				
+						<page string="Center" name="centers">
+							<separator string="Print only" colspan="4"/>
+							<field name="center_ids" widget="many2many_checkboxes" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>
+						</page>
+						<page string="Project" name="projects">
+							<separator string="Print only" colspan="4"/>
+							<field name="project_ids" widget="many2many_checkboxes" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>						
+						</page>
+						<page string="Segments" name="segments">
+							<separator string="Print only" colspan="4"/>
+							<field name="segment_ids" widget="many2many_checkboxes" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>						
+						</page>
+						<page string="Sub Segments" name="sub_segment_ids">
+							<separator string="Print only" colspan="4"/>
+							<field name="sub_segment_ids" widget="many2many_checkboxes" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>						
+						</page>
+						<page string="Departments" name="departments">
+							<separator string="Print only" colspan="4"/>
+							<field name="department_ids" widget="many2many_checkboxes" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>
+						</page>	
+						<page string="Employee">
+							<field name="employee_ids"/>
+						</page>	
+					</notebook>
+					
+					<footer>
+						<button name="make_excel" string="Generate Report" type="object" default_focus="1" class="oe_highlight"/>
+						<button string="Cancel" class="oe_link" special="cancel" />
+					</footer> 
+			</sheet>	
+		</form>  
+      </field>
+    </record>
+	
+				
+    <record id="action_biometric_excel_attendance" model="ir.actions.act_window">
+        <field name="name">Excel Biometric Attendance</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">biometric.excel.attendance</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="biometric_excel_attendance_view"/>
+        <field name="target">new</field>
+    </record>
+	
+	<!-- Menu For HR -->
+	 <menuitem
+		name="Bio-Metric Excel Attendance" parent="hr.menu_hr_reporting_timesheet"
+		action="action_biometric_excel_attendance"
+		sequence="305" icon="STOCK_PRINT"
+		id="menu_hr_biometric_excel_attendance"
+	/>
+		
+    </data>
+</odoo>
+
+

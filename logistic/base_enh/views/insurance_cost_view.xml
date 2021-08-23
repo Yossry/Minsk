@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>	<data>
+
+		<record model="ir.ui.view" id="insurance_cost_list_view">
+			<field name="name">insurance_cost</field>
+			<field name="model">insurance.cost</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="partner_id" />
+					<field name="qut_number" />
+					<field name="date" />
+					<field name="country_loading_id" />
+					<field name="state_loading_id" />
+					<field name="city_loading_id" />
+					<field name="country_dest_id" />
+					<field name="state_loading_id" />
+					<field name="city_dest_id" />
+					<field name="from_date" />
+					<field name="to_date" />
+					<field name="insurance_type_id" />
+					<field name="active"/>
+				</tree>
+			</field>
+		</record>
+
+
+		<record model="ir.ui.view" id="insurance_cost_form_view">
+			<field name="name">insurance_cost</field>
+			<field name="model">insurance.cost</field>
+			<field name="arch" type="xml">
+				<form>
+					<sheet>
+					<div class="oe_button_box" name="button_box">  
+                            <button name="call_job" type="object"  
+                            class="oe_stat_button" icon="fa-pencil-square-o" string="Job">  
+                                 <!-- (If you want to display the count)<field name="field_name_for_count" widget="statinfo"   
+                            string="You String Name" />   -->
+                           </button> 
+                           <button name="call_sale_inquiry" type="object"  
+                            class="oe_stat_button" icon="fa-pencil-square-o" string="Sale Inquiry">  
+                                 <!-- (If you want to display the count)<field name="field_name_for_count" widget="statinfo"   
+                            string="You String Name" />   -->
+                           </button>
+                       </div>
+						<group>
+							<group>
+								<field name="partner_id"
+									options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" 
+									required="True"/>
+								<field name="qut_number" 
+								       required="True"/>
+								<field name="date" />
+								<field name="rate" 
+								       required="True"
+								       attrs="{'invisible': ['|',('partner_id', '=',False),('qut_number','=','')]}"/>
+							</group>
+							<group>
+							    <field name="active"/>
+								<field name="is_expired" />
+								<field name="is_next" />
+								<field name="insurance_type_id"
+									options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" />
+
+							</group>
+						</group>
+						<notebook>
+						  <page string="General Info">
+						  <group>
+						      <group>
+					            <field name="country_loading_id"
+                                    options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" />
+                                <field name="state_loading_id"
+                                    domain="[('country_id','=',country_loading_id)]"
+                                    options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" />
+                                <field name="city_loading_id"
+                                    domain="[('country_id','=',country_loading_id),'|',('state_id','=',state_loading_id),('state_id','=',False)]"
+                                    options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" />
+                                <field name="from_date" />
+                                <field name="to_date" />
+                                <field name="beneficiary" />
+						      </group>
+						      <group>
+						          <field name="country_dest_id"
+                                    options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" />
+                                <field name="state_dest_id"
+                                    domain="[('country_id','=',country_dest_id)]"
+                                    options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" />
+                                <field name="city_dest_id"
+                                    domain="[('country_id','=',country_dest_id),'|',('state_id','=',state_dest_id),('state_id','=',False)]"
+                                    options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" />
+                                    <field name="transport_type" widget="many2many_tags"/>
+                                <field name="voyage_from"
+                                       options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+                                <field name="voyage_to"
+                                        options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+						      </group>
+						  </group>
+						  </page>
+						  <page string="Costs">
+						      <field name="cost_line_ids">
+                                <tree editable="botton">
+                                    <field name="product_id"
+                                        options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" />
+                                    <field name="currency_id" />
+                                    <field name="cost" />
+                                </tree>
+                            </field>
+                            <group>
+                                <field name="currency_id" options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>  
+                                <field name="payment_term_id" options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+						        <field name="cif_type" widget="radio"/>
+						        <label for="cif_perc" attrs="{'invisible': [('cif_type', 'not in',['percentage'])]}"/>
+                                <div name="cif_perc" attrs="{'invisible': [('cif_type', 'not in',['percentage'])]}">
+                                    <field name="cif_perc"
+                                           attrs="{'invisible': [('cif_type', 'not in',['percentage'])]}" 
+                                           class="oe_inline"/> %
+                                </div>
+						        <field name="cif_amount"
+                                       attrs="{'invisible': [('cif_type', 'not in',['amount'])]}"/>
+						    </group>
+						  </page>
+						  <page string="Conditions">
+                            <field name="condition_ids">
+                                <tree editable="botton">
+                                    <field name="name" />
+                                    <field name="type" 
+                                    options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+                                </tree>
+                            </field>
+						  </page>
+						  <page string="notes">
+                            <field name="insur_cost_note_ids">
+                                <tree editable="botton">
+                                    <field name="note"/>
+                                    <field name="create_uid"/>
+                                    <field name="create_date"/>
+                                    <field name="write_uid"/>
+                                    <field name="write_date"/>
+                                </tree>
+                            </field>						  
+						  </page>
+						</notebook>
+                       <group>
+                            <group>
+                                <field name="total" />
+                            </group>
+                        </group>
+					</sheet>
+					<div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                 </div>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window"
+			id="insurance_cost_action">
+			<field name="name">Insurance Cost</field>
+			<field name="res_model">insurance.cost</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+
+
+
+	</data>
+</odoo>

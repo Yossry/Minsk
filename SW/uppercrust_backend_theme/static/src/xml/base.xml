@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <!-- Menu Js -->
+    <t t-name="SubmenuTitle">
+        <span class="oe_back_btn">
+            <i class="fa fa-arrow-left"></i>
+        </span>
+        <div class="o_submenu_title">
+            <a class="ad_main_menu_detals" t-att-data-menu-id="selected_menu.id">
+                <img t-attf-src="/web/image/ir.ui.menu/{{selected_menu.id}}/web_icon_data/60x60"/>
+                <span class="oe_menu_text">
+                    <t t-esc="selected_menu.name"/>
+                </span>
+            </a>
+        </div>
+    </t>
+
+    <header t-extend="Menu">
+        <t t-jquery=".o_main_navbar" t-operation="replace">
+            <nav class="o_main_navbar">
+                <div class="o_toggle_menu">
+                    <li>
+                        <a href="#"
+                           class="ad-sm-logo">
+                            <img class="img img-responsive"
+                                 t-attf-src="/web/image/res.company/{{widget.company_id}}/theme_icon/60x60" alt=""/>
+                        </a>
+                    </li>
+                </div>
+                <div class="oe_menu_layout">
+                <a id="menu_toggle" accesskey="H"
+                   title="Menu">
+                    <span class="icon"/>
+                </a>
+                <a id="children_toggle" accesskey="G" title="Sub Menu">
+                    <i class="fa fa-plus"/>
+                </a>
+                <div id="o_menu_apps" class="o_menu_apps"/>
+                <div id="o_menu_sections" class="o_menu_sections" role="menu"/>
+                </div>
+                <ul class="o_menu_systray" role="menu"/>
+                <ul id="av_full_view">
+                    <i class="fa fa-bars"/>
+                </ul>
+            </nav>
+        </t>
+    </header>
+
+    <t t-extend="AppsMenu">
+        <t t-jquery=".dropdown" t-operation="replace">
+            <div class="main_menu">
+                <span class="oe_back_btn">
+                    <i class="fa fa-arrow-left"></i>
+                </span>
+                <div class="o_company_logo">
+                     <a class="o_sub_menu_logo" href="/web">
+                        <img t-attf-src="/web/image/res.company/{{widget.company_id}}/logo_web/180x55"/>
+                    </a>
+                </div>
+                <div class="oe_apps_menu" role="menu">
+                    <t t-foreach="widget.getApps()" t-as="app">
+                    <a role="menuitem"
+                        class="dropdown-item o_app"
+                        t-att-data-menu-id="app.menuID"
+                        t-att-data-menu-xmlid="app.xmlID"
+                        t-att-data-action-id="app.actionID">
+                            <img t-if="app.menuIcon"
+                                 t-att-src="app.menuIcon"/>
+                            <img t-else=""
+                                 src="/uppercrust_backend_theme/static/src/img/no_modul_ioc.png"/>
+                            <t t-esc="app.name"/>
+                        </a>
+                    </t>
+                </div>
+            </div>
+        </t>
+    </t>
+
+    <!-- Print , attechment, Action button view -->
+	<div t-extend="Sidebar">
+        <t t-jquery="t[t-foreach*='widget.sections'][t-as*='section']" t-operation="replace">
+            <span class="o_sidebar_drw fa fa-chevron-left"/>
+            <t t-foreach="widget.sections" t-as="section">
+                <div class="btn-group o_dropdown list-element">
+                    <button t-if="section.name != 'buttons'" t-att-class="(section.name == 'print') and 'ad_print o_dropdown_toggler_btn btn btn-sm dropdown-toggle' or (section.name == 'files') and 'ad_attechment o_dropdown_toggler_btn btn btn-sm dropdown-toggle' or (section.name == 'other') and 'ad_action o_dropdown_toggler_btn btn btn-sm dropdown-toggle' or 'o_dropdown_toggler_btn btn btn-sm dropdown-toggle'" data-toggle="dropdown">
+                        <t t-if="section.name == 'files'" t-raw="widget.items[section.name].length || ''"/>
+                        <t t-esc="section.label"/> <span class="caret"/>
+                    </button>
+                    <t t-if="section.name == 'buttons'" t-foreach="widget.items[section.name]" t-as="item" t-att-class="item.classname">
+                        <a t-att-title="item.title or None" t-att-data-section="section.name" t-att-data-index="item_index" t-att-href="item.url or '#'" target="_blank">
+                            <t t-raw="item.label"/>
+                        </a>
+                    </t>
+                    <div class="dropdown-menu" role="menu">
+                        <t t-foreach="widget.items[section.name]" t-as="item">
+                            <t t-if="section.name == 'files'">
+                                <t t-set="item.title">
+                                    <b>Attachment : </b><br/>
+                                    <t t-raw="item.name"/>
+                                </t>
+                                <t t-if="item.create_uid and item.create_uid[0]" t-set="item.title">
+                                    <t t-raw="item.title"/><br/>
+                                    <b>Created by : </b><br/>
+                                    <t t-raw="item.create_uid[1]"/>  <t t-esc="item.create_date_string" />
+                                </t>
+                                <t t-if="item.create_uid and item.write_uid and item.create_uid[0] != item.write_uid[0]" t-set="item.title">
+                                    <t t-raw="item.title"/><br/>
+                                    <b>Modified by : </b><br/>
+                                    <t t-raw="item.write_uid[1]"/>  <t t-esc="item.write_date_string"/>
+                                </t>
+                            </t>
+                            <a t-attf-class="dropdown-item #{item.classname}" role="menuitem" t-att-title="item.title or None" t-att-data-section="section.name" t-att-data-index="item_index" t-att-href="item.url or '#'">
+                                <t t-raw="item.label"/>
+                                <span t-if="section.name == 'files' and widget.options.editable and !item.callback" class="fa fa-trash-o o_sidebar_delete_attachment" t-att-data-id="item.id" title="Delete this attachment" role="img" aria-label="Delete this attachment"/>
+                            </a>
+                        </t>
+                        <div role="menuitem" t-if="section.name == 'files' and widget.options.editable" class="dropdown-item o_sidebar_add_attachment">
+                            <t t-call="HiddenInputFile">
+                                <t t-set="fileupload_id" t-value="widget.fileuploadId"/>
+                                <t t-set="fileupload_action" t-translation="off">/web/binary/upload_attachment</t>
+                                <t t-set="multi_upload" t-value="true"/>
+                                <input type="hidden" name="model" t-att-value="widget.env and widget.env.model"/>
+                                <input type="hidden" name="id" t-att-value="widget.env.activeIds[0]"/>
+                                <input type="hidden" name="session_id" t-att-value="widget.getSession().session_id" t-if="widget.getSession().override_session"/>
+                                <span>Add...</span>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+	</div>
+
+    <t t-extend="ControlPanel">
+        <t t-jquery=".o_control_panel" t-operation="replace">
+            <div class="o_control_panel">
+                <ol class="breadcrumb" role="navigation"/>
+                <div class="o_cp_searchview" role="search"/>
+                <div class="btn-group o_search_options" role="search"/>
+                <nav class="btn-group o_cp_switch_buttons" role="toolbar" aria-label="View switcher"/>
+                <aside class="o_cp_sidebar"/>
+                <div class="ad_bottom_panel">
+                    <div class="o_cp_left">
+                        <div class="o_cp_buttons" role="toolbar" aria-label="Control panel toolbar"/>
+                    </div>
+                    <div class="o_cp_right">
+                        <nav class="o_cp_pager" role="search" aria-label="Pager"/>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </t>
+
+    <t t-name="ControlPanel.SwitchButton">
+        <div class="oe_view_btn">
+            <button type="button" t-att-accesskey="view.accessKey"
+                t-attf-class="btn btn-secondary fa fa-lg #{view.icon} o_cp_switch_#{view.type}"
+                t-attf-aria-label="View #{view.type}"
+                t-att-data-view-type="view.type" t-attf-title="View #{view.type}" tabindex="-1">
+                <t t-esc="view.type"/>
+            </button>
+        </div>
+    </t>
+
+    <t t-extend="UserMenu">
+        <t t-jquery=".dropdown-menu-right" t-operation="replace">
+            <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                <span class="oe_back_btn"><i class="fa fa-arrow-left"/></span>
+                <div class="ad_user_details_box">
+                    <div class="ad_user_details">
+                        <div class="ad_avtar_image">
+                            <img class="img-circle oe_topbar_avatar" t-att-src="_s + '/web/static/src/img/user_menu_avatar.png'"/>
+                        </div>
+                        <strong class="oe_topbar_name"/>
+                    </div>
+                    <li><a href="#" data-menu="documentation"><i class="fa fa-book"/> Documentation</a></li>
+                    <li><a href="#" data-menu="support"><i class="fa fa-question-circle"/> Support</a></li>
+                    <div role="separator" class="dropdown-divider"/>
+                    <li><a href="#" data-menu="settings"><i class="fa fa-cog"/> Preferences</a></li>
+                    <li><a href="#" data-menu="account"><i class="fa fa-circle-o"/> My Odoo.com account</a></li>
+                    <li><a href="#" class="o_menu_logout"> <i class="fa fa-power-off"/> Log out</a></li>
+                </div>
+            </ul>
+        </t>
+    </t>
+
+    <!-- Logout Message -->
+    <t t-name="LogoutMessage">
+        <div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
+            <div class="mb-container">
+                <div class="mb-middle">
+                    <div class="mb-title"><span class="fa fa-sign-out"/> Log <strong>Out</strong> ?</div>
+                    <div class="mb-content">
+                        <p>Are you sure you want to log out?</p>
+                        <p>Press No if you want to continue work. Press Yes to logout current user.</p>
+                    </div>
+                    <div class="mb-footer">
+                        <div class="pull-right">
+                            <a href="#" class="btn btn-default btn-lg oe_cu_logout_yes">Yes</a>
+                            <button class="btn btn-default btn-lg mb-control-close">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+    <!-- Import view inherit -->
+    <t t-extend="ImportView">
+        <t t-jquery="input[id='oe_import_deferparentstore']" t-operation="replace">
+            <div class="o_checkbox"><input type="checkbox" id="oe_import_deferparentstore" checked="checked"/><span></span></div>
+        </t>
+        <t t-jquery="input[id='oe_import_has_header']" t-operation="replace">
+            <div class="o_checkbox"><input type="checkbox" class="oe_import_has_header" id="oe_import_has_header" checked="checked"/><span></span></div>
+        </t>
+        <t t-jquery="input[id='oe_import_advanced_mode']" t-operation="replace">
+            <div class="o_checkbox"><input type="checkbox" class="oe_import_advanced_mode" checked="checked" id="oe_import_advanced_mode"/><span></span></div>
+        </t>
+        <t t-jquery="input[id='oe_import_tracking']" t-operation="replace">
+            <div class="o_checkbox"><input type="checkbox" id="oe_import_tracking"/><span></span></div>
+        </t>
+    </t>
+
+    <!-- Filter View default active -->
+    <div t-name="SearchView.FilterMenu" class="btn-group o_dropdown ad_active">
+        <button class="o_dropdown_toggler_btn btn btn-sm dropdown-toggle" data-toggle="dropdown">
+            <span class="fa fa-filter"/> Filters <span class="caret"/>
+        </button>
+        <ul class="dropdown-menu o_filters_menu" role="menu">
+            <li class="o_add_filter o_closed_menu">
+                <a href="#">Add Custom Filter</a>
+            </li>
+            <li class="o_add_filter_menu">
+                <button class="btn btn-primary btn-sm o_apply_filter" type="button">Apply</button>
+                <button class="btn btn-default btn-sm o_add_condition" type="button"><span class="fa fa-plus-circle"/> Add a condition</button>
+            </li>
+        </ul>
+    </div>
+    <!-- Filter View default active -->
+
+    <t t-name="Throbber">
+        <div>
+            <div class="oe_blockui_spin" style="height: 50px">
+                <svg width="58px"  height="58px"  xmlns="" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-cube nvd3-svg">
+                    <g transform="translate(25,25)">
+                      <rect ng-attr-x="{{config.dp}}" ng-attr-y="{{config.dp}}" ng-attr-width="{{config.blockSize}}" ng-attr-height="{{config.blockSize}}" ng-attr-fill="{{config.c1}}" x="-18" y="-18" width="36" height="36" fill="#875A7B" transform="scale(1.11648 1.11648)">
+                        <animateTransform attributeName="transform" type="scale" calcMode="spline" values="1.5;1" keyTimes="0;1" dur="1s" keySplines="0 0.5 0.5 1" begin="-0.3s" repeatCount="indefinite"/>
+                      </rect>
+                    </g>
+                    <g transform="translate(75,25)">
+                      <rect ng-attr-x="{{config.dp}}" ng-attr-y="{{config.dp}}" ng-attr-width="{{config.blockSize}}" ng-attr-height="{{config.blockSize}}" ng-attr-fill="{{config.c2}}" x="-18" y="-18" width="36" height="36" fill="#875A7B" transform="scale(1.1619 1.1619)">
+                        <animateTransform attributeName="transform" type="scale" calcMode="spline" values="1.5;1" keyTimes="0;1" dur="1s" keySplines="0 0.5 0.5 1" begin="-0.2s" repeatCount="indefinite"/>
+                      </rect>
+                    </g>
+                    <g transform="translate(25,75)">
+                      <rect ng-attr-x="{{config.dp}}" ng-attr-y="{{config.dp}}" ng-attr-width="{{config.blockSize}}" ng-attr-height="{{config.blockSize}}" ng-attr-fill="{{config.c3}}" x="-18" y="-18" width="36" height="36" fill="#875A7B" transform="scale(1.30165 1.30165)">
+                        <animateTransform attributeName="transform" type="scale" calcMode="spline" values="1.5;1" keyTimes="0;1" dur="1s" keySplines="0 0.5 0.5 1" begin="0s" repeatCount="indefinite"/>
+                      </rect>
+                    </g>
+                    <g transform="translate(75,75)">
+                      <rect ng-attr-x="{{config.dp}}" ng-attr-y="{{config.dp}}" ng-attr-width="{{config.blockSize}}" ng-attr-height="{{config.blockSize}}" ng-attr-fill="{{config.c4}}" x="-18" y="-18" width="36" height="36" fill="#875A7B" transform="scale(1.21853 1.21853)">
+                        <animateTransform attributeName="transform" type="scale" calcMode="spline" values="1.5;1" keyTimes="0;1" dur="1s" keySplines="0 0.5 0.5 1" begin="-0.1s" repeatCount="indefinite"/>
+                      </rect>
+                    </g>
+                  </svg>
+            </div>
+            <br />
+            <div class="oe_throbber_message" style="color:white"/>
+        </div>
+    </t>
+
+    <!-- CH: Wrep Form button -->
+    <t t-name="ButtonGroup">
+        <div class="o_statusbar_buttons">
+            <div class="btn-group">
+                <a class="btn btn-sm btn-primary dropdown-toggle" href="#"
+                    data-toggle="dropdown" aria-expanded="false">Action</a>
+                <ul class="dropdown-menu" role="menu"/>
+            </div>
+        </div>
+    </t>
+
+     <!-- CH: Wrep Breadcrumb -->
+    <t t-name="Breadcrumb.mobile">
+        <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown">
+            <t t-if="state_info" t-esc="state_info.display_name"/>
+        </button>
+        <ul class="dropdown-menu o-status-more" role="menu">
+            <li t-foreach="selection" t-as="i">
+                <t t-call="FieldStatus.content.button"/>
+            </li>
+        </ul>
+    </t>
+
+    <t t-extend="SearchView">
+        <t t-jquery=".o_searchview_more"  t-operation="after">
+            <sapn class="o_search_recs fa fa-ellipsis-v dropdown-toggle hidden" data-toggle="dropdown" id="dropdownMenu" type="button"/>
+            <ul class="dropdown-menu o_search_rec_ul" aria-labelledby="dropdownMenu"/>
+        </t>
+    </t>
+
+    <t t-extend="mail.discuss.ControlButtons">
+        <t t-jquery="div:first" t-operation="attributes">
+            <attribute name="class">o_discuss_buttons</attribute>
+        </t>
+    </t>
+</templates>

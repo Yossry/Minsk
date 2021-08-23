@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!--Inventory-->
+    <record id="stock.menu_stock_root" model="ir.ui.menu">
+        <field name="groups_id" eval="[(6, 0, [ref('stock.group_stock_manager')])]" />
+    </record>
+    <menuitem
+        id="stock_supplier_root"
+        name="Warehouse"
+        groups="supplier_user_access.group_supplier"
+        sequence="30"
+    />
+    <menuitem
+        id="menu_stock_move_external_supplier"
+        name="Stock Moves (Ext.)"
+        groups="supplier_user_access.group_supplier_fm"
+        parent="stock_supplier_root"
+        action="stock_view_adjust_oaw.action_move_line_extended"
+        sequence="15"
+    />
+    <menuitem
+        id="menu_stock_quant_supplier"
+        name="Quants"
+        groups="supplier_user_access.group_supplier_fm"
+        parent="stock_supplier_root"
+        action="stock_move_line_quant.action_stock_quant"
+        sequence="15"
+    />
+    <menuitem
+        id="menu_product_tempalate_supplier"
+        name="Products"
+        groups="supplier_user_access.group_supplier_fm"
+        parent="stock_supplier_root"
+        action="sale.product_template_action"
+        sequence="15"
+    />
+</odoo>

@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+                 	
+<!-- remark by Numan -->
+<!--  <record id="base.group_hr_attendance" model="res.groups"> 
+	<field name="name">Attendance Group</field>
+	<field name="comment">the user will have an access to the human resources of its own region. for attendance</field>
+	<field name="category_id" ref="base.module_category_human_resources"/>
+	<field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+	<field name="users" eval="[(4, ref('base.user_root'))]"/>
+</record> -->
+
+
+<record id="view_sos_guard_attendance_tree" model="ir.ui.view">
+	<field name="name">sos.guard.attendance.tree</field>
+	<field name="model">sos.guard.attendance</field>
+	<field name="arch" type="xml">
+		<tree string="Employee attendances" create="false" editable="bottom">
+			<field name="name" readonly="1"/>
+			<field name="employee_id" readonly="1"/>
+			<field name="post_id" readonly="1"/>
+			<field name="project_id" readonly="1"/>
+			<field name="center_id" readonly="1"/>
+			<field name="action" readonly="1"/>
+			<field name="create_date" readonly="1"/>
+			<field name="create_uid" readonly="1"/>
+			<field name="paidon" readonly="1"/>
+			<field name="state" readonly="1"/>
+			<field name="shift" attrs="{'readonly': [('state','!=', 'draft')]}"/>
+		</tree>
+	</field>
+</record>
+
+<record id="view_sos_guard_attendance_form" model="ir.ui.view">
+	<field name="name">sos.guard.attendance.form</field>
+	<field name="model">sos.guard.attendance</field>
+	<field name="type">form</field>	
+	<field name="arch" type="xml">
+		<form string="Employee attendances" version="7.0">
+			 <sheet string="Attendances">
+			 	<group>
+			 		<group>
+			 			<field name="name" readonly="1" />
+						<field name="employee_id" readonly="1"  
+							context="{'form_view_ref': 'sos.view_guard_form','tree_view_ref': 'sos.view_guard_tree','filter_view_ref': 'sos.view_guard_filter'}"/>
+						<field name="post_id" readonly="1"
+							context="{'form_view_ref': 'sos.sos_post_form_view','tree_view_ref': 'sos_post_tree_view','filter_view_ref': 'sos_post_filter_view'}"/>
+						<field name="project_id" readonly="1" />
+						<field name="slip_id" readonly="1" />
+			 		</group>
+			 		<group>
+			 			<field name="center_id" readonly="1"/>
+						<field name="action" readonly="1"/>
+						<field name="paidon"  readonly="1"/>
+						<field name="state"  readonly="1"/>
+						<field name="shift" attrs="{'readonly': [('state','!=', 'draft')]}"/>
+			 		</group>
+			 	</group>
+			 </sheet>
+		</form> 
+	</field>
+</record>	
+
+<record model="ir.ui.view" id="view_sos_guard_attendance_filter">
+	<field name="name">view_sos_guard_attendance_filter</field>
+	<field name="model">sos.guard.attendance</field>
+	<field name="arch" type="xml">
+		<search string="Hr Attendance Search">
+			<field name="name" string="Attendance"/>
+			<field name="action"/>
+			<filter icon="terp-go-today" string="Today" name="today" domain="[('name','&gt;=',current_date),('name','&lt;=',current_date)]" />
+			<filter icon="terp-go-today" string="Draft" name="draft" domain="[('state','=','draft')]" />
+			<filter icon="terp-go-today" string="Counted" name="counted" domain="[('state','=','counted')]" />
+			<filter icon="terp-go-today" string="Done" name="done" domain="[('state','=','done')]" />
+			<separator/>
+			<filter icon="terp-go-today" string="Present" name="present" domain="[('action','=','present')]" />
+			<filter icon="terp-go-today" string="Absent" name="absent" domain="[('action','=','absent')]" />
+			<filter icon="terp-go-today" string="Double" name="double" domain="[('action','=','double')]" />
+			<filter icon="terp-go-today" string="Leave" name="leave" domain="[('action','=','leave')]" />
+			<filter icon="terp-go-today" string="Extra" name="extra" domain="[('action','=','extra')]" />
+			<filter icon="terp-go-today" string="Extra_Double" name="extra_double" domain="[('action','=','extra_double')]" />
+			<field name="employee_id"/>
+			<field name="project_id"/>
+			<field name="post_id"/>
+			<field name="center_id"/>
+			<group expand="0" string="Group By...">
+				<filter name="center" string="Center" icon="terp-personal" domain="[]" context="{'group_by':'center_id'}"/>
+				<filter name="project" string="Project" icon="terp-personal" domain="[]" context="{'group_by':'project_id'}"/>
+				<filter name="post" string="Post" icon="terp-personal" domain="[]" context="{'group_by':'post_id'}"/>
+				<filter name="employee" string="Employee" icon="terp-personal" domain="[]" context="{'group_by':'employee_id'}"/>
+				<separator/>
+				<filter name="month" string="Month" icon="terp-go-today" domain="[]" context="{'group_by':'name:month'}"/>
+				<filter  name="week" string="Week" icon="terp-go-today" domain="[]" context="{'group_by':'name:week'}"/>
+				<filter name="day" string="Day" icon="terp-go-today" domain="[]" context="{'group_by':'name:day'}"/>
+				<separator/>
+				<filter name="status" string="Status" icon="terp-personal" domain="[]" context="{'group_by':'state'}"/>
+				<filter name="attendance" string="Attendance" icon="terp-personal" domain="[]" context="{'group_by':'action'}"/>
+				<filter name="shift" string="Shift" icon="terp-personal" domain="[]" context="{'group_by':'shift'}"/>
+			</group>
+		</search>
+	</field>
+</record>
+
+<record id="open_view_sos_guard_attendance" model="ir.actions.act_window">
+	<field name="name">Guards Attendances</field>
+	<field name="res_model">sos.guard.attendance</field>
+	<field name="view_type">form</field>
+	<field name="view_mode">tree,form</field>
+	<field name="context">{"search_default_draft":1}</field>
+	<field name="search_view_id" ref="view_sos_guard_attendance_filter" />
+	<field name="help">Guards Attendance.</field>
+</record>
+	
+		
+<record id="act_guards_employee_attendance_list" model="ir.actions.act_window">
+   <field name="res_model">sos.guard.attendance</field>
+   <field name="name">Atendance</field>
+   <field name="view_type">form</field>
+   <field name="view_mode">tree,form</field>
+   <field name="context">{'search_default_employee_id': [active_id], 'default_employee_id': active_id}</field>
+</record>  
+	
+<record id="sos_view_employee_form_attendance_inherit" model="ir.ui.view">
+	<field name="name">sos Attendance Inherit</field>
+	<field name="model">hr.employee</field>
+	<field name="inherit_id" ref="sos.view_guard_form"/>
+	<field name="arch" type="xml">
+	<data>
+		 <xpath expr="//div[@name='button_box']" position="inside">
+		 	<button name="%(act_guards_employee_attendance_list)d" 
+				class="oe_stat_button" 
+				icon="fa-calendar" 
+				type="action">
+				<field name="attendance_count" widget="statinfo" string="Attendance" help="Attendance Detail" groups="base.group_user"/>
+			</button>	
+		 	
+		 </xpath>		
+	</data>
+	</field>
+</record>		
+
+
+
+<record id="view_sos_center_attendance_tree" model="ir.ui.view">
+	<field name="name">sos.center.attendance.tree</field>
+	<field name="model">sos.center.attendance</field>
+	<field name="arch" type="xml">
+		<tree string="Center Attendance" editable="top">
+			<field name="name"/>
+			<field name="center_id"/>
+			<field name="att_mark_count"/>			
+			<field name="state"/>
+		</tree>
+	</field>
+</record>
+
+<record model="ir.ui.view" id="view_sos_center_attendance_filter">
+	<field name="name">view_sos_center_attendance_filter</field>
+	<field name="model">sos.center.attendance</field>
+	<field name="arch" type="xml">
+		<search string="Center Attendance Search">
+			<field name="name" string="Attendance"/>
+			<filter string="Today" name="today" domain="[('name','&gt;=',current_date),('name','&lt;=',current_date)]" />
+			<filter string="Draft" name="draft" domain="[('state','=','draft')]" />
+			<filter string="Marked" name="marked" domain="[('state','=','marked')]" />
+			<filter string="Verified" name="verified" domain="[('state','=','verified')]" />
+			<filter string="Done" name="done" domain="[('state','=','done')]" />
+			<separator/>
+			<field name="center_id"/>
+			<group expand="0" string="Group By...">
+				<filter name="center" string="Center" domain="[]" context="{'group_by':'center_id'}"/>
+				<separator/>
+				<filter name="month" string="Month" icon="terp-go-today" domain="[]" context="{'group_by':'name:month'}"/>
+				<filter name="week" string="Week" icon="terp-go-today" domain="[]" context="{'group_by':'name:week'}"/>
+				<filter name="day" string="Day" icon="terp-go-today" domain="[]" context="{'group_by':'name:day'}"/>
+				<separator/>
+				<filter name="status" string="Status" icon="terp-personal" domain="[]" context="{'group_by':'state'}"/>
+			</group>
+		</search>
+	</field>
+</record>
+
+<record id="open_view_sos_center_attendance" model="ir.actions.act_window">
+	<field name="name">Center Attendances</field>
+	<field name="res_model">sos.center.attendance</field>
+	<field name="view_type">form</field>
+	<field name="view_mode">tree,form</field>
+	<field name="context">{"search_default_draft":1}</field>
+	<field name="search_view_id" ref="view_sos_center_attendance_filter" />
+	<field name="help">Center Attendance.</field>
+</record>
+
+<record id="sos_guards_exit_form_form_view_inherit" model="ir.ui.view">
+	<field name="name">SOS Guards Exit Form Inherit</field>
+	<field name="model">sos.guards.exit.form</field>
+	<field name="inherit_id" ref="sos.sos_guards_exit_form_form_view"/>
+	<field name="arch" type="xml">
+	<data>
+		<xpath expr="//field[@name='total_dues']" position="after">
+		 	<group>	
+		 		<button name="guards_payslip_button" type="object" string="Slip And Total Amt" class="oe_highlight" groups="account.group_account_manager,sos.group_special"/>
+			</group>
+		</xpath>	
+			
+		<xpath expr="//field[@name='salary']" position="after">
+			<field name="slip_id" attrs="{'invisible':[('salary', '!=',True )]}" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>
+		 </xpath>
+		 
+		 <!--
+		 <xpath expr="//field[@name='security_amt']" position="after">
+		 	<group>	
+		 		<button name="payslip_security_deposite_line" type="object" string="Compute Payslip" class="oe_highlight" groups="account.group_account_manager,sos.group_special"/>
+			</group>
+		</xpath>
+		--> 	
+		 		
+	</data>
+	</field>
+</record>	
+
+
+
+</data>
+</odoo>
+
+

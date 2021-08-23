@@ -1,0 +1,63 @@
+<openerp>
+  <data>
+    <record id="view_zona2_search" model="ir.ui.view">
+            <field name="name">view.zona2.search</field>
+            <field name="model">res.zona2</field>
+            <field name="arch" type="xml">
+                <search string="Zonas Repartidor">
+                    <field name="name"/>
+                    <newline/>
+                    <group expand="0" string="Group By...">
+                         <filter string="zona" icon="terp-partner" name="filter_zona2" domain="[]" context="{'group_by':'name'}"/>
+                        <separator orientation="vertical"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="view_zona2_form" model="ir.ui.view">
+            <field name="name">view.zona2.form</field>
+            <field name="model">res.zona2</field>
+            <field name="arch" type="xml">
+                <form string="Zonas Repartición">
+                    <sheet>
+                        <group >
+                           <field name="name" />
+                            <field name="user_id" />
+                            <field name="pos_id" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_zona2_tree" model="ir.ui.view">
+            <field name="name">view.zona2.tree</field>
+            <field name="model">res.zona2</field>
+            <field name="arch" type="xml">
+                <tree string="Zonas Repartición">
+                    <field name="name"/>
+                    <field name="user_id" />
+                    <field name="pos_id" />
+                </tree>
+            </field>
+        </record>
+
+
+
+        <record id="zona2_action_generic" model="ir.actions.act_window">
+            <field name="name">Zonas Reparticion</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.zona2</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <menuitem action="zona2_action_generic" name="Zonas Repartición"
+                  id="menu_zonas2"
+                  parent="sale.product_menu_catalog"
+                  sequence="4"
+      />
+
+  </data>
+</openerp>

@@ -1,0 +1,48 @@
+@mixin pivot_view() {
+    & > .o_pivot.o_view_controller {
+        padding: 10px;
+        background-color: $white;
+        .o_pivot_header_cell_closed, .o_pivot_header_cell_opened, .o_pivot_measure_row {
+            background-color: $tr-hover;
+            color: $Label;
+        }
+        .o_pivot_cell_value {
+            color: $Label-value;
+        }
+        table {
+            thead {
+                tr {
+                    th {
+                        border: 1px solid $border;
+                        background-color: transparent;
+                        &.o_pivot_header_cell_opened, &.o_pivot_header_cell_closed, &.o_pivot_measure_row {
+                            color: $Label-value;
+                            font-weight: bold;
+                            background-color: $tr-hover;
+                        }
+                    }
+                }
+                tr:first-child {
+                    th:first-child {
+                        background-color: transparent;
+                    }
+                }
+            }
+            tbody {
+                tr {
+                    td {
+                        border: 1px solid $border;
+                        &.o_pivot_header_cell_opened, &.o_pivot_header_cell_closed {
+                            color: $Label-value;
+                            font-weight: bold;
+                            background-color: $tr-hover;
+                        }
+                    }
+                    &:hover {
+                        background-color: $tr-hover;
+                    }
+                }
+            }
+        }
+    }
+}

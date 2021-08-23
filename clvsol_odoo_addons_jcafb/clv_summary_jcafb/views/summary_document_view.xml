@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="clv_summary_document_view_form" model="ir.ui.view">
+        <field name="name">clv.summary.document.form</field>
+        <field name="model">clv.summary.document</field>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="summary_id" options="{'no_open': False, 'no_create': True}"/>
+                        <field name="document_id" options="{'no_open': False, 'no_create': True}"/>
+                        <field name="document_category_ids" widget="many2many_tags" options="{'color_field': 'color','no_open': False, 'no_create': True}"/>
+                        <field name="document_state"/>
+                        <field name="document_phase_id"/>
+                        <field name="document_global_tag_ids" widget="many2many_tags" options="{'color_field': 'color','no_open': False, 'no_create': True}"/>
+                    </group>
+                    <notebook>
+                        <page name="settings" string="Settings" groups="clv_base.group_reguser" invisible="True">
+                            <group name="settings">
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="clv_summary_document_view_tree" model="ir.ui.view">
+        <field name="name">clv.summary.document.tree</field>
+        <field name="model">clv.summary.document</field>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <tree name="documents" string="Summary Documents">
+                <field name="summary_id" invisible="True"/>
+                <field name="document_id"/>
+                <field name="document_category_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                <field name="document_state"/>
+                <field name="document_phase_id"/>
+                <field name="document_global_tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="clv_summary_document_view_tree_state" model="ir.ui.view">
+        <field name="name">clv.summary.document.tree</field>
+        <field name="model">clv.summary.document</field>
+        <field name="inherit_id" ref="clv_summary_document_view_tree"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <tree name="documents" position="attributes">
+                <attribute name="decoration-muted">document_state=='new'</attribute>
+                <attribute name="decoration-success">document_state=='archived'</attribute>
+                <attribute name="decoration-primary">document_state in('waiting','returned')</attribute>
+                <attribute name="decoration-danger">document_state=='discarded'</attribute>
+                <attribute name="decoration-it">document_state in('new','discarded')</attribute>
+                <attribute name="decoration-bf">document_state in('returned','archived')</attribute>
+            </tree>
+        </field>
+    </record>
+
+    <record id="clv_summary_document_view_search" model="ir.ui.view">
+        <field name="name">clv.summary.document.search</field>
+        <field name="model">clv.summary.document</field>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <search string="Summary Documents">
+                <field name="summary_id"/>
+                <field name="document_id"/>
+                <field name="document_category_ids"/>
+                <field name="document_state"/>
+                <field name="document_phase_id"/>
+                <field name="document_global_tag_ids"/>
+                <newline/>
+                <group name= "group_by" expand="0" string="Group By...">
+                    <filter name= "group_by_summary_id" string="Summary" domain="[]" context="{'group_by':'summary_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="clv_summary_view_form_summary_document" model="ir.ui.view">
+        <field name="name">clv.summary.form</field>
+        <field name="model">clv.summary</field>
+        <field name="inherit_id" ref="clv_summary.clv_summary_view_form"/>
+        <field name="priority" eval="10"/>
+        <field name="arch" type="xml">
+            <group name="group_bottom" position="inside">
+                <field name="summary_document_ids" colspan="4" nolabel="0"/>
+            </group>
+        </field>
+    </record>
+
+</odoo>

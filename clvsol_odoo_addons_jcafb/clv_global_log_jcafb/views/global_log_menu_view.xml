@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <menuitem name="Global Logs" id="clv_base.menu_base_global_logs_global_logs"
+        parent="clv_base.menu_base_global_logs"
+        groups="clv_base.group_user"
+        sequence="100"
+        action="clv_global_log.clv_global_log_action"/>
+
+</odoo>

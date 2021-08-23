@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    	<report 
+            id="guards_payslip_contribution_register" 
+            model="hr.contribution.register" 
+            string="PaySlip Lines By Conribution Register"
+            report_type="qweb-pdf"
+            name="sos_payroll.report_gcontributionregister" 
+            file="sos_payroll.report_gcontributionregister"
+            menu="False"
+        />
+        
+        <!--
+		<record id="sos_headoffice_salary" model="ir.actions.report.xml">
+			<field name="name">Headoffice Salary</field>
+			<field name="type">ir.actions.report.xml</field>
+			<field name="model">hr.payslip</field>
+			<field name="report_name">salary_headoffice_aeroo</field>
+			<field name="report_type">aeroo</field>
+			<field name="in_format">oo-ods</field>				
+			<field name="parser_loc">sos_payroll/report/parser.py</field>
+			<field name="report_rml">sos_payroll/report/headoffice_salary.ods</field>
+			<field name="parser_state">loc</field>
+			<field name="tml_source">file</field>			
+		</record>
+		
+		<record id="sos_regions_salary" model="ir.actions.report.xml">
+			<field name="name">Regions Salary</field>
+			<field name="type">ir.actions.report.xml</field>
+			<field name="model">hr.payslip</field>
+			<field name="report_name">salary_regions_aeroo</field>
+			<field name="report_type">aeroo</field>
+			<field name="in_format">oo-ods</field>				
+			<field name="parser_loc">sos_payroll/report/parser.py</field>
+			<field name="report_rml">sos_payroll/report/regions_salary.ods</field>
+			<field name="parser_state">loc</field>
+			<field name="tml_source">file</field>			
+		</record>
+		-->
+		
+		<!--Salary Advised Qweb Report (Post Computation) -->
+		<report
+			id="report_salary_advised_post"
+			string= "Salary Advised Report"
+			model = "sos_payroll.salary.advised"
+			report_type="qweb-pdf"
+			file="sos_payroll.report_salary_advisedpost"
+			name="sos_payroll.report_salary_advisedpost"
+		/>
+		
+		<!-- Salary Advised Qweb Report (Centers) -->
+		<report
+			id="report_salary_advised_center"
+			string= "Salary Advised Report (Center)"
+			model = "sos_payroll.salary.advised"
+			report_type="qweb-pdf"
+			file="sos_payroll.report_salary_advisedcenter"
+			name="sos_payroll.report_salary_advisedcenter"
+		/>
+		
+		<!--Salary Advised Qweb Report (Base Post) -->
+		<report
+			id="report_salary_advised_base"
+			string= "Salary Advised Report (Base Post)"
+			model = "sos_payroll.salary.advised"
+			report_type="qweb-pdf"
+			file="sos_payroll.report_salary_advisedbase"
+			name="sos_payroll.report_salary_advisedbase"
+		/>
+		
+		<!-- Guards Salary Qweb Report (Guards) -->
+		<report
+			id="report_guards_salary"
+			string= "Guards Salary Report"
+			model = "sos_payroll.guards.salary.report"
+			report_type="qweb-html"
+			file="sos_payroll.report_guardsalary"
+			name="sos_payroll.report_guardsalary"
+		/>
+		
+		
+		<!-- Guards Salary Qweb Report (Audit)-->
+		<report
+			id="report_guards_salary_aduit"
+			string= "Guards Salary Audit Report"
+			model = "sos_payroll.guards.salary.report"
+			report_type="qweb-pdf"
+			file="sos_payroll.report_audit_guardsalary"
+			name="sos_payroll.report_audit_guardsalary"
+		/>
+		
+		<!-- Guards Salary Qweb Report (New)-->
+		<report
+			id="report_guards_salary_new"
+			string= "Guards Salary Report(New)"
+			model = "sos_payroll.guards.salary.report"
+			report_type="qweb-pdf"
+			file="sos_payroll.report_new_guardsalary"
+			name="sos_payroll.report_new_guardsalary"
+		/>
+		
+		
+		<!-- Guards No Contract Qweb Report -->
+		<report
+			id="report_guards_no_contract"
+			string= "Guards No Contract Report"
+			model = "sos_payroll.guards.no.contract.wizard"
+			report_type="qweb-pdf"
+			file="sos_payroll.report_guardsnocontract"
+			name="sos_payroll.report_guardsnocontract"
+		/>
+		
+		<!-- Guards Salary Report PaperFormat -->
+		<record id="paperformat_guardsalary" model="report.paperformat">
+			<field name="name">Guard Salary PaperFormat</field>
+			<field name="default" eval="True"/>
+			<field name="format">A4</field>
+			<field name="orientation">Landscape</field>
+			<field name="margin_top">5</field>
+			<field name="margin_bottom">10</field>
+			<field name="margin_left">3</field>
+			<field name="margin_right">3</field>
+			<field name="header_line" eval="False"/>
+			<field name="header_spacing">3</field>
+			<field name="dpi">90</field>
+		</record>
+		
+		<!--Salary Advised Report PaperFormat -->
+		<record id="paperformat_salaryadvised" model="report.paperformat">
+			<field name="name">Salary Advised PaperFormat</field>
+			<field name="default" eval="True"/>
+			<field name="format">A4</field>
+			<field name="orientation">Portrait</field>
+			<field name="margin_top">5</field>
+			<field name="margin_bottom">10</field>
+			<field name="margin_left">3</field>
+			<field name="margin_right">3</field>
+			<field name="header_line" eval="False"/>
+			<field name="header_spacing">3</field>
+			<field name="dpi">90</field>
+		</record>  
+		
+    </data>
+    
+    
+</odoo>

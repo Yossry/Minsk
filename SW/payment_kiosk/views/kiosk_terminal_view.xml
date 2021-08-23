@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Tree View -->
+    <record id="view_terminal_kiosk_tree" model="ir.ui.view">
+        <field name="name">terminal.kiosk.tree</field>
+        <field name="model">kiosk.terminal</field>
+        <field eval="8" name="priority"/>
+        <field name="arch" type="xml">
+            <tree string="Kiosk Terminals">
+                <field name="name"/>
+                <field name="licence_Key"/>
+                <field name="reference" string="Code"/>
+                <field name="kiosk_location"/>
+                <field name="top_screen"/>
+                <field name="lower_screen"/>
+                <field name="kiosk_os"/>
+                <field name="router"/>
+                <!--field name="amount" sum="Total Amount" widget="monetary"/-->
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form view-->
+    <record id="view_kiosk_terminal_form" model="ir.ui.view">
+        <field name="name">kiosk.terminal.form</field>
+        <field name="model">kiosk.terminal</field>
+        <field name="priority" eval="20"/>
+        <field name="arch" type="xml">
+            <form string="Kiosk Terminals">
+                <header>
+                    <field name="state" widget="statusbar" clickable="True"/>
+                </header>
+                <sheet>
+                    <!--div class="oe_title">
+                        <h1>
+                            <field name="reference"/>
+                        </h1>
+                    </div-->
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <!--field name="kiosk_id"/-->
+                            <field name="reference"/>
+                            <field name="start_date"/>
+                            <field name="kiosk_location"/>
+                            <field name="printer_receipt"/>
+                            <field name="cash_acceptor"/>
+                            <field name="finger_print"/>
+                            <field name="barcode_reader"/>
+                            <field name="router"/>
+                        </group>
+                        <group>
+                            <field name="kiosk_os"/>
+                            <field name="licence_Key"/>
+                            <field name="top_screen"/>
+                            <field name="lower_screen"/>
+                            <field name="kiosk_nfc"/>
+                            <field name="kiosk_pos"/>
+                            <field name="card_reader"/>
+                            <field name="sim_card"/>
+                            <field name="amount" sum="Total Amount" widget="monetary"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Menu Action Definition -->
+    <record id="action_kiosk_terminal_form" model="ir.actions.act_window">
+        <field name="name">Kiosk Terminal</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">kiosk.terminal</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Click to add a new terminal.
+          </p>
+        </field>
+    </record>
+
+    <menuitem 
+        id="menu_kiosk_terminal"
+        name="Kiosk Terminals"
+        parent="menu_kiosk_configuration"
+        action="action_kiosk_terminal_form"
+        sequence="3"/>
+
+    <menuitem
+        id="menu_kiosk_terminal_contract"
+        name="Kiosk Terminal Contracts"
+        parent="menu_kiosk_configuration"
+        action="action_kiosk_terminal_form"
+        sequence="5"/>
+</odoo>

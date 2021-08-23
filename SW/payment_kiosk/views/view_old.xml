@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Menu for Kiosk APP -->
+    <menuitem
+        id="menu_kiosk_root"
+        name="Kiosk"
+        web_icon="payment_kiosk,static/description/icon.png"
+        sequence="2"/>
+
+    <menuitem
+        id="menu_kiosk"
+        name="Kiosk"
+        parent="menu_kiosk_root"
+        sequence="2"/>
+
+
+    <!-- Kiosk Kanban View -->
+        <record model="ir.ui.view" id="view_payment_kiosk_kanban">
+            <field name="name">payment.kiosk.kanban</field>
+            <field name="model">payment.kiosk</field>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_mobile">
+                    <field name="reference"/>
+                    <field name="source"/>
+                    <field name="amount"/>
+                    <field name="date"/>
+                    <field name="state"/>
+                    <field name="kiosk_id"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_card oe_kanban_global_click">
+                                <div class="o_kanban_record_top mb16">
+                                    <div class="o_kanban_record_headings mt4">
+                                        <strong class="o_kanban_record_title"><span><t t-esc="record.reference.value"/></span></strong>
+                                    </div>
+                                    <strong><field name="amount" widget="monetary"/></strong>
+                                </div>
+                                <div class="o_kanban_record_bottom">
+                                    <div class="oe_kanban_bottom_left text-muted">
+                                        <strong><field name="date"/></strong>
+                                    </div>
+                                    <div class="oe_kanban_bottom_right">
+                                         <field name="partner_email"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+    <!-- Kiosk Kanban View Ends -->
+
+    <!-- Kiosk Transactions -->
+    <!-- Tree View -->
+    <record id="view_payment_kiosk_tree" model="ir.ui.view">
+        <field name="name">payment.kiosk.tree</field>
+        <field name="model">payment.kiosk</field>
+        <field eval="8" name="priority"/>
+        <field name="arch" type="xml">
+            <tree string="Payment Kiosk">
+                <field name="reference"/>
+                <field name="partner_name"/>
+                <field name="partner_email"/>
+                <field name="source"/>
+                <field name="date"/>
+                <field name="amount" sum="Total Amount" widget="monetary"/>
+                <field name="state"/>
+                <field name="kiosk_id"/>
+                <field name="merchant"/>
+                <field name="amount_service" sum="Total Amount" widget="monetary"/>
+                <field name="amount_payment_channel" sum="Total Amount" widget="monetary"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form view-->
+    <record id="view_payment_kiosk_form" model="ir.ui.view">
+        <field name="name">payment.kiosk.form</field>
+        <field name="model">payment.kiosk</field>
+        <field name="priority" eval="20"/>
+        <field name="arch" type="xml">
+            <form string="Payment Kiosk">
+                <header>
+                    <field name="state" widget="statusbar" clickable="True"/>
+                    <button name="generate_entry" attrs="{'invisible': [('posted', '=', True)]}" string='Generate Entry' class='oe_highlight' type="object"/>
+                    <field name="posted" invisible="1"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" name="button_journal_entries"
+                                string="Journal Items" type="object"
+                                groups="account.group_account_user"
+                                attrs="{'invisible': [('posted', '=', False)]}"
+                                 icon="fa-bars"/>
+                    </div>
+                    <group>
+                        <group string="Partner Details">
+                            <field name="reference"/>
+                            <field name="partner_name"/>
+                            <field name="partner_email"/>
+                            <!--field name="partner_lang"/-->
+                            <field name="partner_zip"/>
+                            <field name="partner_address"/>
+                            <field name="partner_city"/>
+                            <field name="partner_country_id"/>
+                            <field name="partner_phone"/>
+                        </group>
+                        <group string="Transaction Information">
+                            <field name="amount"/>
+                            <field name="date"/>
+                            <field name="source"/>
+                            <field name="status_msg"/>
+                            <field name="merchant"/>
+                            <field name="kiosk_id"/>
+                            <field name="stn_no"/>
+                            <field name="rrn_no"/>
+                        </group>
+                        <group string="Payment Channel">
+                            <field name="channel_id" options="{'no_create': 1}"/>
+                            <field name="amount_payment_channel"/>
+                        </group>
+                        <group string="Services">
+                            <field name="service_provider_id" options="{'no_create': 1}"/>
+                            <field name="service" domain="[('service_provider_id', '=', service_provider_id)]" options="{'no_create': 1}"/>
+                            <field name="amount_service"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+        <record id="payment_kiosk_view_graph" model="ir.ui.view">
+            <field name="name">payment.kiosk.view.graph</field>
+            <field name="model">payment.kiosk</field>
+            <field name="arch" type="xml">
+                <graph string="Transactions">
+                    <field name="channel_id" type="col"/>
+                    <field name="service" type="row"/>
+                </graph>
+            </field>
+        </record>
+
+        <record id="payment_kiosk_view_pivot" model="ir.ui.view">
+            <field name="name">payment.kiosk.view.pivot</field>
+            <field name="model">payment.kiosk</field>
+            <field name="arch" type="xml">
+                <pivot string="Transactions Analysis" disable_linking="True">
+                    <field name="date" interval="month" type="row"/>
+                    <field name="channel_id" type="col"/>
+                    <field name="amount" type="measure"/>
+                </pivot>
+            </field>
+        </record>
+
+    <!-- Menu Action Definition -->
+    <record id="action_payment_kiosk_form" model="ir.actions.act_window">
+        <field name="name">Kiosk</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">payment.kiosk</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">kanban,tree,graph,pivot,form</field>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Click to add a new transaction.
+          </p>
+        </field>
+    </record>
+    <!-- Kiosk Transactions Ends-->
+
+    <!-- Kiosk Terminal definition -->
+
+
+    <!-- Kiosk Definition ends -->
+
+
+    <menuitem
+        id="menu_payment_kiosk"
+        name="Kiosk Transaction"
+        parent="menu_kiosk"
+        action="action_payment_kiosk_form"
+        sequence="1"/>
+
+</odoo>
+

@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<odoo>
+	<data>
+
+		<report
+		    id="hr_payroll.payslip_details_report"
+		    model="hr.payslip"
+		    string="PaySlip Details"
+		    report_type="qweb-pdf"
+		    name="hr_payroll_ext.report_payslipdetails" 
+		    file="hr_payroll_ext.report_payslipdetails"
+		/>
+		
+		<report
+			id="report_salary_sheet"
+			string= "Salary Sheet Report"
+			model = "hr.payslip"
+			report_type="qweb-pdf"
+			file="hr_payroll_ext.report_salarysheet"
+			name="hr_payroll_ext.report_salarysheet"
+		/>
+		
+		
+		<report
+			id="report_salary_accounts"
+			string= "Salary Accounts Report"
+			model = "hr.payslip"
+			report_type="qweb-pdf"
+			file="hr_payroll_ext.report_salaryaccounts"
+			name="hr_payroll_ext.report_salaryaccounts"
+		/>
+		        
+		 <report
+		    id="action_report_email_template"
+		    model="hr.payslip"
+		    string="Email Tempalte"
+		    report_type="qweb-pdf"
+		    name="hr_payroll_ext.payslip_email_template_report" 
+		    file="hr_payroll_ext.payslip_email_template_report"
+		/>
+		
+		
+		<!-- staff Payment Advice Summary -->
+		<report
+			id="hr_payroll_ext.action_staff_summary_adivce_summary"
+			string= "Print Advice Summary"
+			model = "staff.payroll.advice.summary.wiz"
+			report_type="qweb-pdf"
+			file="hr_payroll_ext.staff_payroll_advice_summary_report"
+			name="hr_payroll_ext.staff_payroll_advice_summary_report"
+		/>
+		             
+
+    </data>
+</odoo>

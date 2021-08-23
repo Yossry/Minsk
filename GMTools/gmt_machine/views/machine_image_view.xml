@@ -1,0 +1,26 @@
+<odoo>
+            <!-- FORM VIEW OF MACHINE -->
+            <record id="machine_image_form_view" model="ir.ui.view">
+                <field name="name">machine.image.from.view</field>
+                <field name="model">machine.image</field>
+                <field name="arch" type="xml">
+                    <form string='GMT Machines'>
+                        <sheet>
+                            <field name="image_medium" widget="image" class="oe_avatar"/>
+                            <group col="2">
+                                <field name="machine_id"  options="{'no_create': True, 'no_create_edit':True}"/>
+                                <field name="description"/>
+                            </group>
+                        </sheet>
+                   </form>
+                </field>
+            </record>
+            
+            <!-- ACTION VIEW OF MACHINE -->
+            <record id="action_gmt_machine_image" model="ir.actions.act_window">
+                <field name="name">GMT Machines</field>
+                <field name="res_model">machine.image</field>
+                <field name="view_type">form</field>
+                <field name="view_mode">form</field>
+            </record>
+</odoo>

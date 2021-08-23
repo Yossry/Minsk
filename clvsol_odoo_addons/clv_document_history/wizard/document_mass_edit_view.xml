@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="clv_document_mass_edit_view_form_phase" model="ir.ui.view">
+        <field name="name">clv.document.mass_edit.form</field>
+        <field name="model">clv.document.mass_edit</field>
+        <field name="inherit_id" ref="clv_document.clv_document_mass_edit_view_form"/>
+        <field name="priority" eval="8" />
+        <field name="arch" type="xml">
+            <group name="date_deadline" position="after">
+                <group>
+                    <field name="phase_id_selection"/>
+                </group>
+                <group name="phase_id">
+                    <field name="phase_id" options="{'no_open': False, 'no_create': True}" nolabel='1'/>
+                </group>
+            </group>
+        </field>
+    </record>
+
+</odoo>

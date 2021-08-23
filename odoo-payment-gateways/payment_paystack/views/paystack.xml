@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="paystack_acquirer_button">
+            <input type="hidden" name="data_set" t-att-data-action-url="tx_url" data-remove-me=""/>
+            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+            <input type="hidden" name = "TERMINAL_ID" t-att-value='TERMINAL_ID'/>
+            <input type="hidden" name = "Authorization" t-att-value='Authorization'/>
+            <input type="hidden" name = "RESPONSE_URL" t-att-value='RESPONSE_URL'/>
+            <input type="hidden" name = "TRANSACTION_ID" t-att-value='TRANSACTION_ID'/>
+            <input type="hidden" name = "amount" t-att-value='amount'/>
+            <input type="hidden" name = "DESCRIPTION" t-att-value='DESCRIPTION'/>
+            <input type="hidden" name = "email" t-att-value='partner_email'/>
+            <input type="hidden" name = "CURRENCY_CODE" t-att-value='CURRENCY_CODE'/>
+            <input type="hidden" name = "CHECKSUM" t-att-value='CHECKSUM'/>
+            <input type="hidden" name = "ECHODATA" t-att-value='ECHODATA'/>
+            <input type="hidden" name = "LOGO_URL" t-att-value='LOGO_URL'/>
+            <input t-if='custom' type='hidden' name="custom" t-att-value='custom'/>
+
+            <button type="submit" width="100px" t-att-class="submit_class">
+                <img t-if="not submit_txt" t-attf-src="payment_paystack/static/src/img/paystack_icon.png"/>
+                <span t-if="submit_txt"><t t-esc="submit_txt"/><span class="fa fa-long-arrow-right"/></span>
+            </button>
+
+        </template>
+
+    </data>
+</odoo>

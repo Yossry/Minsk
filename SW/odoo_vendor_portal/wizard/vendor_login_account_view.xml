@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2015-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- "License URL : <https://store.webkul.com/license.html/>" -->
+
+<odoo>
+    <data>
+
+    <record id="id_wk_vendor_portal_account_wzard" model="ir.ui.view">
+            <field name="name">vendor login account configuration</field>
+            <field name="model">vendor.login.account</field>
+            <field name="arch" type="xml">
+                <form string="vendor Account">
+                    <group colspan="6">
+                        <div>
+                          <p>
+                            Vendor Account for this vendor already exist.
+                            <br/>
+                            Wants to send reset password URL?.
+                          </p>
+                        </div>
+                    </group>
+                    <footer>
+                        <button string="Send Vendor Login/Signup Invitation" type="object" name="create_vendor_acocunt" icon="fa-user-plus" class="oe_highlight"/>
+                        <button string="Cancel" class='oe_link' special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="id_wk_vendor_portal_account_wzard2" model="ir.ui.view">
+              <field name="name">vendor login account configuration2</field>
+              <field name="model">vendor.login.account</field>
+              <field name="arch" type="xml">
+                  <form string="vendor Account">
+                        <group colspan="4">
+                            <div>
+                              <p>
+                                A new portal user will be created with vendor name and email address.
+                                <br/>
+                                Vendor will recieve an email with a sign-up URL.
+                              </p>
+                            </div>
+                        </group>
+                      <footer>
+                          <button string="Send Vendor Login/Signup Invitation" type="object" name="create_vendor_acocunt" icon="fa-user-plus" class="oe_highlight"/>
+                          <button string="Cancel" class='oe_link' special="cancel"/>
+                      </footer>
+                  </form>
+              </field>
+        </record>
+
+    </data>
+</odoo>

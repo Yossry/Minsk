@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-extend="PosTicket">
+        <t t-jquery=".receipt-orderlines tr:first td:first" t-operation="append">
+            <t t-if="orderline.get_product().name_arabic">(<t t-esc="orderline.get_product().name_arabic"/>)</t>
+         </t>
+        <t t-jquery=".receipt-orderlines colgroup" t-operation="after">
+            <tr style="border-top: 1px dashed;border-bottom: 1px dashed; height:23px;">
+                <td><b>Product</b></td>
+                <td align="right"><b>QTY</b></td>
+                <td align="right"><b>Subtotal</b></td>
+            </tr>
+        </t>
+        <t t-jquery=".pos-center-align" t-operation="before">
+            <t t-if='widget.pos.company_logo_base64'>
+                <img t-att-src='widget.pos.company_logo_base64' alt="Logo"/>
+                <br/>
+            </t>
+        </t>
+        <t t-jquery=".receipt-total" t-operation="attributes">
+            <attribute name="style">border-top: 1px dashed;border-bottom: 1px dashed;</attribute>
+        </t>
+        <t t-jquery=".receipt-change" t-operation="attributes">
+            <attribute name="style">border-bottom: 1px dashed;</attribute>
+        </t>
+
+        <t t-jquery=".pos-sale-ticket" t-operation="append">
+            <br/>
+            <div>
+                <img t-if="order.name" t-attf-src="/report/barcode/?type=Code128&amp;value=#{order.name}&amp;width=600&amp;height=100&amp;humanreadable=1" style="width:300px;height:50px"/>
+            </div>
+        </t>
+
+
+    </t>
+
+    <t t-extend="Product">
+        <t t-jquery=".product-name" t-operation="append">
+            <t t-if="product.name_arabic">(<t t-esc="product.name_arabic"/>)</t>
+        </t>
+    </t>
+
+</templates>

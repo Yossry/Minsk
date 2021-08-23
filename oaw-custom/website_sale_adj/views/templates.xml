@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="layout_footer_copyright" inherit_id="website.layout_footer_copyright">
+        <xpath
+            expr="//div[@class='col-lg-6 text-muted text-center text-md-left']"
+            position="replace"
+        >
+            <div class="col-lg-6 text-muted text-center text-md-left">
+                <t t-call="website.language_selector" />
+            </div>
+        </xpath>
+    </template>
+    <template id="website.footer_custom" inherit_id="website.layout" name="Footer">
+        <xpath expr="//div[@id='footer']" position="replace">
+            <div
+                id="footer"
+                class="oe_structure oe_structure_solo"
+                t-ignore="true"
+                t-if="not no_footer"
+            >
+                <section class="s_text_block pt16 pb8">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <!-- <h5>Our Products &amp; Services</h5>
+                                <ul class="list-unstyled">
+                                    <li><a href="/">Home</a></li>
+                                </ul> -->
+                                <ul class="list-unstyled" id="about_us">
+                                    <li>
+                                        <div t-raw="website.about_us" />
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-4" id="connect">
+                                <!-- <h5>Connect with us</h5>
+                                <ul class="list-unstyled">
+                                    <li><a href="/contactus">Contact us</a></li>
+                                    <li><i class="fa fa-phone"/> <span t-field="res_company.phone"/></li>
+                                    <li><i class="fa fa-envelope"/>  <span t-field="res_company.email"/></li>
+                                </ul>
+                                <p>
+                                    <a t-if="website.social_facebook" t-att-href="website.social_facebook" class="btn btn-sm btn-link"><i class="fa fa-2x fa-facebook-square"/></a>
+                                    <a t-if="website.social_twitter" t-att-href="website.social_twitter" class="btn btn-sm btn-link"><i class="fa fa-2x fa-twitter"/></a>
+                                    <a t-if="website.social_linkedin" t-att-href="website.social_linkedin" class="btn btn-sm btn-link"><i class="fa fa-2x fa-linkedin"/></a>
+                                    <a t-if="website.social_youtube" t-att-href="website.social_youtube" class="btn btn-sm btn-link"><i class="fa fa-2x fa-youtube-play"/></a>
+                                    <a t-if="website.social_googleplus" t-att-href="website.social_googleplus" class="btn btn-sm btn-link" rel="publisher"><i class="fa fa-2x fa-google-plus-square"/></a>
+                                    <a t-if="website.social_github" t-att-href="website.social_github" class="btn btn-sm btn-link"><i class="fa fa-2x fa-github"/></a>
+                                    <a t-if="website.social_instagram" t-att-href="website.social_instagram" class="btn btn-sm btn-link"><i class="fa fa-2x fa-instagram"/></a>
+                                </p> -->
+                                <ul class="list-unstyled" id="contact_description">
+                                    <li>
+                                        <div t-raw="website.contact_description" />
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- <div class="col-lg-4">
+                                <h5>
+                                    <span t-field="res_company.name"/>
+                                    <small> - <a href="/aboutus">About us</a></small>
+                                </h5>
+                                <p>
+                                    We are a team of passionate people whose goal is to improve everyone's
+                                    life through disruptive products. We build great products to solve your
+                                    business problems.
+                                </p>
+                                <p>
+                                    Our products are designed for small to medium size companies willing to optimize
+                                    their performance.
+                                </p>
+                            </div> -->
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </xpath>
+    </template>
+    <template id="products" inherit_id="website_sale.products" name="Products">
+        <xpath expr="//t[@t-if='not bins']" position="inside">
+            <div class="alert alert-info" t-raw="website.empty_page_message" />
+        </xpath>
+    </template>
+    <template
+        id="layout_logo_show"
+        inherit_id="website.layout_logo_show"
+        name="Show Logo"
+    >
+        <xpath expr="//header//a[hasclass('navbar-brand')]" position="replace">
+            <div>
+                <a href="/" class="navbar-brand logo">
+                    <img
+                        style="height: 80px; width: 80px; max-height: 80px;"
+                        t-att-src="website.image_url(res_company, 'logo', '100x100')"
+                    />
+                </a>
+                <t t-if="website.whatsapp_link and website.whatsapp_qr_image">
+                    <a t-att-href="website.whatsapp_link" class="navbar-brand logo">
+                        <img
+                            style="height: 80px; width: 80px; max-height: 80px;"
+                            t-att-src="website.image_url(website, 'whatsapp_qr_image', '100x100')"
+                        />
+                    </a>
+                </t>
+                <t t-if="website.wechat_link and website.wechat_qr_image">
+                    <a t-att-href="website.wechat_link" class="navbar-brand logo">
+                        <img
+                            style="height: 80px; width: 80px; max-height: 80px;"
+                            t-att-src="website.image_url(website, 'wechat_qr_image', '100x100')"
+                        />
+                    </a>
+                </t>
+            </div>
+        </xpath>
+    </template>
+</odoo>

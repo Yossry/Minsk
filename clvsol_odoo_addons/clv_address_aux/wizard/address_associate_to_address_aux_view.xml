@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="clv_address_associate_to_address_aux_view_form" model="ir.ui.view">
+        <field name="name">clv.address.associate_to_address_aux.form</field>
+        <field name="model">clv.address.associate_to_address_aux</field>
+        <field name="arch" type="xml">
+            <form>
+                <div class="oe_right">
+                </div>
+                <label for="address_ids"/>
+                <field name="address_ids"/>
+                <group>
+                    <group>
+                        <field name="create_new_address_aux"/>
+                    </group>
+                </group>
+                <footer>
+                    <button 
+                        type="object"
+                        name="do_address_associate_to_address_aux"
+                        string="Associate to Address (Aux)"
+                        class="oe_highlight"
+                        />
+                    <button special="cancel" string="Cancel"/>
+                </footer>
+            </form>
+
+        </field>
+    </record>
+
+    <!-- More button Action -->
+    <act_window 
+        id="clv_address_associate_to_address_aux_action"
+        name="Address Associate to Address (Aux)"
+        src_model="clv.address"
+        res_model="clv.address.associate_to_address_aux"
+        view_mode="form"
+        key2="client_action_multi"
+        target="new"
+    />
+
+</odoo>

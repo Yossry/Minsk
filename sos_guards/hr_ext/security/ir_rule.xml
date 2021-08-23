@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<odoo>
+<data>
+
+    <!-- Employee -->
+    <record id="hr_manager_employee_rule" model="ir.rule">
+        <field name="name">Employee Access for Managers</field>
+        <field name="model_id" ref="hr.model_hr_employee"/>
+        <field name="groups" eval="[(4,ref('hr.group_hr_manager')),(4,ref('hr.group_hr_user'))]"/>
+        <field name="domain_force">[(1,'=',1)]</field>
+    </record>
+    
+    <record id="hr_employee_employee_rule" model="ir.rule">
+        <field name="name">Employee Access</field>
+        <field name="model_id" ref="hr.model_hr_employee"/>
+         <field name="groups" eval="[(4,ref('base.group_user'))]"/>
+        <field name="domain_force">[('id', 'child_of', [employee.id for employee in user.employee_ids])]</field>
+    </record>
+     
+	<!--
+	<record id="hr_dept_head_employee_rule" model="ir.rule">
+        <field name="name">Employee Access for Depatment Heads</field>
+        <field name="model_id" ref="hr.model_hr_employee"/>
+         <field name="groups" eval="[(4,ref('hr_ext.group_hr_head'))]"/>
+        <field name="domain_force">[('department_id','in',user.dept_ids.ids)]</field>
+    </record>
+    
+    <record id="hr_department_employee_rule" model="ir.rule">
+        <field name="name">Employee Access</field>
+        <field name="model_id" ref="hr.model_hr_employee"/>
+         <field name="groups" eval="[(4,ref('base.group_user'))]"/>
+        <field name="domain_force">[('id','=',1)]</field>
+    </record>
+    --> 
+    
+	
+	
+	<!-- Department -->	
+	<!--
+	<record id="hr_manager_department_rule" model="ir.rule">
+        <field name="name">Department Access for Managers</field>
+        <field name="model_id" ref="hr.model_hr_department"/>
+         <field name="groups" eval="[(4,ref('hr.group_hr_manager')),(4,ref('hr.group_hr_user'))]"/>
+        <field name="domain_force">[(1,'=',1)]</field>
+    </record>
+    -->
+    <!--
+	<record id="hr_user_deptartment_rule" model="ir.rule">
+        <field name="name">Department Access</field>
+        <field name="model_id" ref="hr.model_hr_department"/>
+         <field name="groups" eval="[(4,ref('base.group_user'))]"/>
+        <field name="domain_force">[('manager_id', 'child_of', [employee.id for employee in user.employee_ids])]</field>
+    </record>
+	-->
+	
+	
+	<!-- Contract -->
+    <record id="property_rule_contract_employee" model="ir.rule">
+        <field name="name">Employee Own Contract</field>
+        <field name="model_id" ref="hr_contract.model_hr_contract"/>
+        <field name="domain_force">[('employee_id.user_id','=',user.id)]</field>
+        <field name="groups" eval="[(4,ref('base.group_user'))]"/>
+        <field eval="1" name="perm_read"/>
+        <field eval="0" name="perm_write"/>
+        <field eval="0" name="perm_unlink"/>
+        <field eval="0" name="perm_create"/>
+    </record>
+    
+    
+    <record id="property_rule_contract_head" model="ir.rule">
+        <field name="name">Contract Access for Department Head</field>
+        <field name="model_id" ref="hr_contract.model_hr_contract"/>
+        <field name="domain_force">[('employee_id', 'child_of', [employee.id for employee in user.employee_ids])]</field>
+        <field name="groups" eval="[(4,ref('hr_ext.group_hr_head'))]"/>
+    </record>
+    
+    <record id="property_rule_contract_officer" model="ir.rule">
+        <field name="name">HR Officer Contract</field>
+        <field name="model_id" ref="hr_contract.model_hr_contract"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4,ref('hr.group_hr_user'))]"/>
+    </record>
+    
+	<record id="hr_contract.hr_menu_contract" model="ir.ui.menu">
+            <field name="groups_id" eval="[(4,ref('base.group_user'))]"/>
+    </record>
+
+
+
+
+	<!--
+	 <record id="hr_hr_employee_view_form2" model="ir.ui.view">
+        <field name="name">hr.hr.employee.view.form2</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr_contract.hr_hr_employee_view_form2"/>
+        <field name="arch" type="xml">
+            <button name="%(hr_contract.act_hr_employee_2_hr_contract)d" position="attributes">
+                <attribute name="groups">base.group_user</attribute>
+            </button>
+        </field>
+    </record>
+	-->
+	
+	
+	
+	
+	
+</data>
+</odoo>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<data noupdate="0">
+		
+		<report
+            id="investor_wallet_platform_base.action_cooperator_report_certificat" 
+            model="subscription.register" 
+            string="IWP Cooperator certificat"
+            report_type="qweb-pdf"
+            name="investor_wallet_platform_base.iwp_cooperator_certificat" 
+            file="investor_wallet_platform_base.cooperator_certificat.xml" 
+            multi="True"
+ 			menu="True"        
+        />
+        <report
+            id="investor_wallet_platform_base.action_cooperator_to_report_certificat" 
+            model="subscription.register" 
+            string="IWP Receiver cooperator certificat"
+            report_type="qweb-pdf"
+            name="investor_wallet_platform_base.iwp_cooperator_to_certificat" 
+            file="investor_wallet_platform_base.cooperator_to_certificat.xml" 
+            multi="True"
+ 			menu="True"        
+        />
+	</data>
+</odoo>

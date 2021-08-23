@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="clv_summary_address_view_form" model="ir.ui.view">
+        <field name="name">clv.summary.address.form</field>
+        <field name="model">clv.summary.address</field>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="summary_id" options="{'no_open': False, 'no_create': True}"/>
+                        <field name="address_id" options="{'no_open': False, 'no_create': True}"/>
+                        <field name="address_category_ids" widget="many2many_tags" options="{'color_field': 'color','no_open': False, 'no_create': True}"/>
+                        <field name="address_state"/>
+                        <field name="address_phase_id"/>
+                        <field name="address_global_tag_ids" widget="many2many_tags" options="{'color_field': 'color','no_open': False, 'no_create': True}"/>
+                    </group>
+                    <notebook>
+                        <page name="settings" string="Settings" groups="clv_base.group_reguser" invisible="True">
+                            <group name="settings">
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="clv_summary_address_view_tree" model="ir.ui.view">
+        <field name="name">clv.summary.address.tree</field>
+        <field name="model">clv.summary.address</field>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <tree name="addresses" string="Summary Addresses">
+                <field name="summary_id" invisible="True"/>
+                <field name="address_id"/>
+                <field name="address_category_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                <field name="address_state"/>
+                <field name="address_phase_id"/>
+                <field name="address_global_tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="clv_summary_address_view_tree_state" model="ir.ui.view">
+        <field name="name">clv.summary.address.tree</field>
+        <field name="model">clv.summary.address</field>
+        <field name="inherit_id" ref="clv_summary_address_view_tree"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <tree name="addresses" position="attributes">
+                <attribute name="decoration-muted">address_state=='new'</attribute>
+                <attribute name="decoration-success">address_state=='unselected'</attribute>
+                <attribute name="decoration-primary">address_state in('waiting','selected')</attribute>
+                <attribute name="decoration-danger">address_state=='unavailable'</attribute>
+                <attribute name="decoration-warning">address_state=='unknown'</attribute>
+                <attribute name="decoration-it">address_state in('new','unavailable','unknown')</attribute>
+                <attribute name="decoration-bf">address_state in('selected','unselected')</attribute>
+            </tree>
+        </field>
+    </record>
+
+    <record id="clv_summary_address_view_search" model="ir.ui.view">
+        <field name="name">clv.summary.address.search</field>
+        <field name="model">clv.summary.address</field>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <search string="Summary Addresses">
+                <field name="summary_id"/>
+                <field name="address_id"/>
+                <field name="address_category_ids"/>
+                <field name="address_state"/>
+                <field name="address_phase_id"/>
+                <field name="address_global_tag_ids"/>
+                <newline/>
+                <group name= "group_by" expand="0" string="Group By...">
+                    <filter name= "group_by_summary_id" string="Summary" domain="[]" context="{'group_by':'summary_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="clv_summary_view_form_summary_address" model="ir.ui.view">
+        <field name="name">clv.summary.form</field>
+        <field name="model">clv.summary</field>
+        <field name="inherit_id" ref="clv_summary.clv_summary_view_form"/>
+        <field name="priority" eval="10"/>
+        <field name="arch" type="xml">
+            <group name="group_bottom" position="inside">
+                <field name="summary_address_ids" colspan="4" nolabel="0"/>
+            </group>
+        </field>
+    </record>
+
+</odoo>

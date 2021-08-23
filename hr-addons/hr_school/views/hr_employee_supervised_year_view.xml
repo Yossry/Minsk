@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="hr_employee_supervised_year_tree_view" model="ir.ui.view">
+        <field name="model">hr.employee.supervised.year</field>
+        <field name="arch" type="xml">
+            <tree string="Tutors per year">
+                <field name="school_year_id" />
+                <field name="teacher_id" />
+                <field name="student_id" />
+                <field name="user_id" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="hr_employee_supervised_year_search_view" model="ir.ui.view">
+        <field name="model">hr.employee.supervised.year</field>
+        <field name="arch" type="xml">
+            <search string="Search tutors per year">
+                <field name="school_year_id" />
+                <field name="teacher_id" />
+                <field name="student_id" />
+                <group expand="1" string="Group By">
+                    <filter string="School year" name="school_year_group"
+                            domain="[]" context="{'group_by':'school_year_id'}"/>
+                    <filter string="Teacher" name="teacher_group"
+                            domain="[]" context="{'group_by':'teacher_id'}"/>
+                    <filter string="Student" name="student_group"
+                            domain="[]" context="{'group_by':'student_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="hr_employee_supervised_year_form_view" model="ir.ui.view">
+        <field name="model">hr.employee.supervised.year</field>
+        <field name="arch" type="xml">
+            <form string="Tutor per year">
+                <sheet>
+                    <group name="head" colspan="4">
+                       <group>
+                            <field name="school_year_id" />
+                            <field name="teacher_id" />
+                            <field name="student_id"
+                                   domain="[('educational_category','=','student')]"/>
+                       </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_hr_employee_supervised_year_form" model="ir.actions.act_window">
+        <field name="name">Tutors per year</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.employee.supervised.year</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_hr_employee_supervised_year"
+              action="action_hr_employee_supervised_year_form"
+              groups="hr.group_hr_manager"
+              sequence="90" parent="hr.menu_hr_root"/>
+
+    <menuitem id="hr_employee_supervised_year_education_menuitem"
+              parent="education.faculty_menuitem"
+              action="action_hr_employee_supervised_year_form"
+              sequence="10" />
+</odoo>

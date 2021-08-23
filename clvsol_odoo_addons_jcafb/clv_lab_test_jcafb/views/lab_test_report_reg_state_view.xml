@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="clv_lab_test_report_view_form_reg_state" model="ir.ui.view">
+        <field name="name">clv.lab_test.report.form</field>
+        <field name="model">clv.lab_test.report</field>
+        <field name="inherit_id" ref="clv_lab_test.clv_lab_test_report_view_form"/>
+        <field name="priority" eval="10"/>
+        <field name="arch" type="xml">
+            <header name="header" position="inside">
+                <field name="reg_state" widget="statusbar"
+                       statusbar_visible="revised,done"/>
+                <button name="action_draft" type="object"
+                        string="Draft"
+                        confirm="Change Register State to 'Draft'?"
+                        attrs="{'invisible':[('reg_state','not in',['cancelled'])]}"
+                        groups="clv_lab_test.group_manager"/>
+                <button name="action_revised" type="object"
+                        string="Revised"
+                        confirm="Change Register State to 'Revised'?"
+                        attrs="{'invisible':[('reg_state','in',['revised'])]}"
+                        groups="clv_lab_test.group_manager"/>
+                <button name="action_done" type="object"
+                        string="Done"
+                        confirm="Change Register State to 'Done'?"
+                        attrs="{'invisible':[('reg_state','in',['done','cancelled'])]}"
+                        groups="clv_lab_test.group_manager"/>
+                <button name="action_cancel" type="object"
+                        string="Cancel"
+                        confirm="Change Register State to 'Cancelled'?"
+                        attrs="{'invisible':[('reg_state','in',['cancelled'])]}"
+                        groups="clv_lab_test.group_manager"/>
+            </header>
+        </field>
+    </record>
+
+    <record id="clv_lab_test_report_view_tree_reg_state" model="ir.ui.view">
+        <field name="name">clv.lab_test.report.tree</field>
+        <field name="model">clv.lab_test.report</field>
+        <field name="inherit_id" ref="clv_lab_test.clv_lab_test_report_view_tree"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="code" position="after">
+                <field name="reg_state"/>
+            </field>
+            <tree name="lab_test_reports" position="attributes">
+                <attribute name="decoration-muted">reg_state=='draft'</attribute>
+                <attribute name="decoration-primary">reg_state in('done')</attribute>
+                <attribute name="decoration-danger">reg_state=='cancelled'</attribute>
+                <attribute name="decoration-it">reg_state in('draft','cancelled')</attribute>
+                <attribute name="decoration-bf">reg_state in('done')</attribute>
+            </tree>
+        </field>
+    </record>
+
+    <record id="clv_lab_test_report_view_search_reg_state" model="ir.ui.view">
+        <field name="name">clv.lab_test.report.search</field>
+        <field name="model">clv.lab_test.report</field>
+        <field name="inherit_id" ref="clv_lab_test.clv_lab_test_report_view_search"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="code" position="after">
+                <field name="reg_state"/>
+            </field>
+            <group name="group_by" position="inside">
+                <filter name="group_by_reg_state" string="Register State" domain="[]" context="{'group_by':'reg_state'}"/>
+            </group>
+        </field>
+    </record>
+
+</odoo>

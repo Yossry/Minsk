@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright 2019 Coop IT Easy
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+    <data noupdate="0">  <!-- fixme -->
+        <record id="hr_promotion_test" model="hr.promotion">
+            <field name="name">The First Promotion</field>
+            <field name="spots_regime">limited</field>
+            <field name="spots_max">1</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,36 @@
+<odoo>
+    <data>
+
+        <record id="purchase_requisition_wizard_view" model="ir.ui.view">
+            <field name="name">purchase.requisition.wizard.form</field>
+            <field name="model">purchase.requisition.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Defined Product">
+                    <group string="Defined Product">
+                        <field name="line_ids" nolabel="1">
+                            <tree editable="bottom" delete="0" create="0">
+                                <field name="name"/>
+                                <field name="default_code"/>
+                                <field name="description"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <footer>
+                        <button string="Set Products" name="action_set_products" type="object" default_focus="1" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_purchase_requisition_wizard" model="ir.actions.act_window">
+            <field name="name">Define Products</field>
+            <field name="res_model">purchase.requisition.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="purchase_requisition_wizard_view"/>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</odoo>

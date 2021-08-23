@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template name="Pricing Table" id="s_pricing_table">
+        <!-- ====START PRICING TABLE==== -->
+        <section class="pricing_table section-padding oe_structure">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="section_title mb80">
+                            <h5 class="smallHd text-center">check out our</h5>
+                            <h2 class="secHd text-center">pricing plan</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row all_pricing_table">
+                    <div class="col-xs-12 col-sm-4">
+                        <div class="single_pricing">
+                            <h5 class="text-center">Basic</h5>
+                            <h1 class="text-center"><sup>$</sup>300</h1>
+                            <hr/>
+                            <ul class="pricing_list">
+                                <li>2 UNIQUE CONCEPTS</li>
+                                <li>5 REVISTIONS</li>
+                                <li>LOGO DESIGN</li>
+                                <li>24/7 CUSTOMER SUPPORT</li>
+                                <li>3-5 BUSINESS DAYS</li>
+                            </ul>
+                            <a class="th_bt btn waves-effect" href="#">ORDER</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4">
+                        <div class="single_pricing special active">
+                            <i class="fa fa-trophy" aria-hidden="true"></i>
+                            <h5 class="text-center">Standard</h5>
+                            <h1 class="text-center"><sup>$</sup>399</h1>
+                            <hr/>
+                            <ul class="pricing_list">
+                                <li>3 UNIQUE CONCEPTS</li>
+                                <li>5 REVISTIONS</li>
+                                <li>LOGO DESIGN</li>
+                                <li>24/7 CUSTOMER SUPPORT</li>
+                                <li>3-5 BUSINESS DAYS</li>
+                            </ul>
+                            <a class="th_bt btn waves-effect" href="#">ORDER</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4">
+                        <div class="single_pricing">
+                            <h5 class="text-center">Premium</h5>
+                            <h1 class="text-center"><sup>$</sup>799</h1>
+                            <hr/>
+                            <ul class="pricing_list">
+                                <li>4 UNIQUE CONCEPTS</li>
+                                <li>5 REVISTIONS</li>
+                                <li>LOGO DESIGN</li>
+                                <li>24/7 CUSTOMER SUPPORT</li>
+                                <li>3-5 BUSINESS DAYS</li>
+                            </ul>
+                            <a class="th_bt btn waves-effect" href="#">ORDER</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ====END PRICING TABLE==== -->
+    </template>
+</odoo>

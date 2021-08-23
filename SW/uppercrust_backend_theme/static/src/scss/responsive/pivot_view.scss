@@ -1,0 +1,23 @@
+@mixin oe-pivot(){
+    &.o_pivot{
+        margin-right: 10px;
+        margin-left: 10px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+// Pivot view - [start]
+.o_web_client.ad_mobile {
+    .o_main {
+        .o_main_content.ad_rightbar {
+            & > .o_content {
+                .o_view_controller {
+                    @include oe-pivot();            
+                }
+            }
+        }
+    }
+}
+
+// Pivot view - [start]

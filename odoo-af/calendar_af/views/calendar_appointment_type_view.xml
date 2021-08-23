@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_calendar_appointment_type_tree" model="ir.ui.view">
+        <field name="name">calendar.appointment.type.tree</field>
+        <field name="model">calendar.appointment.type</field>
+        <field name="arch" type="xml">
+            <tree string="Meeting types" editable="bottom">
+                <field name="ipf_num"/>
+                <field name="name"/>
+                <field name="channel"/>
+                <field name="additional_booking"/>
+                <field name="ipf_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_type" model="ir.actions.act_window">
+        <field name="name">Meeting types</field>
+        <field name="res_model">calendar.appointment.type</field>
+        <field name="view_type">form</field>
+        <field name="view_id" ref="view_calendar_appointment_type_tree"/>
+    </record>
+
+    <menuitem action="action_type" id="menu_action_type" parent="menu_admin" sequence="10" />
+</odoo>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="publish_product_action" model="ir.actions.server">
+        <field name="name">Publish Product(s)</field>
+        <field name="model_id" ref="product.model_product_template" />
+        <field name="binding_model_id" ref="product.model_product_template" />
+        <field name="state">code</field>
+        <field name="code">records.write({'website_published': True})</field>
+    </record>
+    <record id="unpublish_product_action" model="ir.actions.server">
+        <field name="name">Unpublish Product(s)</field>
+        <field name="model_id" ref="product.model_product_template" />
+        <field name="binding_model_id" ref="product.model_product_template" />
+        <field name="state">code</field>
+        <field name="code">records.write({'website_published': False})</field>
+    </record>
+    <record id="publish_product_product_action" model="ir.actions.server">
+        <field name="name">Publish Product(s)</field>
+        <field name="model_id" ref="product.model_product_product" />
+        <field name="binding_model_id" ref="product.model_product_product" />
+        <field name="state">code</field>
+        <field name="code">records.write({'website_published': True})</field>
+    </record>
+    <record id="unpublish_product_product_action" model="ir.actions.server">
+        <field name="name">Unpublish Product(s)</field>
+        <field name="model_id" ref="product.model_product_product" />
+        <field name="binding_model_id" ref="product.model_product_product" />
+        <field name="state">code</field>
+        <field name="code">records.write({'website_published': False})</field>
+    </record>
+    <record
+        id="update_product_template_public_category_action"
+        model="ir.actions.server"
+    >
+        <field name="name">Update Website Product Category</field>
+        <field name="model_id" ref="product.model_product_template" />
+        <field name="binding_model_id" ref="product.model_product_template" />
+        <field name="state">code</field>
+        <field name="code">records.update_public_category()</field>
+    </record>
+    <record
+        id="update_product_product_public_category_action"
+        model="ir.actions.server"
+    >
+        <field name="name">Update Website Product Category</field>
+        <field name="model_id" ref="product.model_product_product" />
+        <field name="binding_model_id" ref="product.model_product_product" />
+        <field name="state">code</field>
+        <field
+            name="code"
+        >records.mapped('product_tmpl_id').update_public_category()</field>
+    </record>
+    <record
+        id="reset_product_template_public_category_action"
+        model="ir.actions.server"
+    >
+        <field name="name">Reset Website Product Category</field>
+        <field name="model_id" ref="product.model_product_template" />
+        <field name="binding_model_id" ref="product.model_product_template" />
+        <field name="state">code</field>
+        <field name="code">records.reset_public_category()</field>
+    </record>
+    <record id="reset_product_product_public_category_action" model="ir.actions.server">
+        <field name="name">Reset Website Product Category</field>
+        <field name="model_id" ref="product.model_product_product" />
+        <field name="binding_model_id" ref="product.model_product_product" />
+        <field name="state">code</field>
+        <field
+            name="code"
+        >records.mapped('product_tmpl_id').reset_public_category()</field>
+    </record>
+    <record id="update_website_product_seq_date_action" model="ir.actions.server">
+        <field name="name">Update Website's Sequence</field>
+        <field name="model_id" ref="product.model_product_product" />
+        <field name="binding_model_id" ref="product.model_product_product" />
+        <field name="state">code</field>
+        <field
+            name="code"
+        >records.mapped('product_tmpl_id')._update_website_product_seq_date()</field>
+    </record>
+</odoo>

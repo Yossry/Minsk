@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <menuitem name="Community" id="clv_base.menu_community" 
+        groups="clv_base.group_user"
+        sequence="14"/>
+
+    <menuitem name="Community" id="clv_base.menu_community_community"  
+        parent="clv_base.menu_community"
+        groups="clv_base.group_user"
+        sequence="10"/>
+
+    <menuitem name="History" id="clv_base.menu_community_history"  
+        parent="clv_base.menu_community"
+        groups="clv_base.group_manager"
+        sequence="20"/>
+
+    <menuitem name="Off" id="clv_base.menu_community_off"  
+        parent="clv_base.menu_community"
+        groups="clv_base.group_user"
+        sequence="25"/>
+
+    <menuitem name="Configuration" id="clv_base.menu_community_config"  
+        parent="clv_base.menu_community"
+        groups="clv_base.group_manager"
+        sequence="90"/>
+
+</odoo>

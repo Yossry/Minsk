@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="module_category_analytic" model="ir.module.category">
+            <field name="name">Analytic</field>
+            <field name="visible">1</field>
+        </record>
+
+        <record model="res.groups" id="group_ans_code">
+            <field name="name">Code Manager</field>
+            <field name="comment">the user will be able to create analysis codes
+            </field>
+            <field name="category_id" ref="module_category_analytic" />
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]" />
+        </record>
+        <record model="res.groups" id="group_ans_manager">
+            <field name="name"> Manager</field>
+            <field name="comment">the user will be able to create analysis codes,
+                dimensions and structure
+            </field>
+            <field name="category_id" ref="module_category_analytic" />
+            <field name="implied_ids" eval="[(4, ref('group_ans_code'))]" />
+            <field name="users" eval="[(4, ref('base.user_root'))]" />
+        </record>
+    </data>
+</openerp>

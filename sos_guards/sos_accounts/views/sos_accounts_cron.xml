@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    	<record id="sos_invoices_to_be_processed" model="ir.cron">
+            <field name="name">Invoices to be Processed</field>
+            <field name="model_id" ref="model_account_invoice"/>
+            <field name="type">ir.actions.server</field>
+           	<field name="state">code</field>
+           	<field name="code">model.recompute_payments()</field>
+            <field name="interval_number">10</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+            <field name="args" eval="'1,'"/>
+        </record>
+        
+      
+         <record id="sos_invoices_generate" model="ir.cron">
+            <field name="name">Generate Invoices</field>
+            <field name="model_id" ref="model_invoices_cron"/>
+           	<field name="type">ir.actions.server</field>
+           	<field name="state">code</field>
+           	<field name="code">model.generate_invoices()</field>
+            <field name="interval_number">2</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field name="args" eval="'50,'"/>
+        </record>
+        
+    </data>
+</odoo>
+
+

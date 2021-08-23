@@ -1,0 +1,39 @@
+<odoo>
+    <!-- Shows chrono24 note update date.-->
+    <record id="product_template_form_view_chrono24" model="ir.ui.view">
+        <field name="name">product.template.common.form.advanced</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='standard_price']" position="after">
+                <field name="updated_date_chrono24" />
+            </xpath>
+        </field>
+    </record>
+    <record id="product_search_form_view" model="ir.ui.view">
+        <field name="name">product.template.search</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_search_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='services']" position="before">
+                <separator />
+                <filter
+                    name="updated_chrono24"
+                    string="Chrono24 updated"
+                    domain="[('chrono24_updated','=',True)]"
+                />
+                <filter
+                    name="c24_unset"
+                    string="Chrono24"
+                    domain="[('chrono', '=', True)]"
+                />
+                <filter
+                    name="chrono_deac"
+                    string="Chrono24 deactive"
+                    domain="[('chrono24_updated','=',True),('qty_local_stock','=',0)]"
+                />
+                <separator />
+            </xpath>
+        </field>
+    </record>
+</odoo>

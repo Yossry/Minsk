@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.website</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="website.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='domain_setting']/div" position="inside">
+                <div class="content-group">
+                    <div class="row">
+                        <label
+                            class="col-lg-3 o_light_label"
+                            string="About Us"
+                            for="about_us"
+                        />
+                        <field name="about_us" widget="html" />
+                    </div>
+                    <div class="row">
+                        <label
+                            class="col-lg-3 o_light_label"
+                            string="Contact Information"
+                            for="contact_description"
+                        />
+                        <field name="contact_description" widget="html" />
+                    </div>
+                    <div class="row">
+                        <label
+                            class="col-lg-3 o_light_label"
+                            string="Empty Shop Display Message"
+                            for="empty_page_message"
+                        />
+                        <field name="empty_page_message" widget="html" />
+                    </div>
+                    <div class="row">
+                        <label
+                            class="col-lg-3 o_light_label"
+                            string="Whatsapp Link"
+                            for="whatsapp_link"
+                        />
+                        <field name="whatsapp_link" />
+                    </div>
+                    <div class="row">
+                        <label
+                            class="col-lg-3 o_light_label"
+                            string="Whatsapp QR Code"
+                            for="whatsapp_qr_image"
+                        />
+                        <field name="whatsapp_qr_image" widget="image" />
+                    </div>
+                    <div class="row">
+                        <label
+                            class="col-lg-3 o_light_label"
+                            string="Wechat Link"
+                            for="wechat_link"
+                        />
+                        <field name="wechat_link" />
+                    </div>
+                    <div class="row">
+                        <label
+                            class="col-lg-3 o_light_label"
+                            string="Wechat QR Code"
+                            for="wechat_qr_image"
+                        />
+                        <field name="wechat_qr_image" widget="image" />
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

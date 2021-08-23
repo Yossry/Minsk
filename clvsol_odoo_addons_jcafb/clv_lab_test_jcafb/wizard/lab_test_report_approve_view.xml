@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="clv_lab_test_report_approve_view_form" model="ir.ui.view">
+        <field name="name">clv.lab_test.report.approve.form</field>
+        <field name="model">clv.lab_test.report.approve</field>
+        <field name="arch" type="xml">
+            <form>
+                <div class="oe_right">
+                </div>
+                <label for="lab_test_report_ids"/>
+                <field name="lab_test_report_ids"/>
+                <group>
+                    <group>
+                        <field name="approved"/>
+                        <field name="employee_id" options='{"no_open": True, "no_create": True}'/>
+                        <field name="date_approved"/>
+                    </group>
+                    <group>
+                    </group>
+                </group>
+                <footer>
+                    <button 
+                        type="object"
+                        name="do_lab_test_report_approve"
+                        string="Lab Test Result Approve"
+                        class="oe_highlight"
+                        />
+                    <button special="cancel" string="Cancel"/>
+                </footer>
+            </form>
+
+        </field>
+    </record>
+
+    <act_window 
+        id="clv_lab_test_report_approve_action"
+        name="Lab Test Result Approve"
+        res_model="clv.lab_test.report.approve"
+        view_mode="form"
+        target="new"
+        groups="clv_lab_test.group_approver"
+    />
+
+</odoo>

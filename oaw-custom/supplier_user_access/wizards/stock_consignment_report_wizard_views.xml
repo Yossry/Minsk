@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="consignment_report_wizard" model="ir.ui.view">
+        <field name="name">stock.consignment.report.wizard</field>
+        <field name="model">stock.consignment.report.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field
+                        name="partner_id"
+                        domain="[('supplier', '=', True)]"
+                        invisible="1"
+                        modifiers="{}"
+                    />
+                    <field name="threshold_date" />
+                </group>
+                <footer>
+                        <button
+                        name="action_export_xlsx"
+                        type="object"
+                        string="Export XLSX"
+                        class="oe_highlight"
+                    />
+                        or
+                        <button special="cancel" string="Cancel" />
+                    </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_consignment_report_wizard" model="ir.actions.act_window">
+        <field name="name">Stock Consignment Report</field>
+        <field name="res_model">stock.consignment.report.wizard</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="consignment_report_wizard" />
+        <field name="context">{'default_partner_id': 1}</field>
+        <field name="target">new</field>
+    </record>
+    <menuitem
+        parent="stock_consignment_report.warehouse_report_menu"
+        action="action_consignment_report_wizard"
+        id="menu_consignment_report_wizard"
+        sequence="50"
+        groups="group_supplier"
+    />
+    <menuitem
+        action="stock_consignment_report.action_stock_consignment_report_wizard"
+        id="stock_consignment_report.menu_consignment_report_wizard"
+        parent="stock_consignment_report.warehouse_report_menu"
+        groups="stock.group_stock_manager"
+        sequence="7"
+    />
+</odoo>

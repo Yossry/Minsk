@@ -1,0 +1,12 @@
+must install twilio
+
+
+linux 
+
+
+pip3 install twilio
+
+
+windows
+
+copy twilio folder  in python libraries folder in c 

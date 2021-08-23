@@ -1,0 +1,368 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* cb_holidays_compute_mix
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-05-05 10:15+0000\n"
+"PO-Revision-Date: 2020-05-05 10:15+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: cb_holidays_compute_mix
+#: model_terms:ir.ui.view,arch_db:cb_holidays_compute_mix.hr_holidays_allocation_wizard
+msgid "<span>Days</span>"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model_terms:ir.ui.view,arch_db:cb_holidays_compute_mix.leaves_left_holidays_status_kanban
+msgid "<span>No limit</span>"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model:ir.actions.act_window,name:cb_holidays_compute_mix.action_open_all_allocations
+#: model:ir.ui.menu,name:cb_holidays_compute_mix.menu_open_all_allocations
+#: model:ir.ui.menu,name:cb_holidays_compute_mix.menu_open_allocation
+#: model_terms:ir.ui.view,arch_db:cb_holidays_compute_mix.view_allocation_tree_custom_cb
+msgid "Allocations"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model:ir.model.fields,field_description:cb_holidays_compute_mix.field_hr_holidays_allocation_wizard__second_validation
+msgid "Apply Double Validation"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model:ir.model.fields,field_description:cb_holidays_compute_mix.field_hr_holidays_allocation_wizard__approve
+msgid "Automatically Approve"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model_terms:ir.ui.view,arch_db:cb_holidays_compute_mix.hr_holidays_allocation_wizard
+msgid "Cancel"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model_terms:ir.ui.view,arch_db:cb_holidays_compute_mix.hr_holidays_pending_employees_view
+msgid "Close"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model:ir.model.fields,field_description:cb_holidays_compute_mix.field_hr_leave_type__company_id
+msgid "Company"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model_terms:ir.ui.view,arch_db:cb_holidays_compute_mix.hr_holidays_allocation_wizard
+msgid "Create"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: code:addons/cb_holidays_compute_mix/wizards/hr_holidays_allocation_wizard.py:48
+#: model:ir.actions.act_window,name:cb_holidays_compute_mix.action_open_allocation_wizard
+#: model_terms:ir.ui.view,arch_db:cb_holidays_compute_mix.hr_holidays_allocation_wizard
+#, python-format
+msgid "Create Allocations"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model:ir.ui.menu,name:cb_holidays_compute_mix.menu_open_allocations_wizard
+msgid "Create Multiple Allocations"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model:ir.model.fields,field_description:cb_holidays_compute_mix.field_hr_holidays_allocation_wizard__create_uid
+#: model:ir.model.fields,field_description:cb_holidays_compute_mix.field_hr_holidays_pending_employees__create_uid
+#: model:ir.model.fields,field_description:cb_holidays_compute_mix.field_hr_holidays_pending_employees_line__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model:ir.model.fields,field_description:cb_holidays_compute_mix.field_hr_holidays_allocation_wizard__create_date
+#: model:ir.model.fields,field_description:cb_holidays_compute_mix.field_hr_holidays_pending_employees__create_date
+#: model:ir.model.fields,field_description:cb_holidays_compute_mix.field_hr_holidays_pending_employees_line__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model:ir.model.fields,field_description:cb_holidays_compute_mix.field_hr_leave__date_from_custom
+msgid "Date From Custom"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model:ir.model.fields,field_description:cb_holidays_compute_mix.field_hr_leave__date_to_custom
+msgid "Date To Custom"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model:ir.model.fields,field_description:cb_holidays_compute_mix.field_hr_holidays_allocation_wizard__department_id
+#: model:ir.model.fields,field_description:cb_holidays_compute_mix.field_hr_holidays_pending_employees_line__department_id
+#: model:ir.model.fields,field_description:cb_holidays_compute_mix.field_hr_leave__department_id
+msgid "Department"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model:ir.model.fields,field_description:cb_holidays_compute_mix.field_hr_holidays_allocation_wizard__name
+#: model:ir.model.fields,field_description:cb_holidays_compute_mix.field_hr_leave_type__description
+msgid "Description"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model:ir.model.fields,field_description:cb_holidays_compute_mix.field_hr_holidays_allocation_wizard__display_name
+#: model:ir.model.fields,field_description:cb_holidays_compute_mix.field_hr_holidays_pending_employees__display_name
+#: model:ir.model.fields,field_description:cb_holidays_compute_mix.field_hr_holidays_pending_employees_line__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: selection:hr.leave.type,validation_type:0
+msgid "Double Validation"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model:ir.model.fields,field_description:cb_holidays_compute_mix.field_hr_holidays_allocation_wizard__duration
+#: model_terms:ir.ui.view,arch_db:cb_holidays_compute_mix.hr_holidays_allocation_wizard
+msgid "Duration"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model:ir.model,name:cb_holidays_compute_mix.model_hr_employee
+#: model:ir.model.fields,field_description:cb_holidays_compute_mix.field_hr_holidays_pending_employees_line__employee_id
+#: model:ir.model.fields,field_description:cb_holidays_compute_mix.field_hr_leave__employee_id
+msgid "Employee"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: selection:hr.leave.type,validation_type:0
+msgid "Employee Manager"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model:ir.model.fields,field_description:cb_holidays_compute_mix.field_hr_holidays_allocation_wizard__employee_ids
+#: model_terms:ir.ui.view,arch_db:cb_holidays_compute_mix.hr_holidays_allocation_wizard
+msgid "Employees"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model:ir.model.fields,field_description:cb_holidays_compute_mix.field_hr_leave_type__exclude_rest_days
+msgid "Exclude Rest Days"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model:ir.model,name:cb_holidays_compute_mix.model_hr_holidays_summary_dept
+msgid "HR Leaves Summary Report By Department"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model:ir.model.fields,field_description:cb_holidays_compute_mix.field_hr_holidays_pending_employees__holiday_status_id
+msgid "Holiday Type"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: selection:hr.leave.type,validation_type:0
+msgid "Human Resource officer"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model:ir.model.fields,field_description:cb_holidays_compute_mix.field_hr_holidays_allocation_wizard__id
+#: model:ir.model.fields,field_description:cb_holidays_compute_mix.field_hr_holidays_pending_employees__id
+#: model:ir.model.fields,field_description:cb_holidays_compute_mix.field_hr_holidays_pending_employees_line__id
+msgid "ID"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model:ir.model.fields,help:cb_holidays_compute_mix.field_hr_leave_type__exclude_rest_days
+msgid "If enabled, the employee's day off is skipped in leave days calculation."
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: code:addons/cb_holidays_compute_mix/wizards/hr_holidays_summary_department.py:33
+#, python-format
+msgid "In order to create department reports you must be manager of at least one department"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model:ir.model.fields,field_description:cb_holidays_compute_mix.field_hr_holidays_summary_dept__is_officer
+msgid "Is Officer"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model:ir.model.fields,field_description:cb_holidays_compute_mix.field_hr_holidays_pending_employees_line__job_id
+msgid "Job Position"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model:ir.model.fields,field_description:cb_holidays_compute_mix.field_hr_holidays_allocation_wizard____last_update
+#: model:ir.model.fields,field_description:cb_holidays_compute_mix.field_hr_holidays_pending_employees____last_update
+#: model:ir.model.fields,field_description:cb_holidays_compute_mix.field_hr_holidays_pending_employees_line____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model:ir.model.fields,field_description:cb_holidays_compute_mix.field_hr_holidays_allocation_wizard__write_uid
+#: model:ir.model.fields,field_description:cb_holidays_compute_mix.field_hr_holidays_pending_employees__write_uid
+#: model:ir.model.fields,field_description:cb_holidays_compute_mix.field_hr_holidays_pending_employees_line__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model:ir.model.fields,field_description:cb_holidays_compute_mix.field_hr_holidays_allocation_wizard__write_date
+#: model:ir.model.fields,field_description:cb_holidays_compute_mix.field_hr_holidays_pending_employees__write_date
+#: model:ir.model.fields,field_description:cb_holidays_compute_mix.field_hr_holidays_pending_employees_line__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model:ir.model,name:cb_holidays_compute_mix.model_hr_leave
+msgid "Leave"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model:ir.model,name:cb_holidays_compute_mix.model_hr_leave_type
+#: model:ir.model.fields,field_description:cb_holidays_compute_mix.field_hr_holidays_allocation_wizard__holiday_status_id
+msgid "Leave Type"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model:ir.model.fields,field_description:cb_holidays_compute_mix.field_hr_leave__description
+msgid "Leave Type Description"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model:ir.actions.act_window,name:cb_holidays_compute_mix.action_view_leaves_left
+msgid "Leaves"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model:ir.model,name:cb_holidays_compute_mix.model_hr_leave_allocation
+msgid "Leaves Allocation"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model_terms:ir.ui.view,arch_db:cb_holidays_compute_mix.view_employee_form_leave_inherit
+msgid "Leaves Left"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model:ir.model.fields,field_description:cb_holidays_compute_mix.field_hr_holidays_pending_employees_line__manager_id
+msgid "Manager"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model_terms:ir.ui.view,arch_db:cb_holidays_compute_mix.view_hr_holidays_filter
+msgid "Not Rejected"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: code:addons/cb_holidays_compute_mix/models/hr_leave.py:223
+#, python-format
+msgid "Only a Leave Manager can reset other people leaves."
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: code:addons/cb_holidays_compute_mix/models/hr_leave.py:231
+#, python-format
+msgid "Only a Leave Officer or Manager can approve or refuse leave requests."
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: code:addons/cb_holidays_compute_mix/models/hr_leave.py:264
+#, python-format
+msgid "Only an Leave Manager can apply the second approval on leave requests."
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model:ir.model.fields,field_description:cb_holidays_compute_mix.field_hr_holidays_pending_employees__pending_employees_ids
+#: model_terms:ir.ui.view,arch_db:cb_holidays_compute_mix.hr_holidays_pending_employees_view
+msgid "Pending Employees"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model:ir.actions.act_window,name:cb_holidays_compute_mix.act_open_pending_employees
+#: model:ir.ui.menu,name:cb_holidays_compute_mix.menu_item_pending_employees
+#: model_terms:ir.ui.view,arch_db:cb_holidays_compute_mix.hr_holidays_pending_employees_view
+msgid "Pending to Request Holidays"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model_terms:ir.ui.view,arch_db:cb_holidays_compute_mix.hr_holidays_allocation_wizard
+msgid "Populate"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model:ir.model.fields,field_description:cb_holidays_compute_mix.field_hr_holidays_pending_employees_line__remaining
+msgid "Remaining"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model_terms:ir.ui.view,arch_db:cb_holidays_compute_mix.leaves_left_holidays_status_kanban
+msgid "Remaining:"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model:ir.model.fields,field_description:cb_holidays_compute_mix.field_hr_holidays_allocation_wizard__category_id
+msgid "Tag"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model:ir.model.fields,field_description:cb_holidays_compute_mix.field_hr_holidays_allocation_wizard__request_unit
+msgid "Take Leaves in"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model_terms:ir.ui.view,arch_db:cb_holidays_compute_mix.leaves_left_holidays_status_kanban
+msgid "Taken:"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model:ir.model.fields,field_description:cb_holidays_compute_mix.field_hr_leave__tree_color
+msgid "Tree Color"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model:ir.model.fields,field_description:cb_holidays_compute_mix.field_hr_leave_type__validation_type
+msgid "Validation By"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model:ir.model.fields,help:cb_holidays_compute_mix.field_hr_holidays_allocation_wizard__second_validation
+msgid "When selected, the Allocation/Leave Requests for this type require a second validation to be approved."
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model:ir.model.fields,field_description:cb_holidays_compute_mix.field_hr_holidays_pending_employees_line__wizard_id
+msgid "Wizard"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: code:addons/cb_holidays_compute_mix/models/hr_leave.py:253
+#, python-format
+msgid "You must be either %s's manager or Leave manager to approve this leave"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model:ir.model,name:cb_holidays_compute_mix.model_hr_holidays_allocation_wizard
+msgid "hr.holidays.allocation.wizard"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model:ir.model,name:cb_holidays_compute_mix.model_hr_holidays_pending_employees
+msgid "hr.holidays.pending.employees"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model:ir.model,name:cb_holidays_compute_mix.model_hr_holidays_pending_employees_line
+msgid "hr.holidays.pending.employees.line"
+msgstr ""
+
+#. module: cb_holidays_compute_mix
+#: model_terms:ir.ui.view,arch_db:cb_holidays_compute_mix.hr_holidays_allocation_wizard
+msgid "or"
+msgstr ""
+

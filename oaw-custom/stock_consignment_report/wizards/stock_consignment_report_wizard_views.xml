@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="stock_consignment_report_wizard" model="ir.ui.view">
+        <field name="name">stock.consignment.report.wizard</field>
+        <field name="model">stock.consignment.report.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="partner_id" domain="[('supplier', '=', True)]" />
+                    <field name="threshold_date" />
+                </group>
+                <footer>
+                    <button
+                        name="action_export_xlsx"
+                        type="object"
+                        string="Export XLSX"
+                        class="oe_highlight"
+                    />
+                    or
+                    <button special="cancel" string="Cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_stock_consignment_report_wizard" model="ir.actions.act_window">
+        <field name="name">Stock Consignment Report</field>
+        <field name="res_model">stock.consignment.report.wizard</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="stock_consignment_report_wizard" />
+        <field name="target">new</field>
+    </record>
+</odoo>

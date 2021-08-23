@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+	<!-- Uniform Demand Qweb Report -->
+		<report
+			id="report_uniform_demand"
+			string= "Uniform Demand Form"
+			model = "sos.uniform.demand"
+			report_type="qweb-pdf"
+			file="sos_uniform.report_uniformdemand"
+			name="sos_uniform.report_uniformdemand"
+		/>
+		
+		<!-- Weapon Demand Qweb Report -->
+		<report
+			id="report_weapon_demand"
+			string= "Weapon Demand Form"
+			model = "sos.weapon.demand"
+			report_type="qweb-pdf"
+			file="sos_uniform.report_weapondemand"
+			name="sos_uniform.report_weapondemand"
+		/>
+		
+		<!-- jacket Demand Qweb Report -->
+		<report
+			id="report_jacket_demand"
+			string= "Jacket Demand Form"
+			model = "sos.jacket.demand"
+			report_type="qweb-pdf"
+			file="sos_uniform.report_jacketdemand"
+			name="sos_uniform.report_jacketdemand"
+		/>
+		
+		<!-- Stationery Demand Qweb Report -->
+		<report
+			id="report_stationery_demand"
+			string= "Stationery Demand Form"
+			model = "sos.stationery.demand"
+			report_type="qweb-pdf"
+			file="sos_uniform.report_stationerydemand"
+			name="sos_uniform.report_stationerydemand"
+		/>
+		
+		<!-- Safety Demand Qweb Report -->
+		<report
+			id="report_safety_demand"
+			string= "Safety Demand Form"
+			model = "sos.safety.demand"
+			report_type="qweb-pdf"
+			file="sos_uniform.report_safetydemand"
+			name="sos_uniform.report_safetydemand"
+		/>
+	
+		<!-- Uniform Qweb Report -->
+		<report
+			id="report_uniform_main"
+			string= "Uniform Report"
+			model = "uniform.report.wizard"
+			report_type="qweb-pdf"
+			file="sos_uniform.report_uniform"
+			name="sos_uniform.report_uniform"
+		/>
+		<!-- Uniform All Centers Qweb Report -->
+		<report
+			id="report_uniform_center_all"
+			string= "Uniform Center All Report"
+			model = "uniform.report.wizard"
+			report_type="qweb-pdf"
+			file="sos_uniform.report_uniformcenterall"
+			name="sos_uniform.report_uniformcenterall"
+		/>
+		<!-- Uniform Specific Center Qweb Report -->
+		<report
+			id="report_uniform_center_specific"
+			string= "Uniform Center Specific Report"
+			model = "uniform.report.wizard"
+			report_type="qweb-pdf"
+			file="sos_uniform.report_uniformcenterspecific"
+			name="sos_uniform.report_uniformcenterspecific"
+		/>
+		<!-- Uniform All Projects Qweb Report -->
+		<report
+			id="report_uniform_project_all"
+			string= "Uniform Project All Report"
+			model = "uniform.report.wizard"
+			report_type="qweb-pdf"
+			file="sos_uniform.report_uniformprojectall"
+			name="sos_uniform.report_uniformprojectall"
+		/>
+		<!-- Uniform Specific Project Qweb Report -->
+		<report
+			id="report_uniform_project_specific"
+			string= "Uniform Project Specific Report"
+			model = "uniform.report.wizard"
+			report_type="qweb-pdf"
+			file="sos_uniform.report_uniformprojectspecific"
+			name="sos_uniform.report_uniformprojectspecific"
+		/>
+		<!-- Uniform All Post Qweb Report -->
+		<report
+			id="report_uniform_post_all"
+			string= "Uniform Post All Report"
+			model = "uniform.report.wizard"
+			report_type="qweb-pdf"
+			file="sos_uniform.report_uniformpostall"
+			name="sos_uniform.report_uniformpostall"
+		/>
+		<!-- Uniform Specific Post Qweb Report -->
+		<report
+			id="report_uniform_post_specific"
+			string= "Uniform Post Specific Report"
+			model = "uniform.report.wizard"
+			report_type="qweb-pdf"
+			file="sos_uniform.report_uniformpostspecific"
+			name="sos_uniform.report_uniformpostspecific"
+		/>
+		
+		
+		<!-- Weapon Qweb Report -->
+		<report
+			id="report_weapon_main"
+			string= "Weapon Report"
+			model = "weapon.report.wizard"
+			report_type="qweb-pdf"
+			file="sos_uniform.report_weapon"
+			name="sos_uniform.report_weapon"
+		/>
+		<!-- Weapon All Projects Qweb Report -->
+		<report
+			id="report_weapon_project_all"
+			string= "Weapon Project All Report"
+			model = "weapon.report.wizard"
+			report_type="qweb-pdf"
+			file="sos_uniform.report_weaponprojectall"
+			name="sos_uniform.report_weaponprojectall"
+		/>
+		<!-- Weapon Specific Project Qweb Report -->
+		<report
+			id="report_weapon_project_specific"
+			string= "Weapon Project Specific Report"
+			model = "weapon.report.wizard"
+			report_type="qweb-pdf"
+			file="sos_uniform.report_weaponprojectspecific"
+			name="sos_uniform.report_weaponprojectspecific"
+		/>
+		
+		<!-- Weapon Specific Center Qweb Report -->
+		<report
+			id="report_weapon_center_specific"
+			string= "Weapon Center Specific Report"
+			model = "weapon.report.wizard"
+			report_type="qweb-pdf"
+			file="sos_uniform.report_weaponcenterspecific"
+			name="sos_uniform.report_weaponcenterspecific"
+		/>
+		
+		<!-- Weapon All Centers Qweb Report -->
+		<report
+			id="report_weapon_center_all"
+			string= "Weapon center All Report"
+			model = "weapon.report.wizard"
+			report_type="qweb-pdf"
+			file="sos_uniform.report_weaponcenterall"
+			name="sos_uniform.report_weaponcenterall"
+		/>
+		<!-- Weapon All Post Qweb Report -->
+		<report
+			id="report_weapon_post_all"
+			string= "Weapon Post All Report"
+			model = "weapon.report.wizard"
+			report_type="qweb-pdf"
+			file="sos_uniform.report_weaponpostall"
+			name="sos_uniform.report_weaponpostall"
+		/>
+		
+		<!-- Weapon Specific Post Qweb Report -->
+		<report
+			id="report_weapon_post_specific"
+			string= "Weapon Post Specific Report"
+			model = "weapon.report.wizard"
+			report_type="qweb-pdf"
+			file="sos_uniform.report_weaponpostspecific"
+			name="sos_uniform.report_weaponpostspecific"
+		/>
+		
+		
+		<!-- Jacket Qweb Report -->
+		<report
+			id="report_jacket_main"
+			string= "Jacket Report"
+			model = "jacket.report.wizard"
+			report_type="qweb-pdf"
+			file="sos_uniform.report_jacket"
+			name="sos_uniform.report_jacket"
+		/>
+		<!-- Jacket All Centers Qweb Report -->
+		<report
+			id="report_jacket_center_all"
+			string= "Jacket Center All Report"
+			model = "jacket.report.wizard"
+			report_type="qweb-pdf"
+			file="sos_uniform.report_jacketcenterall"
+			name="sos_uniform.report_jacketcenterall"
+		/>
+		<!-- Jacket Specific Center Qweb Report -->
+		<report
+			id="report_jacket_center_specific"
+			string= "Jacket Center Specific Report"
+			model = "jacket.report.wizard"
+			report_type="qweb-pdf"
+			file="sos_uniform.report_jacketcenterspecific"
+			name="sos_uniform.report_jacketcenterspecific"
+		/>
+		<!-- Jacket All Projects Qweb Report -->
+		<report
+			id="report_jacket_project_all"
+			string= "Jacket Project All Report"
+			model = "jacket.report.wizard"
+			report_type="qweb-pdf"
+			file="sos_uniform.report_jacketprojectall"
+			name="sos_uniform.report_jacketprojectall"
+		/>
+		<!-- Jacket Specific Project Qweb Report -->
+		<report
+			id="report_jacket_project_specific"
+			string= "Jacket Project Specific Report"
+			model = "jacket.report.wizard"
+			report_type="qweb-pdf"
+			file="sos_uniform.report_jacketprojectspecific"
+			name="sos_uniform.report_jacketprojectspecific"
+		/>
+		<!-- Jacket All Post Qweb Report -->
+		<report
+			id="report_jacket_post_all"
+			string= "Jacket Post All Report"
+			model = "jacket.report.wizard"
+			report_type="qweb-pdf"
+			file="sos_uniform.report_jacketpostall"
+			name="sos_uniform.report_jacketpostall"
+		/>
+		<!-- Jacket Specific Post Qweb Report -->
+		<report
+			id="report_jacket_post_specific"
+			string= "Jacket Post Specific Report"
+			model = "jacket.report.wizard"
+			report_type="qweb-pdf"
+			file="sos_uniform.report_jacketpostspecific"
+			name="sos_uniform.report_jacketpostspecific"
+		/>
+		
+		<!-- Stationary Qweb Report -->
+		<report
+			id="report_stationery_main"
+			string= "Stationery Report"
+			model = "stationery.report.wizard"
+			report_type="qweb-pdf"
+			file="sos_uniform.report_stationery"
+			name="sos_uniform.report_stationery"
+		/>
+		
+		<!-- Safety Stock Qweb Report -->
+		<report
+			id="report_safety_stock"
+			string= "Safety Stock Report"
+			model = "sos.safety.stock.wizard"
+			report_type="qweb-pdf"
+			file="sos_uniform.report_safetystock"
+			name="sos_uniform.report_safetystock"
+		/>
+		
+		<!-- Safety usage Qweb Report -->
+		<report
+			id="report_safety_usage"
+			string= "Safety Usage Report"
+			model = "sos.uniform.safety.usage.wizard"
+			report_type="qweb-pdf"
+			file="sos_uniform.report_safetyusage"
+			name="sos_uniform.report_safetyusage"
+		/>
+		
+		<!-- Purchase Qweb Report -->
+		<report
+			id="report_purchase_main"
+			string= "Purchase Report"
+			model = "sos.purchase.report.wizard"
+			report_type="qweb-pdf"
+			file="sos_uniform.report_purchase"
+			name="sos_uniform.report_purchase"
+		/>
+	
+    </data>
+     
+</openerp>

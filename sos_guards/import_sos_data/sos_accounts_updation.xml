@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<record id="sos_accounts_updation_wizard_view" model="ir.ui.view">
+			<field name="name">wizard for import Accounts from csv file </field>
+			<field name="model">sos.accounts.updation</field>
+			<field name="arch" type="xml">
+				<form string="Update SOS Accounts">
+				    <group>
+				        <field name="import_option" widget="radio" />
+				    </group>
+				  
+				    <group>
+				        <field name="file" filename="name"/>
+				    </group>
+				    <group>
+				    	<group>
+				        	<field name="sequence_opt"/>
+				        </group>
+				        <group>
+				        </group>	
+				    </group>
+				    <footer>
+				        <button name="update_account_info" string="Import" type="object"/>
+				    </footer>
+				</form>
+			</field>
+		</record>
+
+        <record id="sos_accounts_updation_wizard" model="ir.actions.act_window">
+            <field name="name">Account Data Update</field>
+            <field name="res_model">sos.accounts.updation</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+	   <menuitem action="sos_accounts_updation_wizard"
+			id="sos_accounts_updation_menu"
+			 parent="sos_accounts.menu_account_customer"
+			 groups="sos.group_special,sos.group_bank_account_info,account.group_account_manager" 
+			 sequence="200" />
+	</data>
+</odoo>
+ 

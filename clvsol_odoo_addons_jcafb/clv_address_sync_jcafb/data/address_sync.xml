@@ -1,0 +1,188 @@
+<?xml version="1.0" ?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo noupdate="0">
+ 
+	<record id="clv_address_clv_address_template" model="clv.external_sync.template">
+		<field name="name" eval="&quot;&quot;&quot;clv.address (clv.address)&quot;&quot;&quot;"/>
+		<field name="model" eval="&quot;&quot;&quot;clv.address&quot;&quot;&quot;"/>
+		<field name="method" eval="&quot;&quot;&quot;_object_external_sync&quot;&quot;&quot;"/>
+		<field name="sequence_code" eval="&quot;&quot;&quot;clv.address.code&quot;&quot;&quot;"/>
+		<field name="external_model" eval="&quot;&quot;&quot;clv.address&quot;&quot;&quot;"/>
+		<field name="external_sequence_code" eval="&quot;&quot;&quot;clv.address.code&quot;&quot;&quot;"/>
+		<field name="external_disable_check_missing" eval="True"/>
+		<field name="enable_sequence_code_sync" eval="True"/>
+	</record>
+	 
+	<record id="clv_address_clv_address_template_object_field_name" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;name&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;name&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="clv_address_clv_address_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="clv_address_clv_address_template_object_field_code" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;code&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;code&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="clv_address_clv_address_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="clv_address_clv_address_template_object_field_category_ids" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;category_ids&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;category_ids&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="clv_address_clv_address_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="clv_address_clv_address_template_object_field_phase_id" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;history_marker_id&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;phase_id&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="clv_address_clv_address_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="clv_address_clv_address_template_object_field_global_tag_ids" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;global_tag_ids&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;global_tag_ids&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="clv_address_clv_address_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="clv_address_clv_address_template_object_field_zip" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;zip&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;zip&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="clv_address_clv_address_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="clv_address_clv_address_template_object_field_street" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;street&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;street&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="clv_address_clv_address_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="clv_address_clv_address_template_object_field_street_number" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;number&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;street_number&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="clv_address_clv_address_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="clv_address_clv_address_template_object_field_street2" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;street2&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;street2&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="clv_address_clv_address_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="clv_address_clv_address_template_object_field_district" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;district&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;district&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="clv_address_clv_address_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="clv_address_clv_address_template_object_field_country_id" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;country_id&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;country_id&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="clv_address_clv_address_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="clv_address_clv_address_template_object_field_state_id" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;state_id&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;state_id&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="clv_address_clv_address_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="clv_address_clv_address_template_object_field_city" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;l10n_br_city_id&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;city_id&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="clv_address_clv_address_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="clv_address_clv_address_template_object_field_phone" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;phone&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;phone&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="clv_address_clv_address_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="clv_address_clv_address_template_object_field_mobile" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;mobile&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;mobile&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="clv_address_clv_address_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="clv_address_clv_address_template_object_field_email" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;email&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;email&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="clv_address_clv_address_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="clv_address_clv_address_template_object_field_reg_state" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;reg_state&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;reg_state&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="clv_address_clv_address_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="clv_address_clv_address_template_object_field_state" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;state&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;state&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="clv_address_clv_address_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="clv_address_clv_address_template_object_field_employee_id" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;employee_id&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;employee_id&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="clv_address_clv_address_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="clv_address_clv_address_template_object_field_active" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;active&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;active&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="clv_address_clv_address_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="clv_address_clv_address_schedule" model="clv.external_sync.schedule">
+		<field name="name" eval="&quot;&quot;&quot;clv.address (clv.address)&quot;&quot;&quot;"/>
+		<field name="template_id" eval="clv_address_clv_address_template"/>
+	</record>
+	 
+	<record id="clv_external_sync_batch_member_clv_address" model="clv.external_sync.batch.member">
+		<field name="external_sync_batch_id" ref="clv_external_sync_jcafb.clv_external_sync_batch_default"/>
+		<field name="ref_id" ref="clv_address_clv_address_schedule"/>
+	</record>
+	 
+</odoo>

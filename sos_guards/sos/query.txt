@@ -1,0 +1,5 @@
+SELECT SUM(CASE WHEN current = True THEN 1 END) AS t,
+       SUM(CASE WHEN current = False THEN 1 END) AS f,
+       SUM(CASE WHEN current NOT IN ('t','f') OR current IS NULL THEN 1 END) AS others,
+       SUM(CASE WHEN current IS NOT NULL OR current IS NULL THEN 1 ELSE 0 END) AS total_count
+FROM hr_employee;

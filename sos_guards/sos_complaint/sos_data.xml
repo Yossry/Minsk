@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+<!--
+		<record model="ir.sequence.type" id="seq_type_complaint_id">
+		    <field name="name">Complaint Number</field>
+		    <field name="code">sos.complaint</field>
+		</record>
+		<record model="ir.sequence" id="seq_complaint_id">
+		    <field name="name">Complaint Number</field>
+		    <field name="code">sos.complaint</field>
+		    <field name="prefix"></field>
+		    <field name="padding">4</field>
+		</record>
+        
+        <record model="ir.sequence.type" id="seq_type_deployment_id">
+			<field name="name">Deployment Number</field>
+			<field name="code">sos.deployment</field>
+		</record>
+			
+		<record model="ir.sequence" id="seq_deployment_id">
+			<field name="name">Deployment Number</field>
+			<field name="code">sos.deployment</field>
+			<field name="prefix"></field>
+			<field name="padding">4</field>
+		</record>
+		
+		 <record model="ir.sequence.type" id="seq_type_post_termination_id">
+			<field name="name">Post Termination Number</field>
+			<field name="code">sos.post.termination</field>
+		</record>
+		-->
+		
+		<record model="ir.sequence" id="seq_post_termination_id">
+			<field name="name">Post Termination Number</field>
+			<field name="code">sos.post.termination</field>
+			<field name="prefix">TERM/%(y)s/%(woy)s/</field>
+			<field name="padding">4</field>
+		</record>
+			
+		<record model="ir.sequence" id="seq_additional_guard_id">
+			<field name="name">Additional Guard Number</field>
+			<field name="code">sos.additional.guard.proforma</field>
+			<field name="prefix"></field>
+			<field name="padding">4</field>
+		</record>
+		
+		<record model="ir.sequence" id="seq_guard_incident_id">
+			<field name="name">Dacoity/Incident Number</field>
+			<field name="code">sos.guard.incident</field>
+			<field name="prefix"></field>
+			<field name="padding">4</field>
+		</record>
+    </data>
+</openerp>

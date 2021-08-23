@@ -1,0 +1,49 @@
+/**********************************************************************************
+*  Copyright (C) 2019 UNIBRAVO
+**********************************************************************************/
+
+/* App Sidebar Panel */
+
+$odoo-sidebar-width: 35px;
+
+.app-sidebar-panel {
+	flex: 0 0 $odoo-sidebar-width;
+    background-color: #706775;
+    height: 100% !important;
+    overflow-y: auto;
+    @media (max-width: 768px) {
+      display: none;
+    }
+}
+
+.app-sidebar {
+    white-space: nowrap;
+    padding: 0;
+    padding-top: 5px;
+    .app-sidebar-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    >li {
+        display: block;
+        margin: 0;
+        padding: 0;
+        border: 0px;
+    }
+        > li:hover > a{
+	    background: #c47474;
+        }
+    }
+}
+
+.app-sidebar-menuitem {
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+    font-size: 10px;
+    text-align: center;
+}
+
+.toggle-sidebar {
+    margin-left: 0px - $odoo-sidebar-width;
+}

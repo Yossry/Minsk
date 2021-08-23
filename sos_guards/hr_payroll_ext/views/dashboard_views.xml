@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Salary Planner -->
+    <record id="salary_planner_action" model="ir.actions.client">
+		<field name="name">Salary Planner</field>
+		<field name="tag">wizard_planner.main</field>
+		<field name="context">{'period_id': [active_id]}</field>
+	</record>
+
+	<template id="assets_common" name="Wizard Planner common assets" inherit_id="web.assets_common">
+		<xpath expr="." position="inside">
+		    <link rel="stylesheet" href="/hr_payroll_ext/static/src/less/wizard_planner_common.less"/>
+		    <script type="text/javascript" src="/hr_payroll_ext/static/src/js/wizard_planner.js"></script>
+		    <script type="text/javascript" src="/hr_payroll_ext/static/src/js/web_planner_salary.js"></script>
+		</xpath>
+	</template>
+
+	<!--
+	<template id="assets_backend" name="Payroll Assets" inherit_id="web.assets_backend">
+		<xpath expr="." position="inside">
+			<script type="text/javascript" src="/hr_payroll_ext/static/src/js/wizard_planner.js"></script>
+		</xpath>
+	</template>
+	-->
+	<template id="pages">
+		<t t-raw="0"/>
+	</template>
+
+	<template id="category">
+	  <div t-att-menu-category-id="menu_categorytitle" t-att-menu-classes="menu_categoryclasses">
+		<t t-raw="0"/>
+	  </div>
+	</template>
+
+	<template id="page">
+	  <div t-att-id="page_id" t-att-title="page_title" t-att-hide-from-menu="hide_from_menu" t-att-hide-mark-as-done="hide_mark_as_done" class="o_planner_page container-fluid">
+		<h1 t-esc="page_title" t-att-data-menutitle="page_menutitle or page_title" t-att-class="'hidden' if hide_title else None"/>
+		<t t-raw="0"/>
+	  </div>
+	</template>
+
+</odoo>

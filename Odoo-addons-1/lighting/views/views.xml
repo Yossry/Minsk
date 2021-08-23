@@ -1,0 +1,1610 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright NuoBiT Solutions, S.L. (<https://www.nuobit.com>)
+     Eric Antones <eantones@nuobit.com>
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl) -->
+<odoo>
+    <!-- ============= main product views ============ -->
+
+    <!-- window action product2attachment smart button-->
+    <record id="attachment_list_action" model="ir.actions.act_window">
+        <field name="name">Attachment</field>
+        <field name="res_model">lighting.attachment</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('product_id', '=', active_id)]</field>
+        <field name="context">{'default_product_id': active_id}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Create the first attachment</p>
+        </field>
+    </record>
+
+    <!-- view product -->
+    <record model="ir.ui.view" id="product_form_view">
+        <field name="name">product.form</field>
+        <field name="model">lighting.product</field>
+        <field name="arch" type="xml">
+            <form string="Product Form">
+                <header>
+                    <field name="state" widget="statusbar"
+                           clickable="True" options="{'fold_field': 'fold'}"
+                           statusbar_visible="draft,to_review,published,discontinued"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button type="action" class="oe_stat_button" icon="fa-files-o"
+                                name="%(attachment_list_action)d">
+                            <field string="Attachments" name="attachment_count" widget="statinfo"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="reference" placeholder="Reference"
+                                   attrs="{'readonly': [('state', 'not in', ('draft', 'to_review'))]}"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="description"/>
+                        <field name="description_manual"/>
+                    </group>
+                    <group>
+                        <field name="ean"/>
+                        <field name="catalog_ids" widget="many2many_tags"/>
+                        <field name="family_ids" widget="many2many_tags"/>
+                        <field name="type_ids" widget="many2many_tags"/>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="is_accessory"/>
+                            <field name="is_required"/>
+                            <field name="is_component"/>
+                        </group>
+                        <group>
+                            <field name="sequence"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Description">
+                            <group>
+                                <field name="install_location"/>
+                                <field name="application_ids" widget="many2many_tags"/>
+                                <field name="finish_id"/>
+                                <field name="body_material_ids" widget="many2many_tags"/>
+                                <field name="diffusor_material_ids" widget="many2many_tags"/>
+                                <field name="frame_material_ids" widget="many2many_tags"/>
+                                <field name="reflector_material_ids" widget="many2many_tags"/>
+                                <field name="blade_material_ids" widget="many2many_tags"/>
+
+                                <field name="ip"/>
+                                <field name="ip2"/>
+                                <field name="ik"/>
+
+                                <field name="static_pressure"/>
+                                <field name="dynamic_pressure"/>
+                                <field name="dynamic_pressure_velocity"/>
+                                <field name="corrosion_resistance"/>
+
+                                <field name="technical_comments" widget="text"/>
+                            </group>
+                        </page>
+                        <page string="Electrics">
+                            <group>
+                                <field name="protection_class_id"/>
+                                <field name="frequency_id"/>
+                                <field name="dimmable_ids" widget="many2many_tags"/>
+                            </group>
+                            <group>
+                                <field name="input_voltage_id"/>
+                                <field name="input_current"/>
+                                <field name="output_voltage_id"/>
+                                <field name="output_current"/>
+                                <field name="power_factor_min"/>
+                                <label for="total_wattage"/>
+                                <div>
+                                    <field name="total_wattage" style="width:15%;"
+                                           attrs="{'readonly': [('total_wattage_auto', '=', True)]}"/>
+                                    <field name="total_wattage_auto" style="margin-left:10px;width:15px;"/>
+                                    <label for="total_wattage_auto" style="font-weight:bold;"/>
+                                </div>
+                            </group>
+                            <group>
+                                <field name="auxiliary_equipment_ids" widget="many2many_tags"/>
+                                <field name="auxiliary_equipment_model_ids">
+                                    <tree editable="bottom">
+                                        <field name="reference"/>
+                                        <field name="brand_id"/>
+                                        <field name="date"/>
+                                    </tree>
+                                </field>
+                                <field name="auxiliary_equipment_model_alt" widget="text"/>
+                            </group>
+                            <group col="6">
+                                <field name="usb_ports"/>
+                                <field name="usb_voltage"
+                                       attrs="{'invisible': [('usb_ports', '=', 0)], 'required': [('usb_ports', '!=', 0)]}"/>
+                                <field name="usb_current"
+                                       attrs="{'invisible': [('usb_ports', '=', 0)], 'required': [('usb_ports', '!=', 0)]}"/>
+                            </group>
+                            <group>
+                                <field name="sensor_ids" widget="many2many_tags"/>
+                                <field name="battery_autonomy"/>
+                                <field name="battery_charge_time"/>
+                                <field name="surface_temperature"/>
+                                <field name="operating_temperature_min"/>
+                                <field name="operating_temperature_max"/>
+                                <field name="glow_wire_temperature"/>
+                                <field name="power_switches"/>
+                            </group>
+                        </page>
+                        <page string="Lighting">
+                            <group>
+                                <field name="total_nominal_flux"/>
+                                <field name="cri_min"/>
+                                <field name="ugr_max"/>
+                                <field name="lifetime"/>
+
+                                <field name="led_lifetime_l"/>
+                                <field name="led_lifetime_b"/>
+                            </group>
+                        </page>
+                        <page string="Physical">
+                            <group>
+                                <field name="weight"/>
+                                <field name="dimension_ids">
+                                    <tree editable="bottom">
+                                        <field name="sequence" widget="handle"/>
+                                        <field name="type_id"/>
+                                        <field name="value"/>
+                                    </tree>
+                                </field>
+                                <field name="cable_outlets"/>
+                                <field name="lead_wires"/>
+                                <field name="lead_wire_length"/>
+                                <field name="inclination_angle_max"/>
+                                <field name="rotation_angle_max"/>
+                                <field name="recessing_box_included"/>
+                                <field name="recess_dimension_ids">
+                                    <tree editable="bottom">
+                                        <field name="sequence" widget="handle"/>
+                                        <field name="type_id"/>
+                                        <field name="value"/>
+                                    </tree>
+                                </field>
+                                <field name="ecorrae_category_id"/>
+                                <field name="ecorrae2_category_id"/>
+                                <field name="ecorrae"/>
+                                <field name="ecorrae2"/>
+                                <field name="periodic_maintenance"/>
+                                <field name="anchorage_included"/>
+                                <field name="post_included"/>
+                                <field name="post_with_inspection_chamber"/>
+                                <field name="emergency_light"/>
+                                <field name="average_emergency_time"/>
+                                <field name="flammable_surfaces"/>
+                                <field name="photobiological_risk_group_id"/>
+                                <field name="mechanical_screwdriver"/>
+                                <field name="fan_blades"/>
+                                <field name="fan_control"/>
+                                <field name="fan_wattage_ids">
+                                    <tree editable="bottom">
+                                        <field name="wattage"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
+                        <page string="Sources">
+                            <group string="Source groups">
+                                <field name="source_count"/>
+                            </group>
+                            <group>
+                                <field name="source_ids" nolabel="1">
+                                    <tree>
+                                        <field name="sequence" widget="handle"/>
+                                        <field name="relevance"/>
+                                        <field name="num"/>
+                                        <field name="lampholder_id"/>
+
+                                        <field name="line_display"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
+                        <page string="Beams">
+                            <group string="Beam groups">
+                                <field name="beam_count"/>
+                            </group>
+                            <group>
+                                <field name="beam_ids" nolabel="1">
+                                    <tree>
+                                        <field name="sequence" widget="handle"/>
+                                        <field name="num"/>
+                                        <field name="photometric_distribution_ids" widget="many2many_tags"/>
+                                        <field name="dimensions_display"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
+                        <page string="Logistics">
+                            <group>
+                                <field name="tariff_item"/>
+                                <field name="assembler_id"/>
+                            </group>
+                            <group string="Suppliers">
+                                <field name="supplier_ids" nolabel="1">
+                                    <tree editable="bottom">
+                                        <field name="sequence" widget="handle"/>
+                                        <field name="supplier_id"/>
+                                        <field name="reference"/>
+                                    </tree>
+                                </field>
+                            </group>
+                            <group col="4">
+                                <group colspan="2" string="IBox">
+                                    <field name="ibox_weight" string="Weight (Kg)"/>
+                                    <field name="ibox_volume" string="Volume (cm³)"/>
+                                    <field name="ibox_length" string="Length (cm)"/>
+                                    <field name="ibox_width" string="Width (cm)"/>
+                                    <field name="ibox_height" string="Height (cm)"/>
+                                </group>
+                                <group colspan="2" string="Masterbox">
+                                    <field name="mbox_qty" string="Quantity"/>
+                                    <field name="mbox_weight" string="Weight (Kg)"/>
+                                    <field name="mbox_length" string="Length (cm)"/>
+                                    <field name="mbox_width" string="Width (cm)"/>
+                                    <field name="mbox_height" string="Height (cm)"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Marketing" id="marketing_tab">
+                            <group>
+                                <field name="discontinued_by_supplier"/>
+                                <field name="discontinued_soon"/>
+                                <field name="until_end_stock"/>
+                                <field name="on_request"/>
+                                <field name="state_id"/>
+                                <field name="effective_date"/>
+                                <field name="marketing_comments" widget="text"/>
+                            </group>
+                        </page>
+                        <page string="Required">
+                            <group>
+                                <field name="required_ids" nolabel="1"/>
+                            </group>
+                        </page>
+                        <page string="Accessories">
+                            <group>
+                                <field name="accessory_ids" nolabel="1"/>
+                            </group>
+                        </page>
+                        <page string="Components">
+                            <group>
+                                <field name="component_ids" nolabel="1"/>
+                            </group>
+                        </page>
+                        <page string="Substitutes">
+                            <group>
+                                <field name="substitute_ids" nolabel="1"/>
+                            </group>
+                        </page>
+                        <page string="ETIM">
+                            <group>
+                                <field name="class_id"/>
+                                <field name="feature_ids"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="product_tree_view">
+        <field name="name">product.tree</field>
+        <field name="model">lighting.product</field>
+        <field name="arch" type="xml">
+            <tree string="Product Tree"
+                  decoration-warning="state == 'draft'"
+                  decoration-info="state == 'to_review'"
+                  decoration-danger="state == 'discontinued'">
+                <field name="sequence" widget="handle"/>
+                <field name="reference"/>
+                <field name="description"/>
+                <field name="catalog_ids" widget="many2many_tags"/>
+                <field name="family_ids" widget="many2many_tags"/>
+                <field name="type_ids" widget="many2many_tags"/>
+                <field name="ean"/>
+                <field name="state"/>
+                <field name="last_update"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ============= common data ============ -->
+    <!-- view dimension.type -->
+    <record model="ir.ui.view" id="dimension_type_form_view">
+        <field name="name">dimension.type.form</field>
+        <field name="model">lighting.dimension.type</field>
+        <field name="arch" type="xml">
+            <form string="Dimension type Form">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="uom"/>
+                        <field name="description" widget="text"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="dimension_type_tree_view">
+        <field name="name">dimension.type.tree</field>
+        <field name="model">lighting.dimension.type</field>
+        <field name="arch" type="xml">
+            <tree string="Dimension type Tree">
+                <field name="name"/>
+                <field name="uom"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- view energyefficiency -->
+    <record model="ir.ui.view" id="energyefficiency_form_view">
+        <field name="name">energyefficiency.form</field>
+        <field name="model">lighting.energyefficiency</field>
+        <field name="arch" type="xml">
+            <form string="Energy efficiency Form">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="energyefficiency_tree_view">
+        <field name="name">energyefficiency.tree</field>
+        <field name="model">lighting.energyefficiency</field>
+        <field name="arch" type="xml">
+            <tree string="Energy efficiency Tree">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ============= smart button ============ -->
+    <!-- view language -->
+    <record model="ir.ui.view" id="language_form_view">
+        <field name="name">language.form</field>
+        <field name="model">lighting.language</field>
+        <field name="arch" type="xml">
+            <form string="Language Form">
+                <sheet>
+                    <group>
+                        <field name="code"/>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="language_tree_view">
+        <field name="name">language.tree</field>
+        <field name="model">lighting.language</field>
+        <field name="arch" type="xml">
+            <tree string="Language Tree">
+                <field name="code"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ============= description tab ============ -->
+    <!-- window action material2product smart button -->
+    <record id="product_material_action_product" model="ir.actions.act_window">
+        <field name="name">Product</field>
+        <field name="res_model">lighting.product</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">['|', '|', '|', '|', ('body_material_ids','=',active_id),
+            ('diffusor_material_ids','=',active_id), ('frame_material_ids','=',active_id),
+            ('reflector_material_ids','=',active_id), ('blade_material_ids','=',active_id)]
+        </field>
+        <field name="context">{
+            'default_body_material_ids': [(4, active_id, False)],
+            'default_diffusor_material_ids': [(4, active_id, False)],
+            'default_frame_material_ids': [(4, active_id, False)],
+            'default_reflector_material_ids': [(4, active_id, False)],
+            'default_blade_material_ids': [(4, active_id, False)]}
+        </field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Create the first product</p>
+        </field>
+    </record>
+
+    <!-- view material -->
+    <record model="ir.ui.view" id="product_material_form_view">
+        <field name="name">product.material.form</field>
+        <field name="model">lighting.product.material</field>
+        <field name="arch" type="xml">
+            <form string="Product material Form">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button type="action" class="oe_stat_button" icon="fa-filter"
+                                name="%(product_material_action_product)d">
+                            <field string="Products" name="product_count" widget="statinfo"/>
+                        </button>
+                    </div>
+                    <group>
+                        <field name="code"/>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="product_material_tree_view">
+        <field name="name">product.material.tree</field>
+        <field name="model">lighting.product.material</field>
+        <field name="arch" type="xml">
+            <tree string="Product material Tree">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="product_count"/>
+                <button name="%(product_material_action_product)d" type="action"
+                        string="Products" icon="fa-external-link"
+                        attrs="{'invisible': [('product_count', '=', 0)]}"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ============= Electrical characteristics tab ============ -->
+    <!-- view protection clas -->
+    <record model="ir.ui.view" id="product_protectionclass_form_view">
+        <field name="name">product.protectionclass.form</field>
+        <field name="model">lighting.product.protectionclass</field>
+        <field name="arch" type="xml">
+            <form string="Protection class Form">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="product_protectionclass_tree_view">
+        <field name="name">product.protectionclass.tree</field>
+        <field name="model">lighting.product.protectionclass</field>
+        <field name="arch" type="xml">
+            <tree string="Protection class Tree">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- view frequency -->
+    <record model="ir.ui.view" id="product_frequency_form_view">
+        <field name="name">product.frequency.form</field>
+        <field name="model">lighting.product.frequency</field>
+        <field name="arch" type="xml">
+            <form string="Product frequency Form">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="product_frequency_tree_view">
+        <field name="name">product.frequency.tree</field>
+        <field name="model">lighting.product.frequency</field>
+        <field name="arch" type="xml">
+            <tree string="Product frequency Tree">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- view dimmable -->
+    <record model="ir.ui.view" id="product_dimmable_form_view">
+        <field name="name">product.dimmable.form</field>
+        <field name="model">lighting.product.dimmable</field>
+        <field name="arch" type="xml">
+            <form string="Product dimmable Form">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="product_dimmable_tree_view">
+        <field name="name">product.dimmable.tree</field>
+        <field name="model">lighting.product.dimmable</field>
+        <field name="arch" type="xml">
+            <tree string="Product dimmable Tree">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- view product auxiliary equipment -->
+    <record model="ir.ui.view" id="product_auxiliaryequipment_form_view">
+        <field name="name">product.auxiliaryequipment.form</field>
+        <field name="model">lighting.product.auxiliaryequipment</field>
+        <field name="arch" type="xml">
+            <form string="Product auxiliary equipment Form">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="product_auxiliaryequipment_tree_view">
+        <field name="name">product.auxiliaryequipment.tree</field>
+        <field name="model">lighting.product.auxiliaryequipment</field>
+        <field name="arch" type="xml">
+            <tree string="Product auxiliary equipment Tree">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- view product auxiliaryequipmentbrand -->
+    <record model="ir.ui.view" id="product_auxiliaryequipmentbrand_form_view">
+        <field name="name">product.auxiliaryequipmentbrand.form</field>
+        <field name="model">lighting.product.auxiliaryequipmentbrand</field>
+        <field name="arch" type="xml">
+            <form string="Product auxiliary equipment brand Form">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="auxiliaryequipmentbrand_tree_view">
+        <field name="name">product.auxiliaryequipmentbrand.tree</field>
+        <field name="model">lighting.product.auxiliaryequipmentbrand</field>
+        <field name="arch" type="xml">
+            <tree string="Product auxiliary equipment brand Tree">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- view sensor -->
+    <record model="ir.ui.view" id="product_sensor_form_view">
+        <field name="name">product.sensor.form</field>
+        <field name="model">lighting.product.sensor</field>
+        <field name="arch" type="xml">
+            <form string="Product sensor Form">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="product_sensor_tree_view">
+        <field name="name">product.sensor.tree</field>
+        <field name="model">lighting.product.sensor</field>
+        <field name="arch" type="xml">
+            <tree string="Product sensor Tree">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ============= Lighting characteristics tab ============ -->
+    <!-- view ledbrand -->
+    <record model="ir.ui.view" id="product_ledbrand_form_view">
+        <field name="name">product.ledbrand.form</field>
+        <field name="model">lighting.product.ledbrand</field>
+        <field name="arch" type="xml">
+            <form string="Product LED brand Form">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="product_ledbrand_tree_view">
+        <field name="name">product.ledbrand.tree</field>
+        <field name="model">lighting.product.ledbrand</field>
+        <field name="arch" type="xml">
+            <tree string="Product LED brand Tree">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ============= Physical characteristics tab ============ -->
+    <!-- view product.ecorraecategory -->
+    <record model="ir.ui.view" id="product_ecorraecategory_form_view">
+        <field name="name">product.ecorraecategory.form</field>
+        <field name="model">lighting.product.ecorraecategory</field>
+        <field name="arch" type="xml">
+            <form string="Product Ecorrae I category Form">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="product_ecorraecategory_tree_view">
+        <field name="name">product.ecorraecategory.tree</field>
+        <field name="model">lighting.product.ecorraecategory</field>
+        <field name="arch" type="xml">
+            <tree string="Product Ecorrae I category Tree">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- view product.ecorrae2category -->
+    <record model="ir.ui.view" id="product_ecorrae2category_form_view">
+        <field name="name">product.ecorrae2category.form</field>
+        <field name="model">lighting.product.ecorrae2category</field>
+        <field name="arch" type="xml">
+            <form string="Product Ecorrae II category Form">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="product_ecorrae2category_tree_view">
+        <field name="name">product.ecorrae2category.tree</field>
+        <field name="model">lighting.product.ecorrae2category</field>
+        <field name="arch" type="xml">
+            <tree string="Product Ecorrae II category Tree">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- view photobiologicalriskgroup -->
+    <record model="ir.ui.view" id="product_photobiologicalriskgroup_form_view">
+        <field name="name">product.photobiologicalriskgroup.form</field>
+        <field name="model">lighting.product.photobiologicalriskgroup</field>
+        <field name="arch" type="xml">
+            <form string="Product photobiological risk group Form">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="product_photobiologicalriskgroup_tree_view">
+        <field name="name">product.photobiologicalriskgroup.tree</field>
+        <field name="model">lighting.product.photobiologicalriskgroup</field>
+        <field name="arch" type="xml">
+            <tree string="Product photobiological risk group Tree">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ============= sources tab ============ -->
+    <!-- view product.source -->
+    <record model="ir.ui.view" id="product_source_form_view">
+        <field name="name">product.source.form</field>
+        <field name="model">lighting.product.source</field>
+        <field name="arch" type="xml">
+            <form string="Product source Form">
+                <sheet>
+                    <group>
+                        <field name="relevance"/>
+                        <field name="num"/>
+                        <field name="lampholder_id"/>
+                        <field name="lampholder_technical_id"/>
+                    </group>
+                    <group>
+                        <field name="line_ids" nolabel="1">
+                            <tree>
+                                <field name="sequence" widget="handle"/>
+                                <field name="type_id"/>
+                                <field name="wattage_display"/>
+
+                                <field name="luminous_flux_display"/>
+
+                                <field name="color_temperature"/>
+                                <field name="special_spectrum"/>
+
+                                <field name="efficiency_ids" widget="many2many_tags"/>
+
+                                <field name="is_lamp_included"/>
+                                <field name="lamp_included_efficiency_ids" widget="many2many_tags"
+                                       attrs="{'invisible': [('is_lamp_included', '=', False)]}"/>
+
+                            </tree>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- view product.source line -->
+    <record model="ir.ui.view" id="product_source_line_form_view">
+        <field name="name">product.source.line.form</field>
+        <field name="model">lighting.product.source.line</field>
+        <field name="arch" type="xml">
+            <form string="Product source line Form">
+                <sheet>
+                    <group col="4">
+                        <group colspan="2">
+                            <field name="type_id"/>
+                        </group>
+                    </group>
+                    <group col="6">
+                        <field name="wattage"/>
+                        <field name="wattage_magnitude"
+                               attrs="{'required': [('wattage', '>', 0)]}"/>
+                        <field name="is_max_wattage"/>
+                    </group>
+                    <group col="6">
+                        <group colspan="2">
+                            <field name="color_temperature"/>
+                        </group>
+                    </group>
+                    <group col="4">
+                        <group colspan="3" col="4">
+                            <field name="luminous_flux1"/>
+                            <field name="luminous_flux2"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="efficiency_ids" widget="many2many_tags"/>
+                        </group>
+                    </group>
+                    <group attrs="{'invisible': [('is_integrated', '=', True)]}">
+                        <group>
+                            <field name="is_integrated" invisible="1"/>
+                            <field name="is_lamp_included"/>
+                            <field name="lamp_included_efficiency_ids" widget="many2many_tags"
+                                   attrs="{'invisible': [('is_lamp_included', '=', False)]}"/>
+                        </group>
+                    </group>
+                    <group string="LED specifications" attrs="{'invisible': [('is_led', '=', False)]}">
+                        <field name="is_led" invisible="1"/>
+                        <field name="color_consistency"/>
+                        <field name="special_spectrum"/>
+                        <field name="led_chip_ids">
+                            <tree editable="bottom">
+                                <field name="reference"/>
+                                <field name="brand_id"/>
+                                <field name="date"/>
+                            </tree>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ============= beams tab ============ -->
+    <!-- view product.beam -->
+    <record model="ir.ui.view" id="product_beam_form_view">
+        <field name="name">product.beam.form</field>
+        <field name="model">lighting.product.beam</field>
+        <field name="arch" type="xml">
+            <form string="Product beam Form">
+                <sheet>
+                    <group>
+                        <field name="num"/>
+                        <field name="photometric_distribution_ids" widget="many2many_tags"/>
+                        <field name="dimension_ids">
+                            <tree editable="bottom">
+                                <field name="sequence" widget="handle"/>
+                                <field name="type_id"/>
+                                <field name="value"/>
+                            </tree>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- view product.beam.photodistribution -->
+    <record model="ir.ui.view" id="product_beam_photodistribution_form_view">
+        <field name="name">product.beam.photodistribution.form</field>
+        <field name="model">lighting.product.beam.photodistribution</field>
+        <field name="arch" type="xml">
+            <form string="Product beam photometric distribution Form">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="product_beam_photodistribution_tree_view">
+        <field name="name">product.beam.photodistribution.tree</field>
+        <field name="model">lighting.product.beam.photodistribution</field>
+        <field name="arch" type="xml">
+            <tree string="Product beam photometric distribution Tree">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ============= Logistics tab ============ -->
+    <!-- view assembler -->
+    <record model="ir.ui.view" id="assembler_form_view">
+        <field name="name">assembler.form</field>
+        <field name="model">lighting.assembler</field>
+        <field name="arch" type="xml">
+            <form string="Assembler Form">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="assembler_tree_view">
+        <field name="name">assembler.tree</field>
+        <field name="model">lighting.assembler</field>
+        <field name="arch" type="xml">
+            <tree string="Assembler Tree">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- view supplier -->
+    <record model="ir.ui.view" id="supplier_form_view">
+        <field name="name">supplier.form</field>
+        <field name="model">lighting.supplier</field>
+        <field name="arch" type="xml">
+            <form string="Supplier Form">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="supplier_tree_view">
+        <field name="name">supplier.tree</field>
+        <field name="model">lighting.supplier</field>
+        <field name="arch" type="xml">
+            <tree string="Supplier Tree">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ============= marketing tab ============ -->
+    <!-- view product.state -->
+    <record model="ir.ui.view" id="product_state_form_view">
+        <field name="name">product.state.form</field>
+        <field name="model">lighting.product.state</field>
+        <field name="arch" type="xml">
+            <form string="Product state Form">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="product_state_tree_view">
+        <field name="name">product.state.tree</field>
+        <field name="model">lighting.product.state</field>
+        <field name="arch" type="xml">
+            <tree string="Product state Tree">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ============= ETIM tab ============ -->
+    <record model="ir.ui.view" id="product_etim_feature_form_view">
+        <field name="name">product.etim.feature.form</field>
+        <field name="model">lighting.product.etim.feature</field>
+        <field name="arch" type="xml">
+            <form string="Product Etim Feature form">
+                <sheet>
+                    <group>
+                        <field name="feature_id" domain="[('id', 'in', product_class_feature_ids)]"/>
+                        <field name="feature_type" invisible="1"/>
+
+                        <field name="unit_id" attrs="{'invisible': [('has_unit', '=', False)]}"/>
+                        <field name="has_unit" invisible="1"/>
+
+                        <field name="a_value_id" attrs="{'invisible': [('feature_type', '!=', 'A')]}"/>
+                        <field name="l_value" attrs="{'invisible': [('feature_type', '!=', 'L')]}"/>
+                        <field name="n_value" attrs="{'invisible': [('feature_type', '!=', 'N')]}"/>
+                        <field name="r1_value" attrs="{'invisible': [('feature_type', '!=', 'R')]}"/>
+                        <field name="r2_value" attrs="{'invisible': [('feature_type', '!=', 'R')]}"/>
+
+                        <field name="product_class_id" invisible="1"/>
+                        <field name="product_class_feature_ids" invisible="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="product_etim_feature_tree_view">
+        <field name="name">product.etim.feature.tree</field>
+        <field name="model">lighting.product.etim.feature</field>
+        <field name="arch" type="xml">
+            <tree string="Product Etim Feature tree">
+                <field name="feature_id"/>
+                <field name="value"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ============= ETIM ============ -->
+    <!-- view etim.unit -->
+    <record model="ir.ui.view" id="etim_unit_form_view">
+        <field name="name">etim.unit.form</field>
+        <field name="model">lighting.etim.unit</field>
+        <field name="arch" type="xml">
+            <form string="Etim Unit form">
+                <sheet>
+                    <group>
+                        <field name="code"/>
+                        <field name="name"/>
+                        <field name="abbreviation"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="etim_unit_tree_view">
+        <field name="name">etim.unit.tree</field>
+        <field name="model">lighting.etim.unit</field>
+        <field name="arch" type="xml">
+            <tree string="ETIM Unit tree">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="abbreviation"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- view etim.feature -->
+    <record model="ir.ui.view" id="etim_feature_form_view">
+        <field name="name">etim.feature.form</field>
+        <field name="model">lighting.etim.feature</field>
+        <field name="arch" type="xml">
+            <form string="Etim Feature form">
+                <sheet>
+                    <group>
+                        <field name="code"/>
+                        <field name="name"/>
+                        <field name="type"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="etim_feature_tree_view">
+        <field name="name">etim.feature.tree</field>
+        <field name="model">lighting.etim.feature</field>
+        <field name="arch" type="xml">
+            <tree string="ETIM Feature tree">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="type"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- view etim.value -->
+    <record model="ir.ui.view" id="etim_value_form_view">
+        <field name="name">etim.value.form</field>
+        <field name="model">lighting.etim.value</field>
+        <field name="arch" type="xml">
+            <form string="Etim Value form">
+                <sheet>
+                    <group>
+                        <field name="code"/>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="etim_value_tree_view">
+        <field name="name">etim.value.tree</field>
+        <field name="model">lighting.etim.value</field>
+        <field name="arch" type="xml">
+            <tree string="ETIM Value tree">
+                <field name="code"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- view etim.group -->
+    <record model="ir.ui.view" id="etim_group_form_view">
+        <field name="name">etim.group.form</field>
+        <field name="model">lighting.etim.group</field>
+        <field name="arch" type="xml">
+            <form string="Etim Group form">
+                <sheet>
+                    <group>
+                        <field name="code"/>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="etim_group_tree_view">
+        <field name="name">etim.group.tree</field>
+        <field name="model">lighting.etim.group</field>
+        <field name="arch" type="xml">
+            <tree string="ETIM Group tree">
+                <field name="code"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- view etim.class -->
+    <record model="ir.ui.view" id="etim_class_form_view">
+        <field name="name">etim.class.form</field>
+        <field name="model">lighting.etim.class</field>
+        <field name="arch" type="xml">
+            <form string="Etim Class form">
+                <sheet>
+                    <group>
+                        <field name="code"/>
+                        <field name="name"/>
+                        <field name="version"/>
+                        <field name="group_id"/>
+                        <field name="status"/>
+                        <field name="change_code"/>
+                        <field name="feature_ids">
+                            <tree>
+                                <field name="feature_id"/>
+                                <field name="unit_id"/>
+                                <field name="change_code"/>
+                            </tree>
+                        </field>
+
+                        <field name="synonim_ids">
+                            <tree editable="bottom">
+                                <field name="name"/>
+                            </tree>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="etim_class_tree_view">
+        <field name="name">etim.class.tree</field>
+        <field name="model">lighting.etim.class</field>
+        <field name="arch" type="xml">
+            <tree string="ETIM Class tree">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="group_id"/>
+                <field name="version"/>
+                <field name="status"/>
+                <field name="change_code"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- view etim.class.feature -->
+    <record model="ir.ui.view" id="etim_class_feature_form_view">
+        <field name="name">etim.class.feature.form</field>
+        <field name="model">lighting.etim.class.feature</field>
+        <field name="arch" type="xml">
+            <form string="Etim Class Feature form">
+                <sheet>
+                    <group>
+                        <field name="sequence"/>
+                        <field name="feature_id"/>
+                        <field name="unit_id"/>
+                        <field name="change_code"/>
+                        <field name="value_ids">
+                            <tree editable="bottom">
+                                <field name="value_id"/>
+                                <field name="change_code"/>
+                            </tree>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ================================ SEARCH VIEWS =========================== -->
+    <!-- Product Search view -->
+    <record model="ir.ui.view" id="lighting_product_view">
+        <field name="name">lighting.product.search</field>
+        <field name="model">lighting.product</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="reference" string="Product"
+                       filter_domain="['|', '|', '|', '|', '|', ('reference','ilike',self), ('description','ilike',self), ('ean','ilike',self), ('catalog_ids','ilike',self), ('family_ids','ilike',self), ('type_ids','ilike',self)]"/>
+                <field name="attachment_ids" string="Attachment type"
+                       filter_domain="[('attachment_ids.type_id.code','=',self)]"/>
+                <field name="reference"/>
+                <field name="description"/>
+                <field name="ean"/>
+                <field name="catalog_ids"/>
+                <field name="family_ids"/>
+                <field name="type_ids"/>
+                <field name="application_ids"/>
+                <field name="dimmable_ids"/>
+                <field name="body_material_ids" string="=Material code"
+                       filter_domain="['|', '|', '|', '|', ('body_material_ids.code','=ilike',self), ('diffusor_material_ids.code','=ilike',self), ('frame_material_ids.code','=ilike',self), ('reflector_material_ids.code','=ilike',self), ('blade_material_ids.code','=ilike',self)]"/>
+                <separator/>
+                <filter string="Published" name="published"
+                        domain="[('state','=', 'published')]"/>
+                <filter string="To review" name="to_review"
+                        domain="[('state','=', 'to_review')]"/>
+                <filter string="Discontinued" name="discontinued"
+                        domain="[('state', '=', 'discontinued')]"/>
+                <filter string="Draft" name="draft"
+                        domain="[('state', '=', 'draft')]"/>
+                <group expand="0" string="Group By">
+                    <filter string="State" name="groupby_state" domain="[]"
+                            context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- ================================ WINDOW ACTIONS =========================== -->
+    <!-- ============= main window ============ -->
+    <!-- window action product -->
+    <record model="ir.actions.act_window" id="product_list_action">
+        <field name="name">Products</field>
+        <field name="res_model">lighting.product</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_published': 1}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Create the first product
+            </p>
+        </field>
+    </record>
+
+    <!-- ============= common data ============ -->
+    <!-- window action dimension.type class -->
+    <record model="ir.actions.act_window" id="dimension_type_list_action">
+        <field name="name">Dimension type</field>
+        <field name="res_model">lighting.dimension.type</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Create the first Dimension type</p>
+        </field>
+    </record>
+
+    <!-- window action energyefficiency class -->
+    <record model="ir.actions.act_window" id="energyefficiency_list_action">
+        <field name="name">Energy efficiency</field>
+        <field name="res_model">lighting.energyefficiency</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Create the first Energy efficiency</p>
+        </field>
+    </record>
+
+    <!-- ============= description tab ============ -->
+    <!-- window action material -->
+    <record model="ir.actions.act_window" id="product_material_list_action">
+        <field name="name">Product material</field>
+        <field name="res_model">lighting.product.material</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Create the first material
+            </p>
+        </field>
+    </record>
+
+    <!-- ============= Electrical characteristics tab ============ -->
+    <!-- window action protection class -->
+    <record model="ir.actions.act_window" id="product_protectionclass_list_action">
+        <field name="name">Protection class</field>
+        <field name="res_model">lighting.product.protectionclass</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Create the first Protection class
+            </p>
+        </field>
+    </record>
+
+    <!-- window action frequency -->
+    <record model="ir.actions.act_window" id="product_frequency_list_action">
+        <field name="name">Product frequency</field>
+        <field name="res_model">lighting.product.frequency</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Create the first product frequency
+            </p>
+        </field>
+    </record>
+
+    <!-- window action dimmable -->
+    <record model="ir.actions.act_window" id="product_dimmable_list_action">
+        <field name="name">Product dimmable</field>
+        <field name="res_model">lighting.product.dimmable</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Create the first product dimmable
+            </p>
+        </field>
+    </record>
+
+    <!-- window action product auxiliary equipment -->
+    <record model="ir.actions.act_window" id="product_auxiliaryequipment_list_action">
+        <field name="name">Product auxiliary equipment</field>
+        <field name="res_model">lighting.product.auxiliaryequipment</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Create the first product auxiliary equipment
+            </p>
+        </field>
+    </record>
+
+    <!-- window action product auxiliaryequipmentbrand class -->
+    <record model="ir.actions.act_window" id="product_auxiliaryequipmentbrand_list_action">
+        <field name="name">Product auxiliary equipment brand</field>
+        <field name="res_model">lighting.product.auxiliaryequipmentbrand</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Create the first product auxiliary equipment brand</p>
+        </field>
+    </record>
+
+    <!-- window action sensor class -->
+    <record model="ir.actions.act_window" id="product_sensor_list_action">
+        <field name="name">Product sensor</field>
+        <field name="res_model">lighting.product.sensor</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Create the first product sensor</p>
+        </field>
+    </record>
+
+    <!-- ============= Lighting characteristics tab ============ -->
+    <!-- window action ledbrand class -->
+    <record model="ir.actions.act_window" id="product_ledbrand_list_action">
+        <field name="name">Product LED brand</field>
+        <field name="res_model">lighting.product.ledbrand</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Create the first LED brand</p>
+        </field>
+    </record>
+
+    <!-- ============= Pysical characteristics tab ============ -->
+    <!-- window action product.ecorraecategory class -->
+    <record model="ir.actions.act_window" id="product_ecorraecategory_list_action">
+        <field name="name">Product Ecorrae I category</field>
+        <field name="res_model">lighting.product.ecorraecategory</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Create the first Product Ecorrae I category</p>
+        </field>
+    </record>
+
+    <!-- window action product.ecorrae2category class -->
+    <record model="ir.actions.act_window" id="product_ecorrae2category_list_action">
+        <field name="name">Product Ecorrae II category</field>
+        <field name="res_model">lighting.product.ecorrae2category</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Create the first Product Ecorrae II category</p>
+        </field>
+    </record>
+
+    <!-- window action photobiologicalriskgroup class -->
+    <record model="ir.actions.act_window" id="product_photobiologicalriskgroup_list_action">
+        <field name="name">Product photobiological risk group</field>
+        <field name="res_model">lighting.product.photobiologicalriskgroup</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Create the first Photobiological risk group</p>
+        </field>
+    </record>
+
+    <!-- ============= sources tab ============ -->
+    <!-- window action product.beam.photodistribution class -->
+    <record model="ir.actions.act_window" id="product_beam_photodistribution_list_action">
+        <field name="name">Product beam photometric distribution</field>
+        <field name="res_model">lighting.product.beam.photodistribution</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Create the first Product beam photometric distribution</p>
+        </field>
+    </record>
+
+    <!-- ============= languages ============ -->
+    <!-- window action language -->
+    <record model="ir.actions.act_window" id="language_list_action">
+        <field name="name">Language</field>
+        <field name="res_model">lighting.language</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Create the first language
+            </p>
+        </field>
+    </record>
+
+    <!-- ============= logistics tab ============ -->
+    <!-- window action assembler class -->
+    <record model="ir.actions.act_window" id="assembler_list_action">
+        <field name="name">Assembler</field>
+        <field name="res_model">lighting.assembler</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Create the first Assembler</p>
+        </field>
+    </record>
+
+    <!-- window action supplier class -->
+    <record model="ir.actions.act_window" id="supplier_list_action">
+        <field name="name">Supplier</field>
+        <field name="res_model">lighting.supplier</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Create the first Supplier</p>
+        </field>
+    </record>
+
+    <!-- ============= marketing tab ============ -->
+    <!-- window action product.state class -->
+    <record model="ir.actions.act_window" id="product_state_list_action">
+        <field name="name">Product state</field>
+        <field name="res_model">lighting.product.state</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Create the first Product state</p>
+        </field>
+    </record>
+
+    <!-- ============= ETIM ============ -->
+    <!-- window action etim.unit -->
+    <record model="ir.actions.act_window" id="etim_unit_list_action">
+        <field name="name">ETIM Unit</field>
+        <field name="res_model">lighting.etim.unit</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Create the first ETIM Unit</p>
+        </field>
+    </record>
+
+    <!-- window action etim.feature -->
+    <record model="ir.actions.act_window" id="etim_feature_list_action">
+        <field name="name">ETIM Feature</field>
+        <field name="res_model">lighting.etim.feature</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Create the first ETIM Feature</p>
+        </field>
+    </record>
+
+    <!-- window action etim.value -->
+    <record model="ir.actions.act_window" id="etim_value_list_action">
+        <field name="name">ETIM Value</field>
+        <field name="res_model">lighting.etim.value</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Create the first ETIM Value</p>
+        </field>
+    </record>
+
+    <!-- window action etim.group -->
+    <record model="ir.actions.act_window" id="etim_group_list_action">
+        <field name="name">ETIM Group</field>
+        <field name="res_model">lighting.etim.group</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Create the first ETIM Group</p>
+        </field>
+    </record>
+
+    <!-- window action etim.class -->
+    <record model="ir.actions.act_window" id="etim_class_list_action">
+        <field name="name">ETIM Class</field>
+        <field name="res_model">lighting.etim.class</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Create the first ETIM Class</p>
+        </field>
+    </record>
+
+    <!-- ================================ MENU =========================== -->
+    <!-- ============= product menu ============ -->
+    <menuitem id="products_menu" name="Products" parent="lighting_product_menu"
+              action="product_list_action"
+              sequence="10"/>
+
+    <!-- ============= common data ============ -->
+    <menuitem id="dimension_types_menu" name="Dimension types" parent="common_data_menu"
+              action="dimension_type_list_action"
+              sequence="1000"/>
+
+    <menuitem id="energyefficiencies_menu" name="Energy efficiencies" parent="common_data_menu"
+              action="energyefficiency_list_action"
+              sequence="1000"/>
+
+    <!-- ============= description tab ============ -->
+    <menuitem id="product_materials_menu" name="Materials" parent="common_data_menu"
+              action="product_material_list_action"
+              sequence="1000"/>
+
+    <!-- ============= Electrical characteristics tab ============ -->
+    <menuitem id="product_protectionclasses_menu" name="Protection classes" parent="common_data_menu"
+              action="product_protectionclass_list_action"
+              sequence="1000"/>
+
+    <menuitem id="product_frequencies_menu" name="Frequencies" parent="common_data_menu"
+              action="product_frequency_list_action"
+              sequence="1000"/>
+
+    <menuitem id="product_dimmables_menu" name="Dimmables" parent="common_data_menu"
+              action="product_dimmable_list_action"
+              sequence="1000"/>
+
+    <menuitem id="product_auxiliaryequipments_menu" name="Auxiliary equipments" parent="common_data_menu"
+              action="product_auxiliaryequipment_list_action"
+              sequence="1000"/>
+
+    <menuitem id="product_auxiliaryequipmentbrands_menu" name="Auxiliary equipment brands" parent="common_data_menu"
+              action="product_auxiliaryequipmentbrand_list_action"
+              sequence="1000"/>
+
+    <menuitem id="product_sensors_menu" name="Sensors" parent="common_data_menu"
+              action="product_sensor_list_action"
+              sequence="1000"/>
+
+    <!-- ============= Lighting characteristics tab ============ -->
+    <menuitem id="product_ledbrands_menu" name="LED brands" parent="common_data_menu"
+              action="product_ledbrand_list_action"
+              sequence="1000"/>
+
+    <!-- ============= Pysical characteristics tab ============ -->
+    <menuitem id="product_ecorraecategories_menu" name="Ecorrae I categories" parent="common_data_menu"
+              action="product_ecorraecategory_list_action"
+              sequence="1000"/>
+
+    <menuitem id="product_ecorrae2categories_menu" name="Ecorrae II categories" parent="common_data_menu"
+              action="product_ecorrae2category_list_action"
+              sequence="1000"/>
+
+    <menuitem id="product_photobiologicalriskgrous_menu" name="Photobiological risk groups" parent="common_data_menu"
+              action="product_photobiologicalriskgroup_list_action"
+              sequence="1000"/>
+
+    <!-- ============= beams tab ============ -->
+    <menuitem id="product_beam_photodistributions_menu" name="Beam photometric distributions" parent="common_data_menu"
+              action="product_beam_photodistribution_list_action"
+              sequence="1000"/>
+
+    <!-- ============= languages ============ -->
+    <menuitem id="lenguages_menu" name="Languages" parent="common_data_menu"
+              action="language_list_action"
+              sequence="1000"/>
+
+    <!-- ============= logistics tab ============ -->
+    <menuitem id="assemblers_menu" name="Assemblers" parent="common_data_menu"
+              action="assembler_list_action"
+              sequence="1000"/>
+
+    <menuitem id="suppliers_menu" name="Suppliers" parent="common_data_menu"
+              action="supplier_list_action"
+              sequence="1000"/>
+
+    <!-- ============= marketing tab ============ -->
+    <menuitem id="product_states_menu" name="States" parent="common_data_menu"
+              action="product_state_list_action"
+              sequence="1000"/>
+
+    <!-- ============= ETIM ============ -->
+    <menuitem id="menu_lighting_etim"
+              name="ETIM"
+              parent="lighting_product_menu"
+              sequence="30"/>
+
+    <menuitem id="etim_group_menu"
+              parent="menu_lighting_etim"
+              action="etim_group_list_action"
+              name="Groups"
+              sequence="10"/>
+
+    <menuitem id="etim_class_menu"
+              parent="menu_lighting_etim"
+              action="etim_class_list_action"
+              name="Classes"
+              sequence="20"/>
+
+    <menuitem id="etim_feature_menu"
+              parent="menu_lighting_etim"
+              action="etim_feature_list_action"
+              name="Features"
+              sequence="30"/>
+
+    <menuitem id="etim_value_menu"
+              parent="menu_lighting_etim"
+              action="etim_value_list_action"
+              name="Values"
+              sequence="40"/>
+
+    <menuitem id="etim_unit_menu"
+              parent="menu_lighting_etim"
+              action="etim_unit_list_action"
+              name="Units"
+              sequence="50"/>
+</odoo>

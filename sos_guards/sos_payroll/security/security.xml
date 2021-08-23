@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	
+    <data>
+
+<!-- *****   Guard Attendance  *******  -->
+		
+		<record id="sos_attendance_manager_rule" model="ir.rule">
+			<field name="name">SOS Attendance Access for Managers</field>
+			<field name="model_id" ref="model_sos_guard_attendance"/>
+			<field name="domain_force">[(1 ,'=', 1)]</field>
+			<field name="global" eval="False"/>
+			<field name="groups" eval="[(4, ref('sos.group_hr_master'))]"/>
+		</record>     
+
+		<record id="sos_attendance_regions_rule" model="ir.rule">
+			<field name="name">SOS Attendance Access for Regions</field>
+			<field name="model_id" ref="model_sos_guard_attendance"/>
+			<field name="domain_force">[('center_id.user_ids','in',[user.id])]</field>
+			<field name="global" eval="False"/>
+			<field name="groups" eval="[(4, ref('sos.group_regional_manager'))]"/>
+		</record> 
+
+		<record id="sos_attendance_coordinators_rule" model="ir.rule">
+			<field name="name">SOS Attendance Access for Regions</field>
+			<field name="model_id" ref="model_sos_guard_attendance"/>
+			<field name="domain_force">[('project_id.coordinator_ids','in',[user.id])]</field>
+			<field name="global" eval="False"/>
+			<field name="groups" eval="[(4, ref('sos.group_coordinator'))]"/>
+		</record> 
+
+    </data>
+</openerp>

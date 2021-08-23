@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="clv_lab_test_result_mass_edit_view_form" model="ir.ui.view">
+        <field name="name">clv.lab_test.result.mass_edit.form</field>
+        <field name="model">clv.lab_test.result.mass_edit</field>
+        <field name="arch" type="xml">
+            <form>
+                <div class="oe_right">
+                </div>
+                <label for="lab_test_result_ids"/>
+                <field name="lab_test_result_ids"/>
+                <group>
+                    <group>
+                        <field name="date_result_selection"/>
+                    </group>
+                    <group name="date_result">
+                        <field name="date_result" nolabel='1'/>
+                    </group>
+                    <group>
+                        <field name="ref_id_selection"/>
+                    </group>
+                    <group name="ref_id">
+                        <field name="ref_id" options="{'no_open': False, 'no_create': True}" nolabel='1'/>
+                    </group>
+                </group>
+                <footer>
+                    <button 
+                        type="object"
+                        name="do_lab_test_result_mass_edit"
+                        string="Mass Edit"
+                        class="oe_highlight"
+                        />
+                    <button special="cancel" string="Cancel"/>
+                </footer>
+            </form>
+
+        </field>
+    </record>
+
+    <!-- More button Action -->
+    <act_window 
+        id="clv_lab_test_result_mass_edit_action"
+        name="Lab Test Result Mass Edit"
+        src_model="clv.lab_test.result"
+        res_model="clv.lab_test.result.mass_edit"
+        view_mode="form"
+        key2="client_action_multi"
+        target="new"
+    />
+
+</odoo>

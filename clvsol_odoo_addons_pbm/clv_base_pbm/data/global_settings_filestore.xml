@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo noupdate="1">
+
+    <record id="clv_global_settings_filestore_path" model="ir.config_parameter">
+        <field name="key" eval="&quot;&quot;&quot;clv.global_settings.current_filestore_path&quot;&quot;&quot;"/>
+        <field name="value" eval="&quot;&quot;&quot;/opt/odoo/clvsol_filestore/clvhealth_jcafb&quot;&quot;&quot;"/>
+    </record>
+
+</odoo>

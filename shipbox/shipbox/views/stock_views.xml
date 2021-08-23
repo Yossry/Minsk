@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_quant_package_weight_form_inherit" model="ir.ui.view">
+        <field name="name">stock.quant.package.weight.form.inherit</field>
+        <field name="model">stock.quant.package</field>
+        <field name="inherit_id" ref="delivery.view_quant_package_weight_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='shipping_weight']" position="attributes">
+                <attribute name="widget">scale</attribute>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_picking_form_inherit" model="ir.ui.view">
+        <field name="name">stock.picking.form.inherit</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook/page[2]" position="inside">
+                <button type="object" name="action_print_initial_demand_barcodes" string="Print Barcodes"/>
+            </xpath>
+            <!--<xpath expr="//field[@name='pack_operation_pack_ids']" position="after">-->
+                <!--<button type="object" name="action_print_operations_barcodes" string="Print Barcodes"/>-->
+            <!--</xpath>-->
+        </field>
+    </record>
+
+    <record id="choose_delivery_package_view_form_inherit" model="ir.ui.view">
+        <field name="name">choose.delivery.package.form.inherit</field>
+        <field name="model">choose.delivery.package</field>
+        <field name="inherit_id" ref="delivery.choose_delivery_package_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='shipping_weight']" position="attributes">
+                <attribute name="widget">scale</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

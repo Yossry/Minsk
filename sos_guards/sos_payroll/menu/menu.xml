@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>	
+		<menuitem id="menu_gms_attendance" name="Attendance" parent="sos.menu_gms_root" sequence="10" groups="sos.group_hr_master,base.group_user"/>
+			<menuitem id="menu_gms_attendance_reports" name="Reports" parent="menu_gms_attendance" sequence="100" groups="sos.group_hr_master,base.group_user"/>
+			<menuitem id="menu_gms_biometric_attendance_reports" parent="menu_gms_attendance" name="BioMetric Reports" sequence="110"/>
+				
+		<menuitem id="menu_gms_root_payroll" parent="sos.menu_gms_root" name="Payroll" sequence="30"/>                	
+        	<menuitem id="menu_gms_payroll_reports" parent="menu_gms_root_payroll" name="Reports" sequence="100"/>
+		
+		<menuitem id="payroll_configure" parent="sos.menu_gms_configuration" name="Payroll" groups="sos.group_guard_attendance" sequence="45"/> 
+
+	
+		<menuitem id="menu_invoices_reporting" parent="account.menu_finance_reports" name="Post Invoices" sequence="51" />
+
+		<menuitem id="menu_salary_reporting" parent="account.menu_finance_reports" name="Guard Salary" sequence="52" />	
+		
+	</data>
+</odoo>

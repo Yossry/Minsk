@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo noupdate="1">
+
+    <record id="clv_community_seq" model="ir.sequence">
+        <field name="name">Community Sequence</field>
+        <field name="code">clv.community.code</field>
+        <!--field name="padding" eval="9"/-->
+        <field name="padding" eval="4"/>
+        <!--field name="prefix">00000</field-->
+        <field name="prefix">17</field>
+        <field name="number_next">1</field>
+        <field name="number_increment">1</field>
+    </record>
+
+</odoo>

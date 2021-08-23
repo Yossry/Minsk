@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <menuitem name="Dispensations" id="clv_medicament_dispensation.menu_pharmacy_dispensation_dispensations"
+            parent="clv_base.menu_pharmacy_dispensation"
+            groups="clv_medicament.group_user"
+            sequence="40"/>
+
+        <menuitem name="Exports" id="clv_medicament.menu_pharmacy_dispensation_dispensations_exports"
+            parent="clv_medicament_dispensation.menu_pharmacy_dispensation_dispensations"
+            groups="clv_medicament_dispensation.group_user"
+            sequence="10"
+            action="clv_medicament_dispensation.clv_medicament_dispensation_export_action"/>
+
+    </data>
+</odoo>

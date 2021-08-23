@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <record model="ir.ui.view" id="air_ticket_request_tree_view">
+        <field name="name">AirTicket Request tree</field>
+        <field name="model">air.ticket.request</field>
+        <field name="arch" type="xml">
+            <tree string="Air Ticket Request">
+                <field name="name"/>
+                <field name="start_point"/>
+                <field name="end_point"/>
+                <field name="date"/>
+                <field name="employee_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="air_ticket_request_form_view">
+        <field name="name">Air Ticket Request form</field>
+        <field name="model">air.ticket.request</field>
+        <field name="arch" type="xml">
+            <form string="Air Ticket Request">
+                <header>
+                    <button string="Confirm" name="action_confirm" states="draft" type="object" class="oe_highlight"/>
+                    <button string="Approve" name="action_approve" states="confirmed" type="object" groups="hr_holidays.group_hr_holidays_manager" class="oe_highlight"/>
+                    <button string="Reject" name="action_reject" states="confirmed" type="object" groups="hr_holidays.group_hr_holidays_manager"/>
+                    <widget name="attach_document" string="Attach Air Ticket" action="message_post" highlight="1" groups="hr_holidays.group_hr_holidays_manager"/>
+                    <button name="action_send_mail_to_agent" string="Send Email" type="object" states="confirmed" class="btn-primary" groups="hr_holidays.group_hr_holidays_manager"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,approved,rejected"/>
+                </header>
+                <sheet>
+                    <group string="General information">
+                        <field name="name"/>
+                        <field name="start_point" required="True"/>
+                        <field name="end_point" required="True"/>
+                        <field name="date" required="True"/>
+                        <field name="prefer_travel_time" required="True"/>
+                        <field name="employee_id" invisible="1"/>
+                        <!--field name="partner_id" groups="hr_holidays.group_hr_holidays_manager"/-->
+                        <field name="leave_id" invisible="1"/>
+                        <field name="note"/>
+                        <field name="approved_quote_id"/>
+                    </group>
+                        <notebook>
+                            <page string="Travel Agents" name="partner_ids" groups="hr_holidays.group_hr_holidays_manager">
+                                <field name="partner_ids"/>
+                            </page>
+                            <page string="Travel Cost Quotes" name="partner_ids_quote" groups="hr_holidays.group_hr_holidays_manager">
+                                <field name="quote_ids" nolable="1">
+                                    <tree editable="bottom">
+                                        <field name="partner_id" required="True"/>
+                                        <field name="product_id" required="True"/>
+                                        <field name="name" required="True"/>
+                                        <field name="reason" required="True"/>
+                                        <field name="cost"/>
+                                        <field name="state"/>
+                                        <button name="action_approve" string="Approve" type="object" attrs="{'invisible': [('state', '!=', 'pending')]}"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_air_ticket_request">
+        <field name="name">Air Ticket Request</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">air.ticket.request</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Air Ticket Request"
+      id="menu_air_ticket_request"
+      action="action_air_ticket_request"
+      parent="hr_holidays.menu_hr_holidays_configuration"
+      sequence="4" groups="hr.group_hr_manager"
+    />
+</odoo>

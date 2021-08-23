@@ -1,0 +1,37 @@
+<odoo>
+	<record model="ir.ui.view" id="view_devices_kanban">
+		<field name="name">devices kanban</field>
+		<field name="model">rfid.devices</field>
+		<field name="arch" type="xml">
+			<kanban class="o_res_partner_kanban">
+				<field name="device_name"/>
+				<field name="device_path"/>
+				<field name="thread_state"/>
+				<templates>
+					<t t-name="kanban-box">
+						
+					</t>
+				</templates>
+			</kanban>
+		</field>
+	</record>
+	<record model="ir.ui.view" id="view_devices_form">
+		<field name="name">devices form</field>
+		<field name="model">rfid.devices</field>
+		<field name="arch" type="xml">
+			<form>
+				<sheet>
+					
+				</sheet>
+			</form>
+		</field>
+	</record>
+	<record id="devices_menu_action" model="ir.actions.act_window">
+		<field name="name">Devices</field>
+		<field name="res_model">rfid.devices</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">kanban,form</field>
+		<field name="domain">[]</field>
+	</record>
+	<menuitem id="devices_menu" name="Devices" action="devices_menu_action" />
+</odoo>

@@ -1,0 +1,33 @@
+@mixin chat-window() {
+    .o_thread_window{
+        left: 0;
+        right: 0;
+        width: 100%;
+        top: 0;
+        bottom: 0;
+        z-index: 111;
+        height: 100% !important;
+        .o_thread_composer{
+            .o_composer_container{
+                .o_composer {
+                    .o_composer_input{
+                        width: auto;
+                        margin-right: 130px;
+                        .o_chatter_composer_tools{
+                            .o_composer_button_send{
+                                display: inline-block !important;
+                                &:before{
+                                    content: "\f1d9";
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.o_web_client.ad_mobile {
+    @include chat-window();
+}

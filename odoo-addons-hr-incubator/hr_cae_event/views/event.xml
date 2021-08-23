@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright 2019 Coop IT Easy
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+    <record id="view_event_form" model="ir.ui.view">
+        <field name="name">view_event_form</field>
+        <field name="model">event.event</field>
+        <field name="inherit_id" ref="event.view_event_form"/>
+        <field name="arch" type="xml">
+
+            <field name="organizer_id" position="after">
+                <field name="department_id"/>
+            </field>
+
+            <field name="date_end" position="after">
+                <label for="duration"/>
+                <div class="o_row">
+                    <field name="duration" nolabel="1"/>
+                    <span>hours</span>
+                </div>
+            </field>
+
+            <xpath expr="//page[@name='event_mail_schedule']" position="before">
+                <page name="description_page" string="Description">
+                    <group>
+                        <field name="description"/>
+                    </group>
+                </page>
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="view_event_type_form" model="ir.ui.view">
+        <field name="name">view_event_type_form</field>
+        <field name="model">event.type</field>
+        <field name="inherit_id" ref="event.view_event_type_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='event_type_attendees']" position="after">
+                <h2 name="description_header">Description</h2>
+                <div name="description_box">
+                    <field name="description"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

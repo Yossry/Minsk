@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_clv_address_user,clv.address.user,model_clv_address,clv_address.group_user,1,0,0,0
+access_clv_address_manager,clv.address.manager,model_clv_address,clv_address.group_manager,1,1,1,0
+access_clv_address_supmanager,clv.address.supmanager,model_clv_address,clv_address.group_supmanager,1,1,1,1
+
+access_clv_address_category_user,clv.address.category.user,model_clv_address_category,clv_address.group_user,1,0,0,0
+access_clv_address_category_manager,clv.address.manager.category,model_clv_address_category,clv_address.group_manager,1,1,1,0
+access_clv_address_category_supmanager,clv.address.category.supmanager,model_clv_address_category,clv_address.group_supmanager,1,1,1,1
+
+access_clv_address_marker_user,clv.address.marker.user,model_clv_address_marker,clv_address.group_user,1,0,0,0
+access_clv_address_marker_manager,clv.address.manager.marker,model_clv_address_marker,clv_address.group_manager,1,1,1,0
+access_clv_address_marker_supmanager,clv.address.marker.supmanager,model_clv_address_marker,clv_address.group_supmanager,1,1,1,1

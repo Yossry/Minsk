@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_clv_aux_instance_user,clv.aux.instance.user,model_clv_aux_instance,clv_aux.group_user,1,0,0,0
+access_clv_aux_instance_manager,clv.aux.instance.manager,model_clv_aux_instance,clv_aux.group_manager,1,1,1,0
+access_clv_aux_instance_supmanager,clv.aux.instance.supmanager,model_clv_aux_instance,clv_aux.group_supmanager,1,1,1,1
+
+access_clv_aux_code_user,clv.aux.code.user,model_clv_aux_code,clv_aux.group_user,1,0,0,0
+access_clv_aux_code_manager,clv.aux.code.manager,model_clv_aux_code,clv_aux.group_manager,1,1,1,0
+access_clv_aux_code_supmanager,clv.aux.code.supmanager,model_clv_aux_code,clv_aux.group_supmanager,1,1,1,1

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data noupdate="1">
+		<!-- Sequences for sos.jacket retrun -->
+		<record id="seq_type_sos_jacket_return" model="ir.sequence.type">
+			<field name="name">Jacket Return</field>
+			<field name="code">sos.jacket.return</field>
+		</record>
+		<record id="seq_sos_jacket_return" model="ir.sequence">
+			<field name="name">Jacket Return</field>
+			<field name="code">sos.jacket.return</field>
+			<field name="prefix"></field>
+			<field name="padding">4</field>
+			<field name="implementation">no_gap</field>
+			<field name="retrun_number" eval="False" />
+		</record>
+	</data>
+</odoo>

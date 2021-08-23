@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>             
+    <data>
+    	
+		<!-- Invoice Comparsion Summary Project -->
+		<report
+			id="report_invoice_comp_summary_project"
+			string= "Invoice Comparsion Summary Project Wise"
+			model = "sos_reports.invoices.comp.summary"
+			report_type="qweb-pdf"
+			file="sos_reports.report_invoice_compsummaryproject"
+			name="sos_reports.report_invoice_compsummaryproject"
+		/>
+				
+		<!-- Invoice Comparsion Summary Center -->
+		<report
+			id="report_invoice_comp_summary_center"
+			string= "Invoice Comparsion Summary Center Wise"
+			model = "sos_reports.invoices.comp.summary"
+			report_type="qweb-pdf"
+			file="sos_reports.report_invoice_compsummarycenter"
+			name="sos_reports.report_invoice_compsummarycenter"
+		/>
+		
+		<!-- Invoice Comparsion Summary Post -->
+		<report
+			id="report_invoice_comp_summary_post"
+			string= "Invoice Comparsion Summary Post Wise"
+			model = "sos_reports.invoices.comp.summary"
+			report_type="qweb-pdf"
+			file="sos_reports.report_invoice_compsummarypost"
+			name="sos_reports.report_invoice_compsummarypost"
+		/>
+		
+		<!-- Invoice Project Status -->
+		<report
+			id="report_invoice_project_status"
+			string= "Invoice Status Project Wise"
+			model = "sos_reports.invoices.status.report"
+			report_type="qweb-pdf"
+			file="sos_reports.report_invoice_projectstatus"
+			name="sos_reports.report_invoice_projectstatus"
+		/>
+		
+		<!-- Invoice Center Status -->
+		<report
+			id="report_invoice_center_status"
+			string= "Invoice Status Center Wise"
+			model = "sos_reports.invoices.status.report"
+			report_type="qweb-pdf"
+			file="sos_reports.report_invoice_centerstatus"
+			name="sos_reports.report_invoice_centerstatus"
+		/>
+		
+		<!-- Invoice Post Status -->
+		<report
+			id="report_invoice_post_status"
+			string= "Invoice Status Post Wise"
+			model = "sos_reports.invoices.status.report"
+			report_type="qweb-pdf"
+			file="sos_reports.report_invoice_poststatus"
+			name="sos_reports.report_invoice_poststatus"
+		/>
+		
+		<!-- Invoices Verification -->
+		<report
+			id="report_invoices_verification"
+			string= "Invoices Verification"
+			model = "sos_reports.invoices.verification"
+			report_type="qweb-pdf"
+			file="sos_reports.report_invoicesverification"
+			name="sos_reports.report_invoicesverification"
+		/>
+		  
+	</data>
+</odoo>

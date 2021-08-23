@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>	
+		<template id ="sos_reports.report_guards_salary_projectwise">
+			<t t-call="report.html_container">
+				<div class="page">
+					<div class="row">
+					 	 <div class="col-xs-4">
+					 	 	 <img width="40%" style="max-height:125px;" class="img img-responsive" src="/sos_reports/static/img/logo.png"/>
+					 	 </div>
+					 	 <div class="col-xs-3">
+					 	 </div>
+					 	 
+					 	 <div class="col-xs-5" style="font-size:14px; font-weight:bold; text-align:right; align:left;margin-top:20px;">
+					 	 	SECURITY ORGANIZING SYSTEM (PVT) LIMITED
+					 	 </div>
+					 </div>			
+					 <div class="row" style="font-size:14px; font-weight:bold; text-align:center; align:left;">
+					 	<div class="col-xs-12">
+					 		Guards Salary Expense Report – Project Wise  From
+					 			<span t-esc="get_date_formate(data['date_from'])"/> To <span t-esc="get_date_formate(data['date_to'])"/>
+					 	</div>
+					 </div>
+					 
+					 <table class="table table-bordered">
+					 	<thead>
+					 		<tr style="font-size:10px; font-weight:bold;background-color:#A6ACAF;">
+					 			<th>Sr#.</th>
+					 			<th>Region Name</th>
+					 			<th>Salary Expense</th>
+					 			<th>Uniform Deduction</th>
+					 			<th>Security Deposit</th>
+					 			<th>Total</th>
+					 		</tr>
+					 		
+					 	</thead>
+					 	
+					 	<tbody>
+					 		<t t-foreach="Projects" t-as="project">
+					 	 		<tr style="font-size:15px; font-weight:bold; text-align:left; background-color:#E5E4E2;">
+					 	 			<td colspan="6"> <span t-esc="project['project_name']" /> </td>
+					 	 		</tr>
+						 		
+						 		<t t-foreach="project['region_lines']" t-as="region">
+						 			<tr style="background-color:#f8f9f9;">
+						 				<td>  <span t-esc="region_index + 1" /></td>
+						 				<td>  <span t-esc="region['region_name']" /></td>
+						 				<td>  <span t-esc="region['salary_expense'] and '{0:,}'.format(region['salary_expense'])" /></td>
+						 				<td>  <span t-esc="region['uniform_deduction'] and '{0:,}'.format(abs(region['uniform_deduction']))" /></td>
+						 				<td>  <span t-esc="region['security_deposit'] and '{0:,}'.format(abs(region['security_deposit']))" /></td>
+						 				<td>  <span t-esc="region['line_total'] and '{0:,}'.format(region['line_total'])" /></td>
+						 			</tr>
+						 		</t>
+						 			
+						 		<tr style="background-color:#f8f9f9;">
+						 			<td colspan="2" style="text-align:left;padding-left:50px;font-size:15px;font-weight:bold;">Total </td>
+						 			<td > <span t-esc="project['project_salary_expense'] and '{0:,}'.format(project['project_salary_expense'])" /> </td>
+						 			<td > <span t-esc="project['project_uniform_deduction'] and '{0:,}'.format(abs(project['project_uniform_deduction']))" /> </td>
+						 			<td > <span t-esc="project['project_security_deposit'] and '{0:,}'.format(abs(project['project_security_deposit']))" /> </td>
+						 			<td > <span t-esc="project['project_total'] and '{0:,}'.format(project['project_total'])" /> </td>
+						 		</tr>
+						 	</t>	
+					 	</tbody>
+					 	
+					 </table>
+					 
+				</div>	 
+			</t>
+		</template>
+		
+	</data>
+</openerp>
+

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+        
+    <record id="clv_address_view_form_address_aux" model="ir.ui.view">
+        <field name="name">clv.address.form</field>
+        <field name="model">clv.address</field>
+        <field name="inherit_id" ref="clv_address.clv_address_view_form"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <page name="settings" position="before">
+                <page string="Addresses (Aux)">
+                    <group>
+                        <group>
+                            <button name="clv_address_aux.clv_address_aux_action"
+                                    type="action"
+                                    class="oe_stat_button"
+                                    icon="fa-list"
+                                    context="{'search_default_related_address_id': id}"
+                                    >
+                                <div class="o_form_field o_stat_info">
+                                    <span class="o_stat_value">
+                                        <field name="count_addresses_aux"/>
+                                    </span>
+                                    <span class="o_stat_text"> Person(s) (Aux)</span>
+                                </div>
+                            </button>
+                        </group>
+                    </group>
+                    <field name="address_aux_ids" colspan="4" nolabel="1"/>
+                </page>
+            </page>
+        </field>
+    </record>
+
+    <record id="clv_address_aux_view_form_address" model="ir.ui.view">
+        <field name="name">clv.address_aux.form</field>
+        <field name="model">clv.address_aux</field>
+        <field name="inherit_id" ref="clv_address_aux.clv_address_aux_view_form"/>
+        <field name="priority" eval="6"/>
+        <field name="arch" type="xml">
+            <group name="group_top" position="after">
+                <group name="group_bottom" string="Related Address">
+                    <group name="group_bottom_left">
+                        <field name="related_address_is_unavailable" attrs="{'invisible': ['&amp;',('related_address_is_unavailable','=',False),('related_address_id','!=',False)]}"/>
+                        <field name="related_address_id" options='{"no_open": False, "no_create": True}'/>
+                        <field name="related_address_name" invisible="True"/>
+                        <field name="related_address_code" invisible="True"/>
+                        <field name="related_address_category_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_open': False, 'no_create': True}"/>
+                    </group>
+                    <group name="group_bottom_right">
+                        <button name="do_address_aux_remove_related_address"
+                                type="object"
+                                class="oe_stat_button, oe_edit_only"
+                                icon="fa-eraser"
+                                string=" Remove Related Address"
+                                confirm="Are you sure you want to remove the 'Related Address'?"
+                                attrs="{'invisible': [('related_address_id', '=', False)]}"
+                                >
+                        </button>
+                        <separator/>
+                        <button name="do_address_aux_get_related_address_data"
+                                type="object"
+                                class="oe_stat_button, oe_edit_only"
+                                icon="fa-download"
+                                string=" Get Related Address Data"
+                                confirm="Are you sure you want to copy the 'Related Address' data?"
+                                attrs="{'invisible': [('related_address_id', '=', False)]}"
+                                >
+                        </button>
+                    </group>
+                </group>
+            </group>
+        </field>
+    </record>
+
+    <record id="clv_address_aux_view_tree_address" model="ir.ui.view">
+        <field name="name">clv.address_aux.tree</field>
+        <field name="model">clv.address_aux</field>
+        <field name="inherit_id" ref="clv_address_aux_view_tree"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="code" position="after">
+                <field name="related_address_id"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="clv_address_aux_view_search_address" model="ir.ui.view">
+        <field name="name">clv.address_aux.search</field>
+        <field name="model">clv.address_aux</field>
+        <field name="inherit_id" ref="clv_address_aux.clv_address_aux_view_search"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="code" position="after">
+                <field name="related_address_id"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

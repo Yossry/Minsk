@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<record id="sync_afex_beneficiary_view_form" model="ir.ui.view">
+    <field name="name">sync.afex.beneficiary.view.form</field>
+    <field name="model">sync.afex.beneficiary</field>
+    <field name="arch" type="xml">
+        <form string="Retrieve Beneficiary Information from AFEX">
+            <group>
+                <field name="label_header" nolabel="1" colspan="2"/>
+                <field name="name" nolabel="1" colspan="2"/>
+                <field name="data_original" invisible="1"/>
+                <field name="bank_id" invisible="1"/>
+                <field name="date_retrieved" invisible="1"/>
+            </group>
+            <footer>
+                <field name="label_footer" nolabel="1"/>
+                <button name="action_sync" string="Replace" type="object" class="btn-primary"
+                        confirm="Warning: The information you currently hold in Odoo for the beneficiary will be
+                                 overwritten by the information retrieved from AFEX. Do you wish to continue?"/>
+                <button string="Cancel" class="btn-secondary" special="cancel"/>
+            </footer>
+        </form>
+    </field>
+</record>
+
+<record id="sync_afex_beneficiary_view_action" model="ir.actions.act_window">
+    <field name="name">Retrieve Beneficiary Information from AFEX</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">sync.afex.beneficiary</field>
+    <field name="binding_model_id" ref="base.model_res_partner_bank"/>
+    <field name="view_type">form</field>
+    <field name="view_mode">form</field>
+    <field name="view_id" ref="sync_afex_beneficiary_view_form"/>
+    <field name="target">new</field>
+</record>
+
+
+<record id="sync_afex_beneficiary_timeout_view_form" model="ir.ui.view">
+    <field name="name">sync.afex.beneficiary.error.view.form</field>
+    <field name="model">sync.afex.beneficiary</field>
+    <field name="priority">100</field>
+    <field name="arch" type="xml">
+        <form string="Odoo Server Error">
+            <p>
+                The replacement period has timed out. Please Retrieve Beneficiary Information from AFEX again
+            </p>
+            <footer>
+                <button string="Ok" class="btn-primary" special="cancel"/>
+            </footer>
+        </form>
+    </field>
+</record>
+
+</odoo>

@@ -1,0 +1,10 @@
+"id","parent_id/id","firstname","lastname","type","customer_id","email","phone","comment","title","mobile"
+"part_cct_1","part_cfar_10000521",,"Personalchef Per Ek tel 08-77 77 78","contact",1,,,,,
+"part_cct_5","part_cfar_20500674",,"Sanna Malm","contact",5,"sanna.kh@.com",,,,
+"part_cct_6","part_cfar_10000522",,"Personalochef Lars Ek 08-171312","contact",6,"lars.ek@ITcom.Now",,,,
+"part_cct_7","part_cfar_10000523",,"Fredrik Lööv SIF 08-171320","contact",7,"fredrik.loov@ITcom.Now",,,,
+"part_cct_8","part_cfar_10000524",,"Thomas Klasson 08-333 666","contact",8,,,,,
+"part_cct_9","part_cfar_21000036",,"Carlos Cerna 08-111 888","contact",9,,,,,
+"part_cct_10","part_cfar_10800000",,"Bert Bok","contact",10,,,,,
+"part_cct_11","part_cfar_10800001",,"Britta Band","contact",11,,,,,
+"part_cct_12","part_cfar_10800002",,"Harry Häftsson","contact",12,,,,,

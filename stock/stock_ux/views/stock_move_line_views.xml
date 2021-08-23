@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="view_move_line_form" model="ir.ui.view">
+        <field name="name">stock.move.line.form</field>
+        <field name="model">stock.move.line</field>
+        <field name="inherit_id" ref="stock.view_move_line_form"/>
+        <field name="arch" type="xml">
+            <field name="lot_id" position="after">
+                <field name="move_id" readonly="1"/>
+                <field name="picking_create_user_id"/>
+                <field name="picking_partner_id"/>
+                <field name="picking_code"/>
+            </field>
+            <field name="qty_done" position="after">
+                <button name="set_all_done" string="Set all Done" type="object" icon="fa-check" invisible="not context.get('show_reserved') or context.get('state_done')"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="stock_move_line_view_search" model="ir.ui.view">
+        <field name="name">stock.move.line.filter</field>
+        <field name="model">stock.move.line</field>
+        <field name="inherit_id" ref="stock.stock_move_line_view_search"/>
+        <field name="arch" type="xml">
+            <field name="location_id" position="before">
+                <field name="location_id" string="Net Quantity Location" filter_domain="['|',('location_id','ilike',self),('location_dest_id','ilike',self)]" context="{'location': self}"/>
+            </field>
+            <filter name="manufacturing" position="after">
+                <separator/>
+                <filter string="With Quantity Done" name="with_quantity_done" domain="[('qty_done', '&gt;', 0.0)]"/>
+            </filter>
+            <filter name="by_state" position="after">
+                <filter string="Product" name="product_id" context="{'group_by':'product_id'}"/>
+                <filter string="Picking" name="picking"  context="{'group_by':'picking_id'}"/>
+                <!-- Si queremos agregar group by estos campos habria que hacerlos store o hacer una vista sql -->
+                <filter string="Picking Type" name="picking_type"  context="{'group_by':'picking_type_id'}"/>
+                <!-- <filter string="Picking Partner" name="picking_partner_id"  context="{'group_by':'picking_partner_id'}"/> -->
+            </filter>
+        </field>
+    </record>
+
+    <record id="view_move_line_tree2" model="ir.ui.view">
+        <field name="name">stock.move.line.tree</field>
+        <field name="model">stock.move.line</field>
+        <field name="inherit_id" ref="stock.view_move_line_tree"/>
+        <field name="arch" type="xml">
+            <field name="location_dest_id" position="after">
+                <field name="product_uom_qty_location" sum="Total"/>
+                <!-- on enterprise view is not refres -->
+                <!-- <field name="product_uom_qty_location" sum="Total" invisible="not context.get('location', False)"/> -->
+            </field>
+        </field>
+    </record>
+
+    <record id="view_move_line_tree" model="ir.ui.view">
+        <field name="name">stock.move.line.tree</field>
+        <field name="model">stock.move.line</field>
+        <field name="mode">primary</field>
+        <field name="priority">50</field>
+        <field name="inherit_id" ref="stock.view_move_line_tree"/>
+        <field name="arch" type="xml">
+            <tree position="attributes">
+                <attribute name="editable">bottom</attribute>
+                <attribute name="decoration-muted">result_package_id</attribute>
+                <attribute name="decoration-danger">qty_done&gt;product_qty</attribute>
+                <attribute name="decoration-success">qty_done==product_qty and state!='done' and not result_package_id</attribute>
+            </tree>
+            <field name="location_dest_id" position="attributes">
+                <attribute name="readonly">1</attribute>
+            </field>
+            <field name="location_id" position="attributes">
+                <attribute name="readonly">1</attribute>
+            </field>
+            <field name="product_id" position="attributes">
+                <attribute name="readonly">1</attribute>
+            </field>
+            <field name="date" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="state" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="product_id" position="after">
+                <field name="result_package_id" invisible="1"/>
+                <field name="product_qty" invisible="1"/>
+                <field name="picking_id" invisible="1"/>
+                <field name="product_uom_id" string="Unit of Measure" groups="uom.group_uom" readonly="1"/>
+                <field name="lots_visible" invisible="1"/>
+                <field name="owner_id" readonly="1"/>
+                <field name="lot_id" attrs="{'invisible': [('lots_visible', '=', False)]}" domain="[('product_id', '=', product_id)]" groups="stock.group_production_lot" context="{'default_product_id': product_id, 'active_picking_id': picking_id}" options="{'create':True, 'create_edit':True}"/>
+            </field>
+            <field name="qty_done" position="after">
+                <button name="set_all_done" string="Set all Done" type="object" icon="fa-check" states="confirmed,assigned,waiting,partially_available"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_stock_move_line_operation_tree" model="ir.ui.view">
+        <field name="name">stock.move.line.tree</field>
+        <field name="model">stock.move.line</field>
+        <field name="inherit_id" ref="stock.view_stock_move_line_operation_tree"/>
+        <field name="arch" type="xml">
+            <field name="qty_done" position="after">
+                <button name="set_all_done" string="Set all Done" type="object" icon="fa-check" states="confirmed,assigned,waiting,partially_available" context="{'from_popup':True}"/>
+            </field>
+            <!-- for compatibility with web_m2x_options we force allowing create lots -->
+            <field name="lot_id" position="attributes">
+                <attribute name="options">{'create':True, 'create_edit':True}</attribute>
+            </field>
+        </field>
+    </record>
+
+    <!-- adds action to add all move lines -->
+    <record model="ir.actions.server" id="action_operation_set_all_done">
+        <field name="name">Set all done</field>
+        <field name="model_id" ref="stock.model_stock_move_line"/>
+        <field name="binding_model_id" ref="stock.model_stock_move_line"/>
+        <field name="state">code</field>
+        <field name="code">
+records.set_all_done()
+        </field>
+    </record>
+
+    <!-- adds action to add all move lines -->
+    <record model="ir.actions.server" id="action_operation_set_all_undone">
+        <field name="name">Set all undone</field>
+        <field name="model_id" ref="stock.model_stock_move_line"/>
+        <field name="binding_model_id" ref="stock.model_stock_move_line"/>
+        <field name="state">code</field>
+        <field name="code">
+records.filtered(lambda x: x.state not in ['draft', 'done', 'cancel']).write({'qty_done': False})
+        </field>
+    </record>
+
+    <record id="stock.stock_move_line_action" model="ir.actions.act_window">
+        <field name="context">{'search_default_todo': 1,'search_default_done': 1}</field>
+    </record>
+
+    <record id="stock.stock_move_line_menu" model="ir.ui.menu">
+        <field name="name">Products Moves Detailed</field>
+    </record>
+
+</odoo>

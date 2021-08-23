@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<record model="ir.ui.view" id="transport_cost_list_view">
+			<field name="name">transport_cost</field>
+			<field name="model">transport.cost</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="qut_number" />
+					<field name="is_next" />
+					<field name="is_expired" />
+					<field name="partner_id" />
+					<field name="free_days" />
+					<field name="country_loading_id" />
+					<field name="state_loading_id" />
+					<field name="city_loading_id" />
+					<field name="place_loading_id" />
+					<field name="country_dest_id" />
+					<field name="state_dest_id" />
+					<field name="city_dest_id" />
+					<field name="place_dest_id" />
+					<field name="date" />
+					<field name="price" />
+					<field name="total" />
+					<field name="active"/>
+				</tree>
+			</field>
+		</record>
+
+
+		<record model="ir.ui.view" id="transport_cost_form_view">
+			<field name="name">transport_cost</field>
+			<field name="model">transport.cost</field>
+			<field name="arch" type="xml">
+				<form>
+					<sheet>
+					<div class="oe_button_box" name="button_box">  
+                            <button name="call_job" type="object"  
+                            class="oe_stat_button" icon="fa-pencil-square-o" string="Job">  
+                                 <!-- (If you want to display the count)<field name="field_name_for_count" widget="statinfo"   
+                            string="You String Name" />   -->
+                           </button> 
+                           <button name="call_sale_inquiry" type="object"  
+                            class="oe_stat_button" icon="fa-pencil-square-o" string="Sale Inquiry">  
+                                 <!-- (If you want to display the count)<field name="field_name_for_count" widget="statinfo"   
+                            string="You String Name" />   -->
+                           </button>
+                       </div>
+						<group>
+							<group>
+							    <field name="partner_id"
+                                    options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" 
+                                    required="1"
+                                    string="Transporter Name"/>
+								<field name="qut_number" required="1" string="Quotation No."/>
+								<field name="from_date" />
+                                <field name="to_date" />
+								<!-- <field name="free_days" /> -->
+							</group>
+							<group>
+								<field name="date" />
+								<!-- <field name="price" string="Rate"
+								       attrs="{'readonly': [('qut_number', '=', False),('partner_id', '=', False)]}"/> -->
+								<!-- <field name="currency_id" options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/> -->
+							    <field name="payment_term_id" options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+							    <field name="active"/>
+                                <field name="is_expired" />
+                                <field name="is_next" readonly="1"/>
+							</group>
+						</group>
+						<notebook>
+						  <page string="General Info">
+						      <group>
+						          <group>
+						              <field name="country_loading_id"
+                                            options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" />
+                                        <field name="state_loading_id"
+                                            domain="[('country_id','=',country_loading_id)]"
+                                            options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" />
+                                        <field name="city_loading_id"
+                                            domain="[('country_id','=',country_loading_id),'|',('state_id','=',state_loading_id),('state_id','=',False)]"
+                                            options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" />
+                                        <field name="place_loading_id"
+                                            domain="[('country_id','=',country_loading_id),'|',
+                                            '&amp;',('city_id','=',city_loading_id),('city_id','!=',False),
+                                            '&amp;',('state_id','=',state_loading_id),('state_id','!=',False)]"
+                                            options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" />
+                                        <field name="terminal_loading_id" domain="[('city_id','=',city_loading_id)]" 
+                                                options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+						          </group>
+						          <group>
+    						          <field name="country_dest_id"
+                                        options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" />
+                                    <field name="state_dest_id"
+                                        domain="[('country_id','=',country_dest_id)]"
+                                        options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" />
+                                    <field name="city_dest_id"
+                                        domain="[('country_id','=',country_dest_id),'|',('state_id','=',state_dest_id),('state_id','=',False)]"
+                                        options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" />
+                                    <field name="place_dest_id"
+                                        domain="[('country_id','=',country_dest_id),'|',
+                                        '&amp;',('city_id','=',city_dest_id),('city_id','!=',False),
+                                        '&amp;',('state_id','=',state_dest_id),('state_id','!=',False)]"
+                                        options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" />
+                                    <field name="terminal_discharge_id" domain="[('city_id','=',city_dest_id)]" 
+                                                options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+						          </group>
+						      </group>
+						  </page>
+						  <page string="Costs">
+					           <label for="price_line_ids" string='Rate'/>
+                                <field name="price_line_ids" nolabel="1">
+                                    <tree editable="botton">
+                                        <field name="container_size_id"
+                                            options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" />
+                                        <field name="weight_type_id"
+                                           options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" />
+                                        <field name="truck_type_id"
+                                        options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" />
+                                        <field name="free_at_loading" widget="float_time"/>
+                                        <field name="free_at_customs" widget="float_time"/>
+                                        <field name="free_at_discharge" widget="float_time"/>
+                                        <field name="currency_id" 
+                                               options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+                                        <field name="price" string="Rate"/>
+                                        <field name="total"/>
+                                    </tree>
+                                    <form></form>
+                                </field>
+                                 <label for="cost_line_ids" string='Additional Cost'/>
+                                <field name="cost_line_ids" nolabel="1">
+                                    <tree editable="botton">
+                                        <field name="product_id"
+                                            options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" 
+                                            domain="[('is_add_cost','=',True)]"/>
+                                        <field name="container_size_id"
+                                            options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+                                        <field name="per_quantity" string="Per Equipment"/>
+                                        <field name="currency_id" options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+                                        <field name="cost" string="Rate"/>
+                                    </tree>
+                                    <form>
+                                        <field name="product_id"
+                                            options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" 
+                                            domain="[('is_add_cost','=',True)]"/>
+                                        <field name="cost" string="Rate"/>
+                                    </form>
+                                </field>
+                                <label for="cost_line_discount_ids" string='Additional Discount'/>
+                                <field name="cost_line_discount_ids" nolabel="1">
+                                    <tree editable="botton">
+                                        <field name="product_id"
+                                            options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" />
+                                        <field name="container_size_id"
+                                            options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" />
+                                        <field name="per_quantity" string="Per Equipment"/>
+                                        <field name="currency_id" options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+                                        <field name="cost" string="Rate"/>
+                                    </tree>
+                                    <form>
+                                        <field name="product_id"
+                                            options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+                                        <field name="cost" string="Rate"/>
+                                    </form>
+                                </field>
+						  </page>
+						  <page string="Notes">
+						      <!-- <label for="traport_cost_note_ids" string='No/> -->
+                                <field name="traport_cost_note_ids">
+                                    <tree editable="botton">
+                                        <field name="note"/>
+                                        <field name="create_uid"/>
+                                        <field name="create_date"/>
+                                        <field name="write_uid"/>
+                                        <field name="write_date"/>
+                                    </tree>
+                                </field>
+						  </page>
+						</notebook>
+
+						<!-- <group>
+							<field name="total" />
+						</group> -->
+						<!-- <group>
+							<field name="note" />
+						</group> -->
+					</sheet>
+					<div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                 </div>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window"
+			id="transport_cost_action">
+			<field name="name">Transport Cost</field>
+			<field name="res_model">transport.cost</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+
+
+
+	</data>
+</odoo>

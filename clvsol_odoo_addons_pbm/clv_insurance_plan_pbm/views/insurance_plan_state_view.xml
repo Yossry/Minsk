@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="clv_insurance_plan_view_form_state" model="ir.ui.view">
+            <field name="name">clv.insurance_plan.form</field>
+            <field name="model">clv.insurance_plan</field>
+            <field name="inherit_id" ref="clv_insurance_plan.clv_insurance_plan_view_form"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <header name="header" position="inside">
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,suspended,active,cancelled"/>
+                    <button name="action_draft" type="object"
+                            string="New"
+                            attrs="{'invisible':[('state','not in',['cancelled'])]}"
+                            groups="clv_insurance_plan.group_manager"/>
+                    <button name="action_activate" type="object"
+                            string="Activate"
+                            attrs="{'invisible':[('state','not in',['draft','suspended'])]}"
+                            groups="clv_insurance_plan.group_manager"/>
+                    <button name="action_suspend" type="object"
+                            string="Suspend"
+                            attrs="{'invisible':[('state','not in',['draft','active'])]}"
+                            groups="clv_insurance_plan.group_manager"/>
+                    <button name="action_cancel" type="object"
+                            string="Cancel"
+                            attrs="{'invisible':[('state','not in',['draft','suspended','active'])]}"
+                            groups="clv_insurance_plan.group_manager"/>
+               </header>
+                <!--div name="button_box_2" position="inside">
+                    <button name="action_draft" type="object"
+                            string="New"
+                            attrs="{'invisible':[('state','not in',['cancelled'])]}"
+                            groups="clv_insurance_plan.group_manager"/>
+                    <button name="action_activate" type="object"
+                            string="Activate"
+                            attrs="{'invisible':[('state','not in',['draft','suspended'])]}"
+                            groups="clv_insurance_plan.group_manager"/>
+                    <button name="action_suspend" type="object"
+                            string="Suspend"
+                            attrs="{'invisible':[('state','not in',['draft','active'])]}"
+                            groups="clv_insurance_plan.group_manager"/>
+                    <button name="action_cancel" type="object"
+                            string="Cancel"
+                            attrs="{'invisible':[('state','not in',['draft','suspended','active'])]}"
+                            groups="clv_insurance_plan.group_manager"/>
+                </div-->
+            </field>
+        </record>
+
+        <record id="clv_insurance_plan_view_tree_state" model="ir.ui.view">
+            <field name="name">clv.insurance_plan.tree</field>
+            <field name="model">clv.insurance_plan</field>
+            <field name="inherit_id" ref="clv_insurance_plan.clv_insurance_plan_view_tree"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <field name="code" position="after">
+                    <field name="state"/>
+                </field>
+                <tree name="insurance_plans" position="attributes">
+                    <attribute name="decoration-muted">state=='draft'</attribute>
+                    <attribute name="decoration-success">state=='active'</attribute>
+                    <attribute name="decoration-warning">state in('suspended')</attribute>
+                    <attribute name="decoration-danger">state=='cancelled'</attribute>
+                    <!--attribute name="decoration-primary">state=='unknown'</attribute-->
+                    <!--attribute name="decoration-info">state=='unknown'</attribute-->
+                    <attribute name="decoration-it">state in('draft','cancelled')</attribute>
+                    <attribute name="decoration-bf">state in('active','suspended')</attribute>
+                </tree>
+            </field>
+        </record>
+
+        <record id="clv_insurance_plan_view_search_state" model="ir.ui.view">
+            <field name="name">clv.insurance_plan.search</field>
+            <field name="model">clv.insurance_plan</field>
+            <field name="inherit_id" ref="clv_insurance_plan.clv_insurance_plan_view_search"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <field name="code" position="after">
+                    <field name="state"/>
+                </field>
+                <group name="group_by" position="inside">
+                    <filter string="State" domain="[]" context="{'group_by':'state'}"/>
+                </group>
+            </field>
+        </record>
+
+    </data>
+</odoo>

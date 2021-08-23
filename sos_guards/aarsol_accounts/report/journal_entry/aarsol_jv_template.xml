@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="aarsol_accounts.journal_entry">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-set="style" t-value="o.jv_style or res_company.default_style or user.env.ref('professional_templates.default_style_for_all_reports')"/>
+                        <t t-call="web.basic_layout">
+                            <!-- START OF PAGE -->
+                            <div class="page" t-attf-style="color:{{style.text_color}} !important;">
+                                <div class="col-xs-12" style="padding:2px;"/> <!--Spacing-->
+                                <div class="col-xs-12" style="padding-left:0px; padding-right:0px; padding-top:5px; padding-bottom:0px; height: 60px;">
+                                   <t t-if="o.voucher_type">
+                                        <div t-attf-style="float:left; margin-top:0px;padding-top:0px;padding-left:15px;padding-right:15px;color:{{style.text_color}} !important; border:1px solid {{style.text_color}};">
+                                             <h4 id="voucher_type" style="margin-bottom:10px;">
+                                                <span t-field="o.voucher_type"/>
+                                            </h4>
+                                       </div>
+                                   </t>
+
+                                    <div t-attf-style="float:right; margin-top:0px;padding-top:0px;padding-left:15px;padding-right:15px;color:{{style.text_color}} !important; border:1px solid {{style.text_color}}">
+                                        <h4 id="title" style="margin-bottom:10px;">
+                                            <span t-if="o.state == 'posted'"><span t-field="o.name"/></span>
+                                            <span t-if="o.state == 'draft'"> * <span t-field="o.id"/></span>
+                                        </h4>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12" t-attf-style="border:1px solid {{style.text_color}}; padding-left:0px; padding-right:0px; padding-bottom:0px; padding-top:0px;">
+                                <!--start of wrapper -->
+                                    <t t-set="div_style" t-value="'width:auto; padding-left:10px; padding-right:10px; float:left; margin-left:25px;'"></t>
+                                    <div t-if="o.ref" t-attf-style="{{div_style}}">
+                                        <strong>Reference:</strong>
+                                        <p style="font-size:12px" t-field="o.ref"/>
+                                    </div>
+                                    <div t-if="o.journal_id" t-attf-style="{{div_style}}">
+                                        <strong>Journal:</strong>
+                                        <p style="font-size:12px" t-field="o.journal_id"/>
+                                    </div>
+                                    <div t-if="o.partner_id" t-attf-style="{{div_style}}">
+                                        <strong>Partner:</strong>
+                                        <p style="font-size:12px" t-field="o.partner_id"/>
+                                    </div>
+                                     <div t-if="o.date" t-attf-style="{{div_style}}">
+                                         <strong>Date:</strong>
+                                        <p style="font-size:12px" t-field="o.date"/>
+                                    </div>
+                                </div> <!--end of wrapper2-->
+                                <t t-call="aarsol_accounts.journal_data"/>
+                            </div>
+                        </t>
+                    </t>
+            </t>
+        </template>
+    </data>
+</odoo>

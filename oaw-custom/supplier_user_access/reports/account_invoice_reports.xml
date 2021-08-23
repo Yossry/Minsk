@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!--COPY EXISTING TEMPLATE HERE AND MODIFY-->
+    <template id="report_invoice_supplier_fm">
+        <t t-call="report.html_container">
+            <t t-foreach="doc_ids" t-as="doc_id">
+                <t
+                    t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'supplier_user_access.report_invoice_supplier_fm_document')"
+                />
+            </t>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright 2019 Coop IT Easy
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+     <record id="view_contribution_exemption_form" model="ir.ui.view">
+        <field name="name">hr.contribution.exemption.form</field>
+        <field name="model">hr.contribution.exemption</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="date_start"/>
+                        <field name="date_end"/>
+                        <field name="reason"/>
+                    </group>
+                </group>
+            </form>
+        </field>
+     </record>
+
+    <record id="view_contribution_exemption_tree" model="ir.ui.view">
+        <field name="name">hr.contribution.exemption.tree</field>
+        <field name="model">hr.contribution.exemption</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="date_start"/>
+                <field name="date_end"/>
+                <field name="reason"/>
+            </tree>
+        </field>
+     </record>
+
+    <record id="open_view_contribution_exemption_tree" model="ir.actions.act_window">
+        <field name="name">Contribution Exemption</field>
+        <field name="res_model">hr.contribution.exemption</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="menu_view_contribution_exemption_tree"
+        action="open_view_contribution_exemption_tree"
+        parent="hr.menu_human_resources_configuration"
+        groups="hr.group_hr_user"
+        sequence="1"/>
+</odoo>

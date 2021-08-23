@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2019 Creu Blanca
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record model="ir.ui.view" id="hr_employee_prl_form_view">
+        <field name="name">hr.employee.prl.form (in cb_hr_views)</field>
+        <field name="model">hr.employee.prl</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="prl_date"/>
+                        <field name="notes"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="hr_employee_prl_search_view">
+        <field name="name">hr.employee.prl.search (in cb_hr_views)</field>
+        <field name="model">hr.employee.prl</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="prl_date"/>
+                <field name="notes"/>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="hr_employee_prl_tree_view">
+        <field name="name">hr.employee.prl.tree (in cb_hr_views)</field>
+        <field name="model">hr.employee.prl</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="prl_date"/>
+                <field name="notes"/>
+            </tree>
+        </field>
+    </record>
+
+</odoo>

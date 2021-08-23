@@ -1,0 +1,59 @@
+<odoo>
+         <!-- FORM VIEW OF OEE -->
+         <record id="overall_equipment_effectiveness_form_view" model="ir.ui.view">
+             <field name="name">overall.equipment.effectiveness.from.view</field>
+             <field name="model">overall.equipment.effectiveness</field>
+             <field name="arch" type="xml">
+                 <form string='Overall Equipment Effectiveness'>
+                     <sheet>
+                         <group col="2">
+                           <field name="machine_id" required='1' readonly='1' options="{'no_create': True, 'no_create_edit':True}"/>
+                         </group>
+                         <group col="4">
+                           <field name="oee_run_time"/>
+                           <field name="oee_idle_time"/>
+                           <field name="oee_down_time"/>
+                           <field name="average_oee"/>
+                         </group>
+                  </sheet>
+              </form>
+          </field>
+      </record>
+          
+      <!-- TREE VIEW OF OEE -->
+      <record model="ir.ui.view" id="overall_equipment_effectiveness_tree_view">
+        <field name="name">overall.equipment.effectiveness.tree.view</field>
+        <field name="model">overall.equipment.effectiveness</field>
+        <field name="arch" type="xml">
+            <tree string ='OEE'>
+               <field name="machine_id" invisible='1'/>
+               <field name="oee_run_time"/>
+               <field name="oee_idle_time"/>
+               <field name="oee_down_time"/>
+               <field name="average_oee"/>
+            </tree>
+        </field>
+      </record> 
+          
+      <!-- SEARCH VIEW OF OEE -->
+      <record model="ir.ui.view" id="overall_equipment_effectiveness_search_view">
+        <field name="name">overall.equipment.effectiveness.search.view</field>
+        <field name="model">overall.equipment.effectiveness</field>
+        <field name="arch" type="xml">
+            <search string="OEE">
+                <field name="machine_id" string="Machine" filter_domain="[('machine_id','ilike',self)]"/>
+            </search>
+        </field>
+      </record>
+       
+      <!-- ACTION VIEW OF OEE -->
+      <record id="overall_equipment_effectiveness_action" model="ir.actions.act_window">
+          <field name="name">OEE</field>
+          <field name="res_model">overall.equipment.effectiveness</field>
+          <field name="view_type">form</field>
+          <field name="view_mode">tree,form</field>
+          <field name="context">{'search_default_machine_id': [active_id], 'default_machine_id': active_id}</field>
+          
+      </record>
+
+</odoo>

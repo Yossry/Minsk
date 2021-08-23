@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-extend="DashboardMain">
+		<t t-jquery=".o_web_settings_dashboard_share" t-operation="after">
+            <div class="text-center o_web_settings_dashboard_customize_theme"/>
+        </t>
+    </t>
+    <t t-name="DashboardThemeColors">
+        <div class="text-center o_web_settings_dashboard_customize_theme mt8">
+            <i class="fa fa-paint-brush fa-4x text-muted"/>
+            <div class="o_web_settings_dashboard_header">
+                Customize Theme
+            </div>
+            <div>
+                <small class="text-muted text-center o_web_settings_dashboard_compact_subtitle">
+                    customize your theme
+                </small>
+            </div>
+            <div class="mt16">
+                <a class="btn btn-primary btn-block o_setup_theme"><strong>Customize Theme</strong></a>
+            </div>
+        </div>
+    </t>
+    <t t-name="CustomizeTheme">
+        <div class="o_cusomize_theme">
+            <div class="row">
+                <div class="col-md-4 o_left_panel">
+                    <div class="text-center">
+                        <ul class="oe_theme_colorpicker" data-field="color">
+                            <t t-foreach="widget.result" t-as="rec">
+                                <li t-att-class="(rec.selected)? 'selected': ''">
+                                    <span t-att-data-id="rec.id" class="oe_theme_color"
+                                          t-att-style="'background: linear-gradient(-45deg,' + rec.buttons_color +  ' 50%,' + rec.leftbar_color + ' 50%)'">
+                                    <span class="o_theme_option">
+                                        <span class="o_view fa fa-eye"/>
+                                        <span class="o_remove fa fa-trash"/>
+                                    </span>
+                                    </span>
+                                </li>
+                            </t>
+                            <li>
+                                <span t-att-data-id="0" class="oe_theme_color o_add_theme"/>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-8 o_right_panel">
+                    <form class="o_control_form">
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label for="leftbar">Leftbar</label>
+                                <input type="text" name="leftbar_color" class="form-control o_colorpicker" placeholder="#875A7B"/>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="buttons_color">Buttons</label>
+                                <input type="text" name="buttons_color" class="form-control o_colorpicker" placeholder="#00a09d"/>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="menu_color">Menu</label>
+                                <input type="text" name="menu_color" class="form-control o_colorpicker" placeholder="#666666"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label for="heading_color">Heading</label>
+                                <input type="text" name="heading_color" class="form-control o_colorpicker" placeholder="#2f3136"/>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="label_color">Label</label>
+                                <input type="text" name="label_color" class="form-control o_colorpicker" placeholder="#999"/>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="label_value_color">Label Value</label>
+                                <input type="text" name="label_value_color" class="form-control o_colorpicker" placeholder="#666666"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label for="link_color">Link</label>
+                                <input type="text" name="link_color" class="form-control o_colorpicker" placeholder="#00a09d"/>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="panel_title_color">Panel Title</label>
+                                <input type="text" name="panel_title_color" class="form-control o_colorpicker" placeholder="#2f3136"/>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="tooltip_color">Tooltip</label>
+                                <input type="text" name="tooltip_color" class="form-control o_colorpicker" placeholder="#875A7B"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label for="button_box">Button Box</label>
+                                <input type="text" name="button_box" class="form-control o_colorpicker" placeholder="#666666"/>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="border_color">Border</label>
+                                <input type="text" name="border_color" class="form-control o_colorpicker" placeholder="#cccccc"/>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="o_form_title mt16" t-if="widget.is_status_tags">
+                        <span> Workflow Colors </span>
+                    </div>
+                    <form class="o_breadcrumb_form mt16" t-if="widget.is_status_tags">
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label for="tag_info">Tag Info</label>
+                                <input type="text" name="tag_info" class="form-control o_colorpicker" placeholder="#00b3e5"/>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="tag_danger">Tag Danger</label>
+                                <input type="text" name="tag_danger" class="form-control o_colorpicker" placeholder="#ca0c05"/>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="tag_success">Tag Success</label>
+                                <input type="text" name="tag_success" class="form-control o_colorpicker" placeholder="#00aa00"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label for="tag_warning">Tag Warning</label>
+                                <input type="text" name="tag_warning" class="form-control o_colorpicker" placeholder="#e47e01"/>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="tag_primary">Tag Primary</label>
+                                <input type="text" name="tag_primary" class="form-control o_colorpicker" placeholder="#005ba9"/>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="tag_muted">Tag Muted</label>
+                                <input type="text" name="tag_muted" class="form-control o_colorpicker" placeholder="#717171"/>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

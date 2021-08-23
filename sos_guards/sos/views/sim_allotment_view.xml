@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data> 
+		
+		<record model="ir.ui.view" id="sos_sim_allotment_tree_view">
+			<field name="name">sos.sim.allotment.tree.view</field>
+			<field name="model">sos.sim.allotment</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Sim_Allotment_Tree">
+					<field name="name"/>
+					<field name="employee_id" />
+					<field name="assignee"/>
+					<field name="center_id"/>
+					<field name="limit"/>
+					<field name="allotment_date"/>
+					<field name="status"/>
+				</tree>
+			</field>
+	</record>
+
+	<record model="ir.ui.view" id="sos_sim_allotment_form_view">
+		<field name="name">sos.sim.allotment.form.view</field>
+		<field name="model">sos.sim.allotment</field>
+		<field name="type">form</field>
+		<field name="arch" type="xml">	
+			<form string="Sim_Allotment_Form">
+				<sheet>
+				<group>
+					<group>
+						<field name="name" placeholder="Sim Number..."/>
+						<field name="assignee"/>
+						<field name="status"/>
+						<field name="limit"/>
+					</group>
+					<group>	
+							<field name="employee_id" domain="[('department_id','!=', 29),('is_guard','=', False)]" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}" />
+							<field name="center_id" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>
+							<field name="allotment_date"/>
+							
+					</group>
+				</group>
+				
+				<notebook>
+					<page name="bill_ids" string="Bills">
+						<group>
+							<field name="bill_ids" options="{'always_reload': true}">
+								<tree create="false" edit="false" delete="false">
+									<field name="name" readonly="1"/>
+									<field name="sim_number" readonly="1"/>
+									<field name="bill_month" readonly="1"/>
+									<field name="bill_date" readonly="1"/>
+									<field name="inv_amount" readonly="1"/>
+									<field name="limit" readonly="1"/>
+									<field name="deduction" readonly="1"/>
+								</tree> 	
+							</field>
+						</group>
+					</page>
+				</notebook>	
+				
+			</sheet>
+				<div class="oe_chatter">
+					<field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+					<field name="message_ids" widget="mail_thread" placeholder="Share a note..."/>
+	      		</div>
+			</form>
+		</field>
+	</record>
+			
+	<record id="sos_sim_allotment_filter" model="ir.ui.view">
+	<field name="name">sos.sim.allotment.filter</field>
+	<field name="model">sos.sim.allotment</field>
+	<field name="arch" type="xml">
+		<search string="Sim_Allotment_Filter">
+			<filter icon="terp-go-today"  name="active" domain="[('status','=','active')]" />			
+			<filter icon="terp-go-today" string="InActive" name="inactive" domain="[('status','=','inactive')]" />
+			<filter icon="terp-go-today" string="Blocked" name="blocked" domain="[('status','=','blocked')]" />
+			<filter icon="terp-go-today" string="Suspended" name="suspended" domain="[('status','=','suspended')]" />
+			<field name="allotment_date"/>
+			<field name="name"/>
+			<field name="employee_id"/>
+			<field name="center_id"/>
+			<field name="limit"/>
+			<separator/>
+				<group expand="0" string="Group By">
+					<filter string="Center" name="center_id" icon="terp-partner" domain="[]" context="{'group_by':'center_id'}"/>
+					<filter string="Employee" name="employee_id" icon="terp-partner" domain="[]" context="{'group_by':'employee_id'}"/>
+					<filter string="Allotment Date" name="allotment_date" icon="terp-partner" domain="[]" context="{'group_by':'allotment_date'}"/>
+					<filter string="Status" name="status" icon="terp-partner" domain="[]" context="{'group_by':'status'}"/>
+					<filter string="Limit" name="limit" icon="terp-partner" domain="[]" context="{'group_by':'limit'}"/>
+				</group>
+		</search>
+	</field>
+	</record>
+
+	<record id="sos_sim_allotment_action" model="ir.actions.act_window">
+		<field name="name">Sim Allotment</field>
+		<field name="res_model">sos.sim.allotment</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form</field>
+		<field name="domain">[]</field>
+		<field name="context">{}</field>
+		<field name="help" type="html">
+			<p class="oe_view_nocontent_create">
+				Click to create a new Sim Allotment.
+			</p>
+		</field>
+	</record>
+	
+	<menuitem id="menu_sos_sim_allotment"
+            action="sos_sim_allotment_action"
+            parent="hr.menu_hr_main"
+            groups="sos.group_special,sos.group_bank_account_info"
+            sequence="170"/>
+
+
+  
+  <!-- Sim Bill -->
+	<record model="ir.ui.view" id="sos_sim_bills_tree_view">
+		<field name="name">sos.sim.bills.tree.view</field>
+		<field name="model">sos.sim.bills</field>
+		<field name="type">tree</field>
+		<field name="arch" type="xml">
+			<tree string="Sim_Bills_Tree">
+				<field name="name"/>
+				<field name="sim_number" />
+				<field name="bill_month"/>
+				<field name="bill_date"/>
+				<field name="inv_amount"/>
+				<field name="limit"/>
+				<field name="deduction"/>
+				<field name="sim_id"/>
+				<field name="state"/>
+			</tree>
+		</field>
+	</record>
+  
+	<record model="ir.ui.view" id="sos_sim_bills_form_view">
+		<field name="name">sos.sim.bills.form.view</field>
+		<field name="model">sos.sim.bills</field>
+		<field name="type">form</field>
+		<field name="arch" type="xml">	
+			<form string="Sim_Bills_Form">
+				<header>
+						<button name="validate_bills" type="object" states="draft" string="Validate" class="oe_highlight"/>
+						<button name="done_bills" type="object" states="validate" string="Done" class="oe_highlight"/>			
+						<field name="state" widget="statusbar" nolabel="1" />
+					</header>
+				<sheet>
+					<group>
+						<group>
+							<field name="name"/>
+							<field name="sim_number"/>
+							<field name="inv_amount"/>
+							<field name="limit"/>
+						</group>
+						<group>
+							<field name="bill_month"/>
+							<field name="bill_date"/>	
+							<field name="sim_id" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}" invisible="0" readonly="1"/>
+							<field name="deduction"/>
+						</group>
+					</group>
+				</sheet>
+				<div class="oe_chatter">
+					<field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+					<field name="message_ids" widget="mail_thread" placeholder="Share a note..."/>
+		  		</div>
+			</form>
+		</field>
+	</record>
+	
+	
+	<record id="sos_sim_bills_filter" model="ir.ui.view">
+		<field name="name">sos.sim.bills.filter</field>
+		<field name="model">sos.sim.bills</field>
+		<field name="arch" type="xml">
+			<search string="Sim_Bills_Filter">
+				<field name="name"/>
+				<field name="sim_number"/>
+				<field name="sim_id"/>
+				<field name="inv_amount"/>
+				<field name="limit"/>
+				<separator/>
+					<group expand="0" string="Group By">
+						<filter string="Sim No." name="sim_number" icon="terp-partner" domain="[]" context="{'group_by':'sim_number'}"/>
+						<filter string="Bill Month" name="bill_month" icon="terp-partner" domain="[]" context="{'group_by':'bill_month'}"/>
+						<filter string="Date" name="bill_date" icon="terp-partner" domain="[]" context="{'group_by':'bill_date'}"/>
+						<filter string="Status" name="state" icon="terp-partner" domain="[]" context="{'group_by':'state'}"/>
+					</group>
+			</search>
+		</field>
+	</record>
+	
+	<record id="sos_sim_bills_action" model="ir.actions.act_window">
+			<field name="name">Sim Bills</field>
+			<field name="res_model">sos.sim.bills</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+					Click to create a new Sim Bills.
+				</p>
+			</field>
+	</record>
+	
+	
+	<record id="action_sos_sim_bills_validate" model="ir.actions.server">
+		<field name="name">Validate Bills</field>
+		<field name="model_id" ref="model_sos_sim_bills"/>
+		<field name="state">code</field>
+		<field name="code">self.validate_bills(cr, uid, context.get('active_ids', []), context=context)</field>
+		<field name="binding_model_id" ref="model_sos_sim_bills" />
+	</record>	
+	
+<!-- 	<record id="ir_action_sos_sim_bills_validate" model="ir.default">
+		<field name="key2">client_action_multi</field>
+		<field name="model">sos.sim.bills</field>
+		<field name="name">Validate Bills</field>
+		<field name="value" eval="'ir.actions.server,%d'%action_sos_sim_bills_validate"/>		
+	</record> -->
+
+<!-- 	<act_window
+            id="action_sos_sim_bills_validate"
+            name="Validate Bills"
+            res_model="sos.sim.bills"
+            view_mode="form"
+            multi="True"
+        
+            key2="client_action_multi"
+        /> -->
+	
+	<menuitem id="menu_sos_sim_bills"
+		action="sos_sim_bills_action"
+		parent="hr.menu_hr_main"
+		groups="sos.group_special,sos.group_bank_account_info"
+		sequence="180"/>  
+  
+  <!-- Sim Bill End -->
+  
+  
+    </data>
+</odoo>

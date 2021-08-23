@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Tree View -->
+    <record id="view_kiosk_service_tree" model="ir.ui.view">
+        <field name="name">kiosk.service.tree</field>
+        <field name="model">kiosk.service</field>
+        <field eval="8" name="priority"/>
+        <field name="arch" type="xml">
+            <tree string="Kiosk Service">
+                <field name="name"/>
+                <field name="code"/>
+                <field name="description"/>
+                <field name="service_provider_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form view-->
+    <record id="view_kiosk_service_form" model="ir.ui.view">
+        <field name="name">kiosk.service.form</field>
+        <field name="model">kiosk.service</field>
+        <field name="priority" eval="20"/>
+        <field name="arch" type="xml">
+            <form string="Kiosk Service">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button"
+                                string="Total Transaction"
+                                icon="fa-money"/>
+                                <field name="current_month_transaction_amount"/>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="service_provider_id"/>
+                            <field name="service_product_id"/>
+                            <field name="current_month_transaction_amount"/>
+                            <field name="current_month_rate"/>
+                            <field name="description"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string='Rates'>
+                            <field name="rate_ids" nolable="1">
+                                <tree editable="bottom">
+                                    <field name="name" required="True"/>
+                                    <field name="from_amount"/>
+                                    <field name="to_amount"/>
+                                    <field name="max_cap_amount"/>
+                                    <field name="rate_percent"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string='Transactions'>
+                            <field name="transaction_ids" nolable="1"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Menu Action Definition -->
+    <record id="action_kiosk_service_form" model="ir.actions.act_window">
+        <field name="name">Kiosk Services</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">kiosk.service</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Click to add a new service.
+          </p>
+        </field>
+    </record>
+
+    <menuitem
+        id="menu_kiosk_service"
+        name="Kiosk Services"
+        parent="menu_kiosk_configuration"
+        action="action_kiosk_service_form"
+        sequence="2"/>
+</odoo>

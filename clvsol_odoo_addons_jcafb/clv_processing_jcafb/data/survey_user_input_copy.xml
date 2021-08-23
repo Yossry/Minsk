@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo noupdate="1">
+
+    <record id="clv_processing_template_do_survey_user_input_copy" model="clv.processing.template">
+        <field name="name">Survey User Input Copy</field>
+        <field name="model">clv.abstract.process</field>
+        <field name="method">_do_survey_user_input_copy</field>
+    </record>
+
+    <record id="clv_processing_schedule_do_survey_user_input_copy" model="clv.processing.schedule">
+        <field name="name">Survey User Input Copy</field>
+        <field name="template_id" eval="clv_processing_template_do_survey_user_input_copy"/>
+    </record>
+
+</odoo>

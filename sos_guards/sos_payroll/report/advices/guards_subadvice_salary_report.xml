@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<template id ="sos_payroll.guards_subadvice_salary_report">
+			<t t-call="web.html_container">
+					<t t-call="web.external_layout" style="font-family:georgia,garamond,serif;font-size:10px;">
+						<div class="page">
+							<t t-set="bank_info" t-value="get_bank(data)"/>
+							
+							<div class="row" style="font-family:georgia,garamond,serif;font-size:10px;font-weight:bold;">
+								<span t-esc="time.strftime('%d/%m/%Y')" />
+							</div>
+							
+							<div class="row" style="font-family:georgia,garamond,serif;font-size:12px;margin-top:18px;">
+								Dear &#32;&#32;<span t-esc="bank_info['acctitle']" />,
+							</div>
+							
+							<!-- Loop For the Advices Start-->
+							<t t-foreach="get_advice(data)" t-as="o">
+								<div class="row" style="font-family:georgia,garamond,serif;font-size:13px;margin-left:80px;margin-top:25px;font-weight:bold;">
+									Payment Advice from A/C no. <span t-esc="bank_info['accno']"/> 
+										From period <span t-esc="get_month(o.batch_id.id)['from_name']"/>
+										to <span t-esc="get_month(o.batch_id.id)['to_name']"/>
+								</div>
+								
+								<!-- note -->	
+								<div class="row" style="font-family:georgia,garamond,serif;font-size:12px;margin-left:13px;padding: 15px;">
+									<span t-field="o.note"/>
+								</div>
+								
+								
+								<!-- Table -->
+								<table class="table table-condensed" width="100%" style="margin:top:50px;">
+									<thead>
+										<tr style="font-size:12px; font-weight:bold;border-top: 1px solid #000000;">
+											<th class="text-left">SI. No</th>
+											<th class="text-left">Post Name</th>
+											<th class="text-left">Name of the Employee</th>
+											<th class="text-left">Bank Account No.</th>
+											<th class="text-right">By Salary</th>
+											<th class="text-right">C/D</th>
+										</tr>
+									</thead>
+									<tbody>
+										<t t-foreach="get_detail(o.line_ids,data)[0]" t-as="line">
+											<tr style="font-size:13px;">
+												<td class="text-left">
+													<span t-esc="line_index + 1" />
+												</td>
+												<td class="text-left">
+													<span t-esc="line['postname']"/>
+												</td>
+												<td class="text-left">
+													<span t-esc="line['name']"/>
+												</td>
+												<td class="text-left">
+													<span t-esc="line['acc_no']"/>
+												</td>
+												<td class="text-right">
+													<span t-esc="line['bysal']"/>
+												</td>
+												<td class="text-right">
+													<span t-esc="line['debit_credit']"/>
+												</td>
+											</tr>	
+										</t>
+										
+										<!-- Total Line -->
+										<tr style="border:1px solid #000000;border-radius: 40px;">
+											<td colspan="4" class="text-center" style="font-family:georgia,garamond,serif;font-size:13px;font-weight:bold;border-top: 1px solid #000000;">Total :</td>
+											<td class="text-right" style="font-family:georgia,garamond,serif;font-size:12px;font-weight:bold;border-top: 1px solid #000000;"> <span t-esc="get_detail(o.line_ids,data)[1] and '{0:,.2f}'.format(get_detail(o.line_ids,data)[1]) or '-'" /></td>
+											<td  style="border-top: 1px solid #000000;"></td>
+										</tr>
+									</tbody>
+								</table>
+								
+								
+								<p style="font-family:georgia,garamond,serif;font-size:13px;margin-top:40px;">
+									Yours Sincerely
+								</p>
+							
+								<p style="font-family:georgia,garamond,serif;font-size:13px;margin-top:20px;">
+									For Security Organizing System
+								</p>
+							
+							
+								<p style="font-family:georgia,garamond,serif;font-size:13px;margin-top:80px;">
+									Authorized Signature
+								</p>
+								<!-- *************************** -->
+								<p style="page-break-after: always;"></p>
+									<!-- 2nd Loop Starts -->
+									<!-- you can also write this way padding:20px 20px 20px 20px; this goes like this  padding : top right bottom left -->
+
+								<div class="row" style="font-family:georgia,garamond,serif;font-size:13px;margin-left:80px;margin-top:0px;font-weight:bold;padding: 0px 0px 12px 0px;">
+									Payment Advice from A/C no. <span t-esc="bank_info['accno']"/> 
+										From period <span t-esc="get_month(o.batch_id.id)['from_name']"/>
+										to <span t-esc="get_month(o.batch_id.id)['to_name']"/>
+								</div>	
+								
+								<t t-foreach="get_slips(data)" t-as="s">
+									<div class="row" style="font-family:georgia,garamond,serif;font-size:13px;margin-left:0px;margin-top:0px;padding:0px 0px 0px 0px;font-weight:bold;">
+										<span t-esc="s.employee_id.code"/>&#32;
+										(
+										<span t-esc="s.employee_id.id"/>
+										)&#32;
+										<span t-esc="s.number"/>
+										&#32;-&#32;
+										<span t-esc="s.name"/>
+									</div>
+									
+									<table class="table table-condensed" width="100%" style="padding:0px 0px 0px 0px;">
+										<t t-foreach="get_slip_detail(s.line_ids)" t-as="sln">
+											<tr style="font-family:georgia,garamond,serif;font-size:13px;">
+												<td class="text-left">
+													<span t-esc="sln['postname']"/>
+												</td>
+												<td class="text-left">
+													<span t-esc="sln['trancode']"/>
+												</td>
+												<td class="text-right">
+													<span t-esc="sln['tranrate']"/>
+												</td>
+												<td class="text-right">
+													<span t-esc="sln['tranamount']"/>
+												</td>
+												<td class="text-right">
+													<span t-esc="sln['tranquantity']"/>
+												</td>
+												<td class="text-right">
+													<span t-esc="sln['trantotal']"/>
+												</td>
+											</tr>
+										</t> <!-- slip lines-->	
+									</table>
+									
+									
+									<!--
+									<table class="table table-condensed" width="100%" style="margin-top:0px;padding-top:0px;">	
+										Attendance:
+										<t t-foreach="get_attendance_detail(s.employee_id.id)" t-as="aln">
+											<tr style="font-family:georgia,garamond,serif;font-size:13px;">
+												<td class="text-left">
+													<span t-esc="sln['postname']"/>
+												</td>
+												<td class="text-left">
+													<span t-esc="sln['tranaction']"/>
+												</td>
+												<td class="text-left">
+													<span t-esc="sln['trancnt']"/>
+												</td>
+											</tr>
+										</t>
+									</table>
+									-->
+									
+								</t> <!-- slips -->
+								
+								
+							</t><!-- advice Loop -->
+							
+						</div> <!-- page div -->
+					</t> <!-- internal layout -->
+			</t>
+		</template>
+	
+	</data>
+</odoo>

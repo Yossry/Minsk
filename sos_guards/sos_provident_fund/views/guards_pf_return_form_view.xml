@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+			<record model="ir.ui.view" id="sos_guards_pf_return_form_tree_view">
+			<field name="name">sos.guards.pf.return.form.tree.view</field>
+			<field name="model">sos.guards.pf.return.form</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Guards PF Return Form" decoration-it ="state == 'draft'"  decoration-info ="state == 'verify'" decoration-primary ="state == 'approved'" decoration-success="state == 'paid'" decoration-warning ="state == 'reject'">
+					<field name="name"/>
+                    <field name="code" />
+					<field name="employee_id"/>
+                    <field name="cnic" />
+                    <field name="current"/>
+                    <field name="project_id"/>
+					<field name="center_id"/>
+					<field name="post_id"/>
+					<field name="termination_date" string="Terminate Date"/>
+					<field name="bank_id"/>
+					<field name="bankacctitle"/>
+					<field name="bankacc"/>
+					<field name="accowner"/>
+					<field name="state"/>
+				</tree>
+			</field>
+		</record>
+
+
+		<record model="ir.ui.view" id="sos_guards_pf_return_form_form_view">
+			<field name="name">sos.guards.pf.return.form.form.view</field>
+			<field name="model">sos.guards.pf.return.form</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Guards PF Return Form">
+					<header>
+						<button name="action_verify" type="object" states="draft" string="Verify" class="oe_highlight" groups="account.group_account_manager" />
+                        <button name="action_approved" type="object" states="verify" string="Approved" class="oe_highlight" groups="sos.group_account_auditor" />
+						<button name="action_paid" type="object" states="approved" string="Paid" class="oe_highlight" groups="sos.group_salary_disbursement" />
+						<button name="action_reject" type="object" states="draft" string="Reject" class="oe_highlight" groups="account.group_account_manager,sos.group_salary_disbursement" />
+                        <field name="state" widget="statusbar" nolabel="1" />
+					</header>
+					<sheet>
+					<group string="General Information">
+						<group>
+                            <field name="code" attrs="{'readonly': [('state' , '=', 'paid')]}"/>
+							<field name="project_id" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}" attrs="{'readonly': [('state' , '=', 'paid')]}"/>
+							<field name="center_id" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}" attrs="{'readonly': [('state' , '=', 'paid')]}"/>
+							<field name="post_id" domain="[('project_id','=', project_id), ('center_id','=', center_id)]" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}" attrs="{'readonly': [('state' , '=', 'paid')]}"/>
+							<field name="joining_post" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}" attrs="{'readonly': [('state' , '=', 'paid')]}"/>
+                            <field name="date" attrs="{'readonly': [('state' , '=', 'paid')]}"/>
+                        </group>
+						<group>
+							<field name="current" attrs="{'readonly': [('state' , '=', 'paid')]}"/>
+							<field name="employee_id" domain="[('current_post_id','=', post_id),('is_guard', '=', True)]" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}" attrs="{'readonly': [('state' , '=', 'paid')]}"/>
+							<field name="cnic" attrs="{'readonly': [('state' , '=', 'paid')]}"/>
+							<field name="appointment_date" attrs="{'readonly': [('state' , '=', 'paid')]}"/>
+							<field name="termination_date" string="Termination Date" attrs="{'readonly': [('state' , '=', 'paid')]}"/>
+						</group>
+					</group>
+
+					<group string="Accounting Information">
+						<group>
+							<field name="bank_id" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}" attrs="{'readonly': [('state' , '=', 'paid')]}"/>
+							<field name="accowner" attrs="{'readonly': [('state' , '=', 'paid')]}"/>
+						</group>
+
+						<group>
+							<field name="bankacctitle" attrs="{'readonly': [('state' , '=', 'paid')]}"/>
+							<field name="bankacc" readonly="0" attrs="{'readonly': [('state' , '=', 'paid')]}"/>
+						</group>
+					</group>
+                    <group string="Provident Fund Detail">
+                        <field name="line_ids" nolabel="1">
+                            <tree>
+                                <field name="employee_id" invisible="1"/>
+                                <field name="slip_id"/>
+                                <field name="number"/>
+                                <field name="slip_line_id" invisible="1"/>
+                                <field name="slip_date_from" string="Date From "/>
+                                <field name="slip_date_to" string="Date To"/>
+                                <field name="deducted_amount" string="Deduction"/>
+                                <field name="employer_amount" string="Employer Contribution"/>
+                                <field name="pf_return_id" invisible="1"/>
+                                <field name="state" invisible="1"/>
+                            </tree>
+                            <form>
+                                <header>
+                                    <field name="state" widget="statusbar" nolabel="1" />
+					            </header>
+                                <group>
+                                    <group>
+                                        <field name="employee_id" attrs="{'readonly': [('state' , '=', 'paid')]}"/>
+                                        <field name="slip_id" attrs="{'readonly': [('state' , '=', 'paid')]}"/>
+                                        <field name="number" attrs="{'readonly': [('state' , '=', 'paid')]}"/>
+                                        <field name="slip_line_id" attrs="{'readonly': [('state' , '=', 'paid')]}"/>
+                                    </group>
+                                    <group>
+                                        <field name="slip_date_from" string="Date From" attrs="{'readonly': [('state' , '=', 'paid')]}"/>
+                                        <field name="slip_date_to" string="Date To" attrs="{'readonly': [('state' , '=', 'paid')]}"/>
+                                        <field name="deducted_amount" string="Deduction" attrs="{'readonly': [('state' , '=', 'paid')]}"/>
+                                        <field name="employer_amount" string="Employer Contribution" attrs="{'readonly': [('state' , '=', 'paid')]}"/>
+                                        <field name="pf_return_id" attrs="{'readonly': [('state' , '=', 'paid')]}"/>
+                                    </group>
+                                </group>
+                            </form>
+                        </field>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="total_deduction" attrs="{'readonly': [('state' , '=', 'paid')]}"/>
+                            <field name="total_employer" attrs="{'readonly': [('state' , '=', 'paid')]}"/>
+                            <field name="total" attrs="{'readonly': [('state' , '=', 'paid')]}"/>
+                        </group>
+                         <group>
+                              <field name="journal_id" attrs="{'readonly': [('state' , '=', 'paid')],  'required' : [('state','=','approved')]}"/>
+                             <field name="debit_account_id" attrs="{'readonly': [('state' , '=', 'paid')],  'required' : [('state','=','approved')]}"/>
+                             <field name="credit_account_id" domain="[('user_type_id.name','=','Bank and Cash')]" attrs="{'readonly': [('state' , '=', 'paid')], 'required' : [('state','=','approved')]}"/>
+                             <field name="move_id" readonly="1"/>
+                         </group>
+                    </group>
+					<group string="Remarks">
+						<field name="remarks" nolabel="1"/>
+					</group>
+
+				</sheet>
+					<div class="oe_chatter">
+						<field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+						<field name="message_ids" widget="mail_thread" placeholder="Share a note..."/>
+		      		</div>
+				</form>
+			</field>
+		</record>
+
+
+		<record id="sos_guards_pf_return_form_filter" model="ir.ui.view">
+		<field name="name">sos.guards.pf.return.form.filter</field>
+		<field name="model">sos.guards.pf.return.form</field>
+		<field name="arch" type="xml">
+			<search string="Guards PF Returns Form Filter">
+				<field name="name"/>
+				<field name="cnic"/>
+				<field name="code"/>
+				<field name="termination_date"/>
+				<field name="employee_id"/>
+				<field name="code"/>
+				<field name="bankacctitle"/>
+				<field name="bankacc"/>
+				<field name="accowner"/>
+				<separator/>
+
+				<filter icon="terp-go-today" string="Date" name="date" date="date"/>
+				<filter icon="terp-go-today" string="Termination Date" name="termination_date" date="termination_date"/>
+
+				<group expand="0" string="Group By">
+					<filter string="Status" name="groupby_state" icon="terp-partner" domain="[]" context="{'group_by':'state'}"/>
+
+					<separator/>
+					<filter string="Month" name="groupby_month" icon="terp-partner" domain="[]" context="{'group_by':'date'}"/>
+					<filter string="Day" name="groupby_day" icon="terp-partner" domain="[]" context="{'group_by':'date'}"/>
+					<filter string="Termination Date" name="termination_date" icon="terp-partner" domain="[]" context="{'group_by':'termination_date'}"/>
+
+					<separator/>
+					<filter string="Project" name="project_id" icon="terp-partner" domain="[]" context="{'group_by':'project_id'}"/>
+					<filter string="Center" name="center_id" icon="terp-partner" domain="[]" context="{'group_by':'center_id'}"/>
+					<filter string="Post" name="post_id" icon="terp-partner" domain="[]" context="{'group_by':'post_id'}"/>
+					<filter string="Bank" name="bank_id" icon="terp-partner" domain="[]" context="{'group_by':'bank_id'}"/>
+
+					<separator/>
+					<filter string="Bank" name="groupby_bank" icon="terp-partner" domain="[]" context="{'group_by':'bank_id'}"/>
+					<filter string="Account Owner" name="groupby_accountowner" icon="terp-partner" domain="[]" context="{'group_by':'accowner'}"/>
+
+				</group>
+			</search>
+		</field>
+		</record>
+
+
+		<record id="sos_guards_pf_return_form_action" model="ir.actions.act_window">
+			<field name="name">Guards PF Return Form</field>
+			<field name="res_model">sos.guards.pf.return.form</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+					Click to create a new Record.
+				</p>
+			</field>
+	</record>
+
+    </data>
+</odoo>

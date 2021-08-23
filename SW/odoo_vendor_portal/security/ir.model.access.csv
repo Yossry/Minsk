@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_vendor_rfq,vendor.rfq,model_vendor_rfq,purchase.group_purchase_user,1,1,0,0
+access_vendor_rfq_manager,vendor.rfq,model_vendor_rfq,purchase.group_purchase_manager,1,1,1,1
+access_vendor_rfq_public,vendor.rfq,model_vendor_rfq,base.group_public,1,0,0,0
+access_vendor_rfq_web_portal,vendor.rfq,model_vendor_rfq,base.group_portal,1,0,0,0
+
+access_vendor_rfq_history,vendor.rfqhistory,model_vendor_rfqhistory,purchase.group_purchase_user,1,0,0,0
+access_vendor_rfq_history_manager,vendor.rfqhistory,model_vendor_rfqhistory,purchase.group_purchase_manager,1,1,1,1
+access_vendor_rfqhistory_public,vendor.rfqhistory,model_vendor_rfqhistory,base.group_public,1,0,0,0
+access_vendor_rfqhistory_portal,vendor.rfqhistory,model_vendor_rfqhistory,base.group_portal,1,0,0,0

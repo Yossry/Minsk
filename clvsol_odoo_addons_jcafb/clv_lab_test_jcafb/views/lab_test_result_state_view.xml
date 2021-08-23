@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="clv_lab_test_result_view_form_state" model="ir.ui.view">
+        <field name="name">clv.lab_test.result.form</field>
+        <field name="model">clv.lab_test.result</field>
+        <field name="inherit_id" ref="clv_lab_test.clv_lab_test_result_view_form"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <header name="header" position="inside">
+                <field name="state" widget="statusbar"
+                       statusbar_visible="available,approved"/>
+                <button name="action_new" type="object"
+                        string="New"
+                        confirm="Change Result State to 'New'?"
+                        attrs="{'invisible':[('state','not in',['discarded'])]}"
+                        groups="clv_lab_test.group_manager"/>
+                <button name="action_available" type="object"
+                        string="Available"
+                        confirm="Change Result State to 'Available'?"
+                        attrs="{'invisible':[('state','not in',['new'])]}"
+                        groups="clv_lab_test.group_manager"/>
+                <button name="action_approve" type="object"
+                        string="Approve"
+                        confirm="Change Result State to 'Approved'?"
+                        attrs="{'invisible':[('state','not in',['available'])]}"
+                        groups="clv_lab_test.group_manager, clv_lab_test.group_approver"/>
+                <button name="action_discard" type="object"
+                        string="Discard"
+                        confirm="Change Result State to 'Discarded'?"
+                        attrs="{'invisible':[('state','not in',['new','available'])]}"
+                        groups="clv_lab_test.group_manager"/>
+           </header>
+        </field>
+    </record>
+
+    <record id="clv_lab_test_result_view_tree_state" model="ir.ui.view">
+        <field name="name">clv.lab_test.result.tree</field>
+        <field name="model">clv.lab_test.result</field>
+        <field name="inherit_id" ref="clv_lab_test.clv_lab_test_result_view_tree"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="code" position="after">
+                <field name="state"/>
+            </field>
+            <tree name="lab_test_results" position="attributes">
+                <attribute name="decoration-muted">state=='new'</attribute>
+                <attribute name="decoration-success">state=='approved'</attribute>
+                <attribute name="decoration-primary">state in('waiting','returned')</attribute>
+                <attribute name="decoration-danger">state=='discarded'</attribute>
+                <attribute name="decoration-it">state in('new','discarded')</attribute>
+                <attribute name="decoration-bf">state in('approved')</attribute>
+            </tree>
+        </field>
+    </record>
+
+    <record id="clv_lab_test_result_view_search_state" model="ir.ui.view">
+        <field name="name">clv.lab_test.result.search</field>
+        <field name="model">clv.lab_test.result</field>
+        <field name="inherit_id" ref="clv_lab_test.clv_lab_test_result_view_search"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="code" position="after">
+                <field name="state"/>
+            </field>
+            <group name="group_by" position="inside">
+                <filter name="group_by_state" string="Result State" domain="[]" context="{'group_by':'state'}"/>
+            </group>
+        </field>
+    </record>
+
+</odoo>

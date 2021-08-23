@@ -1,0 +1,129 @@
+<?xml version="1.0" ?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo noupdate="0">
+ 
+	<record id="survey_user_input_line_survey_user_input_line_template" model="clv.external_sync.template">
+		<field name="name" eval="&quot;&quot;&quot;survey.user_input_line (survey.user_input_line)&quot;&quot;&quot;"/>
+		<field name="model" eval="&quot;&quot;&quot;survey.user_input_line&quot;&quot;&quot;"/>
+		<field name="method" eval="&quot;&quot;&quot;_object_external_sync&quot;&quot;&quot;"/>
+		<field name="external_model" eval="&quot;&quot;&quot;survey.user_input_line&quot;&quot;&quot;"/>
+		<field name="external_disable_check_missing" eval="True"/>
+	</record>
+	 
+	<record id="survey_user_input_line_survey_user_input_line_template_object_field_date_create" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;date_create&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;date_create&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="survey_user_input_line_survey_user_input_line_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="survey_user_input_line_survey_user_input_line_template_object_field_user_input_id" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;user_input_id&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;user_input_id&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="survey_user_input_line_survey_user_input_line_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="survey_user_input_line_survey_user_input_line_template_object_field_question_id" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;question_id&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;question_id&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="survey_user_input_line_survey_user_input_line_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="survey_user_input_line_survey_user_input_line_template_object_field_survey_id" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;survey_id&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;survey_id&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="survey_user_input_line_survey_user_input_line_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="survey_user_input_line_survey_user_input_line_template_object_field_skipped" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;skipped&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;skipped&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="survey_user_input_line_survey_user_input_line_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="survey_user_input_line_survey_user_input_line_template_object_field_answer_type" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;answer_type&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;answer_type&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="survey_user_input_line_survey_user_input_line_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="survey_user_input_line_survey_user_input_line_template_object_field_value_text" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;value_text&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;value_text&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="survey_user_input_line_survey_user_input_line_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="survey_user_input_line_survey_user_input_line_template_object_field_value_number" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;value_number&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;value_number&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="survey_user_input_line_survey_user_input_line_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="survey_user_input_line_survey_user_input_line_template_object_field_value_date" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;value_date&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;value_date&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="survey_user_input_line_survey_user_input_line_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="survey_user_input_line_survey_user_input_line_template_object_field_value_free_text" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;value_free_text&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;value_free_text&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="survey_user_input_line_survey_user_input_line_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="survey_user_input_line_survey_user_input_line_template_object_field_value_suggested" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;value_suggested&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;value_suggested&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="survey_user_input_line_survey_user_input_line_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="survey_user_input_line_survey_user_input_line_template_object_field_value_suggested_row" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;value_suggested_row&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;value_suggested_row&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="survey_user_input_line_survey_user_input_line_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="survey_user_input_line_survey_user_input_line_template_object_field_quizz_mark" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;quizz_mark&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;quizz_mark&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="survey_user_input_line_survey_user_input_line_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="survey_user_input_line_survey_user_input_line_schedule" model="clv.external_sync.schedule">
+		<field name="name" eval="&quot;&quot;&quot;survey.user_input_line (survey.user_input_line)&quot;&quot;&quot;"/>
+		<field name="template_id" eval="survey_user_input_line_survey_user_input_line_template"/>
+	</record>
+	 
+	<record id="clv_external_sync_batch_member_survey_user_input_line" model="clv.external_sync.batch.member">
+		<field name="external_sync_batch_id" ref="clv_external_sync_jcafb.clv_external_sync_batch_default"/>
+		<field name="ref_id" ref="survey_user_input_line_survey_user_input_line_schedule"/>
+	</record>
+	 
+</odoo>

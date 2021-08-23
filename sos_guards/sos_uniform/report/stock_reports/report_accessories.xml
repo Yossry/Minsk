@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>	
+		<template id ="sos_uniform.report_accessories">
+			<t t-call="web.html_container">
+				<t t-call="web.external_layout" style="font-family:georgia,garamond,serif;font-size:10px">
+					<div class="page">
+						<style>
+							 tr:nth-child(even) {background-color: #FFEBCD;}
+							 tr:nth-child(odd) {background-color: #cdcdcd;}
+						</style>
+						
+						<h4>Accessories Issuance Report</h4>
+						<h5>
+							From: <span t-esc="get_date_formate(data['date_from'])"/><br></br>
+							To: <span t-esc="get_date_formate(data['date_to'])"/><br></br>
+						</h5>
+						
+						<!-- New Deployment-->
+						<h4 style="page-break-inside: avoid;">NEW Deployment</h4>
+						<table class="table table-condensed" width="100%" style="page-break-inside: avoid;">
+							<tr style="font-size:10px; font-weight:bold; background-color:#A6ACAF;">
+								<td>Date </td>
+								<td>Post </td>
+								<td>Region </td>
+								<td>Type </td>
+								<td>Demand NO </td>
+								<td>Whistle Dori </td>
+								<td>Metal Detector </td>
+								<td>Torch </td>
+								<td>Belt </td>
+								<td>Cap </td>
+								<td>Garmal </td>
+								<td>Scarf </td>
+								<td>Boot Anklet </td>
+								<td>Pistol Pouch </td>
+								<td>Ammunition Belt </td>
+								<td>Shilling </td>
+								<td>Jersey </td>
+								<td>Jacket </td>
+								<td>Vehicle Mirror </td>
+							</tr>
+							
+							<tbody>
+								<tr t-foreach="New_Demands" t-as="demand" style="font-size:12px; page-break-inside: avoid;">
+									<td> <span t-esc="demand['date']" /></td>
+									<td> <span t-esc="demand['post']" /></td>
+									<td> <span t-esc="demand['center']" /></td>
+									<td> <span t-esc="demand['type']" /></td>
+									<td> <span t-esc="demand['demand_no']" /></td>
+									<td> <span t-esc="demand['whistle_dori']" /></td>
+									<td> <span t-esc="demand['metal_detector']" /></td>
+									<td> <span t-esc="demand['torch']" /></td>
+									<td> <span t-esc="demand['cap']" /></td>
+									<td> <span t-esc="demand['belt']" /></td>
+									<td> <span t-esc="demand['garmal']" /></td>
+									<td> <span t-esc="demand['scarf']" /></td>
+									<td> <span t-esc="demand['boot_anklet']" /></td>
+									<td> <span t-esc="demand['pistol_pouch']" /></td>
+									<td> <span t-esc="demand['ammunition_belt']" /></td>
+									<td> <span t-esc="demand['shilling']" /></td>
+									<td> <span t-esc="demand['jersey']" /></td>
+									<td> <span t-esc="demand['jacket']" /></td>
+									<td> <span t-esc="demand['vehicle_mirror']" /></td>
+								</tr>
+								
+								<tr style="font-size:10px; font-weight:bold; background-color:#A6ACAF; page-break-inside: avoid;">
+									<td colspan="5" class="text-center">T   O   T   A    L   S</td>
+									<td class="text-left"><span t-esc="New_Demand_Total['total_whistle_dori']"/> </td> 
+									<td class="text-left"><span t-esc="New_Demand_Total['total_metal_detector']"/> </td>
+					  	 			<td class="text-left"><span t-esc="New_Demand_Total['total_torch']"/> </td>
+					  	 			<td class="text-left"><span t-esc="New_Demand_Total['total_cap']"/> </td>
+					  	 			<td class="text-left"><span t-esc="New_Demand_Total['total_belt']"/> </td>
+					  	 			<td class="text-left"><span t-esc="New_Demand_Total['total_garmal']"/> </td>
+					  	 			<td class="text-left"><span t-esc="New_Demand_Total['total_scarf']"/> </td>
+					  	 			<td class="text-left"><span t-esc="New_Demand_Total['total_boot_anklet']"/> </td>
+					  	 			<td class="text-left"><span t-esc="New_Demand_Total['total_pistol_pouch']"/> </td>
+					  	 			<td class="text-left"><span t-esc="New_Demand_Total['total_ammunition_belt']"/> </td>
+					  	 			<td class="text-left"><span t-esc="New_Demand_Total['total_shilling']"/> </td>
+					  	 			<td class="text-left"><span t-esc="New_Demand_Total['total_jersey']"/> </td>
+					  	 			<td class="text-left"><span t-esc="New_Demand_Total['total_jacket']"/> </td>
+					  	 			<td class="text-left"><span t-esc="New_Demand_Total['total_vehicle_mirror']"/> </td>
+								</tr>
+							</tbody>
+							
+						</table>
+						
+						
+						<!-- Complain-->
+						<h4 style="page-break-inside: avoid;">Complain</h4>
+						<table class="table table-condensed" width="100%" style="page-break-inside: avoid;">
+							<tr style="font-size:10px; font-weight:bold; background-color:#A6ACAF;">
+								<td>Date </td>
+								<td>Post </td>
+								<td>Region </td>
+								<td>Type </td>
+								<td>Demand NO </td>
+								<td>Whistle Dori </td>
+								<td>Metal Detector </td>
+								<td>Torch </td>
+								<td>Belt </td>
+								<td>Cap </td>
+								<td>Garmal </td>
+								<td>Scarf </td>
+								<td>Boot Anklet </td>
+								<td>Pistol Pouch </td>
+								<td>Ammunition Belt </td>
+								<td>Shilling </td>
+								<td>Jersey </td>
+								<td>Jacket </td>
+								<td>Vehicle Mirror </td>
+							</tr>
+							
+							<tbody>
+								<tr t-foreach="Complain_Demands" t-as="demand" style="font-size:12px; page-break-inside: avoid;">
+									<td> <span t-esc="demand['date']" /></td>
+									<td> <span t-esc="demand['post']" /></td>
+									<td> <span t-esc="demand['center']" /></td>
+									<td> <span t-esc="demand['type']" /></td>
+									<td> <span t-esc="demand['demand_no']" /></td>
+									<td> <span t-esc="demand['whistle_dori']" /></td>
+									<td> <span t-esc="demand['metal_detector']" /></td>
+									<td> <span t-esc="demand['torch']" /></td>
+									<td> <span t-esc="demand['cap']" /></td>
+									<td> <span t-esc="demand['belt']" /></td>
+									<td> <span t-esc="demand['garmal']" /></td>
+									<td> <span t-esc="demand['scarf']" /></td>
+									<td> <span t-esc="demand['boot_anklet']" /></td>
+									<td> <span t-esc="demand['pistol_pouch']" /></td>
+									<td> <span t-esc="demand['ammunition_belt']" /></td>
+									<td> <span t-esc="demand['shilling']" /></td>
+									<td> <span t-esc="demand['jersey']" /></td>
+									<td> <span t-esc="demand['jacket']" /></td>
+									<td> <span t-esc="demand['vehicle_mirror']" /></td>
+								</tr>
+								
+								<tr style="font-size:10px; font-weight:bold; background-color:#A6ACAF; page-break-inside: avoid;">
+									<td colspan="5" class="text-center">T   O   T   A    L   S</td>
+									<td class="text-left"><span t-esc="Complain_Demand_Total['total_whistle_dori']"/> </td> 
+									<td class="text-left"><span t-esc="Complain_Demand_Total['total_metal_detector']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Complain_Demand_Total['total_torch']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Complain_Demand_Total['total_cap']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Complain_Demand_Total['total_belt']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Complain_Demand_Total['total_garmal']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Complain_Demand_Total['total_scarf']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Complain_Demand_Total['total_boot_anklet']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Complain_Demand_Total['total_pistol_pouch']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Complain_Demand_Total['total_ammunition_belt']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Complain_Demand_Total['total_shilling']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Complain_Demand_Total['total_jersey']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Complain_Demand_Total['total_jacket']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Complain_Demand_Total['total_vehicle_mirror']"/> </td>
+								</tr>
+							</tbody>
+							
+						</table>
+						
+						
+						<!-- Additional Guards -->
+						<h4 style="page-break-inside: avoid;">Additional Guards</h4>
+						<table class="table table-condensed" width="100%" style="page-break-inside: avoid;">
+							<tr style="font-size:10px; font-weight:bold; background-color:#A6ACAF;">
+								<td>Date </td>
+								<td>Post </td>
+								<td>Region </td>
+								<td>Type </td>
+								<td>Demand NO </td>
+								<td>Whistle Dori </td>
+								<td>Metal Detector </td>
+								<td>Torch </td>
+								<td>Belt </td>
+								<td>Cap </td>
+								<td>Garmal </td>
+								<td>Scarf </td>
+								<td>Boot Anklet </td>
+								<td>Pistol Pouch </td>
+								<td>Ammunition Belt </td>
+								<td>Shilling </td>
+								<td>Jersey </td>
+								<td>Jacket </td>
+								<td>Vehicle Mirror </td>
+							</tr>
+							
+							<tbody>
+								<tr t-foreach="Add_Guard_Demands" t-as="demand" style="font-size:12px; page-break-inside: avoid;">
+									<td> <span t-esc="demand['date']" /></td>
+									<td> <span t-esc="demand['post']" /></td>
+									<td> <span t-esc="demand['center']" /></td>
+									<td> <span t-esc="demand['type']" /></td>
+									<td> <span t-esc="demand['demand_no']" /></td>
+									<td> <span t-esc="demand['whistle_dori']" /></td>
+									<td> <span t-esc="demand['metal_detector']" /></td>
+									<td> <span t-esc="demand['torch']" /></td>
+									<td> <span t-esc="demand['cap']" /></td>
+									<td> <span t-esc="demand['belt']" /></td>
+									<td> <span t-esc="demand['garmal']" /></td>
+									<td> <span t-esc="demand['scarf']" /></td>
+									<td> <span t-esc="demand['boot_anklet']" /></td>
+									<td> <span t-esc="demand['pistol_pouch']" /></td>
+									<td> <span t-esc="demand['ammunition_belt']" /></td>
+									<td> <span t-esc="demand['shilling']" /></td>
+									<td> <span t-esc="demand['jersey']" /></td>
+									<td> <span t-esc="demand['jacket']" /></td>
+									<td> <span t-esc="demand['vehicle_mirror']" /></td>
+								</tr>
+								
+								<tr style="font-size:10px; font-weight:bold; background-color:#A6ACAF; page-break-inside: avoid;">
+									<td colspan="5" class="text-center">T   O   T   A    L   S</td>
+									<td class="text-left"><span t-esc="Add_Guard_Demand_Total['total_whistle_dori']"/> </td> 
+									<td class="text-left"><span t-esc="Add_Guard_Demand_Total['total_metal_detector']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Add_Guard_Demand_Total['total_torch']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Add_Guard_Demand_Total['total_cap']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Add_Guard_Demand_Total['total_belt']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Add_Guard_Demand_Total['total_garmal']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Add_Guard_Demand_Total['total_scarf']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Add_Guard_Demand_Total['total_boot_anklet']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Add_Guard_Demand_Total['total_pistol_pouch']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Add_Guard_Demand_Total['total_ammunition_belt']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Add_Guard_Demand_Total['total_shilling']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Add_Guard_Demand_Total['total_jersey']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Add_Guard_Demand_Total['total_jacket']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Add_Guard_Demand_Total['total_vehicle_mirror']"/> </td>
+								</tr>
+							</tbody>
+						</table>						
+						
+						
+						<!-- Replacement -->
+						<h4 style="page-break-inside: avoid;">Replacement</h4>
+						<table class="table table-condensed" width="100%" style="page-break-inside: avoid;">
+							<tr style="font-size:10px; font-weight:bold; background-color:#A6ACAF;">
+								<td>Date </td>
+								<td>Post </td>
+								<td>Region </td>
+								<td>Type </td>
+								<td>Demand NO </td>
+								<td>Whistle Dori </td>
+								<td>Metal Detector </td>
+								<td>Torch </td>
+								<td>Belt </td>
+								<td>Cap </td>
+								<td>Garmal </td>
+								<td>Scarf </td>
+								<td>Boot Anklet </td>
+								<td>Pistol Pouch </td>
+								<td>Ammunition Belt </td>
+								<td>Shilling </td>
+								<td>Jersey </td>
+								<td>Jacket </td>
+								<td>Vehicle Mirror </td>
+							</tr>
+							
+							<tbody>
+								<tr t-foreach="Replacement_Demands" t-as="demand" style="font-size:12px; page-break-inside: avoid;">
+									<td> <span t-esc="demand['date']" /></td>
+									<td> <span t-esc="demand['post']" /></td>
+									<td> <span t-esc="demand['center']" /></td>
+									<td> <span t-esc="demand['type']" /></td>
+									<td> <span t-esc="demand['demand_no']" /></td>
+									<td> <span t-esc="demand['whistle_dori']" /></td>
+									<td> <span t-esc="demand['metal_detector']" /></td>
+									<td> <span t-esc="demand['torch']" /></td>
+									<td> <span t-esc="demand['cap']" /></td>
+									<td> <span t-esc="demand['belt']" /></td>
+									<td> <span t-esc="demand['garmal']" /></td>
+									<td> <span t-esc="demand['scarf']" /></td>
+									<td> <span t-esc="demand['boot_anklet']" /></td>
+									<td> <span t-esc="demand['pistol_pouch']" /></td>
+									<td> <span t-esc="demand['ammunition_belt']" /></td>
+									<td> <span t-esc="demand['shilling']" /></td>
+									<td> <span t-esc="demand['jersey']" /></td>
+									<td> <span t-esc="demand['jacket']" /></td>
+									<td> <span t-esc="demand['vehicle_mirror']" /></td>
+								</tr>
+								
+								<tr style="font-size:10px; font-weight:bold; background-color:#A6ACAF; page-break-inside: avoid;">
+									<td colspan="5" class="text-center">T   O   T   A    L   S</td>
+									<td class="text-left"><span t-esc="Replacement_Demand_Total['total_whistle_dori']"/> </td> 
+									<td class="text-left"><span t-esc="Replacement_Demand_Total['total_metal_detector']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Replacement_Demand_Total['total_torch']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Replacement_Demand_Total['total_cap']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Replacement_Demand_Total['total_belt']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Replacement_Demand_Total['total_garmal']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Replacement_Demand_Total['total_scarf']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Replacement_Demand_Total['total_boot_anklet']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Replacement_Demand_Total['total_pistol_pouch']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Replacement_Demand_Total['total_ammunition_belt']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Replacement_Demand_Total['total_shilling']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Replacement_Demand_Total['total_jersey']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Replacement_Demand_Total['total_jacket']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Replacement_Demand_Total['total_vehicle_mirror']"/> </td>
+								</tr>
+							</tbody>
+						</table>	
+						
+									
+					</div>
+				</t>		 
+			</t>
+		</template>
+		
+	</data>
+</odoo>
+

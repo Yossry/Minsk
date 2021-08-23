@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+	<template id ="report_guards_jointermination">
+		<t t-call="web.html_container">
+			<t t-call="web.external_layout" style="font-family:georgia,garamond,serif;font-size:10px">
+			<div class="page">
+				<div width="100%"><center><h3>Guards Joining And Termination Report</h3></center> </div>
+				<div width="100%"><center><h3> From <span t-esc="get_date_formate(data['date_from'])"/> To  <span t-esc="get_date_formate(data['date_to'])"/> </h3></center> </div>
+			
+				<div class="col-xs-12 pull-right" style="padding-left:0px; padding-right:0px; page-break-inside: avoid;">
+				<table class="table table-bordered" width="100%">
+					<tr>
+						
+						<!-- First Columns containing the Center Data -->
+						<td width="47%">
+							<table class="table table-bordered" width="100%">
+								<tr  style="font-size:10px; font-weight:bold; background-color:#d4e3e5;">
+									<th class="text-center;">SR.</th>
+									<th class="text-center;">Center Name</th>
+									<th class="text-center;">Current Guards</th>
+									<th class="text-center;">New Joined</th>
+									<th class="text-center;">Escaped</th>
+									<th class="text-center;">Terminated</th>
+									<th class="text-center;">Transferred</th>
+									<th class="text-center;">Unknown</th>
+								</tr>
+								<t t-foreach="Center_Guards" t-as="c">
+									<tr style="font-size:12px;">
+										<td>
+											<span t-esc="c_index + 1" />
+										</td>
+										<td>
+											<span t-esc="c['name']" />
+										</td>
+										<td>
+											<span t-esc="c['current']" />
+										</td>
+										<td>
+											<span t-esc="c['joined']" />
+										</td>
+										<td>
+											<span t-esc="c['escaped']" />
+										</td>
+										<td>
+											<span t-esc="c['terminated']" />
+										</td>
+										<td>
+											<span t-esc="c['transfered']" />
+										</td>
+										<td>
+											<span t-esc="c['unknown']" />
+										</td>
+									</tr>
+								</t>
+								
+								<tr style="font-size:10px; font-weight:bold;">
+									<td colspan="2">
+										Totals:
+									</td>
+									<td>
+										<span t-esc="Center_Current" />
+									</td>
+									<td>
+										<span t-esc="Center_Joined" />
+									</td>
+									<td>
+										<span t-esc="Center_Escaped" />
+									</td>
+									<td>
+										<span t-esc="Center_Terminated" />
+									</td>
+									<td>
+										<span t-esc="Center_Transfered" />
+									</td>
+									<td>
+										<span t-esc="Center_Unknown" />
+									</td>
+								</tr>
+							</table>
+						</td>
+						
+						
+						<!-- Second Columns containing the Project Data -->
+						<td width="47%">
+							<table class="table table-bordered" width="100%">
+								<tr  style="font-size:10px; font-weight:bold; background-color:#d4e3e5;">
+									<th class="text-center;">SR.</th>
+									<th class="text-center;">Project Name</th>
+									<th class="text-center;">Current Guards</th>
+									<th class="text-center;">New Joined</th>
+									<th class="text-center;">Escaped</th>
+									<th class="text-center;">Terminated</th>
+									<th class="text-center;">Transferred</th>
+									<th class="text-center;">Unknown</th>
+								</tr>
+								<t t-foreach="Project_Guards" t-as="p">
+									<tr style="font-size:12px;">
+										<td>
+											<span t-esc="p_index + 1" />
+										</td>
+										<td>
+											<span t-esc="p['name']" />
+										</td>
+										<td>
+											<span t-esc="p['current']" />
+										</td>
+										<td>
+											<span t-esc="p['joined']" />
+										</td>
+										<td>
+											<span t-esc="p['escaped']" />
+										</td>
+										<td>
+											<span t-esc="p['terminated']" />
+										</td>
+										<td>
+											<span t-esc="p['transfered']" />
+										</td>
+										<td>
+											<span t-esc="p['unknown']" />
+										</td>
+									</tr>
+								</t>
+									<tr style="font-size:10px; font-weight:bold;">
+										<td colspan="2">
+											Totals:
+										</td>
+										<td>
+											<span t-esc="Project_Current" />
+										</td>
+										<td>
+											<span t-esc="Project_Joined" />
+										</td>
+										<td>
+											<span t-esc="Project_Escaped" />
+										</td>
+										<td>
+											<span t-esc="Project_Terminated" />
+										</td>
+										<td>
+											<span t-esc="Project_Transfered" />
+										</td>
+										<td>
+											<span t-esc="Project_Unknown" />
+										</td>
+									</tr>
+							</table>
+						</td>
+					</tr>
+				</table>	
+			</div>
+			
+			 <t  t-if="data['with_detail']">
+			 	<!-- Joined Guards -->
+			 	
+			 	<div width="100%"><h4>New Guards Joined in the Period From <span t-esc="get_date_formate(data['date_from'])"/> To  <span t-esc="get_date_formate(data['date_to'])"/></h4> </div>
+			 	<table class="table table-bordered" width="100%">
+			 		<tr  style="font-size:10px; font-weight:bold; background-color:#d4e3e5;">
+						<th class="text-center;">SR. </th>
+						<th class="text-center;">ID </th>
+						<th class="text-center;">Name </th>
+						<th class="text-center;">Center </th>
+						<th class="text-center;">Post </th>
+						<th class="text-center;">Mobile </th>
+						<th class="text-center;">CNIC </th>
+						<th class="text-center;">Appointment </th>
+						<th class="text-center;">Resign </th>
+						<th class="text-center;">Date </th>
+					</tr>
+					<t t-foreach="Joined_Guards" t-as="joined">
+						<tr style="font-size:11px;">
+							<td>
+								<span t-esc="joined_index + 1" />
+							</td>
+							<td>
+								<span t-esc="joined['id']" />
+							</td>
+							<td>
+								<span t-esc="joined['name']" />
+							</td>
+							<td>
+								<span t-esc="joined['center']" />
+							</td>
+							<td>
+								<span t-esc="joined['post']" />
+							</td>
+							<td>
+								<span t-esc="joined['mobile']" />
+							</td>
+							<td>
+								<span t-esc="joined['cnic']" />
+							</td>
+							<td>
+								<span t-esc="joined['appointmentdate']" />
+							</td>
+							<td>
+								<span t-esc="joined['resigdate']" />
+							</td>
+							<td>
+								<span t-esc="joined['to_date']" />
+							</td>
+						</tr>
+					</t>	
+			 	</table>
+			 
+			 <!-- Terminated Guards -->
+			 <div width="100%"><h4>Guards Terminated/ Resigned in the Period From <span t-esc="get_date_formate(data['date_from'])"/> To  <span t-esc="get_date_formate(data['date_to'])"/></h4> </div>
+			 	<table class="table table-bordered" width="100%">
+			 		<tr  style="font-size:10px; font-weight:bold; background-color:#d4e3e5;">
+						<th class="text-center;">SR. </th>
+						<th class="text-center;">ID </th>
+						<th class="text-center;">Name </th>
+						<th class="text-center;">Center </th>
+						<th class="text-center;">Post </th>
+						<th class="text-center;">Mobile </th>
+						<th class="text-center;">CNIC </th>
+						<th class="text-center;">Appointment </th>
+						<th class="text-center;">Resign </th>
+						<th class="text-center;">Date </th>
+					</tr>
+					
+					<t t-foreach="Terminated_Guards" t-as="terminated">
+						<tr style="font-size:11px;">
+							<td>
+								<span t-esc="terminated_index + 1" />
+							</td>
+							<td>
+								<span t-esc="terminated['id']" />
+							</td>
+							<td>
+								<span t-esc="terminated['name']" />
+							</td>
+							<td>
+								<span t-esc="terminated['center']" />
+							</td>
+							<td>
+								<span t-esc="terminated['post']" />
+							</td>
+							<td>
+								<span t-esc="terminated['mobile']" />
+							</td>
+							<td>
+								<span t-esc="terminated['cnic']" />
+							</td>
+							<td>
+								<span t-esc="terminated['appointmentdate']" />
+							</td>
+							<td>
+								<span t-esc="terminated['resigdate']" />
+							</td>
+							<td>
+								<span t-esc="terminated['to_date']" />
+							</td>
+						</tr>
+					</t>	
+				</table>
+			 </t>
+			
+				
+		</div>
+		</t>
+		</t>
+	</template>
+	
+	</data>
+</odoo>

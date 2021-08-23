@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+       <record id="seq_group_account_customer_invoice" model="ir.sequence">
+           <field name="name">Group Account Invoice</field>
+           <field name="code">group.customer.invoice</field>
+           <field name="prefix">Group/INV</field>
+           <field name="padding">5</field>
+           <field name="company_id" eval="False"/>
+       </record>
+
+       <record id="seq_group_account_customer_refund" model="ir.sequence">
+           <field name="name">Group Customer Credit Note</field>
+           <field name="code">group.customer.credit.note</field>
+           <field name="prefix">Group/Refund/</field>
+           <field name="padding">5</field>
+           <field name="company_id" eval="False"/>
+       </record>
+
+    </data>
+</odoo>

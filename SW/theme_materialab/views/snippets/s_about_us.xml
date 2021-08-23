@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template name="About Us" id="s_about_us">
+        <!-- ====ABOUT US==== -->
+        <section id="about" class="about_area section-padding oe_structure">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="about_left">
+                            <img src="/theme_materialab/static/src/img/about_left.png" alt="" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="section_title">
+                            <h5 class="smallHd">Know something</h5>
+                            <h2 class="secHd">About Ezeselling</h2>
+                        </div>
+                        <div class="about_text">
+                            <p>Ezeselling is a complete, fully hosted, eCommerce solution that enables you to set up an online store to sell your products. It assists you to organize your products, customize your storefront, accept credit card payments, track and respond to orders — all with a few clicks of the mouse.</p>
+                            <p class="ab_text">The key being that it is fully hosted! No more stressful hosting management, backups, security risks, cpanel knowledge…, etc. This is built with the business owner in mind; you just do what you do best… Run the business!</p>
+                            <a class="th_bt btn waves-effect waves-light" href="#">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+</odoo>

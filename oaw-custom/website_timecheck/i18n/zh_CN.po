@@ -1,0 +1,280 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * website_timecheck
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-24 09:47+0000\n"
+"PO-Revision-Date: 2020-02-24 09:47+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: website_timecheck
+#: model_terms:ir.ui.view,arch_db:website_timecheck.product
+#: model_terms:ir.ui.view,arch_db:website_timecheck.products_item
+msgid ", Overseas"
+msgstr ", 海外现货"
+
+#. module: website_timecheck
+#: model_terms:ir.ui.view,arch_db:website_timecheck.cart
+msgid "<span class=\"fa fa-long-arrow-left\"/> Continue Shopping"
+msgstr "<span class=\"fa fa-long-arrow-left\"/> 继续购物"
+
+#. module: website_timecheck
+#: model_terms:ir.ui.view,arch_db:website_timecheck.products_item
+msgid "<span class=\"fa fa-shopping-cart\"/> Checkout"
+msgstr "<span class=\"fa fa-shopping-cart\"/> 加到购物车"
+
+#. module: website_timecheck
+#: model_terms:ir.ui.view,arch_db:website_timecheck.product_price
+#: model_terms:ir.ui.view,arch_db:website_timecheck.products_item
+msgid "<span style=\"color: DarkGrey;\">Sale HKD:</span>"
+msgstr "<span style=\"color: DarkGrey;\">港币卖价:</span>"
+
+#. module: website_timecheck
+#: model_terms:ir.ui.view,arch_db:website_timecheck.product_price
+#: model_terms:ir.ui.view,arch_db:website_timecheck.products_item
+msgid "<span style=\"color: red; font-weight:bold;\">HKD</span>"
+msgstr ""
+
+#. module: website_timecheck
+#: model_terms:ir.ui.view,arch_db:website_timecheck.product_price
+#: model_terms:ir.ui.view,arch_db:website_timecheck.products_item
+msgid "<span style=\"color: red; font-weight:bold;\">Special Offer:</span>"
+msgstr "<span style=\"color: red; font-weight:bold;\">特价:</span>"
+
+#. module: website_timecheck
+#: model_terms:ir.ui.view,arch_db:website_timecheck.product_price
+#: model_terms:ir.ui.view,arch_db:website_timecheck.products_item
+msgid "<span>HKD Retail:</span>"
+msgstr "<span>港币公价:</span>"
+
+#. module: website_timecheck
+#: model_terms:ir.ui.view,arch_db:website_timecheck.product_price
+#: model_terms:ir.ui.view,arch_db:website_timecheck.products_item
+msgid "<span>Sale HKD:</span>"
+msgstr "<span>港币卖价:</span>"
+
+#. module: website_timecheck
+#: model_terms:ir.ui.view,arch_db:website_timecheck.products_categories
+msgid "All Categories"
+msgstr "所有品牌"
+
+#. module: website_timecheck
+#: model_terms:ir.ui.view,arch_db:website_timecheck.products_categories
+msgid "All Locations"
+msgstr "所有在售库存"
+
+#. module: website_timecheck
+#: model_terms:ir.ui.view,arch_db:website_timecheck.products_categories
+msgid "All Products"
+msgstr "所有产品"
+
+#. module: website_timecheck
+#: model_terms:ir.ui.view,arch_db:website_timecheck.cart
+#: selection:sale.order,payment_method:0
+msgid "Bank Transfer to our HK company"
+msgstr "转账到我们香港公司户口"
+
+#. module: website_timecheck
+#: model_terms:ir.ui.view,arch_db:website_timecheck.cart
+#: selection:sale.order,payment_method:0
+msgid "China Bank Transfer"
+msgstr "内地银行转账,请查看网页最下面当天可用账号和汇率"
+
+#. module: website_timecheck
+#: model_terms:ir.ui.view,arch_db:website_timecheck.cart
+msgid "Confirm and Submit <span class=\"fa fa-long-arrow-right\"/>"
+msgstr "确认并提交订单 <span class=\"fa fa-long-arrow-right\"/>"
+
+#. module: website_timecheck
+#: model_terms:ir.ui.view,arch_db:website_timecheck.confirmation
+msgid "Continue Shopping"
+msgstr "继续购物"
+
+#. module: website_timecheck
+#: model:ir.model.fields,field_description:website_timecheck.field_sale_order__picking_date
+msgid "Desire Picking Date"
+msgstr "取货时间"
+
+#. module: website_timecheck
+#: model_terms:ir.ui.view,arch_db:website_timecheck.cart
+msgid "Desire Picking Date (Delivery：Monday to Friday 15:00-18:00)"
+msgstr "取货时间： 周一到周五下午15:00-18:00"
+
+#. module: website_timecheck
+#: model_terms:ir.ui.view,arch_db:website_timecheck.products
+msgid "Filter <i class=\"dropdown-toggle\"/>"
+msgstr "筛选 <i class=\"dropdown-toggle\"/>"
+
+#. module: website_timecheck
+#: model:ir.model.fields,field_description:website_timecheck.field_res_users__timecheck_group
+msgid "Groups"
+msgstr "群组"
+
+#. module: website_timecheck
+#: model_terms:ir.ui.view,arch_db:website_timecheck.product
+#: model_terms:ir.ui.view,arch_db:website_timecheck.products_item
+msgid "HK"
+msgstr "香港现货"
+
+#. module: website_timecheck
+#: model_terms:ir.ui.view,arch_db:website_timecheck.products_categories
+msgid "HK Stock"
+msgstr "香港现货"
+
+#. module: website_timecheck
+#: model_terms:ir.ui.view,arch_db:website_timecheck.cart
+#: selection:sale.order,payment_method:0
+msgid "Hong Kong Banks' Cheque"
+msgstr "香港的银行支票"
+
+#. module: website_timecheck
+#: model_terms:ir.ui.view,arch_db:website_timecheck.product
+#: model_terms:ir.ui.view,arch_db:website_timecheck.products_item
+msgid "Internal Code:"
+msgstr "内部代码:"
+
+#. module: website_timecheck
+#: model_terms:ir.ui.view,arch_db:website_timecheck.frontend_layout
+msgid "Logout"
+msgstr "登出"
+
+#. module: website_timecheck
+#: model:ir.model.fields,help:website_timecheck.field_sale_order__picking_date
+msgid "Monday to Friday 15:00-18:00"
+msgstr "取货时间： 周一到周五下午15:00-18:00"
+
+#. module: website_timecheck
+#: model_terms:ir.ui.view,arch_db:website_timecheck.frontend_layout
+msgid "My Account"
+msgstr "我的帐号"
+
+#. module: website_timecheck
+#: model:ir.model.fields,field_description:website_timecheck.field_product_product__is_new_arrival
+#: model:ir.model.fields,field_description:website_timecheck.field_product_product__stock_new_arrival
+#: model:ir.model.fields,field_description:website_timecheck.field_product_template__is_new_arrival
+#: model:ir.model.fields,field_description:website_timecheck.field_product_template__stock_new_arrival
+#: model_terms:ir.ui.view,arch_db:website_timecheck.products_categories
+msgid "New Arrival"
+msgstr "最新货品"
+
+#. module: website_timecheck
+#: model_terms:ir.ui.view,arch_db:website_timecheck.confirmation
+msgid "Order"
+msgstr "销售订单"
+
+#. module: website_timecheck
+#: model_terms:ir.ui.view,arch_db:website_timecheck.confirmation
+msgid "Order - Submitted"
+msgstr "订单已提交"
+
+#. module: website_timecheck
+#: model:ir.model.fields,field_description:website_timecheck.field_sale_order__other_inquiry
+#: model_terms:ir.ui.view,arch_db:website_timecheck.cart
+msgid "Other Inquiry"
+msgstr "其他需求,请填写"
+
+#. module: website_timecheck
+#: model:ir.model.fields,field_description:website_timecheck.field_sale_order__payment_desc
+#: model_terms:ir.ui.view,arch_db:website_timecheck.cart
+#: selection:sale.order,payment_method:0
+msgid "Other Payment Method"
+msgstr "其他支付方式,请填写"
+
+#. module: website_timecheck
+#: model_terms:ir.ui.view,arch_db:website_timecheck.products_categories
+msgid "Oversea Stock"
+msgstr "海外现货"
+
+#. module: website_timecheck
+#: model_terms:ir.ui.view,arch_db:website_timecheck.product
+#: model_terms:ir.ui.view,arch_db:website_timecheck.products_item
+msgid "Overseas"
+msgstr "海外现货"
+
+#. module: website_timecheck
+#: model:ir.model.fields,field_description:website_timecheck.field_sale_order__payment_method
+#: model_terms:ir.ui.view,arch_db:website_timecheck.cart
+msgid "Payment Method"
+msgstr "付款方法"
+
+#. module: website_timecheck
+#: model_terms:ir.ui.view,arch_db:website_timecheck.product
+msgid "Product Name"
+msgstr "产品名称"
+
+#. module: website_timecheck
+#: model:ir.model,name:website_timecheck.model_product_template
+msgid "Product Template"
+msgstr "产品模板"
+
+#. module: website_timecheck
+#: model_terms:ir.ui.view,arch_db:website_timecheck.product_price
+#: model_terms:ir.ui.view,arch_db:website_timecheck.products_item
+msgid "Retail in"
+msgstr "公价"
+
+#. module: website_timecheck
+#: model_terms:ir.ui.view,arch_db:website_timecheck.cart_lines
+msgid "Sale HKD"
+msgstr "港币卖价"
+
+#. module: website_timecheck
+#: model:ir.model,name:website_timecheck.model_sale_order
+msgid "Sale Order"
+msgstr "销售订单"
+
+#. module: website_timecheck
+#: model_terms:ir.ui.view,arch_db:website_timecheck.products_item
+msgid "Shopping cart"
+msgstr "购物车"
+
+#. module: website_timecheck
+#: model_terms:ir.ui.view,arch_db:website_timecheck.products_categories
+msgid "Special Offer"
+msgstr "特价商品"
+
+#. module: website_timecheck
+#: model_terms:ir.ui.view,arch_db:website_timecheck.product
+#: model_terms:ir.ui.view,arch_db:website_timecheck.products_item
+msgid "Stock:"
+msgstr "库存:"
+
+#. module: website_timecheck
+#: model_terms:ir.ui.view,arch_db:website_timecheck.confirmation
+msgid "Submitted"
+msgstr "已提交"
+
+#. module: website_timecheck
+#: model_terms:ir.ui.view,arch_db:website_timecheck.products_item
+msgid "Unpublished"
+msgstr "未公开"
+
+#. module: website_timecheck
+#: model:ir.model,name:website_timecheck.model_res_users
+msgid "Users"
+msgstr "使用者"
+
+#. module: website_timecheck
+#: model_terms:ir.ui.view,arch_db:website_timecheck.cart
+#: selection:sale.order,payment_method:0
+msgid "Visa or Union (Extra 2.2% as fee)"
+msgstr "刷银联或信用卡 买方支付2.2%手续费"
+
+#. module: website_timecheck
+#: model_terms:ir.ui.view,arch_db:website_timecheck.confirmation
+msgid "We will contact you soon."
+msgstr "我们会尽快与您联系。"
+
+#. module: website_timecheck
+#: model:ir.model,name:website_timecheck.model_website
+msgid "Website"
+msgstr "网站"
+

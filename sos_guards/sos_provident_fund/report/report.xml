@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>             
+    <data>
+		 <!--PF Employee Contribution Report -->
+		<report
+			id="report_pf_employee_contribution"
+			string= "PF Employee Contribution Report"
+			model = "sos_provident_fund.pf.employee.contribution.wizard"
+			report_type="qweb-pdf"
+			file="sos_provident_fund.report_pf_employeecontribution"
+			name="sos_provident_fund.report_pf_employeecontribution"
+		/>
+		
+		
+		 <!--PF Employer Contribution Report -->
+		<report
+			id="report_pf_employer_contribution"
+			string= "PF Employee &amp; Employer Contribution Report"
+			model = "sos_provident_fund.pf.employer.contribution.wizard"
+			report_type="qweb-pdf"
+			file="sos_provident_fund.report_pf_employercontribution"
+			name="sos_provident_fund.report_pf_employercontribution"
+		/>
+		
+		<!--PF Employee Statement Report -->
+		<report
+			id="report_pf_employee_statement"
+			string= "PF Employee Statement Report"
+			model = "sos_provident_fund.pf.employee.statement.wizard"
+			report_type="qweb-pdf"
+			file="sos_provident_fund.report_pf_employeestatement"
+			name="sos_provident_fund.report_pf_employeestatement"
+		/>
+
+		<!-- Terminated Guards 3X interval PF Report -->
+		<report
+			id="action_terminated_guards_3x_interval_pf_report"
+			string= "Terminated Guards 3X Interval PF Report"
+			model = "sos_provident_fund.terminated.guards.3x.interval.pf.wizard"
+			report_type="qweb-pdf"
+			file="sos_provident_fund.terminated_guards_3x_pf_report"
+			name="sos_provident_fund.terminated_guards_3x_pf_report"
+		/>
+
+		<!-- Month Wise PF Report -->
+		<report
+			id="action_month_wise_pf_report"
+			string= "Month Wise PF Report"
+			model = "sos_provident_fund.month.wise.pf.wizard"
+			report_type="qweb-pdf"
+			file="sos_provident_fund.month_wise_pf_report"
+			name="sos_provident_fund.month_wise_pf_report"
+		/>
+		  
+	</data>
+</openerp>

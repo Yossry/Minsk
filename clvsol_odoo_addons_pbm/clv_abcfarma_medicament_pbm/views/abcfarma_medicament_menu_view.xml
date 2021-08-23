@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <menuitem name="ABCFarma Medicaments" id="clv_abcfarma_medicament.menu_pharmacy_medicament_medicaments_abcfarma_medicaments"
+            parent="clv_base.menu_pharmacy_medicament"
+            groups="clv_medicament.group_user"
+            sequence="30"
+            action="clv_abcfarma_medicament.clv_abcfarma_medicament_action"/>
+
+        <menuitem name="Lists" id="clv_abcfarma_medicament.menu_pharmacy_medicament_medicaments_abcfarma_medicaments_lists"
+            parent="clv_abcfarma_medicament.menu_pharmacy_medicament_medicaments_abcfarma_medicaments"
+            groups="clv_medicament.group_user"
+            sequence="10"
+            action="clv_abcfarma_medicament.clv_abcfarma_medicament_list_action"/>
+
+        <menuitem name="List Items" id="clv_abcfarma_medicament.menu_pharmacy_medicament_medicaments_abcfarma_medicaments_list_items"
+            parent="clv_abcfarma_medicament.menu_pharmacy_medicament_medicaments_abcfarma_medicaments"
+            groups="clv_medicament.group_user"
+            sequence="20"
+            action="clv_abcfarma_medicament.clv_abcfarma_medicament_list_item_action"/>
+
+    </data>
+</openerp>

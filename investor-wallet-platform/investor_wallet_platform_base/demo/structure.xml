@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright 2019 Coop IT Easy
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+    <data noupdate="1">
+        <record id="ir_sequence_coopiteasy_register_demo" model="ir.sequence">
+            <field name="name">Subscription Register Coop IT Easy</field>
+            <field name="code">subscription.register.Coop_IT_Easy</field>
+            <field name="number_next">3</field>
+            <field name="number_increment">1</field>
+        </record>
+
+        <record id="ir_sequence_coopiteasy_operation_demo" model="ir.sequence">
+            <field name="name">Register Operation Coop IT Easy</field>
+            <field name="code">register.operation.Coop_IT_Easy</field>
+        </record>
+
+        <record id="ir_sequence_coopiteasy_journal_demo" model="ir.sequence">
+            <field name="name">Account Default Subscription Journal Coop IT Easy</field>
+            <field name="padding">3</field>
+            <field name="use_date_range" eval="True"/>
+            <field name="prefix">'SUBJ/%(year)s/'</field>
+        </record>
+
+        <record id="account_journal_coopiteasy_demo" model="account.journal">
+            <field name="name">Subscription Journal Coop IT Easy</field>
+            <field name="code">SUBJ_Coop_IT_Easy,</field>
+            <field name="type">sale</field>
+            <field name="sequence_id" ref="ir_sequence_coopiteasy_journal_demo"/>
+        </record>
+
+        <record id="ir_sequence_coopcity_register_demo" model="ir.sequence">
+            <field name="name">Subscription Register Coop City</field>
+            <field name="code">subscription.register.Coop_City</field>
+            <field name="number_next">1</field>
+            <field name="number_increment">1</field>
+        </record>
+
+        <record id="ir_sequence_coopcity_operation_demo" model="ir.sequence">
+            <field name="name">Register Operation Coop City</field>
+            <field name="code">register.operation.Coop_City</field>
+        </record>
+
+        <record id="ir_sequence_coopcity_journal_demo" model="ir.sequence">
+            <field name="name">Account Default Subscription Journal Coop City</field>
+            <field name="padding">3</field>
+            <field name="use_date_range" eval="True"/>
+            <field name="prefix">'SUBJ/%(year)s/'</field>
+        </record>
+
+        <record id="account_journal_coopcity_demo" model="account.journal">
+            <field name="name">Subscription Journal Coop City</field>
+            <field name="code">SUBJ_Coop_City,</field>
+            <field name="type">sale</field>
+            <field name="sequence_id" ref="ir_sequence_coopcity_journal_demo"/>
+        </record>
+
+    </data>
+
+    <record id="res_partner_structure_coopiteasy_demo" model="res.partner">
+        <field name="name">Coop IT Easy</field>
+        <field name="is_platform_structure" eval="True"/>
+        <field name="customer" eval="True"/>
+        <field name="is_company" eval="True"/>
+        <field name="email">contact@coopiteasy.coop</field>
+        <field name="street">Rue Wagner, 2</field>
+        <field name="city">Namur (Loyers)</field>
+        <field name="zip">5101</field>
+        <field name="country_id" ref="base.be"/>
+        <field name="structure_type">cooperative</field>
+        <field name="display_on_website" eval="True"/>
+        <field name="subscription_maximum_amount">2000</field>
+        <field name="register_sequence" ref="ir_sequence_coopiteasy_register_demo"/>
+        <field name="operation_sequence" ref="ir_sequence_coopiteasy_operation_demo"/>
+        <field name="account_journal" ref="account_journal_coopiteasy_demo"/>
+        <field name="initialized" eval="True"/>
+    </record>
+
+    <record id="res_partner_structure_coopcity_demo" model="res.partner">
+        <field name="name">Coop City</field>
+        <field name="is_platform_structure" eval="True"/>
+        <field name="customer" eval="True"/>
+        <field name="is_company" eval="True"/>
+        <field name="email">contact@coopcity.coop</field>
+        <field name="street">Rue Wagner, 3</field>
+        <field name="city">Boncelles</field>
+        <field name="zip">5101</field>
+        <field name="country_id" ref="base.be"/>
+        <field name="structure_type">association</field>
+        <field name="display_on_website" eval="True"/>
+        <field name="subscription_maximum_amount">1000</field>
+        <field name="register_sequence" ref="ir_sequence_coopcity_register_demo"/>
+        <field name="operation_sequence" ref="ir_sequence_coopcity_operation_demo"/>
+        <field name="account_journal" ref="account_journal_coopcity_demo"/>
+        <field name="initialized" eval="True"/>
+    </record>
+</odoo>

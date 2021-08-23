@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright 2019 Coop IT Easy SCRL fs
+  Rémy Taymans <remy@coopiteasy.be>
+License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+    <record model="ir.ui.view" id="view_company">
+        <field name="name">res.company.form.iwp</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="model">res.company</field>
+        <field name="arch" type="xml">
+            <group name="social_media" position="before">
+                <group name="platform_stats" string="Platform Statistics">
+                    <field name="published_financial_product"/>
+                    <field name="nb_investor"/>
+                    <field name="total_outstanding_amount"/>
+                </group>
+            </group>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_company_easymycoop_iwp">
+       <field name="name">res.company.form.easymycoop_iwp</field>
+       <field name="inherit_id" ref="easy_my_coop.view_company_inherit_form2"/>
+       <field name="model">res.company</field>
+       <field name="arch" type="xml">
+           <field name="unmix_share_type" position="before">
+              <field name="notification_emails"/>
+           </field>
+       </field>
+    </record>
+</odoo>

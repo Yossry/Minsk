@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="hr_employee_summary_setup_view_form" model="ir.ui.view">
+        <field name="name">hr.employee.summary_setup.form</field>
+        <field name="model">hr.employee.summary_setup</field>
+        <field name="arch" type="xml">
+            <form>
+                <div class="oe_right">
+                    <button type="object" name="do_populate_all_employees" string="Get All Employees"/>
+                </div>
+                <label for="employee_ids"/>
+                <field name="employee_ids"/>
+                <group>
+                    <field name="dir_path"/>
+                    <field name="file_name"/>
+                </group>
+                <footer>
+                    <button 
+                        type="object"
+                        name="do_employee_summary_setup"
+                        string="Employees Summary Set Up"
+                        class="oe_highlight"
+                        />
+                    <button special="cancel" string="Cancel"/>
+                </footer>
+            </form>
+
+        </field>
+    </record>
+
+    <!-- More button Action -->
+    <act_window 
+        id="hr_employee_summary_setup_action"
+        name="Employee Summary Set Up"
+        src_model="hr.employee"
+        res_model="hr.employee.summary_setup"
+        view_mode="form"
+        key2="client_action_multi"
+        target="new"
+    />
+
+</odoo>

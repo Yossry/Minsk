@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+	<template id ="report_bankaccounts">
+		<t t-call="web.html_container">
+			 <t t-call="web.external_layout">
+			<div class="page">
+				<style>
+					.tabhead{font-size:10px;}
+					.tabcol{font-size:10px;}
+					.tabtot{font-size:10px;}
+					 table th { background-color:#d4e3e5;}
+					 tr:nth-child(even) {background-color: #FFEBCD;}
+					 tr:nth-child(odd) {background-color: #cdcdcd;}
+				</style>
+								
+				<div width="100%"><center><h3>Guards Bank Account Report</h3></center> </div>
+			
+				<div class="col-xs-12 pull-right" style="padding-left:0px; padding-right:0px; page-break-inside: avoid;">
+				<table class="table" width="100%">
+					<thead>
+						<tr class="tabhead">
+							<th class="text-center"  style="border: 1px solid black">SR.No</th>
+							<th class="text-center"  style="border: 1px solid black">Bank Account#</th>
+							<th class="text-center"  style="border: 1px solid black">Profile Status</th>
+							<th class="text-center"  style="border: 1px solid black">Total</th>
+						</tr>
+					</thead>
+					<tbody>	
+						<t t-foreach="BankAccounts" t-as="acc">
+							<tr class="tabcol">
+								<td class="text-left">
+									<span t-esc="acc_index + 1" />
+								</td>
+								<td class="text-left">
+									<span t-esc="acc['account']" />
+								</td>
+								<td class="text-left">
+									<t  t-if="acc['status'] == True">
+										Active
+									</t>
+									<t  t-if="acc['status'] == False">
+										Terminated
+									</t>	
+								</td>
+								<td class="text-left">
+									<span t-esc="acc['total']" />
+								</td>
+							</tr>
+						</t>
+					</tbody>	
+				</table>
+				
+			</div>	
+		</div>
+		</t>
+		</t>
+	</template>
+	
+	</data>
+</odoo>

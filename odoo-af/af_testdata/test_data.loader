@@ -1,0 +1,444 @@
+/*
+ * Loading test data.
+ * 
+ * sudo apt install pgloader
+ * sudo apt install unzip
+ * 
+ * Fyll i korrekt arkivsökväg i FROM.
+ * Fyll i korrekt databas i INTO-kommandona.
+ *
+ * Exekvera med
+ * sudo -u postgres pgloader test_data.loader
+ * 
+ * https://pgloader.readthedocs.io/en/latest/index.html
+ * 
+ * Koden liknar till stor del SQL.
+ * Uttrycken inom parenteser (t.ex. display_name string using (format nil "~a" name))
+ * är common lisp, med tillgång till en transformeringssmodul (sök i dokumentationen).
+ * Det ska gå att ladda fler moduler om det skulle behövas.
+ * 
+ * Den fullstora zipfilen tar många minuter att apcka upp på min arbetsdator. Det går
+ * blixtsnabbt på fossa. Rekommenderar att experimentera där i lämplig databas.
+ * En inläst fil kommer ta upp ca 1.3 GB, så städa efter dig.
+ * 
+ */
+
+LOAD ARCHIVE
+   FROM /home/robin/prestanda-test-filer.zip
+   INTO postgresql:///af1
+   
+   /*
+    * Cleanup
+    */
+   BEFORE LOAD DO
+     $$ DELETE FROM res_company_users_rel WHERE user_id >= 10000000; $$,
+     $$ DELETE FROM res_groups_users_rel WHERE uid >= 10000000; $$,
+     $$ DELETE FROM res_users WHERE id >= 10000000; $$,
+     $$ DELETE FROM res_partner WHERE id >= 10000000; $$,
+     $$ DELETE FROM calendar_event_res_partner_rel WHERE calendar_event_id >= 40000001; $$,
+     $$ DELETE FROM calendar_event WHERE id >= 40000001; $$
+    /*
+     * Arbetsgivare
+     */
+    LOAD CSV
+        FROM FILENAME MATCHING ~/res.partners.companies.csv/
+             WITH ENCODING utf-8
+             (
+                external_id,
+                id,
+                customer_nr,
+                type                    [null if blanks],
+                name,
+                street,
+                street2,
+                zip,
+                city,
+                country_xml_id,
+                country_id,
+                country_name,
+                phone,
+                mobile,
+                email,
+                website,
+                industry,
+                industry_name,
+                is_company              [null if blanks],
+                customer                [null if blanks],
+                supplier                [null if blanks]
+             )
+        INTO postgresql:///af1?public.res_partner
+            TARGET COLUMNS
+             (
+                id,
+                type,
+                name,
+                display_name string using (format nil "~a" name),
+                street,
+                street2,
+                zip,
+                city,
+                country_id,
+                phone,
+                mobile,
+                email,
+                website,
+                is_company,
+                customer,
+                supplier,
+                active boolean using "1"
+             )
+        WITH skip header = 2,
+             fields optionally enclosed by '"',
+             fields escaped by double-quote,
+             fields terminated by ';'
+
+    /*
+     * Kontaktpersoner
+     */
+    AND LOAD CSV
+        FROM FILENAME MATCHING ~/res.partners.contacts.csv/
+             WITH ENCODING utf-8
+             (
+                external_id,
+                id,
+                customer_nr,
+                type                    [null if blanks],
+                name,
+                parent_xml_id,
+                parent_id               [null if blanks],
+                use_parents_adress      [null if blanks],
+                street,
+                street2,
+                zip,
+                city,
+                country_xml_id,
+                country_id,
+                country_name,
+                phone,
+                mobile,
+                email,
+                is_company              [null if blanks]
+             )
+        INTO postgresql:///af1?public.res_partner
+            TARGET COLUMNS
+             (
+                id,
+                type,
+                name,
+                display_name string using (format nil "~a" name),
+                parent_id,
+                street,
+                street2,
+                zip,
+                city,
+                country_id,
+                phone,
+                mobile,
+                email,
+                is_company,
+                active boolean using "1"
+             )
+        WITH skip header = 1,
+             fields optionally enclosed by '"',
+             fields escaped by double-quote,
+             fields terminated by ';'
+
+    /*
+     * Jobbsökare
+     */
+    AND LOAD CSV
+        FROM FILENAME MATCHING ~/res.partners.jobbseekers.csv/
+             WITH ENCODING utf-8
+             (
+                external_id,
+                id,
+                customer_nr,
+                type                    [null if blanks],
+                name,
+                parent_xml_id,
+                parent_id               [null if blanks],
+                use_parents_adress      [null if blanks],
+                street,
+                street2,
+                zip,
+                city,
+                country_xml_id,
+                country_id,
+                country_name,
+                phone,
+                mobile,
+                email
+             )
+        INTO postgresql:///af1?public.res_partner
+            TARGET COLUMNS
+             (
+                id,
+                type,
+                name,
+                display_name string using (format nil "~a" name),
+                parent_id,
+                street,
+                street2,
+                zip,
+                city,
+                country_id,
+                phone,
+                mobile,
+                email,
+                active boolean using "1"
+             )
+        WITH skip header = 1,
+             fields optionally enclosed by '"',
+             fields escaped by double-quote,
+             fields terminated by ';'
+
+    /*
+     * Användare
+     */
+    AND LOAD CSV
+        FROM FILENAME MATCHING ~/res.users.csv/
+             WITH ENCODING utf-8
+             (
+                external_id,
+                id,
+                name,
+                login,
+                email,
+                active_partner          [null if blanks],
+                partner_xml_id,
+                partner_id,
+                lang,
+                password,
+                internal                [null if blanks],
+                groups_id               [null if blanks]
+             )
+        INTO postgresql:///af1?public.res_users
+            TARGET COLUMNS
+             (
+                id,
+                login,
+                partner_id,
+                password,
+                company_id integer using (format nil "1"),
+                notification_type string using (format nil "'email'"),
+                odoobot_state string using (format nil "'disabled'"),
+                active boolean using "1"
+             )
+        WITH skip header = 1,
+             fields optionally enclosed by '"',
+             fields escaped by double-quote,
+             fields terminated by ';'
+
+    /*
+     * Användare, res_company_users_rel
+     */
+    AND LOAD CSV
+        FROM FILENAME MATCHING ~/res.users.csv/
+             WITH ENCODING utf-8
+             (
+                external_id,
+                id,
+                name,
+                login,
+                email,
+                active_partner          [null if blanks],
+                partner_xml_id,
+                partner_id,
+                lang,
+                password,
+                internal                [null if blanks],
+                groups_id               [null if blanks]
+             )
+        INTO postgresql:///af1?public.res_company_users_rel
+            TARGET COLUMNS
+            (
+                cid integer using (format nil "1"),
+                user_id integer using (format nil "~a" id)
+            )
+        WITH skip header = 1,
+             fields optionally enclosed by '"',
+             fields escaped by double-quote,
+             fields terminated by ';'
+
+    /*
+     * Användare, res_groups_users_rel, id 1
+     */
+    AND LOAD CSV
+        FROM FILENAME MATCHING ~/res.users.csv/
+             WITH ENCODING utf-8
+             (
+                external_id,
+                id,
+                name,
+                login,
+                email,
+                active_partner          [null if blanks],
+                partner_xml_id,
+                partner_id,
+                lang,
+                password,
+                internal                [null if blanks],
+                groups_id               [null if blanks]
+             )
+        INTO postgresql:///af1?public.res_groups_users_rel
+            TARGET COLUMNS
+            (
+                gid integer using (format nil "1"),
+                uid integer using (format nil "~a" id)
+            )
+        WITH skip header = 1,
+             fields optionally enclosed by '"',
+             fields escaped by double-quote,
+             fields terminated by ';'
+
+    /*
+     * Användare, res_groups_users_rel, id 6
+     */
+    AND LOAD CSV
+        FROM FILENAME MATCHING ~/res.users.csv/
+             WITH ENCODING utf-8
+             (
+                external_id,
+                id,
+                name,
+                login,
+                email,
+                active_partner          [null if blanks],
+                partner_xml_id,
+                partner_id,
+                lang,
+                password,
+                internal                [null if blanks],
+                groups_id               [null if blanks]
+             )
+        INTO postgresql:///af1?public.res_groups_users_rel
+            TARGET COLUMNS
+            (
+                gid integer using (format nil "6"),
+                uid integer using (format nil "~a" id)
+            )
+        WITH skip header = 1,
+             fields optionally enclosed by '"',
+             fields escaped by double-quote,
+             fields terminated by ';'
+
+    /*
+     * Användare, res_groups_users_rel, groups_id
+     */
+    AND LOAD CSV
+        FROM FILENAME MATCHING ~/res.users.csv/
+             WITH ENCODING utf-8
+             (
+                external_id,
+                id,
+                name,
+                login,
+                email,
+                active_partner          [null if blanks],
+                partner_xml_id,
+                partner_id,
+                lang,
+                password,
+                internal                [null if blanks],
+                groups_id               [null if blanks]
+             )
+        INTO postgresql:///af1?public.res_groups_users_rel
+            TARGET COLUMNS
+            (
+                gid integer using (format nil "7"),
+                uid integer using (format nil "~a" id)
+            )
+        WITH skip header = 1,
+             fields optionally enclosed by '"',
+             fields escaped by double-quote,
+             fields terminated by ';'
+
+    /*
+     * Kalender
+     */
+    AND LOAD CSV
+        FROM FILENAME MATCHING ~/calendar.events.csv/
+             WITH ENCODING utf-8
+             (
+                external_id,
+                id,
+                partner_ids,
+                name,
+                start,
+                stop,
+                partner_1_id,
+                partner_2_id
+             )
+        INTO postgresql:///af1?public.calendar_event
+            TARGET COLUMNS
+            (
+                id,
+                name,
+                start,
+                stop,
+                active boolean using "1"
+            )
+        WITH skip header = 1,
+             fields optionally enclosed by '"',
+             fields escaped by double-quote,
+             fields terminated by ';'
+
+    /*
+     * Kalender, partner_1_id
+     */
+    AND LOAD CSV
+        FROM FILENAME MATCHING ~/calendar.events.csv/
+             WITH ENCODING utf-8
+             (
+                external_id,
+                id,
+                partner_ids,
+                name,
+                start,
+                stop,
+                partner_1_id,
+                partner_2_id
+             )
+        INTO postgresql:///af1?public.calendar_event_res_partner_rel
+            TARGET COLUMNS
+            (
+                calendar_event_id integer using (format nil "~a" id),
+                res_partner_id integer using (format nil "~a" partner_1_id)
+            )
+        WITH skip header = 1,
+             fields optionally enclosed by '"',
+             fields escaped by double-quote,
+             fields terminated by ';'
+
+    /*
+     * Kalender, partner_2_id
+     */
+    AND LOAD CSV
+        FROM FILENAME MATCHING ~/calendar.events.csv/
+             WITH ENCODING utf-8
+             (
+                external_id,
+                id,
+                partner_ids,
+                name,
+                start,
+                stop,
+                partner_1_id,
+                partner_2_id
+             )
+        INTO postgresql:///af1?public.calendar_event_res_partner_rel
+            TARGET COLUMNS
+            (
+                calendar_event_id integer using (format nil "~a" id),
+                res_partner_id integer using (format nil "~a" partner_2_id)
+            )
+        WITH skip header = 1,
+             fields optionally enclosed by '"',
+             fields escaped by double-quote,
+             fields terminated by ';'
+
+/*    FINALLY DO
+*        $$ UPDATE res_partner SET active = TRUE WHERE id >= 10000000; $$,
+*        $$ UPDATE res_users SET active = TRUE WHERE id >= 10000000 $$
+*/
+;

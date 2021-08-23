@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <menuitem name="Documents" id="clv_document.menu_base_base_documents"
+        parent="clv_base.menu_base_base"
+        groups="clv_document.group_user"
+        sequence="30"
+        action="clv_document.clv_document_action"/>
+
+    <menuitem name="Document" id="clv_document.menu_base_config_document" 
+        parent="clv_base.menu_base_config"
+        groups="clv_document.group_user"
+        sequence="30"/>
+
+    <menuitem name="Categories" id="clv_document.menu_base_config_document_categories" 
+        parent="clv_document.menu_base_config_document"
+        groups="clv_document.group_user"
+        sequence="10"
+        action="clv_document.clv_document_category_action"/>
+
+    <menuitem name="Types" id="clv_document.menu_base_config_document_types"
+        parent="clv_document.menu_base_config_document"
+        groups="clv_document.group_user"
+        sequence="20"
+        action="clv_document.clv_document_type_action"/>
+
+    <menuitem name="Items" id="clv_document.menu_base_config_document_items"
+        parent="clv_document.menu_base_config_document"
+        groups="clv_document.group_user"
+        sequence="30"
+        action="clv_document.clv_document_item_action"/>
+
+</odoo>

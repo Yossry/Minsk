@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>	
+		<template id ="sos_uniform.report_dailystock">
+			<t t-call="web.html_container">
+				<t t-call="web.external_layout" style="font-family:georgia,garamond,serif;font-size:10px">
+					<div class="page">
+						<style>
+							 tr:nth-child(even) {background-color: #FFEBCD;}
+							 tr:nth-child(odd) {background-color: #cdcdcd;}
+						</style>
+						
+						<h4>Daily Stock Report of</h4>
+						<!-- <h5>
+							From: <span t-esc="get_date_formate(data['date_from'])"/><br></br>
+							To: <span t-esc="get_date_formate(data['date_to'])"/><br></br>
+						</h5> -->
+						
+						<table class="table table-condensed" width="100%">
+							<tr style="font-size:10px; font-weight:bold; background-color:#A6ACAF;">
+								<td>SR#. </td>
+								<td>ITEMS </td>
+								<td>QUANTITY </td>
+								<td>RECEIVE </td>
+								<td>ISSUE </td>
+								<td>BALANCE </td>
+								<td>Damage </td>
+								<td>Remarks </td>
+							</tr>
+						</table>			
+					</div>
+				</t>		 
+			</t>
+		</template>
+		
+	</data>
+</odoo>
+

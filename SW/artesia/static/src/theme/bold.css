@@ -1,0 +1,64 @@
+h1.brand {
+  font-weight: 600 !important;
+}
+.heading-block h1, .heading-block h2, .heading-block h3, .heading-block h4 {
+	font-weight: 600 !important;
+}
+h1>span:not(.nocolor):not(.badge) {
+	font-weight: 600 !important;
+}
+.inner_about_title h2 {
+	font-weight: 600 !important;
+}
+#service-second h2 {
+	font-weight: 600 !important;
+}
+#customize-second .title {
+	font-weight: 600 !important;
+}
+#our-blog-second h2 {
+	font-weight: 600 !important;
+}
+#contact-us-second h3.tittle {
+	font-weight: 600 !important;
+}
+#contact-us-second h4.info {
+	font-weight: 600 !important;
+}
+.slider_area .home_slider .slingle_home_slider .slider_area_inner h1 {
+	font-weight: 600 !important;
+}
+#about-third h3 {
+	font-weight: 600 !important;	
+}
+#about-third h3 {
+	font-weight: 600 !important;	
+}
+#optimized-third .about-more .section-title h2 {
+	font-weight: 600 !important;
+}
+#contact-us-third .contact-area .heading > h2 {
+	font-weight: 600 !important;
+}
+#about-fouth .section-title h2 {
+	font-weight: 600 !important;
+}
+#feature-fourth .tab-pane h2 {
+	font-weight: 600 !important;
+}
+#customize-fourth .about-text h4 {
+	font-weight: 600 !important;
+}
+#contact-us-fourth .contact-us h3 {
+	font-weight: 600 !important;
+}
+.section-title h2{
+	font-weight: 600 !important;
+}
+.fame-cap-text h1 {
+	font-weight: 600 !important;
+	
+}
+#footer h4 {
+    font-weight: 600 !important;
+}

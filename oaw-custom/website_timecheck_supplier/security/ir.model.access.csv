@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_supplier_stock_timecheck_trial,access_supplier_stock_timecheck_trial,supplier_stock.model_supplier_stock,website_timecheck.group_timecheck_trial,1,0,0,0
+access_supplier_stock_public,access_supplier_stock_public,supplier_stock.model_supplier_stock,base.group_public,1,0,0,0

@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_clv_partner_entity_street_patternuser,clv.partner_entity.street_patter.user,model_clv_partner_entity_street_pattern,clv_base.group_user,1,0,0,0
+access_clv_partner_entity_street_patternmanager,clv.partner_entity.street_patter.manager,model_clv_partner_entity_street_pattern,clv_base.group_manager,1,1,1,0
+access_clv_partner_entity_street_patternsupmanager,clv.partner_entity.street_patter.supmanager,model_clv_partner_entity_street_pattern,clv_base.group_supmanager,1,1,1,1

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+		<record id="salary_advise_xls_report" model="ir.ui.view">
+            <field name="name">Salary Advice (XLS)</field>
+            <field name="model">sos.guards.salary.advice.rep</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="WPS">
+		            <group>
+		            	<group>
+		            		<field name="advice_id" readonly="1" options="{'no_quick_create':True,'no_create_edit':True}"/>
+						</group>
+						<group>
+						</group>
+					</group>
+					<footer>	
+                    	<button string="Cancel" class="btn-default" special="cancel" />
+                    	<button name="get_salary_advice" string="Export" type="object" class="btn-primary" default_focus="1"/>
+                    </footer>
+                    	
+                </form>
+            </field>
+        </record>
+         
+         <act_window
+		    id="action_salary_advice_xls_report"
+		    name="Salary Advice (XLS)"
+		    res_model="sos.guards.salary.advice.rep"
+		    src_model="guards.payroll.advice"
+		    view_mode="form"
+		    multi="True"
+		    target="new"
+		    key2="client_print_multi"
+		/>  
+		
+		
+		
+		<record id="sos_advice_report_save_form" model="ir.ui.view">
+			<field name="name">SOS Advice Save Form</field>
+			<field name="model">sos.advice.report.save.wizard</field>
+			<field name="arch" type="xml">
+				<form string="Advice Reports">
+					<field name="name" invisible="1"/>
+					<div>
+						<h2>Report Generated</h2>
+						<p>Here is the Excel Report: <field name="data" readonly="1" filename="name"/></p>
+					</div>
+					<footer><button string="Close" class="btn-default" special="cancel"/></footer>
+				</form>
+			</field>
+		</record>
+  
+       
+    </data>
+</odoo>

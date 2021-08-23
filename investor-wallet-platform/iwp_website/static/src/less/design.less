@@ -1,0 +1,195 @@
+/*
+ * Copyright 2019 Coop IT Easy SCRLfs <http://coopiteasy.be>
+ * Licence AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+ */
+
+/* General design */
+
+@import url('https://fonts.googleapis.com/css?family=Work+Sans&display=swap');
+
+@blue: #004D6D;
+@darker-blue:  darken(@blue, 5%);
+@lighter-blue: lighten(@blue, 5%);
+@green: #369593;
+@darker-green: darken(@green, 5%);
+@lighter-green: lighten(@green, 5%);
+@yellow: #EBC043;
+@gray: #505D68;
+@lgray: #E6EBF0;
+
+body {
+    font-family: 'Work Sans', sans-serif;
+}
+
+#wrapwrap.o_portal {
+    background-color: @lgray;
+}
+
+footer, footer.bg-light {
+    background-color: white !important;
+}
+
+// Navbar
+
+.navbar, .navbar.bg-light {
+    background-color: white !important;
+
+    .dropdown-toggle::after {
+        color: @green;
+    }
+
+    .nav-item {
+        text-transform: uppercase;
+        border-bottom: 2px solid transparent;
+
+        &:hover {
+            border-bottom: 2px solid @green;
+        }
+
+        b {
+            // Hack because odoo has put a b tag around a element
+            font-weight: normal;
+        }
+    }
+
+    .dropdown-menu {
+        color: white;
+        background-color: @green;
+        border-color: @green;
+
+        .dropdown-item {
+            color: white;
+            &:active, &:hover, &:focus {
+                color: @blue;
+                background-color: transparent;
+            }
+        }
+    }
+}
+
+.o_portal_wrap #o_portal_navbar_content.show {
+    background-color: @blue;
+
+    .navbar-text {
+        color: white;
+    }
+}
+
+// Buttons
+
+.btn-primary {
+    background-color: @blue;
+    border-color: @blue;
+
+    &:hover, &:focus, &:active, &:not(:disabled):not(.disabled):active {
+        background-color: @darker-blue;
+        border-color: @darker-blue;
+    }
+
+    &:focus {
+        box-shadow: 0 0 0 0.2rem @lighter-blue;
+    }
+}
+
+.show > .btn-primary.dropdown-toggle {
+    // Idem as .btn-primary:active
+    background-color: @darker-blue;
+    border-color: @darker-blue;
+
+    &:focus {
+        box-shadow: 0 0 0 0.2rem @lighter-blue;
+    }
+}
+
+.btn-secondary {
+    color: @green;
+    background-color: white;
+    border-color: @green;
+
+    &:hover, &:focus, &:active, &:not(:disabled):not(.disabled):active {
+        color: white;
+        background-color: @darker-green;
+        border-color: @darker-green;
+    }
+
+    &:focus {
+        box-shadow: 0 0 0 0.2rem @lighter-green;
+    }
+}
+
+.show > .btn-secondary.dropdown-toggle {
+    // Idem as .btn-secondary:active
+    color: white;
+    background-color: @darker-green;
+    border-color: @darker-green;
+
+    &:focus {
+        box-shadow: 0 0 0 0.2rem @lighter-green;
+    }
+}
+
+.dropdown-item.active, .dropdown-item:active {
+    background-color: @blue;
+}
+
+// Links
+
+.btn-link {
+    color: @blue;
+
+    &:hover, &:focus, &:active {
+        color: @darker-blue;
+    }
+}
+
+a {
+    color: @blue;
+    &:hover, &:active, &:focus {
+        color: @darker-blue;
+    }
+}
+
+// Badges
+
+.badge-primary {
+    background-color: @blue;
+}
+
+.badge-secondary {
+    background-color: @green;
+}
+
+// Forms
+
+.form-control:focus {
+    border-color: @lighter-blue;
+}
+
+/* Design for custom pages */
+
+.o_portal {
+    .shareline_head {
+        border: 1px solid #dee2e6 !important;
+
+        > .head_button {
+            a {
+                display: block;
+                width: 100%;
+                height: 100%;
+                border-radius: 0 .25rem .25rem 0;
+            }
+        }
+
+        .struct_name {
+            font-weight: bold;
+        }
+    }
+}
+
+.toggle-collapse[aria-expanded=false] .text-expanded {
+    display: none;
+}
+
+.toggle-collapse[aria-expanded=true] .text-collapsed {
+    display: none;
+}

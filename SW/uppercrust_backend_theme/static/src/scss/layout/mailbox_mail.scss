@@ -1,0 +1,745 @@
+//Side bar view - start
+.o_main_content.ad_rightbar {
+    &.ad_open_search {
+        .o_mail_discuss {
+            left: 0;
+            right: 0;
+            @include slide-animation();
+        }
+    }
+    .o_content {
+        .o_mail_discuss {
+            .o_mail_discuss_sidebar {
+                padding: 10px;
+                width: 250px;
+                background-color: $white;
+                color: $brand-secondary;
+                border-right: 1px solid $border;
+                & > hr {
+                    border: none;
+                }
+                .mailcopose {
+                    margin: 0;
+                    .o_mail_chat_button_new_message {
+                        border: none;
+                        height: 40px;
+                        margin-bottom: 10px;
+                    }
+                }
+                .o_mail_discuss_item {
+                    padding: 10px;
+                    margin-bottom: 5px;
+                    & > .o_thread_name {
+                        font-size: $font-size-1;
+                        color: $menu-main-title;
+                    }
+                    &.o_mail_chat_title_main > span.badge {
+                        background-color: $brand-primary;
+                        border-color: $brand-primary;
+                        color: $white;
+                    }
+                    & .badge {
+                        background-color: $brand-secondary;
+                        border-color: $brand-secondary;
+                    }
+                    &:hover {
+                        & > .o_mail_partner_unpin {
+                            color: $brand-primary;
+                            opacity: 1;
+                            &:hover {
+                                color: darken($brand-primary, 7%);
+                            }
+                        }
+                        &:not(.o_active) {
+                            background-color: $brand-optinal;
+                            box-shadow: inset 3px 0 0 $brand-primary;
+                        }
+                    }
+                    &.o_active {
+                        background-color: $brand-optinal;
+                        box-shadow: inset 3px 0 0 $brand-primary;
+                        &:hover {
+                            background-color: $brand-optinal;
+                            box-shadow: inset 3px 0 0 $brand-primary;
+                        }
+                    }
+                }
+                .mailcontent {
+                    .o_mail_add_channel {
+                        padding: 10px;
+                        > span {
+                            top: 12px;
+                            left: 12px;
+                            padding: 0px;
+                        }
+                        & > input {
+                            padding: 3px 15px;
+                        }
+                    }
+                }
+                .o_mail_sidebar_title {
+                    & > h4, & > .o_add {
+                        color: $font-color;
+                        opacity: 1;
+                        &:hover {
+                            color: $font-color;
+                        }
+                    }
+                    & > h4.o_mail_open_channels {
+                        color: $brand-secondary;
+                        &:hover {
+                            color: darken($brand-secondary, 7%);
+                        }
+                    }
+                }
+                .o_mail_add_channel {
+                    & > input {
+                        &:focus {
+                            @include border-animation();
+                        }
+                    }
+                }
+            }
+            // Chat content - [start]
+            .o_mail_discuss_content {
+                margin-left: 250px;
+                .o_mail_thread {
+                    .o_mail_thread_content {
+                        padding: 0px 10px;
+                        & > .o_thread_date_separator {
+                            border-bottom: 1px solid $border;
+                            .o_thread_date {
+                                color: $Label-value;
+                            }
+                        }
+                        & > .o_thread_message {
+                            background-color: transparent;
+                            border-bottom: none;
+                            .o_thread_message_core {
+                                .o_mail_info {
+                                    margin-bottom: 15px;
+                                    & > strong {
+                                        color: $Label-value;
+                                        font-weight: $font-weight-6;
+                                        a {
+                                            color: $brand-primary;
+                                            font-weight: $font-weight-6;
+                                            &:hover {
+                                                color: darken($brand-primary, 7%);
+                                            }
+                                        }
+                                        &:hover {
+                                            color: darken($Label-value, 7%);
+                                        }
+                                    }
+                                    & > .o_mail_timestamp {
+                                        float: right;
+                                        font-size: $font-size-1;
+                                        font-weight: $font-weight-6;
+                                        color: $text-muted;
+                                    }
+                                    & > .o_thread_icons {
+                                        & > i:not(.fa-star):not(.o_thread_message_reply) {
+                                            color: gold;
+                                            opacity: 1;
+                                        }
+                                        & > .o_thread_message_reply {
+                                            color: $font-color;
+                                            opacity: 1;
+                                        }
+                                    }
+                                    & > .o_document_link {
+                                        color: $brand-secondary;
+                                        &:hover {
+                                            color: darken($brand-secondary, 7%);
+                                        }
+                                    }
+                                }
+                                .o_thread_message_content {
+                                    pre {
+                                        background-color: $tr-hover;
+                                        border-radius: 0;
+                                        border: 1px solid $border;
+                                        .o_mail_read_more {
+                                            text-align: center;
+                                            text-transform: uppercase;
+                                            font-size: $font-size-1;
+                                        }
+                                        & > span {
+                                            color: $font-color;
+                                        }
+                                    }
+                                    .o_attachment {
+                                        .o_image_box {
+                                            .o_image_overlay {
+                                                &:hover {
+                                                    background: $bg-light;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    .o_mail_subject {
+                                        font-size: $font-size-1;
+                                        font-weight: $font-weight-6;
+                                        color: $font-color;
+                                    }
+                                }
+                            }
+                            .o_thread_message_sidebar {
+                                .o_thread_message_avatar {
+                                    @include round-border();
+                                }
+                            }
+                        }
+                        & > .content-frame-body.o_message_form {
+                            height: 100%;
+                            overflow: hidden;
+                            .o_button_header {
+                                display: flex;
+                                & .o_message_back {
+                                    .o_message_back {
+                                        font-family: Roboto;
+                                        &:before {
+                                            margin-right: 5px;
+                                            font: normal normal normal 14px/1 FontAwesome;
+                                        }
+                                    }
+                                }
+                                & > button.btn.btn-default {
+                                    background-color: transparent;
+                                    color: $icon;
+                                    border: none;
+                                    box-shadow: none;
+                                    &:hover {
+                                        color: darken($icon, 7%);
+                                    }
+                                }
+                            }
+                            & > .panel.panel-default {
+                                display: flex;
+                                flex-direction: column;
+                                border: none;
+                                box-shadow: none;
+                                border-radius: 0;
+                                margin-bottom: 0;
+                                height: 100%;
+                                & > .panel-heading {
+                                    display: flex;
+                                    flex-direction: row;
+                                    background-color: transparent;
+                                    width: 100%;
+                                    flex: 0 0 auto;
+                                    .o_back {
+                                        display: flex;
+                                        float: left;
+                                        font-size: medium;
+                                        margin-right: 10px;
+                                        color: $Label;
+                                        align-items: center;
+                                        justify-content: center;
+                                        &:hover {
+                                            cursor: pointer;
+                                            color: darken($Label, 5%);
+                                        }
+                                    }
+                                    & > .pull-left {
+                                        width: 100%;
+                                        display: flex;
+                                        justify-content: flex-start;
+                                        align-items: center;
+                                        .panel-title-image {
+                                            width: 64px;
+                                            height: 64px;
+                                            float: left;
+                                            @include round-border();
+                                        }
+                                        .panel-title, .to_partners {
+                                            color: $Label;
+                                        }
+                                        .o_user_email {
+                                            margin-left: 10px;
+                                        }
+                                    }
+                                }
+                                & > .o_attachment_block {
+                                    position: absolute;
+                                    overflow: auto;
+                                    width: 100%;
+                                    left: 0;
+                                    bottom: 0;
+                                    right: 0;
+                                    top: auto;
+                                    display: flex;
+                                    flex-direction: column;
+                                    border-top: 1px solid $border;
+                                    background-color: $white;
+                                    padding-top: 0 !important;
+                                    height: 170px;
+                                    @include slide-animation();
+                                    & > .o_seprator {
+                                        text-transform: uppercase;
+                                    }
+                                }
+                                & .panel-footer {
+                                    border: none;
+                                    background-color: transparent;
+                                    border-radius: 0;
+                                    padding: 0;
+                                    .o-mail-reply {
+                                        width: 120px;
+                                        text-transform: uppercase;
+                                        background-color: $brand-secondary;
+                                        box-shadow: none;
+                                        border: 1px solid $brand-secondary;
+                                        &:hover {
+                                            background-color: darken($brand-secondary, 7%);
+                                        }
+                                    }
+                                }
+                                & > .panel-body {
+                                    padding: 10px;
+                                    overflow: auto;
+                                    &:not(.o_attachment_block) {
+                                        margin-bottom: 25px;
+                                        flex: 1 1 auto;
+                                    }
+                                    small {
+                                        font-size: 13px;
+                                    }
+                                    & > h3:first-child {
+                                        margin-bottom: 25px;
+                                    }
+                                    .attachment {
+                                        & > .o_download_all {
+                                            margin-bottom: 0;
+                                        }
+                                        ul {
+                                            display: table;
+                                            width: 100%;
+                                            list-style: none;
+                                            padding: 0;
+                                            text-align: center;
+                                            margin-bottom: 0;
+                                            li {
+                                                width: 125px;
+                                                float: left;
+                                                padding: 10px 15px;
+                                                text-align: center;
+                                                .atch-thumb {
+                                                    text-align: center;
+                                                    margin: auto;
+                                                    display: inline-block;
+                                                    .cu_attachment {
+                                                        width: auto;
+                                                        text-align: center;
+                                                        margin: auto;
+                                                        .o_icon {
+                                                            font-size: $font-size-10;
+                                                        }
+                                                    }
+                                                }
+                                                .file-name {
+                                                    text-overflow: ellipsis;
+                                                    display: block;
+                                                    overflow: hidden;
+                                                    width: 100px;
+                                                    height: 16px;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    & > pre {
+                                        background-color: $tr-hover;
+                                        border-radius: 0;
+                                    }
+                                }
+                            }
+                            &.o_attch_close {
+                                .panel.panel-default {
+                                    & > .o_attachment_block {
+                                        height: 25px;
+                                        overflow: hidden;
+                                        bottom: 12px;
+                                        @include slide-animation();
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .o_mail_annoying_notification_bar {
+                    background-color: $brand-primary;
+                    font-weight: $font-weight-6;
+                    text-transform: uppercase;
+                }
+                & > .o_thread_composer:not(.o_chat_mini_composer) {
+                    border: none;
+                    background-color: transparent;
+                    padding-top: 5px;
+                    padding-bottom: 5px;
+                    .o_composer_container {
+                        .o_chatter_avatar {
+                            @include round-border();
+                            left: -36px;
+                        }
+                        .o_composer_attachments_list{
+                            .o_attachments{
+                                .o_attachment{
+                                    &:hover{
+                                        .o_attachment_delete{
+                                            &:hover{
+                                                background-color: $brand-secondary;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .o_composer {
+                        border: none;
+                        .o_composer_text_field {
+                            border-bottom: 1px solid $border;
+                            &:focus {
+                                @include border-animation();
+                            }
+
+                        }
+                        .o_chatter_composer_tools {
+                            height: 36px;
+                            border-left: none;
+                            background-color: transparent;
+                            box-shadow: none;
+                            & > button {
+                                color: $font-color;
+                                opacity: 1;
+                                &:hover, &:focus, &:active {
+                                    background-color: transparent;
+                                    box-shadow: none;
+                                }
+                            }
+                        }
+                        .o_mail_emoji_container {
+                            position: absolute;
+                            bottom: 100%;
+                            width: 250px;
+                            right: -28px;
+                            background: $white;
+                            border: 1px solid $border;
+                            padding: 10px;
+                            overflow-y: auto;
+                            & > button {
+                                margin: 0 0 8px 0;
+                                padding: 0;
+                                height: 25px;
+                                width: 25px;
+                                img {
+                                    width: 20px;
+                                    height: 20px;
+                                }
+                            }
+                        }
+                    }
+                    .o_composer_attachments_list {
+                        margin: 0;
+                        .o_attachments {
+                            .o_attachment_delete {
+                                & > i.fa-times-circle {
+                                    color: $brand-primary;
+                                }
+                            }
+                            .o_image_box {
+                                &:hover {
+                                    .o_image_overlay {
+                                        background: $bg-light;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .o_composer_send {
+                        margin-top: 5px;
+                        margin-bottom: 5px;
+                        .o_composer_button_send {
+                            padding: 4px 10px;
+                            border-radius: 0;
+                            font-size: $font-size-n;
+                            background-color: transparent;
+                            border: none;
+                            &:before {
+                                font-family: 'FontAwesome';
+                                content: '\f1d9';
+                                font-size: $font-size-8;
+                                color: $brand-primary;
+                                padding: 0px;
+                                vertical-align: middle;
+                                display: inline-block;
+                            }
+                        }
+                        &:hover {
+                            .o_composer_button_send {
+                                &:before {
+                                    color: darken($brand-primary, 7%);
+                                }
+                            }
+                        }
+                    }
+                }
+                .o_inbox_content {
+                    .panel {
+                        border: none;
+                        margin-bottom: 0px;
+                        box-shadow: none;
+                        .panel-heading {
+                            border: none;
+                            padding: 5px 15px;
+                            height: 45%;
+                            .mail-checkall {
+                                margin-top: 5px;
+                            }
+                        }
+                    }
+                    .o_mailbox_inbox {
+                        background-color: $white;
+                        .mail-checkall {
+                            float: left;
+                            text-align: left;
+                        }
+                        div.o_checkbox {
+                            margin-right: 10px !important;
+                            margin-left: 4px !important;
+                            display: inline-block !important;
+                        }
+                        & > .btn-trash {
+                            margin-left: 5px;
+                        }
+                        #o_mailbox_inbox_table_length {
+                            position: fixed;
+                            bottom: 0;
+                            z-index: 3;
+                            padding: 7px 5px;
+                            text-align: center;
+                            margin: auto;
+                            select.input-sm {
+                                border: none;
+                                border-bottom: 1px solid $border;
+                                color: $Label-value;
+                                box-shadow: none;
+                                &:focus {
+                                    @include border-animation();
+                                }
+                            }
+                        }
+                        .o_button_more {
+                            ul.dropdown-menu {
+                                left: auto;
+                                right: 0;
+                                border-radius: 0;
+                            }
+                        }
+                    }
+                    .o_pager_state {
+                        position: fixed;
+                        bottom: 0;
+                        z-index: 3;
+                        padding: 7px 5px;
+                        text-align: center;
+                        margin: auto;
+                        & > .dataTables_paginate {
+                            float: left;
+                            ul.pagination {
+                                margin: 0px;
+                                & > li {
+                                    &#o_mailbox_inbox_table_previous {
+                                        a {
+                                            background: transparent;
+                                            border: none;
+                                        }
+                                    }
+                                    &#o_mailbox_inbox_table_next {
+                                        a {
+                                            background: transparent;
+                                            border: none;
+                                        }
+                                    }
+                                }
+                                & > li:not(#o_mailbox_inbox_table_previous):not(#o_mailbox_inbox_table_next) {
+                                    display: none;
+                                }
+                            }
+                        }
+                        & > .dataTables_info {
+                            padding: 6px;
+                        }
+                        .dataTables_paginate, .dataTables_info {
+                            display: inline-block;
+                        }
+                        .dataTables_info {
+                            float: right;
+                        }
+                    }
+                    .dataTables_length {
+                        display: inline-block;
+                        float: left;
+                        select {
+                            border-radius: 0;
+                            line-height: initial;
+                        }
+                        label {
+                            &:after {
+                                content: '\f0dd';
+                                position: absolute;
+                                top: 14px;
+                                right: 9px;
+                                font: normal normal normal 14px/1 FontAwesome;
+                            }
+                        }
+                    }
+                    #o_mailbox_inbox_table_wrapper {
+                        padding: 0;
+                        table#o_mailbox_inbox_table {
+                            tr {
+                                height: 42px;
+                                cursor: pointer;
+                                &.mail-unread {
+                                    font-weight: $font-weight-7;
+                                }
+                                & > th {
+                                    vertical-align: middle;
+                                    text-transform: uppercase;
+                                    border-bottom: 1px solid $border;
+                                    padding: 5px;
+                                    &.mail-btn-header {
+                                        width: 90px !important;
+                                        .btn-group {
+                                            display: table;
+                                            float: left;
+                                            margin: 0px 3px;
+                                            button {
+                                                border: none;
+                                                padding: 0;
+                                                color: $icon;
+                                                .caret {
+                                                    display: none;
+                                                }
+                                                &:hover, &:focus, &:active {
+                                                    background-color: transparent;
+                                                    color: $icon;
+                                                    box-shadow: none;
+                                                }
+                                            }
+                                        }
+                                        .btn-trash {
+                                            border: none;
+                                            padding: 0px 10px;
+                                            color: $icon;
+                                            &:hover, &:focus, &:active {
+                                                background-color: transparent;
+                                                color: $icon;
+                                                box-shadow: none;
+                                            }
+                                        }
+                                    }
+                                    .mail-checkall {
+                                        margin-bottom: 0px;
+                                    }
+                                }
+                                & > td {
+                                    padding: 5px;
+                                    vertical-align: middle;
+                                    border-bottom: 1px solid $border;
+                                    &.mail-star {
+                                        text-align: center;
+                                        width: 30px;
+                                        & > span.o_thread_message_star {
+                                            color: gold;
+                                        }
+                                    }
+                                    &.mail-attachment {
+                                        text-align: center;
+                                    }
+                                    &.mail-important {
+                                        width: 30px;
+                                        text-align: center;
+                                        & > .o_important {
+                                            background: url("../img/importance.png") no-repeat;
+                                            height: 19px;
+                                            width: 19px;
+                                            float: left;
+                                            display: table;
+                                            float: left;
+                                            margin: 0px 10px;
+                                            &.important-o {
+                                                background-position: -38px 0;
+                                            }
+                                            &.important {
+                                                background-position: 0 0;
+                                            }
+                                        }
+                                        & > .o_thread_message_star {
+                                            line-height: normal;
+                                            vertical-align: middle;
+                                            float: left;
+                                            text-align: left;
+                                            padding: 0px 12px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                & > .o_thread_composer.o_thread_composer_extended{
+                    top: 0;
+                    bottom: 0;
+                    width: 100%;
+                    left: 0;
+                    right: 0;
+                    text-align: right;
+                    padding: 10px 50px;
+                    border-top: 1px solid $border;
+                    .o_composer_container{
+                        .o_composer_subject{
+                            border: none;
+                            input{
+                                border-bottom: 1px solid $border;
+                                margin: 0px;
+                                &:focus{
+                                    @include border-animation();
+                                }
+                            }
+                        }
+                        .o_composer.o_extended_composer{
+                            .o_composer_input{
+                                textarea{
+                                    height: 60px !important;
+                                    border-bottom: 1px solid $border;
+                                    &:focus{
+                                        @include border-animation();
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .o_composer_send{
+                        position: absolute;
+                        right: 15px;
+                        bottom: 3px;
+                        background-color: $tr-hover;
+                        border-radius: 50%;
+                        height: 40px;
+                        width: 40px;
+                        padding: 8px 0px;
+                        text-align: center;
+                        .o_composer_button_send{
+                            padding: 0;
+                        }
+                    }
+                }
+            }
+            // Chant content - [stop]
+        }
+    }
+}
+
+//Side dar view - stop

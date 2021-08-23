@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!--Makes the company print function unavailable to supplier groups-->
+    <report
+        id="sale.action_report_saleorder"
+        string="Quotation / Order"
+        model="sale.order"
+        groups="sales_team.group_sale_salesman_all_leads"
+        report_type="qweb-pdf"
+        file="sale.report_saleorder"
+        name="sale.report_saleorder"
+    />
+    <template id="report_sale_supplier_fm_document">
+        <t t-call="supplier_user_access.external_layout">
+            <div class="page" style="font-family:sans;">
+                <div class="oe_structure" />
+                <div class="row">
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <div class="col-xs-4">
+                        <strong t-if="o.partner_shipping_id == o.partner_invoice_id">
+                            Invoice:
+                        </strong>
+                        <p t-field="o.partner_invoice_id.name" />
+                        <p t-field="o.partner_invoice_id.street" />
+                        <p t-field="o.partner_invoice_id.street2" />
+                        <p t-field="o.partner_invoice_id.city" />
+                        <span t-field="o.partner_invoice_id.state_id.name" />
+                        <span t-field="o.partner_invoice_id.zip" />
+                        <p t-field="o.partner_invoice_id.country_id.name" />
+                    </div>
+                    <div
+                        t-if="o.partner_shipping_id != o.partner_invoice_id"
+                        class="col-xs-4"
+                    >
+                        <strong>Shipping Address:</strong>
+                        <p t-field="o.partner_shipping_id.name" />
+                        <p t-field="o.partner_shipping_id.street" />
+                        <p t-field="o.partner_shipping_id.street2" />
+                        <p t-field="o.partner_shipping_id.city" />
+                        <span t-field="o.partner_shipping_id.state_id.name" />
+                        <span t-field="o.partner_shipping_id.zip" />
+                        <p t-field="o.partner_shipping_id.country_id.name" />
+                    </div>
+                    <div
+                        t-if="o.partner_shipping_id == o.partner_invoice_id"
+                        class="col-xs-4"
+                    >
+                    </div>
+                    <div class="col-xs-4" style="text-align:right">
+                        <h3>
+                            <span>INVOICE</span>
+                        </h3>
+                        <br />
+                        <strong t-if="o.state not in ['draft','sent']">Date
+                            Ordered:
+                        </strong>
+                        <strong t-if="o.state in ['draft','sent']">Date:
+                        </strong>
+                        <span
+                            t-field="o.date_order"
+                            t-field-options='{"format": "yyyy-MM-dd"}'
+                        />
+                        <br />
+                        <strong>Invoice Number:</strong>
+                        <span t-field="o.order_ref_fm_report" />
+                        <br />
+                        <strong>Reference/Description:</strong>
+                        <span t-field="o.client_order_ref" />
+                        <br />
+                    </div>
+                    <div class="col-xs-5 col-xs-offset-1">
+                    </div>
+                </div>
+                <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Reference</th>
+                            <!--New Fields For Supplier_FM-->
+                            <th>Movement</th>
+                            <th>Material</th>
+                            <th>Case No.</th>
+                            <th class="text-right">Quantity</th>
+                            <th class="text-right">Price</th>
+                            <th class="text-right">Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody class="sale_tbody">
+                        <tr t-foreach="o.order_line" t-as="l">
+                            <td>
+                                <span t-field="l.line_sequence" />
+                            </td>
+                            <td>
+                                <span t-field="l.product_id.name" />
+                            </td>
+                            <!--New Fields For Supplier_FM-->
+                            <td>
+                                <span t-field="l.movement" />
+                            </td>
+                            <td>
+                                <span t-field="l.material" />
+                            </td>
+                            <td>
+                                <span t-field="l.lot_id" />
+                            </td>
+                            <!--Removed td[td2]?-->
+                            <td class="text-right">
+                                <span t-field="l.product_uom_qty" />
+                                <span
+                                    groups="product.group_uom"
+                                    t-field="l.product_uom"
+                                />
+                            </td>
+                            <td class="text-right">
+                                <span t-field="l.price_unit" />
+                            </td>
+                            <td groups="sale.group_discount_per_so_line">
+                                <span t-field="l.discount" />
+                            </td>
+                            <td class="text-right">
+                                <span
+                                    t-field="l.price_subtotal"
+                                    t-field-options='{"widget": "monetary", "display_currency": "o.pricelist_id.currency_id"}'
+                                />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="row">
+                    <div class="col-xs-4 pull-right">
+                        <table class="table table-condensed">
+                            <tr class="border-black">
+                                <td>
+                                    <strong>Total</strong>
+                                </td>
+                                <td class="text-right">
+                                    <span
+                                        t-field="o.amount_untaxed"
+                                        t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"
+                                    />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <p t-field="o.note" />
+                <div style="page-break-inside: avoid">
+                    <div>
+                        <br />
+                        <br />
+                    </div>
+                    <div class="oe_structure" />
+                </div>
+            </div>
+        </t>
+    </template>
+    <template id="report_sale_supplier_fm">
+        <t t-call="report.html_container">
+            <t t-foreach="doc_ids" t-as="doc_id">
+                <t
+                    t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'supplier_user_access.report_sale_supplier_fm_document')"
+                />
+            </t>
+        </t>
+    </template>
+</odoo>

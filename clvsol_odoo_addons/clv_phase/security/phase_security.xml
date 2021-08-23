@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo noupdate="0">
+
+    <record id="module_phase_category" model="ir.module.category">
+        <field name="name">Phase</field>
+    </record>
+
+    <record id="clv_phase.group_user" model="res.groups">
+        <field name="name">User (Phase)</field>
+        <field name="category_id" ref="module_phase_category"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+    
+    <record id="clv_phase.group_manager" model="res.groups">
+        <field name="name">Manager (Phase)</field>
+        <field name="category_id" ref="module_phase_category"/>
+        <field name="implied_ids" eval="[(4, ref('clv_phase.group_user'))]"/>
+    </record>
+    
+    <record id="clv_phase.group_supmanager" model="res.groups">
+        <field name="name">Super Manager (Phase)</field>
+        <field name="category_id" ref="module_phase_category"/>
+        <field name="implied_ids" eval="[(4, ref('clv_phase.group_manager'))]"/>
+        <field name="users" eval="[(4, ref('base.user_root')),
+                                   (4, ref('base.user_admin'))]"/>
+    </record>
+
+    <record id="clv_base.group_data_admin" model="res.groups">
+        <field name="implied_ids" eval="[(4, ref('clv_phase.group_manager'))]"/>
+    </record>
+
+    <record id="clv_base.group_admin" model="res.groups">
+        <field name="implied_ids" eval="[(4, ref('clv_phase.group_supmanager'))]"/>
+    </record>
+
+</odoo>

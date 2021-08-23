@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- # Copyright 2008 Luis Falcon <lfalcon@gnusolidario.org>
+     Copyright 2016 LasLabs Inc.
+     License GPL-3.0 or later (http://www.gnu.org/licenses/gpl). -->
+
+<odoo>
+
+    <record id="clv_address_view_tree" model="ir.ui.view">
+        <field name="name">clv.address.tree</field>
+        <field name="model">clv.address</field>
+        <field name="inherit_id" ref="clv_partner_entity.clv_abstract_partner_entity_view_tree"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="attributes">
+                <attribute name="string">Addresses</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="clv_address_view_form" model="ir.ui.view">
+        <field name="name">clv.address.form</field>
+        <field name="model">clv.address</field>
+        <field name="inherit_id" ref="clv_partner_entity.clv_abstract_partner_entity_view_form"/>
+        <field name="mode">primary</field>
+        <field name="priority" eval="100"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="attributes">
+                <attribute name="string">Address</attribute>
+            </xpath>
+            <!--label for="name" position="before">
+                <h1><separator string="[  Address  ]"/></h1>
+            </label-->
+            <field name="code" position="after">
+                <h1><separator string="[  Address  ]"/></h1>
+                <field name="notes" placeholder="Notes..." colspan="4" style="color:Red; background:White;"/>
+            </field>
+            <!--xpath expr="//group[@name='main_data']">
+                <group name="main">
+                    <field name="parent_id"
+                           colspan="2"
+                           string="Legal Representative"
+                           domain="[('customer','=',True)]"
+                           />
+                </group>
+            </xpath-->
+            <xpath expr="//img[@name='kanban_image_default_person']" position="replace">
+                <img name="kanban_image_default_person"
+                     t-if="record.is_company.raw_value === false"
+                     t-attf-src='{{ _s }}/clv_address/static/src/img/address-avatar.png'
+                />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="clv_address_view_kanban" model="ir.ui.view">
+        <field name="name">clv.address.kanban</field>
+        <field name="model">clv.address</field>
+        <field name="inherit_id" ref="clv_partner_entity.clv_abstract_partner_entity_view_kanban"/>
+        <field name="mode">primary</field>
+        <field name="priority" eval="100"/>
+        <field name="arch" type="xml">
+            <xpath expr="//kanban" position="attributes">
+                <attribute name="string">Addresses</attribute>
+            </xpath>
+            <!--xpath expr="//img[@name='kanban_image_entity']" position="replace">
+                <img name="kanban_image_entity"
+                     t-att-src="kanban_image('clv.address', 'image_small', record.id.raw_value)" alt="Address Image"
+                />
+            </xpath>
+            <xpath expr="//img[@name='kanban_image_default_person']" position="replace">
+                <img name="kanban_image_default_person"
+                     t-if="record.is_company.raw_value === false"
+                     t-attf-src='{{ _s }}/clv/static/src/img/address-avatar.png' alt="Address Image"
+                />
+            </xpath-->
+        </field>
+    </record>
+
+    <record id="clv_address_view_search" model="ir.ui.view">
+        <field name="name">clv.address.search</field>
+        <field name="model">clv.address</field>
+        <field name="inherit_id" ref="clv_partner_entity.clv_abstract_partner_entity_view_search"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <xpath expr="//search" position="attributes">
+                <attribute name="string">Addresses</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="clv_address_action">
+        <field name="name">Addresses</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">clv.address</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,kanban,form</field>
+    </record>
+
+</odoo>

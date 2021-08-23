@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+		<template id ="report_biometric_attendancesummary">
+			<t t-call="web.html_container">
+				<t t-call="web.internal_layout">
+					<div class="page">
+						<h4 class="mb32">Attendance Summary Of <t t-esc="Report_Heading"/> </h4>
+		        		<h5 class="mb16">
+		            		Attendance Summary from <u> <span t-esc="data['start_date']"/></u> to <u><span t-esc="data['end_date']"/></u>.
+		        		</h5>
+		        		
+		        		<table class="table table-bordered mb32" style="table-layout:auto">
+		        			<thead>
+		        				<tr>
+		        					<td rowspan="2">
+                                		<strong>Employees ERP ID</strong>
+									</td>
+									<t t-foreach="get_day" t-as="day">
+										&lt;td class="text-center oe_leftfit oe_rightfit" style="background-color:
+                                		<t t-esc="day['color']"/>!important; font-size: 8px; min-width: 18px"&gt; <t t-esc="day['day_str']"/>&lt;/td&gt;
+                            		</t>
+                            		<td class="text-center" colspan="9" style="font-size: 16px; font-weight:bold;">Summary</td>
+		        				</tr>
+		        				
+		        				<tr>
+		        					<t t-foreach="get_day" t-as="day">
+										&lt;td class="text-center oe_leftfit oe_rightfit" style="background-color:
+                                		<t t-esc="day['color']"/>!important; font-size: 6px" &gt; <t t-esc="day['day']"/>&lt;/td&gt;
+                            		</t>
+                            		
+                            		<!-- M means Month's Total Days -->
+                            		<!-- P means Month's Total Present Days -->
+                            		<!-- LT means Total Late Days -->
+                            		<!-- SL means Total Short Leave Days -->
+                            		<!-- HL means Total Half Day Leaves Days -->
+                            		<!-- L means Total Leave-->
+                            		<!-- LW means Total Leave With Out Pay -->
+                            		<!-- A means Total Absent -->
+                            		<!-- T means Total Days -->
+                            		
+                            		<td class="text-center">M</td>
+                            		<td class="text-center">P</td>
+                            		<td class="text-center">LT</td>
+                            		<td class="text-center">SL</td>
+                            		<td class="text-center">HL</td>
+                            		<td class="text-center">L</td>
+                            		<td class="text-center">LW</td>
+				                    <td class="text-center">A</td>
+				                    <td class="text-center">T</td>
+		        				</tr>
+		        			</thead>
+		        			
+		        			 <tbody>
+		        			 	 <t t-foreach="get_data_from_report" t-as="obj">
+		        			 	 	 <tr t-foreach="obj['data']" t-as="emp">
+		        			 	 	 	<td style="font-size: 5px;"><t t-esc="emp['emp']"/></td>
+		        			 	 	 	
+		        			 	 	 	<t t-foreach="emp['display']" t-as="details">
+                                    		&lt;td style=background-color:<t t-esc="details['color'] or '#FFEBCD'"/> !important "&gt; <t style="font-size: 5px;" t-esc="details['In']"/> &lt;/td&gt;
+                                		</t>
+                                		<td class="text-center"><t t-esc="emp['summary'][0]['M'] or '-'"/></td>
+                                		<td class="text-center"><t t-esc="emp['summary'][0]['P'] or '-'"/></td>
+                                		<td class="text-center"><t t-esc="emp['summary'][0]['LT'] or '-'"/></td>
+                                		<td class="text-center"><t t-esc="emp['summary'][0]['S'] or '-'"/></td>
+                                		<td class="text-center"><t t-esc="emp['summary'][0]['H'] or '-'"/></td>
+                               			<td class="text-center"><t t-esc="emp['summary'][0]['L'] or '-'"/></td>
+                               			<td class="text-center"><t t-esc="emp['summary'][0]['W'] or '-'"/></td>
+                                		<td class="text-center"><t t-esc="emp['summary'][0]['A'] or '-'"/></td>
+                                		<td class="text-center"><t t-esc="emp['summary'][0]['T'] or '-'"/></td>
+                                	</tr>
+		        			 	 </t>
+		        			 </tbody>
+		        			 
+		        		</table>
+						<div>
+							M = Month's Total Days(30,31),
+		        			P = Total Present Days,
+				 			LT = Total Late Days,
+				 			SL = Total Short Leave Days,
+				 			HL = Total Half Day Leaves,
+				 			L = Total Leave Days,
+				 			LW = Total Leave With Out Pay Days,
+				 			A = Total Absent Days,
+				 			T = Total Working Days
+						</div>
+						
+					</div>
+				</t>		 			 	
+			</t>
+		</template>
+</odoo>
+

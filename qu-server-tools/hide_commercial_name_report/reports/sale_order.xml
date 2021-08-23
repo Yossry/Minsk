@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2018 Xavier Piernas <xavier.piernas@qubiq.es>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <template id="report_saleorder_document" inherit_id="sale.report_saleorder_document">
+    	<xpath expr="//t[@t-set='address']/div[@t-field='doc.partner_id']" position="attributes">
+    		<attribute name="t-options">{'widget': 'contact', 'fields': ['address'], 'no_marker': True}</attribute>
+    	</xpath>
+        <xpath expr="//t[@t-set='address']/div[@t-field='doc.partner_id']" position="before">
+        	<div>
+                <t t-if="doc.partner_id.parent_id">
+                    <span t-field="doc.partner_id.parent_id.name"/>,
+                </t>
+                <span t-field="doc.partner_id.name"/>
+            </div>
+        </xpath>
+        <xpath expr="//div[@t-field='doc.partner_shipping_id']" position="attributes">
+        	<attribute name="t-options">{'widget': 'contact', 'fields': ['address', 'phone'], 'no_marker': True}</attribute>
+        </xpath>
+        <xpath expr="//div[@t-field='doc.partner_shipping_id']" position="before">
+        	<div>
+                <t t-if="doc.partner_shipping_id.parent_id">
+                    <span t-field="doc.partner_shipping_id.parent_id.name"/>,
+                </t>
+                <span t-field="doc.partner_shipping_id.name"/>
+            </div>
+        </xpath>
+        <xpath expr="//div[@t-field='doc.partner_invoice_id']" position="attributes">
+        	<attribute name="t-options">{'widget': 'contact', 'fields': ['address', 'phone'], 'no_marker': True}</attribute>
+        </xpath>
+        <xpath expr="//div[@t-field='doc.partner_invoice_id']" position="before">
+        	<div>
+                <t t-if="doc.partner_invoice_id.parent_id">
+                    <span t-field="doc.partner_invoice_id.parent_id.name"/>,
+                </t>
+                <span t-field="doc.partner_invoice_id.name"/>
+            </div>
+        </xpath>
+    </template>
+</odoo>

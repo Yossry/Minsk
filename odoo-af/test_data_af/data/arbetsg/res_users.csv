@@ -1,0 +1,156 @@
+﻿id;name;login;partner_id/id;partner_id/name;password
+user_barma;Maria Bartholdson;barma;part_cct_priv_barma;Maria Bartholdson;BAL
+user_bergr;Görel Bergqvist;bergr;part_cct_priv_bergr;Görel Bergqvist;BER
+user_berro;Rose-Marie Bergnéhr;berro;part_cct_priv_berro;Rose-Marie Bergnéhr;MOR
+user_cartm;Thomas Carlén;cartm;part_cct_priv_cartm;Thomas Carlén;CARTM
+user_egbro;Rose- Marie Egberth;egbro;part_cct_priv_egbro;Rose- Marie Egberth;BGE
+user_ekmar;Marianne Ek;ekmar;part_cct_priv_ekmar;Marianne Ek;FILIP
+user_heibi;Birgitta Heijer;heibi;part_cct_priv_heibi;Birgitta Heijer;RHB
+user_holsv;Siv Holmgren;holsv;part_cct_priv_holsv;Siv Holmgren;VIS
+user_jonev;Eva Johnsson;jonev;part_cct_priv_jonev;Eva Johnsson;MIRA
+user_leiab;Ann-Britt Leijon;leiab;part_cct_priv_leiab;Ann-Britt Leijon;NLA
+user_lunta;Thomas (Helpdesk) Lundin;lunta;part_cct_priv_lunta;Thomas (Helpdesk) Lundin;SIA
+user_manmn;Mona Mandelström;manmn;part_cct_priv_manmn;Mona Mandelström;NIKE
+user_niani;Annika Nilsson;niani;part_cct_priv_niani;Annika Nilsson;PUB
+user_olses;Elisabeth Olsson;olses;part_cct_priv_olses;Elisabeth Olsson;SIL
+user_romin;Inger Romlin;romin;part_cct_priv_romin;Inger Romlin;GNI
+user_spape;Peter Sparreman;spape;part_cct_priv_spape;Peter Sparreman;PSP
+user_stike;Kerstin Stiernlöf;stike;part_cct_priv_stike;Kerstin Stiernlöf;EMMAEMMA
+user_svast;Staffan Svärd;svast;part_cct_priv_svast;Staffan Svärd;STURE
+user_testf;Annelie AMS Pub Håkansson;testf;part_cct_priv_testf;Annelie AMS Pub Håkansson;KÖR
+user_wesan;Anders Westlund;wesan;part_cct_priv_wesan;Anders Westlund;WBA
+user_wolkr;Kristina Wolff;wolkr;part_cct_priv_wolkr;Kristina Wolff;PLAKA
+user_aaaaa;Holger Hammar;aaaaa;part_cct_priv_aaaaa;Holger Hammar;ANKDAMM
+user_graca;Charlotte Granström;graca;part_cct_priv_graca;Charlotte Granström;HELPDESK
+user_parja;Jan Parbro;parja;part_cct_priv_parja;Jan Parbro;MALM
+user_shash;Shiva Shahandeh;shash;part_cct_priv_shash;Shiva Shahandeh;DEH
+user_testf;Maritha Flink;testf;part_cct_priv_testf;Annelie AMS Pub Håkansson;MLF
+user_linac;Anki Lind;linac;part_cct_priv_linac;Anki Lind;BULLE
+user_merpa;Paula Mercurio;merpa;part_cct_priv_merpa;Paula Mercurio;PAM
+user_sanhe;Helene Sandkvist;sanhe;part_cct_priv_sanhe;Helene Sandkvist;HES
+user_sodso;Sofia Södermark;sodso;part_cct_priv_sodso;Sofia Södermark;FLOWER
+user_testf;Anita Dour;testf;part_cct_priv_testf;Annelie AMS Pub Håkansson;GÖRAN
+user_zzfff;Mats Driftare;zzfff;part_cct_priv_zzfff;Mats Driftare;123456
+user_testf;ANITA LINDSKOG;testf;part_cct_priv_testf;Annelie AMS Pub Håkansson;OLI
+user_zzfff;Mats Driftare;zzfff;part_cct_priv_zzfff;Mats Driftare;123456
+user_benag;Agneta Bengtsson;benag;part_cct_priv_benag;Agneta Bengtsson;AGNETA
+user_erihi;Henrik Eriksson;erihi;part_cct_priv_erihi;Henrik Eriksson;HENKE
+user_jilca;Catharina Jildefalk;jilca;part_cct_priv_jilca;Catharina Jildefalk;CAJ
+user_molro;Roger Möller;molro;part_cct_priv_molro;Roger Möller;ROGER
+user_petrb;Robert Pettersson;petrb;part_cct_priv_petrb;Robert Pettersson;SKON
+user_testf;Ingegerd Hallert;testf;part_cct_priv_testf;Annelie AMS Pub Håkansson;TULLA
+user_zzfff;Mats Driftare;zzfff;part_cct_priv_zzfff;Mats Driftare;123456
+user_lunsf;Stefan Lundbäck;lunsf;part_cct_priv_lunsf;Stefan Lundbäck;BLS
+user_testf;Bengt Bergqvist;testf;part_cct_priv_testf;Annelie AMS Pub Håkansson;MICHI
+user_wanco;Connie Wan-Häggström;wanco;part_cct_priv_wanco;Connie Wan-Häggström;WLC
+user_zzfff;Mats Driftare;zzfff;part_cct_priv_zzfff;Mats Driftare;123456
+user_benan;Annika Benjaminsson;benan;part_cct_priv_benan;Annika Benjaminsson;ANM
+user_colan;Anneli Coleman;colan;part_cct_priv_colan;Anneli Coleman;ACN
+user_ekssi;Sirpa Ekström;ekssi;part_cct_priv_ekssi;Sirpa Ekström;SIE
+user_erisv;Sven Eriksson;erisv;part_cct_priv_erisv;Sven Eriksson;GUN
+user_frokt;Katarina Sjöberg;frokt;part_cct_priv_frokt;Katarina Sjöberg;STRUL
+user_halie;Inez Hallnäs;halie;part_cct_priv_halie;Inez Hallnäs;INZ
+user_helar;Arne Hellström;helar;part_cct_priv_helar;Arne Hellström;ARN
+user_hensv;Svein Henriksen;hensv;part_cct_priv_hensv;Svein Henriksen;ESSET
+user_testf;Ann Mari Henning;testf;part_cct_priv_testf;Annelie AMS Pub Håkansson;OPEL
+user_zzfff;Mats Driftare;zzfff;part_cct_priv_zzfff;Mats Driftare;123456
+user_eklsn;Stina Eklund;eklsn;part_cct_priv_eklsn;Stina Eklund;STI
+user_elian;Anette Larsson;elian;part_cct_priv_elian;Anette Larsson;ANE
+user_gusst;Ove Gustavsson;gusst;part_cct_priv_gusst;Ove Gustavsson;MARG
+user_kanua;Ulla Kangasniemi;kanua;part_cct_priv_kanua;Ulla Kangasniemi;AMIE
+user_karil;Marianne Karlsson;karil;part_cct_priv_karil;Marianne Karlsson;ILSE
+user_kroni;Nils Krook;kroni;part_cct_priv_kroni;Nils Krook;EGO
+user_larra;Lillan Larsson;larra;part_cct_priv_larra;Lillan Larsson;ELG
+user_mormo;Mario Morling;mormo;part_cct_priv_mormo;Mario Morling;MOR
+user_samgn;Gunilla Samuelsson;samgn;part_cct_priv_samgn;Gunilla Samuelsson;GUS
+user_zzfff;Mats Driftare;zzfff;part_cct_priv_zzfff;Mats Driftare;123456
+user_basan;Annica van Bossé;basan;part_cct_priv_basan;Annica van Bossé;TOJ
+user_evlae;Eva Lansén;evlae;part_cct_priv_evlae;Eva Lansén;VINTER
+user_joasa;Åsa Johansson;joasa;part_cct_priv_joasa;Åsa Johansson;ÅJO
+user_jontm;Tomas Jonsson;jontm;part_cct_priv_jontm;Tomas Jonsson;TISDAG1
+user_ljult;Lotta Ljung;ljult;part_cct_priv_ljult;Lotta Ljung;KUL
+user_nikmo;Moris Nikolson;nikmo;part_cct_priv_nikmo;Moris Nikolson;TOJ
+user_orema;Marika Örevall;orema;part_cct_priv_orema;Marika Örevall;TOJ
+user_stata;Tarja Ståhl;stata;part_cct_priv_stata;Tarja Ståhl;JAN
+user_testf;Ingela Andersson  EJ POST,E-behörig;testf;part_cct_priv_testf;Annelie AMS Pub Håkansson;LÄN
+user_zzfff;Mats Driftare;zzfff;part_cct_priv_zzfff;Mats Driftare;123456
+user_heili;Linda Heikki;heili;part_cct_priv_heili;Linda Heikki;HIL
+user_lidja;janne liden;lidja;part_cct_priv_lidja;janne liden;123456
+user_testf;Bengt Lindgren;testf;part_cct_priv_testf;Annelie AMS Pub Håkansson;ARVID
+user_zzfff;Mats Driftare;zzfff;part_cct_priv_zzfff;Mats Driftare;123456
+user_testf;Mario Morling;testf;part_cct_priv_testf;Annelie AMS Pub Håkansson;ZUPER
+user_anelm;Els-Marie Andersson;anelm;part_cct_priv_anelm;Els-Marie Andersson;AME
+user_edbth;Thomas Edblom;edbth;part_cct_priv_edbth;Thomas Edblom;DET
+user_frilr;Lars Friberg;frilr;part_cct_priv_frilr;Lars Friberg;FRI
+user_helbg;Lollo Helgerum;helbg;part_cct_priv_helbg;Lollo Helgerum;POLIS
+user_jalan;Anita Jallow;jalan;part_cct_priv_jalan;Anita Jallow;TABAR
+user_lorga;Garo Lorfalk;lorga;part_cct_priv_lorga;Garo Lorfalk;AAAAA
+user_lytlo;Lorraine Lyttle;lytlo;part_cct_priv_lytlo;Lorraine Lyttle;GÖRAN
+user_ohlur;Urban Öhlén;ohlur;part_cct_priv_ohlur;Urban Öhlén;BRU
+user_pauan;Annika Paulsson;pauan;part_cct_priv_pauan;Annika Paulsson;ANP
+user_stmas;Mats Strandquist;stmas;part_cct_priv_stmas;Mats Strandquist;UTOOO
+user_testf;Åsa Parker;testf;part_cct_priv_testf;Annelie AMS Pub Håkansson;HEJ
+user_zzfff;Mats Driftare;zzfff;part_cct_priv_zzfff;Mats Driftare;123456
+user_aklen;Lena Åkerlöf;aklen;part_cct_priv_aklen;Lena Åkerlöf;NILSW
+user_andcn;Connie Andersson;andcn;part_cct_priv_andcn;Connie Andersson;EMMA
+user_bermn;Mårten Berglund;bermn;part_cct_priv_bermn;Mårten Berglund;HANNA
+user_besan;Sanna Berg;besan;part_cct_priv_besan;Sanna Berg;BES
+user_cenha;Hasan Cengiz;cenha;part_cct_priv_cenha;Hasan Cengiz;CEN
+user_engll;Lars-Olof Engberg /Ungdomar;engll;part_cct_priv_engll;Lars-Olof Engberg /Ungdomar;KNUV
+user_engni;Niklas Engman;engni;part_cct_priv_engni;Niklas Engman;123456
+user_engss;Susanne Engberg;engss;part_cct_priv_engss;Susanne Engberg;EUS
+user_eugso;Sofia Eugenzon-Persbeck;eugso;part_cct_priv_eugso;Sofia Eugenzon-Persbeck;SOF
+user_flemr;Margareta Flemström;flemr;part_cct_priv_flemr;Margareta Flemström;LFM
+user_gotma;Margaretha Göthe;gotma;part_cct_priv_gotma;Margaretha Göthe;MAG
+user_jakpa;Patrik Jakobsson;jakpa;part_cct_priv_jakpa;Patrik Jakobsson;TUP
+user_mikte;Teija Mikkola;mikte;part_cct_priv_mikte;Teija Mikkola;IET
+user_molih;Monica Lindh;molih;part_cct_priv_molih;Monica Lindh;MYL
+user_nadte;Terese Nadaf;nadte;part_cct_priv_nadte;Terese Nadaf;TEN
+user_norcc;Cecilia Norberg;norcc;part_cct_priv_norcc;Cecilia Norberg;LIC
+user_norkn;Kristina Nordqvist;norkn;part_cct_priv_norkn;Kristina Nordqvist;ONK
+user_sahth;Tülin Sahin;sahth;part_cct_priv_sahth;Tülin Sahin;LUT
+user_svast;Staffan Svärd;svast;part_cct_priv_svast;Staffan Svärd;STURE
+user_testf;CARL-ERIK FLENSBURG;testf;part_cct_priv_testf;Annelie AMS Pub Håkansson;VILJA
+user_wahgr;Göran Wahlstrand;wahgr;part_cct_priv_wahgr;Göran Wahlstrand;WÖG
+user_zzfff;Mats Driftare;zzfff;part_cct_priv_zzfff;Mats Driftare;123456
+user_abbyo;Yohannes Abbai;abbyo;part_cct_priv_abbyo;Yohannes Abbai;IAY
+user_bokal;Bo Karlsson;bokal;part_cct_priv_bokal;Bo Karlsson;BOK
+user_gusbo;Bo Gustafsson;gusbo;part_cct_priv_gusbo;Bo Gustafsson;GOB
+user_julma;Marie Julin;julma;part_cct_priv_julma;Marie Julin;NJM
+user_nilje;Jessica Nilsson;nilje;part_cct_priv_nilje;Jessica Nilsson;NNJ
+user_nimar;Marie Nilsson;nimar;part_cct_priv_nimar;Marie Nilsson;NNM
+user_olsdv;David Olsson;olsdv;part_cct_priv_olsdv;David Olsson;NOD
+user_testf;Monica Lindberg/AF-CHEF;testf;part_cct_priv_testf;Annelie AMS Pub Håkansson;ALEX
+user_zzfff;Mats Driftare;zzfff;part_cct_priv_zzfff;Mats Driftare;123456
+user_arnmr;Maritta Arnberg;arnmr;part_cct_priv_arnmr;Maritta Arnberg;NRM
+user_arvce;Cecilia Arvidsson;arvce;part_cct_priv_arvce;Cecilia Arvidsson;ARVCE
+user_berha;Harry Bergström;berha;part_cct_priv_berha;Harry Bergström;BERHA
+user_haggi;Gunilla Hägerstedt;haggi;part_cct_priv_haggi;Gunilla Hägerstedt;NILLA
+user_petev;Eva Pettersson;petev;part_cct_priv_petev;Eva Pettersson;EVAP
+user_sanmt;Martin Sandblom;sanmt;part_cct_priv_sanmt;Martin Sandblom;SPART
+user_skedi;Dijana Skeppstedt;skedi;part_cct_priv_skedi;Dijana Skeppstedt;DSK
+user_solei;Eino Solax;solei;part_cct_priv_solei;Eino Solax;SOLA
+user_stasf;Sofia Stam;stasf;part_cct_priv_stasf;Sofia Stam;AIF
+user_testf;Inger Hjertén;testf;part_cct_priv_testf;Annelie AMS Pub Håkansson;ALVI
+user_xxaaa;acceptanstest aa;xxaaa;part_cct_priv_xxaaa;acceptanstest aa;123456
+user_xxaab;acceptanstest ab;xxaab;part_cct_priv_xxaab;acceptanstest ab;123456
+user_xxaac;acceptanstest ac;xxaac;part_cct_priv_xxaac;acceptanstest ac;123456
+user_xxaad;acceptanstest ad;xxaad;part_cct_priv_xxaad;acceptanstest ad;123456
+user_xxaae;acceptanstest ae;xxaae;part_cct_priv_xxaae;acceptanstest ae;123456
+user_xxaaf;acceptanstest af;xxaaf;part_cct_priv_xxaaf;acceptanstest af;123456
+user_xxaag;acceptanstest ag;xxaag;part_cct_priv_xxaag;acceptanstest ag;123456
+user_xxaah;acceptanstest ah;xxaah;part_cct_priv_xxaah;acceptanstest ah;123456
+user_xxaai;acceptanstest ai;xxaai;part_cct_priv_xxaai;acceptanstest ai;123456
+user_xxaaj;acceptanstest aj;xxaaj;part_cct_priv_xxaaj;acceptanstest aj;123456
+user_xxaak;acceptanstest ak;xxaak;part_cct_priv_xxaak;acceptanstest ak;123456
+user_xxaal;acceptanstest al;xxaal;part_cct_priv_xxaal;acceptanstest al;123456
+user_xxaam;acceptanstest am;xxaam;part_cct_priv_xxaam;acceptanstest am;123456
+user_xxaan;acceptanstest an;xxaan;part_cct_priv_xxaan;acceptanstest an;123456
+user_xxaao;acceptanstest ao;xxaao;part_cct_priv_xxaao;acceptanstest ao;123456
+user_xxaap;acceptanstest ap;xxaap;part_cct_priv_xxaap;acceptanstest ap;123456
+user_xxaaq;acceptanstest aq;xxaaq;part_cct_priv_xxaaq;acceptanstest aq;123456
+user_xxaar;acceptanstest ar;xxaar;part_cct_priv_xxaar;acceptanstest ar;123456
+user_xxaas;acceptanstest as;xxaas;part_cct_priv_xxaas;acceptanstest as;123456
+user_xxaat;acceptanstest at;xxaat;part_cct_priv_xxaat;acceptanstest at;123456
+user_xxaau;acceptanstest au;xxaau;part_cct_priv_xxaau;acceptanstest au;123456
+user_xxaav;acceptanstest av;xxaav;part_cct_priv_xxaav;acceptanstest av;123456

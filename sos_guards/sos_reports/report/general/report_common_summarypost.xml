@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>	
+		<template id ="sos_reports.report_common_summarypost">
+			<t t-call="report.html_container">
+				<t t-call="web.external_layout">
+					<div class="page">
+						 <div class="row" style="font-size:14px; font-weight:bold; text-align:center; align:left;">
+							<div class="col-xs-12">
+								Bank Charges Report – Post Wise  From
+									<span t-esc="get_date_formate(data['date_from'])"/> To <span t-esc="get_date_formate(data['date_to'])"/>
+							</div>
+						 </div>
+
+						 <table class="table table-bordered">
+							<thead>
+								<tr style="font-size:10px; font-weight:bold;background-color:#A6ACAF;">
+									<th>Sr#.</th>
+									<th>Post Name</th>
+									<th>Bank Charges</th>
+								</tr>
+							</thead>
+
+							<tbody>
+								<t t-foreach="Centers" t-as="center">
+									<tr style="font-size:14px; font-weight:bold;">
+										<td class="text-left" colspan="6">
+											<span t-esc="center['center_name']" />
+										</td>
+									</tr>
+									<t t-foreach="center['projects']" t-as="project">
+										<tr style="font-size:14px; font-weight:bold;">
+											<td class="text-left" colspan="6">
+												<span t-esc="project['project_name']" />
+											</td>
+										</tr>
+										<t t-foreach="project['posts']" t-as="post">
+											<tr style="font-size:10px;">
+												<td class="text-left">
+													<span t-esc="post_index + 1" />
+												</td>
+												<td class="text-left">
+													<span t-esc="post['post_name']" />
+												</td>
+												<td class="text-left">
+													<span t-esc="post['bankcharges'] and '{0:,.0f}'.format(int(post['bankcharges'])) or '-'" />
+												</td>
+											</tr>
+										</t>
+									</t>
+								</t>
+
+								<tr style="font-size:10px; font-weight:bold;background-color:#707B7C;">
+									<td class="text-center" colspan="2">
+											TOTALS:
+									</td>
+									<td class="text-left">
+										<span t-esc="BankCharges and '{0:,.0f}'.format(int(BankCharges)) or '-'" />
+									</td>
+								</tr>
+
+							</tbody>
+						 </table>
+					</div>
+				</t>
+			</t>
+		</template>
+		
+	</data>
+</openerp>
+

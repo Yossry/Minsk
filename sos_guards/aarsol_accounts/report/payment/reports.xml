@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+<report 
+    id="account.report_payment"
+    model="account.payment"
+    string="Payment Report"
+    report_type="qweb-pdf"
+    name="professional_templates.payment"
+    file="professional_templates.payment"
+/>
+
+
+<template id="professional_templates.payment">
+    <t t-call="report.html_container">
+        <t t-foreach="docs" t-as="o">
+	<t t-call="{{o.template_id.key}}" t-lang="o.partner_id.lang"/>
+     </t>
+    </t>
+</template>
+</data>
+</openerp>

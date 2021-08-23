@@ -1,0 +1,2849 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* odoo_marketplace
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.0c\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-06-01 08:19+0000\n"
+"PO-Revision-Date: 2016-06-01 08:19+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: odoo_marketplace
+#: model:mail.template,body_html:odoo_marketplace.marketplace_email_template_for_seller_status_change_to_admin
+msgid "\n"
+"                <div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
+"\n"
+"                    % if object.state==\"approved\":\n"
+"                    <p>Hello ${object.company_id.partner_id.name},</p>\n"
+"                    \n"
+"                    <p>Seller request of ${object.name} has been approved.</p>\n"
+"                    %endif\n"
+"\n"
+"                    % if object.state==\"denied\":\n"
+"                    <p>Hello ${object.company_id.partner_id.name},</p>\n"
+"                    \n"
+"                    <p>Seller request of ${object.name} has been denied.</p>\n"
+"                    %endif\n"
+"\n"
+"                    </div>\n"
+"                </div>\n"
+"                \n"
+"            "
+msgstr "\n"
+"                <div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
+"\n"
+"                    % if object.state==\"approved\":\n"
+"                    <p>Hello ${object.company_id.partner_id.name},</p>\n"
+"                    \n"
+"                    <p>Seller request of ${object.name} has been approved.</p>\n"
+"                    %endif\n"
+"\n"
+"                    % if object.state==\"denied\":\n"
+"                    <p>Hello ${object.company_id.partner_id.name},</p>\n"
+"                    \n"
+"                    <p>Seller request of ${object.name} has been denied.</p>\n"
+"                    %endif\n"
+"\n"
+"                    </div>\n"
+"                </div>\n"
+"                \n"
+"            "
+
+#. module: odoo_marketplace
+#: model:mail.template,body_html:odoo_marketplace.marketplace_email_template_for_seller_status_change_to_seller
+msgid "\n"
+"                <div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
+"\n"
+"                    % if object.state==\"approved\":\n"
+"                    <p>Hello ${object.name},</p>\n"
+"                    \n"
+"                    <p>Congratulations!!!! Your request for seller has been approved. Enjoy selling.</p>\n"
+"                    %endif\n"
+"\n"
+"                    % if object.state==\"denied\":\n"
+"                    <p>Hello ${object.name},</p>\n"
+"                    \n"
+"                    <p>Sorry To Say.!!!! Your request for seller has been denied.</p>\n"
+"                    %endif\n"
+"\n"
+"                    </div>\n"
+"                </div>\n"
+"                \n"
+"            "
+msgstr "\n"
+"                <div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
+"\n"
+"                    % if object.state==\"approved\":\n"
+"                    <p>Hello ${object.name},</p>\n"
+"                    \n"
+"                    <p>Congratulations!!!! Your request for seller has been approved. Enjoy selling.</p>\n"
+"                    %endif\n"
+"\n"
+"                    % if object.state==\"denied\":\n"
+"                    <p>Hello ${object.name},</p>\n"
+"                    \n"
+"                    <p>Sorry To Say.!!!! Your request for seller has been denied.</p>\n"
+"                    %endif\n"
+"\n"
+"                    </div>\n"
+"                </div>\n"
+"                \n"
+"            "
+
+#. module: odoo_marketplace
+#: model:mail.template,body_html:odoo_marketplace.marketplace_template_for_product_status_changeto_admin
+msgid "\n"
+"                <div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
+"\n"
+"                    % if object.status==\"approved\":\n"
+"                    <p>Hello ${object.company_id.partner_id.name},</p>\n"
+"                   \n"
+"                    <p>Seller ${object.marketplace_seller_id.name}, request for placing product ${object.name} on our shop has been approved.</p>\n"
+"                    %endif\n"
+"\n"
+"                    % if object.status==\"rejected\":\n"
+"                    <p>Hello ${object.company_id.partner_id.name},</p>\n"
+"                    \n"
+"                    <p>Seller ${object.marketplace_seller_id.name}, request for placing product ${object.name} on our shop has been rejected.</p>\n"
+"                    %endif\n"
+"                    \n"
+"\n"
+"                    </div>\n"
+"                            \n"
+"            "
+msgstr "\n"
+"                <div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
+"\n"
+"                    % if object.status==\"approved\":\n"
+"                    <p>Hello ${object.company_id.partner_id.name},</p>\n"
+"                   \n"
+"                    <p>Seller ${object.marketplace_seller_id.name}, request for placing product ${object.name} on our shop has been approved.</p>\n"
+"                    %endif\n"
+"\n"
+"                    % if object.status==\"rejected\":\n"
+"                    <p>Hello ${object.company_id.partner_id.name},</p>\n"
+"                    \n"
+"                    <p>Seller ${object.marketplace_seller_id.name}, request for placing product ${object.name} on our shop has been rejected.</p>\n"
+"                    %endif\n"
+"                    \n"
+"\n"
+"                    </div>\n"
+"                            \n"
+"            "
+
+#. module: odoo_marketplace
+#: model:mail.template,body_html:odoo_marketplace.marketplace_template_for_product_status_change_to_seller
+msgid "\n"
+"                <div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
+"\n"
+"                    % if object.status==\"approved\":\n"
+"                    <p>Hello ${object.marketplace_seller_id.name},</p>\n"
+"                   \n"
+"                    <p>Congratulations!!!! Your request for placing product ${object.name} on our shop has been approved.</p>\n"
+"                    %endif\n"
+"\n"
+"                    % if object.status==\"rejected\":\n"
+"                    <p>Hello ${object.marketplace_seller_id.name},</p>\n"
+"                    \n"
+"                    <p>Sorry To Say....!!!! Your request for placing product ${object.name} on our shop has been rejected.</p>\n"
+"                    %endif\n"
+"                    \n"
+"\n"
+"                    </div>\n"
+"                            \n"
+"            "
+msgstr "\n"
+"                <div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
+"\n"
+"                    % if object.status==\"approved\":\n"
+"                    <p>Hello ${object.marketplace_seller_id.name},</p>\n"
+"                   \n"
+"                    <p>Congratulations!!!! Your request for placing product ${object.name} on our shop has been approved.</p>\n"
+"                    %endif\n"
+"\n"
+"                    % if object.status==\"rejected\":\n"
+"                    <p>Hello ${object.marketplace_seller_id.name},</p>\n"
+"                    \n"
+"                    <p>Sorry To Say....!!!! Your request for placing product ${object.name} on our shop has been rejected.</p>\n"
+"                    %endif\n"
+"                    \n"
+"\n"
+"                    </div>\n"
+"                            \n"
+"            "
+
+#. module: odoo_marketplace
+#: model:mail.template,body_html:odoo_marketplace.marketplace_template_for_order_to_seller
+msgid "\n"
+"                <div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
+"\n"
+"                    <p>Dear, ${object.marketplace_seller_id.name},</p>\n"
+"                    \n"
+"                    <p>Order ${object.order_id.name} consisting of <b>${object.product_id.name}</b> has been confirmed.Please prepare your product for delivery.</p>\n"
+"                    <p>Thanks</>\n"
+"                    </div>\n"
+"                </div>\n"
+"                            \n"
+"            "
+msgstr "\n"
+"                <div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
+"\n"
+"                    <p>Dear, ${object.marketplace_seller_id.name},</p>\n"
+"                    \n"
+"                    <p>Order ${object.order_id.name} consisting of <b>${object.product_id.name}</b> has been confirmed.Please prepare your product for delivery.</p>\n"
+"                    <p>Thanks</>\n"
+"                    </div>\n"
+"                </div>\n"
+"                            \n"
+"            "
+
+#. module: odoo_marketplace
+#: model:mail.template,body_html:odoo_marketplace.marketplace_email_template_for_admin_by_seller
+msgid "\n"
+"                <div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
+"\n"
+"                    <p>Hello ${object.company_id.partner_id.name},</p>\n"
+"                    <p>New seller <b>${object.name}</b> has requested to be your seller.</p>\n"
+"                </div>\n"
+"                            \n"
+"            "
+msgstr "\n"
+"                <div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
+"\n"
+"                    <p>Hello ${object.company_id.partner_id.name},</p>\n"
+"                    <p>New seller <b>${object.name}</b> has requested to be your seller.</p>\n"
+"                </div>\n"
+"                            \n"
+"            "
+
+#. module: odoo_marketplace
+#: model:mail.template,body_html:odoo_marketplace.marketplace_email_template_for_seller_by_admin
+msgid "\n"
+"                <div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
+"\n"
+"                    <p>Hello ${object.name},</p>\n"
+"                    \n"
+"                    <p>Thank you for requesting for seller. Your request is in queue.</p>\n"
+"                    \n"
+"\n"
+"                    </div>\n"
+"                </div>\n"
+"                            \n"
+"            "
+msgstr "\n"
+"                <div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
+"\n"
+"                    <p>Hello ${object.name},</p>\n"
+"                    \n"
+"                    <p>Thank you for requesting for seller. Your request is in queue.</p>\n"
+"                    \n"
+"\n"
+"                    </div>\n"
+"                </div>\n"
+"                            \n"
+"            "
+
+#. module: odoo_marketplace
+#: model:ir.module.category,name:odoo_marketplace.marketplace_security_category
+msgid " Marketplace "
+msgstr " Marketplace "
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_sale_order_count
+msgid "# of Sales Order"
+msgstr "# of Sales Order"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_config_settings_recently_product
+msgid "# of products for recently added products menu. "
+msgstr "# of products for recently added products menu. "
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.mp_seller_shop
+msgid "'s Shop"
+msgstr "'s Shop"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_product_template_kanban_view
+msgid "<b> Seller: </b>"
+msgstr "<b> Seller: </b>"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.mp_sold_by_detail_in_product
+msgid "<b><u>Seller information</u></b>"
+msgstr "<b><u>Seller information</u></b>"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_kanban_view
+msgid "<b>Commission: </b>"
+msgstr "<b>Commission: </b>"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_kanban_view
+msgid "<b>Fax: </b>"
+msgstr "<b>Fax: </b>"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_kanban_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_shop_kanban_view
+msgid "<b>Mobile: </b>"
+msgstr "<b>Mobile: </b>"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_kanban_view
+msgid "<b>Sales: </b>"
+msgstr "<b>Sales: </b>"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_kanban_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_product_template_kanban_view
+msgid "<b>Status: </b>"
+msgstr "<b>Status: </b>"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_shop_kanban_view
+msgid "<b>Total Products: </b>"
+msgstr "<b>Total Products: </b>"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_product_template_form_view
+msgid "<strong>Warning</strong>: adding or deleting attributes\n"
+"                                    will delete and recreate existing variants and lead\n"
+"                                    to the loss of their possible customizations."
+msgstr "<strong>Warning</strong>: adding or deleting attributes\n"
+"                                    will delete and recreate existing variants and lead\n"
+"                                    to the loss of their possible customizations."
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_property_account_payable_id
+msgid "Account Payable"
+msgstr "Account Payable"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_property_account_receivable_id
+msgid "Account Receivable"
+msgstr "Account Receivable"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_message_needaction
+msgid "Action Needed"
+msgstr "Action Needed"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_active
+msgid "Active"
+msgstr "Active"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_shop_form_view
+msgid "Address"
+msgstr "Address"
+
+#. module: odoo_marketplace
+#: code:addons/odoo_marketplace/models/res_config.py:25
+#, python-format
+msgid "All"
+msgstr "All"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.mp_seller_shop
+msgid "All Products"
+msgstr "All Products"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_auto_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_base_config_settings_form_view
+msgid "Amount Limit"
+msgstr "Amount Limit"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_auto_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_base_config_settings_form_view
+msgid "Amount limit for for seller payment request"
+msgstr "Amount limit for for seller payment request"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_form_view
+msgid "Amount limit for seller payment request"
+msgstr "Amount limit for seller payment request"
+
+#. module: odoo_marketplace
+#: code:addons/odoo_marketplace/controllers/main.py:65
+#, python-format
+msgid "Another user is already registered using this email address."
+msgstr "Another user is already registered using this email address."
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_auto_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_base_config_settings_form_view
+msgid "Apply"
+msgstr "Apply"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_form_view
+msgid "Approval Settings"
+msgstr "Approval Settings"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.add_seller_in_res_partner_formview
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_product_stock_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_product_template_form_view
+msgid "Approve"
+msgstr "Approve"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_warehouse_wizard_view
+msgid "Approve Now"
+msgstr "Approve Now"
+
+#. module: odoo_marketplace
+#: model:ir.actions.act_window,name:odoo_marketplace.mp_product_approve_server_action_wizard
+msgid "Approve Products"
+msgstr "Approve Products"
+
+#. module: odoo_marketplace
+#: selection:marketplace.stock,state:0
+#: selection:product.template,status:0
+#: selection:res.partner,state:0
+msgid "Approved"
+msgstr "Approved"
+
+#. module: odoo_marketplace
+#: model:ir.ui.menu,name:odoo_marketplace.wk_seller_dashboard_menu2_sub_menu2
+msgid "Approved Products"
+msgstr "Approved Products"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_shop_view_filter
+msgid "Archived"
+msgstr "Archived"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_partner_attachment_ids
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_attachment_ids
+msgid "Attachments"
+msgstr "Attachments"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_auto_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_base_config_settings_form_view
+msgid "Auto Approval Settings"
+msgstr "Auto Approval Settings"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_auto_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_base_config_settings_form_view
+msgid "Auto Approve Quantity"
+msgstr "Auto Approve Quantity"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_config_settings_auto_product_approve
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_partner_auto_product_approve
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_auto_product_approve
+msgid "Auto Product Approve"
+msgstr "Auto Product Approve"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_config_settings_auto_approve_qty
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_partner_auto_approve_qty
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_auto_approve_qty
+msgid "Auto Quantity Approve"
+msgstr "Auto Quantity Approve"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_config_settings_auto_approve_seller
+msgid "Auto Seller Approve"
+msgstr "Auto Seller Approve"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_form_view
+msgid "Available Amount"
+msgstr "Available Amount"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_partner_available_amount
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_partner_cashable_amount
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_available_amount
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_cashable_amount
+msgid "Avalibale Amount"
+msgstr "Avalibale Amount"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.mp_seller_signup
+msgid "Back to Login"
+msgstr "Back to Login"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_partner_balance_mp_payment
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_balance_mp_payment
+msgid "Balance Amount"
+msgstr "Balance Amount"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_bank_account_count
+msgid "Bank"
+msgstr "Bank"
+
+#. module: odoo_marketplace
+#: model:seller.payment.method,name:odoo_marketplace.marketplace_seller_payment_method_data5
+msgid "Bank Transfer"
+msgstr "Bank Transfer"
+
+#. module: odoo_marketplace
+#: selection:marketplace.config.settings,invoicing_type:0
+msgid "Based On Customer And Seller"
+msgstr "Based On Customer And Seller"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_mp_seller_landing_page
+msgid "Can view other Sellers on Marketplace"
+msgstr "Can view other Sellers on Marketplace"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_auto_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_product_stock_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_warehouse_wizard_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_payment_wizard_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_shop_form_view
+msgid "Cancel"
+msgstr "Cancel"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_product_order_line_form_view
+msgid "Cancel Line"
+msgstr "Cancel Line"
+
+#. module: odoo_marketplace
+#: selection:seller.payment,state:0
+msgid "Cancled"
+msgstr "Cancled"
+
+#. module: odoo_marketplace
+#: model:seller.payment.method,name:odoo_marketplace.marketplace_seller_payment_method_data1
+msgid "Cash"
+msgstr "Cash"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_payment_wizard_form_view
+msgid "Cashable Amount"
+msgstr "Cashable Amount"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_product_template_form_view
+msgid "Category..."
+msgstr "Category..."
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,help:odoo_marketplace.field_account_invoice_is_seller
+#: model:ir.model.fields,help:odoo_marketplace.field_res_partner_seller
+#: model:ir.model.fields,help:odoo_marketplace.field_res_users_seller
+msgid "Check this box if the contact is marketplace seller."
+msgstr "Check this box if the contact is marketplace seller."
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_shop_form_view
+msgid "Checked if you want to override seller's default settings or unchecked to set default settings."
+msgstr "Checked if you want to override seller's default settings or unchecked to set default settings."
+
+#. module: odoo_marketplace
+#: model:seller.payment.method,name:odoo_marketplace.marketplace_seller_payment_method_data2
+msgid "Cheque"
+msgstr "Cheque"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_city
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_shop_form_view
+msgid "City"
+msgstr "City"
+
+#. module: odoo_marketplace
+#: model:ir.actions.act_window,help:odoo_marketplace.wk_seller_product_template_action
+#: model:ir.actions.act_window,help:odoo_marketplace.wk_seller_product_template_approved_products_action
+msgid "Click to add a product in your product list."
+msgstr "Click to add a product in your product list."
+
+#. module: odoo_marketplace
+#: model:ir.actions.act_window,help:odoo_marketplace.wk_seller_action
+msgid "Click to add a seller in your marketplace address book."
+msgstr "Click to add a seller in your marketplace address book."
+
+#. module: odoo_marketplace
+#: model:ir.actions.act_window,help:odoo_marketplace.wk_seller_shop_action
+msgid "Click to add a shop in your marketplace seller shop book."
+msgstr "Click to add a shop in your marketplace seller shop book."
+
+#. module: odoo_marketplace
+#: model:ir.actions.act_window,help:odoo_marketplace.seller_invoice_action
+msgid "Click to record a new Seller invoice."
+msgstr "Click to record a new Seller invoice."
+
+#. module: odoo_marketplace
+#: model:ir.actions.act_window,help:odoo_marketplace.action_seeller_payments_payable
+msgid "Click to register a payment"
+msgstr "Click to register a payment"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_color
+msgid "Color"
+msgstr "Color"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_auto_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_base_config_settings_form_view
+msgid "Commission"
+msgstr "Commission"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_ref_company_ids
+msgid "Companies that refers to partner"
+msgstr "Companies that refers to partner"
+
+#. module: odoo_marketplace
+#: model:ir.ui.menu,name:odoo_marketplace.wk_seller_dashboard_menu8
+msgid "Configuration"
+msgstr "Configuration"
+
+#. module: odoo_marketplace
+#: model:ir.actions.act_window,name:odoo_marketplace.marketplace_auto_base_config_settings_action
+#: model:ir.actions.act_window,name:odoo_marketplace.marketplace_base_config_settings_action
+msgid "Configure Marketplace Settings"
+msgstr "Configure Marketplace Settings"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_payment_form_view
+msgid "Confirm"
+msgstr "Confirm"
+
+#. module: odoo_marketplace
+#: selection:seller.payment,state:0
+msgid "Confirmed"
+msgstr "Confirmed"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.mp_seller_shop
+msgid "Contact Seller"
+msgstr "Contact Seller"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.mp_seller_profile
+msgid "Contact Us about"
+msgstr "Contact Us about"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_contract_ids
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_contracts_count
+msgid "Contracts"
+msgstr "Contracts"
+
+#. module: odoo_marketplace
+#: code:addons/odoo_marketplace/controllers/main.py:68
+#, python-format
+msgid "Could not create a new account."
+msgstr "Could not create a new account."
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_payment_method_count
+msgid "Count Payment Method"
+msgstr "Count Payment Method"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_country_id
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_shop_form_view
+msgid "Country"
+msgstr "Country"
+
+#. module: odoo_marketplace
+#: model:ir.actions.act_window,name:odoo_marketplace.wk_seller_shop_action2
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_shop_form_view
+msgid "Create Shop"
+msgstr "Create Shop"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_form_view
+msgid "Create Your Shop"
+msgstr "Create Your Shop"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_config_settings_create_uid
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_stock_create_uid
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_payment_create_uid
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_payment_method_create_uid
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_payment_wizard_create_uid
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_create_uid
+#: model:ir.model.fields,field_description:odoo_marketplace.field_server_action_wizard_create_uid
+msgid "Created by"
+msgstr "Created by"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_config_settings_create_date
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_stock_create_date
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_payment_create_date
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_payment_method_create_date
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_payment_wizard_create_date
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_create_date
+#: model:ir.model.fields,field_description:odoo_marketplace.field_server_action_wizard_create_date
+msgid "Created on"
+msgstr "Created on"
+
+#. module: odoo_marketplace
+#: selection:seller.payment,payment_type:0
+msgid "Credit"
+msgstr "Credit"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,help:odoo_marketplace.field_seller_payment_payment_type
+msgid "Credit means vendor will pay you & debit means vendor has been paid. "
+msgstr "Credit means vendor will pay you & debit means vendor has been paid. "
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_currency_id
+msgid "Currency"
+msgstr "Currency"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_property_stock_customer
+msgid "Customer Location"
+msgstr "Customer Location"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_property_payment_term_id
+msgid "Customer Payment Term"
+msgstr "Customer Payment Term"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_payment_date
+msgid "Date"
+msgstr "Date"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,help:odoo_marketplace.field_seller_shop_message_last_post
+msgid "Date of the last message posted on the record."
+msgstr "Date of the last message posted on the record."
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_auto_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_form_view
+msgid "Days"
+msgstr "Days"
+
+#. module: odoo_marketplace
+#: selection:seller.payment,payment_type:0
+msgid "Debit"
+msgstr "Debit"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_partner_location_id
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_location_id
+msgid "Default Location"
+msgstr "Default Location"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_partner_commission
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_commission
+msgid "Default Sale Commission"
+msgstr "Default Sale Commission"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_auto_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_base_config_settings_form_view
+msgid "Default Stock Location"
+msgstr "Default Stock Location"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_sale_order_line_marketplace_seller_id
+msgid "Default Terms and Conditions"
+msgstr "Default Terms and Conditions"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_partner_warehouse_id
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_warehouse_id
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_auto_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_base_config_settings_form_view
+msgid "Default Warehouse"
+msgstr "Default Warehouse"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_kanban_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_shop_kanban_view
+msgid "Delete"
+msgstr "Delete"
+
+#. module: odoo_marketplace
+#: model:ir.actions.act_window,name:odoo_marketplace.marketplace_stock_picking_action
+#: model:ir.ui.menu,name:odoo_marketplace.wk_seller_dashboard_menu4_sub_menu1
+msgid "Delivery Orders"
+msgstr "Delivery Orders"
+
+#. module: odoo_marketplace
+#: selection:res.partner,state:0
+msgid "Denied"
+msgstr "Denied"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.add_seller_in_res_partner_formview
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_form_view
+msgid "Deny"
+msgstr "Deny"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_description
+msgid "Description"
+msgstr "Description"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_product_template_form_view
+msgid "Description for Pickings"
+msgstr "Description for Pickings"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_product_template_form_view
+msgid "Description for Pickings (Rack, Row and Case Information)"
+msgstr "Description for Pickings (Rack, Row and Case Information)"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_product_template_form_view
+msgid "Description for Quotations"
+msgstr "Description for Quotations"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_config_settings_display_name
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_stock_display_name
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_payment_display_name
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_payment_method_display_name
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_payment_wizard_display_name
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_display_name
+#: model:ir.model.fields,field_description:odoo_marketplace.field_server_action_wizard_display_name
+msgid "Display Name"
+msgstr "Display Name"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_partner_displayed_image_id
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_displayed_image_id
+msgid "Displayed Image"
+msgstr "Displayed Image"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.account_sign_up_details_id
+msgid "Do you want to become seller/vendor?"
+msgstr "Do you want to become seller/vendor?"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_product_order_line_form_view
+msgid "Done"
+msgstr "Done"
+
+#. module: odoo_marketplace
+#: selection:marketplace.stock,state:0
+#: selection:product.template,status:0
+#: selection:seller.payment,state:0
+msgid "Draft"
+msgstr "Draft"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_product_template_kanban_view
+msgid "Edit Product"
+msgstr "Edit Product"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_kanban_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_shop_kanban_view
+msgid "Edit Seller"
+msgstr "Edit Seller"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_email
+msgid "Email"
+msgstr "Email"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.mp_seller_profile
+msgid "Email :"
+msgstr "Email :"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.sell_header
+msgid "Email Id"
+msgstr "Email Id"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_auto_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_base_config_settings_form_view
+msgid "Email to Seller Button"
+msgstr "Email to Seller Button"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_config_settings_enable_notify_admin_4_new_seller
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_config_settings_enable_notify_admin_on_product_approve_reject
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_config_settings_enable_notify_admin_on_seller_approve_reject
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_config_settings_enable_notify_seller_4_new_seller
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_config_settings_enable_notify_seller_on_approve_reject
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_config_settings_enable_notify_seller_on_new_order
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_config_settings_enable_notify_seller_on_product_approve_reject
+msgid "Enable"
+msgstr "Enable"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_auto_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_base_config_settings_form_view
+msgid "Enable this for sending mail notification to seller on order confirmation having saller product."
+msgstr "Enable this for sending mail notification to seller on order confirmation having saller product."
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_mp_seller_landing_page
+msgid "Enter Your Email"
+msgstr "Enter Your Email"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_fax
+msgid "Fax"
+msgstr "Fax"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.mp_seller_profile
+msgid "Fax :"
+msgstr "Fax :"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_property_account_position_id
+msgid "Fiscal Position"
+msgstr "Fiscal Position"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_message_follower_ids
+msgid "Followers"
+msgstr "Followers"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_message_channel_ids
+msgid "Followers (Channels)"
+msgstr "Followers (Channels)"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Followers (Partners)"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.sell_header
+msgid "Forgot Password?"
+msgstr "Forgot Password?"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_mp_seller_landing_page
+msgid "GET STARTED"
+msgstr "GET STARTED"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_mp_seller_landing_page
+msgid "Get Your Online Store"
+msgstr "Get Your Online Store"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,help:odoo_marketplace.field_seller_shop_sequence
+msgid "Gives the sequence order when displaying a product list"
+msgstr "Gives the sequence order when displaying a product list"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_config_settings_global_commission
+msgid "Global Commission"
+msgstr "Global Commission"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_filter
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_shop_view_filter
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_view_filter
+msgid "Group By"
+msgstr "Group By"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_has_unreconciled_entries
+msgid "Has unreconciled entries"
+msgstr "Has unreconciled entries"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_mp_seller_landing_page
+msgid "Here are some benefits you'll have as a Seller"
+msgstr "Here are some benefits you'll have as a Seller"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.sell_header
+msgid "Home"
+msgstr "Home"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_config_settings_id
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_stock_id
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_payment_id
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_payment_method_id
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_payment_wizard_id
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_id
+#: model:ir.model.fields,field_description:odoo_marketplace.field_server_action_wizard_id
+msgid "ID"
+msgstr "ID"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,help:odoo_marketplace.field_seller_shop_message_unread
+msgid "If checked new messages require your attention."
+msgstr "If checked new messages require your attention."
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,help:odoo_marketplace.field_seller_shop_message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "If checked, new messages require your attention."
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,help:odoo_marketplace.field_seller_shop_active
+msgid "If unchecked, it will allow you to hide the product without removing it."
+msgstr "If unchecked, it will allow you to hide the product without removing it."
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_shop_logo
+msgid "Image"
+msgstr "Image"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_product_template_form_view
+msgid "Information"
+msgstr "Information"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_payment_form_view
+msgid "Information About Payment"
+msgstr "Information About Payment"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_product_template_form_view
+msgid "Initail Quantity"
+msgstr "Initail Quantity"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_product_template_qty
+msgid "Initial Quantity"
+msgstr "Initial Quantity"
+
+#. module: odoo_marketplace
+#: code:addons/odoo_marketplace/models/marketplace_product.py:156
+#: code:addons/odoo_marketplace/models/stock.py:150
+#, python-format
+msgid "Initial Quantity can not be negative"
+msgstr "Initial Quantity can not be negative"
+
+#. module: odoo_marketplace
+#: code:addons/odoo_marketplace/models/marketplace_product.py:165
+#, python-format
+msgid "Initial Quantity."
+msgstr "Initial Quantity."
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,help:odoo_marketplace.field_product_template_qty
+msgid "Initial quantity of the product which you want to update in warehouse for inventory purpose."
+msgstr "Initial quantity of the product which you want to update in warehouse for inventory purpose."
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_config_settings_internal_categ
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_auto_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_base_config_settings_form_view
+msgid "Internal Category"
+msgstr "Internal Category"
+
+#. module: odoo_marketplace
+#: model:ir.ui.menu,name:odoo_marketplace.wk_seller_dashboard_menu4
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_product_template_form_view
+msgid "Inventory"
+msgstr "Inventory"
+
+#. module: odoo_marketplace
+#: model:ir.ui.menu,name:odoo_marketplace.wk_seller_dashboard_menu4_sub_menu2
+msgid "Inventory Request"
+msgstr "Inventory Request"
+
+#. module: odoo_marketplace
+#: model:ir.model,name:odoo_marketplace.model_account_invoice
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_payment_invoice_id
+msgid "Invoice"
+msgstr "Invoice"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_auto_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_base_config_settings_form_view
+msgid "Invoice Type"
+msgstr "Invoice Type"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_invoice_ids
+msgid "Invoices"
+msgstr "Invoices"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_auto_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_base_config_settings_form_view
+msgid "Invoicing"
+msgstr "Invoicing"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_config_settings_invoicing_type
+msgid "Invoicing Type"
+msgstr "Invoicing Type"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_message_is_follower
+msgid "Is Follower"
+msgstr "Is Follower"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_partner_seller
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_seller
+msgid "Is a Seller"
+msgstr "Is a Seller"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,help:odoo_marketplace.field_res_partner_payment_method
+#: model:ir.model.fields,help:odoo_marketplace.field_res_users_payment_method
+msgid "It's you're accepted payment method, which will be used by admin during sending the payment."
+msgstr "It's you're accepted payment method, which will be used by admin during sending the payment."
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_issued_total
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_journal_item_count
+msgid "Journal Items"
+msgstr "Journal Items"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_message_last_post
+msgid "Last Message Date"
+msgstr "Last Message Date"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_config_settings___last_update
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_stock___last_update
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_payment___last_update
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_payment_method___last_update
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_payment_wizard___last_update
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop___last_update
+#: model:ir.model.fields,field_description:odoo_marketplace.field_server_action_wizard___last_update
+msgid "Last Modified on"
+msgstr "Last Modified on"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_last_website_so_id
+msgid "Last Online Sale Order"
+msgstr "Last Online Sale Order"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_config_settings_write_uid
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_stock_write_uid
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_payment_method_write_uid
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_payment_wizard_write_uid
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_payment_write_uid
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_write_uid
+#: model:ir.model.fields,field_description:odoo_marketplace.field_server_action_wizard_write_uid
+msgid "Last Updated by"
+msgstr "Last Updated by"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_config_settings_write_date
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_stock_write_date
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_payment_method_write_date
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_payment_wizard_write_date
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_payment_write_date
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_write_date
+#: model:ir.model.fields,field_description:odoo_marketplace.field_server_action_wizard_write_date
+msgid "Last Updated on"
+msgstr "Last Updated on"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,help:odoo_marketplace.field_res_users_last_time_entries_checked
+msgid "Last time the invoices & payments matching was performed for this partner. It is set either if there's not at least an unreconciled debit and an unreconciled credit or if you click the \"Done\" button."
+msgstr "Last time the invoices & payments matching was performed for this partner. It is set either if there's not at least an unreconciled debit and an unreconciled credit or if you click the \"Done\" button."
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_last_time_entries_checked
+msgid "Latest Invoices & Payments Matching Date"
+msgstr "Latest Invoices & Payments Matching Date"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_product_template_form_view
+msgid "List of Variants"
+msgstr "List of Variants"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_stock_location_id
+msgid "Location"
+msgstr "Location"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.sell_header
+msgid "Log in"
+msgstr "Log in"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_auto_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_base_config_settings_form_view
+msgid "Mail & Notifications"
+msgstr "Mail & Notifications"
+
+#. module: odoo_marketplace
+#: model:res.groups,name:odoo_marketplace.marketplace_manager_group
+msgid "Manager"
+msgstr "Manager"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_auto_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_base_config_settings_form_view
+msgid "MarketPlace settings"
+msgstr "MarketPlace settings"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_dashboard_link
+msgid "Marketplace"
+msgstr "Marketplace"
+
+#. module: odoo_marketplace
+#: model:ir.actions.act_window,name:odoo_marketplace.marketplace_product_stock_action2
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_product_stock_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_product_stock_tree_view
+msgid "Marketplace Product Stock"
+msgstr "Marketplace Product Stock"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.add_seller_in_res_partner_formview
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_form_view
+msgid "Marketplace Settings"
+msgstr "Marketplace Settings"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_product_template_status
+msgid "Marketplace Status"
+msgstr "Marketplace Status"
+
+#. module: odoo_marketplace
+#: model:ir.actions.act_window,help:odoo_marketplace.wk_seller_action
+msgid "Marketplace helps you easily track all activities related to\n"
+"                a seller: discussions, history of sales,\n"
+"                documents, etc."
+msgstr "Marketplace helps you easily track all activities related to\n"
+"                a seller: discussions, history of sales,\n"
+"                documents, etc."
+
+#. module: odoo_marketplace
+#: model:ir.actions.act_window,help:odoo_marketplace.wk_seller_product_template_action
+#: model:ir.actions.act_window,help:odoo_marketplace.wk_seller_product_template_approved_products_action
+msgid "Marketplace helps you easily track all product."
+msgstr "Marketplace helps you easily track all product."
+
+#. module: odoo_marketplace
+#: code:addons/odoo_marketplace/models/marketplace_product.py:71
+#, python-format
+msgid "Marketplace seller id is not assign to this product."
+msgstr "Marketplace seller id is not assign to this product."
+
+#. module: odoo_marketplace
+#: code:addons/odoo_marketplace/models/marketplace_product.py:93
+#, python-format
+msgid "Marketplace seller of this product is not approved."
+msgstr "Marketplace seller of this product is not approved."
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_payment_memo
+msgid "Memo"
+msgstr "Memo"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_message_ids
+msgid "Messages"
+msgstr "Messages"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_auto_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_base_config_settings_form_view
+msgid "Minimum Gap"
+msgstr "Minimum Gap"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_auto_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_form_view
+msgid "Minimum gap for next payment request"
+msgstr "Minimum gap for next payment request"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.mp_seller_profile
+msgid "Mobile :"
+msgstr "Mobile :"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_shop_mobile
+msgid "Mobile Number"
+msgstr "Mobile Number"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_mp_seller_landing_page
+msgid "Multi Seller/Vendor Support"
+msgstr "Multi Seller/Vendor Support"
+
+#. module: odoo_marketplace
+#: code:addons/odoo_marketplace/models/ir_ui_menu.py:39
+#, python-format
+msgid "My Profile"
+msgstr "My Profile"
+
+#. module: odoo_marketplace
+#: code:addons/odoo_marketplace/models/ir_ui_menu.py:41
+#, python-format
+msgid "My Shop"
+msgstr "My Shop"
+
+#. module: odoo_marketplace
+#: model:seller.payment.method,name:odoo_marketplace.marketplace_seller_payment_method_data4
+msgid "NEFT"
+msgstr "NEFT"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_form_view
+msgid "Name"
+msgstr "Name"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_stock_new_quantity
+msgid "New Quantity on Hand"
+msgstr "New Quantity on Hand"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_config_settings_next_payment_requset
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_partner_next_payment_request
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_next_payment_request
+msgid "Next Payment Request"
+msgstr "Next Payment Request"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.mp_seller_profile
+#: model:ir.ui.view,arch_db:odoo_marketplace.shop_recently_product
+msgid "No product defined."
+msgstr "No product defined."
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.mp_seller_shop
+msgid "No product found."
+msgstr "No product found."
+
+#. module: odoo_marketplace
+#: model:ir.ui.menu,name:odoo_marketplace.wk_seller_dashboard_menu2_sub_menu1
+msgid "Non-Approved Products"
+msgstr "Non-Approved Products"
+
+#. module: odoo_marketplace
+#: code:addons/odoo_marketplace/models/seller_payment.py:77
+#: code:addons/odoo_marketplace/models/seller_payment.py:82
+#: code:addons/odoo_marketplace/models/seller_payment.py:151
+#, python-format
+msgid "Not eligible for payment request.... "
+msgstr "Not eligible for payment request.... "
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_stock_note
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_product_template_form_view
+msgid "Notes"
+msgstr "Notes"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_config_settings_notify_admin_4_new_seller
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_config_settings_notify_admin_on_product_approve_reject
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_config_settings_notify_admin_on_seller_approve_reject
+msgid "Notification for Admin"
+msgstr "Notification for Admin"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_config_settings_notify_seller_4_new_seller
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_config_settings_notify_seller_on_approve_reject
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_config_settings_notify_seller_on_new_order
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_config_settings_notify_seller_on_product_approve_reject
+msgid "Notification for Seller"
+msgstr "Notification for Seller"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_message_needaction_counter
+msgid "Number of Actions"
+msgstr "Number of Actions"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,help:odoo_marketplace.field_seller_shop_message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr "Number of messages which requires an action"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,help:odoo_marketplace.field_seller_shop_message_unread_counter
+msgid "Number of unread messages"
+msgstr "Number of unread messages"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_auto_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_base_config_settings_form_view
+msgid "On New Order"
+msgstr "On New Order"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_auto_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_base_config_settings_form_view
+msgid "On New Seller Request"
+msgstr "On New Seller Request"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_auto_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_base_config_settings_form_view
+msgid "On Product Approval/Rejection"
+msgstr "On Product Approval/Rejection"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_auto_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_base_config_settings_form_view
+msgid "On Seller Approval/Rejection"
+msgstr "On Seller Approval/Rejection"
+
+#. module: odoo_marketplace
+#: code:addons/odoo_marketplace/models/account_payment.py:67
+#, python-format
+msgid "Only a draft payment can be posted. Trying to post a payment in state %s."
+msgstr "Only a draft payment can be posted. Trying to post a payment in state %s."
+
+#. module: odoo_marketplace
+#: model:mail.template,subject:odoo_marketplace.marketplace_template_for_order_to_seller
+msgid "Order Confirmation"
+msgstr "Order Confirmation"
+
+#. module: odoo_marketplace
+#: code:addons/odoo_marketplace/models/account_invoice.py:95
+#, python-format
+msgid "Order Invoice Payment"
+msgstr "Order Invoice Payment"
+
+#. module: odoo_marketplace
+#: code:addons/odoo_marketplace/models/account_invoice.py:95
+#, python-format
+msgid "Order Invoice Refund"
+msgstr "Order Invoice Refund"
+
+#. module: odoo_marketplace
+#: selection:seller.payment,payment_mode:0
+msgid "Order Paid"
+msgstr "Order Paid"
+
+#. module: odoo_marketplace
+#: selection:seller.payment,payment_mode:0
+msgid "Order Refund"
+msgstr "Order Refund"
+
+#. module: odoo_marketplace
+#: model:ir.ui.menu,name:odoo_marketplace.wk_seller_dashboard_menu3_sub_menu2
+msgid "Orders"
+msgstr "Orders"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_partner_set_seller_wise_settings
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_set_seller_wise_settings
+msgid "Override default seller perameters"
+msgstr "Override default seller perameters"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_set_seller_wise_settings
+msgid "Override default shop settings"
+msgstr "Override default shop settings"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_partner_paid_mp_payment
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_paid_mp_payment
+msgid "Paid Amount"
+msgstr "Paid Amount"
+
+#. module: odoo_marketplace
+#: model:ir.model,name:odoo_marketplace.model_res_partner
+msgid "Partner"
+msgstr "Partner"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.sell_header
+msgid "Password"
+msgstr "Password"
+
+#. module: odoo_marketplace
+#: code:addons/odoo_marketplace/controllers/main.py:45
+#, python-format
+msgid "Passwords do not match; please retype them."
+msgstr "Passwords do not match; please retype them."
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_payment_payable_amount
+msgid "Payable Amount"
+msgstr "Payable Amount"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_debit_limit
+msgid "Payable Limit"
+msgstr "Payable Limit"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_form_view
+msgid "Payment Details"
+msgstr "Payment Details"
+
+#. module: odoo_marketplace
+#: model:ir.actions.act_window,name:odoo_marketplace.wk_seller_payment_method_action
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_payment_method_name
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_payment_payment_method
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_payment_method_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_payment_method_tree_view
+msgid "Payment Method"
+msgstr "Payment Method"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_payment_form_view
+msgid "Payment Method For Seller"
+msgstr "Payment Method For Seller"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_payment_tree_view
+msgid "Payment Method For Sellers"
+msgstr "Payment Method For Sellers"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_partner_payment_method
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_payment_method
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_payment_method_ids
+msgid "Payment Methods"
+msgstr "Payment Methods"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_payment_payment_mode
+msgid "Payment Mode"
+msgstr "Payment Mode"
+
+#. module: odoo_marketplace
+#: model:ir.actions.act_window,name:odoo_marketplace.wk_seller_payment_wizard_action
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_payment_wizard_form_view
+msgid "Payment Request"
+msgstr "Payment Request"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_auto_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_form_view
+msgid "Payment Terms"
+msgstr "Payment Terms"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,help:odoo_marketplace.field_seller_payment_payment_method
+msgid "Payment method in which mode you want payment from vendor."
+msgstr "Payment method in which mode you want payment from vendor."
+
+#. module: odoo_marketplace
+#: model:ir.actions.act_window,name:odoo_marketplace.action_seeller_payments_payable
+#: model:ir.model,name:odoo_marketplace.model_account_payment
+#: model:ir.ui.menu,name:odoo_marketplace.seller_invoice_menu_sub_menu2
+msgid "Payments"
+msgstr "Payments"
+
+#. module: odoo_marketplace
+#: model:ir.actions.act_window,help:odoo_marketplace.action_seeller_payments_payable
+msgid "Payments are used to register liquidity movements (send, collect or transfer money).\n"
+"                  You can then process those payments by your own means or by using installed facilities."
+msgstr "Payments are used to register liquidity movements (send, collect or transfer money).\n"
+"                  You can then process those payments by your own means or by using installed facilities."
+
+#. module: odoo_marketplace
+#: model:seller.payment.method,name:odoo_marketplace.marketplace_seller_payment_method_data3
+msgid "Paypal"
+msgstr "Paypal"
+
+#. module: odoo_marketplace
+#: selection:product.template,status:0
+#: selection:res.partner,state:0
+msgid "Pending"
+msgstr "Pending"
+
+#. module: odoo_marketplace
+#: model:res.groups,name:odoo_marketplace.marketplace_draft_seller_group
+msgid "Pending Seller"
+msgstr "Pending Seller"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_phone
+msgid "Phone"
+msgstr "Phone"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.mp_seller_profile
+msgid "Phone :"
+msgstr "Phone :"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,help:odoo_marketplace.field_seller_payment_payable_amount
+msgid "Positive amount means vendor will pay to seller & negative amount means vendor has been paid/or seller have to refund."
+msgstr "Positive amount means vendor will pay to seller & negative amount means vendor has been paid/or seller have to refund."
+
+#. module: odoo_marketplace
+#: selection:seller.payment,state:0
+msgid "Posted"
+msgstr "Posted"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_product_template_kanban_view
+msgid "Price:"
+msgstr "Price:"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_stock_product_id
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_product_stock_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_warehouse_wizard_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_product_template_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_product_template_tree_view
+msgid "Product"
+msgstr "Product"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_auto_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_base_config_settings_form_view
+msgid "Product Approval"
+msgstr "Product Approval"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_mp_seller_landing_page
+msgid "Product Collection and Management"
+msgstr "Product Collection and Management"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_auto_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_base_config_settings_form_view
+msgid "Product Count"
+msgstr "Product Count"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_product_template_form_view
+msgid "Product Name"
+msgstr "Product Name"
+
+#. module: odoo_marketplace
+#: model:ir.model,name:odoo_marketplace.model_product_template
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_stock_product_temp_id
+msgid "Product Template"
+msgstr "Product Template"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_product_template_template_id
+msgid "Product Template Id"
+msgstr "Product Template Id"
+
+#. module: odoo_marketplace
+#: code:addons/odoo_marketplace/models/stock.py:52
+#, python-format
+msgid "Product have multiple variants. So, Please use the Product Variant view to update the product quantity."
+msgstr "Product have multiple variants. So, Please use the Product Variant view to update the product quantity."
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_seller_product_ids
+#: model:ir.model.fields,field_description:odoo_marketplace.field_server_action_wizard_product_ids
+#: model:ir.ui.menu,name:odoo_marketplace.wk_seller_dashboard_menu2
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_auto_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.mp_seller_profile
+#: model:ir.ui.view,arch_db:odoo_marketplace.mp_seller_shop
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_shop_form_view
+msgid "Products"
+msgstr "Products"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_partner_profile_banner
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_profile_banner
+msgid "Profile Banner"
+msgstr "Profile Banner"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_partner_profile_image
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_profile_image
+msgid "Profile Image"
+msgstr "Profile Image"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_partner_profile_msg
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_profile_msg
+msgid "Profile Message"
+msgstr "Profile Message"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_form_view
+msgid "Profile Page Settings"
+msgstr "Profile Page Settings"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_payment_description
+msgid "Pyament Description"
+msgstr "Pyament Description"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_payment_wizard_amount
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_payment_wizard_cashable_amount
+msgid "Pyment Amount"
+msgstr "Pyment Amount"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_product_order_line_tree_view
+msgid "Qty"
+msgstr "Qty"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_product_template_kanban_view
+msgid "Quantity:"
+msgstr "Quantity:"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_auto_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.mp_seller_profile
+#: model:ir.ui.view,arch_db:odoo_marketplace.mp_seller_shop
+msgid "Recently Added Products"
+msgstr "Recently Added Products"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_payment_name
+msgid "Record Reference"
+msgstr "Record Reference"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_payment_form_view
+msgid "Register Payment"
+msgstr "Register Payment"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.mp_seller_signup
+msgid "Register as a Seller"
+msgstr "Register as a Seller"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_product_stock_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_product_template_form_view
+msgid "Reject"
+msgstr "Reject"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_warehouse_wizard_view
+msgid "Reject Now"
+msgstr "Reject Now"
+
+#. module: odoo_marketplace
+#: model:ir.actions.act_window,name:odoo_marketplace.mp_product_reject_server_action_wizard
+msgid "Reject Products"
+msgstr "Reject Products"
+
+#. module: odoo_marketplace
+#: selection:marketplace.stock,state:0
+#: selection:product.template,status:0
+msgid "Rejected"
+msgstr "Rejected"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_product_stock_form_view
+msgid "Request"
+msgstr "Request"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_form_view
+msgid "Request For Payment"
+msgstr "Request For Payment"
+
+#. module: odoo_marketplace
+#: model:mail.template,subject:odoo_marketplace.marketplace_email_template_for_admin_by_seller
+msgid "Request For Seller Registration"
+msgstr "Request For Seller Registration"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_product_template_pending_qty_request
+msgid "Request Pending"
+msgstr "Request Pending"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_product_template_form_view
+msgid "Request To Approve"
+msgstr "Request To Approve"
+
+#. module: odoo_marketplace
+#: model:mail.template,subject:odoo_marketplace.marketplace_template_for_product_status_changeto_admin
+msgid "Request status for Product Placement has been ${object.status}"
+msgstr "Request status for Product Placement has been ${object.status}"
+
+#. module: odoo_marketplace
+#: selection:marketplace.stock,state:0
+msgid "Requested"
+msgstr "Requested"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_payment_wizard_form_view
+msgid "Requested Payment Amount"
+msgstr "Requested Payment Amount"
+
+#. module: odoo_marketplace
+#: code:addons/odoo_marketplace/wizard/seller_payment_wizard.py:76
+#, python-format
+msgid "Requested amount should be greater than 0. "
+msgstr "Requested amount should be greater than 0. "
+
+#. module: odoo_marketplace
+#: selection:seller.payment,state:0
+msgid "Requested/Validated"
+msgstr "Requested/Validated"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_partner_return_policy
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_return_policy
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_auto_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.mp_seller_profile
+msgid "Return Policy"
+msgstr "Return Policy"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_product_template_form_view
+msgid "Sale Conditions"
+msgstr "Sale Conditions"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_auto_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_base_config_settings_form_view
+msgid "Sale Count"
+msgstr "Sale Count"
+
+#. module: odoo_marketplace
+#: model:ir.actions.act_window,name:odoo_marketplace.wk_seller_slae_order_line_action
+#: model:ir.actions.act_window,name:odoo_marketplace.wk_seller_slae_order_line_quotations_action
+msgid "Sale Order"
+msgstr "Sale Order"
+
+#. module: odoo_marketplace
+#: model:ir.ui.menu,name:odoo_marketplace.wk_seller_dashboard_menu3
+#: model:ir.ui.view,arch_db:odoo_marketplace.mp_seller_profile
+#: model:ir.ui.view,arch_db:odoo_marketplace.mp_seller_shop
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_product_template_form_view
+msgid "Sales"
+msgstr "Sales"
+
+#. module: odoo_marketplace
+#: model:ir.model,name:odoo_marketplace.model_sale_order
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_sale_order_ids
+msgid "Sales Order"
+msgstr "Sales Order"
+
+#. module: odoo_marketplace
+#: model:ir.model,name:odoo_marketplace.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Sales Order Line"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_product_order_line_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_product_order_line_tree_view
+msgid "Sales Order Lines"
+msgstr "Sales Order Lines"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_shop_view_filter
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_view_filter
+msgid "Search"
+msgstr "Search"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_filter
+msgid "Search Products"
+msgstr "Search Products"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_auto_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_base_config_settings_form_view
+msgid "Select Internal Category"
+msgstr "Select Internal Category"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.header_footer_custom2
+#: model:ir.ui.view,arch_db:odoo_marketplace.sell_header
+msgid "Sell"
+msgstr "Sell"
+
+#. module: odoo_marketplace
+#: code:addons/odoo_marketplace/models/account_invoice.py:37
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_stock_marketplace_seller_id
+#: model:ir.model.fields,field_description:odoo_marketplace.field_product_template_marketplace_seller_id
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_payment_seller_id
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_payment_wizard_seller_id
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_seller_id
+#: model:ir.model.fields,field_description:odoo_marketplace.field_stock_picking_marketplace_seller_id
+#: model:ir.ui.menu,name:odoo_marketplace.wk_seller_dashboard_menu1_sub_menu1
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_warehouse_wizard_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_filter
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_product_template_tree_view
+#: model:res.groups,name:odoo_marketplace.marketplace_seller_group
+#, python-format
+msgid "Seller"
+msgstr "Seller"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_auto_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_base_config_settings_form_view
+msgid "Seller Address"
+msgstr "Seller Address"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_auto_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_base_config_settings_form_view
+msgid "Seller Approval"
+msgstr "Seller Approval"
+
+#. module: odoo_marketplace
+#: model:ir.actions.act_window,name:odoo_marketplace.wk_seller_product_template_approved_products_action
+msgid "Seller Approved Products"
+msgstr "Seller Approved Products"
+
+#. module: odoo_marketplace
+#: model:ir.ui.menu,name:odoo_marketplace.seller_invoice_menu_sub_menu1
+msgid "Seller Bills"
+msgstr "Seller Bills"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.mp_seller_profile
+msgid "Seller Contact"
+msgstr "Seller Contact"
+
+#. module: odoo_marketplace
+#: model:ir.ui.menu,name:odoo_marketplace.wk_seller_dashboard
+msgid "Seller Dashboard"
+msgstr "Seller Dashboard"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_account_invoice_seller_invoice_number
+msgid "Seller Invoice Number"
+msgstr "Seller Invoice Number"
+
+#. module: odoo_marketplace
+#: model:ir.actions.act_window,name:odoo_marketplace.seller_invoice_action
+#: model:ir.ui.menu,name:odoo_marketplace.wk_seller_dashboard_menu1_sub_menu3
+msgid "Seller Invoices"
+msgstr "Seller Invoices"
+
+#. module: odoo_marketplace
+#: code:addons/odoo_marketplace/models/account_invoice.py:165
+#: code:addons/odoo_marketplace/models/seller_payment.py:178
+#: model:ir.model,name:odoo_marketplace.model_seller_payment
+#: selection:seller.payment,payment_mode:0
+#, python-format
+msgid "Seller Payment"
+msgstr "Seller Payment"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_config_settings_seller_payment_limit
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_partner_seller_payment_limit
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_seller_payment_limit
+msgid "Seller Payment Limit"
+msgstr "Seller Payment Limit"
+
+#. module: odoo_marketplace
+#: model:ir.model,name:odoo_marketplace.model_seller_payment_method
+msgid "Seller Payment Method"
+msgstr "Seller Payment Method"
+
+#. module: odoo_marketplace
+#: model:ir.ui.menu,name:odoo_marketplace.wk_seller_dashboard_menu9_sub_menu1
+msgid "Seller Payment Methods"
+msgstr "Seller Payment Methods"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_payment_wizard_form_view
+msgid "Seller Payment Request"
+msgstr "Seller Payment Request"
+
+#. module: odoo_marketplace
+#: model:ir.actions.act_window,name:odoo_marketplace.wk_seller_product_template_action
+msgid "Seller Products"
+msgstr "Seller Products"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_form_view
+msgid "Seller Profile Settings"
+msgstr "Seller Profile Settings"
+
+#. module: odoo_marketplace
+#: code:addons/odoo_marketplace/models/account_invoice.py:38
+#, python-format
+msgid "Seller Reference"
+msgstr "Seller Reference"
+
+#. module: odoo_marketplace
+#: model:ir.model,name:odoo_marketplace.model_seller_shop
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_partner_seller_shop_id
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_seller_shop_id
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_shop_form_view
+msgid "Seller Shop"
+msgstr "Seller Shop"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_auto_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_base_config_settings_form_view
+msgid "Seller Shop/Profile Settings"
+msgstr "Seller Shop/Profile Settings"
+
+#. module: odoo_marketplace
+#: model:ir.ui.menu,name:odoo_marketplace.wk_seller_dashboard_menu1_sub_menu2
+msgid "Seller Shops"
+msgstr "Seller Shops"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_auto_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_base_config_settings_form_view
+msgid "Seller Since"
+msgstr "Seller Since"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_partner_state
+#: model:mail.template,subject:odoo_marketplace.marketplace_email_template_for_seller_status_change_to_admin
+#: model:mail.template,subject:odoo_marketplace.marketplace_email_template_for_seller_status_change_to_seller
+msgid "Seller Status"
+msgstr "Seller Status"
+
+#. module: odoo_marketplace
+#: code:addons/odoo_marketplace/models/marketplace_product.py:158
+#, python-format
+msgid "Seller has no location/warehouse."
+msgstr "Seller has no location/warehouse."
+
+#. module: odoo_marketplace
+#: code:addons/odoo_marketplace/models/seller_payment.py:125
+#, python-format
+msgid "Seller has no payment method. Please assign payment method to seller."
+msgstr "Seller has no payment method. Please assign payment method to seller."
+
+#. module: odoo_marketplace
+#: code:addons/odoo_marketplace/wizard/seller_payment_wizard.py:86
+#, python-format
+msgid "Seller request for payment..."
+msgstr "Seller request for payment..."
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_mp_seller_landing_page
+msgid "Seller's Commission Management"
+msgstr "Seller's Commission Management"
+
+#. module: odoo_marketplace
+#: model:ir.actions.act_window,name:odoo_marketplace.wk_seller_product_template_in_draft_action
+msgid "Seller.Product.Template"
+msgstr "Seller.Product.Template"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_account_invoice_is_seller
+msgid "Seller?"
+msgstr "Seller?"
+
+#. module: odoo_marketplace
+#: model:ir.actions.act_window,name:odoo_marketplace.wk_seller_action
+#: model:ir.ui.menu,name:odoo_marketplace.seller_invoice_menu
+#: model:ir.ui.menu,name:odoo_marketplace.seller_invoice_menu_sub_menu3
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_shop_tree_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_tree_view
+msgid "Sellers"
+msgstr "Sellers"
+
+#. module: odoo_marketplace
+#: model:ir.actions.act_window,name:odoo_marketplace.wk_seller_payment_action
+msgid "Sellers Payment"
+msgstr "Sellers Payment"
+
+#. module: odoo_marketplace
+#: model:ir.ui.menu,name:odoo_marketplace.wk_seller_payment_method
+msgid "Sellers Payments"
+msgstr "Sellers Payments"
+
+#. module: odoo_marketplace
+#: model:ir.ui.menu,name:odoo_marketplace.wk_seller_dashboard_menu1
+msgid "Sellers/Vendors"
+msgstr "Sellers/Vendors"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_product_template_form_view
+msgid "Send To Draft"
+msgstr "Send To Draft"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.mp_seller_profile
+msgid "Send email to seller"
+msgstr "Send email to seller"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_mp_seller_landing_page
+msgid "Separate Seller Profile"
+msgstr "Separate Seller Profile"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_sequence
+msgid "Sequence"
+msgstr "Sequence"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_kanban_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_shop_kanban_view
+msgid "Set Cover Image"
+msgstr "Set Cover Image"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_product_stock_form_view
+msgid "Set to Draft"
+msgstr "Set to Draft"
+
+#. module: odoo_marketplace
+#: model:ir.ui.menu,name:odoo_marketplace.wk_odoo_marketplace_config_settings
+msgid "Settings"
+msgstr "Settings"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.mp_seller_profile
+msgid "Shipping Policy"
+msgstr "Shipping Policy"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_partner_shipping_policy
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_shipping_policy
+msgid "Shipping policy"
+msgstr "Shipping policy"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.mp_seller_shop
+msgid "Ships from"
+msgstr "Ships from"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.sell_header
+msgid "Shop"
+msgstr "Shop"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_form_view
+msgid "Shop & Policies"
+msgstr "Shop & Policies"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_shop_banner
+msgid "Shop Banner"
+msgstr "Shop Banner"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_name
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_shop_form_view
+msgid "Shop Name"
+msgstr "Shop Name"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_shop_form_view
+msgid "Shop Settings"
+msgstr "Shop Settings"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_state
+msgid "Shop Status"
+msgstr "Shop Status"
+
+#. module: odoo_marketplace
+#: model:ir.actions.act_window,name:odoo_marketplace.wk_seller_shop_action
+msgid "Shops"
+msgstr "Shops"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_config_settings_seller_contact_btn
+msgid "Show \"Email to Seller\" Button on website."
+msgstr "Show \"Email to Seller\" Button on website."
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_seller_contact_btn
+msgid "Show Contact Seller Button on website."
+msgstr "Show Contact Seller Button on website."
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_partner_show_product_count
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_show_product_count
+msgid "Show Product Count"
+msgstr "Show Product Count"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_partner_show_return_policy
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_show_return_policy
+msgid "Show Return Policy"
+msgstr "Show Return Policy"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_partner_show_sale_count
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_show_sale_count
+msgid "Show Sale Count"
+msgstr "Show Sale Count"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_partner_show_seller_address
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_show_seller_address
+msgid "Show Seller Address"
+msgstr "Show Seller Address"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_partner_show_seller_since
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_show_seller_since
+msgid "Show Seller Since"
+msgstr "Show Seller Since"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_config_settings_shipping_policy
+msgid "Show Seller's Shipping Policy on website."
+msgstr "Show Seller's Shipping Policy on website."
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_partner_show_shipping_policy
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_show_shipping_policy
+msgid "Show Shipping Policy"
+msgstr "Show Shipping Policy"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_config_settings_seller_since
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_seller_since
+msgid "Show seller since Date on website."
+msgstr "Show seller since Date on website."
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_config_settings_return_policy
+msgid "Show seller's Retrun Policy on website."
+msgstr "Show seller's Retrun Policy on website."
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_config_settings_seller_t_c
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_seller_t_c
+msgid "Show seller's Terms & Conditions on website."
+msgstr "Show seller's Terms & Conditions on website."
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_config_settings_product_count
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_product_count
+msgid "Show seller's product count on website."
+msgstr "Show seller's product count on website."
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_config_settings_sale_count
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_sale_count
+msgid "Show seller's sales count on website."
+msgstr "Show seller's sales count on website."
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_config_settings_shipping_address
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_shipping_address
+msgid "Show seller's shipping address on website."
+msgstr "Show seller's shipping address on website."
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.mp_seller_signup
+msgid "Sign up"
+msgstr "Sign up"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.mp_seller_shop
+msgid "Since"
+msgstr "Since"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_website_size_x
+msgid "Size X"
+msgstr "Size X"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_website_size_y
+msgid "Size Y"
+msgstr "Size Y"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.mp_sold_by_detail_in_product
+msgid "Sold By :"
+msgstr "Sold By :"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_payment_state
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_state_id
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_shop_form_view
+msgid "State"
+msgstr "State"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_stock_state
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_filter
+msgid "Status"
+msgstr "Status"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_mp_seller_landing_page
+msgid "Still Selling offline? Start Selling Online."
+msgstr "Still Selling offline? Start Selling Online."
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_product_template_form_view
+msgid "Stock"
+msgstr "Stock"
+
+#. module: odoo_marketplace
+#: model:ir.model,name:odoo_marketplace.model_stock_move
+msgid "Stock Move"
+msgstr "Stock Move"
+
+#. module: odoo_marketplace
+#: model:ir.actions.act_window,name:odoo_marketplace.wk_seller_delivery_action
+#: model:ir.ui.menu,name:odoo_marketplace.wk_seller_dashboard_menu3_sub_menu3
+msgid "Stock Moves"
+msgstr "Stock Moves"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.mp_seller_shop
+msgid "Store T&amp;C"
+msgstr "Store T&amp;C"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_street
+msgid "Street"
+msgstr "Street"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_shop_form_view
+msgid "Street 2..."
+msgstr "Street 2..."
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_shop_form_view
+msgid "Street..."
+msgstr "Street..."
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_street2
+msgid "Street2"
+msgstr "Street2"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_shop_tag_line
+msgid "Tag Line"
+msgstr "Tag Line"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_config_settings_term_and_condition
+msgid "Term & Condition"
+msgstr "Term & Condition"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_shop_t_c
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_auto_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_shop_form_view
+msgid "Terms & Conditions"
+msgstr "Terms & Conditions"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.account_sign_up_details_id
+msgid "Terms &amp; Conditions"
+msgstr "Terms &amp; Conditions"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,help:odoo_marketplace.field_res_users_property_account_position_id
+msgid "The fiscal position will determine taxes and accounts used for the partner."
+msgstr "The fiscal position will determine taxes and accounts used for the partner."
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,help:odoo_marketplace.field_seller_shop_website_url
+msgid "The full URL to access the document through the website."
+msgstr "The full URL to access the document through the website."
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,help:odoo_marketplace.field_res_users_has_unreconciled_entries
+msgid "The partner has at least one unreconciled debit and credit since last time the invoices & payments matching was performed."
+msgstr "The partner has at least one unreconciled debit and credit since last time the invoices & payments matching was performed."
+
+#. module: odoo_marketplace
+#: code:addons/odoo_marketplace/models/account_payment.py:71
+#, python-format
+msgid "The payment cannot be processed because the invoice is not open!"
+msgstr "The payment cannot be processed because the invoice is not open!"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,help:odoo_marketplace.field_res_users_property_account_payable_id
+msgid "This account will be used instead of the default one as the payable account for the current partner"
+msgstr "This account will be used instead of the default one as the payable account for the current partner"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,help:odoo_marketplace.field_res_users_property_account_receivable_id
+msgid "This account will be used instead of the default one as the receivable account for the current partner"
+msgstr "This account will be used instead of the default one as the receivable account for the current partner"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,help:odoo_marketplace.field_seller_shop_shop_logo
+msgid "This field holds the image used as image for the product, limited to 1024x1024px."
+msgstr "This field holds the image used as image for the product, limited to 1024x1024px."
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_product_template_form_view
+msgid "This note will be displayed on the quotations."
+msgstr "This note will be displayed on the quotations."
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,help:odoo_marketplace.field_res_users_property_supplier_payment_term_id
+msgid "This payment term will be used instead of the default one for purchase orders and vendor bills"
+msgstr "This payment term will be used instead of the default one for purchase orders and vendor bills"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,help:odoo_marketplace.field_res_users_property_payment_term_id
+msgid "This payment term will be used instead of the default one for sale orders and customer invoices"
+msgstr "This payment term will be used instead of the default one for sale orders and customer invoices"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,help:odoo_marketplace.field_marketplace_stock_new_quantity
+msgid "This quantity is expressed in the Default Unit of Measure of the product."
+msgstr "This quantity is expressed in the Default Unit of Measure of the product."
+
+#. module: odoo_marketplace
+#: code:addons/odoo_marketplace/models/seller_payment.py:66
+#: code:addons/odoo_marketplace/models/seller_payment.py:140
+#, python-format
+msgid "This seller already has a pending request of payment."
+msgstr "This seller already has a pending request of payment."
+
+#. module: odoo_marketplace
+#: code:addons/odoo_marketplace/models/seller_shop.py:82
+#: sql_constraint:seller.shop:0
+#, python-format
+msgid "This seller is already assign to another shop."
+msgstr "This seller is already assign to another shop."
+
+#. module: odoo_marketplace
+#: sql_constraint:res.partner:0
+msgid "This shop is already assign to another seller."
+msgstr "This shop is already assign to another seller."
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,help:odoo_marketplace.field_res_users_property_stock_customer
+msgid "This stock location will be used, instead of the default one, as the destination location for goods you send to this partner"
+msgstr "This stock location will be used, instead of the default one, as the destination location for goods you send to this partner"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,help:odoo_marketplace.field_res_users_property_stock_supplier
+msgid "This stock location will be used, instead of the default one, as the source location for goods you receive from the current partner"
+msgstr "This stock location will be used, instead of the default one, as the source location for goods you receive from the current partner"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_stock_name
+msgid "Title"
+msgstr "Title"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.mp_seller_shop
+msgid "To till Now"
+msgstr "To till Now"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_product_order_line_tree_view
+msgid "Total"
+msgstr "Total"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_partner_total_mp_payment
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_total_mp_payment
+msgid "Total Amount"
+msgstr "Total Amount"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_total_invoiced
+msgid "Total Invoiced"
+msgstr "Total Invoiced"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_debit
+msgid "Total Payable"
+msgstr "Total Payable"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_payment_tree_view
+msgid "Total Payable Amount"
+msgstr "Total Payable Amount"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_credit
+msgid "Total Receivable"
+msgstr "Total Receivable"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,help:odoo_marketplace.field_res_users_credit
+msgid "Total amount this customer owes you."
+msgstr "Total amount this customer owes you."
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,help:odoo_marketplace.field_res_users_debit
+msgid "Total amount you have to pay to this vendor."
+msgstr "Total amount you have to pay to this vendor."
+
+#. module: odoo_marketplace
+#: model:ir.model,name:odoo_marketplace.model_stock_picking
+msgid "Transfer"
+msgstr "Transfer"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_payment_payment_type
+msgid "Type"
+msgstr "Type"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_product_order_line_tree_view
+msgid "Unit of Measure"
+msgstr "Unit of Measure"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_message_unread
+msgid "Unread Messages"
+msgstr "Unread Messages"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_message_unread_counter
+msgid "Unread Messages Counter"
+msgstr "Unread Messages Counter"
+
+#. module: odoo_marketplace
+#: model:ir.actions.act_window,name:odoo_marketplace.marketplace_product_stock_action
+msgid "Update Marketplace Product Quantity"
+msgstr "Update Marketplace Product Quantity"
+
+#. module: odoo_marketplace
+#: model:ir.model,name:odoo_marketplace.model_res_users
+msgid "Users"
+msgstr "Users"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,help:odoo_marketplace.field_res_users_currency_id
+msgid "Utility field to express amount currency"
+msgstr "Utility field to express amount currency"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_payment_form_view
+msgid "Validate"
+msgstr "Validate"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_product_template_form_view
+msgid "Variant Prices"
+msgstr "Variant Prices"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_product_template_form_view
+msgid "Variants"
+msgstr "Variants"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_mp_seller_landing_page
+msgid "Various Invoice Generation Options"
+msgstr "Various Invoice Generation Options"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_property_stock_supplier
+msgid "Vendor Location"
+msgstr "Vendor Location"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_res_users_property_supplier_payment_term_id
+msgid "Vendor Payment Term"
+msgstr "Vendor Payment Term"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_payment_form_view
+msgid "View Invoice"
+msgstr "View Invoice"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_website_published
+msgid "Visible in Website"
+msgstr "Visible in Website"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.mp_seller_profile
+msgid "Visit Shop"
+msgstr "Visit Shop"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.mp_sold_by_detail_in_product
+msgid "Visit Shop :"
+msgstr "Visit Shop :"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_config_settings_default_warehouse
+msgid "Warehouse"
+msgstr "Warehouse"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_marketplace_config_settings_warehouse_location_id
+msgid "Warehouse Location"
+msgstr "Warehouse Location"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_auto_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_form_view
+msgid "Warehouse/Location"
+msgstr "Warehouse/Location"
+
+#. module: odoo_marketplace
+#: model:ir.model,name:odoo_marketplace.model_website
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_product_template_form_view
+msgid "Website"
+msgstr "Website"
+
+#. module: odoo_marketplace
+#: model:ir.ui.menu,name:odoo_marketplace.wk_seller_dashboard_menu8_sub_menu1
+msgid "Website Categories"
+msgstr "Website Categories"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_website_message_ids
+msgid "Website Messages"
+msgstr "Website Messages"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_website_url
+msgid "Website URL"
+msgstr "Website URL"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,help:odoo_marketplace.field_seller_shop_website_message_ids
+msgid "Website communication history"
+msgstr "Website communication history"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_product_template_form_view
+msgid "Weights"
+msgstr "Weights"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_form_view
+msgid "Write messger for yor profile..."
+msgstr "Write messger for yor profile..."
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_product_stock_form_view
+msgid "Write note..."
+msgstr "Write note..."
+
+#. module: odoo_marketplace
+#: code:addons/odoo_marketplace/models/seller_payment.py:157
+#, python-format
+msgid "You are not eligible for payment request now.... "
+msgstr "You are not eligible for payment request now.... "
+
+#. module: odoo_marketplace
+#: model:ir.actions.act_window,help:odoo_marketplace.seller_invoice_action
+msgid "You can control the invoice for your Seller according to\n"
+"                what you sale. Marketplace can also generate\n"
+"                draft invoices automatically from sale orders."
+msgstr "You can control the invoice for your Seller according to\n"
+"                what you sale. Marketplace can also generate\n"
+"                draft invoices automatically from sale orders."
+
+#. module: odoo_marketplace
+#: code:addons/odoo_marketplace/wizard/seller_payment_wizard.py:73
+#, python-format
+msgid "You can not request amount more than cashable amount."
+msgstr "You can not request amount more than cashable amount."
+
+#. module: odoo_marketplace
+#: code:addons/odoo_marketplace/wizard/seller_payment_wizard.py:94
+#, python-format
+msgid "You can not request now due to one of following reason,\n"
+" 1. Amount is less than the amount limit.  OR\n"
+" 2. Minimum gap for next payment is not followed."
+msgstr "You can not request now due to one of following reason,\n"
+" 1. Amount is less than the amount limit.  OR\n"
+" 2. Minimum gap for next payment is not followed."
+
+#. module: odoo_marketplace
+#: model:mail.template,subject:odoo_marketplace.marketplace_email_template_for_seller_by_admin
+msgid "Your Request For seller has been received."
+msgstr "Your Request For seller has been received."
+
+#. module: odoo_marketplace
+#: model:mail.template,subject:odoo_marketplace.marketplace_template_for_product_status_change_to_seller
+msgid "Your Request For the Product has been ${object.status}"
+msgstr "Your Request For the Product has been ${object.status}"
+
+#. module: odoo_marketplace
+#: code:addons/odoo_marketplace/wizard/seller_payment_wizard.py:80
+#, python-format
+msgid "Your one request of payment is not done yet, so plese wait..."
+msgstr "Your one request of payment is not done yet, so plese wait..."
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_shop_form_view
+msgid "ZIP"
+msgstr "ZIP"
+
+#. module: odoo_marketplace
+#: model:ir.model.fields,field_description:odoo_marketplace.field_seller_shop_zip
+msgid "Zip"
+msgstr "Zip"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_form_view
+msgid "e.g. +32.81.81.37.00"
+msgstr "e.g. +32.81.81.37.00"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_form_view
+msgid "e.g. www.odoo.com"
+msgstr "e.g. www.odoo.com"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_mp_seller_landing_page
+msgid "feature-a"
+msgstr "feature-a"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_mp_seller_landing_page
+msgid "feature-b"
+msgstr "feature-b"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_mp_seller_landing_page
+msgid "feature-c"
+msgstr "feature-c"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_mp_seller_landing_page
+msgid "feature-d"
+msgstr "feature-d"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_mp_seller_landing_page
+msgid "feature-e"
+msgstr "feature-e"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_mp_seller_landing_page
+msgid "feature-f"
+msgstr "feature-f"
+
+#. module: odoo_marketplace
+#: model:ir.model,name:odoo_marketplace.model_ir_actions_act_window
+msgid "ir.actions.act_window"
+msgstr "ir.actions.act_window"
+
+#. module: odoo_marketplace
+#: model:ir.model,name:odoo_marketplace.model_ir_ui_menu
+msgid "ir.ui.menu"
+msgstr "ir.ui.menu"
+
+#. module: odoo_marketplace
+#: model:ir.model,name:odoo_marketplace.model_marketplace_config_settings
+msgid "marketplace.config.settings"
+msgstr "marketplace.config.settings"
+
+#. module: odoo_marketplace
+#: model:ir.model,name:odoo_marketplace.model_marketplace_stock
+msgid "marketplace.stock"
+msgstr "marketplace.stock"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_auto_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_payment_wizard_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_shop_form_view
+msgid "or"
+msgstr "or"
+
+#. module: odoo_marketplace
+#: model:ir.model,name:odoo_marketplace.model_seller_payment_wizard
+msgid "seller.payment.wizard"
+msgstr "seller.payment.wizard"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.mp_seller_profile
+msgid "selling from"
+msgstr "selling from"
+
+#. module: odoo_marketplace
+#: model:ir.model,name:odoo_marketplace.model_server_action_wizard
+msgid "server.action.wizard"
+msgstr "server.action.wizard"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.mp_seller_profile
+msgid "to till now"
+msgstr "to till now"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_auto_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_base_config_settings_form_view
+msgid "⇒ If it is tick then all the product of seller will automatically approved."
+msgstr "⇒ If it is tick then all the product of seller will automatically approved."
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_auto_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_base_config_settings_form_view
+msgid "⇒ If it is tick then all the request of quantity update of seller will automatically approved."
+msgstr "⇒ If it is tick then all the request of quantity update of seller will automatically approved."
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_auto_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_base_config_settings_form_view
+msgid "⇒ If it is tick then all the request of seller will automatically approved."
+msgstr "⇒ If it is tick then all the request of seller will automatically approved."
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_product_template_form_view
+msgid "⇒ Request Pending"
+msgstr "⇒ Request Pending"
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_auto_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_base_config_settings_form_view
+msgid "⇒ This category will be default internal category of all marketplace product."
+msgstr "⇒ This category will be default internal category of all marketplace product."
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_auto_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_base_config_settings_form_view
+msgid "⇒ This location will be default location for sellers. You can update location for individual seller in seller record."
+msgstr "⇒ This location will be default location for sellers. You can update location for individual seller in seller record."
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_auto_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_base_config_settings_form_view
+msgid "⇒ This option will generate customer invoice only."
+msgstr "⇒ This option will generate customer invoice only."
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_auto_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_base_config_settings_form_view
+msgid "⇒ This option will generate seller and customer invoice both."
+msgstr "⇒ This option will generate seller and customer invoice both."
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_auto_base_config_settings_form_view
+#: model:ir.ui.view,arch_db:odoo_marketplace.marketplace_base_config_settings_form_view
+msgid "⇒ This warehouse will be default warehouse for sellers. You can update warehouse for individual seller in seller record."
+msgstr "⇒ This warehouse will be default warehouse for sellers. You can update warehouse for individual seller in seller record."
+
+#. module: odoo_marketplace
+#: model:ir.ui.view,arch_db:odoo_marketplace.wk_seller_product_template_form_view
+msgid "⇒ Update"
+msgstr "⇒ Update"
+

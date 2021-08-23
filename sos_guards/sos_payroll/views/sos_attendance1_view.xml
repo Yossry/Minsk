@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+                 	
+<record id="view_sos_guard_attendance1_tree" model="ir.ui.view">
+	<field name="name">sos.guard.attendance1.tree</field>
+	<field name="model">sos.guard.attendance1</field>
+	<field name="arch" type="xml">
+		<tree string="Employee attendances" create="false" edit="false" decoration-danger ="duty_status == 'late'" 
+		decoration-success="duty_status =='intime'"	decoration-bf="duty_status in ['late','intime']" decoration-it="duty_status in ['late','intime']">
+			<field name="name" readonly="1"/>
+			<field name="employee_id" readonly="1"/>
+			<field name="department_id" readonly="1"/>
+			<field name="center_id" readonly="1"/>
+			<field name="project_id" readonly="1"/>
+			<field name="post_id" readonly="1"/>
+			<field name="device_id" readonly="1"/>
+			<field name="device_datetime" readonly="1"/>
+			<field name="action" readonly="1"/>
+			<field name="current_action" readonly="1"/>	
+			<field name="duty_status" readonly="1" />
+			<field name="late_time" readonly="0" />
+			<field name="state" readonly="1" invisible="1"/>
+			<field name="month_att" readonly="1" />
+			<field name="create_date" readonly="1" invisible="1"/>
+			<field name="create_uid" readonly="1" invisible="1"/>
+			
+		</tree>
+	</field>
+</record>
+
+<record id="view_sos_guard_attendance1_form" model="ir.ui.view">
+	<field name="name">sos.guard.attendance1.form</field>
+	<field name="model">sos.guard.attendance1</field>
+	<field name="type">form</field>	
+	<field name="arch" type="xml">
+		<form string="Employee attendances">
+			 <sheet string="Attendances">
+			 	<group>
+			 		<group>
+			 			<field name="name" readonly="1" />
+						<field name="employee_id" readonly="1"  
+							context="{'form_view_ref': 'sos.view_guard_form','tree_view_ref': 'sos.view_guard_tree','filter_view_ref': 'sos.view_guard_filter'}" options="{'no_quick_create':True,'no_create_edit':True}"/>
+						<field name="center_id" readonly="1" options="{'no_quick_create':True,'no_create_edit':True}"/>
+						<field name="project_id" readonly="1" options="{'no_quick_create':True,'no_create_edit':True}"/>
+						<field name="post_id" readonly="1"
+							context="{'form_view_ref': 'sos.sos_post_form_view','tree_view_ref': 'sos_post_tree_view','filter_view_ref': 'sos_post_filter_view'}" options="{'no_quick_create':True,'no_create_edit':True}"/>
+						<field name="department_id" readonly="1" />
+						<field name="slip_id" readonly="1" />
+			 		</group>
+			 		<group>
+			 			<field name="device_datetime"  readonly="1"/>
+						<field name="device_id"  readonly="1" options="{'no_quick_create':True,'no_create_edit':True}"/>
+						<field name="state"  readonly="1"/>
+						<field name="current_action" readonly="1"/>
+						<field name="action" readonly="1"/>
+						<field name="duty_status" readonly="0" />
+						<field name="late_time" readonly="0" />
+						<field name="month_att" readonly="1" />
+			 		</group>
+			 	</group>
+			 </sheet>
+			 
+			 <div class="oe_chatter">
+				<field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+				<field name="message_ids" widget="mail_thread" placeholder="Share a note..."/>
+		  	</div>
+		</form> 
+	</field>
+</record>	
+
+<record model="ir.ui.view" id="view_sos_guard_attendance1_filter">
+	<field name="name">view_sos_guard_attendance1_filter</field>
+	<field name="model">sos.guard.attendance1</field>
+	<field name="arch" type="xml">
+		<search string="Hr Attendance Search">
+			<field name="name" string="Attendance"/>
+			<field name="action"/>
+			<filter icon="terp-go-today" string="Today" name="today" domain="[('name','&gt;=',current_date),('name','&lt;=',current_date)]" />
+			<filter icon="terp-go-today" string="Draft" name="draft" domain="[('state','=','draft')]" />
+			<filter icon="terp-go-today" string="Counted" name="counted" domain="[('state','=','counted')]" />
+			<filter icon="terp-go-today" string="Done" name="done" domain="[('state','=','done')]" />
+			<separator/>
+			<filter icon="terp-go-today" string="Present" name="present" domain="[('current_action','=','present')]" />
+			<filter icon="terp-go-today" string="Absent" name="absent" domain="[('current_action','=','absent')]" />
+			<filter icon="terp-go-today" string="Double" name="double" domain="[('current_action','=','double')]" />
+			<filter icon="terp-go-today" string="Leave" name="leave" domain="[('current_action','=','leave')]" />
+			<filter icon="terp-go-today" string="Extra" name="extra" domain="[('current_action','=','extra')]" />
+			<filter icon="terp-go-today" string="Extra_Double" name="extra_double" domain="[('current_action','=','extra_double')]" />
+			
+			<field name="employee_id"/>
+			<field name="project_id"/>
+			<field name="post_id"/>
+			<field name="center_id"/>
+			<field name="duty_status" />
+			
+			<group expand="0" string="Group By...">
+				<filter name="center" string="Center" icon="terp-personal" domain="[]" context="{'group_by':'center_id'}"/>
+				<filter name="project" string="Project" icon="terp-personal" domain="[]" context="{'group_by':'project_id'}"/>
+				<filter name="post" string="Post" icon="terp-personal" domain="[]" context="{'group_by':'post_id'}"/>
+				<filter name="department" string="Department" icon="terp-personal" domain="[]" context="{'group_by':'department_id'}"/>
+				<filter name="employee" string="Employee" icon="terp-personal" domain="[]" context="{'group_by':'employee_id'}"/>
+				
+				<separator/>
+				<filter string="Month" name="month" icon="terp-go-today" domain="[]" context="{'group_by':'name:month'}"/>
+				<filter string="Week" name="week" icon="terp-go-today" domain="[]" context="{'group_by':'name:week'}"/>
+				<filter string="Day" name="day" icon="terp-go-today" domain="[]" context="{'group_by':'name:day'}"/>
+				
+				<separator/>
+				<filter name="status" string="Status" icon="terp-personal" domain="[]" context="{'group_by':'state'}"/>
+				<filter name="attendance" string="Attendance" icon="terp-personal" domain="[]" context="{'group_by':'current_action'}"/>
+				<filter name="device" string="Device" icon="terp-personal" domain="[]" context="{'group_by':'device_id'}"/>
+				
+				<separator/>
+				<filter name="duty_status" string="Duty Status" icon="terp-personal" domain="[]" context="{'group_by':'duty_status'}"/>
+				<filter name="action" string="Action" icon="terp-personal" domain="[]" context="{'group_by':'action'}"/>
+			</group>
+		</search>
+	</field>
+</record>
+
+<record id="open_view_sos_guard_attendance1" model="ir.actions.act_window">
+	<field name="name">Guards Device Attendances</field>
+	<field name="res_model">sos.guard.attendance1</field>
+	<field name="view_type">form</field>
+	<field name="view_mode">tree,form</field>
+	<field name="context">{"search_default_draft":1}</field>
+	<field name="search_view_id" ref="view_sos_guard_attendance1_filter" />
+	<field name="help">Guards Device Attendance.</field>
+</record>	
+
+</data>
+</odoo>
+
+

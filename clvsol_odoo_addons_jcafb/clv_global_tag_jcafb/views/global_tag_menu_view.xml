@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+    <menuitem
+        id="clv_global_tag.menu_base_base_tags"
+        name="Global Tags"
+        parent="clv_base.menu_base_base"
+        groups="clv_global_tag.group_user"
+        sequence="10"
+        action="clv_global_tag.clv_global_tag_action"/>
+
+    </data>
+</odoo>

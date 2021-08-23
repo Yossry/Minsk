@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo><data>
+
+  <record id="account_bank_statement_line_tree_treasury_planning_2" model="ir.ui.view">
+    <field name="name">account_bank_statement_line_treasury_planning</field>
+    <field name="model">account.bank.statement</field>
+    <field name="inherit_id" ref="account.view_bank_statement_form"/>
+    <field name="arch" type="xml">
+        <field name="journal_id" position="after">
+            <field name="treasury_planning" invisible="1"/>
+            <field name="initial_date" groups="base.group_no_one"/>
+            <field name="final_date" groups="base.group_no_one"/>
+        </field>
+        <header position="attributes">
+            <attribute name="attrs">{'invisible': [('treasury_planning', '!=', False)]}</attribute>
+        </header>
+        <field name="amount" position="after">
+            <field name="cf_forecast" string="FC"/>
+            <field name="treasury_forecast_id"/>
+        </field>
+        <field name="state" position="attributes">
+          <attribute name="invisible">[('treasury_planning', '!=', False)]</attribute>
+        </field>
+    </field>
+  </record>
+
+  <record id="account_bank_statement_line_tree_add_treasury" model="ir.ui.view">
+    <field name="name">account_bank_statement_line_tree_add_treasury</field>
+    <field name="model">account.bank.statement.line</field>
+    <field name="inherit_id" ref="account.view_bank_statement_line_tree"/>
+    <field name="arch" type="xml">
+        <field name="amount" position="after">
+          <field name="currency_id"/>
+          <field name="cf_forecast"/>
+          <button name="include_in_forecast"
+                  type="object"
+                  title="Include from forecast"
+                  icon="fa-check-square-o"
+                  attrs="{'invisible':[('cf_forecast','!=', False)]}"
+                  aria-label="Open"/>
+          <button name="exclude_from_forecast"
+                  type="object"
+                  title="Exclude from forecast"
+                  icon="fa-close"
+                  attrs="{'invisible':[('cf_forecast','!=',True)]}"
+                  aria-label="Close"/>
+        </field>
+    </field>
+  </record>
+
+  <record id="account_bank_statement_line_form_add_treasury" model="ir.ui.view">
+    <field name="name">account_bank_statement_line_form_add_treasury</field>
+    <field name="model">account.bank.statement.line</field>
+    <field name="inherit_id" ref="account.view_bank_statement_line_form"/>
+    <field name="arch" type="xml">
+        <field name="amount" position="after">
+          <field name="amount_currency"/>
+          <field name="currency_id"/>
+          <field name="cf_forecast" label="FC"/>
+          <button name="include_in_forecast"
+                  type="object"
+                  title="Include from forecast"
+                  aria-label="Open"
+                  icon="fa-check-square-o"/>
+          <button name="exclude_from_forecast"
+                  type="object"
+                  title="Exclude from forecast"
+                  aria-label="Close"
+                  icon="fa-close"
+                  attrs="{'invisible':[('cf_forecast','!=',True)]}"/>
+        </field>
+    </field>
+  </record>
+
+</data></odoo>

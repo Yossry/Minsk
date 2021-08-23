@@ -1,0 +1,873 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+ <!-- expense changes -->
+    <record id="hr_expense_cus_form" model="ir.ui.view">
+        <field name="name">hr.expense.cus.form</field>
+        <field name="model">hr.expense</field>
+        <field name="inherit_id" ref="hr_expense.hr_expense_view_form"/>
+        <field name="arch" type="xml">
+            <label for="quantity" position="replace">
+
+            </label>
+            <xpath expr="//field[@name='quantity']" position="replace">
+            </xpath>
+            <xpath expr="//field[@name='product_uom_id']" position="replace">
+            </xpath>
+            <!-- <xpath expr="//field[@name='sale_order_id']" position="replace">
+            </xpath> -->
+            <xpath expr="//field[@name='employee_id']" position="before">
+                <field name="is_vendor" groups="hr_expense.group_hr_expense_user"/>
+            </xpath>
+            <xpath expr="//field[@name='employee_id']" position="after">
+                <field name="vendor_id" domain="[('supplier','=',True)]" attrs="{'invisible': [('is_vendor', '=', False)]}" groups="hr_expense.group_hr_expense_user"/>
+            </xpath>
+            <label for="payment_mode" position="replace">
+
+            </label>
+            <xpath expr="//field[@name='payment_mode']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='employee_id']" position="attributes">
+                <attribute name="required">0</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="hr_expense_sheet_cus_form" model="ir.ui.view">
+        <field name="name">hr.expense.sheet.cus.form</field>
+        <field name="model">hr.expense.sheet</field>
+        <field name="inherit_id" ref="hr_expense.view_hr_expense_sheet_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='employee_id']" position="before">
+                <field name="is_vendor" readonly="1" groups="hr_expense.group_hr_expense_user"/>
+            </xpath>
+            <xpath expr="//field[@name='employee_id']" position="after">
+                <field name="vendor_id" domain="[('supplier','=',True)]" attrs="{'invisible': [('is_vendor', '=', False)]}" groups="hr_expense.group_hr_expense_user"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="make_invisible" model="res.groups">
+
+        <field name="name">Invisible</field>
+
+    </record>
+
+    <!-- <menuitem
+        id="hr_holidays.hr_holidays_menu_manager_all"
+        name="All"
+        parent="hr_holidays.menu_hr_holidays_approvals"
+        groups="make_invisible"
+        sequence="2"
+        />
+    <menuitem
+        id="hr_holidays.menu_open_employee_leave"
+        name="Leaves"
+        parent="hr_holidays.hr_holidays_menu_manager_all"
+        groups="make_invisible"
+        action="hr_holidays.hr_leave_action_all"
+        sequence="1"
+        />
+    <menuitem
+        id="hr_holidays.hr_holidays_menu_manager_all_allocations"
+        name="Allocations"
+        parent="hr_holidays.hr_holidays_menu_manager_all"
+        groups="make_invisible"
+        action="hr_holidays.hr_leave_allocation_action_all"
+        sequence="2"
+        /> -->
+    <delete id="hr_holidays.hr_holidays_menu_manager_all_allocations" model="ir.ui.menu"/>
+    <delete id="hr_holidays.menu_open_employee_leave" model="ir.ui.menu"/>
+    <delete id="hr_holidays.hr_holidays_menu_manager_all" model="ir.ui.menu"/>
+
+    <!-- expense changes -->
+
+
+
+
+    <!-- Employee Master edits  -->
+    <record id="res_country_cus_form" model="ir.ui.view">
+        <field name="name">res.country.cus.form</field>
+        <field name="model">res.country</field>
+        <field name="inherit_id" ref="base.view_country_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='code']" position="after">
+                <field name="airfare" />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="hr_employee_cus_form" model="ir.ui.view">
+        <field name="name">hr.employee.cus.form</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='toggle_active']" position="after">
+                <button class="oe_stat_button" name="airticket_view" type="object" icon="fa-list-ol">
+                    <field string="Airtickets" name="airticket_count" widget="statinfo"/>
+                </button>
+            </xpath>
+            <div class="oe_button_box" position="inside">
+                <button class="oe_stat_button" name="document_view" type="object" icon="fa-list-ol" context="{'default_employee_ref': id}">
+                    <!-- <field string="Documents" name="document_count" widget="statinfo"/> -->
+                </button>
+            </div>
+            <xpath expr="//field[@name='parent_id']" position="after">
+                <field name="join_date" />
+                <field name="allow_sick_leave" />
+            </xpath>
+            <xpath expr="//field[@name='country_id']" position="after">
+                <field name="airfare" />
+            </xpath>
+            <xpath expr="//field[@name='work_phone']" position="after">
+                <field name="fax_ch" widget="fax"/>
+            </xpath>
+            <xpath expr="//field[@name='passport_id']" position="after">
+                <field name="pass_expiry_date" />
+            </xpath>
+            <xpath expr="//field[@name='bank_account_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+                
+            </xpath>
+            <xpath expr="//field[@name='visa_no']" position="after">
+                <field name="uid_num" />
+                <field name="emirates_id" />
+                <field name="emirates_id_expiry_date" />
+            </xpath>
+        </field>
+    </record>
+    <record id="hr_employee_cus_tree" model="ir.ui.view">
+        <field name="name">hr.employee.cus.tree</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='parent_id']" position="after">
+                <field name="leaves_count" string="Pending Leaves" groups="hr.group_hr_user"/>
+                <field name="leaves_count_2" string="Approves Leaves" groups="hr.group_hr_user"/>
+            </xpath>
+        </field>
+    </record>
+    <!-- documents list view -->
+    <record id="hr_employee_document_form_cus2" model="ir.ui.view">
+        <field name="name">hr.employee.document.form.cus2</field>
+        <field name="model">hr.employee.document</field>
+        <field name="inherit_id" ref="oh_employee_documents_expiry.employee_document_form_view"/>
+        <field name="arch" type="xml">	
+            <xpath expr="//field[@name='employee_ref']" position="replace">
+                <field name="employee_ref" string="Employee Name"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="hr_employee_document_tree_cus2" model="ir.ui.view">
+        <field name="name">hr.employee.document.tree.cus2</field>
+        <field name="model">hr.employee.document</field>
+        <field name="inherit_id" ref="oh_employee_documents_expiry.employee_document_tree_view"/>
+        <field name="arch" type="xml">	
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="employee_ref" string="Employee Name"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="hr_employee_document_search_cus2" model="ir.ui.view">
+        <field name="name">hr.employee.document.search.cus2</field>
+        <field name="model">hr.employee.document</field>
+        <field name="arch" type="xml">	
+            <search string="Search Documents">
+                <field name="expiry_date"/>
+                <group expand="0" string="Group By">
+                    <filter name="groupby_expiry_date" string="Expiry Date" domain="[]" context="{'group_by' : 'expiry_date'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="hr_employee_document_cus_action" model="ir.actions.act_window">
+        <field name="name">Employess Documents</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.employee.document</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_groupby_expiry_date':1}</field>
+    </record>
+    <record id="hr_employee_document_cus_action2" model="ir.actions.act_window">
+        <field name="name">Employess Documents</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.employee.document</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('employee_ref', '=', active_id)]</field>
+        <field name="context">{'default_employee_ref': active_id}</field>
+    </record>
+    <menuitem id="emp_document_config"
+            name="Documents"
+            parent="hr.menu_hr_root"
+            groups="hr.group_hr_user"
+            action="hr_employee_document_cus_action"
+            sequence="5"/>
+    <!-- documents list view -->
+   
+    <!-- Employee Master edits  -->
+
+
+ <!-- HR airticket part -->
+    <record model='ir.ui.view' id='hr_airticket_form_view'>
+        <field name="name">hr.airticket.form.view</field>
+        <field name="model">hr.airticket</field>
+        <field name="arch" type="xml">
+            <form string="Airticket" >
+                <group>
+                    <group>
+                        <field name="name"/>
+                        <field name="depart"/>
+                        <field name="designation"/>
+                        <field name="join_date"/>
+                    </group>
+                    <group>
+                        <field name="Airfare"/>
+                        <field name="amount"/>
+                        <field name="ticket_date"/>
+                    </group>
+                </group>
+                <group>
+                    <field name="remarks" />
+                </group>
+            </form>
+        </field>
+    </record>
+    <record model='ir.ui.view' id='hr_airticket_tree_view'>
+        <field name="name">hr.airticket.tree.view</field>
+        <field name="model">hr.airticket</field>
+        <field name="arch" type="xml">
+            <tree string="Airticket" >
+                <field name="name"/>
+                <field name="depart"/>
+                <field name="designation"/>
+                <field name="join_date"/>
+                <field name="Airfare"/>
+                <field name="amount"/>
+                <field name="ticket_date"/>
+                <field name="remarks" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- HR airticket part -->
+
+
+
+    <!-- HR Contract and Payroll Customize Part -->
+
+    <record id="hr_contract_cus_tree" model="ir.ui.view">
+        <field name="name">hr.contract.cus.tree</field>
+        <field name="model">hr.contract</field>
+        <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='advantages']" position="before">
+                <br />
+                <field name="hr_allowance_line_ids" nolabel="1" colspan="2">
+
+                    <tree editable="top">
+                    
+                       <field name="contract_id" invisible="1"/>
+                       <field name="rule_type" required="1" domain="[('category_id', '=', 'Allowance'),('od_payroll_item','=',False)]" options="{'no_create': True, 'no_create_edit':True}"/>                            
+                       <field name="code" invisible="1"/>
+                       <field name="amt"/>                              
+                           
+                    
+                    </tree>
+
+               </field>
+               <group>
+                  <field name="hr_total_wage" string="Total Salary"/>
+               </group>
+            </xpath>
+            <div name="wage" position="replace">
+                <div class="o_row" name="wage">
+                    <field name="wage" nolabel="1"/>
+                    <span style="margin-left:47px;">/ month</span>
+                </div>
+            </div>
+        </field>
+    </record>
+
+    <record id="hr_allowance_line_form" model="ir.ui.view">
+        <field name="name">hr.allowance.line.form</field>
+        <field name="model">hr.allowance.line</field>
+        <field name="arch" type="xml">
+            <form string="HR Allowance">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="contract_id" />
+                            <field name="code"/> 
+                            
+                        </group>
+                        <group>
+                            <field name="rule_type" />
+                            <field name="amt"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="hr_allowance_line_tree" model="ir.ui.view">
+        <field name="name">hr.allowance.line.tree</field>
+        <field name="model">hr.allowance.line</field>
+        <field name="arch" type="xml">
+            <tree string="Details">
+                <field name="contract_id" />
+                <field name="rule_type"/>                            
+                <field name="code" />
+                <field name="amt"/> 
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="hr_payroll_transactions_line_form" model="ir.ui.view">
+        <field name="name">hr.payroll.transactions.line.form</field>
+        <field name="model">hr.payroll.transactions.line</field>
+        <field name="arch" type="xml">
+            <form string="Payroll Transactions Line">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="employee_id"/>
+                            <field name="payroll_tran_id" />
+                            <field name="deduction" />
+                            <field name="state"/>
+                            <field name="timesheet_cost" invisible="1"/>
+                            <field name="number_of_hours" widget="time" />
+                        </group>
+                        <group>
+                            <field name="tran_note"/>
+                            <field name="payroll_item" />
+                            <field name="allowance" />
+                            <field name="analytic_account"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="hr_payroll_transactions_line_tree" model="ir.ui.view">
+        <field name="name">hr.payroll.transactions.line.tree</field>
+        <field name="model">hr.payroll.transactions.line</field>
+        <field name="arch" type="xml">
+            <tree string="Payroll Transactions Line">
+                <field name="employee_id"/>
+                <field name="payroll_item" />
+                <field name="tran_note" />
+                <field name="allowance"/>
+                <field name="timesheet_cost" invisible="1"/>
+                <field name="number_of_hours" />
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="hr_payroll_transactions_form" model="ir.ui.view">
+        <field name="name">hr.payroll.transactions.form</field>
+        <field name="model">hr.payroll.transactions</field>
+        <field name="arch" type="xml">
+            <form string="Payroll Transactions">
+                <header>
+                    <button name="loans_confirm" states="draft" string="Confirm" type="object" class="oe_highlight"/>
+                    <button name="loans_accept" states="confirm" string="Approve" type="object" class="oe_highlight"/>
+                    <button name="loans_refuse" states="done,draft" string="Refuse" type="object" class="oe_highlight"/>
+                    <button name="loans_set_draft" states="cancelled" string="Set To Draft" type="object" class="oe_highlight"/>
+
+                    <field name="state" widget="statusbar" statusbar_visible="draft,done"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="date_from" required="1" string="Date" attrs="{'readonly': [('state', 'in', ['done','paid'])]}"/>
+                            <field name="date_to" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="name" required="1" attrs="{'readonly': [('state', 'in', ['done','paid'])]}"/>
+                            <field name="date" invisible="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Description">
+                            <field name="payroll_tran_line" attrs="{'readonly': [('state', 'in', ['done','paid'])]}">
+                                <tree string="Expense Lines" editable="bottom">
+                                    <field name="employee_id"/>
+                                    <field name="payroll_item" domain="[('od_payroll_item','!=',False)]" options="{'no_create': True, 'no_create_edit':True}"/>
+                                    <field name="tran_note" required="1"/>
+                                    <field name="payroll_tran_id" invisible="1"/>
+                                    <field name="timesheet_cost" invisible="1"/>
+                                    <field name="number_of_hours" />
+                   
+                                    <field name="allowance" sum="Total" string="Amount"/>
+                                    <field name="analytic_account" invisible="1"/>
+                                    <field name="state" invisible="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="hr_payroll_transactions_tree" model="ir.ui.view">
+        <field name="name">hr.payroll.transactions.tree</field>
+        <field name="model">hr.payroll.transactions</field>
+        <field name="arch" type="xml">
+            <tree string="Payroll Transactions" >
+                <field name="date_from"/>
+                <field name="name"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="hr_payroll_transactions_action" model="ir.actions.act_window">
+        <field name="name">Payroll Transactions</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.payroll.transactions</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>      
+    </record>
+
+    <menuitem id="hr_payroll_transactions_action_config"
+            name="Payroll Transactions"
+            parent="hr_payroll.menu_hr_payroll_root"
+            action="hr_payroll_transactions_action"
+            sequence="10"/>
+
+    <record id="hr_salary_rule_form" model="ir.ui.view">
+        <field name="name">hr.salary.rule.cus.form</field>
+        <field name="model">hr.salary.rule</field>
+        <field name="inherit_id" ref="hr_payroll.hr_salary_rule_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='active']" position="after">
+                <field name="od_payroll_item" />
+                <field name="payroll_rate" />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="hr_payslip_cus_tree" model="ir.ui.view">
+        <field name="name">hr.payslip.cus.tree</field>
+        <field name="model">hr.payslip</field>
+        <field name="inherit_id" ref="hr_payroll.view_hr_payslip_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="/form/sheet/notebook/page[2]" position="after">
+                <page string="Variance">
+                    <field name="hr_variance_line_id">
+                        <tree editable="top">
+                            <field name="date_value"/>                           
+                            <field name="payslip_id" invisible="1"/>                                 
+                            <field name="rule_id"/>                           
+                            <field name="tran_id"/>
+                            <field name="tran_note"/>                           
+                            <field name="amount"/>                                 
+                        </tree>
+                    </field>
+                </page>
+             </xpath>
+        </field>
+    </record>
+
+    <record id="hr_variance_line_form" model="ir.ui.view">
+        <field name="name">hr.variance.line.form</field>
+        <field name="model">hr.variance.line</field>
+        <field name="arch" type="xml">
+            <form string="Variance Line">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="payslip_id"/>
+                            <field name="amount" />
+                            <field name="tran_id" />
+                        </group>
+                        <group>
+                            <field name="date_value"/>
+                            <field name="tran_note" />
+                            <field name="rule_id" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="hr_variance_line_tree" model="ir.ui.view">
+        <field name="name">hr.variance.line.tree</field>
+        <field name="model">hr.variance.line</field>
+        <field name="arch" type="xml">
+            <tree string="Variance Line">
+                <field name="payslip_id"/>
+                <field name="amount" />
+                <field name="tran_id" />
+                <field name="date_value"/>
+                <field name="tran_note" />
+                <field name="rule_id" />
+            </tree>
+        </field>
+    </record>
+    <!-- view of payroll transaction Report -->
+    <record id="hr_payroll_tran_sheet_view_tree" model="ir.ui.view">
+        <field name="name">hr.payroll.tran.sheet.view.tree</field>
+        <field name="model">hr.payroll.tran.sheet.view</field>
+        <field name="arch" type="xml">
+            <tree string="Payroll transaction Report">
+                <field name="employee_id"/>
+                <field name="payroll_item"/>
+                <field name="description"/>
+                <field name="tran"/>
+                <field name="date"/>
+                <field name="amount" type="measure"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="hr_payroll_tran_sheet_view_pivot" model="ir.ui.view">
+        <field name="name">hr.payroll.tran.sheet.view.pivot</field>
+        <field name="model">hr.payroll.tran.sheet.view</field>
+        <field name="arch" type="xml">
+            <pivot string="Payroll Transaction Report" disable_linking="True">
+                <field name="employee_id"/>
+                <field name="payroll_item"/>
+                <field name="description"/>
+                <field name="date"/>
+               <field name="amount" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="hr_payroll_tran_sheet_view_search" model="ir.ui.view">
+        <field name="name">hr.payroll.tran.sheet.view.search</field>
+        <field name="model">hr.payroll.tran.sheet.view</field>
+        <field name="arch" type="xml">
+            <search string="Entry Analysis">
+                <filter string="Employee" name="employee_id"/>
+                <filter string="Payroll Item" name="payroll_item"/>
+                <filter name="date"/>
+                <!-- <group expand="1" string="Group By">
+                    <filter string="Employee" name="Employee" context="{'group_by':'Employee'}"/>
+                    <filter string="Payroll Item" name="Payroll Item" context="{'group_by':'Payroll Item'}"/>
+                    <filter string="Date" context="{'group_by':'date'}"/>
+                </group> -->
+            </search>
+        </field>
+    </record>
+
+    <record id="hr_payroll_tran_sheet_view_action" model="ir.actions.act_window">
+        <field name="name">Payroll Transactions Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.payroll.tran.sheet.view</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,pivot</field>      
+    </record>
+
+    <menuitem id="payroll_reporting_config"
+            name="Reporting"
+            parent="hr_payroll.menu_hr_payroll_root"
+            sequence="11"/>
+
+    <menuitem id="hr_payroll_tran_sheet_view_action_config"
+            name="Payroll Transactions Report"
+            parent="payroll_reporting_config"
+            action="hr_payroll_tran_sheet_view_action"
+            sequence="2"/>
+
+    <!-- view of payroll transaction Report -->
+
+    <!-- view of Salary Sheet -->
+    <record id="hr_salary_sheet_view_tree" model="ir.ui.view">
+        <field name="name">hr.salary.sheet.view.tree</field>
+        <field name="model">hr.salary.sheet.view</field>
+        <field name="arch" type="xml">
+            <tree string="Salary Sheet" >
+                <field name="employee_id" string="Employee Name"/>
+                <field name="identification"/>
+                <field name="structure_id"/>
+                <field name="batch_name"/>
+                <field name="basic" string="Basic Salary"/>
+                <field name="hra" string="Housing"/>
+                <field name="trans_allowance" string="Transport Allowance"/>
+                <field name="other_allowance" string="Other Allowance"/>
+                <!-- <field name="food_allowance" string="Food Allowance"/> -->
+                <field name="ot_allowance" string="OT Allowance"/>
+                <field name="allowances_value" string="Allowances"/>
+                <field name="additions" string="Additions"/>
+                <field name="deductions" string="Deductions"/>
+                
+                <field name="loan_deduction" string="Loan"/>
+                <!-- <field name="abs_deduction" string="Absent"/> -->
+                <field name="fine_deduction" string="Fine"/>
+                <field name="gross"/>
+                <field name="net_salary"/>
+                <field name="date_from"/>
+                <field name="date_to"/>
+                <field name="payslip_days"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="hr_salary_sheet_view_graph" model="ir.ui.view">
+        <field name="name">hr.salary.sheet.view.graph</field>
+        <field name="model">hr.salary.sheet.view</field>
+        <field name="arch" type="xml">
+            <graph string="Salary Sheet" >
+                <field name="employee_id" type="row" string="Employee Name"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="hr_salary_sheet_view_pivot" model="ir.ui.view">
+        <field name="name">hr.salary.sheet.view.pivot</field>
+        <field name="model">hr.salary.sheet.view</field>
+        <field name="arch" type="xml">
+            <pivot string="Salary Sheet" disable_linking="True">
+                <field name="employee_id"/>
+                <field name="identification"/>
+                <field name="structure_id"/>
+                <field name="batch_name"/>
+                <field name="basic" />
+                <field name="hra" />
+                <field name="trans_allowance" />
+                <field name="other_allowance" />
+                <field name="ot_allowance" />
+                <field name="allowances_value"/>
+                <field name="additions" />
+                <field name="deductions"/>
+                <field name="loan_deduction"/>
+                <field name="fine_deduction"/>
+                <field name="gross" type="measure"/>
+                <field name="net_salary"/>
+                <field name="date_from"/>
+                <field name="date_to"/>
+                <field name="payslip_days"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="hr_salary_sheet_view_search" model="ir.ui.view">
+        <field name="name">hr.salary.sheet.view.search</field>
+        <field name="model">hr.salary.sheet.view</field>
+        <field name="arch" type="xml">
+            <search string="Salary Sheet">
+                <field name="employee_id"/>
+                <field name="department_id"/>
+                <field name="job_id"/>
+                <field name="type_id"/>
+           		<group expand="1" string="Group By...">
+                    <filter string="Employee" icon="terp-personal" name="employee_id" context="{'group_by':'employee_id'}"/>
+                    <filter string="Department" icon="terp-personal" name="department_id" context="{'group_by':'department_id'}"/>
+                    <filter string="Job" icon="terp-personal" name="job_id" context="{'group_by':'job_id'}"/>
+                    <filter string="Contract Type" icon="terp-personal" name="type_id" context="{'group_by':'type_id'}"/>
+				</group>
+            </search>
+        </field>
+    </record>
+
+    <record id="hr_salary_sheet_view_action" model="ir.actions.act_window">
+        <field name="name">Salary Sheet</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.salary.sheet.view</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,graph,pivot</field>
+        <field name="search_view_id" ref="hr_salary_sheet_view_search"/>      
+    </record>
+
+    <menuitem id="hr_salary_sheet_view_action_config"
+            name="Salary Sheet"
+            parent="payroll_reporting_config"
+            action="hr_salary_sheet_view_action"
+            sequence="1"/>
+
+    <!-- view of Salary Sheet -->
+
+    <!-- HR Contract and Payroll Customize Part -->
+
+
+     <!-- Leaves Analysis -->
+    <delete
+        id="hr_holidays.menu_hr_available_holidays_report_tree"
+        model="ir.ui.menu"/>
+
+    <record id="view_holiday_tree_analysis" model="ir.ui.view">
+        <field name="name">hr.holidays.report_tree.analysis</field>
+        <field name="model">leave.analysis</field>
+        <field name="priority">20</field>
+        <field name="arch" type="xml">
+            <tree string="Leaves Analysis">
+                <field name="employee_id"/>
+                <field name="holiday_status_id"/>
+                <!-- <field name="number_of_days"/> -->
+                <!-- <field name="the_month"/> -->
+                <field name="total_leave_days"/>
+                <field name="total_allocated_days"/>
+                <field name="pending_leaves"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_holiday_pivot_analysis" model="ir.ui.view">
+        <field name="name">hr.holidays.report_pivot.analysis</field>
+        <field name="model">leave.analysis</field>
+        <field name="priority">20</field>
+        <field name="arch" type="xml">
+            <pivot string="Leaves Summary">
+                <field name="employee_id" type="row"/>
+                <!-- <field name="the_month" type="col"/> -->
+                <field name="total_leave_days" type="measure"/>
+                <field name="total_allocated_days" type="measure"/>
+                <field name="holiday_status_id" />
+                <field name="pending_leaves" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="view_holiday_graph_analysis" model="ir.ui.view">
+        <field name="name">hr.holidays.report_graph.analysis</field>
+        <field name="model">leave.analysis</field>
+        <field name="priority">20</field>
+        <field name="arch" type="xml">
+            <graph string="Leaves Summary">
+                <field name="employee_id"/>
+                <field name="total_allocated_days" type="measure"/>
+                <field name="total_leave_days" type="measure"/>
+                <field name="pending_leaves" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="action_hr_leave_analysis_report" model="ir.actions.act_window">
+        <field name="name">Leaves Analysis</field>
+        <field name="res_model">leave.analysis</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,graph,pivot</field>
+        <!-- <field name="context">{'search_default_leaves':1}</field> -->
+    </record>
+
+    <record id="action_window_leave_analysis_graph" model="ir.actions.act_window.view">
+        <field name="sequence" eval="1"/>
+        <field name="view_mode">graph</field>
+        <field name="view_id" ref="view_holiday_graph_analysis"/>
+        <field name="act_window_id" ref="action_hr_leave_analysis_report"/>
+    </record>
+
+    <menuitem
+        name="Leaves Analysis"
+        id="menu_hr_leave_analysis_report_tree"
+        action="action_hr_leave_analysis_report"
+        parent="hr_holidays.menu_hr_holidays_report" sequence="5"/>
+
+
+
+    <!-- Leaves Analysis -->
+
+
+    <!-- view of contract Sheet -->
+    <record id="hr_contract_sheet_view_tree" model="ir.ui.view">
+        <field name="name">hr.contract.sheet.view.tree</field>
+        <field name="model">hr.contract.sheet.view</field>
+        <field name="arch" type="xml">
+            <tree string="Contract Sheet" >
+                <field name="employee_id" string="Employee Name"/>
+                <field name="contract_name"/>
+                <field name="type_id"/>
+                <field name="wage" string="Basic Salary"/>
+                <!-- <field name="basic" string="Basic Salary"/> -->
+                <field name="hra" string="Housing"/>
+                <field name="air_ticket"/>
+                <field name="trans_allowance" string="Transport Allowance"/>
+                <field name="other_allowance" string="Other Allowance"/>
+                <!-- <field name="ot_allowance" string="OT Allowance"/> -->
+                <!-- <field name="allowances_value" string="Allowances"/> -->
+                <!-- <field name="additions" string="Additions"/> -->
+                <!-- <field name="deductions" string="Deductions"/> -->
+                
+                <!-- <field name="loan_deduction" string="Loan"/> -->
+                <!-- <field name="fine_deduction" string="Fine"/> -->
+                <!-- <field name="gross"/> -->
+                <!-- <field name="net_salary"/> -->
+                <field name="total"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="hr_contract_sheet_view_graph" model="ir.ui.view">
+        <field name="name">hr.contract.sheet.view.graph</field>
+        <field name="model">hr.contract.sheet.view</field>
+        <field name="arch" type="xml">
+            <graph string="Contract Sheet" >
+                <field name="employee_id" type="row" string="Employee Name"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="hr_contract_sheet_view_pivot" model="ir.ui.view">
+        <field name="name">hr.contract.sheet.view.pivot</field>
+        <field name="model">hr.contract.sheet.view</field>
+        <field name="arch" type="xml">
+            <pivot string="Contract Sheet" disable_linking="True">
+                <field name="employee_id"/>
+                <field name="type_id"/>
+                <field name="contract_name"/>
+                <field name="wage" />
+                <!-- <field name="basic" /> -->
+                <field name="hra" />
+                <field name="trans_allowance" />
+                <field name="other_allowance" />
+                <!-- <field name="ot_allowance" /> -->
+                <!-- <field name="allowances_value"/> -->
+                <!-- <field name="additions" /> -->
+                <!-- <field name="deductions"/> -->
+                <!-- <field name="loan_deduction"/> -->
+                <!-- <field name="fine_deduction"/> -->
+                <field name="air_ticket"/>
+                <!-- <field name="gross" type="measure"/> -->
+                <!-- <field name="net_salary"/> -->
+                <field name="total"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="hr_contract_sheet_view_search" model="ir.ui.view">
+        <field name="name">hr.contract.sheet.view.search</field>
+        <field name="model">hr.contract.sheet.view</field>
+        <field name="arch" type="xml">
+            <search string="Contract Sheet">
+                <field name="employee_id"/>
+                <field name="contract_name"/>
+                <field name="type_id"/>
+           		<group expand="1" string="Group By...">
+                    <filter string="Employee" icon="terp-personal" name="employee_id" context="{'group_by':'employee_id'}"/>
+                    <filter string="Contract Name" icon="terp-personal" name="contract_name" context="{'group_by':'contract_name'}"/>
+                    <filter string="Contract Type" icon="terp-personal" name="type_id" context="{'group_by':'type_id'}"/>
+				</group>
+            </search>
+        </field>
+    </record>
+
+    <record id="hr_contract_sheet_view_action" model="ir.actions.act_window">
+        <field name="name">Contract Sheet</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.contract.sheet.view</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,graph,pivot</field>
+        <field name="search_view_id" ref="hr_contract_sheet_view_search"/>      
+    </record>
+
+    <menuitem id="hr_contract_sheet_view_action_config"
+            name="Contract Sheet"
+            parent="payroll_reporting_config"
+            action="hr_contract_sheet_view_action"
+            sequence="4"/>
+
+    <!-- view of contract Sheet -->
+
+
+
+    </odoo>

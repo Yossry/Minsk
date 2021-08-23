@@ -1,0 +1,192 @@
+<?xml version="1.0" ?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo noupdate="0">
+ 
+	<record id="clv_person_export_cadastro_template" model="clv.model_export.template">
+		<field name="name" eval="&quot;&quot;&quot;Person (Cadastro)&quot;&quot;&quot;"/>
+		<field name="label" eval="&quot;&quot;&quot;Cadastro&quot;&quot;&quot;"/>
+		<field name="model_id" ref="clv_person.model_clv_person"/>
+		<field name="export_type" eval="&quot;&quot;&quot;xls&quot;&quot;&quot;"/>
+	</record>
+	 
+	<record id="clv_person_export_cadastro_template_object_field_name" model="clv.model_export.template.field">
+		<field name="sequence" eval="10"/>
+		<field name="name" eval="&quot;&quot;&quot;Name&quot;&quot;&quot;"/>
+		<field name="model_export_template_id" eval="clv_person_export_cadastro_template"/>
+		<field name="model_export_display" eval="True"/>
+		<field name="field_id" ref="clv_person.field_clv_person__name"/>
+	</record>
+	 
+	<record id="clv_person_export_cadastro_template_object_field_code" model="clv.model_export.template.field">
+		<field name="sequence" eval="10"/>
+		<field name="name" eval="&quot;&quot;&quot;Person Code&quot;&quot;&quot;"/>
+		<field name="model_export_template_id" eval="clv_person_export_cadastro_template"/>
+		<field name="model_export_display" eval="True"/>
+		<field name="field_id" ref="clv_person.field_clv_person__code"/>
+	</record>
+	 
+	<record id="clv_person_export_cadastro_template_object_field_birthday" model="clv.model_export.template.field">
+		<field name="sequence" eval="10"/>
+		<field name="name" eval="&quot;&quot;&quot;Date of Birth&quot;&quot;&quot;"/>
+		<field name="model_export_template_id" eval="clv_person_export_cadastro_template"/>
+		<field name="model_export_display" eval="True"/>
+		<field name="field_id" ref="clv_person.field_clv_person__birthday"/>
+	</record>
+	 
+	<record id="clv_person_export_cadastro_template_object_field_age_reference" model="clv.model_export.template.field">
+		<field name="sequence" eval="10"/>
+		<field name="name" eval="&quot;&quot;&quot;Reference Age&quot;&quot;&quot;"/>
+		<field name="model_export_template_id" eval="clv_person_export_cadastro_template"/>
+		<field name="model_export_display" eval="True"/>
+		<field name="field_id" ref="clv_person.field_clv_person__age_reference"/>
+	</record>
+	 
+	<record id="clv_person_export_cadastro_template_object_field_age_reference_years" model="clv.model_export.template.field">
+		<field name="sequence" eval="10"/>
+		<field name="name" eval="&quot;&quot;&quot;Reference Age (years old)&quot;&quot;&quot;"/>
+		<field name="model_export_template_id" eval="clv_person_export_cadastro_template"/>
+		<field name="model_export_display" eval="True"/>
+		<field name="field_id" ref="clv_person.field_clv_person__age_reference_years"/>
+	</record>
+	 
+	<record id="clv_person_export_cadastro_template_object_field_gender" model="clv.model_export.template.field">
+		<field name="sequence" eval="10"/>
+		<field name="name" eval="&quot;&quot;&quot;Gender&quot;&quot;&quot;"/>
+		<field name="model_export_template_id" eval="clv_person_export_cadastro_template"/>
+		<field name="model_export_display" eval="True"/>
+		<field name="field_id" ref="clv_person.field_clv_person__gender"/>
+	</record>
+	 
+	<record id="clv_person_export_cadastro_template_object_field_category_ids" model="clv.model_export.template.field">
+		<field name="sequence" eval="10"/>
+		<field name="name" eval="&quot;&quot;&quot;Categories&quot;&quot;&quot;"/>
+		<field name="model_export_template_id" eval="clv_person_export_cadastro_template"/>
+		<field name="model_export_display" eval="True"/>
+		<field name="field_id" ref="clv_person.field_clv_person__category_ids"/>
+	</record>
+	 
+	<record id="clv_person_export_cadastro_template_object_field_state" model="clv.model_export.template.field">
+		<field name="sequence" eval="10"/>
+		<field name="name" eval="&quot;&quot;&quot;Person State&quot;&quot;&quot;"/>
+		<field name="model_export_template_id" eval="clv_person_export_cadastro_template"/>
+		<field name="model_export_display" eval="True"/>
+		<field name="field_id" ref="clv_person_jcafb.field_clv_person__state"/>
+	</record>
+	 
+	<record id="clv_person_export_cadastro_template_object_field_marker_ids" model="clv.model_export.template.field">
+		<field name="sequence" eval="10"/>
+		<field name="name" eval="&quot;&quot;&quot;Markers&quot;&quot;&quot;"/>
+		<field name="model_export_template_id" eval="clv_person_export_cadastro_template"/>
+		<field name="model_export_display" eval="True"/>
+		<field name="field_id" ref="clv_person.field_clv_person__marker_ids"/>
+	</record>
+	 
+	<record id="clv_person_export_cadastro_template_object_field_global_tag_ids" model="clv.model_export.template.field">
+		<field name="sequence" eval="10"/>
+		<field name="name" eval="&quot;&quot;&quot;Global Tags&quot;&quot;&quot;"/>
+		<field name="model_export_template_id" eval="clv_person_export_cadastro_template"/>
+		<field name="model_export_display" eval="True"/>
+		<field name="field_id" ref="clv_person.field_clv_person__global_tag_ids"/>
+	</record>
+	 
+	<record id="clv_person_export_cadastro_template_object_field_ref_address_id" model="clv.model_export.template.field">
+		<field name="sequence" eval="10"/>
+		<field name="name" eval="&quot;&quot;&quot;Endereço&quot;&quot;&quot;"/>
+		<field name="model_export_template_id" eval="clv_person_export_cadastro_template"/>
+		<field name="model_export_display" eval="True"/>
+		<field name="field_id" ref="clv_person.field_clv_person__ref_address_id"/>
+	</record>
+	 
+	<record id="clv_person_export_cadastro_template_object_field_ref_address_category_ids" model="clv.model_export.template.field">
+		<field name="sequence" eval="10"/>
+		<field name="name" eval="&quot;&quot;&quot;Address Categories&quot;&quot;&quot;"/>
+		<field name="model_export_template_id" eval="clv_person_export_cadastro_template"/>
+		<field name="model_export_display" eval="True"/>
+		<field name="field_id" ref="clv_person.field_clv_person__ref_address_category_ids"/>
+	</record>
+	 
+	<record id="clv_person_export_cadastro_template_object_field_family_id" model="clv.model_export.template.field">
+		<field name="sequence" eval="10"/>
+		<field name="name" eval="&quot;&quot;&quot;Família&quot;&quot;&quot;"/>
+		<field name="model_export_template_id" eval="clv_person_export_cadastro_template"/>
+		<field name="model_export_display" eval="True"/>
+		<field name="field_id" ref="clv_person.field_clv_person__family_id"/>
+	</record>
+	 
+	<record id="clv_person_export_cadastro_template_object_field_street" model="clv.model_export.template.field">
+		<field name="sequence" eval="10"/>
+		<field name="name" eval="&quot;&quot;&quot;Logradouro&quot;&quot;&quot;"/>
+		<field name="model_export_template_id" eval="clv_person_export_cadastro_template"/>
+		<field name="model_export_display" eval="True"/>
+		<field name="field_id" ref="clv_person.field_clv_person__street"/>
+	</record>
+	 
+	<record id="clv_person_export_cadastro_template_object_field_street_number" model="clv.model_export.template.field">
+		<field name="sequence" eval="10"/>
+		<field name="name" eval="&quot;&quot;&quot;Número&quot;&quot;&quot;"/>
+		<field name="model_export_template_id" eval="clv_person_export_cadastro_template"/>
+		<field name="model_export_display" eval="True"/>
+		<field name="field_id" ref="clv_person.field_clv_person__street_number"/>
+	</record>
+	 
+	<record id="clv_person_export_cadastro_template_object_field_street2" model="clv.model_export.template.field">
+		<field name="sequence" eval="10"/>
+		<field name="name" eval="&quot;&quot;&quot;Complemento&quot;&quot;&quot;"/>
+		<field name="model_export_template_id" eval="clv_person_export_cadastro_template"/>
+		<field name="model_export_display" eval="True"/>
+		<field name="field_id" ref="clv_person.field_clv_person__street2"/>
+	</record>
+	 
+	<record id="clv_person_export_cadastro_template_object_field_district" model="clv.model_export.template.field">
+		<field name="sequence" eval="10"/>
+		<field name="name" eval="&quot;&quot;&quot;Bairro&quot;&quot;&quot;"/>
+		<field name="model_export_template_id" eval="clv_person_export_cadastro_template"/>
+		<field name="model_export_display" eval="True"/>
+		<field name="field_id" ref="clv_person.field_clv_person__district"/>
+	</record>
+	 
+	<record id="clv_person_export_cadastro_template_object_field_city_id" model="clv.model_export.template.field">
+		<field name="sequence" eval="10"/>
+		<field name="name" eval="&quot;&quot;&quot;Cidade&quot;&quot;&quot;"/>
+		<field name="model_export_template_id" eval="clv_person_export_cadastro_template"/>
+		<field name="model_export_display" eval="True"/>
+		<field name="field_id" ref="clv_person.field_clv_person__city_id"/>
+	</record>
+	 
+	<record id="clv_person_export_cadastro_template_object_field_phone" model="clv.model_export.template.field">
+		<field name="sequence" eval="10"/>
+		<field name="name" eval="&quot;&quot;&quot;Telefone&quot;&quot;&quot;"/>
+		<field name="model_export_template_id" eval="clv_person_export_cadastro_template"/>
+		<field name="model_export_display" eval="True"/>
+		<field name="field_id" ref="clv_person.field_clv_person__phone"/>
+	</record>
+	 
+	<record id="clv_person_export_cadastro_template_object_field_mobile" model="clv.model_export.template.field">
+		<field name="sequence" eval="10"/>
+		<field name="name" eval="&quot;&quot;&quot;Celular&quot;&quot;&quot;"/>
+		<field name="model_export_template_id" eval="clv_person_export_cadastro_template"/>
+		<field name="model_export_display" eval="True"/>
+		<field name="field_id" ref="clv_person.field_clv_person__mobile"/>
+	</record>
+	 
+	<record id="clv_person_export_cadastro_template_object_field_responsible_id" model="clv.model_export.template.field">
+		<field name="sequence" eval="10"/>
+		<field name="name" eval="&quot;&quot;&quot;Responsible&quot;&quot;&quot;"/>
+		<field name="model_export_template_id" eval="clv_person_export_cadastro_template"/>
+		<field name="model_export_display" eval="True"/>
+		<field name="field_id" ref="clv_person.field_clv_person__responsible_id"/>
+	</record>
+	 
+	<!--record id="clv_person_clv_person_schedule" model="clv.model_export.schedule">
+		<field name="name" eval="&quot;&quot;&quot;clv.person (clv.person)&quot;&quot;&quot;"/>
+		<field name="model_export_template_id" eval="clv_person_export_cadastro_template"/>
+	</record-->
+	 
+	<!--record id="clv_model_export_batch_member_clv_person" model="clv.model_export.batch.member">
+		<field name="model_export_batch_id" ref="clv_model_export_jcafb.clv_model_export_batch_default"/>
+		<field name="ref_id" ref="clv_person_clv_person_schedule"/>
+	</record-->
+	 
+</odoo>

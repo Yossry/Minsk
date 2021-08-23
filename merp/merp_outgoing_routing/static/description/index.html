@@ -1,0 +1,95 @@
+<section class="oe_container oe_dark">
+    <div class="oe_row">
+        <div class="oe_span12">
+            <h2 class="oe_slogan"><strong>Ventor</strong>/<strong>mERP</strong> Outgoing Routing module</h2>
+        </div>
+        <div class="oe_span12" style="text-align: center; margin-bottom: 5px">
+            <p style="padding: 5px; font-size: 16px; font-weight: bold; background-color: yellow; display: inline">
+                TO AVOID ANY ISSUES, PLEASE, USE ALWAYS LATEST VERSION FROM
+                <a href="https://github.com/ventor-tech/merp/tree/12.0">
+                    OUR GITHUB REPOSITORY
+                </a>
+            </p>
+        </div>
+        <div class="oe_span6">
+            <div class="oe_row_img oe_centered">
+                <img class="oe_picture oe_screenshot" src="merp_routing.png">
+            </div>
+        </div>
+        <div class="oe_span6">
+            <p class="oe_mt32">
+Sort pack operations in picking depending on selected strategy (see list below) and order (ascending or descending):
+            </p>
+            <ul>
+                <li>sort by source locations name</li>
+                <li>sort by location removal strategy priority</li>
+                <li>sort by product name</li>
+            </ul>
+            <p class="oe_mt32">
+where <em>removal strategy priority</em> is an integer value that should be used to define order (priority) of warehouse locations.
+            </p>
+            <p class="oe_mt32">
+Sorted list of pack operations could now be found on a new tab 'To Process' on picking form.
+            </p>
+            <p class="oe_mt32">
+Please, install merp_picking_wave_base module to sort pack operations in picking waves as well.
+            </p>
+        </div>
+        <div class="oe_span6">
+            <div class="oe_row_img oe_centered">
+                <img class="oe_picture oe_screenshot" src="merp_reservation.png">
+            </div>
+        </div>
+        <div class="oe_span6">
+            <p class="oe_mt32">
+Sort quants to be reserved depending on selected rule (see list below) in addition to standard FIFO/LIFO/FEFO rules:
+            </p>
+            <ul>
+                <li>outgoing routing (see above): by location name and removal strategy priority</li>
+                <li>by quantity: first reverse quants in location that contain a sufficient amount of product (and higher priority according to outgoing routing settings)</li>
+                <li>or default (out-of-the-box) strategy</li>
+            </ul>
+            <p class="oe_mt32">
+Thus, the module allows users to calculate the most effective route (based on your settings) to collect all ordered products from the entire warehouse to save your time.
+            </p>
+        </div>
+        <div class="oe_span6">
+            <div class="oe_row_img oe_centered">
+                <img class="oe_picture oe_screenshot" src="merp_report.png">
+            </div>
+        </div>
+        <div class="oe_span6">
+            <p class="oe_mt32">
+Sorts list of pack operations in picking report in accordance with available strategies.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <div class="oe_span12">
+            <h2 class="oe_slogan">Notes</h2>
+            <p class="oe_mt32">
+This module is designed to work only with "Ventor" application that can be downloaded from:
+            </p>
+            <ol>
+                <li>
+<a target="_blank" href="https://merpapp.com/">https://merpapp.com/</a> website - version obtained from here is suitable for all types of organizations
+                </li>
+                <li>
+<a target="_blank" href="https://play.google.com/store/apps/details?id=com.xpansa.merp.warehouse">Google Play</a> - has limitations, not possible to customize app by request
+                </li>
+            </ol>
+            <p class="oe_mt32">
+"Ventor" app works both on regular mobile phones with Android 4.1+ and with professional barcode scanners. For a full list of supported devices check <a target="_blank" href="https://merpapp.com/blog/merp-frequently-asked-questions/#l23">F.A.Q.</a>
+            </p>
+            <p class="oe_mt32">
+"Ventor" (<a target="_blank" href="https://ventor.tech/">https://ventor.tech/</a>) is a company specialized in building Personalized Inventory and Product Management System.
+            </p>
+            <p class="oe_mt32">
+For all questions contact <a target="_blank" href="mailto:hello@ventor.tech">hello@ventor.tech</a>.
+            </p>
+        </div>
+    </div>
+</section>

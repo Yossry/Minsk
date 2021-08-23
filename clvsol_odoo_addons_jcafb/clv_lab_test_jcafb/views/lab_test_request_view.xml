@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+        
+    <record id="clv_lab_test_request_view_form_lab_test_request" model="ir.ui.view">
+        <field name="name">clv.lab_test.request.form</field>
+        <field name="model">clv.lab_test.request</field>
+        <field name="inherit_id" ref="clv_lab_test.clv_lab_test_request_view_form"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <group name="group_top_right" position="inside">
+                <field name="employee_id" options="{'no_open': False, 'no_create': True}"/>
+                <field name="date_received"/>
+            </group>
+            <!--group name="group_bottom_right" position="inside">
+                <field name="document_id" placeholder="Related Document..." options="{'no_open': False, 'no_create': True}"/>
+                <field name="survey_user_input_id" options="{'no_open': False, 'no_create': True}"/>
+            </group-->
+        </field>
+    </record>
+   
+    <record id="clv_lab_test_request_view_tree_lab_test_request" model="ir.ui.view">
+        <field name="name">clv.lab_test.request.tree</field>
+        <field name="model">clv.lab_test.request</field>
+        <field name="inherit_id" ref="clv_lab_test.clv_lab_test_request_view_tree"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="date_request" position="before">
+                <field name="employee_id"/>
+                <!--field name="document_id"/-->
+            </field>
+        </field>
+    </record>
+   
+    <record id="clv_lab_test_request_view_search_lab_test_request" model="ir.ui.view">
+        <field name="name">clv.lab_test.request.tree</field>
+        <field name="model">clv.lab_test.request</field>
+        <field name="inherit_id" ref="clv_lab_test.clv_lab_test_request_view_search"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="code" position="after">
+                <field name="employee_id"/>
+                <!--field name="document_id"/-->
+            </field>
+            <group name="group_by" position="inside">
+                <filter name="group_by_employee_id" string="Received by" context="{'group_by': 'employee_id'}"/>
+                <!--filter name="group_by_document_id" string="Related Document" context="{'group_by': 'document_id'}"/-->
+            </group>
+        </field>
+    </record>
+   
+</odoo>

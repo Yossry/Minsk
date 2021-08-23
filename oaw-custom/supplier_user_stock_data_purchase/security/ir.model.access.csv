@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_stock_data_purchase_history_supplier,access_stock_data_purchase_history_supplier,model_stock_data_purchase_history,sales_team.group_sale_salesman,1,1,1,1
+access_stock_data_purchase_history_user,access_stock_data_purchase_history_user,model_stock_data_purchase_history,supplier_user_access.group_supplier,1,0,0,0

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="clv_person_sel_group_view_form" model="ir.ui.view">
+        <field name="name">clv.person_sel.group.form</field>
+        <field name="model">clv.person_sel.group</field>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <form>
+                <header name="header">
+                    <!-- To add buttons and status widget -->
+                </header>
+                <sheet name="group">
+                    <div name="button_box" class="oe_right oe_button_box">
+                        <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive" groups="clv_base.group_reguser">
+                            <field name="active" widget="boolean_button" options='{"terminology": "archive"}'/>
+                        </button>
+                    </div>
+                    <div name="center" class="oe_center">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1><field name="name" default_focus="1" placeholder="Name..."/></h1>
+                    </div>
+                    <div name="title" class="oe_title">
+                        <label for="code" class="oe_edit_only"/>
+                        <h3><field name="code" placeholder="Code..."/></h3>
+                    </div>
+                    <group>
+                        <!--group name="data" string="Data"-->
+                        <group name="data">
+                        </group>
+                        <group name="data2">
+                            <field name="available_persons"/>
+                            <field name="to_select_persons"/>
+                            <field name="selected_persons"/>
+                        </group>
+                    </group>
+                    <field name="notes" placeholder="Notes..." colspan="4"/>
+                    <notebook>
+                        <page name="settings" string="Settings" groups="clv_base.group_reguser" invisible="True">
+                            <group name="settings">
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="clv_person_sel_group_view_tree" model="ir.ui.view">
+        <field name="name">clv.person_sel.group.tree</field>
+        <field name="model">clv.person_sel.group</field>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <tree name="persons" string="Persons">
+                <field name="name"/>
+                <field name="code"/>
+                <field name="available_persons"/>
+                <field name="to_select_persons"/>
+                <field name="selected_persons"/>
+                <field name="active" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="clv_person_sel_group_view_search" model="ir.ui.view">
+        <field name="name">clv.person_sel.group.search</field>
+        <field name="model">clv.person_sel.group</field>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="code"/>
+                <separator/>
+                <filter string="Archived" name="inactive" domain="[('active','=',False)]"/>
+                <group name="group_by" expand="0" string="Group By...">
+                </group>
+            </search>
+        </field>
+    </record>
+    
+    <record id="clv_person_sel_group_action" model="ir.actions.act_window">
+        <field name="name">Person Selection Groups</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">clv.person_sel.group</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="clv_person_sel_group_view_search"/>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Click to add a new person selection group.
+          </p>
+        </field>
+    </record>
+    
+    <record id="clv_person_sel_group_view_tree_district_age_group" model="ir.ui.view">
+        <field name="name">clv.person_sel.group.tree</field>
+        <field name="model">clv.person_sel.group</field>
+        <field name="inherit_id" ref="clv_person_sel_group_view_tree"/>
+        <field name="priority" eval="20"/>
+        <field name="arch" type="xml">
+            <field name="code" position="after">
+                <field name="addr_category_names"/>
+                <field name="district_id"/>
+                <field name="person_category_names"/>
+                <field name="age_group_id"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="clv_person_sel_group_view_form_district_age_group" model="ir.ui.view">
+        <field name="name">clv.person_sel.group.form</field>
+        <field name="model">clv.person_sel.group</field>
+        <field name="inherit_id" ref="clv_person_sel_group_view_form"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <div name="title" position="inside">
+                <label for="district_id" class="oe_edit_only"/>
+                <h4><field name="district_id" placeholder="District..." options="{'no_open': False, 'no_create': True}"/></h4>
+                <label for="age_group_id" class="oe_edit_only"/>
+                <h4><field name="age_group_id" placeholder="Age-Group..." options="{'no_open': False, 'no_create': True}"/></h4>
+            </div>
+            <group name="data" position="inside">
+                <field name="addr_category_names"/>
+                <field name="person_category_names"/>
+            </group>
+        </field>
+    </record>
+
+    <record id="clv_person_sel_group_view_search_district_age_group" model="ir.ui.view">
+        <field name="name">clv.person_sel.group.search</field>
+        <field name="model">clv.person_sel.group</field>
+        <field name="inherit_id" ref="clv_person_sel_group_view_search"/>
+        <field name="priority" eval="20"/>
+        <field name="arch" type="xml">
+            <field name="code" position="after">
+                <field name="district_id"/>
+                <field name="age_group_id"/>
+                <field name="addr_category_names"/>
+                <field name="person_category_names"/>
+            </field>
+            <group name="group_by" position="inside">
+                <filter name="group_by_addr_category_names" string="Address Categories" context="{'group_by': 'addr_category_names'}"/>
+                <filter name="group_by_district_id" string="District" context="{'group_by': 'district_id'}"/>
+                <filter name="group_by_person_category_names" string="Person Categories" context="{'group_by': 'person_category_names'}"/>
+                <filter name="group_by_age_group_id" string="Age-Group" context="{'group_by': 'age_group_id'}"/>
+            </group>
+        </field>
+    </record>
+
+</odoo>

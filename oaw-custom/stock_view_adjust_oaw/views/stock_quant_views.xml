@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_stock_quant_tree" model="ir.ui.view">
+        <field name="name">view.stock.quant.tree</field>
+        <field name="model">stock.quant</field>
+        <field name="inherit_id" ref="stock_move_line_quant.view_stock_quant_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="attributes">
+                <attribute name="editable">top</attribute>
+            </xpath>
+            <xpath expr="//field[@name='reservation_picking_id']" position="after">
+                <field name="sale_order_id" />
+                <field name="client_order_ref" />
+                <field name="quant_note" />
+            </xpath>
+            <xpath expr="//field[@name='lot_id']" position="after">
+                <field
+                    name="image_medium"
+                    widget="image"
+                    options='{"size": [64, 64]}'
+                />
+            </xpath>
+        </field>
+    </record>
+    <record id="quant_search_view" model="ir.ui.view">
+        <field name="name">quant.search.view</field>
+        <field name="model">stock.quant</field>
+        <field name="inherit_id" ref="stock.quant_search_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='owner_id']" position="after">
+                <field name="client_order_ref" string="Remark" />
+            </xpath>
+        </field>
+    </record>
+</odoo>

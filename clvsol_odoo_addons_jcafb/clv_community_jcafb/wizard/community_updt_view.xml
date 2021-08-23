@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="clv_community_updt_view_form_jcafb" model="ir.ui.view">
+            <field name="name">clv.community.updt.form</field>
+            <field name="model">clv.community.updt</field>
+            <field name="inherit_id" ref="clv_community.clv_community_updt_view_form"/>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <group name="category_ids" position="after">
+                    <group>
+                        <field name="employee_id_selection"/>
+                    </group>
+                    <group>
+                        <field name="employee_id" nolabel='1' options="{'no_open': False, 'no_create': True}"/>
+                    </group>
+                </group>
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<template id ="report_jacketdemand">
+			<t t-call="web.html_container">
+				<t t-foreach="docs" t-as="doc">
+					<t t-call="web.external_layout" style="font-family:georgia,garamond,serif;font-size:10px">
+						<div class="page">
+							<style>
+									.tabcol{font-size:10px;}
+									.tabtot{font-size:12px;}
+									 tr:nth-child(even) {background-color: #FFEBCD;}
+									 tr:nth-child(odd) {background-color: #cdcdcd;}
+							</style>
+
+							<div class="col-xs-12" style="font-style: cambria; font-size:10px; font-weight:bold; text-align:center; text-decoration: underline;">
+								<h3>Jacket  Demand Form</h3>
+							</div>
+
+							<table class="table table-condensed">
+								<tr style="background-color: #FFFFFF;">
+									<td style="font-style: cambria; font-size:12px; font-weight:bold; text-decoration: underline; padding-top: 10px;">Regional Office: </td>
+									<td style="font-style: cambria; font-size:12px; font-weight:bold; text-decoration: underline; padding-top: 10px;"><span t-esc="doc.center_id.name" /></td>
+									<td style="font-style: cambria; font-size:12px; font-weight:bold; text-decoration: underline; padding-top: 10px;">Serial No:</td>
+									<td style="font-style: cambria; font-size:12px; font-weight:bold; text-decoration: underline; padding-top: 10px;"><span t-esc="doc.name" /></td>
+								</tr>
+
+								<tr style="background-color: #FFFFFF;">
+									<td style="font-style: cambria; font-size:12px; font-weight:bold; text-decoration: underline; padding-top: 10px;">Project: </td>
+									<td style="font-style: cambria; font-size:12px; font-weight:bold; text-decoration: underline; padding-top: 10px;"><span t-esc="doc.project_id.name" /></td>
+									<td style="font-style: cambria; font-size:12px; font-weight:bold; text-decoration: underline; padding-top: 10px;"> Date: </td>
+									<td style="font-style: cambria; font-size:12px; font-weight:bold; text-decoration: underline; padding-top: 10px;"><span t-field="doc.date" t-field-options='{"format": "d-MM-Y"}' /></td>
+								</tr>
+
+								<tr style="background-color: #FFFFFF;">
+									<td style="font-style: cambria; font-size:12px; font-weight:bold; text-decoration: underline; padding-top: 10px;"> Post: </td>
+									<td style="font-style: cambria; font-size:12px; font-weight:bold; text-decoration: underline; padding-top: 10px;">
+										<span t-esc="doc.post_id.name" />
+									</td>
+									<td style="font-style: cambria; font-size:12px; font-weight:bold; text-decoration: underline; padding-top: 10px;">Requested By: </td>
+									<td style="font-style: cambria; font-size:12px; font-weight:bold; text-decoration: underline; padding-top: 10px;">
+										<span t-esc="doc.employee_id.name" />
+									</td>
+								</tr>
+
+								<tr style="background-color: #FFFFFF;">
+									<td style="font-style: cambria; font-size:12px; font-weight:bold; text-decoration: underline; padding-top: 10px"> Status: </td>
+									<td style="font-style: cambria; font-size:12px; font-weight:bold; text-decoration: underline; padding-top: 10px;">
+										<span t-esc="doc.state" />
+									</td>
+									<td style="font-style: cambria; font-size:12px; font-weight:bold; text-decoration: underline; padding-top: 10px"> </td>
+									<td style="font-style: cambria; font-size:12px; font-weight:bold; text-decoration: underline; padding-top: 10px"></td>
+
+								</tr>
+							</table>
+
+							<div class="col-xs-12" style="padding-left:0px; padding-right:0px; margin-top:10px; page-break-inside: avoid;">
+								<table class="table table-condensed" width="100%" style="padding-top: 10px;">
+									<thead>
+										<tr style="border:1px solid">
+											<th class="text-left" style="background-color:#FFEBCD; border:1px solid">S.No</th>
+											<th class="text-left" style="background-color:#FFEBCD; border:1px solid">Item</th>
+											<th class="text-left" style="background-color:#FFEBCD; border:1px solid">Size</th>
+											<th class="text-left" style="background-color:#FFEBCD; border:1px solid">Qty</th>
+										</tr>
+									</thead>
+
+									<tbody>
+										<t t-foreach="doc.jacket_demand_line" t-as="line">
+											<tr style="border:1px solid; font-size:13px;">
+												<td style="border:1px solid"> <span t-esc="line_index + 1" /> </td>
+												<td style="border:1px solid"> <span t-esc="line.item.name" /> </td>
+												<td style="border:1px solid"> <span t-esc="line.size" /> </td>
+												<td style="border:1px solid"> <span t-esc="line.qty" /> </td>
+
+											</tr>
+										</t>
+
+										<tr style="border:1px solid;font-size:13px;">
+											<td style="border:1px solid">Remarks: </td>
+											<td colspan="3" style="border:1px solid"> <span t-esc="doc.remarks" /> </td>
+										</tr>
+
+									</tbody>
+								</table>
+							</div>
+
+							<div class="col-xs-12" style="padding-left:0px; padding-right:0px; margin-top:10px; page-break-inside: avoid;">
+								<table class="table table-condensed">
+									<tbody>
+										<tr t-attf-style="border-top: 1px solid; font-size:14px;font-weight:bold;" >
+											<td t-attf-style="border-top: 1px solid  !important;text-align:center;"><strong>Supervisor</strong></td>
+											<td t-attf-style="border-top: 1px solid  !important;text-align:center;"><strong>Project Coordinator</strong></td>
+											<td t-attf-style="border-top: 1px solid  !important;text-align:center;"><strong>Regional Manager</strong></td>
+											<td t-attf-style="border-top: 1px solid  !important;text-align:center;"><strong>Store Manager</strong></td>
+										</tr>
+									</tbody>
+								</table>
+						   </div>
+
+						</div>
+					</t>
+				</t>
+			</t>
+		</template>
+
+	</data>
+</odoo>

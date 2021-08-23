@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="clv_lab_test_result_edit_ecp20_view_form" model="ir.ui.view">
+        <field name="name">clv.lab_test.result.edit_ecp20.form</field>
+        <field name="model">clv.lab_test.result.edit_ecp20</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_right">
+                    </div>
+                    <group  name="group_top">
+                        <field name="result_id" options="{'no_open': True, 'no_create': True, 'readonly': True}"/>
+                        <field name="lab_test_type_id" options="{'no_open': True, 'no_create': True, 'readonly': True}"/>
+                        <field name="lab_test_request_id" options="{'no_open': True, 'no_create': True, 'readonly': True}"/>
+                    </group>
+                    <group name="group_bottom">
+                        <group string="Exame Coproparasitológico (1)">
+                            <field name="ECP20_metodo_utilizado_1"/>
+                            <field name="ECP20_resultado_1"/>
+                            <field name="ECP20_examinador_1" options='{"no_open": True, "no_create": True}'/>
+                        </group>
+                        <group string="-">
+                            <field name="ECP20_lab_test_parasite_1_names"/>
+                            <field name="ECP20_parasitas_1" invisible='True'/>
+                            <field name="ECP20_lab_test_parasite_1_ids">
+                                <tree>
+                                    <field name="name"/>
+                                </tree>
+                            </field>
+                        </group>
+                        <group string="Exame Coproparasitológico (2)">
+                            <field name="ECP20_metodo_utilizado_2"/>
+                            <field name="ECP20_resultado_2"/>
+                            <field name="ECP20_examinador_2" options='{"no_open": True, "no_create": True}'/>
+                        </group>
+                        <group string="-">
+                            <field name="ECP20_lab_test_parasite_2_names"/>
+                            <field name="ECP20_parasitas_2" invisible='True'/>
+                            <field name="ECP20_lab_test_parasite_2_ids">
+                                <tree>
+                                    <field name="name"/>
+                                </tree>
+                            </field>
+                        </group>
+                        <group string="Exame Coproparasitológico (3)">
+                            <field name="ECP20_metodo_utilizado_3"/>
+                            <field name="ECP20_resultado_3"/>
+                            <field name="ECP20_examinador_3" options='{"no_open": True, "no_create": True}'/>
+                        </group>
+                        <group string="-">
+                            <field name="ECP20_lab_test_parasite_3_names"/>
+                            <field name="ECP20_parasitas_3" invisible='True'/>
+                            <field name="ECP20_lab_test_parasite_3_ids">
+                                <tree>
+                                    <field name="name"/>
+                                </tree>
+                            </field>
+                        </group>
+                        <group string="Exame Coproparasitológico (4)">
+                            <field name="ECP20_metodo_utilizado_4"/>
+                            <field name="ECP20_resultado_4"/>
+                            <field name="ECP20_examinador_4" options='{"no_open": True, "no_create": True}'/>
+                        </group>
+                        <group string="-">
+                            <field name="ECP20_lab_test_parasite_4_names"/>
+                            <field name="ECP20_parasitas_4" invisible='True'/>
+                            <field name="ECP20_lab_test_parasite_4_ids">
+                                <tree>
+                                    <field name="name"/>
+                                </tree>
+                            </field>
+                        </group>
+                        <group string="Exame Coproparasitológico">
+                            <field name="ECP20_data_entrada_material"/>
+                            <field name="ECP20_liberacao_resultado"/>
+                            <field name="ECP20_metodos_utilizados"/>
+                            <field name="ECP20_resultado"/>
+                            <field name="ECP20_obs"/>
+                        </group>
+                        <group string="-">
+                            <field name="ECP20_lab_test_parasite_names"/>
+                            <field name="ECP20_parasitas" invisible='True'/>
+                            <field name="ECP20_lab_test_parasite_ids">
+                                <tree>
+                                    <field name="name"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button 
+                        type="object"
+                        name="do_result_updt_ECP20"
+                        string="Result Update"
+                        class="oe_highlight"
+                        />
+                    <button special="cancel" string="Cancel"/>
+                </footer>
+            </form>
+
+        </field>
+    </record>
+
+    <act_window 
+        id="clv_lab_test_result_edit_ecp20_action"
+        name="Lab Test Result Edit (ECP20)"
+        res_model="clv.lab_test.result.edit_ecp20"
+        view_mode="form"
+        target="new"
+    />
+
+</odoo>

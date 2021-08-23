@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>	
+		<template id ="report_shortfallpost">
+			<t t-call="web.html_container">
+				<div class="page">
+					<style>
+						table th { background-color:#d4e3e5;}
+					</style>
+					
+					 <div class="row">
+					 	 <div class="col-xs-4">
+					 	 	 <img width="40%" style="max-height:125px;" class="img img-responsive" src="/sos_payroll/static/src/img/logo.png"/>
+					 	 </div>
+					 	 <div class="col-xs-3">
+					 	 </div>
+					 	 
+					 	 <div class="col-xs-5" style="font-size:14px; font-weight:bold; text-align:right; align:left;margin-top:20px;">
+					 	 	SECURITY ORGANIZING SYSTEM (PVT) LIMITED
+					 	 </div>
+					 </div>
+				
+					 <div class="row" style="font-size:12px; font-weight:bold; text-align:center; align:left;">
+					 	<div class="col-xs-12">
+					 		Guards ShortFall Report(Post) Of <span t-esc="get_date_formate(data['date_from'])"/> 
+					 	</div>
+					 </div>
+					 
+					  <table class="table table-bordered" width="100%">
+					  	<tr>
+			  			 	<thead style="font-size:12px; font-weight:bold;">
+								<th>Sr. </th>
+								<th>Post Name </th>
+								<th>Project Name </th>
+								<th>Center Name </th>
+								<th>Attendance </th>
+								<th>Total Guards </th>
+								<th>ShortFall</th>
+			  			 	</thead>
+					  	</tr>	 	
+		  			 	<t t-foreach="Posts" t-as="post">
+		  			 		<tr style="font-size:12px;">
+		  			 			<td><span t-esc="post_index + 1" /> </td>
+		  			 			<td><span t-esc="post['post']" /> </td>
+		  			 			<td><span t-esc="post['project']" /> </td>
+		  			 			<td><span t-esc="post['center']" /> </td>
+		  			 			<td><span t-esc="post['post_att']" /> </td>
+		  			 			<td><span t-esc="post['guards']" /> </td>
+		  			 			<td><span t-esc="post['result']" />  </td>
+		  			 		</tr>
+		  			 	</t>
+		  			 	<tr style="font-size:12px; font-weight:bold;">
+		  			 		<td colspan="4"> TOTALS: </td>
+		  			 		<td><span t-esc="Total_Att" />  </td>
+		  			 		<td><span t-esc="Total_Current" />  </td>
+		  			 		<td><span t-esc="Total_ShortFall" />  </td>
+		  			 	</tr>	
+					  </table>
+					
+				</div>	 			 	
+			</t>
+		</template>
+		
+	</data>
+</odoo>
+

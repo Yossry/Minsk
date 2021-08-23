@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="survey_user_input_validate_view_form" model="ir.ui.view">
+        <field name="name">survey.user_input.validate.form</field>
+        <field name="model">survey.user_input.validate</field>
+        <field name="arch" type="xml">
+            <form>
+                <div class="oe_right">
+                    <button type="object" name="do_populate_all_survey_user_inputs" string="Get All Survey User Inputs"/>
+                </div>
+                <label for="survey_user_input_ids"/>
+                <field name="survey_user_input_ids"/>
+                <group>
+                </group>
+                <footer>
+                    <button 
+                        type="object"
+                        name="do_survey_user_input_validate"
+                        string="Survey User Inputs Validate"
+                        class="oe_highlight"
+                        />
+                    <button special="cancel" string="Cancel"/>
+                </footer>
+            </form>
+
+        </field>
+    </record>
+
+    <!-- More button Action -->
+    <act_window 
+        id="survey_user_input_validate_action"
+        name="Survey User Input Validate"
+        src_model="survey.user_input"
+        res_model="survey.user_input.validate"
+        view_mode="form"
+        key2="client_action_multi"
+        target="new"
+    />
+
+</odoo>

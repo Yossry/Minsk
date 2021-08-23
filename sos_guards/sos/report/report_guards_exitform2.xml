@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<template id ="report_guards_exitform2">
+			<t t-call="web.html_container">
+				<t t-foreach="docs" t-as="doc">
+					<t t-call="web.external_layout" style="font-family:georgia,garamond,serif;font-size:10px">
+						<div class="page">
+							<table class="table table-condensed" width="100%" style="padding-top: 1px;">
+								<tr>
+									<td rowspan="2" width="40%">
+										 <img width="40%" style="max-height:125px;" class="img img-responsive" src="/sos/static/img/logo.png"/>
+									</td>
+									<td  style="text-align:right; font-style: Times New Roman; font-size:18px; font-weight:bold; color:red; text-decoration: underline; padding-right:10px;">
+										SECURITY ORGANIZING SYSTEM PAKISTAN (Pvt.) Ltd.
+									</td>
+								</tr>
+								<tr>
+									<td style="text-align:center; font-style: Times New Roman; font-size:18px; font-weight:bold; ">
+										Exit Form
+									</td>
+								</tr>
+							</table>
+							<table class="table table-condensed" width="100%" style="padding-top: 1px; border:1px solid; font-size:16px;">
+								<tr style="border:1px solid">
+									<td style="border:1px solid">Name </td>
+									<td colspan="3" style="border:1px solid">
+										<t t-if="doc.employee_id.gender == 'm'"> Mr. </t>
+										<t t-if="doc.employee_id.gender == 'f'"> Ms. </t>
+										<span t-esc="doc.employee_id.name" />
+									</td>
+								</tr>
+								<tr style="border:1px solid">
+									<td style="border:1px solid">Father Name</td>
+									<td colspan="3" style="border:1px solid">
+										<span t-esc="doc.employee_id.fathername" />
+									</td>
+								</tr>
+								<tr style="border:1px solid">
+									<td style="border:1px solid">CNIC</td>
+									<td style="border:1px solid"><span t-esc="doc.employee_id.cnic" /> </td>
+									<td style="border:1px solid">Mobile</td>
+									<td style="border:1px solid"><span t-esc="doc.employee_id.mobile_phone" /></td>
+								</tr>
+								<tr style="border:1px solid">
+									<td style="border:1px solid">ERP REF ID </td>
+									<td style="border:1px solid"><span t-esc="doc.employee_id.code" /> </td>
+									<td style="border:1px solid">Joining Date </td>
+									<td style="border:1px solid"><span t-esc="doc.employee_id.appointmentdate" /></td>
+								</tr>
+								<tr style="border:1px solid">
+									<td style="border:1px solid">Duty Place</td>
+									<td colspan="3" style="border:1px solid">
+										<span t-esc="doc.center_id.name" />
+									</td>
+								</tr>
+								<tr style="border:1px solid">
+									<td style="border:1px solid">Termination Date:</td>
+									<td colspan="3" style="border:1px solid"></td>
+								</tr>
+								<tr style="border:1px solid">
+									<td style="border:1px solid">Reason to leave Job:</td>
+									<td colspan="3" style="border:1px solid"></td>
+								</tr>
+							</table>
+
+							<div class="col-xs-12" style="text-align:left; font-style: Times New Roman; font-size:16px; color:red;">Company Accessories Return:</div>
+							<table class="table table-condensed" width="100%" style="padding-top: 10px; border:1px solid; font-size:16px;">
+								<tr style="border:1px solid">
+									<td style="border:1px solid">Company Card </td>
+									<td style="border:1px solid"> </td>
+									<td style="border:1px solid">Uniform</td>
+									<td style="border:1px solid"> </td>
+								</tr>
+								<tr style="border:1px solid">
+									<td style="border:1px solid">Boot / Shoes </td>
+									<td style="border:1px solid"> </td>
+									<td style="border:1px solid">Cap </td>
+									<td style="border:1px solid"> </td>
+								</tr>
+								<tr style="border:1px solid">
+									<td style="border:1px solid">Belt </td>
+									<td style="border:1px solid"> </td>
+									<td style="border:1px solid">Any Thing Else </td>
+									<td style="border:1px solid"> </td>
+								</tr>
+							</table>
+
+							<div class="col-xs-12" style="text-align:left; font-style: Times New Roman; font-size:16px; color:red;">Pending Dues:</div>
+								<table class="table table-condensed" width="100%" style="padding-top: 10px; border:1px solid; font-size:16px;">
+									<tr style="border:1px solid">
+										<td style="border:1px solid">Salary </td>
+										<td style="border:1px solid"><span t-esc="doc.salary_amt" /> </td>
+										<td style="border:1px solid">Security</td>
+										<td style="border:1px solid"><span t-esc="doc.security_amt" /> </td>
+									</tr>
+								</table>
+
+							<div class="col-xs-12" style="text-align:left; font-style: Times New Roman; font-size:16px; border:1px solid; margin-top:30px;">
+								I <span style="padding-left:2px; padding-right:2px;" t-esc="doc.employee_id.name" />
+								S/O <span style="padding-left:2px; padding-right:2px;" t-esc="doc.employee_id.fathername" />,
+								my CNIC <span style="padding-left:2px; padding-right:2px;" t-esc="doc.employee_id.cnic" />
+								state that i am leaving this company and i have return all the accessories that
+								company has provided me. Company has cleared my all the due. Nothing is pending to the company.
+							</div>
+
+							<div class="col-xs-12" style="text-align:left; font-style: Times New Roman; font-size:16px; margin-top:80px;">
+								Date:
+							</div>
+
+							<div class="col-xs-12" style="text-align:right; font-style: Times New Roman; font-size:16px; margin-top:1px;">
+								Signature:
+							</div>
+
+							<div class="col-xs-12" style="text-align:left; font-style: Times New Roman; font-size:16px; margin-top:30px;">
+								References:
+							</div>
+							<div class="col-xs-12" style="text-align:left; font-style: Times New Roman; font-size:16px; margin-top:5px;">
+								1):
+							</div>
+							<div class="col-xs-12" style="text-align:left; font-style: Times New Roman; font-size:16px; margin-top:5px;">
+								2):
+							</div>
+
+						</div>
+
+					</t>
+				</t>
+			</t>
+		</template>
+
+	</data>
+</odoo>

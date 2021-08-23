@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="clv_document_type_view_form_jcafb" model="ir.ui.view">
+        <field name="name">clv.document.type.form</field>
+        <field name="model">clv.document.type</field>
+        <field name="inherit_id" ref="clv_document.clv_document_type_view_form"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <div name="title" position="inside">
+                <label for="survey_id" class="oe_edit_only"/>
+                <h3><field name="survey_id" placeholder="Survey Type..." options="{'no_open': False, 'no_create': True}"/></h3>
+            </div>
+        </field>
+    </record>
+
+    <record id="clv_document_type_view_tree_jcafb" model="ir.ui.view">
+        <field name="name">clv.document.type.tree</field>
+        <field name="model">clv.document.type</field>
+        <field name="inherit_id" ref="clv_document.clv_document_type_view_tree"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="description" position="after">
+                <field name="survey_id"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="clv_document_type_view_search_survey" model="ir.ui.view">
+        <field name="name">clv.document.type.search</field>
+        <field name="model">clv.document.type</field>
+        <field name="inherit_id" ref="clv_document.clv_document_type_view_search"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <group name="group_by" position="inside">
+                <filter name="filter_survey_id" string="Survey Type" context="{'group_by': 'survey_id'}"/>
+            </group>
+        </field>
+    </record>
+
+</odoo>

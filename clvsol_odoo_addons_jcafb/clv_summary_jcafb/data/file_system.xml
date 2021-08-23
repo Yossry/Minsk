@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo noupdate="0">
+ 
+	<record id="clv_file_system_directory_summary_files" model="clv.file_system.directory">
+		<field name="name" eval="&quot;&quot;&quot;Summary Files&quot;&quot;&quot;"/>
+		<field name="directory" eval="&quot;&quot;&quot;/opt/odoo/clvsol_filestore/clvhealth_jcafb/summary_files&quot;&quot;&quot;"/>
+	</record>
+
+</odoo>

@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_employee_supervised_year_portal,hr.employee.supervised.year portal,hr_school.model_hr_employee_supervised_year,base.group_portal,1,0,0,0
+access_hr_employee_supervised_year_user,hr.employee.supervised.year user,hr_school.model_hr_employee_supervised_year,base.group_user,1,0,0,0
+access_hr_employee_supervised_year_manager,hr.employee.supervised.year manager,hr_school.model_hr_employee_supervised_year,hr.group_hr_manager,1,1,1,1
+access_education_order_day_portal,education.order.day portal,hr_school.model_education_order_day,base.group_portal,1,0,0,0
+access_education_order_day_user,education.order.day user,hr_school.model_education_order_day,base.group_user,1,0,0,0
+access_education_order_day_manager,education.order.day manager,hr_school.model_education_order_day,hr.group_hr_manager,1,1,1,1

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+  <t t-name="WarningMessageTemplate">
+    <div style="text-align:center;color:red;padding-top:7%;">
+      <h1><i class="fa fa-ban fa-6x"></i></h1>
+      <h4>Access Denied.</h4>
+      <h4>Please contact the Administrator.</h4>
+    </div>
+  </t>
+</templates>

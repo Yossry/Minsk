@@ -1,0 +1,48 @@
+<odoo>
+    <template id="investor_wallet_platform_base.iwp_external_layout_standard">
+        <div class="header">
+            <div class="row">
+                <div class="col-3 mb4">
+                    <img t-if="o.structure.image" t-att-src="image_data_uri(o.structure.image)" style="max-height: 45px;" alt="Logo"/>
+                </div>
+            </div>
+            <div t-if="o.structure.image" class="row zero_min_height">
+                <div class="col-12">
+                    <div style="border-bottom: 1px solid black;"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6" name="company_address">
+                    <div t-field="o.structure"
+                        t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}'
+                    />
+                </div>
+            </div>
+        </div>
+
+        <div class="article o_report_layout_standard"  t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
+            <t t-call="web.address_layout"/>
+            <t t-raw="0"/>
+        </div>
+
+        <div class="footer o_standard_footer">
+            <div class="text-center" style="border-top: 1px solid black;">
+                <ul class="list-inline mb4">
+                    <li t-if="o.structure.phone" class="list-inline-item">Phone: <span t-field="o.structure.phone"/></li>
+                    <li t-if="o.structure.email" class="list-inline-item">Email: <span t-field="o.structure.email"/></li>
+                    <li t-if="o.structure.website" class="list-inline-item">Web: <span t-field="o.structure.website"/></li>
+                    <li t-if="o.structure.vat" class="list-inline-item"><t t-esc="o.structure.country_id.vat_label or 'Tax ID'"/>: <span t-field="o.structure.vat"/></li>
+                </ul>
+
+                <div t-if="report_type == 'pdf'" class="text-muted">
+                    Page: <span class="page"/> / <span class="topage"/>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="iwp_external_layout">
+        <t t-if="not o" t-set="o" t-value="doc"/>
+        <t t-call="investor_wallet_platform_base.iwp_external_layout_standard"><t t-raw="0"/></t>
+    </template>
+</odoo>

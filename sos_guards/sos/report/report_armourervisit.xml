@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+	<template id ="report_armourervisit">
+		<t t-call="web.html_container">
+				<t t-call="web.external_layout" style="font-family:georgia,garamond,serif;font-size:10px">
+					<div class="page">
+						<style>
+								 table th { background-color:#d4e3e5;}
+								 tr:nth-child(even) {background-color: #FFEBCD;}
+								 tr:nth-child(odd) {background-color: #cdcdcd;}
+						</style>
+						<h3>Armour-er Report Detail</h3>	 							
+						<h4>
+							
+							From: <span t-esc="get_date_formate(data['date_from'])"/><br></br>
+							To:   <span t-esc="get_date_formate(data['date_end'])"/><br></br>							
+						</h4>
+						
+						<div width="100%" style="font-style: cambria; font-size:10px; font-weight:bold; text-align:right; padding-right:10px;">Date: <t t-esc="context_timestamp(datetime.datetime.now()).strftime('%H:%M:%S')"/> </div>
+						
+						<table class="table table-condensed" width="100%">
+							<thead>
+								<tr style="font-size:10px; font-weight:bold;">
+									<th class="text-left">Sr# </th>
+									<th class="text-left">Date </th>
+									<th class="text-left">City </th>
+									<th class="text-left">Post </th>
+									<th class="text-left">Weapon Type </th>
+									<th class="text-left">Weapon No. </th>
+									<th class="text-left">Ammunition </th>
+									<th class="text-left">Work </th>
+									<th class="text-left">Status </th>
+								</tr>
+							</thead>
+							
+							<tbody>
+								<t t-foreach="Visits" t-as="visit">
+									<tr style="font-size:10px;">
+										<td class="text-left">
+											<span t-esc="visit_index + 1" />
+										</td>
+										<td class="text-left">
+											<span t-field="visit.date" t-field-options='{"format": "d-MM-y"}' />
+										</td>
+										<td class="text-left">
+											<span t-esc="visit.city" />
+										</td>
+										<td class="text-left">
+											<span t-esc="visit.post_id.name" />
+										</td>
+										<td class="text-left">
+											<span t-esc="visit.weapon_type" />
+										</td>
+										<td class="text-left">
+											<span t-esc="visit.weapon_no" />
+										</td>
+										<td class="text-left">
+											<span t-esc="visit.ammunation" />											
+										</td>
+										<td class="text-left">
+											<span t-esc="visit.remarks" />
+										</td>
+										<td class="text-left">
+											<span t-esc="visit.state" />
+										</td>
+									</tr>
+								</t>
+							</tbody>
+						</table>
+						
+					</div>	
+				</t>
+		</t>
+	</template>
+	
+	</data>
+</odoo>

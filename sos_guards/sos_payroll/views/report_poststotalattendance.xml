@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+	<template id ="report_poststotalattendance">
+		<t t-call="web.html_container">
+				<t t-call="web.external_layout" style="font-family:georgia,garamond,serif;font-size:10px">
+					<div class="page">
+						<style>
+								.tabhead{font-family:georgia,garamond,serif;font-size:14px;}
+								.tabcol{font-family:georgia,garamond,serif;font-size:13px;}
+								table th { background-color:#d4e3e5;}
+								tr:nth-child(even) {background-color: #FFEBCD;}
+								tr:nth-child(odd) {background-color: #cdcdcd;}
+						</style>
+						<div width="100%"><center><h3>Posts Attendance Report Of
+							<t  t-if="data['center_id']"> 
+								<span t-esc="data['center_id'][1]" />
+							</t>
+							<t  t-if="data['project_id']"> 
+								<span t-esc="data['project_id'][1]" />
+							</t>	 
+						</h3></center> </div>
+						<table class="table" width="100%">
+							<tr class="tabcol">
+								<td class="text-center">
+									<h3> From
+									<span t-esc="get_date_formate(data['date_from'])" />
+									To
+									<span t-esc="get_date_formate(data['date_to'])" />
+									</h3> 
+								</td>
+							</tr>
+						</table>
+							<table class="table" width="100%">
+								<thead>
+									<tr class="tabhead">
+										<th>Sr.No</th>
+										<th>Post Name</th>
+										<th>Guards</th>
+										<th>Start Date</th>
+										<th>Total Attendance</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr t-foreach="Posts" t-as="post">
+										<td>
+											<span t-esc="post_index+1" />
+										</td>
+										<td>
+											<span t-esc="post.name" />
+										</td>
+										<td>
+											<span t-esc="post.cur_guards" />
+										</td>
+										<td>
+											<t  t-if="post.startdate">
+												<span t-esc="get_date_formate(post.startdate)" />
+											</t>
+										</td>
+										<td>
+											<span t-esc="get_post_attendance(data,post.id)" />
+										</td>
+									</tr>
+								</tbody>	
+							</table>
+					</div>
+				</t>
+		</t>
+	</template>
+	
+	</data>
+</odoo>

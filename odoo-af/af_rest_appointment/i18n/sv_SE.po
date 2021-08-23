@@ -1,0 +1,73 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* af_rest_appointment
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0-20200419\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-04-21 07:17+0000\n"
+"PO-Revision-Date: 2020-04-21 09:22+0200\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: sv_SE\n"
+"X-Generator: Poedit 2.0.6\n"
+
+#. module: af_rest_appointment
+#: model:ir.actions.server,name:af_rest_appointment.af_rest_appointments
+msgid "AF REST Appointments"
+msgstr "AF REST Möten"
+
+#. module: af_rest_appointment
+#: model:ir.actions.server,name:af_rest_appointment.af_rest_occasions
+msgid "AF REST Occasions"
+msgstr "AF REST Tillfällen"
+
+#. module: af_rest_appointment
+#: model:ir.actions.server,name:af_rest_appointment.af_rest_schedule
+msgid "AF REST Schedules"
+msgstr "AF REST Scheman"
+
+#. module: af_rest_appointment
+#: model:ir.model.fields,field_description:af_rest_appointment.field_af_appointment__create_uid
+msgid "Created by"
+msgstr "Skapad av"
+
+#. module: af_rest_appointment
+#: model:ir.model.fields,field_description:af_rest_appointment.field_af_appointment__create_date
+msgid "Created on"
+msgstr "Skapad den"
+
+#. module: af_rest_appointment
+#: model:ir.model.fields,field_description:af_rest_appointment.field_af_appointment__display_name
+msgid "Display Name"
+msgstr "Visningsnamn"
+
+#. module: af_rest_appointment
+#: model:ir.model.fields,field_description:af_rest_appointment.field_af_appointment__id
+msgid "ID"
+msgstr ""
+
+#. module: af_rest_appointment
+#: model:ir.model,name:af_rest_appointment.model_af_appointment
+msgid "Integration helper class"
+msgstr "Integrationshjälpklass"
+
+#. module: af_rest_appointment
+#: model:ir.model.fields,field_description:af_rest_appointment.field_af_appointment____last_update
+msgid "Last Modified on"
+msgstr "Senast redigerad"
+
+#. module: af_rest_appointment
+#: model:ir.model.fields,field_description:af_rest_appointment.field_af_appointment__write_uid
+msgid "Last Updated by"
+msgstr "Senast uppdaterad av"
+
+#. module: af_rest_appointment
+#: model:ir.model.fields,field_description:af_rest_appointment.field_af_appointment__write_date
+msgid "Last Updated on"
+msgstr "Senast uppdaterad"

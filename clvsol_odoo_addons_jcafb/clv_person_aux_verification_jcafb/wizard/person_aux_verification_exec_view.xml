@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="clv_person_aux_verification_exec_view_form" model="ir.ui.view">
+        <field name="name">clv.person_aux.verification_exec.form</field>
+        <field name="model">clv.person_aux.verification_exec</field>
+        <field name="arch" type="xml">
+            <form>
+                <div class="oe_right">
+                </div>
+                <label for="person_aux_ids" class="oe_edit_only"/>
+                <field name="person_aux_ids">
+                    <!--tree>
+                    </tree-->
+                </field>
+                <group>
+                    <group>
+                        <field name="count_persons_aux"/>
+                    </group>
+                </group>
+                <footer>
+                    <button 
+                        type="object"
+                        name="do_person_aux_verification_exec"
+                        string="Person (Aux) Verification Execute"
+                        class="oe_highlight"
+                        />
+                    <button special="cancel" string="Cancel"/>
+                </footer>
+            </form>
+
+        </field>
+    </record>
+
+    <!-- More button Action -->
+    <act_window 
+        id="clv_person_aux_verification_exec_action"
+        name="Person (Aux) Verification Execute"
+        src_model="clv.person_aux"
+        res_model="clv.person_aux.verification_exec"
+        view_mode="form"
+        key2="client_action_multi"
+        target="new"
+    />
+
+</odoo>

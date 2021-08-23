@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="abl_incentive_wizard_view" model="ir.ui.view">
+		    <field name="name">ABL Incentive</field>
+		    <field name="model">abl.incentive.wizard</field>
+		    <field name="arch" type="xml">
+				<form string="ABL Incentive Wizard">
+				
+						<group>
+							<group>
+									<field name="date_from"/>
+									<field name="date_to"/>
+							</group>
+							<group>
+							</group>
+						</group>
+				
+					<footer>
+							<button string="Print" name="print_report" type="object" class="oe_highlight"  />
+							<button string="Cancel" class="oe_link" special="cancel" />
+		                </footer>
+				</form>
+			</field>
+		</record>
+
+		<record id="action_abl_incentive_wizard" model="ir.actions.act_window">
+		    <field name="name">ABL Incentive Report</field>
+		    <field name="type">ir.actions.act_window</field>
+		    <field name="res_model">abl.incentive.wizard</field>
+		    <field name="view_type">form</field>
+		    <field name="view_mode">form</field>
+		    <field name="view_id" ref="abl_incentive_wizard_view"/>
+		    <field name="target">new</field>
+		</record>
+	</data>	
+</odoo>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="theme_1" model="ir.web.theme">
+            <field name="leftbar_color">#875a7b</field>
+            <field name="buttons_color">#00a09d</field>
+            <field name="menu_color">#666666</field>
+            <field name="heading_color">#2f3136</field>
+            <field name="label_color">#666666</field>
+            <field name="label_value_color">#666666</field>
+            <field name="link_color">#00a09d</field>
+            <field name="panel_title_color">#2f3136</field>
+            <field name="tooltip_color">#875a7b</field>
+            <field name="button_box">#666666</field>
+            <field name="border_color">#cccccc</field>
+        </record>
+        <record id="theme_2" model="ir.web.theme">
+            <field name="leftbar_color">#003056</field>
+            <field name="buttons_color">#0080ad</field>
+            <field name="menu_color">#003056</field>
+            <field name="heading_color">#0080ad</field>
+            <field name="label_color">#003056</field>
+            <field name="label_value_color">#003056</field>
+            <field name="link_color">#0080ad</field>
+            <field name="panel_title_color">#003056</field>
+            <field name="tooltip_color">#003056</field>
+            <field name="button_box">#003056</field>
+            <field name="border_color">#dde6f3</field>
+        </record>
+        <record id="theme_3" model="ir.web.theme">
+            <field name="leftbar_color">#22264b</field>
+            <field name="buttons_color">#a25e5e</field>
+            <field name="menu_color">#241515</field>
+            <field name="heading_color">#a25e5e</field>
+            <field name="label_color">#241515</field>
+            <field name="label_value_color">#241515</field>
+            <field name="link_color">#a25e5e</field>
+            <field name="panel_title_color">#241515</field>
+            <field name="tooltip_color">#22264b</field>
+            <field name="button_box">#241515</field>
+            <field name="border_color">#e8edf3</field>
+        </record>
+        <record id="theme_4" model="ir.web.theme">
+            <field name="leftbar_color">#072630</field>
+            <field name="buttons_color">#1983a4</field>
+            <field name="menu_color">#0b3a49</field>
+            <field name="heading_color">#1983a4</field>
+            <field name="label_color">#0b3a49</field>
+            <field name="label_value_color">#0b3a49</field>
+            <field name="link_color">#1983a4</field>
+            <field name="panel_title_color">#0b3a49</field>
+            <field name="tooltip_color">#072630</field>
+            <field name="button_box">#0b3a49</field>
+            <field name="border_color">#e6e9ea</field>
+        </record>
+        <record id="theme_5" model="ir.web.theme">
+            <field name="leftbar_color">#181527</field>
+            <field name="buttons_color">#5b5194</field>
+            <field name="menu_color">#201c35</field>
+            <field name="heading_color">#5b5194</field>
+            <field name="label_color">#201c35</field>
+            <field name="label_value_color">#201c35</field>
+            <field name="link_color">#5b5194</field>
+            <field name="panel_title_color">#201c35</field>
+            <field name="tooltip_color">#181527</field>
+            <field name="button_box">#201c35</field>
+            <field name="border_color">#e7e7e9</field>
+        </record>
+        <record id="theme_6" model="ir.web.theme">
+            <field name="leftbar_color">#1d2939</field>
+            <field name="buttons_color">#128193</field>
+            <field name="menu_color">#343a40</field>
+            <field name="heading_color">#128193</field>
+            <field name="label_color">#343a40</field>
+            <field name="label_value_color">#343a40</field>
+            <field name="link_color">#128193</field>
+            <field name="panel_title_color">#343a40</field>
+            <field name="tooltip_color">#1d2939</field>
+            <field name="button_box">#343a40</field>
+            <field name="border_color">#d1d4d7</field>
+        </record>
+        <record id="theme_7" model="ir.web.theme">
+            <field name="leftbar_color">#1e3c72</field>
+            <field name="buttons_color">#de8819</field>
+            <field name="menu_color">#354052</field>
+            <field name="heading_color">#de8819</field>
+            <field name="label_color">#354052</field>
+            <field name="label_value_color">#354052</field>
+            <field name="link_color">#de8819</field>
+            <field name="panel_title_color">#354052</field>
+            <field name="tooltip_color">#1e3c72</field>
+            <field name="button_box">#354052</field>
+            <field name="border_color">#dde6f3</field>
+        </record>
+        <record id="theme_8" model="ir.web.theme">
+            <field name="leftbar_color">#383d43</field>
+            <field name="buttons_color">#993822</field>
+            <field name="menu_color">#4f5054</field>
+            <field name="heading_color">#993822</field>
+            <field name="label_color">#4f5054</field>
+            <field name="label_value_color">#4f5054</field>
+            <field name="link_color">#993822</field>
+            <field name="panel_title_color">#4f5054</field>
+            <field name="tooltip_color">#383d43</field>
+            <field name="button_box">#4f5054</field>
+            <field name="border_color">#dfe1e6</field>
+        </record>
+        <record id="theme_9" model="ir.web.theme">
+            <field name="leftbar_color">#493d55</field>
+            <field name="buttons_color">#00807d</field>
+            <field name="menu_color">#454f55</field>
+            <field name="heading_color">#00807d</field>
+            <field name="label_color">#454f55</field>
+            <field name="label_value_color">#454f55</field>
+            <field name="link_color">#00807d</field>
+            <field name="panel_title_color">#454f55</field>
+            <field name="tooltip_color">#493d55</field>
+            <field name="button_box">#454f55</field>
+            <field name="border_color">#e5e5e5</field>
+        </record>
+        <record model="ir.config_parameter" id="default_theme">
+            <field name="key">uppercrust_backend_theme.selected_theme</field>
+            <field name="value" ref="uppercrust_backend_theme.theme_6"/>
+        </record>
+    </data>
+</odoo>

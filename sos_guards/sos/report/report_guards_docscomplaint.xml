@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<template id ="report_guards_docscomplaint">
+			<t t-call="web.html_container">
+					<t t-call="web.external_layout" style="font-family:georgia,garamond,serif;font-size:10px">
+						<div class="page">
+							<style>
+									 table th { background-color:#d4e3e5;}
+									 tr:nth-child(even) {background-color: #FFEBCD;}
+									 tr:nth-child(odd) {background-color: #cdcdcd;}
+							</style>
+							<h3>Guards Docs Complaint Report Detail</h3>
+
+							<div width="100%" style="font-style: cambria; font-size:10px; font-weight:bold; text-align:right; padding-right:10px;">Date: <t t-esc="context_timestamp(datetime.datetime.now()).strftime('%H:%M:%S')"/> </div>
+
+							<table class="table table-condensed" width="100%">
+								<thead>
+									<tr style="font-size:10px; font-weight:bold;">
+										<th class="text-left">Sr# </th>
+										<th class="text-left" width="20%">Branch Name </th>
+										<th class="text-left">Code </th>
+										<th class="text-left">Guard Name </th>
+										<th class="text-left">CNIC </th>
+										<th class="text-left">Contract </th>
+										<th class="text-left" width="30%">Notes </th>
+									</tr>
+								</thead>
+
+								<tbody>
+									<t t-foreach="Guards" t-as="guard">
+										<tr style="font-size:10px;">
+											<td class="text-left">
+												<span t-esc="guard_index + 1" />
+											</td>
+											<td class="text-left">
+												<span t-esc="guard.current_post_id.name" />
+											</td>
+											<td class="text-left">
+												<span t-esc="guard.code" />
+											</td>
+											<td class="text-left">
+												<span t-esc="guard.name" />
+											</td>
+											<td class="text-left">
+												<span t-esc="guard.cnic" />
+											</td>
+											<td class="text-left">
+												<span t-esc="guard.guard_contract_id.name" />
+											</td>
+											<td class="text-left">
+												<span t-esc="guard.notes" />
+											</td>
+										</tr>
+									</t>
+								</tbody>
+							</table>
+
+						</div>
+					</t>
+			</t>
+		</template>
+	</data>
+</odoo>

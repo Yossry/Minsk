@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+        
+    <record id="clv_abstract_log_view_form" model="ir.ui.view">
+        <field name="name">clv.abstract.log.form</field>
+        <field name="model">clv.abstract.log</field>
+        <field name="arch" type="xml">
+            <form string="Abstract Log">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="user_id"/>
+                            <field name="date_log"/>
+                            <field name="values"/>
+                            <field name="action" />
+                            <field name="notes" />
+                        </group>
+                        <group>
+                            <field name="model"/>
+                            <field name="res_id"/>
+                            <field name="reference" widget="reference"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="clv_abstract_log_view_tree" model="ir.ui.view">
+        <field name="name">clv.abstract.log.tree</field>
+        <field name="model">clv.abstract.log</field>
+        <field name="priority" eval="8" />
+        <field name="arch" type="xml">
+            <tree string="Abstract Log">
+                <field name="user_id"/>
+                <field name="date_log"/>
+                <field name="values"/>
+                <field name="action"/>
+                <field name="notes"/>
+                <field name="model"/>
+                <field name="res_id"/>
+                <field name="reference"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="clv_abstract_log_view_search" model="ir.ui.view">
+        <field name="name">clv.abstract.log.search</field>
+        <field name="model">clv.abstract.log</field>
+        <field name="arch" type="xml">
+            <search string="Abstract Logs">
+                <field name="user_id"/>
+                <field name="model"/>
+                <field name="res_id"/>
+                <field name="reference"/>
+                <group name="group_by" expand="0" string="Group By...">
+                    <filter name="filter_model" string="Model Name" domain="[]" context="{'group_by':'model'}"/>
+                    <filter name="filter_reference" string="Reference" domain="[]" context="{'group_by':'reference'}"/>
+                    <filter name="filter_user_id" string="User" domain="[]" context="{'group_by':'user_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+</odoo>

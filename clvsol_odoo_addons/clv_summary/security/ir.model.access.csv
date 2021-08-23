@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_clv_summary_user,clv.summary.user,model_clv_summary,clv_summary.group_user,1,0,0,0
+access_clv_summary_manager,clv.summary.manager.host,model_clv_summary,clv_summary.group_manager,1,1,1,0
+access_clv_summary_supmanager,clv.summary.supmanager,model_clv_summary,clv_summary.group_supmanager,1,1,1,1
+
+access_clv_summary_template_user,clv.summary.template.user,model_clv_summary_template,clv_summary.group_user,1,0,0,0
+access_clv_summary_template_manager,clv.summary.manager.template,model_clv_summary_template,clv_summary.group_manager,1,1,1,0
+access_clv_summary_template_supmanager,clv.summary.template.supmanager,model_clv_summary_template,clv_summary.group_supmanager,1,1,1,1

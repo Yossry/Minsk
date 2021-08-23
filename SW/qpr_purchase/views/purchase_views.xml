@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record id="purchase_requisition.menu_purchase_requisition_pro_mgt" model='ir.ui.menu'>
+            <field name="name">Request For Material/Service</field>
+            <field name="sequence">-1</field>
+        </record>
+        <record model="ir.actions.act_window" id="purchase_requisition.action_purchase_requisition">
+            <field name="name">Request For Material/Service</field>
+        </record>
+
+        <record model="ir.ui.view" id="view_purchase_requisition_form_inherit_qpr_purchase">
+            <field name="name">purchase.requisition.form.inherit</field>
+            <field name="model">purchase.requisition</field>
+            <field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_form"/>
+            <field name="arch" type="xml">
+                <button name="action_cancel" position="attributes">
+                    <attribute name="string">Release</attribute>
+                </button>
+                <button name="action_open" position="attributes">
+                    <attribute name="groups">purchase.group_purchase_manager</attribute>
+                </button>
+                <button name="action_open" position="after">
+                    <button name="action_review" attrs="{'invisible': [('reviewed_by', '!=', False)]}" string="PR Review" type="object" groups="qpr_purchase.group_pr_review"/>
+                    <button name="action_approve" attrs="{'invisible': [('approved_by', '!=', False)]}" string="PR Approve" type="object" groups="qpr_purchase.group_pr_approve"/>
+                </button>
+                <button name="%(purchase_requisition.action_purchase_requisition_to_so)d" position="replace">
+                </button>
+                <button name="%(purchase_requisition.action_purchase_requisition_to_so)d" position="replace">
+                    <button name="%(purchase_requisition.action_purchase_requisition_to_so)d" type="action"
+                    string="New Quotations" class="btn-primary"
+                    attrs="{'invisible': ['|', ('state', '!=', 'open'), ('approved_by', '=', False)]}"/>
+                </button>
+                <!-- <xpath expr="//form//header//button[1]" position="replace">
+                </xpath>
+                <xpath expr="//form//header//button[2]" position="replace">
+                    <button name="%(purchase_requisition.action_purchase_requisition_to_so)d" type="action"
+                    string="New Quotationsss" class="btn-primary"
+                    attrs="{'invisible': [('state', '!=', 'in_progress')]}"/>
+                    <attribute name="attrs">{'invisible': ['|', ('state', '!=', 'open'), ('approved_by', '=', False)]}</attribute>
+                </xpath> -->
+                <field name="description" position="after">
+                    <separator string="Reason For Requisition"/>
+                    <field name="reason" nolabel="1"/>
+                </field>
+                <field name="type_id" position="after">
+                    <field name="department_id" readonly="1" force_save="1"/>
+                    <field name="reviewed_by"  readonly="1" force_save="1"/>
+                    <field name="approved_by" readonly="1" force_save="1"/>
+                </field>
+
+                <xpath expr="//field[@name='line_ids']//tree//field[@name='product_id']" position="after">
+                    <field name="description"/>
+                </xpath>
+                <xpath expr="//field[@name='line_ids']//tree//field[@name='account_analytic_id']" position="attributes">
+                    <attribute name="string">Project</attribute>
+                </xpath>
+                <xpath expr="//field[@name='line_ids']//form//field[@name='account_analytic_id']" position="attributes">
+                    <attribute name="string">Project</attribute>
+                </xpath>
+                <xpath expr="//field[@name='line_ids']//tree//field[@name='product_uom_id']" position="after">
+                    <field name="qty_available"/>
+                </xpath>
+                <xpath expr="//field[@name='line_ids']//form//field[@name='product_id']" position="after">
+                    <field name="description"/>
+                </xpath>
+                <xpath expr="//div[@name='button_box']//button[1]" position="attributes">
+                    <attribute name="groups">purchase.group_purchase_user</attribute>
+                </xpath>
+
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_purchase_requisition_form_inherit_qpr_purchase_employee">
+            <field name="name">purchase.requisition.form.inherit.employee</field>
+            <field name="model">purchase.requisition</field>
+            <field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_form"/>
+            <field name="groups_id" eval="[(6, 0, [ref('qpr_purchase.group_qpr_employee_pr') ])]" />
+            <field name="arch" type="xml">
+                <field name="user_id" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                    <attribute name="force_save">1</attribute>
+                </field>
+                <field name="line_ids" position="attributes">
+                    <attribute name="attrs">{'readonly': [('state', '!=', 'draft')]}</attribute>
+                </field>
+                <field name="vendor_id" position="attributes">
+                    <attribute name="attrs">{'readonly': [('state', '!=', 'draft')]}</attribute>
+                </field>
+                <field name="date_end" position="attributes">
+                    <attribute name="attrs">{'readonly': [('state', '!=', 'draft')]}</attribute>
+                </field>
+                <field name="ordering_date" position="attributes">
+                    <attribute name="attrs">{'readonly': [('state', '!=', 'draft')]}</attribute>
+                </field>
+                <field name="schedule_date" position="attributes">
+                    <attribute name="attrs">{'readonly': [('state', '!=', 'draft')]}</attribute>
+                </field>
+                <field name="origin" position="attributes">
+                    <attribute name="attrs">{'readonly': [('state', '!=', 'draft')]}</attribute>
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_purchase_requisition_type_form_inherit_qpr_purchase">
+            <field name="name">purchase.requisition.type.form.inherit</field>
+            <field name="model">purchase.requisition.type</field>
+            <field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_type_form"/>
+            <field name="arch" type="xml">
+                <xpath expr='//form//sheet//group[1]//group[1]' position="attributes">
+                    <attribute name="string">Request For Material/Service Type</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="purchase_order_form_inherit_inherit_qpr_purchase">
+            <field name="name">purchase.order.form.inherit</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase_requisition.purchase_order_form_inherit"/>
+            <field name="arch" type="xml">
+                <field name="requisition_id" position="attributes">
+                    <attribute name="string">Request For Material/Service</attribute>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</odoo>

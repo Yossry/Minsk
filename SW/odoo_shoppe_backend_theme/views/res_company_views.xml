@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_res_company_form_view_inherit" model="ir.ui.view" >
+        <field name="name">res.company.form.inherit</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook[last()]" position="inside">
+                <page string="About">
+                    <group>
+                        <field name="about_company"/>
+                    </group>
+                </page>
+                <page string="Theme">
+                    <group>
+                        <field name="theme_type" widget='radio'/>
+                        <field name="theme" widget="theme_radio" attrs="{'invisible': [('theme_type', '=', 'user_theme')]}"/>
+                        <field name='theme_lables_color'/>
+                    </group>
+                    <group>
+                        <field name='app_background_image' widget="image" invisible="1"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

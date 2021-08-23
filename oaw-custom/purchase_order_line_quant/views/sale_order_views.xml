@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_order_form" model="ir.ui.view">
+        <field name="name">sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale_view_adjust_oaw.view_order_form" />
+        <field name="arch" type="xml">
+            <xpath
+                expr="//field[@name='order_line']/tree/field[@name='note_client_price']"
+                position="after"
+            >
+                <field name="purchase_order_id" string="Purchase Order" />
+                <button
+                    name="action_view_purchase_open"
+                    type="object"
+                    icon="fa-sign-in"
+                    string="Open PO"
+                    attrs="{'invisible':[('purchase_order_id','=',False)]}"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>

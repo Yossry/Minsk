@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<!--SOS Air Reservation form view -->
+		<record id="view_sos_air_reservation_form" model="ir.ui.view">
+			<field name="name">sos.air.reservation.form</field>
+			<field name="model">sos.air.reservation</field>
+			<field name="arch" type="xml">
+				<form string="Air Reservation Form">
+				   <header>
+						<button name="Coordinator_Approval" states="Draft" string="Coordinator Approval" class="oe_highlight" type="object"/>
+						<button name="Admin_Approval" states="Coordinator" string="Admin Approval" class="oe_highlight" type="object"/>
+						<button name="Audit_Approval" states="Admin Approval" string="Audit Approval" class="oe_highlight" type="object"/>
+						<button name="Finance_Approval" states="Audit Approval" string="Finance Approval" class="oe_highlight" type="object"/>
+						<button name="Accounts_Approval" states="Finance Approval" string="Accounts Approval" class="oe_highlight" type="object"/>						
+						<button name="Action_Paid" states="Accounts Approval" string="Paid" class="oe_highlight" type="object"/>
+						<field name="state" widget="statusbar" nolabel="1" />
+				   </header>
+					   
+				   <sheet>
+					   <div class="oe_title">				   
+						   <h1>
+							   <field name="name" readonly="1" nolabel="1"/>
+						   </h1>
+					   </div>				   
+					   <div class="oe_right oe_button_box" name="button_box">					   
+						   
+					   </div>
+					   <group>	
+							<group>				   						   		
+								<field name="requested_by" domain="[('department_id','!=',29),('is_guard','=',False),('current','=',True)]" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}" required="1"/>
+							</group>
+							<group>
+								<field name="booking_date"/>
+							</group>
+						</group>
+						
+						<group>	
+							<group>	
+								<field name="departure_date" required="1"/>			   								
+								<field name="arrival_date" required="1"/>
+							</group>
+							<group>
+								<field name="place_from" required="1" placeholder="Place from e.g Multan..."/>				   		
+								<field name="place_to" required="1" placeholder="Place To e.g. Islamabad..."/>
+							</group>
+							
+							<group>
+								<field name="traveler_type" widget="radio"/>
+							</group>
+							<group>
+								<field name="sos_traveler_name" domain="[('department_id','!=',29),('is_guard','=',False),('current','=',True)]" 
+											options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}" attrs="{'required': [('traveler_type', '=', 'SOS Employees')], 'invisible': [('traveler_type', '=', 'Other Then SOS')]}"/>
+								<field name="vistor_name" attrs="{'required': [('traveler_type', '=', 'Other Then SOS')], 'invisible': [('traveler_type', '=', 'SOS Employees')]}"/>
+							</group>
+							
+							<group>
+								<field name="travel_agent" required="1" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>
+								<field name="pnr_no" string="Ticket No."/>
+							</group>
+							<group>
+								<field name="flight_time" required="1"/>
+								<field name="fare" required="1"/>
+							</group>
+							
+							<group>
+								<field name="mode" widget="radio" required="1"/>
+							</group>
+							<group>
+								<field name="ticket_mode" widget="radio" required="1"/>
+							</group>
+							
+							<group>
+								<field name="ticket_cancellation"/>
+							</group>							
+							<group>
+								<field name="cancellation_amt" attrs="{'required': [('ticket_cancellation', '=', True)],'invisible':[('ticket_cancellation', '!=', True)]}"/>
+							</group>
+							
+					   </group>
+					   
+					   <group>
+							<field name="purpose" placeholder="Purpose ..."/>
+						</group>	
+					   
+				   </sheet>
+					   <div class="oe_chatter">
+							<field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+							<field name="message_ids" widget="mail_thread" placeholder="Share a note..."/>
+						</div>
+			   </form>
+		   </field>
+		</record>
+ 
+		<!--SOS Air Reservation Tree view -->   
+		<record id="view_sos_air_reservation_tree" model="ir.ui.view">
+		   <field name="name">sos.air.reservation.tree</field>
+		   <field name="model">sos.air.reservation</field>
+		   <field name="arch" type="xml">
+			   <tree colors="black:state == 'draft';red:state  == 'HOD Approval';green:state == 'Audit Approval';" string="Air Reservation Approval">	  
+				   <field name="name"/>
+				   <field name="booking_date"/>
+				   <field name="place_from"/>
+				   <field name="place_to"/>		   
+				   <field name="departure_date"/>
+				   <field name="arrival_date"/>
+				   <field name="mode" />
+				   <field name="sos_traveler_name"/>
+				   <field name="vistor_name"/>
+				   <field name="travel_agent" />
+				   <field name="flight_time"/>
+				   <field name="fare"/>		   
+				   <field name="state" />		   
+			   </tree>
+		   </field>
+		</record>
+		
+		<!--SOS Air Reservation Search view -->	
+		<record id="view_sos_air_reservation_filter" model="ir.ui.view">
+			<field name="name">sos.air.reservation.select</field>
+			<field name="model">sos.air.reservation</field>
+			<field name="arch" type="xml">
+				<search string="Air Reservation Approval">
+				   	   		   
+				   <field name="name" string="Number"/> 
+				   <field name="requested_by" string="Requested By"/>		   				   	   		
+				   <field name="departure_date" string="Departure Date"/>
+				   <field name="arrival_date" string="Arrival Date"/>
+				   <field name="place_from" string="From"/>
+				   <field name="place_to" string="To"/>	
+				   <field name="vistor_name" string="Vistor"/>	
+				   <field name="travel_agent" string="Agent"/>	
+				   <field name="pnr_no" string="Ticket No."/>	
+				   <field name="flight_time" string="Flight Time"/>		   		
+				   
+				   <filter icon="terp-go-today" string="Draft" name="draft" domain="[('state','=','Draft')]" />
+				   <filter icon="terp-go-today" string="Coordinator Approval" name="Coordinator Approval" domain="[('state','=','Coordinator')]" />
+				   <filter icon="terp-go-today" string="Admin Approval" name="Admin Approval" domain="[('state','=','Admin Approval')]" />
+				   <filter icon="terp-go-today" string="Audit Approval" name="Audit Approval" domain="[('state','=','Audit Approval')]" />
+				   <filter icon="terp-go-today" string="Finance Approval" name="Finance Approval" domain="[('state','=','Finance Approval')]" />
+				   <filter icon="terp-go-today" string="Accounts Approval" name="Accounts Approval" domain="[('state','=','Accounts Approval')]" />
+				   	<filter icon="terp-go-today" string="Paid" name="Paid" domain="[('state','=','Paid')]" />
+				   <separator/>
+				   <filter icon="terp-go-today" string="Cancelled Tickets" name="Cancelled Tickets" domain="[('ticket_cancellation','=','True')]" />
+				   <separator/>
+				   
+				   
+				   <group expand="0" string="Group By...">
+				   		<filter string="Booking Date" name="booking_date" context="{'group_by': 'booking_date'}"/>
+				   		<filter string="Mode" name="mode" context="{'group_by': 'mode'}"/>
+				   		<filter string="Ticket Type" name="ticket_mode" context="{'group_by': 'ticket_mode'}"/>
+				   		<filter string="Vistor Type" name="traveler_type" context="{'group_by': 'traveler_type'}"/>
+				   		<filter string="Travel Agent" name="travel_agent" context="{'group_by': 'travel_agent'}"/>
+				   		<filter string="State" name="state" context="{'group_by': 'state'}"/>		   		
+				   		<separator/>
+				   </group>
+				   
+			   </search>
+			</field>
+		</record>
+	
+	
+		<record id="view_sos_air_reservation_action" model="ir.actions.act_window">
+			<field name="name">Air Reservation Approval</field>
+			<field name="res_model">sos.air.reservation</field>
+			<field name="view_type">form</field>
+			<field eval="False" name="view_id"/>	
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[]</field>	
+			<field name="context">{}</field>		
+			<field name="search_view_id" ref="view_sos_air_reservation_filter"/> 
+			<field name="help" type="html">
+			  <p class="oe_view_nocontent_create">
+				Click to add a New Record.
+			  </p><p>
+				With just a quick glance on the AARSOL ERP screen, you
+				can easily find all the information you need for each Deployment;
+				contact data, Current Status, etc.
+			  </p>
+			</field>
+		</record>
+
+
+
+		<!-- Travel Agent -->
+		<record id="view_sos_travel_agent_form" model="ir.ui.view">
+			<field name="name">sos.travel.agent.form</field>
+			<field name="model">sos.travel.agent</field>
+			<field name="arch" type="xml">
+				<form string="Travel Agent Form">
+					<sheet>
+						<group>
+							<group>
+								<field name="name" required="1"/>
+								<field name="code"/>
+							</group>
+							<group>
+								<field name="city"/>
+							</group>
+						</group>
+						
+						<group>
+							<field name="notes"/>
+						</group>
+						
+					</sheet>
+				</form>
+			</field>	
+		</record>
+		
+	
+		<!-- Travel Agent Tree -->
+		<record id="view_sos_travel_agent_tree" model="ir.ui.view">
+			<field name="name">sos.travel.agent.tree</field>
+			<field name="model">sos.travel.agent</field>
+			<field name="arch" type="xml">
+				<tree string="Travel Agent Form">
+					<field name="name" required="1"/>
+					<field name="code"/>
+					<field name="city"/>
+				</tree>
+			</field>	
+		</record>
+		
+		<!-- Travel Agent Filter -->
+		<record id="view_sos_travel_agent_filter" model="ir.ui.view">
+			<field name="name">sos.travel.agent.filter</field>
+			<field name="model">sos.travel.agent</field>
+			<field name="arch" type="xml">
+				<search string="Travel Agent Form">
+					<field name="name"/>
+					<field name="code"/>
+					<field name="city"/>
+				</search>
+			</field>	
+		</record>
+		
+		<record id="view_sos_travel_agent_action" model="ir.actions.act_window">
+			<field name="name">Travel Agent</field>
+			<field name="res_model">sos.travel.agent</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[]</field>	
+			<field name="context">{}</field>		
+			<field name="search_view_id" ref="view_sos_travel_agent_filter"/> 
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+					Click to add a New Record.
+				</p>
+			</field>
+		</record>
+	</data>
+</odoo>
+
+

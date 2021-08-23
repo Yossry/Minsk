@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>	
+		<template id ="sos_reports.report_compsummaryproject">
+			<t t-call="report.html_container">
+				<div class="page">
+					<div class="row">
+					 	 <div class="col-xs-4">
+					 	 	 <img width="40%" style="max-height:125px;" class="img img-responsive" src="/sos_payroll/static/src/img/logo.png"/>
+					 	 </div>
+					 	 <div class="col-xs-3">
+					 	 </div>
+					 	 
+					 	 <div class="col-xs-5" style="font-size:14px; font-weight:bold; text-align:right; align:left;margin-top:20px;">
+					 	 	SECURITY ORGANIZING SYSTEM (PVT) LIMITED
+					 	 </div>
+					 </div>
+				
+					 <div class="row" style="font-size:14px; font-weight:bold; text-align:center; align:left;">
+					 	<div class="col-xs-12">
+					 		Salary Comparison Report - <b>Project Wise</b> Month of
+					 		<span t-esc="Period1(data['date_from']).name"/> AND <span t-esc="Period2(data['date_from']).name"/> 
+					 	</div>
+					 </div>
+					 
+					 
+					 <table class="table table-bordered">
+					 	<thead>
+					 		<tr>
+					 			<th>SR.No</th>
+					 			<th>Center Name</th>
+					 			<th>Salary Amount</th>
+					 			<th>Salary Amount</th>
+					 			<th>Difference</th>
+					 		</tr>
+					 		
+					 		<tr>
+					 			<th colspan="2"> </th>
+					 			<th><span t-esc="Period1(data['date_from']).name"/> </th>
+					 			<th><span t-esc="Period2(data['date_from']).name"/> </th>
+					 			<th> </th>
+					 		</tr>
+					 		
+					 	</thead>
+					 	
+					 	<tbody>
+					 		
+					 		<t t-foreach="Records" t-as="rec">
+					 			<tr>
+					 				<td class="text-left">
+										<span t-esc="rec_index + 1" />
+									</td>
+									<td class="text-left">
+										<span t-esc="rec['project_name']" />
+									</td>
+									<td class="text-left">
+										<span t-esc="rec['amount_prev'] and '{0:,.0f}'.format(int(rec['amount_prev'])) or '-'" />
+									</td>
+									<td class="text-left">
+										<span t-esc="rec['amount'] and '{0:,.0f}'.format(int(rec['amount'])) or '-'" />
+									</td>
+									<td class="text-left">
+										<span t-esc="rec['diff'] and '{0:,.0f}'.format(int(rec['diff'])) or '-'" />
+									</td>
+					 			</tr>
+					 		</t>
+					 		
+					 		<tr style="font-size:12px; font-weight:bold;">
+					 			<td class="text-center" colspan="2">
+										TOTALS:
+								</td>
+								<td class="text-left">
+									<span t-esc="Prev_Total and '{0:,.0f}'.format(int(Prev_Total)) or '-'" />
+								</td>
+								<td class="text-left">
+									<span t-esc="Current_Total and '{0:,.0f}'.format(int(Current_Total)) or '-'" />
+								</td>
+								<td class="text-left">
+									<span t-esc="Diff_Total and '{0:,.0f}'.format(int(Diff_Total)) or '-'" />
+								</td>
+					 		</tr>
+					 	</tbody>
+					 	
+					 </table>
+					 	
+				</div>	 
+			</t>
+		</template>
+		
+	</data>
+</openerp>
+

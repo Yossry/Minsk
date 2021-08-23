@@ -1,0 +1,1 @@
+# Rave payment acquirer for Odoo

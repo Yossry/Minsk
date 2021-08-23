@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo noupdate="0">
+ 
+	<record id="clv_file_system_directory_survey_files_templates" model="clv.file_system.directory">
+		<field name="name" eval="&quot;&quot;&quot;Survey Files (Templates)&quot;&quot;&quot;"/>
+		<field name="directory" eval="&quot;&quot;&quot;/opt/odoo/clvsol_filestore/clvhealth_jcafb/survey_files/templates&quot;&quot;&quot;"/>
+	</record>
+
+	<record id="clv_file_system_directory_survey_files_input" model="clv.file_system.directory">
+		<field name="name" eval="&quot;&quot;&quot;Survey Files (Input)&quot;&quot;&quot;"/>
+		<field name="directory" eval="&quot;&quot;&quot;/opt/odoo/clvsol_filestore/clvhealth_jcafb/survey_files/input&quot;&quot;&quot;"/>
+	</record>
+
+	<record id="clv_file_system_directory_survey_files_archive" model="clv.file_system.directory">
+		<field name="name" eval="&quot;&quot;&quot;Survey Files (Archive)&quot;&quot;&quot;"/>
+		<field name="directory" eval="&quot;&quot;&quot;/opt/odoo/clvsol_filestore/clvhealth_jcafb/survey_files/archive&quot;&quot;&quot;"/>
+	</record>
+
+</odoo>

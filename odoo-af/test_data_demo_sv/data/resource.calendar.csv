@@ -1,0 +1,4 @@
+id,name,company_id/id,tz
+resource.resource_calendar_std,Standard 40 Timmar/Vecka,base.main_company,Europe/Stockholm
+resource.resource_calendar_std_35h,Standard 35 Timmar/Vecka,base.main_company,Europe/Stockholm
+resource.resource_calendar_std_38h,Standard 38 Timmar/Vecka,base.main_company,Europe/Stockholm

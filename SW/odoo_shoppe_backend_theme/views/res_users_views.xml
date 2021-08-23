@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_res_uses_form_view_inherit" model="ir.ui.view">
+        <field name="name">res.users.form.inherit</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook[last()]" position="inside">
+                <page string="Theme">
+                    <group>
+                        <field name="company_theme" invisible="1"/>
+                        <field name="hide_theme_switcher" attrs="{'invisible': [('company_theme', '=', True)]}"/>
+                        <field name="theme" widget="radio" attrs="{'invisible': [('company_theme', '=', True)]}"/>
+                        <field name="menu_style" widget="radio"/>
+                        <field name="cover_bg" readonly="1"/>
+                    </group>
+                    <group colspan="4">
+                        <div attrs="{'invisible': [('company_theme', '=', False)]}">Theme will applied based on Company Configuration</div>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

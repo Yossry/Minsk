@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2015-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- "License URL : <https://store.webkul.com/license.html/>" -->
+
+<odoo>
+    <data>
+        <template id="wk_portal_assets_frontend" inherit_id="website.assets_frontend" name="Assets Frontend Review">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/odoo_vendor_portal/static/src/js/vendor_portal.js"></script>
+            </xpath>
+        </template>
+
+        <template id="wk_supplier_portal_account" name="Portal layout : Vendor RFQ, PO menu entries" inherit_id="portal.portal_breadcrumbs"  priority="20">
+            <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+                <li t-if="page_name == 'rfq' or rfq_obj" t-attf-class="breadcrumb-item #{'active ' if not rfq_obj else ''}">
+                    <a t-if="rfq_obj" t-attf-href="/my/rfqrequests?{{ keep_query() }}">RFQs</a>
+                    <t t-else="">Your RFQs</t>
+                </li>
+                <li t-if="rfq_obj" class="breadcrumb-item active">
+                    <t t-esc="rfq_obj.name"/>
+                </li>
+            </xpath>
+        </template>
+
+        <template id="wk_portal_my_home_sale" name="Portal My Home : Vendor RFQ, PO entries" inherit_id="portal.portal_my_home" priority="24">
+            <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+                <t t-if="rfq_count" t-call="portal.portal_docs_entry">
+                    <t t-set="title">Your RFQs</t>
+                    <t t-set="url" t-value="'/my/rfqrequests'"/>
+                    <t t-set="count" t-value="rfq_count"/>
+                </t>
+            </xpath>
+        </template>
+
+        <template id="portal_my_page_rfq" name="My RFQs">
+            <t t-call="portal.portal_layout">
+                <t t-set="breadcrumbs_searchbar" t-value="True"/>
+                <t t-call="portal.portal_searchbar">
+                    <t t-set="title">Your RFQs</t>
+                </t>
+                <t t-if="not page_rfqrequest">
+                    <p>There are currently no RFQs for your account.</p>
+                </t>
+                <t t-if="page_rfqrequest" t-call="portal.portal_table">
+                    <thead>
+                        <tr class="active">
+                            <th>Reference #</th>
+                            <th></th>
+                            <th>Product</th>
+                            <th>Status</th>
+                            <th>Created Date</th>
+                            <th>Closed Date</th>
+                            <th class="text-right">Product Quantity</th>
+                        </tr>
+                    </thead>
+                    <t t-foreach="page_rfqrequest" t-as="quotation">
+                        <t t-set="qouteInfo" t-value="quote[quotation.id]"/>
+                        <tr>
+                            <td>
+                                <a t-attf-href="/my/rfqrequests/#{quotation.id}?#{keep_query()}">
+                                    <t t-esc="quotation.name"/>
+                                </a>
+                            </td>
+                            <td>
+                                <t t-if="qouteInfo == 'yes'">
+                                    <span class="alert alert-primary" style="padding:0.0rem 0.45rem !important">
+                                        <i class="fa fa-fw fa-check"></i>
+                                        <span class="hidden-xs">Quoted</span>
+                                    </span>
+                                </t>
+                            </td>
+                            <td>
+                                <t t-if="quotation.product_id">
+                                    <span t-field="quotation.product_id"/>
+                                </t>
+                            </td>
+                            <td>
+                                <t t-if="quotation.state == 'sent'">
+                                    <span class="alert alert-info" style="padding:0.0rem 0.45rem !important">
+                                        <i class="fa fa-fw fa-clock-o"></i>
+                                        <span class="hidden-xs"> In Progress</span>
+                                    </span>
+                                </t>
+                                <t t-if="quotation.state == 'cancel'">
+                                    <span class="alert alert-danger" style="padding:0.0rem 0.45rem !important">
+                                        <i class="fa fa-fw fa-times"></i>
+                                        <span class="hidden-xs">Cancelled</span>
+                                    </span>
+                                </t>
+                                <t t-if="quotation.state == 'done'">
+                                    <span class="alert alert-success hidden-xs" style="padding:0.0rem 0.45rem !important">
+                                        <i class="fa fa-fw fa-check"></i>
+                                        <span class="hidden-xs"> Done</span>
+                                    </span>
+                                </t>
+                            </td>
+                            <td><span t-field="quotation.create_date" t-options='{"widget": "date"}'/></td>
+                            <td><span t-field="quotation.close_date" t-options='{"widget": "date"}'/></td>
+                            <td class="text-right"><span t-field="quotation.prod_qty" /></td>
+                        </tr>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+        <template id="rfq_portal_sidebar" name="Sidebar">
+            <t t-call="portal.portal_layout">
+                <body data-spy="scroll" data-target=".navspy" data-offset="50">
+                    <div class="container o_portal_sidebar"></div>
+                    <div class="oe_structure mb32" id="oe_structure_portal_sidebar_1"/>
+                </body>
+            </t>
+        </template>
+
+        <template id="rfq_followup" name="RFQs" inherit_id="odoo_vendor_portal.rfq_portal_sidebar" primary="True">
+            <xpath expr="//div[hasclass('o_portal_sidebar')]" position="inside">
+                <t t-set="rfqObj" t-value="rfq_obj"/>
+                <div class="row mt16 o_portal_sale_sidebar">
+                    <div id="quote_content" class="col-12 col-lg justify-content-end">
+                        <div t-if="rfqObj.state == 'cancel'" 
+                            class="alert alert-danger alert-dismissable d-print-none" role="alert">
+                            <strong><t t-esc="msg_cancel"/></strong> 
+                        </div>
+                        <div t-if="my_price > 0.0 and (offer_price == 'yes')">
+                            <div t-if="rfqObj.state == 'sent'" 
+                                class="alert alert-info alert-dismissable d-print-none" role="alert">
+                                <strong><t t-esc="msg_submit"/></strong> 
+                            </div>
+                            <t t-if="msg_reject != ''">
+                                <div t-if="rfqObj.state == 'done'"
+                                    class="alert alert-warning alert-dismissable d-print-none" role="alert">
+                                    <strong><t t-esc="msg_reject"/></strong> 
+                                </div>
+                            </t>
+                            <t t-if="msg_reject == ''">
+                                <div t-if="rfqObj.state == 'done' and ( not rfqObj.po_order)" 
+                                    class="alert alert-success alert-dismissable d-print-none" role="alert">
+                                    <strong><t t-esc="msg_accept"/></strong> 
+                                </div>
+                                <div t-if="rfqObj.state == 'done' and (rfqObj.po_order)" 
+                                    class="alert alert-success alert-dismissable d-print-none" role="alert">
+                                    <strong><t t-esc="msg_po"/></strong> 
+                                </div>
+                            </t>
+                        </div>
+                        <div t-attf-class="card #{'pb-5' if report_type == 'html' else ''}">
+                            <div t-call="odoo_vendor_portal.rfq_details"/>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </template>
+
+        <template id="rfq_details" name="Sales Order Portal Content">
+            <div id="introduction" t-attf-class="pb-2 pt-3 #{'card-header bg-white' if report_type == 'html' else ''}">
+                <div class="row">
+                    <div class="col-lg-10">
+                        <h2 class="my-0">
+                            <span >Reference</span>
+                            <em t-esc="rfqObj.name"/>
+                        </h2>
+                    </div>
+                    <div id="asas" class="col-lg-2">
+                        <t t-if="rfqObj.state == 'cancel'">
+                            <span class="alert alert-danger"><i class="fa fa-fw fa-times"></i>
+                                <em>Cancelled</em>
+                            </span>
+                        </t>
+                        <t t-if="rfqObj.state == 'sent'">
+                            <span class="alert alert-info"><i class="fa fa-fw fa-clock-o"></i>
+                                <em> In Progress</em>
+                            </span>
+                        </t>
+                        <t t-if="rfqObj.state == 'done'">
+                            <span class="alert alert-success"><i class="fa fa-fw fa-check"></i>
+                                <em> Done</em>
+                            </span>
+                        </t>
+                    </div>
+                </div>
+            </div>
+            <div t-attf-class="#{'card-body' if report_type == 'html' else ''}">
+                <div id="informations">
+                    <div class='row'>
+                        <div  class="col-lg-6">
+                            <div>
+                                <strong>Product : </strong><br/>
+                                <span t-field="rfqObj.product_image" t-options="{'widget': 'image', 'class': 'img-rounded', 'style':'width: 48px;height:48px'}" />
+                                <span t-field='rfqObj.product_id'/>
+                            </div>
+                            <br/>
+                            <div>
+                                <strong>Quantity : </strong>
+                                <span t-field='rfqObj.prod_qty'/>
+                            </div>
+                            <br/>
+                            <div t-if="rfqObj.est_unit_price">
+                                <strong >Estimated Price : </strong>
+                                <span t-field="rfqObj.est_unit_price"
+                                    t-options='{"widget": "monetary", "display_currency": rfqObj.currency_id}'
+                                />
+                                <strong>/</strong>
+                                <span t-field="rfqObj.product_uom"/>
+                            </div>
+                            <br/>
+                            <div t-if="rfqObj.est_del_date">
+                                <strong>Estimated Delivery Date : </strong>
+                                <span t-field="rfqObj.est_del_date"
+                                    t-options='{"widget": "date"}'
+                                />
+                            </div>
+                            <t t-if="rfqObj.notes">
+                                <br/>
+                                <div>
+                                    <strong>Note : </strong><br/>
+                                    <span t-field="rfqObj.notes"/>
+                                </div>
+                            </t>
+                        </div>
+                        <div class="col-lg-6">
+                            <div>
+                                <strong>Created Date:</strong>
+                                <span t-field="rfqObj.create_date" t-options='{"widget": "date"}'/>
+                            </div>
+                            <br/>
+                            <div>
+                                <strong>Closing Date:</strong>
+                                <span t-field="rfqObj.close_date" t-options='{"widget": "date"}'/>
+                            </div>
+                            <t t-if="my_price == 0.0 and (offer_price == 'yes')">
+                                <br/>
+                                <input type="hidden" name="for_loguser" id="loguser" t-att-value="int(user_id.id)"/>
+                                <input type="hidden" name="rfq_id" id="rfqId" t-att-value="int(rfqObj.id)"/>
+                                <t t-if="rfqObj.state == 'sent'">
+                                    <div class="container">
+                                        <button type="button"
+                                                class="btn btn-primary"
+                                                data-toggle="modal"
+                                                data-target="#myModalHorizontal">My Price
+                                        </button>
+                                        <div class="modal fade" id="myModalHorizontal" tabindex="-1" role="dialog"
+                                            aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close"
+                                                        data-dismiss="modal">
+                                                            <span class="sr-only">Close</span>
+                                                        </button>
+                                                        <h4 class="modal-title" id="myModalLabel">
+                                                            Quote Your Details
+                                                        </h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form class="form-horizontal" role="form">
+                                                            <div class="row">
+                                                                <div class="col-lg-5">
+                                                                    <div>
+                                                                        <label for="inputPrice">My Price</label>
+                                                                    </div>
+                                                                    <br/>
+                                                                </div>
+                                                                <div class="col-lg-7">
+                                                                    <div>
+                                                                        <!-- <span t-esc="rfqObj.currency_id.symbol"/> -->
+                                                                        <input type="number" class="form-control"
+                                                                               id="inputPrice" placeholder="0.0"/>
+                                                                    </div>
+                                                                    <br/>
+                                                                </div>
+                                                                <br/>
+                                                                <div class="col-lg-5">
+                                                                    <div>
+                                                                        <label for="inputDelivery" >Delivery Date</label>
+                                                                    </div>
+                                                                    <br/>
+                                                                </div>
+                                                                <div class="col-lg-7">
+                                                                    <div>
+                                                                        <input type="date" class="form-control"
+                                                                            id="inputDelivery" placeholder="Delivery Date"/>
+                                                                    </div>
+                                                                    <br/>
+                                                                </div>
+                                                                <br/>
+                                                                <div class="col-lg-5">
+                                                                    <div>
+                                                                        <label for="inputNote" >Additional Note</label>
+                                                                    </div>
+                                                                    <br/>
+                                                                </div>
+                                                                <div class="col-lg-7">
+                                                                    <div>
+                                                                        <textarea rows="3" cols="30" name="" 
+                                                                                id="inputNote" 
+                                                                                placeholder="Additional Note..."></textarea>
+                                                                    </div>
+                                                                    <br/>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default"
+                                                                data-dismiss="modal">
+                                                                    Close
+                                                        </button>
+                                                        <input type="button" value="submit" id="wksubmit"  class="btn btn-primary"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </t>
+                            </t>
+                            <t t-if="my_price">
+                                <br/>
+                                <div>
+                                    <strong>My Proposed Price : </strong>
+                                    <t t-esc="my_price"
+                                        t-options='{"widget": "monetary", "display_currency": rfqObj.currency_id}'
+                                    />
+                                    <strong>/</strong>
+                                    <span t-field="rfqObj.product_uom"/>
+                                </div>
+                            </t>
+                            <t t-if="my_del_date">
+                                <br/>
+                                <div>
+                                    <strong>My Proposed Delivery Date : </strong>
+                                    <t t-esc="my_del_date"
+                                        t-options='{"widget": "date"}'
+                                    />
+                                </div>
+                            </t>
+                            <t t-if="my_note">
+                                <br/>
+                                <div>
+                                    <strong>My Note : </strong><br/>
+                                    <t t-esc="my_note"
+                                    />
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+    </data>
+</odoo>

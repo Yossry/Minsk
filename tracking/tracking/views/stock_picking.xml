@@ -1,0 +1,22 @@
+<openerp>
+  <data>
+      <record id="view_stock_form_inherit" model="ir.ui.view">
+            <field name="name">view.stock.form.add.text.field</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='extra']/group/group[@name='carrier_data']/field[@name='carrier_id']" position="before">
+                    <field name="deliveryman_id"/>
+                </xpath>
+                <xpath expr="//sheet/group/group/field[@name='location_dest_id']" position="after">
+                    <field name="lxtrackprocess" readonly="1" />
+                </xpath>
+                <xpath expr="//field[@name='origin']" position="after">
+                    <field name="amount" widget="monetary" readonly="1"  />
+                </xpath>
+
+            </field>
+    </record>
+
+  </data>
+</openerp>

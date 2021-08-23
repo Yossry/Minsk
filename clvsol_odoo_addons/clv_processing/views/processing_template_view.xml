@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="clv_processing_template_view_form" model="ir.ui.view">
+        <field name="name">clv.processing.template.form</field>
+        <field name="model">clv.processing.template</field>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <form>
+                <header name="header">
+                </header>
+                <sheet>
+                    <div name="button_box" class="oe_right oe_button_box">
+                    </div>
+                    <div name="center" class="oe_center">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1> <field name="name" default_focus="1" placeholder="Name..."/></h1>
+                    </div>
+                    <div name="title" class="oe_title">
+                        <label for="external_host_id" class="oe_edit_only"/>
+                        <h3><field name="external_host_id" placeholder="External Host..." options="{'no_open': False, 'no_create': True}"/></h3>
+                    </div>
+                    <group name="group_top">
+                        <group name="group_left">
+                            <field name="date_inclusion"/>
+                        </group>
+                        <group name="group_right">
+                            <field name="model"/>
+                            <field name="method"/>
+                        </group>
+                    </group>
+                    <field name="notes" placeholder="Notes..." colspan="4"/>
+                    <notebook>
+                        <page name="settings" string="Settings" groups="clv_base.group_reguser" invisible="False">
+                            <group name="settings_top">
+                                <group name="settings_left">
+                                    <field name="id"/>
+                                </group>
+                                <group name='settings_right'>
+                                    <div class="oe_button_box" name="settings_buttons">
+                                        <button name="toggle_active"
+                                                    type="object"
+                                                    class="oe_stat_button"
+                                                    icon="fa-archive"
+                                                    groups="clv_base.group_reguser"
+                                                    >
+                                                <field name="active"
+                                                       widget="boolean_button"
+                                                       options='{"terminology": "archive"}'
+                                                       />
+                                        </button>
+                                    </div>
+                                </group>
+                                <group name="settings_left_3">
+                                </group>
+                                <group name='settings_right_3'>
+                                    <div class="oe_button_box" name="settings_buttons_3">
+                                    </div>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="clv_processing_template_view_tree" model="ir.ui.view">
+        <field name="name">clv.processing.template.tree</field>
+        <field name="model">clv.processing.template</field>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <tree name="events" string="Processing Templates">
+                <field name="name"/>
+                <field name="external_host_id"/>
+                <field name="date_inclusion"/>
+                <field name="model"/>
+                <field name="method"/>
+                <field name="notes"/>
+                <field name="active" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="clv_processing_template_view_search" model="ir.ui.view">
+        <field name="name">clv.processing.template.search</field>
+        <field name="model">clv.processing.template</field>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="external_host_id"/>
+                <field name="date_inclusion"/>
+                <field name="model"/>
+                <field name="method"/>
+                <field name="notes"/>
+                <separator/>
+                <filter string="Archived" name="inactive" domain="[('active','=',False)]"/>
+                <group name="group_by" string="Group By...">
+                    <filter name="filter_external_host_id" string="External Host" context="{'group_by': 'external_host_id'}"/>
+                    <filter name="filter_model" string="Model" context="{'group_by': 'model'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    
+    <record id="clv_processing_template_action" model="ir.actions.act_window">
+        <field name="name">Processing Templates</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">clv.processing.template</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="clv_processing_template_view_search"/>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Click to add a new data processing template.
+          </p>
+        </field>
+    </record>
+        
+</odoo>

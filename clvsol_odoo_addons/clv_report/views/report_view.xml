@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="clv_report_view_form" model="ir.ui.view">
+        <field name="name">clv.report.form</field>
+        <field name="model">clv.report</field>
+        <field name="arch" type="xml">
+            <form string="Report">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="model"/>
+                            <field name="res_id"/>
+                            <field name="reference" widget="reference"/>
+                            <field name="reference_name"/>
+                        </group>
+                        <group>
+                            <field name="date_report"/>
+                            <field name="report_status"/>
+                        </group>
+                    </group>
+                    <field name="report_outcomes" placeholder="Report Outcomes..." colspan="4"/>
+                    <notebook>
+                        <page name="settings" string="Settings" groups="clv_base.group_reguser" invisible="False">
+                            <group name="settings_top">
+                                <group name="settings_left">
+                                    <field name="id"/>
+                                </group>
+                                <group name='settings_right'>
+                                    <div class="oe_button_box" name="settings_buttons">
+                                        <button name="toggle_active"
+                                                    type="object"
+                                                    class="oe_stat_button"
+                                                    icon="fa-archive"
+                                                    groups="clv_base.group_reguser"
+                                                    >
+                                                <field name="active"
+                                                       widget="boolean_button"
+                                                       options='{"terminology": "archive"}'
+                                                       />
+                                        </button>
+                                    </div>
+                                </group>
+                                <group name="settings_left_3">
+                                </group>
+                                <group name='settings_right_3'>
+                                    <div class="oe_button_box" name="settings_buttons_3">
+                                    </div>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="clv_report_view_tree" model="ir.ui.view">
+        <field name="name">clv.report.tree</field>
+        <field name="model">clv.report</field>
+        <field name="arch" type="xml">
+            <tree string="Report">
+                <field name="model"/>
+                <field name="res_id"/>
+                <field name="reference"/>
+                <field name="reference_name"/>
+                <field name="date_report"/>
+                <field name="report_status"/>
+                <field name="report_outcomes"/>
+                <field name="id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="clv_report_view_search" model="ir.ui.view">
+        <field name="name">clv.report.search</field>
+        <field name="model">clv.report</field>
+        <field name="arch" type="xml">
+            <search string="Report">
+                <field name="model"/>
+                <field name="res_id"/>
+                <field name="reference"/>
+                <field name="reference_name"/>
+                <field name="report_status"/>
+                <field name="report_outcomes"/>
+                <field name="id"/>
+                <separator/>
+                <filter string="Archived" name="inactive" domain="[('active','=',False)]"/>
+                <group name="group_by" expand="0" string="Group By...">
+                    <filter name="filter_model" string="Model Name" domain="[]" context="{'group_by':'model'}"/>
+                    <filter name="filter_reference" string="Reference" domain="[]" context="{'group_by':'reference'}"/>
+                    <filter name="filter_reference_name" string="Reference Name" domain="[]" context="{'group_by':'reference_name'}"/>
+                    <filter name="filter_report_status" string="Report Status" context="{'group_by': 'report_status'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="clv_report_action">
+        <field name="name">Reports</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">clv.report</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

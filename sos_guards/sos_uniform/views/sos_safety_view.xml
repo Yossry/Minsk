@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>        
+
+		 <record id="sos_safety_demand_tree" model="ir.ui.view">
+		 	<field name="name">Safety Demand Tree</field>
+		 	<field name="model">sos.safety.demand</field>
+		 	<field name="priority" eval="15"/>
+		 	<field name="type">tree</field>	
+		 	<field name="arch" type="xml">
+		 		<tree>
+		 			<field name="name"/>
+		 			<field name="date"/>
+		 			<field name="center_id"/>
+		 			<field name="project_id"/>
+		 			<field name="state"/>
+		 			<field name="dm_type"/>
+		 		</tree>
+		 	</field>	
+		</record>
+
+		 <record id="sos_safety_demand_form" model="ir.ui.view">
+		 	<field name="name">Safety Demand Form</field>
+		 	<field name="model">sos.safety.demand</field>
+		 	<field name="priority" eval="15"/>
+		 	<field name="type">form</field>	
+		 	<field name="arch" type="xml">
+		 		<form string="Safety Demand">
+					<header>
+						<button name="demand_open" type="object" states="draft" string="RM" class="oe_highlight" groups="sos.group_regional_manager,hr.group_hr_user,sos.group_coordinator" />
+						<button name="demand_review" type="object" states="open" string="Coordinator" class="oe_highlight" groups="sos_uniform.group_demand_review"/>	  
+						<button name="demand_approve" type="object" states="review" string="HOC" class="oe_highlight" groups="sos_uniform.group_demand_approve"/>
+						<button name="demand_admin" type="object" states="approve" string="Admin" class="oe_highlight" groups="sos_uniform.group_admin_approve" />
+						<button name="demand_dispatch" type="object" states="adm" string="Store" class="oe_highlight" groups="stock.group_stock_manager,sos.group_coordinator"/>
+						<button name="demand_deliver" type="object" states="dispatch"  string="Deliver" class="oe_highlight" groups="sos.group_regional_manager,sos.group_coordinator,stock.group_stock_manager" />	
+						<button name="demand_reject" type="object" states="draft,review,open,dispatch,approve" string="Reject" class="oe_highlight" groups="hr.group_hr_user"/>	  
+						<field name="state" widget="statusbar" nolabel="1" statusbar_visible="draft,open,review,adm,dispatch,approve,done,reject"/>	  
+					 </header>
+					 <sheet string="Safety Demand">
+					 	<div class="oe_title">
+							<label for="name" class="oe_edit_only"/>
+						   <h1>
+							   <field name="name"/>
+						   </h1>
+						</div>			
+					 	
+					 	<group colspan="4">
+					 		<group>
+						 	 	
+						 	 	<field name="center_id" options="{'no_create': True, 'limit': 10}"/>
+						 	 	<field name="employee_id" options="{'no_create': True, 'limit': 10}"/>
+						 	 	<field name="move_id" groups="account.group_account_manager"/>
+						 	 </group>
+						 	 <group>
+						 	 	<field name="date"/>
+						 	 	<field name="project_id" options="{'no_create': True, 'limit': 10}"/>
+						 	 	<field name="dm_type"/>					 	 	
+
+						 	 </group>
+						 </group>
+				
+						<group colspan="4">	
+							<group>
+								<field name="remarks"/>
+							</group>	  					 
+						</group>
+				
+						<group string="Required Uniform Items">
+							<button name="demand_required_item_dispatch" type="object" string="Enter Dispatch Items" attrs="{'invisible': [('state','in', ['draft','open','reject','cancel'])]}"/>
+							<field name="uniform_demand_line" colspan="4" nolabel="1" attrs="{'readonly': [('state', 'in', ['approve', 'dispatch', 'done', 'reject'])]}">
+								<tree editable="top" >
+									<field name="item_id"  required="1"    options="{'no_create': True, 'limit': 10}"/>
+									<field name="req_size" invisible="1"/>
+									<field name="qty" required="1"/>
+									<!-- <field name="size"  attrs="{'required': [('req_size', '=', True)]}"/> -->							
+								</tree>
+							</field>	
+						</group>
+				
+						<group string="Dispatch Uniform Items"  attrs="{'invisible': [('state', 'in', ['draft', 'open', 'reject'])]}">
+							<field name="uniform_dispatch_line" colspan="4" nolabel="1">
+								<tree editable="top" >
+									<field name="product_id" domain="[('categ_id.name', '=', 'Uniform')]" options="{'no_create': True, 'limit': 10}"/>
+									<field name="product_uom"/>
+									<field name="stock_qty" readonly="1" />
+									<field name="product_qty" required="1"/>														
+								</tree>
+							</field>	
+						</group>
+				
+						<!--
+						<notebook colspan="4">,
+						  <page string="Dispatch Moves">
+								<field name="dispatch_ids" readonly="1">
+									<tree colors="grey:state == 'cancel';green:location_id == 12" string="Moves" create="false">
+										<field name="product_id"/>
+										<field name="product_uom_qty"/>
+										<field name="product_uom"  string="Unit of Measure" groups="product.group_uom"/>
+										<field name="location_id"/>
+										<field name="location_dest_id"/>
+										<field name="date" string="Date"/>	
+										<field name="state" invisible="1"/>
+				        			</tree>
+								</field>
+						  </page>
+						</notebook> 
+						-->
+				
+					</sheet>
+			
+					<div class="oe_chatter">
+						<field name="message_follower_ids" widget="mail_followers" groups="base.group_user" />
+						<field name="message_ids" widget="mail_thread" />
+					</div>
+			
+				</form>		  
+			</field>
+		</record>
+
+
+		<record id="sos_safety_demand_filter" model="ir.ui.view">
+			<field name="name">sos.safety.demand.filter</field>
+			<field name="model">sos.safety.demand</field>
+			<field name="arch" type="xml">
+				<search string="Search Safety Demand">
+					<filter icon="terp-go-today" string="Draft" name="draft" domain="[('state','=','draft')]" />			
+					<filter icon="terp-go-today" string="Approve" name="approve" domain="[('state','=','approve')]" />
+					<filter icon="terp-go-today" string="Dispatch" name="dispatch" domain="[('state','=','dispatch')]" />
+					<filter icon="terp-go-today" string="Done" name="done" domain="[('state','=','done')]" />
+					<filter icon="terp-go-today" string="Reject" name="reject" domain="[('state','=','reject')]" />
+					<separator/>
+					<filter icon="terp-go-today" string="New Deployment" name="new_deployment" domain="[('dm_type','=','new_deployment')]" />
+					<filter icon="terp-go-today" string="Complain" name="complain" domain="[('dm_type','=','complain')]" />
+					<filter icon="terp-go-today" string="Additional Guard" name="additional_guard" domain="[('dm_type','=','additional_guard')]" />
+					<filter icon="terp-go-today" string="Replacement" name="replacement" domain="[('dm_type','=','replacement')]" />
+					<separator/>
+					<field name="name"/>
+					<field name="center_id"/>
+					<field name="project_id"/>
+					<field name="date"/>
+					<field name="state"/>
+					<field name="dm_type"/>
+					<separator/>
+					<group expand="0" string="Group By">
+						<filter string="Center" name="center_id" icon="terp-partner" domain="[]" context="{'group_by':'center_id'}"/>
+						<filter string="Project" name="project_id" icon="terp-partner" domain="[]" context="{'group_by':'project_id'}"/>
+						<filter string="Date" name="date" icon="terp-partner" domain="[]" context="{'group_by':'date'}"/>
+						<filter string="State" name="state" icon="terp-partner" domain="[]" context="{'group_by':'state'}"/>
+						<filter string="Type" name="dm_type" icon="terp-partner" domain="[]" context="{'group_by':'dm_type'}"/>
+				
+					</group>
+					  
+				</search>
+			</field>
+		</record>
+
+		<record id="sos_safety_demand_action" model="ir.actions.act_window">
+			<field name="name">Safety Demand</field>
+			<field name="res_model">sos.safety.demand</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>	
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+					Click to create a new Safety Demand.
+			</p>
+			</field>
+		</record> 
+
+
+	</data>
+</odoo>

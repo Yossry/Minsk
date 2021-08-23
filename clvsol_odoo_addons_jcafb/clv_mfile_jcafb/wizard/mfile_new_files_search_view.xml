@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="clv_mfile_new_files_search_view_form" model="ir.ui.view">
+        <field name="name">clv.mfile.new_files_search.form</field>
+        <field name="model">clv.mfile.new_files_search</field>
+        <field name="arch" type="xml">
+            <form>
+                <div class="oe_right">
+                </div>
+                <group>
+                    <field name="directory_id" options="{'no_open': False, 'no_create': True}"/>
+                </group>
+                <group>
+                    <group>
+                        <field name="phase_id" options="{'no_open': False, 'no_create': True}"/>
+                    </group>
+                </group>
+                <footer>
+                    <button 
+                        type="object"
+                        name="do_mfile_new_files_search"
+                        string="New Files Search"
+                        class="oe_highlight"
+                        />
+                    <button special="cancel" string="Cancel"/>
+                </footer>
+            </form>
+
+        </field>
+    </record>
+
+    <!-- More button Action -->
+    <!--act_window 
+        id="clv_mfile.clv_mfile_new_files_search_action"
+        name="New Files Search"
+        src_model="clv.mfile"
+        res_model="clv.mfile.new_files_search"
+        view_mode="form"
+        key2="client_action_multi"
+        target="new"
+    /-->
+    <act_window 
+        id="clv_mfile.clv_mfile_new_files_search_action"
+        name="New Files Search"
+        res_model="clv.mfile.new_files_search"
+        view_mode="form"
+        key2="client_action_multi"
+        target="new"
+    />
+
+</odoo>

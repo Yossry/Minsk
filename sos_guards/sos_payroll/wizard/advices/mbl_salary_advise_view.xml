@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+		<record id="mbl_advise_xls_report" model="ir.ui.view">
+            <field name="name">MBL Payroll Advice (XLS)</field>
+            <field name="model">mbl.salary.advice.rep</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="WPS">
+		             <group>
+		            	<group>
+		            		<field name="advice_id" readonly="1" options="{'no_quick_create':True,'no_create_edit':True}"/>
+						</group>
+						<group>
+						</group>
+					</group>
+	                <footer>
+                    	<button special="cancel" string="Cancel" class="btn-default"/>
+                    	<button name="get_salary_advice" string="Export" type="object" class="btn-primary" default_focus="1"/>
+                    </footer>	
+                </form>
+            </field>
+        </record>
+         
+         <act_window
+		    id="action_mbl_advice_xls_report"
+		    name="MBL Payroll Advice (XLS)"
+		    res_model="mbl.salary.advice.rep"
+		    src_model="guards.payroll.advice"
+		    view_mode="form"
+		    multi="True"
+		    target="new"
+		    key2="client_print_multi"
+		/>    
+       
+    </data>
+</odoo>

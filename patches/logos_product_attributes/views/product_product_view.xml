@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="product_price_currency_tree_view" model="ir.ui.view">
+        <field name="name">product_price_currency.tree</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_product_tree_view" />
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="author_id" context="{'show_attribute': False}"/>
+                <field name="editorial_id" context="{'show_attribute': False}"/>
+                <field name="collection_id" context="{'show_attribute': False}"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

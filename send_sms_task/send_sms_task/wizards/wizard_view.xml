@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+                    <!--Form-->
+    <record id="send_task_sms_form" model="ir.ui.view">
+        <field name="name">Send Task(SMS)</field>
+        <field name="model">send_task.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <footer>
+                    <button type="object" name="send_task" string="Send" default_focus="1" class="oe_highlight"/>
+                    or
+                    <button string="Cancel" class="oe_link" special="cancel"/>
+
+                </footer>
+            </form>
+
+        </field>
+    </record>
+
+
+    <!--Show Wizard-->
+
+    <act_window
+        id="send_task_action"
+        name="Send Task(SMS)"
+        src_model="project.task"
+        res_model="send_task.wizard"
+        target="new"
+        view_id="send_task_sms_form"
+        key2="client_action_multi"/>
+
+
+
+
+
+</odoo>

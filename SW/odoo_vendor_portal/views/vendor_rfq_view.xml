@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2015-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- "License URL : <https://store.webkul.com/license.html/>" -->
+
+<odoo>
+    <data>
+
+
+        <record id="view_vendor_rfq_tree" model="ir.ui.view">
+            <field name="name">vendor.rfq.tree</field>
+            <field name="model">vendor.rfq</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <tree string="Vendor RFQ" decoration-muted="state=='cancel'" decoration-success="state=='done'" decoration-info="state=='sent'" decoration-primary="state=='pending'">
+                    <field name="name" string="RFQ Reference"/>
+                    <field name="product_id"/>
+                    <field name="prod_qty"/>
+                    <field name="currency_id" invisible="1"/>
+                    <field name="est_unit_price" widget="monetary"/>
+                    <field name="create_date"/>
+                    <field name="close_date"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_vendor_rfq" model="ir.ui.view">
+            <field name="name">vendor.rfq.view</field>
+            <field name="model">vendor.rfq</field>
+            <field name="arch" type="xml">
+                <form string="Vendor RFQ">
+                    <header>
+                        <button name="action_rfq_mail_send" string="Send Invitation Email" type="object" states="draft,pending" class="btn-primary"/>
+                        <button name="action_draft" states="cancel" type="object" string="Set to Draft"/>
+                        <button name="action_pending" states="draft" type="object" string="Set to Pending"/>
+                        <button name="wk_vendor_done" type="object" string="Mark Done" states="sent" class="btn-primary"/>
+                        <button name="action_cancel" states="sent" type="object" string="Cancel"/>
+                        <button name="create_po"
+                                type="object"
+                                string="Create Purchase Order"
+                                class="btn-primary" attrs="{'invisible' : ['|',('order_create','=',True) , ('state', '!=', 'done')]}"/>
+                        <button name='purchase_order_view'
+                                type='object'
+                                string='Purchase Order'
+                                class="btn-primary"  attrs="{'invisible' : [('order_create','!=',True)]}"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,sent,done"/>
+                        <field name="order_create" invisible="1"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_view_rfq"
+                                type="object"
+                                string="View RFQ"
+                                class="oe_stat_button"
+                                states="sent,done"
+                                icon="fa-pencil-square-o">
+                            </button>
+                            <button name="action_view_po"
+                                type="object"
+                                string="View Order"
+                                class="oe_stat_button"
+                                attrs="{'invisible' : [('order_create','!=',True)]}"
+                                icon="fa-pencil-square-o">
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="product_id"/>
+                                <field name="prod_qty"/>
+                                <field name="product_uom" groups="uom.group_uom" options="{'no_create': True}"/>
+                                <field name="currency_id" invisible="1"/>
+                                <field name="est_unit_price"/>
+                                <field name="est_del_date"/>
+                            </group>
+                            <group>
+                                <field name="create_date"/>
+                                <field name="close_date"/>
+                                <field name="pricelist_id"/>
+                                <field name="product_sale_price" attrs="{'invisible' : [('pricelist_id', '=', False)]}"/>
+                                <field name="product_cost"  attrs="{'invisible' : [('pricelist_id', '=', False)]}"/>
+                                <field name="vendor_ids" context="{'default_customer': 0, 'search_default_supplier': 1, 'default_supplier': 1}" widget="many2many_tags"/>
+                                <field name="assign_vendor" attrs="{'invisible' : [('assign_vendor', '=', False)]}"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Vendor Quoted Details">
+                                <field name="vendor_rfq_history" attrs="{'readonly' : [('state', 'in', ['done', 'cancel'])]}">
+                                    <tree string="Suppliers">
+                                        <field
+                                            name="name"
+                                            context="{'default_customer': 0, 'search_default_supplier': 1, 'default_supplier': 1}"
+                                            on_change="check_product(parent.product_id, parent.product_tmpl_id)"/>
+                                        <field name="quoted_price"  widget="monetary"/>
+                                        <field name="currency_id" invisible="1"/>
+                                        <field name="quoted_del_date"/>
+                                        <field name="quoted_note"/>
+                                    </tree>
+                                </field>
+                                <field name="notes" class="oe_inline" placeholder="Add the note for vendors." attrs="{'readonly' : [('state', '=', 'done')]}"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_vendor_rfq_filter" model="ir.ui.view">
+            <field name="name">vendor.rfq.search</field>
+            <field name="model">vendor.rfq</field>
+            <field name="arch" type="xml">
+                <search string="Search Vendor RFQ">
+                    <field name="name" string="RFQ" filter_domain="[('name','ilike',self)]"/>
+                    <field name="product_id" string="Product" filter_domain="[('product_id','ilike',self)]"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Product" name="product" domain="[]" context="{'group_by':'product_id'}"/>
+                        <filter string="RFQ Month" name="rfq_month" domain="[]" context="{'group_by':'create_date'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_draft_vendor_rfq" model="ir.actions.act_window">
+            <field name="name">Vendor RFQ</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">vendor.rfq</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="view_vendor_rfq_tree"/>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_vendor_rfq_filter"/>
+            <field name="domain">[('state','in',['draft', 'cancel', 'pending', 'sent'])]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Create your product requirement for RFQ.
+                </p>
+                <p>
+                    Add the product with required quantity and estimated delivery
+                </p>
+                <p>
+                    Add the vendors for invitation
+                </p>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_sent_bid_rfq">
+            <field name="name">In Progress</field>
+            <field name="res_model">vendor.rfq</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('state','in',['sent'])]</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_done_bid_rfq">
+            <field name="name">Done</field>
+            <field name="res_model">vendor.rfq</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('state','in',['done'])]</field>
+        </record>
+
+        <record id="action_partner_vendor_registered" model="ir.actions.act_window">
+            <field name="name">Registered Vendors</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_type">form</field>
+            <field name="domain">[]</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="context">{'search_default_vendors_reg': 1}</field>
+            <field name="filter" eval="True"/>
+        </record>
+
+
+        <menuitem name="Vendor Portal"
+            id="menu_vendor_portal_root"
+            groups="purchase.group_purchase_manager,purchase.group_purchase_user"
+            web_icon="odoo_vendor_portal,static/description/icon.png"
+            sequence="26"/>
+            <menuitem name="Vendor Quotations"
+                id="rfq_id"
+                parent="odoo_vendor_portal.menu_vendor_portal_root"
+                sequence="1"/>
+                <menuitem name="Vendor Quotations"
+                    id="rfq_id1"
+                    parent="odoo_vendor_portal.rfq_id"
+                    action="odoo_vendor_portal.action_draft_vendor_rfq" sequence="1"/>
+                <menuitem name="Progress"
+                     id="rfq_id2"
+                    parent="odoo_vendor_portal.rfq_id"
+                    action="odoo_vendor_portal.action_sent_bid_rfq" sequence="2"/>
+                <menuitem name="Done"
+                    id="rfq_id3"
+                    parent="odoo_vendor_portal.rfq_id"
+                    action="odoo_vendor_portal.action_done_bid_rfq" sequence="3"/>
+            <menuitem name="Purchase"
+                id="portal_purchase"
+                parent="odoo_vendor_portal.menu_vendor_portal_root" sequence="2"/>
+                <menuitem name="Requests for Quotation"
+                    id="po_id1"
+                    parent="odoo_vendor_portal.portal_purchase"
+                    action="purchase.purchase_rfq" sequence="1"/>
+                <menuitem name="Purchase Orders"
+                    id="po_id2"
+                    parent="odoo_vendor_portal.portal_purchase"
+                    action="purchase.purchase_form_action" sequence="2"/>
+            <menuitem name="Vendors"
+                id="portal_vendor"
+                parent="odoo_vendor_portal.menu_vendor_portal_root" sequence="3"/>
+                <menuitem name="Vendors"
+                    id="portal_vendor1"
+                    parent="odoo_vendor_portal.portal_vendor"
+                    action="base.action_partner_supplier_form" sequence="1"/>
+                <menuitem name="Registered Vendors"
+                    id="portal_vendor_reg"
+                    parent="odoo_vendor_portal.portal_vendor"
+                    action="odoo_vendor_portal.action_partner_vendor_registered" sequence="2"/>
+            <menuitem name="Configuration"
+                id="portal_configuration"
+                parent="odoo_vendor_portal.menu_vendor_portal_root" sequence="4"/>
+                <menuitem name="Settings"
+                     id="menu_vendor_config"
+                     parent="odoo_vendor_portal.portal_configuration"
+                     action="odoo_vendor_portal.action_rfq_portal_config" sequence="1"/>
+
+  </data>
+</odoo>

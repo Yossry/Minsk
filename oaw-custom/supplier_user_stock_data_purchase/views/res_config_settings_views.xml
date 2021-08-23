@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.stock</field>
+        <field name="model">res.config.settings</field>
+        <field
+            name="inherit_id"
+            ref="supplier_user_access.res_config_settings_view_form"
+        />
+        <field name="arch" type="xml">
+            <label for="supplier_pick_partner" position="before">
+                <label for="purchase_data_product_id" />
+                <div class="content-group">
+                    <field name="purchase_data_product_id" />
+                </div>
+                <label for="local_loc_id" />
+                <div class="content-group">
+                    <field name="local_loc_id" />
+                </div>
+                <label for="oversea_loc_id" />
+                <div class="content-group">
+                    <field name="oversea_loc_id" />
+                </div>
+            </label>
+        </field>
+    </record>
+</odoo>

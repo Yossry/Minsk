@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="view_res_partner_process" model="ir.ui.view">
+            <field name="name">Procesar</field>
+            <field name="model">res.partner.process</field>
+            <field name="arch" type="xml">
+                <form string="Procesar">
+                    <p class="oe_grey">
+                        Procesar rutas
+                    </p>
+                    <group>
+                        <field name="count" invisible="[('count','=',1)]" readonly="True"/>
+                    </group>
+                    <footer>
+                        <button name="process" string="Procesar" type="object"
+                            class="btn-primary"/>
+                        <button name="process2" string="Procesar Lacteos" type="object"
+                            class="btn-primary"/>
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window name="Procesar"
+            res_model="res.partner.process"
+            src_model="res.partner"
+            key2="client_action_multi"
+            multi="True"
+            view_mode="form"
+            view_type="form"
+            target="new"
+            id="action_res_partner_process"/>
+
+
+</odoo>

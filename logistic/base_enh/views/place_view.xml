@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>  <data>
+
+        <record model="ir.ui.view" id="res_place_list_view">
+            <field name="name">res_place</field>
+            <field name="model">res.place</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="country_id" />
+                    <field name="city_id" />
+                    <field name="state_id"/>
+                    <field name="address"/>
+                    <field name="is_delivery_place"/>
+                    <field name="zip_code"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="res_place_form_view">
+            <field name="name">res_place</field>
+            <field name="model">res.place</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="country_id" 
+                                       options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+                                <field name="city_id" 
+                                        domain="[('country_id','=',country_id),('state_id','=',state_id)]" 
+                                        options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"
+                                        attrs="{'readonly': [('country_id', '=',False)]}"/>
+                            </group>
+                            <group>
+                                <field name="state_id" 
+                                       domain="[('country_id','=',country_id)]" 
+                                       options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"
+                                       attrs="{'readonly': [('country_id', '=',False)]}"/>
+                                <field name="is_port" />
+                                <field name="port_id" 
+                                       domain="[('country_id','=',country_id),('city_id','=',city_id)]" 
+                                       options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"
+                                       attrs="{'invisible': ['|',('country_id', '=',False),('is_port', '=',False)],'required':[('is_port','=',True)]}"/>
+                            </group>
+                            <group>
+                                <field name="address" attrs="{'readonly': [('country_id', '=',False)]}"/>
+                                <field name="is_delivery_place"/>
+                                <field name="zip_code" attrs="{'readonly': [('country_id', '=',False)]}"/>
+                                <field name="active"/>
+                            </group>
+                            
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                 </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="res_place_action">
+            <field name="name">Place</field>
+            <field name="res_model">res.place</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+
+
+    </data>
+</odoo>

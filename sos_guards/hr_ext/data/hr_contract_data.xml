@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+        
+		<!-- Alert-related subtypes for messaging / Chatter -->
+		<record id="hr_contract.mt_alert_trial_ending" model="mail.message.subtype">
+			<field name="name">Trial Period Ending</field>
+			<field name="res_model">hr.contract</field>
+			<field name="description">Trial Period is ending</field>
+		</record>
+		
+		<record id="hr_contract.mt_alert_contract_ending" model="mail.message.subtype">
+		    <field name="name">Contract Period Ending</field>
+		    <field name="res_model">hr.contract</field>
+		    <field name="description">Contract Period is ending</field>
+		</record>
+		
+		<record id="hr_contract.mt_alert_open" model="mail.message.subtype">
+		    <field name="name">Contract Open</field>
+		    <field name="res_model">hr.contract</field>
+		    <field name="description">Contract is Open</field>
+		</record>
+		    
+		<record id="hr_contract.mt_benefits_change" model="mail.message.subtype">
+		    <field name="name">Benefits Change</field>
+		    <field name="res_model">hr.contract</field>
+		    <field name="description">Wages, Benefits and/or Deduction Modified</field>
+		</record>
+		
+		<record id="term_contract_end" model="hr.employee.termination.reason">
+		    <field name="name">Contract Ended</field>
+		</record>
+        
+	</data>
+</odoo>

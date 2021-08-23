@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="clv_address_history_view_form_state" model="ir.ui.view">
+        <field name="name">clv.address.history</field>
+        <field name="model">clv.address.history</field>
+        <field name="inherit_id" ref="clv_address_history.clv_address_history_view_form"/>
+        <field name="priority" eval="6"/>
+        <field name="arch" type="xml">
+            <field name="date_sign_out" position="after">
+                <field name="state"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="clv_address_history_view_tree_state" model="ir.ui.view">
+        <field name="name">clv.address.history.tree</field>
+        <field name="model">clv.address.history</field>
+        <field name="inherit_id" ref="clv_address_history.clv_address_history_view_tree"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="date_sign_out" position="after">
+                <field name="state"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="clv_address_history_view_search_state" model="ir.ui.view">
+        <field name="name">clv.address.history.search</field>
+        <field name="model">clv.address.history</field>
+        <field name="inherit_id" ref="clv_address_history.clv_address_history_view_search"/>
+        <field name="priority" eval="9"/>
+        <field name="arch" type="xml">
+            <field name="date_sign_out" position="after">
+                <field name="state"/>
+            </field>
+            <group name="group_by" position="inside">
+                <filter name="broup_by_state" string="Address State" context="{'group_by': 'state'}"/>
+            </group>
+        </field>
+    </record>
+
+</odoo>

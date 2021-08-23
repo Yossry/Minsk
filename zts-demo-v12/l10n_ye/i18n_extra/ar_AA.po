@@ -1,0 +1,441 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* l10n_ye
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-08-08 11:01+0000\n"
+"PO-Revision-Date: 2019-08-08 11:01+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_311002
+#: model:account.account.template,name:l10n_ye.311002
+msgid " Dividend of the first partner"
+msgstr "حصة الشريك الأول"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_311003
+#: model:account.account.template,name:l10n_ye.311003
+msgid " Dividend of the second partner"
+msgstr "حصة الشريك الثاني"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_311004
+#: model:account.account.template,name:l10n_ye.311004
+msgid " Dividend of the third partner"
+msgstr "حصة الشريك الثالث"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_312009
+#: model:account.account.template,name:l10n_ye.312009
+msgid " Internet"
+msgstr "مصروف خدمة الإنترنت"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_211001
+#: model:account.account.template,name:l10n_ye.211001
+msgid "Account Payable"
+msgstr "حساب الدائنون"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_112001
+#: model:account.account.template,name:l10n_ye.112001
+msgid "Account Receivable"
+msgstr "حساب المدينون"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_212004
+#: model:account.account.template,name:l10n_ye.212004
+msgid "Accrued expenses"
+msgstr "المصروفات المستحقة"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_114001
+#: model:account.account.template,name:l10n_ye.114001
+msgid "Accrued income"
+msgstr "الإيرادات المستحقة"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_312008
+#: model:account.account.template,name:l10n_ye.312008
+msgid "Allowable discount"
+msgstr "الخصم المسموح به"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_312006
+#: model:account.account.template,name:l10n_ye.312006
+msgid "Bank fees"
+msgstr "الفوائد البنكية"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_311001
+#: model:account.account.template,name:l10n_ye.311001
+msgid "Capital"
+msgstr "رأس المال"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_113003
+#: model:account.account.template,name:l10n_ye.113003
+msgid "Cars"
+msgstr "السيارات"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_111002
+#: model:account.account.template,name:l10n_ye.111002
+msgid "Cash in Saudi Riyals"
+msgstr "النقدية بالريال السعودي"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_111004
+#: model:account.account.template,name:l10n_ye.111004
+msgid "Cash in UAE Dirhams"
+msgstr "النقدية بالدرهم الإماراتي"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_111001
+#: model:account.account.template,name:l10n_ye.111001
+msgid "Cash in USD"
+msgstr "النقدية بالدولار الأمريكي"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_111003
+#: model:account.account.template,name:l10n_ye.111003
+msgid "Cash in Yemeni Riyals"
+msgstr "النقدية بالريال اليمني"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_312018
+#: model:account.account.template,name:l10n_ye.312018
+msgid "Consulting expenses"
+msgstr "مصاريف الإستشارات"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_313001
+#: model:account.account.template,name:l10n_ye.313001
+msgid "Cost of goods"
+msgstr "تكلفة بيع البضاعة"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_111006
+#: model:account.account.template,name:l10n_ye.111006
+msgid "Current Account Currency in Saudi Riyal"
+msgstr "جاري العملة بالريال السعودي"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_111007
+#: model:account.account.template,name:l10n_ye.111007
+msgid "Current Account Currency in UAE Dirhams"
+msgstr "جاري العملة بالدرهم الإماراتي"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_111008
+#: model:account.account.template,name:l10n_ye.111008
+msgid "Current Account Currency in USD"
+msgstr "جاري العملة بالدولار الأمريكي"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_111005
+#: model:account.account.template,name:l10n_ye.111005
+msgid "Current Currency Account in Yemeni Riyals"
+msgstr "جاري العملة بالريال اليمني"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_314001
+#: model:account.account.template,name:l10n_ye.314001
+msgid "Depreciation of fixed assets"
+msgstr "إهلاك الأصول الثابتة"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_312004
+#: model:account.account.template,name:l10n_ye.312004
+msgid "Electricity Incoice"
+msgstr "فاتورة الكهرباء"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_113001
+#: model:account.account.template,name:l10n_ye.113001
+msgid "Electronic devices"
+msgstr "الأجهزة الإلكترونية"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_421002
+#: model:account.account.template,name:l10n_ye.421002
+msgid "Employee deductions"
+msgstr "خصومات الموظفين"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_114009
+#: model:account.account.template,name:l10n_ye.114009
+msgid "Employees Entrusted"
+msgstr "عهد الموظفين"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_312015
+#: model:account.account.template,name:l10n_ye.312015
+msgid "Employees equivalents"
+msgstr "مكافئات الموظفين"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_114003
+#: model:account.account.template,name:l10n_ye.114003
+msgid "Employees salary advances"
+msgstr "سلف الموظفين"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_312024
+#: model:account.account.template,name:l10n_ye.312024
+msgid "Expenses of fuel oils"
+msgstr "مصروف الوقود والزيوت"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_421001
+#: model:account.account.template,name:l10n_ye.421001
+msgid "Foreign Exchange Gain"
+msgstr "الربح من صرف العملات"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_312003
+#: model:account.account.template,name:l10n_ye.312003
+msgid "Foreign Exchange Loss"
+msgstr "الخسارة في صرف العملات"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_421015
+#: model:account.account.template,name:l10n_ye.421015
+msgid "Free quantities purchases"
+msgstr " الكميات المجانية عند الشراء"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_113002
+#: model:account.account.template,name:l10n_ye.113002
+msgid "Furniture"
+msgstr "الأثاث"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_312005
+#: model:account.account.template,name:l10n_ye.312005
+msgid "Government tax expenses"
+msgstr "مصروف الضرائب الحكومية"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_312011
+#: model:account.account.template,name:l10n_ye.312011
+msgid "Hospitality expenses"
+msgstr "مصروفات الضيافة"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_312017
+#: model:account.account.template,name:l10n_ye.312017
+msgid "Loss from decrease in amount paid by the customer"
+msgstr "الخسارة من النقصان في المبلغ المدفوع من العميل"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_312014
+#: model:account.account.template,name:l10n_ye.312014
+msgid "Maintenance and repair expenses"
+msgstr "مصروفات الصيانة والإصلاحات"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_312010
+#: model:account.account.template,name:l10n_ye.312010
+msgid "Marketing expenses"
+msgstr "مصروفات التسويق"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_212005
+#: model:account.account.template,name:l10n_ye.212005
+msgid "Notes Payable"
+msgstr "أوراق الدفع"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_114008
+#: model:account.account.template,name:l10n_ye.114008
+msgid "Notes Receivable"
+msgstr "أوراق القبض"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_312016
+#: model:account.account.template,name:l10n_ye.312016
+msgid "Overtime of Employees"
+msgstr "العمل الإضافي للموظفين"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_114004
+#: model:account.account.template,name:l10n_ye.114004
+msgid "Prepaid expenses"
+msgstr "المصروفات المدفوعة مقدما"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_411001
+#: model:account.account.template,name:l10n_ye.411001
+msgid "Product Sales"
+msgstr "مبيعات المنتجات"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_312023
+#: model:account.account.template,name:l10n_ye.312023
+msgid "Products damaged"
+msgstr "المنتجات التالفة"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_421013
+#: model:account.account.template,name:l10n_ye.421013
+msgid "Profit from the increase paid by the customer"
+msgstr "الربح من الزيادة المدفوعة من العميل"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_312019
+#: model:account.account.template,name:l10n_ye.312019
+msgid "Promotion - Free quantities"
+msgstr "مصروف الترويج والكميات المجانية"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_421014
+#: model:account.account.template,name:l10n_ye.421014
+msgid "Purchase discount"
+msgstr "الخصم المكتسب"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_114010
+#: model:account.account.template,name:l10n_ye.114010
+msgid "Purchases"
+msgstr "المشتريات"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_312007
+#: model:account.account.template,name:l10n_ye.312007
+msgid "Rent the company"
+msgstr "إيجار الشركة"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_312027
+#: model:account.account.template,name:l10n_ye.312027
+msgid "Rent warehouse"
+msgstr "إيجار المستودع"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_212003
+#: model:account.account.template,name:l10n_ye.212003
+msgid "Revenue paid in advance"
+msgstr "الإيرادات المدفوعة مقدما"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_312001
+#: model:account.account.template,name:l10n_ye.312001
+msgid "Salary Expenses"
+msgstr "مصروف رواتب الموظفين"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_212002
+#: model:account.account.template,name:l10n_ye.212002
+msgid "Salary entitlements"
+msgstr "مستحقات رواتب الموظفين"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_411002
+#: model:account.account.template,name:l10n_ye.411002
+msgid "Service Sales"
+msgstr "مبيعات الخدمات"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_113004
+#: model:account.account.template,name:l10n_ye.113004
+msgid "Software"
+msgstr "البرمجيات"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_312013
+#: model:account.account.template,name:l10n_ye.312013
+msgid "Stationery and printing expenses"
+msgstr "مصروفات القرطاسية والمطبوعات"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_114007
+#: model:account.account.template,name:l10n_ye.114007
+msgid "Stock Interim Account (Delivered)"
+msgstr "حساب البضاعة قيد التوصيل"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_114006
+#: model:account.account.template,name:l10n_ye.114006
+msgid "Stock Interim Account (Received)"
+msgstr "حساب البضاعة قيد الإستلام"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_114005
+#: model:account.account.template,name:l10n_ye.114005
+msgid "Stock Valuation Account"
+msgstr "حساب قيمة المخزون"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_114002
+#: model:account.account.template,name:l10n_ye.114002
+msgid "Tax Paid"
+msgstr "الضريبة المدفوعة"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_212001
+#: model:account.account.template,name:l10n_ye.212001
+msgid "Tax Received"
+msgstr "الضريبة المستلمة"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_312022
+#: model:account.account.template,name:l10n_ye.312022
+msgid "Telephone"
+msgstr "فاتورة الهاتف الثابت"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_312026
+#: model:account.account.template,name:l10n_ye.312026
+msgid "Transaction and facilities expenses"
+msgstr "مصاريف المعاملات والتسهيلات"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_312025
+#: model:account.account.template,name:l10n_ye.312025
+msgid "Transport and carrier expenses"
+msgstr "مصاريف النقل والحمالة"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_312021
+#: model:account.account.template,name:l10n_ye.312021
+msgid "Various expenses"
+msgstr "مصاريف متنوعة"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_312002
+#: model:account.account.template,name:l10n_ye.312002
+msgid "Water Incoice"
+msgstr "فاتورة المياه"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_312012
+#: model:account.account.template,name:l10n_ye.312012
+msgid "Web hosting expenses"
+msgstr "مصروف إستضافة على النت"
+
+#. module: l10n_ye
+#: model:account.chart.template,name:l10n_ye.account_arabic_coa_general
+msgid "Yemen - Chart of Accounts"
+msgstr "الدليل المحاسبي للجمهورية اليمنية"
+
+#. module: l10n_ye
+#: model:account.account,name:l10n_ye.1_312020
+#: model:account.account.template,name:l10n_ye.312020
+msgid "cleaning tools"
+msgstr "مصروف أدوات النظافة"
+
+#. module: l10n_ye
+#: model:account.account.template,name:l10n_ye.account_arabic_coa_general_liquidity_transfer
+msgid "تحويل جاري"
+msgstr ""
+

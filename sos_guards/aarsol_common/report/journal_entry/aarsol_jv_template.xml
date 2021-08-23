@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+
+<template id="aarsol_accounts.journal_entry">
+	<t t-call="web.html_container">
+    <t t-foreach="docs" t-as="o">
+		<t t-set="style" t-value="o.jv_style or res_company.default_style or user.env.ref('professional_templates.default_style_for_all_reports')"/>	
+	<t t-call="web.internal_layout">
+
+	<!-- START OF PAGE -->
+    <div class="page" t-attf-style="color:{{style.text_color}} !important;">
+		<div class="col-xs-12" style="padding:8px;"/> <!--Spacing-->
+		<div class="col-xs-6" style="padding-left:0px; padding-right:0px; padding-top:5px; padding-bottom:0px; "> 
+     	   <div  t-attf-style="float:left; width:100%; margin-top:0px;padding-top:0px;padding-left:15px;padding-right:15px;color:{{style.text_color}} !important; border:1px solid {{style.text_color}}">
+             <h2 id="title" style="margin-bottom:10px;">                   
+                <span t-field="o.voucher_type"/>
+            </h2>
+			<h4 id="status" style="margin-bottom:10px;">                       
+				<span t-if="o.state == 'draft'" style="float:right"> Draft </span> 
+			</h4>			
+		   </div>
+        </div>
+
+		<div class="col-xs-12" style="padding:8px;"/> <!--Spacing-->
+		<div class="col-xs-6" style="padding-left:0px; padding-right:0px; padding-top:5px; padding-bottom:0px; "> 
+     	   <div  t-attf-style="float:left; width:100%; margin-top:0px;padding-top:0px;padding-left:15px;padding-right:15px;color:{{style.text_color}} !important; border:1px solid {{style.text_color}}">
+             <h3 id="title" style="margin-bottom:10px;">                   
+                <span t-if="o.state == 'posted'"><span t-field="o.name"/></span>
+				<span t-if="o.state == 'draft'"> * <span t-field="o.id"/></span>
+            </h3>			
+		   </div>
+        </div>
+		
+		<div class="col-xs-12" style="padding:8px;"/> <!--Spacing-->
+
+		<div class="col-xs-12" t-attf-style="border:1px solid {{style.text_color}}; padding-left:0px; padding-right:0px; padding-bottom:0px; padding-top:5px;"><!--start of wrapper -->
+           <t t-set="div_style" t-value="'width:auto; padding-left:10px; padding-right:10px; float:left; margin-left:25px;'"></t>
+          
+            <div t-if="o.ref" t-attf-style="{{div_style}}">
+                 <strong>Reference:</strong>
+                <p t-field="o.ref"/>
+            </div>
+            <div t-if="o.journal_id" t-attf-style="{{div_style}}">
+                 <strong>Accounting Journal:</strong>
+                <p t-field="o.journal_id"/>
+            </div>
+            <div t-if="o.partner_id" t-attf-style="{{div_style}}">
+                 <strong>Partner:</strong>
+                <p t-field="o.partner_id"/>
+            </div>                   
+         </div> <!--end of wrapper2-->
+		
+        
+		<t t-call="aarsol_accounts.journal_data"/>
+		
+		</div>
+		<!--
+		<t t-call="professional_templates.company_footer"/>
+		-->
+	</t>	
+	</t>
+	</t>	
+
+    </template>
+
+</data>
+</odoo>

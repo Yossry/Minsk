@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+        <record id="employee_inherited_sequence_view" model="ir.ui.view">
+            <field name="name">employee.inherited.sequence.view</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+             <xpath expr="//field[@name='name']" position="before">
+                  <field name="emp_seq"/><br/>
+             </xpath>
+            </field>
+        </record>
+        <menuitem parent="hr.menu_human_resources_configuration"
+                  id="menu_hr_job_position"
+                  action="hr.action_hr_job"
+                  sequence="10"/>
+</odoo>

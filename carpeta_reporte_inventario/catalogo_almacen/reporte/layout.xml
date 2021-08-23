@@ -1,0 +1,13 @@
+<odoo> 
+      <data>
+            <report
+                string="Stock"
+                id="action_imp_report"
+                model="product.template"
+                name="catalogo_almacen.catalogo_almacen"
+                file="catalogo_almacen.catalogo_almacen"
+                report_type="qweb-pdf"
+                print_report_name="'Reporte - %s' % object.name"
+            />
+      </data>
+</odoo>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>	
+		<template id ="report_pf_employeestatement">
+			<t t-call="web.html_container">
+				<t t-call="web.basic_layout">
+					<div class="page">
+						<style>
+							table th { background-color:#d4e3e5;}
+						</style>
+					
+						 <div class="row">
+						 	 <div class="col-xs-4">
+						 	 	 <img width="40%" style="max-height:125px;" class="img img-responsive" src="/sos_provident_fund/static/src/img/logo.png"/>
+						 	 </div>
+						 	 <div class="col-xs-3">
+						 	 </div>
+						 	 
+						 	 <div class="col-xs-5" style="font-size:14px; font-weight:bold; text-align:right; align:left;margin-top:20px;">
+						 	 	SECURITY ORGANIZING SYSTEM (PVT) LIMITED
+						 	 </div>
+						 </div>
+				
+						 <div class="row" style="font-size:15px; font-weight:bold; text-align:center; align:left;">
+						 	<div class="col-xs-12">
+						 		<u>Provident Fund Contribution Statement</u>
+						 	</div>
+						 </div>
+						 
+						 <table class="table table-bordered" style="margin-top:10px;">
+						 	<tr>
+						 		<td class="text-left" style="font-size:15px; font-weight:bold;">Name </td>
+						 		<td class="text-left" style="font-size:15px;"> <span t-esc="info['name']" /> </td>
+						 		<td class="text-left" style="font-size:15px; font-weight:bold;">Status</td>
+						 		<td class="text-left" style="font-size:15px;"> <span t-esc="info['status']" /> </td>
+						 	</tr>
+						 	<tr>
+						 		<td class="text-left" style="font-size:15px; font-weight:bold;">ERP No. </td>
+						 		<td class="text-left" style="font-size:15px;"> <span t-esc="info['ref']" /> </td>
+						 		<td class="text-left"></td>
+						 		<td class="text-left"></td>
+						 	</tr>
+						 	<tr>
+						 		<td class="text-left" style="font-size:15px; font-weight:bold;">CNIC </td>
+						 		<td class="text-left" style="font-size:15px;"> <span t-esc="info['cnic']" /> </td>
+						 		<td class="text-left"></td>
+						 		<td class="text-left"></td>
+						 	</tr>
+						 </table>
+						 
+						 
+						<table class="table table-bordered">
+							<thead>
+								<th class="text-left">SR# </th>
+								<th class="text-left">Slip Reference </th>
+								<th class="text-right">Employee Contribution </th>
+								<th class="text-right">Employer Contribution </th>
+							</thead>
+							<tbody>		
+							<t t-foreach="recs" t-as="rec">
+								<tr>
+									<td class="text-left">
+										<span t-esc="rec_index + 1" />
+									</td>
+									<td class="text-left">
+										<span t-esc="rec.slip_id.name" />
+									</td>
+									<td class="text-right">
+										<span t-esc="'{0:,.1f}'.format(abs(rec.amount))" />
+									</td>
+									<td class="text-right">
+										<span t-esc="'{0:,.1f}'.format(abs(rec.amount))" />
+									</td>
+								</tr>
+							</t>
+						
+							<tr>
+								<td colspan="2" style="font-size:15px; font-weight:bold;" class="text-center">Total</td>
+								<td class="text-right"  style="font-size:15px; font-weight:bold;">
+									<span t-esc="'{0:,.1f}'.format(sub_total)" />
+								</td>
+								<td class="text-right"  style="font-size:15px; font-weight:bold;">
+									<span t-esc="'{0:,.1f}'.format(sub_total)" />
+								</td>
+							</tr>
+						
+							<tr style="font-size:15px; font-weight:bold; text-align:center;">
+								<td colspan="2" class="text-center">Grand  Total</td>
+								<td colspan="2" class="text-center"><span t-esc="'{0:,.1f}'.format(total)" /></td>
+							</tr>
+						
+							</tbody>	
+						</table>
+					
+					</div>
+				</t>		 			 	
+			</t>
+		</template>
+		
+	</data>
+</odoo>
+

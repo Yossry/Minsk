@@ -1,0 +1,224 @@
+<section class="oe_container oe_dark" style="overflow: hidden;
+background: #efefef;
+box-shadow: none;">
+    <div class="mt32 mb32">
+        <div class="col-md-12">
+            <h2 class="oe_slogan" style="font-size: 35px;"><b>Import Bulk Sales Order Using Excel or CSV File.</b></h2>
+            <h3 class="oe_slogn"  style=" text-align: center;">Do you have large numbers of orders managed on excel when you sales goods too your customer or you exported them from other system and want to import it on Odoo? and it will takes lots of time to manually add them ? Don't worry we will help you to import them easily with one click.<br/><br/>Think that if you have more then 2000 products lines of products in Sales Order, It will take more then 1 hour to add all of those lines.Don't get frustrated by that.<br/><br/> Installed this apps and you will get import sales order option which will help you to import bulk lines in single click. <br/><br/>It also help you to import with taxes details and once lines imported, everything will be calculated(Tax Amount, Total Amount etc) automatically same as standard Odoo.
+</h3>
+
+        </div>
+    </div>
+</section>
+
+<section class="container mt32">
+    <div class="row">
+        <h4  style=" text-align: center;"><span> <a href="https://www.youtube.com/watch?v=bG7ImzFkSfo" target="_blank" class="btn btn-sm btn btn-primary" ><span class="o_ripple" ></span><i class="fa fa-youtube-play"></i>
+            Click here for the video tutorial
+          </a></h4>
+    </div>
+</section>
+
+<section class="oe_container oe_dark">
+    <section class="oe_container oe_dark lead">
+        <div class="oe_row">    
+            <div class="oe_span12" style="width: 828px;">
+            <div class="panel panel-primary" id="wkid0" style="border-color: #528df3 !important;">
+            <div class="panel-heading" style="background-color: #528df3 !important;">
+            <h3 class="panel-title" style="font-size: 25px;"><i class="fa fa-mail-forward"></i>key features:</h3>
+            </div>
+                <div class="panel-body">
+                    <ul class="list-unstyled">
+                        <li><i class="fa fa-check text-primary" style="color: #528df3 !important;"></i>Import bulk sales order in onetime
+</li>
+                        <li><i class="fa fa-check text-primary" style="color: #528df3 !important;"></i>Import bulk sales order line in onetime
+</li>
+                        <li><i class="fa fa-check text-primary" style="color: #528df3 !important;"></i>Perfect linked sales order and order line as per data file.
+</li>           
+                        <li><i class="fa fa-check text-primary" style="color: #528df3 !important;"></i>Option to have salesperson to add with sales order.
+</li>
+                        <li><i class="fa fa-check text-primary" style="color: #528df3 !important;"></i>Import sales order with different currency based on pricelist.
+</li>
+                        <li><i class="fa fa-check text-primary" style="color: #528df3 !important;"></i>If there is need of adding tax you can add multiple tax separate with semicolon but if there is no need of adding tax you have to leave it blank.
+</li>
+                        <li><i class="fa fa-check text-primary" style="color: #528df3 !important;"></i>You can Import Sale number which is available in your Database instead of default that Odoo provides. 
+</li>
+                        <li><i class="fa fa-check text-primary" style="color: #528df3 !important;"></i>You can Import Date which you have in your Database instead of default that Odoo provides
+</li>
+
+                        <li><i class="fa fa-check text-primary" style="color: #528df3 !important;"></i>Easy Warning when import fail due to wrong data (i.e Customer Different on same sales order, Pricelist different on same sales order, Selected UOM has different uom categoy on product's default UOM)</li>
+                        
+                    </ul>
+                </div>
+                </div>
+                </div>
+        </div>
+    </section>
+    </section>
+
+    <section class="container mt32">
+    <div class="row">
+        <h4 class="oe_slogan" style=" text-align: center;"><span align="center" class="label label-success" style="background-color:#528df3;"> <span class="fa fa-star fa-spin"></span>How to Import Data of Sales Order.</span></h4>
+    </div>
+</section>
+<br>
+
+<section class="oe_container oe_dark">
+        <div class="oe_row oe_spaced">
+            <div class="oe_span12">
+                <dl style="padding-left:30px;">
+                  <dt style="color:#31708f;">ORDER</dt>
+                  <dd style="color:#31708f;">   - Sale order number </dd>
+                  <dt style="color:#31708f;">CUSTOMER</dt>
+                  <dd style="color:#31708f;">- Customer name for the sale order.</dd>
+                  <dt style="color:#31708f;">PRICELIST</dt>
+                  <dd style="color:#31708f;">- Pricelist is used for identify Currency for the sale order.</dd>
+                  <dt style="color:#31708f;">PRODUCT</dt>
+                  <dd style="color:#31708f;">- product name for the sale order line.</dd>
+                  <dt style="color:#31708f;">QUANTITY</dt>
+                  <dd style="color:#31708f;">- Quantity for the above product.</dd>
+                  <dt style="color:#31708f;">UOM</dt>
+                  <dd style="color:#31708f;">- UOM  for the above product.</dd>
+                  <dt style="color:#31708f;">DESCRIPTION</dt>
+                  <dd style="color:#31708f;">- Description for the product</dd>
+                  <dt style="color:#31708f;">PRICE</dt>
+                  <dd style="color:#31708f;">- Price for the above product.</dd>
+                  <dt style="color:#31708f;">SALESPERSON</dt>
+                  <dd style="color:#31708f;">- Name of salesperson.</dd>
+                  <dt style="color:#31708f;">TAX</dt>
+                  <dd style="color:#31708f;">-Tax for the product</dd>
+                  <dt style="color:#31708f;">DATE</dt>
+                  <dd style="color:#31708f;">- Date of sale order.</dd>
+                </dl>
+            
+                <h3 class="text-info" style="font-size: 25px;">Given below is the sample of import file.</h3>
+                <h3 class="text-info" style="font-size: 25px;">The "ORDER" should be same, as you can see in the image,"ORDER" is same for different product list.This defines single order with different product lines.</h3>
+                <h3 class="text-info" style="font-size: 25px;">Tax column is important you have to add "Tax column" though there is no need of adding tax.</h3>
+                <img border="1" border-color: black; class="img-border img-responsive thumbnail" style="border: 3px solid black;" src="excel.png"><br/>
+            </div>
+        </div>
+    </section>
+
+<section class="oe_container lead">
+        <div class="oe_row oe_spaced">
+            <div class="oe_span12">
+            <h1 class="text-info" style="text-align: center;padding-bottom: 40px;"><strong>Figure shows the menu for importing data of Sales Orders.</strong></h1>
+                <br/>
+                <img class="img-border img-responsive thumbnail" style="border: 3px solid black;" src="sale_order_menu.png">
+            </div>
+        </div>
+</section> 
+
+<section class="oe_container oe_dark">
+        <div class="oe_row oe_spaced">
+            <div class="oe_span12">
+            <h1 class="text-info" style="text-align: center;padding-bottom: 40px;"><strong>Import Sales Wizard</strong></h1>
+            <h3 class="text-info" style="font-size: 25px;">If you want to import details of sales number from CSV/XLS you can also have option regarding this in import sales wizard.</h3>
+            <h3 class="text-info" style="font-size: 25px;">If you select "Use Excel/CSV Sequence Number" option then name field will came from CSV/XLS file.</h3>
+            
+                <br/>
+                <img class="img-border img-responsive thumbnail" style="border: 3px solid black;" src="sales_wizard.png">
+            </div>
+        </div>
+    </section> 
+
+<section class="oe_container lead">
+        <div class="oe_row oe_spaced">
+            <div class="oe_span12">
+            <h1 class="text-info" style="text-align: center;padding-bottom: 40px;"><strong>After importing CSV/XLS you can see the Sequance(Sale Order number) is same as we given in CSV/XLS file.</strong></h1>
+                <br/>
+                <img class="img-border img-responsive thumbnail" style="border: 3px solid black;" src="sales_validate_csv.png">
+            </div>
+        </div>
+    </section>  
+
+<section class="oe_container oe_dark">
+        <div class="oe_row oe_spaced">
+            <div class="oe_span12">
+            <h1 class="text-info" style="text-align: center;padding-bottom: 40px;"><strong>Views</strong></h1>
+            <h3 class="text-info" style="font-size: 25px;">This is the tree of sales order created from given data file.</h3>
+                <br/>
+                <img class="img-border img-responsive thumbnail" style="border: 3px solid black;" src="sales_tree.png">
+            </div>
+        </div>
+    </section>
+    
+<section class="oe_container lead">
+        <div class="oe_row oe_spaced">
+            <div class="oe_span12">
+            <h1 class="text-info" style="text-align: center;padding-bottom: 40px;"><strong>If you select "Use System Default Sequence Number" option then name field will follow the system sequence.</strong></h1>
+                <br/>
+                <img class="img-border img-responsive thumbnail" style="border: 3px solid black;" src="sales_wizard_default.png">
+            </div>
+        </div>
+    </section> 
+              
+<section class="oe_container oe_dark">
+        <div class="oe_row oe_spaced">
+            <div class="oe_span12">
+            <h1 class="text-info" style="text-align: center;padding-bottom: 40px;"><strong>If all taxes are found in system then sale order will be generated.</strong></h1>
+                <br/>
+                <img class="img-border img-responsive thumbnail" style="border: 3px solid black;" src="right_tax.png">
+            </div>
+        </div>
+    </section>  
+    
+<section class="oe_container lead">
+        <div class="oe_row oe_spaced">
+            <div class="oe_span12">
+            <h1 class="text-info" style="text-align: center;padding-bottom: 40px;"><strong>It will generate error if you import wrong pricelist,which is shown in Figure.</strong></h1>
+            <h3 class="text-info" style="font-size: 25px;">It will also generates errors when you import wrong value of Currency,Customer,UOM,Salesperson and Tax.</h3>
+                <br/>
+                <img class="img-border img-responsive thumbnail" style="border: 3px solid black;" src="sale_miss_cur.png">
+            </div>
+        </div>
+    </section>   
+
+
+<section class="container mt32">
+    <div class="row">
+        <h4 class="oe_slogan" style=" text-align: center;"><span align="center" class="label label-success" style="background-color:red;">Installation Guide</span></h4>
+            <h3 class="text-info" style="text-align: center;">
+                <strong style="color:red;">Before installing this module you have to install following packages in your system.</strong>
+            </h3>
+            <ul class="list-unstyled" style="font-size:17px;text-align:center;">
+                <li class="text-info"><i class="fa fa-circle" style="color: red !important;">  sudo pip install xlrd</i>
+                <li class="text-info"><i class="fa fa-circle" style="color: red !important;">  sudo pip install xlwt</i>
+                <li class="text-info"><i style="color: red !important;">  OR</i>
+                <li class="text-info"><i class="fa fa-circle" style="color: red !important;">  sudo apt-get install python-xlrd</i>
+                <li class="text-info"><i class="fa fa-circle" style="color: red !important;">  sudo apt-get install python-xlwt</i>
+           </ul>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <div class="oe_span12">
+            <h2 class="oe_slogan">Free Support</h2>
+            <h3 class="oe_slogan" style="font-size: 20px; color: #000000 !important;">You will get 90 Days free support incase any bugs or issue (Except data recovery).</h3>
+            <p class="oe_slogan">
+		At BrowseInfo we offer  end to end solution for Odoo services. Which includes analysis &amp; consultation on the workflows and integration part.  Please note that You're not allowed to distribute this module after purchase! Incase of any question regarding this module feel free to email us on <a href="mailto:sales@browseinfo.in">sales@browseinfo.in</a> or raise a ticket on support.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container lead">
+		<div class="oe_row oe_spaced">
+			<div class="oe_span12">
+				<h2 class="oe_slogan">
+           <a href="http://www.browseinfo.in" target="new">
+                <img src="bi_logo.png">
+            </a>
+            <br>
+					<a href="sales@browseinfo.in" style="color: #000000 !important;">
+						Get Help &amp; Support</a>
+				</h2>
+			</div>
+			<br>
+			<div class="oe_slogan oe_spaced text-center">
+				<a class="btn btn-success mt8" title="Website" style="background-color: #9B0F4E; color: #FFFFFF !important;" href="http://www.browseinfo.in"> Website </a> <a class="btn btn-success mt8" title="Blog" style="background-color: #9B0F4E; color: #FFFFFF !important;" href="http://www.blog.browseinfo.in"> Blog </a> <a class="btn btn-success mt8" title="Contact Us" style="background-color: #9B0F4E; color: #FFFFFF !important;" href="mailto:sales@browseinfo.in"> Support </a> <a class="btn btn-success mt8" title="Request New Features now !" style="background-color: #9B0F4E; color: #FFFFFF !important;" href="mailto:sales@browseinfo.in"> Request New Features </a>
+			</div>
+		</div>
+	</section>
+	

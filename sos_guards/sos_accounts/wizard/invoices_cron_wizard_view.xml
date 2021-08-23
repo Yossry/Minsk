@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_invoices_cron_wizard" model="ir.ui.view">
+            <field name="name">Invoices Cron Wizard</field>
+            <field name="model">invoices.cron.wizard</field>
+            <field name="arch" type="xml">
+            <form string="Invoices Cron Wizard" version="7.0">
+                <label for="date_from" string="This wizard will Generate Cron Invoices Entries."/>
+                <footer>
+                    <button name="generate_cron_entry" string="Generate Cron" type="object" class="oe_highlight"/>
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+                <group>
+                    <group>
+						<field name="date_from" required="1"/>
+						<field name="date_to" required="1"/>    
+						
+                    </group>                    
+                </group>
+                
+                 <notebook tabpos="up" colspan="4">
+				                   				                    
+					<page string="Project Filters" name="projects">
+						<separator string="Generate Only" colspan="4"/>
+						<field name="project_ids"  widget="many2many_checkboxes"/>							
+					</page>
+
+					<page string="Post Filters" name="posts">
+						<separator string="Generate Only" colspan="4"/>
+						<field name="post_ids"  widget="many2many_checkboxes"/>							
+					</page>
+				                    
+                </notebook>
+            </form>
+            </field>
+        </record>
+
+        <record id="action_invoices_cron_wizard" model="ir.actions.act_window">
+            <field name="name">Create Invoices Cron</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">invoices.cron.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+	<menuitem action="action_invoices_cron_wizard" id="menu_invoices_cron_wizard" parent="menu_account_customer"  sequence="62" groups="base.group_no_one,sos.group_superusers"/>
+
+    </data>
+</odoo>

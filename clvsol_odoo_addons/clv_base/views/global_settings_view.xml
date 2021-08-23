@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+        
+    <record id="clv_global_settings_view_form" model="ir.ui.view">
+        <field name="name">clv.global_settings.form</field>
+        <field name="model">clv.global_settings</field>
+        <field name="arch" type="xml">
+            <form string="Global Settings" class="oe_form_configuration">
+                <header name="global_settings_header">
+                    <button string="Save" type="object"
+                        name="execute" class="oe_highlight"/>
+                    or
+                    <button string="Cancel" type="object"
+                        name="cancel" class="oe_link"/>
+                </header>
+            </form>
+        </field>
+    </record>
+    
+    <record id="clv_global_settings_action" model="ir.actions.act_window">
+        <field name="name">Global Settings</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">clv.global_settings</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="search_view_id" eval="False"/>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="clv_global_settings_view_form"/>
+        <field name="target">inline</field>
+    </record>
+
+</odoo>

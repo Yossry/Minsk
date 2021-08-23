@@ -1,0 +1,39 @@
+.o_warning_navbar_item {
+
+    &.show .o_warning_navbar_dropdown {
+        display: flex;
+        flex-flow: column nowrap;
+    }
+    .o_notification_counter {
+        margin-top: -0.8rem;
+        margin-right: 0;
+        margin-left: -0.6rem;
+        background: #00A09D;
+        color: white;
+        vertical-align: super;
+        font-size: 0.7em;
+    }
+    .o_warning_navbar_dropdown {
+        width: 350px;
+        padding: 0;
+    }
+
+    .o_mail_warnings_dropdown_items {
+        flex: 0 1 auto;
+        max-height: 400px;
+        min-height: 50px;
+        overflow-y: auto;
+    }
+
+    .o_no_activity {
+        cursor: initial;
+        align-items: center;
+        color: grey;
+        opacity: 0.5;
+        padding: 3px;
+    }
+}
+
+.o_view_all_warnings {
+    padding: 5px;
+}

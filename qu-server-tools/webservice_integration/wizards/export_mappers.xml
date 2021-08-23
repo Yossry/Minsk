@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- export.webservice.mapper form view -->
+    <record id="wizard_export_mapper_view_form" model="ir.ui.view">
+        <field name="name">export.webservice.mapper.view.form</field>
+        <field name="model">export.webservice.mapper</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <field name="file_ids" widget='many2many_list' readonly="1">
+                    <tree editable='bottom'>
+                        <field name="file_name" invisible="1"/>
+                        <field name="file_data" widget='binary' filename="file_name"/>
+                    </tree>
+                </field>
+            </form>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright 2019 Coop IT Easy
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+
+    <record model="ir.ui.view" id="email_template_tree">
+        <field name="name">email.template.tree</field>
+        <field name="model">mail.template</field>
+        <field name="inherit_id" ref="mail.email_template_tree"/>
+        <field name="arch" type="xml">
+            <field name="name" position="before">
+                <field name="structure" groups="investor_wallet_platform_base.group_platform_wallet_user"/>
+            </field>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="email_template_iwp_form">
+        <field name="name">email.template.form</field>
+        <field name="model">mail.template</field>
+        <field name="inherit_id" ref="mail.email_template_form"/>
+        <field name="arch" type="xml">
+            <field name="model_id" position="before">
+                <field name="structure" groups="investor_wallet_platform_base.group_platform_wallet_user" />
+            </field>
+        </field>
+    </record>
+
+    <record id="easy_my_coop.action_easy_my_coop_email_templates" model="ir.actions.act_window" >
+        <field name="domain">[('iwp','=',True)]</field>
+    </record>
+
+</odoo>

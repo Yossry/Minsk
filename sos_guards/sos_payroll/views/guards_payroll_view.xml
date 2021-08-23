@@ -1,0 +1,653 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+		<record id="view_guards_leave_policy_tree" model="ir.ui.view">
+			<field name="name">guards.leave.policy.tree</field>
+			<field name="model">guards.leave.policy</field>
+			<field name="arch" type="xml">
+				<tree string="Guards Leave Policy" editable="top">
+					<field name="project_id"/>
+					<field name="center_id"/>
+					<field name="post_id"/>
+					<field name="from_days"/>
+					<field name="to_days"/>
+					<field name="leaves"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="act_view_guards_leave_policy" model="ir.actions.act_window">
+			<field name="res_model">guards.leave.policy</field>
+			<field name="name">Guards Leave Policy</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="context">{'search_default_draft':1}</field>		
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+					Click to create Guards Leave Policy.
+				</p>
+			</field>
+		</record>  
+
+		<record id="inherited_hr_salary_rule_form" model="ir.ui.view">
+			<field name="name">hr_salary_rule_form.inherit</field>
+			<field name="model">hr.salary.rule</field>
+			<field name="type">form</field>
+			<field name="inherit_id" ref="hr_payroll.hr_salary_rule_form"/>
+			<field name="arch" type="xml">
+			  <field name="company_id" position="after">
+				  <field name="is_loop"/>
+			  </field>    
+			</field>
+		</record>
+
+		<!-- Payslip Line -->
+		<record id="view_guards_payslip_line_tree" model="ir.ui.view">
+			<field name="name">guards.payslip.line.tree</field>
+			<field name="model">guards.payslip.line</field>
+			<field name="arch" type="xml">
+				<tree string="Salary Structure" edit="false" delete="false" create="false" colors="blue:total == 0">
+					<!-- <field name="category_id"/> -->
+					<field name="employee_id" invisible="1"/>
+					<field name="sequence"/>
+					<field name="name"/>
+					<field name="code"/>
+					<field name="post_id"/>
+					<field name="quantity"  attrs="{'invisible':[('code','in',('GROSS','NET','WP'))]}" />
+					<field name="rate"  attrs="{'invisible':[('code','in',('GROSS','NET','WP'))]}" />
+					<field name="amount"  attrs="{'invisible':[('code','in',('GROSS','NET'))]}" />
+					<field name="total"/>
+					<field name="amount_select" invisible="1"/>
+					<field name="register_id" invisible="1"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="view_guards_payslip_line" model="ir.ui.view">
+			<field name="name">guards.payslip.line.tree</field>
+			<field name="model">guards.payslip.line</field>
+			<field name="arch" type="xml">
+				<tree string="Salary Structure" edit="false" delete="false" create="false" colors="blue:total == 0">
+					<field name="employee_id"/>
+					<field name="name"/>			
+					<field name="project_id"/>
+					<field name="center_id"/>
+					<field name="post_id"/>	
+					<field name="quantity" />
+					<field name="rate" />
+					<field name="amount"/>
+					<field name="total"/>
+					<field name="amount_select" invisible="1"/>
+					<field name="register_id" invisible="1"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="view_guards_payslip_line_form" model="ir.ui.view">
+			<field name="name">guards.payslip.line.form</field>
+			<field name="model">guards.payslip.line</field>
+			<field name="arch" type="xml">
+				<form string="Payslip Line">
+					<sheet>
+						<group>
+							<group string="General">
+								<field name="name"/>
+								<field name="code"/>
+								<field name="slip_id"/>
+								<field name="employee_id"/>
+								<field name="post_id"/>
+								<field name="project_id"/>
+								<field name="center_id"/>
+							</group>
+							<group string="Calculations">
+								<field name="category_id"/>
+								<field name="amount_select"/>
+								<field name="quantity" />
+								<field name="rate" />
+								<field name="amount"/>
+								<field name="total"/>
+								<field name="amount_fix"  attrs="{'readonly':[('amount_select','&lt;&gt;','fix')]}"/>
+								<field name="amount_percentage"  attrs="{'readonly':[('amount_select','&lt;&gt;','percentage')]}"/>
+								<field name="sequence" invisible="1"/>
+							</group>
+							<field name="note"/>
+						</group>
+				</sheet>	
+				</form>
+			</field>
+		</record>
+
+		<record id="view_guards_payslip_line_filter" model="ir.ui.view">
+			<field name="name">guards.payslip.line.select</field>
+			<field name="model">guards.payslip.line</field>
+			<field name="arch" type="xml">
+				<search string="Search Payslip Lines">
+					<field name="name" string="Payslip Lines" filter_domain="['|',('name','ilike',self),('code','ilike',self)]"/>
+					<field name="amount_select"/>
+					<field name="slip_id"/>
+					<field name="employee_id"/>
+					<field name="code"/>
+					
+					<group col="8" colspan="4" expand="0" string="Group By...">
+						<filter string="Salary Rule Category" icon="terp-camera_test" name="category_id" context="{'group_by':'category_id'}"/>
+						<filter string="Contribution Register" name="register_id" icon="terp-folder-yellow" context="{'group_by':'register_id'}"/>
+						<filter string="Amount Type" name="amount_select" icon="terp-stock_symbol-selection" context="{'group_by':'amount_select'}"/>
+						<filter string="Employees" name="employee_id" icon="terp-personal" context="{'group_by':'employee_id'}"/>
+						<separator/>
+						<filter string="Yearly Payslips" name="group_yearly_slips" icon="terp-personal" context="{'group_by':'date_from:year'}"/>
+						<filter string="Monthly Payslips" name="group_monthly_slips" icon="terp-personal" context="{'group_by':'date_from:month'}"/>
+						<filter string="From Date" name="group_from_date" icon="terp-personal" context="{'group_by':'date_from'}"/>
+						<filter string="To Date" name="group_to_date" icon="terp-personal" context="{'group_by':'date_to'}"/>
+						<separator/>
+						<filter string="Centers" name="center_id" icon="terp-personal" context="{'group_by':'center_id'}"/>
+						<filter string="Projects" name="project_id" icon="terp-personal" context="{'group_by':'project_id'}"/>
+						<filter string="Posts" name="post_id" icon="terp-personal" context="{'group_by':'post_id'}"/>
+						<filter string="Codes" name="code" icon="terp-personal" context="{'group_by':'code'}"/>
+						<filter string="Employee" name="employee_id" icon="terp-personal" context="{'group_by':'employee_id'}"/>
+					</group>
+				</search>
+			</field>
+		</record>
+
+
+		<act_window name="Payslip Computation Details"
+			context="{'default_slip_id': active_id, 'search_default_slip_id': active_id}"
+			res_model="guards.payslip.line"
+			src_model="guards.payslip"
+			id="act_payslip_lines"/>
+			 
+
+		<record id="act_view_guards_payslip_line" model="ir.actions.act_window">
+			<field name="res_model">guards.payslip.line</field>
+			<field name="name">Guards Payslips Lines</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[('category_id','in',[1,4])]</field>
+			<field name="view_id" ref="view_guards_payslip_line"/>
+			<field name="search_view_id" ref="view_guards_payslip_line_filter"/>
+		</record>  
+
+
+
+		<!-- payslip -->
+		<record id="view_guards_payslip_form" model="ir.ui.view">
+			<field name="name">guards.payslip.form</field>
+			<field name="model">guards.payslip</field>
+			<field name="arch" type="xml">
+				<form string="Payslip">
+				<header>
+					<button string="Confirm" name="guards_verify_sheet" type="object"  attrs="{'invisible':['|',('state','!=','draft'),('worked_days_line_ids','=',[])]}" class="oe_highlight" groups="sos.group_account_auditor,account.group_account_user"/>
+					<button string="Refund" name="refund_sheet" states="confirm,done" type='object' />
+					<button string="Set to Draft" name="draft" type="object" states="cancel"/>
+					<button string="Compute Sheet" name="compute_sheet" type="object"  groups="sos.group_account_auditor,sos.group_coordinator,account.group_account_user" attrs="{'invisible':['|',('state','!=','draft'),('worked_days_line_ids','=',[])]}" class="oe_highlight"/>
+					<button string="Cancel" name="cancel_sheet" type="object" states="draft,hr_check,confirm,verify"/>
+					<field name="state" widget="statusbar" nolabel="1" statusbar_visible="draft,verify,done,cancel"/>
+				</header>
+				<sheet>			
+					<div class="oe_right oe_button_box">
+						<button name="%(act_payslip_lines)d" string="Payslip Computation Details" type="action"/>
+					</div>
+		
+					<div class="oe_title">
+						<label for="employee_id" class="oe_edit_only"/>
+						<h1><field name="employee_id" 
+							context="{'tree_view_ref':'sos.view_guard_tree','search_view_ref':'sos.view_guard_filter'}"/></h1>
+						<label for="date_from" class="oe_edit_only" string="Period"/>
+						<h2>
+							From <field name="date_from"/>
+							to <field name="date_to"/>
+						</h2>				
+					</div>
+					<group>
+						<group>
+							<field name="contract_id" domain="[('date_start','&lt;=',date_to),'|',('date_end','&gt;=',date_from),('date_end','=',False)]"  on_change="on_change_contract_id(date_from, date_to, employee_id, paidon, contract_id)" context="{'default_employee_id': employee_id}"/>
+							<field name="number"/>
+							<field name="struct_id" attrs="{'required':[('contract_id','&lt;&gt;',False)]}"/>
+							<field name="name"/>												   
+							<field name="credit_note"/>								
+							<field name="post_id" invisible="1"/>
+							<field name="project_id" invisible="1"/>
+							<field name="center_id" invisible="1"/>
+						</group>
+						<group string="Bank Detail">
+							<field name="bank"/>								   
+							<field name="bankacctitle"/>								   
+							<field name="bankacc"/>								   
+							<field name="accowner"/>								   				
+						</group>
+					</group>
+					<group>
+						<group>
+							<field name="abl_incentive"/>
+							<field name="abl_incentive_amt"/>
+						</group>
+						<group>
+							<field name="paid_leaves"/>
+							<field name="paid_leaves_post" options="{'no_create': True, 'limit': 10}"/>
+						</group>
+					</group>			
+					<notebook>
+						<page string="Worked Days &amp; Inputs">
+							<separator string="Worked Days"/>
+							<field name="worked_days_line_ids">
+								<tree string="Worked Days" edit="false" create="false" delete="false">
+									<field name="post_id"/>
+									<field name="project_id"/>
+									<field name="center_id"/>
+									<field name="code"/>
+									<field name="number_of_days" sum="Total Working Days"/>
+						
+									<!-- <field name="number_of_hours"/> -->
+									<field name="contract_id"/>
+									<field name="move_line_id" />
+									<field name="sequence" invisible="True"/>
+									<field name="employee_id" invisible="1"/>
+									<field name="total_days" invisible="1"/>
+								</tree>						
+							</field>
+				
+							<separator string="Other Inputs"/>
+							<field name="input_line_ids" colspan="4" nolabel="1">												
+								<tree string="Input Data" editable="top">
+									<field name="name"/>
+									<field name="code"/>
+									<field name="amount"/>
+									<field name="contract_id"/>
+									<field name="sequence" invisible="1"/> 
+								</tree>						
+							</field>
+				
+						</page>
+						<page string="Salary Computation" >
+							<field name="line_ids" colspan="4" nolabel="1">
+								<tree string="Salary Structure"  edit="false" create="false" delete="false" colors="blue:total == 0">
+									<field name="name"/>
+									<field name="code"/>
+									<field name="post_id"/>
+									<!-- <field name="category_id"/> -->
+									<field name="sequence" invisible="1"/>
+									<field name="quantity"  attrs="{'invisible':[('code','in',('GROSS','NET','WP'))]}" />
+									<field name="rate"  attrs="{'invisible':[('code','in',('GROSS','NET','WP'))]}" />
+									<field name="amount"  attrs="{'invisible':[('code','in',('GROSS','NET'))]}"  />
+									<field name="total"/>
+								</tree>
+								<form string="Payslip Line">
+									<group col="4">
+										<field name="name"/>
+										<field name="code"/>
+										<field name="post_id"/>
+										<field name="category_id"/>
+										<field name="sequence"/>
+										<field name="quantity"/>
+										<field name="rate"/>
+										<field name="amount"/>
+										<field name="total"/>
+										<field name="salary_rule_id"/>
+									</group>
+								</form>
+							</field>
+						</page>
+			
+						<!--
+						<page string="Details By Salary Rule Category">
+							<field name="details_by_salary_rule_category" context="{'group_by':'category_id'}" domain="[('appears_on_payslip', '=', True)]">
+								<tree string="Payslip Lines" colors="blue:total == 0">
+									<field name="category_id"/>
+									<field name="name"/>
+									<field name="code"/>
+									<field name="total"/>
+								</tree>
+							</field>
+					   </page>
+					   -->
+					   
+					   <page string="Other Information">
+							<group>
+								<group string="Miscellaneous">
+									<field name="company_id" groups="base.group_multi_company"/>
+									<field name="payslip_run_id" domain="[('state','=','draft')]"/>
+									<field name="advice_id" readonly="1"/> 
+									<field name="center_id" readonly="1"/>
+									<field name="paidon" />							
+								</group>
+								<group name="accounting" string="Accounting">
+									<field name="paid" readonly="1"/>
+									<field name="journal_id" required="1"/>
+					        		<field name="move_id" readonly="1"/>
+					        		<field name="exit_slip" readonly="1"/>
+								</group>
+							</group>
+							<div colspan="4">
+								<field name="note" Placeholder="Add an internal note..."/>
+							</div>
+					   </page>
+					   <page string="Attendance Details">
+					   		<field name="attendance_line_ids" context="{'group_by':'post_id'}">
+								<tree>
+									<field name="name" readonly="1" />
+									<field name="project_id" readonly="1"  />
+								    <field name="post_id" readonly="1"/>
+								    <field name="center_id" readonly="1"  />
+								    <field name="action"/>
+								    <field name="state" readonly="1" />
+									<field name="employee_id" invisible="1" />
+									<field name="slip_id" invisible="1" />
+								</tree>
+					   		</field>
+					   </page>
+					   
+					</notebook>
+					</sheet>
+		
+					 <div class="oe_chatter">
+						<field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+						<field name="message_ids" widget="mail_thread" placeholder="Share a note..."/>
+					</div>
+
+				</form>
+			</field>
+		</record>
+        
+		<record id="view_guards_payslip_tree" model="ir.ui.view">
+			<field name="name">guards.payslip.tree</field>
+			<field name="model">guards.payslip</field>
+			<field name="arch" type="xml">
+				<tree colors="blue:state in ('verify','done');blue:state == 'new';gray:state == 'cancel'" string="Payslips">
+					<field name="number"/>
+					<field name="employee_id"/>
+					<field name="name"/>
+					<field name="total" sum="Total"/>
+					<field name="abl_incentive_amt" sum="Total Incentive"/>
+					<field name="paid_leaves" sum="Paid Leaves"/>
+					<field name="date_from"/>
+					<field name="date_to"/>
+					<field name="state"/>			
+					<field name="company_id" groups="base.group_multi_company" widget="selection"/>
+					<field name="payslip_run_id" invisible="1"/>
+					<field name="post_id" invisible="1"/>
+					<field name="project_id" invisible="1"/>
+					<field name="center_id" invisible="1"/>
+					<field name="bank" invisible="1"/>
+					<field name="accowner" invisible="1"/>
+					<field name="worked_days_line_ids" invisible="1"/>
+					<field name="exit_slip" readonly="1"/>
+		
+				</tree>
+			</field>
+		</record>
+        
+		<record id="view_guards_payslip_filter" model="ir.ui.view">
+			<field name="name">guards.payslip.select</field>
+			<field name="model">guards.payslip</field>
+			<field name="arch" type="xml">
+				<search string="Search Payslips">
+					<field name="name" string="Payslips" filter_domain="['|',('name','ilike',self),('number','ilike',self)]"/>
+					<field name="date_from"/>
+					<filter icon="terp-document-new" name="draft" string="Draft" domain="[('state','=','draft')]" help="Draft Slip"/>
+					<separator/>
+					<filter name="state" icon="terp-camera_test" string="Done" domain="[('state','=','done')]" help="Done Slip"/>
+					<separator/>
+					<filter name="paidon" string="Paid-On" domain="[('paidon','=',True)]" help="Paid on Post Slip"/>
+					<separator/>
+					<filter name="advice_id" icon="terp-camera_test" string="Non-Advice" domain="[('advice_id','=',False)]" help="Slips not having Pay Advice"/> 
+					<separator/>
+					<filter name="worked_days_line_ids" icon="terp-camera_test" string="Zero Worked Days" domain="[('worked_days_line_ids','=',False)]" help="Slips not having any Worked Days data"/>		
+		
+					<separator/>
+
+					<filter string="Terminated Gaurds Salary" name = 'terminated_guards' domain="[('date_from','>=',(context_today() - relativedelta(months=1)).strftime('%Y-%m-01')),
+														('date_to','&lt;=',(context_today() - relativedelta(months=1)).strftime('%Y-%m-30')),
+														('employee_id.resigdate','>=',(context_today() - relativedelta(months=1)).strftime('%Y-%m-01')),
+														('employee_id.resigdate','&lt;=',(time.strftime('%Y-%m-01')))]"/>
+													
+			
+					<!-- ('employee_id.resigdate','&lt;=',(context_today() - relativedelta(months=1)).strftime('%Y-%m-31')))-->
+			
+					<separator/>
+					<filter name="exit_slip" icon="terp-camera_test" string="Exit Form Slips" domain="[('exit_slip','=',True)]"/>
+					<field name="employee_id"/>
+					<field name="post_id"/>
+					<field name="project_id"/>
+					<field name="center_id"/>
+					<field name="bank"/>			
+					<field name="accowner"/>
+		
+					<group expand="0" string="Group By...">
+						<filter string="Employees" name="employee_id" context="{'group_by':'employee_id'}"/>
+						<filter string="PaySlip Batch" name="payslip_run_id" context="{'group_by':'payslip_run_id'}"/>
+						<filter string="PaySlip Advice" name="payslip_advice_id" context="{'group_by':'advice_id'}"/>
+						<filter string="Companies" name="company_id" groups="base.group_multi_company" context="{'group_by':'company_id'}"/>
+						<filter string="States" name="state" context="{'group_by':'state'}"/>
+			
+						<separator/>
+						<filter string="Year" name="year" context="{'group_by':'date_from:year'}"/>
+						<filter string="Month" name="month" context="{'group_by':'date_from:month'}"/>
+
+						<separator/>
+						<filter string="Centers" name="center_id" context="{'group_by':'center_id'}"/>
+						<filter string="Projects" name="project_id" context="{'group_by':'project_id'}"/>
+						<filter string="Posts" name="post_id" context="{'group_by':'post_id'}"/>
+						<filter string="Contract" name="contract_id" context="{'group_by':'contract_id'}"/>
+						<separator/>
+						<filter string="Banks" name="bank" context="{'group_by':'bank'}"/>
+						<filter string="Account Owner" name="accowner" context="{'group_by':'accowner'}"/>
+					</group>
+				</search>
+			</field>
+		</record>
+		
+		<record model="ir.ui.view" id="view_guards_payslip_pivot">
+			<field name="name">guards.payslip.pivot</field>
+            <field name="model">guards.payslip</field>
+            <field name="arch" type="xml">
+                <pivot string="Guards Payslip">
+                    <field name="date_from" type="row"/>
+                    <field name="total" type="measure"/>
+                </pivot>
+            </field>
+        </record>
+            
+		<record id="act_view_guards_payslip" model="ir.actions.act_window">
+			<field name="res_model">guards.payslip</field>
+			<field name="name">Guards Payslips</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form,pivot</field>
+			<field name="context">{'search_default_draft':1}</field>	
+			<field name="search_view_id" ref="view_guards_payslip_filter"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+					Click to create Guards Payslip.
+				</p>
+			</field>
+		</record>  
+
+
+		<!--   Contract  -->
+		<!--
+		<record id="guards_contract_view_form" model="ir.ui.view">
+			<field name="name">guards.contract.view.form</field>
+			<field name="model">guards.contract</field>
+			<field name="arch" type="xml">
+				<form string="Contract">
+					<sheet>
+					<div class="oe_title">
+						<h1>
+							<field name="name" placeholder="Contract Reference"/>
+						</h1>
+					</div>
+		
+					<notebook>
+						<page string="Information" name="information">
+							<group>
+								<group name="salary_and_advantages" string="Salary and Advantages">
+									<field name="wage"/>							
+									<field name="struct_id"/>
+								</group>
+								<group name="duration_group" string="Duration">							
+									<label for="date_start" string="Duration"/>
+									<div>
+										<field name="date_start" class="oe_inline"/> - <field name="date_end" class="oe_inline"/>
+									</div>							
+								</group>
+								<group string="Accounting">
+									<field name="analytic_account_id" groups="analytic.group_analytic_accounting"/>
+									<field name="journal_id"/>
+					        	</group>
+							</group>
+							<separator string="Notes"/>
+							<field name="notes"/>
+						</page>				
+					</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="guards_contract_view_tree" model="ir.ui.view">
+			<field name="name">guards.contract.view.tree</field>
+			<field name="model">guards.contract</field>
+			<field name="arch" type="xml">
+				<tree string="Contracts">
+					<field name="name"/>			
+					<field name="date_start"/>
+					<field name="date_end"/>
+					<field name="wage"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="action_guards_contract" model="ir.actions.act_window">
+			<field name="name">Contracts</field>
+			<field name="res_model">guards.contract</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[]</field>
+			<field name="context">{'search_default_current':1}</field>	
+		</record>
+		-->
+
+
+		<record id="act_guards_employee_payslip_list" model="ir.actions.act_window">
+		   <field name="res_model">guards.payslip</field>
+		   <field name="name">Payslips</field>
+		   <field name="view_type">form</field>
+		   <field name="view_mode">tree,form</field>
+		   <field name="context">{'search_default_employee_id': [active_id], 'default_employee_id': active_id}</field>
+		</record>   
+
+
+		<record model="ir.ui.view" id="sos_advances_tree_view">
+			<field name="name">sos.advances.tree.view</field>
+			<field name="model">sos.advances</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Advances"  editable="top">
+					<field name="advice_id" /> 
+					<field name="bankacc" />
+					<field name="bankacctitle" />
+					<field name="amount" />
+				</tree>
+			</field>
+		</record>
+			  
+		<record id="sos_advances_action" model="ir.actions.act_window">
+			<field name="name">Advances</field>
+				<field name="res_model">sos.advances</field>
+				<field name="view_type">form</field>
+				<field name="view_mode">tree,form</field>
+				<field name="help" type="html">
+					<p class="oe_view_nocontent_create">
+						Click to create a new Education Record.
+					</p>
+			</field>
+		</record> 
+						   
+
+		<!--
+		<record id="sos_hr_contract_form_in_inherit" model="ir.ui.view">
+			<field name="name">sos.hr.contract.form.in.inherit</field>
+			<field name="model">hr.contract</field>
+			<field name="inherit_id" ref="l10n_in_hr_payroll.hr_contract_form_in_inherit"/>
+			<field name="arch" type="xml">
+			<data>
+				 <xpath expr="//field[@name='supplementary_allowance']" position="after">
+					<field name="mobile_allowance"/>
+					<field name="fuel_allowance"/>
+			
+				 </xpath>
+			</data>
+			</field>
+		</record>
+		-->
+
+		<record id="act_guards_employee_provident_fund_list" model="ir.actions.act_window">
+			<field name="res_model">guards.payslip.line</field>
+			<field name="name">Payslips PF Lines</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="context">{'search_default_employee_id': [active_id], 'default_employee_id': active_id,'search_default_code': 'GPROF','default_code': 'GPROF'}</field>
+		</record>
+
+		<record id="sos_view_employee_form_inherit" model="ir.ui.view">
+			<field name="name">sos_view_employee_form.inherit</field>
+			<field name="model">hr.employee</field>
+			<field name="inherit_id" ref="sos.view_guard_form"/>
+			<field name="arch" type="xml">
+			<data>
+				 <xpath expr="//div[@name='button_box']" position="inside">
+				 	<button name="%(act_guards_employee_payslip_list)d" 
+						class="oe_stat_button" 
+						icon="fa-list" 
+						type="action">
+						<field name="payslip_count" widget="statinfo" string="Payslip" help="Payslip Details"  groups="base.group_user"/>
+					</button>
+					<button name="%(act_guards_employee_provident_fund_list)d"
+						class="oe_stat_button"
+						icon="fa-list"
+						type="action">
+						<field name="pf_line_count" widget="statinfo" string="Provident Fund" help="PF Details"  groups="base.group_user"/>
+					</button>
+				 </xpath>
+				<!--
+				 <xpath expr="//field[@name='designation']" position="after">
+					<field name="guard_contract_id"  attrs="{'required':1}"/>				
+				 </xpath>
+				-->
+			</data>
+			</field>
+		</record>
+
+		<record id="act_post_base_slips_list" model="ir.actions.act_window">
+			 <field name="res_model">guards.payslip</field>
+			 <field name="name">Payslips</field>
+			 <field name="view_type">form</field>
+			 <field name="view_mode">tree,form</field>
+			 <field name="context">{'search_default_post_id': [active_id], 'default_post_id': active_id}</field>
+		</record>  
+
+		<record id="sos_post_form_view_inherit" model="ir.ui.view">
+			<field name="name">sos.post.form.inherit</field>
+			<field name="model">sos.post</field>
+			<field name="type">form</field>
+			<field name="inherit_id" ref="sos.sos_post_form_view"/>
+			<field name="arch" type="xml">
+			<data>
+
+				 <xpath expr="//div[@name='button_box']" position="inside">
+				  	
+				  	<button name="%(act_post_base_slips_list)d" 
+						class="oe_stat_button" 
+						icon="fa-money" 
+						type="action"  groups="account.group_account_user">
+						<field name="payslip_count" widget="statinfo" string="Payslip" help="Payslip Computation Details"/>
+					</button>
+				  	
+				 </xpath>
+			</data>
+			</field>
+		</record>
+
+
+	</data>
+</odoo>
+

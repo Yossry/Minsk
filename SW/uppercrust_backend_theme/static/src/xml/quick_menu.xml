@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="menu.QuickMenu">
+        <div class="o_quick_menu"/>
+    </t>
+    <t t-name="menu.GlobalSearch">
+        <li class="o_gb_search" data-toggle="tooltip" title="Global Search">
+            <a aria-expanded="true" data-toggle="dropdown" href="#" title="Global Search">
+                <i class="fa fa-search"/>
+            </a>
+            <ul class="dropdown-menu o_glonal_search_dropdown" role="menu">
+                <span class="oe_back_btn"><i class="fa fa-arrow-left"/></span>
+                <li/>
+            </ul>
+        </li>
+    </t>
+    <t t-name="menu.QuickMenuItems">
+        <t t-foreach="menu_data" t-as="rec">
+          <li class="tooltips o_mail_message" data-toggle="tooltip" title="Check Mail" t-if="rec['name'] == 'Discuss'">
+            <a t-attf-href="/web#{debug}#menu_id=#{rec['id']}&amp;action=#{rec['action'] and rec['action'].split(',')[1] or ''}" t-attf-data-action-id="#{rec['action'] and rec['action'].split(',')[1] or ''}">
+                <i class="tooltips fa fa-envelope" title=""/>
+            </a>
+          </li>
+          <li class="tooltips unread" title="Conversations" t-if="rec['name'] == 'Conversations'">
+            <a t-attf-href="/web#{debug}#menu_id=#{rec['id']}&amp;action=#{rec['action'] and rec['action'].split(',')[1] or ''}" t-attf-data-action-id="#{rec['action'] and rec['action'].split(',')[1] or ''}" t-attf-data-action-model="#{rec['action'] and rec['action'].split(',')[0] or ''}" aria-expanded="false" t-att-data-menu="rec['id']">
+                <i class="tooltips fa fa-comments-o" title=""/>
+            </a>
+          </li>
+          <li class="tooltips" title="Calendar" t-if="rec['name'] == 'Calendar'">
+            <a t-attf-href="/web#{debug}#menu_id=#{rec['id']}&amp;action=#{rec['action'] and rec['action'].split(',')[1] or ''}" t-attf-data-action-id="#{rec['action'] and rec['action'].split(',')[1] or ''}" t-attf-data-action-model="#{rec['action'] and rec['action'].split(',')[0] or ''}" aria-expanded="false" t-att-data-menu="rec['id']">
+                <i class="fa fa-calendar"/>
+            </a>
+        </li>
+        <li class="tooltips" title="Notes" t-if="rec['name'] == 'Notes'">
+            <a t-attf-href="/web#{debug}#menu_id=#{rec['id']}&amp;action=#{rec['action'] and rec['action'].split(',')[1] or ''}" t-attf-data-action-id="#{rec['action'] and rec['action'].split(',')[1] or ''}" t-attf-data-action-model="#{rec['action'] and rec['action'].split(',')[0] or ''}" aria-expanded="false" t-att-data-menu="rec['id']">
+                <i class="fa fa-sticky-note-o"/>
+            </a>
+        </li>
+        <li class="tooltips" title="Contacts" t-if="rec['name'] == 'Contacts'">
+            <a t-attf-href="/web#{debug}menu_id=#{rec['id']}&amp;action=#{rec['action'] and rec['action'].split(',')[1] or ''}" t-attf-data-action-id="#{rec['action'] and rec['action'].split(',')[1] or ''}" t-attf-data-action-model="#{rec['action'] and rec['action'].split(',')[0] or ''}" t-att-data-menu="rec['id']">
+                <i class="fa fa-user"/>
+            </a>
+        </li>
+      </t>
+    </t>
+</templates>

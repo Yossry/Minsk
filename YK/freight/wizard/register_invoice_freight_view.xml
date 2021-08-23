@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="register_invoice_view_form" model="ir.ui.view">
+            <field name="name">register.invoice.wizard.form</field>
+            <field name="model">register.invoice</field>
+            <field name="arch" type="xml">
+                <form string="Create Invoice">
+                    <sheet>
+                        <field name="id" invisible="1"/>
+                            <group>
+                                <field name="type" widget="radio"/>
+                                <field name="partner_id" string="Shipper" attrs="{'invisible': [('type', '!=', 'shipper')]}"/>
+                                <field name="partner_id" string="Consignee" attrs="{'invisible': [('type', '!=', 'consignee')]}"/>
+                                <field name="partner_id" string="Agent" attrs="{'invisible': [('type', '!=', 'agent')]}"/>
+                                <field name="invoice_type" invisible="1"/>
+                            </group>
+                            <notebook>
+                                <page string="Services">
+                                    <field name="service_ids" widget="one2many_list"/>
+                                </page>
+                            </notebook>
+                    </sheet>
+                    <footer>
+                        <button string='Create Invoice' name="create_invoice" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!-- Expenses -->
+        <record id="register_invoice_wizard_action" model="ir.actions.act_window">
+            <field name="name">Customer Invoice</field>
+            <field name="res_model">register.invoice</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="register_invoice_view_form"/>
+            <field name="target">new</field>
+        </record>
+
+        <act_window name="Customer Invoice"
+                res_model="register.invoice"
+                src_model="freight.service"
+                view_mode="form"
+                multi="True"
+                target="new"
+                key2="client_action_multi"
+                id="register_invoice_wizard_action_invoice"
+                context="{
+                            'default_invoice_type': 'customer',
+                        }"
+                />
+
+            <act_window name="Vendor Invoice"
+                res_model="register.invoice"
+                src_model="freight.service"
+                view_mode="form"
+                multi="True"
+                target="new"
+                key2="client_action_multi"
+                id="register_invoice_wizard_action_vendor_invoice"
+                context="{
+                            'default_invoice_type': 'vendor',
+                        }"
+                />
+
+</odoo>

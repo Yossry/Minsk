@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <template id="material_pre_header" inherit_id="website.layout" name="Theme Preheader" active="False" customize_show="True">
+            <xpath expr="//div[@id='wrapwrap']/header/div/div" position="before">
+                <div class="row" style="background:black;">
+                    <div class="social_top">
+                        <div class="col-sm-6">
+                            <ul class="top_contact">
+                                <li><i class="fa fa-phone"></i>
+                                    <a href="tel:(91)-80-82543463">+974-66203915</a>
+                                </li>
+                                <li><i class="fa fa-envelope"></i>
+                                    <a href="mailto:info@ezeselling.com">info@qpr.com.qa</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6">
+                            <ul class="team_social">
+                                <li>
+                                    <a href="index-9.html#!">
+                                        <i class="zmdi zmdi-facebook btn waves-effect"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="index-9.html#!">
+                                        <i class="zmdi zmdi-twitter btn waves-effect"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="index-9.html#!">
+                                        <i class="zmdi zmdi-dribbble btn waves-effect"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="index-9.html#!">
+                                        <i class="zmdi zmdi-behance btn waves-effect"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="index-9.html#!">
+                                        <i class="zmdi zmdi-pinterest btn waves-effect"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </template>
+        <template id="submenu" name="Submenu">
+            <li t-if="not submenu.child_id" t-att-class="
+        'active' if submenu.url and submenu.url != '/' and request.httprequest.path == submenu.url.replace('/page/website.', '/page/') else 'smoth-scroll'
+        ">
+                <a t-att-href="(website.menu_id.child_id[0] == submenu) and '/' or submenu.url" t-ignore="true" t-att-target="'_blank' if submenu.new_window else None">
+                    <span t-field="submenu.name" />
+                </a>
+            </li>
+            <li t-if="submenu.child_id" t-attf-class="smoth-scroll #{
+        (submenu.url and submenu.url != '/' and any([request.httprequest.path == child.url.replace('/page/website.', '/page/') for child in submenu.child_id if child.url]) or
+         (submenu.url and request.httprequest.path == submenu.url.replace('/page/website.', '/page/'))) and 'active'
+        }">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <span t-field="submenu.name" />
+                </a>
+                <ul class="sub_menu" role="menu">
+                    <t t-foreach="submenu.child_id" t-as="submenu">
+                        <t t-call="theme_materialab.submenu" />
+                    </t>
+                </ul>
+            </li>
+        </template>
+        <template id="website_material_header" name="Theme Material Header" inherit_id="website.layout" active="True" priority="1">
+            <xpath expr="//header" position="before">
+                <div class="preloader-area">
+                    <div class="preloader">
+                        <div class="loader">
+                            <div class="loader-inner pacman">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="//header" position="replace">
+                <header class="header_area navbar hidden-xs" style="display:block;">
+                    <div class="container-fluid">
+                        <div class="row top_menu_area">
+                            <div class="col-xs-12 col-sm-3">
+                                <!-- START LOGO AREA -->
+                                <div class="logo_area">
+                                    <a class="navbar-brand" href="/"><img src="/theme_materialab/static/src/img/logo.svg" alt="theme logo" class="main_logo svg" /></a>
+                                </div>
+                                <!-- END LOGO AREA -->
+                            </div>
+                            <div class="col-xs-12 col-sm-9">
+                                <!-- START MENU AREA -->
+                                <nav class="navbar-collapse collapse in">
+                                    <ul class="nav navbar-nav navbar-right menu" id="top_menu">
+                                        <t t-foreach="website.menu_id.child_id" t-as="submenu">
+                                            <t t-call="theme_materialab.submenu" />
+                                        </t>
+                                        <li class="smoth-scroll" t-ignore="true" t-if="website.user_id != user_id" />
+                                        <li class="smoth-scroll" t-ignore="true" t-if="website.user_id != user_id">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                <b>
+                                                <span t-esc="(len(user_id.name)&gt;25) and (user_id.name[:23]+'...') or user_id.name"/>
+                                            </b>
+                                            </a>
+                                            <ul class="sub_menu js_usermenu" role="menu">
+                                                <li id="o_logout" class="smoth-scroll"><a t-attf-href="/web/session/logout?redirect=/" role="menuitem">Logout</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </nav>
+                                <!-- END MENU AREA -->
+                                <!-- Mobile Menu Start -->
+                                <nav class="mobile_menu hidden">
+                                    <ul>
+                                        <t t-foreach="website.menu_id.child_id" t-as="submenu">
+                                            <t t-call="theme_materialab.submenu" />
+                                        </t>
+                                        <li class="smoth-scroll" t-ignore="true" t-if="website.user_id != user_id" />
+                                        <li class="smoth-scroll" t-ignore="true" t-if="website.user_id != user_id">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                <b>
+                                                <span t-esc="(len(user_id.name)&gt;25) and (user_id.name[:23]+'...') or user_id.name"/>
+                                            </b>
+                                            </a>
+                                            <ul class="js_usermenu" role="menu">
+                                                <li id="o_logout" class="smoth-scroll"><a t-attf-href="/web/session/logout?redirect=/" role="menuitem">Logout</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </nav>
+                                <!-- Mobile Menu End -->
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <!-- ====HEADER END==== -->
+            </xpath>
+        </template>
+        <template id="home_page" name="Home Page" inherit_id="website.homepage">
+            <xpath expr="//div[@id='wrap']" position="replace">
+                <div id="wrap">
+                    <div class="oe_structure" />
+                    <!-- ====SLIDER START==== -->
+                    <section class="slider_area">
+                        <div class="container">
+                            <div class="mainSlider">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="dtable">
+                                            <div class="dcell">
+                                                <div class="slider_caption text-left">
+                                                    <h4 class="fadeInDown_slide animated" style="animation-delay: .1s">We design</h4>
+                                                    <h1 class="fadeInRight_slide animated" style="animation-delay: .6s"><span>An Omnichannel E-Commerce</span> Platform</h1>
+                                                    <p class="colorWh fadeInUp_slide animated" style="animation-delay: .4s">If you’ve followed along and done the , you’ve created a good starting place. You’re going to
+                                                        <br/> need to make sure your pages are optimized properly.</p>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="dtable">
+                                            <div class="dcell">
+                                                <div class="slider_caption text-left">
+                                                    <h4 class="fadeInDown_slide animated" style="animation-delay: .1s">We design</h4>
+                                                    <h1 class="fadeInRight_slide animated" style="animation-delay: .6s"><span>An Efficient</span> Store Management Tool</h1>
+                                                    <p class="colorWh fadeInUp_slide animated" style="animation-delay: .4s">If you’ve followed along and done the , you’ve created a good starting place. You’re going to
+                                                        <br/> need to make sure your pages are optimized properly.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                   <div class="oe_structure" />
+                    <!-- ====SLIDER END==== -->
+                </div>
+            </xpath>
+        </template>
+        <template id="theme_material_layout_footer" inherit_id="website.layout" name="Theme Material Footer">
+            <xpath expr="//footer" position="replace">
+                <div class="footer_area">
+                    <div class="footer_middle">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="scroll_area">
+                                        <div class="sroll_top">
+                                            <i class="zmdi zmdi-chevron-up btn waves-effect"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-5 col-md-5 col-sm-12">
+                                    <div class="middle_content">
+                                        <h4>More about us</h4>
+                                        <p>Qatar Public Relations(QPR) is a complete, fully hosted, eCommerce solution that enables you to set up an online store to sell your products. It assists you to organize your products, customize your storefront, accept credit card payments, track and respond to orders — all with a few clicks of the mouse.
+
+The key being that it is fully hosted! No more stressful hosting management, backups, security risks, cpanel knowledge…, etc. This is built with the business owner in mind; you just do what you do best… Run the business!</p>
+                                        <a href="https://www.qpr.com.qa">Read More</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-lg-offset-1 col-md-4 col-sm-7">
+                                    <div class="footer_Widgets">
+                                        <h4>Stay in touch</h4>
+                                        <div class="ft_contact">
+                                            <ul>
+                                                <li><i class="zmdi zmdi-pin"></i>
+                                                    <span>Location: Qatar Public Relations, Marina 50, Lusail, Qatar</span>
+                                                </li>
+                                                <li><i class="zmdi zmdi-phone"></i>
+                                                 <a href="tel:+91-80-82543463">Phone: +974-66203915</a>
+                                                </li>
+                                                <li><i class="zmdi zmdi-email"></i>
+                                                    <a href="mailto:info@ezeselling.com">email: info@qpr.com.qa</a>
+                                                </li>
+                                                <li><i class="zmdi zmdi-globe"></i>
+                                                    <a href="https://www.ezeselling.com">www.qpr.com.qa</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-5">
+                                    <div class="footer_Widgets">
+                                        <h4>Galleries</h4>
+                                        <figure class="widget_gallery">
+                                            <div class="RXcircleEffect"></div>
+                                            <img src="/theme_materialab/static/src/img/gallery_1.jpg" alt="" />
+                                            <figcaption>
+                                                <a class="veno vbox-item" href="/theme_materialab/static/src/img/gallery_1.jpg" data-gall="group_4">
+                                                    <i class="zmdi zmdi-link"></i>
+                                                </a>
+                                            </figcaption>
+                                        </figure>
+                                        <figure class="widget_gallery">
+                                            <div class="RXcircleEffect"></div>
+                                            <img src="/theme_materialab/static/src/img/gallery_2.jpg" alt="" />
+                                            <figcaption>
+                                                <a class="veno vbox-item" href="/theme_materialab/static/src/img/gallery_2.jpg" data-gall="group_4">
+                                                    <i class="zmdi zmdi-link"></i>
+                                                </a>
+                                            </figcaption>
+                                        </figure>
+                                        <figure class="widget_gallery">
+                                            <div class="RXcircleEffect"></div>
+                                            <img src="/theme_materialab/static/src/img/gallery_3.jpg" alt="" />
+                                            <figcaption>
+                                                <a class="veno vbox-item" href="/theme_materialab/static/src/img/gallery_3.jpg" data-gall="group_4">
+                                                    <i class="zmdi zmdi-link"></i>
+                                                </a>
+                                            </figcaption>
+                                        </figure>
+                                        <figure class="widget_gallery">
+                                            <div class="RXcircleEffect"></div>
+                                            <img src="/theme_materialab/static/src/img/gallery_4.jpg" alt="" />
+                                            <figcaption>
+                                                <a class="veno vbox-item" href="/theme_materialab/static/src/img/gallery_4.jpg" data-gall="group_4">
+                                                    <i class="zmdi zmdi-link"></i>
+                                                </a>
+                                            </figcaption>
+                                        </figure>
+                                        <figure class="widget_gallery">
+                                            <div class="RXcircleEffect"></div>
+                                            <img src="/theme_materialab/static/src/img/gallery_5.jpg" alt="" />
+                                            <figcaption>
+                                                <a class="veno vbox-item" href="/theme_materialab/static/src/img/gallery_5.jpg" data-gall="group_4">
+                                                    <i class="zmdi zmdi-link"></i>
+                                                </a>
+                                            </figcaption>
+                                        </figure>
+                                        <figure class="widget_gallery">
+                                            <div class="RXcircleEffect"></div>
+                                            <img src="/theme_materialab/static/src/img/gallery_6.jpg" alt="" />
+                                            <figcaption>
+                                                <a class="veno vbox-item" href="/theme_materialab/static/src/img/gallery_6.jpg" data-gall="group_4">
+                                                    <i class="zmdi zmdi-link"></i>
+                                                </a>
+                                            </figcaption>
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer_bottom">
+                        <div class="container">
+                            <div class="ft_area">
+                                <div class="row">
+                                    <div class="col-md-7 fix_p_l">
+                                        <nav>
+                                            <ul class="ft_bottom">
+                                                <t t-foreach="website.menu_id.child_id" t-as="submenu">
+                                                    <t t-call="theme_materialab.submenu" />
+                                                </t>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                    <div class="col-sm-12 col-md-5 fix_p">
+                                        <div class="ft_paragraph">
+                                            <p>©2019 Developed By Qatar Public Relations
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </template>
+    </data>
+</openerp>

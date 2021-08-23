@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+        
+		<record id="view_sos_guard_replacement_form" model="ir.ui.view">
+			<field name="name">sos.guard.replacement.form</field>
+			<field name="model">sos.guard.replacement</field>
+			<field name="arch" type="xml">
+				<form string="Employee Replacement">
+					 <header>
+						<button name="action_replacement_done" type="object" string="Confirm" attrs="{'invisible':[('state', '=', 'done')]}" class="oe_highlight" groups="base.group_user"/>
+						<field name="state" widget="statusbar" nolabel="1"/>
+			  		</header>
+					<sheet>
+					<group>
+						<group>
+							<field name="center_id" options="{'no_quick_create':True,'no_create_edit':True}"/>
+							<field name="project_id" options="{'no_quick_create':True,'no_create_edit':True}"/>
+							<field name="post_id" domain="[('active','=',True),('center_id','=',center_id),('project_id','=',project_id)]" options="{'no_quick_create':True,'no_create_edit':True}"/>					
+						</group>	
+						<group>
+							<field name="name"/>	
+							<field name="name2"/>
+							<field name="employee_id1"  domain="[('current','=',True),('center_id','=',center_id),('project_id','=',project_id),('current_post_id','=',post_id)]" options="{'no_quick_create':True,'no_create_edit':True}"/>						
+							<field name="employee_id2"  domain="[('current','=',True),('center_id','=',center_id)]" options="{'no_quick_create':True,'no_create_edit':True}"/>						
+						</group>							
+					</group>
+					<field name="description"/>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="view_sos_guard_replacement_tree" model="ir.ui.view">
+			<field name="name">sos.guard.replacement.tree</field>
+			<field name="model">sos.guard.replacement</field>
+			<field name="arch" type="xml">
+				<tree string="Employee Replacement">
+					<field name="name"/>
+					<field name="name2"/>		
+					<field name="center_id"/>
+					<field name="project_id"/>
+					<field name="post_id"/>
+					<field name="employee_id1"/>						
+					<field name="employee_id2"/>						
+					<field name="description"/>
+					<field name="state" readonly="1" />
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="view_sos_guard_replacement_filter">
+			<field name="name">view_sos_guard_replacement_filter</field>
+			<field name="model">sos.guard.replacement</field>
+			<field name="arch" type="xml">
+				<search string="Hr Shortfall Search">
+					<filter icon="terp-go-today" string="Today" name="today" domain="[('name','&gt;=',current_date),('name','&lt;=',current_date)]" />
+					<filter icon="terp-go-today" string="Draft" name="draft" domain="[('state','=','draft')]" />
+					<filter icon="terp-go-today" string="Done" name="done" domain="[('state','=','done')]" />
+					<separator/>
+					<field name="employee_id1"/>
+					<field name="employee_id2"/>						
+					<field name="project_id"/>
+					<field name="post_id"/>
+					<field name="center_id"/>
+					<group expand="0" string="Group By...">
+						<filter name="center" string="Center" icon="terp-personal" domain="[]" context="{'group_by':'center_id'}"/>
+						<filter name="project" string="Project" icon="terp-personal" domain="[]" context="{'group_by':'project_id'}"/>
+						<filter name="post" string="Post" icon="terp-personal" domain="[]" context="{'group_by':'post_id'}"/>
+						<filter name="employee" string="Employee" icon="terp-personal" domain="[]" context="{'group_by':'employee_id1'}"/>
+						<filter name="replaced" string="Replaced By" icon="terp-personal" domain="[]" context="{'group_by':'employee_id2'}"/>
+						<filter name="name" string="Day" icon="terp-go-today" domain="[]" context="{'group_by':'name'}"/>
+
+						<filter name="status" string="Status" icon="terp-personal" domain="[]" context="{'group_by':'state'}"/>
+
+					</group>
+				</search>
+			</field>
+		</record>
+
+		<record id="open_view_sos_guard_replacement" model="ir.actions.act_window">
+			<field name="name">Guards Replacement</field>
+			<field name="res_model">sos.guard.replacement</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="context">{"search_default_draft":1}</field>
+			<field name="search_view_id" ref="view_sos_guard_replacement_filter" />
+			<field name="help">Guards Replacement.</field>
+		</record>
+	
+		<record id="act_guards_employee_replacement_list" model="ir.actions.act_window">
+		   <field name="res_model">sos.guard.replacement</field>
+		   <field name="name">Replacement</field>
+		   <field name="view_type">form</field>
+		   <field name="view_mode">tree,form</field>
+		   <field name="context">{'search_default_employee_id1': [active_id], 'default_employee_id1': active_id}</field>
+		</record>  
+
+
+		<record id="sos_view_guard_form_replacement_inherit" model="ir.ui.view">
+			<field name="name">sos.guard.form.replacement.inherit</field>
+			<field name="model">hr.employee</field>
+			<field name="inherit_id" ref="sos.view_guard_form"/>
+			<field name="arch" type="xml">
+			<data>
+				 <xpath expr="//div[@name='button_box']" position="inside">
+				 	<button name="%(act_guards_employee_replacement_list)d" class="oe_stat_button" icon="fa-cogs" type="action">
+						<field name="replacement_count" widget="statinfo" string="Replacement" help="Replacement Detail"/>
+					</button>			 	
+				 </xpath>		
+			</data>
+			</field>
+		</record>		
+
+
+		
+	</data>
+</odoo>
+
+

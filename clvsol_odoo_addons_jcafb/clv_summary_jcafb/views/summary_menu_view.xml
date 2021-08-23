@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <menuitem name="Summaries" id="clv_summary.menu_base_base_summaries"
+        parent="clv_base.menu_base_base"
+        groups="clv_summary.group_user"
+        sequence="70"
+        action="clv_summary.clv_summary_action"/>
+
+    <menuitem name="Summary" id="clv_summary.menu_base_config_summary" 
+        parent="clv_base.menu_base_config"
+        groups="clv_summary.group_user"
+        sequence="70"/>
+
+    <!--menuitem name="Categories" id="clv_summary.menu_base_config_summary_categories" 
+        parent="clv_summary.menu_base_config_summary"
+        groups="clv_summary.group_user"
+        sequence="10"
+        action="clv_summary.clv_summary_category_action"/-->
+
+    <menuitem name="Templates" id="clv_summary.menu_base_config_summary_templates" 
+        parent="clv_summary.menu_base_config_summary"
+        groups="clv_summary.group_user"
+        sequence="30"
+        action="clv_summary.clv_summary_template_action"/>
+
+</odoo>

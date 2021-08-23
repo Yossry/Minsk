@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates>
+    <t t-extend="Menu">
+        <t t-jquery="div.o_theme_logo" t-operation="attributes">
+            <attribute name="style">display: none;</attribute>
+        </t>
+    </t>
+</templates>

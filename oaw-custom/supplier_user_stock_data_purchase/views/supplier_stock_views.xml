@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_stock_data_tree" model="ir.ui.view">
+        <field name="name">view.stock.data.tree</field>
+        <field name="model">supplier.stock</field>
+        <field eval="100" name="priority" />
+        <field name="arch" type="xml">
+            <tree string="My Purchased Stock Data" delete="0" create="0" editable="top">
+                <field
+                    name="prod_cat_selection"
+                    readonly="True"
+                    context="{'supplier_access_context':True}"
+                />
+                <field
+                    name="product_id"
+                    string="Reference"
+                    readonly="True"
+                    context="{'supplier_access_context':True}"
+                />
+                <field name="internal_code" />
+                <field name="image_medium" string="Image" widget="image" />
+                <field name="custom_image" string="Custom Image" widget="image" />
+                <field name="website_quantity" string="Quantity" />
+                <field name="retail_chf" />
+                <field name="retail_eur" />
+                <field name="retail_usd" />
+                <field name="retail_rmb" />
+                <field name="cost_hkd" />
+                <field name="cost_chf" />
+                <field name="cost_eur" />
+                <field name="cost_usd" />
+                <field name="special_offer_currency_id" />
+                <field name="special_offer" />
+                <field name="new_arrival" />
+                <field name="last_update_date" />
+            </tree>
+        </field>
+    </record>
+    <record id="action_purchased_stock_data" model="ir.actions.act_window">
+        <field name="name">My Purchased Stock Data</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">supplier.stock</field>
+        <field name="view_mode">tree</field>
+        <field name="view_type">form</field>
+        <field name="context">{'supplier_access_context': True}</field>
+        <field name="domain">[('readonly_record', '=', True)]</field>
+        <field name="view_id" ref="view_stock_data_tree" />
+    </record>
+    <record
+        id="supplier_user_access.view_supplier_access_action"
+        model="ir.actions.act_window"
+    >
+        <field name="domain">[('readonly_record', '=', False)]</field>
+    </record>
+    <menuitem
+        id="menu_action_purchased_stock_data"
+        name="My Purchased Stock Data"
+        action="action_purchased_stock_data"
+        parent="menu_supplier_stock_offer"
+        sequence="1"
+    />
+</odoo>

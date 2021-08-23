@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<template id ="report_policeverification">
+			<t t-call="web.html_container">
+				<t t-foreach="docs" t-as="doc">
+					<t t-call="web.external_layout" style="font-family:georgia,garamond,serif;font-size:10px">
+						<div class="page">
+							<table class="table table-condensed" width="100%" style="padding-top: 1px;">
+								<tr>
+									<td rowspan="4" width="40%">
+										 <img width="40%" style="max-height:125px;" class="img img-responsive" src="/sos/static/img/logo.png"/>
+									</td>
+									<td  style="text-align:right; font-style: Times New Roman; font-size:18px; font-weight:bold; color:red; text-decoration: underline; padding-right:10px;">
+										SECURITY ORGANIZING SYSTEM PAKISTAN (Pvt.) Ltd.
+									</td>
+								</tr>
+
+								<tr>
+									<td  style="text-align:right; font-style: Times New Roman; font-size:18px; padding-right:10px;">
+										SOS House, 1131-C, Mumtazabad, Multan.
+									</td>
+								</tr>
+
+								<tr>
+									<td style="text-align:right; font-style: Times New Roman; font-size:18px; padding-right:10px;">
+										Tel : +92-61-6529918-6526935
+									</td>
+								</tr>
+
+								<tr>
+									<td style="text-align:right; font-style: Times New Roman; font-size:18px; padding-right:10px;">
+										Fax: +92-61-4230055
+									</td>
+								</tr>
+								<tr>
+									<td style="text-align:left; font-style: Times New Roman; font-size:18px; color:red; padding-left:10px;">ISO9001:2000</td>
+									<td style="text-align:right; font-style: Times New Roman; font-size:18px; text-decoration: underline; padding-right:10px;">
+										E.mail : sospakistan@hotmail.com
+									</td>
+								</tr>
+
+							</table>
+
+							<div class="col-xs-12" style="padding-left:20px; text-align:center; font-style: Times New Roman; font-size:18px; font-weight:bold; margin-top:40px; text-decoration: underline; font-weight:bold;">
+								POLICE VERIFICATION
+							</div>
+
+							<div class="col-xs-12" style="padding-left:20px; text-align:left; font-style: Times New Roman; font-size:18px; margin-top:30px; margin-bottom:30px">
+								Mr. <span style="text-decoration: underline; padding-left:2px; padding-right:2px;" t-esc="doc.name" />
+								is seeking employment in our company as Security Guard / Supervisor / Manager. The details are as under:-
+							</div>
+
+							<br></br>
+							<table class="table table-condensed" width="100%" style="text-align:left; font-style: Times New Roman; font-size:12px; font-weight:bold;">
+								<tr>
+									<td> Name: </td>
+									 <td><span style="text-decoration: underline;" t-esc="doc.name" /> </td>
+								</tr>
+								<tr>
+									<td> Father Name: </td>
+									<td><span style="text-decoration: underline;" t-esc="doc.fathername" /> </td>
+								</tr>
+								<tr>
+									<td> CNIC NO: </td>
+									<td><span style="text-decoration: underline;" t-esc="doc.cnic" /> </td>
+								</tr>
+								<tr>
+									<td colspan="2" style="text-decoration: underline; text-align:left; font-size:18px; font-weight:bold;"> Address:- </td>
+								</tr>
+								<tr>
+									<td> Temporary </td>
+									<td><span style="text-decoration: underline;" t-esc="doc.home_street" /> , <span style="text-decoration: underline; padding-left:2px;" t-esc="doc.home_street2" /></td>
+								</tr>
+								<tr>
+									<td> Permanent </td>
+									<td><span style="text-decoration: underline;" t-esc="doc.street" /> , <span style="text-decoration: underline; padding-left:2px;" t-esc="doc.street2" /></td>
+								</tr>
+
+								<tr>
+									<td>Post Office: </td>
+									<td><span style="text-decoration: underline;" t-esc="doc.postoffice" /> </td>
+								</tr>
+								<tr>
+									<td>Police Station: </td>
+									<td><span style="text-decoration: underline;" t-esc="doc.policestation" /></td>
+								</tr>
+							</table>
+
+
+							<div class="col-xs-12" style="padding-left:20px; text-align:left; font-style: Times New Roman; font-size:18px; margin-top:40px;">
+								You are requested to verify his Character / Particulars.
+							</div>
+
+							<div class="col-xs-12" style="padding-left:20px; text-align:right; font-style: Times New Roman; font-size:14px; font-weight:bold; margin-top:50px; padding-right:100px;">
+								(Regional/Operations  Manager)
+							</div>
+
+							<div class="col-xs-12" style="padding-left:20px; text-align:left; font-style: Times New Roman; font-size:16px; font-weight:bold; margin-top:50px;">
+								Date:
+							</div>
+
+							<div class="col-xs-12" style="padding-left:20px; text-align:center; font-style: Times New Roman; font-size:16px; margin-top:30px;">
+								___________________________
+							</div>
+
+							<div class="col-xs-12" style="padding-left:20px; text-align:right; font-style: Times New Roman; font-size:16px; font-weight:bold; margin-top:50px; padding-right:40px;">
+								S.H.O
+							</div>
+							<div class="col-xs-12" style="padding-left:20px; text-align:right; font-style: Times New Roman; font-size:16px; font-weight:bold;">
+								POLICE STATION
+							</div>
+
+						</div>
+					</t>
+				</t>
+			</t>
+		</template>
+
+	</data>
+</odoo>

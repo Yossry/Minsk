@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_stock_move_line_operation_tree" model="ir.ui.view">
+        <field name="name">stock.move.line.operations.tree</field>
+        <field name="model">stock.move.line</field>
+        <field name="inherit_id" ref="stock.view_stock_move_line_operation_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='lot_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='lot_id']" position="before">
+                <field
+                    name="quant_id"
+                    attrs="{'readonly': ['&amp;', ('package_level_id', '!=', False), ('parent.picking_type_entire_packs', '=', True)]}"
+                    invisible="not context.get('show_lots_m2o')"
+                    domain="[('reservation_id', '=', False),  ('product_id','=', parent.product_id), ('actual_qty','>', 0.0), ('location_id', '=', location_id)]"
+                    groups="stock.group_production_lot"
+                    context="{'default_product_id': parent.product_id, 'active_picking_id': picking_id}"
+                />
+            </xpath>
+            <xpath expr="//field[@name='lot_name']" position="after">
+                <field
+                    name="purchase_price_unit"
+                    attrs="{'readonly': [('state', '=', 'done')]}"
+                    invisible="not context.get('show_purchase_information')"
+                />
+                <field
+                    name="currency_id"
+                    attrs="{'readonly': [('state', '=', 'done')]}"
+                    options="{'no_open': True, 'no_create': True}"
+                    invisible="not context.get('show_purchase_information')"
+                />
+                <field
+                    name="exchange_rate"
+                    attrs="{'readonly': [('state', '=', 'done')]}"
+                    invisible="not context.get('show_purchase_information')"
+                />
+                <field
+                    name="price_unit"
+                    invisible="not context.get('show_purchase_information')"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>

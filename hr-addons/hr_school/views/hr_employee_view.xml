@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="hr_employee_view_form" model="ir.ui.view">
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form" />
+        <field name="arch" type="xml">
+            <button name="toggle_active" position="after">
+               <button class="oe_stat_button" type="object"
+                       icon="fa-users" name="button_show_tutored_students" >
+                   <field name="count_tutored_students" widget="statinfo"
+                          string="Tutored students" />
+               </button>
+            </button>
+            <field name="user_id" position="after">
+                <field name="center_ids" widget="many2many_tags"
+                       attrs="{'invisible': [('user_id', '=', False)]}"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="hr_employee_view_search" model="ir.ui.view">
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_filter" />
+        <field name="arch" type="xml">
+            <field name="job_id" position="after">
+                <field name="center_ids" />
+            </field>
+        </field>
+    </record>
+</odoo>

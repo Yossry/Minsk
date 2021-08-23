@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_daily_armourer_visit" model="ir.ui.view">
+            <field name="name">Daily Armourer Visit</field>
+            <field name="model">daily.armourer.visit</field>
+            <field name="arch" type="xml">
+            <form string="Daily Armourer Visit Report">
+                <label for="date_from" string="This wizard will print Daily Armourer Visit report between two specified dates."/>
+                <footer>
+                    <button name="print_report" string="Print" type="object" class="oe_highlight"/>
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+                <group>
+                    <field name="date_from"/>
+                    <field name="date_end"/> 
+                </group>
+            </form>
+            </field>
+        </record>
+
+        <record id="action_daily_armourer_visit_rep" model="ir.actions.act_window">
+            <field name="name">Daily Armourer Visit</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">daily.armourer.visit</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        
+    </data>
+</odoo>

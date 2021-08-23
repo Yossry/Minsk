@@ -1,0 +1,36 @@
+<openerp>
+  <data>
+      <record id="view_stockmove_form_inherit" model="ir.ui.view">
+            <field name="name">view.stockmove.form.add.text.field</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree/field[@name='picking_id']" position="after">
+                    <field name="zona"/>
+                </xpath>
+            </field>
+    </record>
+       <record id="view_stockmoveform_form_inherit" model="ir.ui.view">
+            <field name="name">view.stockmoveform.form.add.text.field</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet/group/group[@name='destination_grp']/field[@name='picking_partner_id']" position="after">
+                    <field name="zona"/>
+                </xpath>
+            </field>
+        </record>
+      <record id="view_stockmovesearch_form_inherit" model="ir.ui.view">
+            <field name="name">view.stockmovesearch.form.add.text.field</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_search"/>
+            <field name="arch" type="xml">
+                <xpath expr="//search/group/filter[@name='by_product']" position="after">
+                    <filter string="Zona" name="zona" domain="[]"  context="{'group_by':'zona'}"/>
+                </xpath>
+            </field>
+        </record>
+
+
+  </data>
+</openerp>

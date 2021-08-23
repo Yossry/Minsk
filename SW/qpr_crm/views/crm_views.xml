@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="crm_case_form_view_leads_inherit_qpr_crm">
+            <field name="name">crm.lead.form.inherit</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_form_view_leads"/>
+            <field name="arch" type="xml">
+                <xpath expr='//form//notebook//page[1]' position="attributes">
+                    <attribute name="string">Client Requirement</attribute>
+                </xpath>
+                <field name="mobile" position="after">
+                    <field name="opportunity_type" required="True"/>
+                    <field name="approval_state" readonly="1" force_save="1" invisible="1"/>
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="crm_case_form_view_oppor_inherit_qpr_crm">
+            <field name="name">crm.lead.form.opportunity.inherit</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_form_view_oppor"/>
+            <field name="arch" type="xml">
+                <field name="date_deadline" position="after">
+                    <field name="opportunity_type" required="True"/>
+                    <field name="approval_state" readonly="1" force_save="1"/>
+                </field>
+                <button name="action_set_won_rainbowman" position="before">
+                    <field name="show_approval_btn" invisible="1"/>
+                    <button name="%(action_lead_approval_wizard)d" string="Management Confirmation" class="oe_highlight" type="action" attrs="{'invisible': [('show_approval_btn', '=', False)]}"/>
+                    <button name="action_reopen" string="Reopen" class="oe_highlight" type="object" attrs="{'invisible': [('approval_state', '!=', 'reject')]}" groups="qpr_crm.group_cxo"/>
+                </button>
+                <xpath expr='//form//notebook//page[1]' position="attributes">
+                    <attribute name="string">Client Requirement</attribute>
+                </xpath>
+                <xpath expr='//form//notebook//page[2]' position="after">
+                    <page string="Product List (Quotation Value)">
+                        <field name="line_ids">
+                            <tree editable="bottom">
+                                <field name="product_id"/>
+                                <field name="name"/>
+                                <field name="qty"/>
+                                <field name="price"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- https://apps.odoo.com/apps/modules/10.0/lead_products/
+             Need to create Quotation based on Opportunity as we already have the Customer Info, product line, and
+             other needed details, so it will easy for Sales-Team to quickly create the Quotation and send to client
+             the template.
+             * In product List (if we can add one more field Qty in Hand **
+             * Any suggestion on the Approve Button as Its not getting clear for whom it meant for Plus if some-one
+             reject it how to capture that reason for rejection.
+             *** Can we think here on that Approve button to change the name "Confirm" >> Then open a wizard and take
+             input text field as a comments for approval / Rejection and then two button on the Wizard
+             a. Approve
+             b. Reject
+
+             Once Approve or Reject done - it will also go in Chatter for history purpose and list in the comments
+             12many field for (Comment History)
+             Comment Date, Comment by , Approved | Reject , Reason
+
+             Suggestion needed on this.
+             -->
+
+        <record model="ir.ui.view" id="crm_case_form_view_oppor_sale_crm_inherit_qpr_crm">
+            <field name="name">crm.lead.form.opportunity.inherit</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="sale_crm.crm_case_form_view_oppor"/>
+            <field name="arch" type="xml">
+                <button name="%(sale_crm.sale_action_quotations_new)d" position="attributes">
+                    <attribute name="attrs">{'invisible': ['|', '&amp;', ('probability', '=', 0), ('active', '=', False), ('approval_state', '!=', 'approved')]}</attribute>
+                </button>
+            </field>
+        </record>
+    </data>
+</odoo>

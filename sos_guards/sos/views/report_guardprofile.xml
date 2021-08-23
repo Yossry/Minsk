@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>	
+
+	<template id ="report_guard_document">
+			<style>
+				body {margin-top: 0px; margin-left: 0 px}
+				#page_1 {position:relative; overflow: hidden;margin: 39px 0px 24px 32px;padding: 0px;border: none;width: 784px;}
+				#id_1 {border:none;margin: 23px 0px 0px 0px;padding: 0px;border:none;width: 784px;overflow: hidden;}
+				#id_1 #id_1_1 {float:left;border:none;margin: 1px 0px 0px 0px;padding: 0px;border:none;width: 456px;overflow: hidden;}
+				#id_1 #id_1_2 {float:left;border:none;margin: 0px 0px 0px 0px;padding: 0px;border:none;width: 328px;overflow: hidden;}				
+				
+				.page {position:relative; overflow: hidden;margin: 39px 0px 24px 32px;padding: 0px;border: none;width: 784px;}				
+				.p0{text-align: left;padding-left: 200px;margin-top: 0px;margin-bottom: 0px;}
+				.p1{text-align: left;padding-left: 200px;margin-top: 1px;margin-bottom: 0px;}
+				.p18{text-align: left;padding-left: 80px;margin-top: 0px;margin-bottom: 0px;}
+				.p19{text-align: left;padding-left: 56px;margin-top: 10px;margin-bottom: 0px;}
+				.p20{text-align: left;padding-left: 8px;margin-top: 6px;margin-bottom: 0px;}
+
+				.tr1 {border-top: #808080 1px solid;padding: 0px;margin: 0px;width: 216px;vertical-align: bottom;}
+				.td1{padding: 0px;margin: 0px;width: 154px;vertical-align: bottom; background-color:#5F9EA0;}
+
+				.ft0{font: bold 12px 'Arial';color: #231f20;line-height: 15px;}
+				.ft2{font: 12px 'Arial';line-height: 15px;}
+				.ft14{font: bold 26px 'Arial';line-height: 30px;}
+				.ft15{font: bold 29px 'Arial';line-height: 34px;}
+
+				#page_1 #id_1 #id_1_1 #dimg1 {position:absolute;top:0px;left:0px;z-index:-1;width:190px;height:180px;}
+				#page_1 #id_1 #id_1_1 #dimg1 #img1 {width:190px;height:180px;}
+			
+		</style>
+			 <t t-call="web.html_container">
+					<div class="page">
+						<div id="id_1">
+							<div id="id_1_1">
+								<table class="table">
+									<tr bgcolor="Red">
+										<td>  </td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+			</t>
+	</template>
+
+
+	<template id="report_guardprofile">
+		<t t-call="web.html_container">
+			<t t-foreach="docs" t-as="doc">
+				<t t-call="sos.report_guard_document" />
+			</t>
+		</t>
+	</template>
+	</data>
+</odoo>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem
+        id="warehouse_report_menu"
+        name="Warehouse"
+        parent="profit_loss_report.menu_base_reporting"
+        sequence="10"
+    />
+    <menuitem
+        action="action_stock_consignment_report_wizard"
+        id="menu_consignment_report_wizard"
+        parent="warehouse_report_menu"
+        sequence="7"
+    />
+</odoo>

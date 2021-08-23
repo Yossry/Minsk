@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="view_res_partner_filter" model="ir.ui.view">
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="before">
+                <field name="name" string="Name, mail, phone, mobile or NIF" filter_domain="['|','|','|','|','|',('display_name','ilike',self),('ref','=',self),('email','ilike',self),('phone','ilike',self),('mobile','ilike',self),('vat','ilike',self)]"/>
+                <field name="city" string="City"/>
+                <field name="state_id" string="State"/>
+                <field name="industry_id" string="Industry"/>
+            </xpath>
+            <xpath expr="//filter[@name='group_company']" position="before">
+                <filter name="group_industry" string="Industry" context="{'group_by': 'industry_id'}"/>
+                <filter name="group_state" string="State" context="{'group_by': 'state_id'}"/>
+                <filter name="group_city" string="City" context="{'group_by': 'city'}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

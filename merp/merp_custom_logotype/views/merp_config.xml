@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_merp_config_settings_logotype" model="ir.ui.view">
+        <field name="name">Ventor/mERP Settings (Logo)</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="merp_base.view_stock_config_settings" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@data-key='merp_base']" position="inside" >
+                <h2>Custom Mobile Logo</h2>
+                <div class="row mt16 o_settings_container">
+                    <div class="col-xs-12 col-md-6 o_setting_box">
+                        <div class="o_setting_left_pane"/>
+                        <div class="o_setting_right_pane">
+                            <field name="merp_logotype_name" invisible="1"/>
+                            <field name="merp_logotype_file" widget="binary"
+                                filename="merp_logotype_name" />
+                            <div class="text-muted">
+                                My Logo
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

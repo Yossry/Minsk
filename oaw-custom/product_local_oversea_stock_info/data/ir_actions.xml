@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="update_product_product_qty_info_action" model="ir.actions.server">
+        <field name="name">Update Quantity Info</field>
+        <field name="model_id" ref="product.model_product_product" />
+        <field name="binding_model_id" ref="product.model_product_product" />
+        <field name="state">code</field>
+        <field name="code">records._update_prod_tmpl_qty()</field>
+    </record>
+    <record id="update_product_template_qty_info_action" model="ir.actions.server">
+        <field name="name">Update Quantity Info</field>
+        <field name="model_id" ref="product.model_product_template" />
+        <field name="binding_model_id" ref="product.model_product_template" />
+        <field name="state">code</field>
+        <field
+            name="code"
+        >records.mapped('product_variant_ids')._update_prod_tmpl_qty()</field>
+    </record>
+    <record id="update_product_product_location_name" model="ir.actions.server">
+        <field name="name">Update Stock Location</field>
+        <field name="model_id" ref="product.model_product_product" />
+        <field name="binding_model_id" ref="product.model_product_product" />
+        <field name="state">code</field>
+        <field
+            name="code"
+        >records.mapped('product_tmpl_id')._compute_stock_location_info()</field>
+    </record>
+    <record id="update_product_template_location_name" model="ir.actions.server">
+        <field name="name">Update Stock Location</field>
+        <field name="model_id" ref="product.model_product_template" />
+        <field name="binding_model_id" ref="product.model_product_template" />
+        <field name="state">code</field>
+        <field name="code">records._compute_stock_location_info()</field>
+    </record>
+</odoo>

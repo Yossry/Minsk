@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_plant_id_request_user,Plant Identification Request access for Internal Users,plant_identification.model_plant_id_request,base.group_user,1,1,1,1

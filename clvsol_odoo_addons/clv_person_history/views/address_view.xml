@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+        
+    <record id="clv_address_view_form_person_history" model="ir.ui.view">
+        <field name="name">clv.address.form</field>
+        <field name="model">clv.address</field>
+        <field name="inherit_id" ref="clv_address.clv_address_view_form"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <page name="settings" position="before">
+                <page string="Persons (History)">
+                    <group>
+                        <group>
+                            <field name="count_person_histories"/>
+                        </group>
+                        <group>
+                            <button name="clv_person_history.clv_person_history_action"
+                                    type="action"
+                                    class="oe_stat_button"
+                                    icon="fa-list"
+                                    context="{'search_default_ref_address_id': id}"
+                                    attrs="{'invisible': [('person_history_ids', '=', [])]}"
+                                    >
+                                <div class="o_form_field o_stat_info">
+                                    <span class="o_stat_value">
+                                        <field name="count_person_histories"/>
+                                    </span>
+                                    <span class="o_stat_text"> Person History(ies)</span>
+                                </div>
+                            </button>
+                        </group>
+                    </group>
+                    <field name="person_history_ids" colspan="4" nolabel="1"/>
+                </page>
+            </page>
+        </field>
+    </record>
+
+    <record id="clv_person_history_view_form_address" model="ir.ui.view">
+        <field name="name">clv.person.history.form</field>
+        <field name="model">clv.person.history</field>
+        <field name="inherit_id" ref="clv_person_history.clv_person_history_view_form"/>
+        <field name="priority" eval="5"/>
+        <field name="arch" type="xml">
+            <group name="history" position="after">
+                <group name="address">
+                    <field name="ref_address_id" options="{'no_open': False, 'no_create': True}"/>
+                </group>
+            </group>
+        </field>
+    </record>
+
+    <record id="clv_person_history_view_tree_address" model="ir.ui.view">
+        <field name="name">clv.person.history.tree</field>
+        <field name="model">clv.person.history</field>
+        <field name="inherit_id" ref="clv_person_history.clv_person_history_view_tree"/>
+        <field name="priority" eval="7"/>
+        <field name="arch" type="xml">
+            <field name="date_sign_out" position="after">
+                <field name="ref_address_id"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="clv_person_history_view_search_address" model="ir.ui.view">
+        <field name="name">clv.person.history.search</field>
+        <field name="model">clv.person.history</field>
+        <field name="inherit_id" ref="clv_person_history.clv_person_history_view_search"/>
+        <field name="priority" eval="7"/>
+        <field name="arch" type="xml">
+            <field name="date_sign_out" position="after">
+                <field name="ref_address_id"/>
+            </field>
+            <group name="group_by" position="inside">
+                <filter name="group_by_ref_address_id" string="Address" context="{'group_by': 'ref_address_id'}"/>
+            </group>
+        </field>
+    </record>
+
+</odoo>

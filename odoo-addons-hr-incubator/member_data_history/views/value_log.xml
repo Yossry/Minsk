@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright 2019 Coop IT Easy
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+    <record id="value_log_view_tree" model="ir.ui.view">
+        <field name="name">value_log_view_tree</field>
+        <field name="model">value.log</field>
+        <field name="arch" type="xml">
+            <tree string="value_log_tree">
+                <field name="model"/>
+                <field name="field"/>
+                <field name="user_id"/>
+                <field name="record_id"/>
+                <field name="date"/>
+                <field name="previous_value"/>
+                <field name="new_value"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="value_log_tree_view_action" model="ir.actions.act_window">
+        <field name="name">Member Data History</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">value.log</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+    <menuitem
+        id="value_log_menu"
+        action="value_log_tree_view_action"
+        parent="hr.menu_human_resources_configuration"
+        groups="base.group_system"
+        sequence="1"/>
+</odoo>

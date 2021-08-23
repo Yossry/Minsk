@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record model="ir.ui.menu" id="hr.menu_open_view_employee_list_my">
+        <field name="groups_id" eval="[(6,0,[ref('clv_base.make_invisible')])]"/>
+    </record>
+
+    <record model="ir.ui.menu" id="hr.menu_hr_department_tree">
+        <field name="groups_id" eval="[(6,0,[ref('clv_base.make_invisible')])]"/>
+    </record>
+
+    <menuitem name="Employees" id="menu_hr_root_employees"  
+        parent="hr.menu_hr_root"
+        groups="clv_base.group_user"
+        sequence="10"/>
+
+    <menuitem name="Employees" id="menu_hr_root_employees_employees"
+        parent="menu_hr_root_employees"
+        groups="base.group_user"
+        sequence="10"
+        action="hr.open_view_employee_list_my"/>
+
+    <menuitem name="Departments" id="menu_hr_root_employees_departments"
+        parent="menu_hr_root_employees"
+        groups="base.group_user"
+        sequence="20"
+        action="hr.open_module_tree_department"/>
+
+    <menuitem name="Jobs" id="menu_hr_root_employees_jobs"
+        parent="menu_hr_root_employees"
+        groups="base.group_user"
+        sequence="30"
+        action="hr.action_hr_job"/>
+
+</odoo>

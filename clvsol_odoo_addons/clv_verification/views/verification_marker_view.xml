@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="clv_verification_marker_view_form" model="ir.ui.view">
+        <field name="name">clv.verification.marker.form</field>
+        <field name="model">clv.verification.marker</field>
+        <field name="inherit_id" ref="clv_base.clv_abstract_marker_view_form"/>
+        <field name="mode">primary</field>
+        <field name="priority" eval="100"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="attributes">
+                <attribute name="string">Verification Marker</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="clv_verification_marker_view_tree" model="ir.ui.view">
+        <field name="name">clv.verification.marker.tree</field>
+        <field name="model">clv.verification.marker</field>
+        <field name="inherit_id" ref="clv_base.clv_abstract_marker_view_tree" />
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="attributes">
+                <attribute name="string">Verification Markers</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="clv_verification_marker_view_search" model="ir.ui.view">
+        <field name="name">clv.verification.marker.search</field>
+        <field name="model">clv.verification.marker</field>
+        <field name="inherit_id" ref="clv_base.clv_abstract_marker_view_search" />
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <xpath expr="//search" position="attributes">
+                <attribute name="string">Verification Markers</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="clv_verification_marker_action" model="ir.actions.act_window">
+        <field name="name">Verification Markers</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">clv.verification.marker</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="clv_verification_marker_view_search"/>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="view_id" eval="False"/>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Click to add a new verification marker.
+          </p>
+        </field>
+    </record>
+    
+</odoo>

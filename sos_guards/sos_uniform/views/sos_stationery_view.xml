@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<record id="sos_stationery_demand_tree" model="ir.ui.view">
+			<field name="name">Stationery Demand Tree</field>
+			<field name="model">sos.stationery.demand</field>
+			<field name="priority" eval="15"/>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="name"/>
+					<field name="date"/>
+					<field name="center_id"/>
+					<field name="employee_id"/>
+					<field name="state"/>
+					<field name="dm_type"/>
+				</tree>
+			</field>
+		</record>
+
+		 <record id="sos_stationery_demand_form" model="ir.ui.view">
+			<field name="name">Stationery Demand Form</field>
+			<field name="model">sos.stationery.demand</field>
+			<field name="priority" eval="15"/>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Stationery Demand">
+					<header>
+						<button name="demand_open" type="object" states="draft" string="RM" class="oe_highlight" groups="sos.group_regional_manager,sos.group_coordinator" />
+						<button name="demand_review" type="object" states="open" string="Coordinator" class="oe_highlight" groups="sos_uniform.group_demand_review"/>
+						<button name="demand_approve" type="object" states="review" string="HOC" class="oe_highlight" groups="sos_uniform.group_demand_approve"/>
+						<button name="demand_admin" type="object" states="approve" string="Admin" class="oe_highlight" groups="sos_uniform.group_admin_approve" />
+						<button name="demand_dispatch" type="object" states="adm" string="Store" class="oe_highlight" groups="stock.group_stock_manager"/>
+					<!--	<button name="demand_delivered" type="object" states="dispatch" string="Deliver" class="oe_highlight" groups="sos.group_regional_manager,hr.group_hr_user" />	-->
+						<button name="demand_reject" type="object" states="draft,reviewe,open,dispatch,approve" string="Reject" class="oe_highlight" groups="hr.group_hr_user"/>
+						<field name="state" widget="statusbar" nolabel="1" statusbar_visible="draft,open,review,adm,dispatch,approve,done,reject"/>
+					</header>
+					<sheet string="Stationery Demand">
+						<div class="oe_title">
+							<label for="name" class="oe_edit_only"/>
+						<h1>
+							<field name="name"/>
+						</h1>
+						</div>
+
+						<div class="oe_right oe_button_box" name="button_box">
+							 <button class="oe_stat_button"
+								name="%(sos_product_stationery_quants)d"
+								icon="fa-building-o"
+								type="action" groups="stock.group_locations" string="Stationery Stock">
+							 </button>
+						</div>
+
+						<group colspan="4">
+							<group>
+								<field name="center_id" options="{'no_create': True, 'limit': 10}"/>
+								<field name="employee_id" options="{'no_create': True, 'limit': 10}"/>
+								<field name="dm_type"/>
+							</group>
+							 <group>
+								<field name="date"/>
+								<field name="move_id" invinsible="0"/>
+							 </group>
+						 </group>
+
+						<group colspan="4">
+							<group>
+								<field name="remarks"/>
+							</group>
+						</group>
+
+						<group string="Required Items">
+							<field name="stationery_demand_line" colspan="4" nolabel="1" attrs="{'readonly': [('state', 'in', ['approve', 'dispatch', 'done', 'reject'])]}">
+								<tree editable="top" >
+									<field name="item_id"  required="1"    options="{'no_create': True, 'limit': 10}"/>
+									<field name="req_size" invisible="1"/>
+									<field name="qty" required="1"/>
+									<field name="size"  attrs="{'required': [('req_size', '=', True)]}"/>
+									<field name="action" groups="stock.group_stock_manager,sos_uniform.group_demand_approved"/>
+								</tree>
+							</field>
+						</group>
+
+						<group string="Dispatch Items"  attrs="{'invisible': [('state', 'in', ['draft', 'open', 'reject'])]}">
+							<button name="demand_required_item_dispatch" type="object" string="Enter Dispatch Items" attrs="{'invisible': [('state','in', ['draft','open','reject','cancel'])]}"/>
+							<field name="stationery_dispatch_line" colspan="4" nolabel="1">
+								<tree editable="top" >
+									<field name="product_id" domain="[('categ_id.name', '=', 'Stationary')]" options="{'no_create': True, 'limit': 10}"/>
+									<field name="product_uom"/>
+									<field name="stock_qty" />
+									<field name="product_qty" required="1"/>
+								</tree>
+							</field>
+						</group>
+					</sheet>
+					<div class="oe_chatter">
+						<field name="message_follower_ids" widget="mail_followers" groups="base.group_user" />
+						<field name="message_ids" widget="mail_thread" />
+					</div>
+
+				</form>
+			</field>
+		</record>
+
+		<record id="sos_stationery_demand_filter" model="ir.ui.view">
+			<field name="name">sos.stationery.demand.filter</field>
+			<field name="model">sos.stationery.demand</field>
+			<field name="arch" type="xml">
+				<search string="Search Stationery Demand">
+					<filter icon="terp-go-today" string="Draft" name="draft" domain="[('state','=','draft')]" />
+					<filter icon="terp-go-today" string="Done" name="done" domain="[('state','=','done')]" />
+					<filter icon="terp-go-today" string="Approved" name="done" domain="[('state','=','approve')]" />
+					<filter icon="terp-go-today" string="Rejected" name="done" domain="[('state','=','reject')]" />
+					<separator/>
+					<filter icon="terp-go-today" string="New Deployment" name="new_deployment" domain="[('dm_type','=','new_deployment')]" />
+					<filter icon="terp-go-today" string="Complain" name="complain" domain="[('dm_type','=','complain')]" />
+					<filter icon="terp-go-today" string="Additional Guard" name="additional_guard" domain="[('dm_type','=','additional_guard')]" />
+					<filter icon="terp-go-today" string="Replacement" name="replacement" domain="[('dm_type','=','replacement')]" />
+					<separator/>
+					<field name="name"/>
+					<field name="center_id"/>
+					<field name="date"/>
+					<field name="state"/>
+					<field name="dm_type"/>
+					<separator/>
+					<group expand="0" string="Group By">
+						<filter string="Center" name="center_id" icon="terp-partner" domain="[]" context="{'group_by':'center_id'}"/>
+						<filter string="Date" name="date" icon="terp-partner" domain="[]" context="{'group_by':'date'}"/>
+						<filter string="State" name="state" icon="terp-partner" domain="[]" context="{'group_by':'state'}"/>
+						<filter string="Type" name="dm_type" icon="terp-partner" domain="[]" context="{'group_by':'dm_type'}"/>
+					</group>
+
+				</search>
+			</field>
+		</record>
+
+		<record id="sos_stationery_demand_action" model="ir.actions.act_window">
+			<field name="name">Stationery Demand </field>
+			<field name="res_model">sos.stationery.demand</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+					Click to create a new Stationery Demand.
+			</p>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="sos_stationery_items_tree_view">
+			<field name="name">sos.stationery.items.tree.view</field>
+			<field name="model">sos.stationery.items</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Stationery Items">
+					<field name="name" />
+					<field name="req_size" />
+					<field name="product_ids" />
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="sos_stationery_items_form_view">
+			<field name="name">sos.stationery.items.form.view</field>
+			<field name="model">sos.stationery.items</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Stationery Items">
+				<sheet>
+					<group>
+						<group>
+							<field name="name" placeholder="Name..."/>
+							<field name="req_size" />
+						</group>
+					</group>
+					<field name="product_ids" colspan="4"/>
+				</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="sos_stationery_items_action" model="ir.actions.act_window">
+			<field name="name">Stationery Items</field>
+			<field name="res_model">sos.stationery.items</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+					Click to create a new Stationery Item.
+			</p>
+			</field>
+		</record>
+
+	</data>
+</odoo>

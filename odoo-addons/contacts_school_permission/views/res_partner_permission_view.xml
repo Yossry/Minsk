@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="res_partner_permission_view_tree"
+            model="ir.ui.view">
+        <field name="model">res.partner.permission</field>
+        <field name="arch" type="xml">
+            <tree decoration-bf="state == 'yes'"
+                  decoration-muted="state == 'pending'"
+                  decoration-danger="state == 'no'">
+                <field name="partner_id" />
+                <field name="type_id" />
+                <field name="signer_id" />
+                <field name="start_date" />
+                <field name="end_date" />
+                <field name="state" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="res_partner_permission_view_form"
+            model="ir.ui.view">
+        <field name="model">res.partner.permission</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="button_sign" string="Sign" type="object"
+                            attrs="{'invisible': [('state', '!=', 'pending')]}" />
+                    <button name="button_deny" string="Deny" type="object"
+                            attrs="{'invisible': [('state', '!=', 'pending')]}" />
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="partner_id"
+                                   options="{'no_create': True}" />
+                            <field name="allowed_signer_ids" invisible="True" />
+                            <field name="signer_id"
+                                   options="{'no_create': True, 'no_open': True}"/>
+                            <field name="state" />
+                        </group>
+                        <group>
+                            <field name="type_id"
+                                   options="{'no_create': True}"/>
+                            <field name="type_description" />
+                        </group>
+                    </group>
+                    <separator string="Description" />
+                    <field name="description" />
+                    <group>
+                        <group>
+                            <field name="start_date" />
+                            <field name="end_date" />
+                        </group>
+                        <group>
+                            <field name="attachment_doc" />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="res_partner_permission_view_search"
+            model="ir.ui.view">
+        <field name="model">res.partner.permission</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="partner_id" />
+                <field name="signer_id" />
+                <field name="type_id" />
+                <field name="description" />
+                <filter name="approved" string="Approved"
+                        domain="[('state', '=', 'yes')]" />
+                <filter name="denied" string="Denied"
+                        domain="[('state', '=', 'no')]" />
+                <filter name="pending" string="Pending"
+                        domain="[('state', '=', 'pending')]" />
+                <group name="groupby">
+                    <filter name="partner" string="Student" domain="[]"
+                            context="{'group_by': 'partner_id'}" />
+                    <filter name="state" string="State" domain="[]"
+                            context="{'group_by': 'state'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_res_partner_permission">
+        <field name="name">Permissions</field>
+        <field name="res_model">res.partner.permission</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form,tree</field>
+        <field name="view_id" ref="res_partner_permission_view_tree" />
+    </record>
+
+    <menuitem id="res_partner_permission_menuitem"
+              parent="contacts.menu_contacts"
+              action="action_res_partner_permission"
+              sequence="8" />
+
+    <record id="action_res_partner_permission_sign" model="ir.actions.server">
+        <field name="name">Sign Permissions</field>
+        <field name="state">code</field>
+        <field name="model_id" ref="model_res_partner_permission" />
+        <field name="binding_model_id" ref="model_res_partner_permission" />
+        <field name="code">
+for record in records.filtered(lambda r: r.state == 'pending'):
+    record.button_sign()
+        </field>
+    </record>
+
+    <record id="action_res_partner_permission_deny" model="ir.actions.server">
+        <field name="name">Deny Permissions</field>
+        <field name="state">code</field>
+        <field name="model_id" ref="model_res_partner_permission" />
+        <field name="binding_model_id" ref="model_res_partner_permission" />
+        <field name="code">
+for record in records.filtered(lambda r: r.state == 'pending'):
+    record.button_deny()
+        </field>
+    </record>
+</odoo>

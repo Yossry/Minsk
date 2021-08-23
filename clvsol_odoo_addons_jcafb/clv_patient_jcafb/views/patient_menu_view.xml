@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <menuitem name="Patient" id="clv_patient.menu_health_health_patient"
+        parent="clv_base.menu_health_health"
+        groups="clv_patient.group_user"
+        sequence="10"/>
+
+    <menuitem name="Patients" id="clv_patient.menu_health_health_lab_test_requests"
+        parent="clv_patient.menu_health_health_patient"
+        groups="clv_patient.group_user"
+        sequence="10"
+        action="clv_patient.clv_patient_action"/>
+
+    <menuitem name="Patient" id="clv_patient.menu_health_community_config_patient" 
+        parent="clv_base.menu_health_config_config"
+        groups="clv_patient.group_user"
+        sequence="10"/>
+
+    <menuitem name="Categories" id="clv_patient.menu_health_community_config_patient_categories" 
+        parent="clv_patient.menu_health_community_config_patient"
+        groups="clv_patient.group_user"
+        sequence="10"
+        action="clv_patient.clv_patient_category_action"/>
+
+</odoo>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="snippets_selection" inherit_id="website.snippets">
+        <xpath expr="//div[@id='snippet_structure']/div[contains(@class, 'o_panel_body')]" position="inside">
+            <t t-snippet="theme_materialab.s_slider_material" t-thumbnail="/theme_materialab/static/src/img/snippets/s_slider_material.png" />
+            <t t-snippet="theme_materialab.s_project_area" t-thumbnail="/theme_materialab/static/src/img/snippets/s_project_area.png" />
+            <t t-snippet="theme_materialab.s_protfolio_area" t-thumbnail="/theme_materialab/static/src/img/snippets/s_protfolio_area.png" />
+            <t t-snippet="theme_materialab.s_whychoose" t-thumbnail="/theme_materialab/static/src/img/snippets/s_whychoose.png" />
+            <t t-snippet="theme_materialab.s_service_area" t-thumbnail="/theme_materialab/static/src/img/snippets/s_service_area.png" />
+            <t t-snippet="theme_materialab.s_our_team" t-thumbnail="/theme_materialab/static/src/img/snippets/s_our_team.png" />
+            <t t-snippet="theme_materialab.s_skill_and_video" t-thumbnail="/theme_materialab/static/src/img/snippets/s_skill_and_video.png" />
+            <t t-snippet="theme_materialab.s_client_part" t-thumbnail="/theme_materialab/static/src/img/snippets/s_client_part.png" />
+            <t t-snippet="theme_materialab.s_partner_area" t-thumbnail="/theme_materialab/static/src/img/snippets/s_partner_area.png" />
+            <t t-snippet="theme_materialab.s_subscribe_area" t-thumbnail="/theme_materialab/static/src/img/snippets/s_subscribe_area.png" />
+            <t t-snippet="theme_materialab.s_contact" t-thumbnail="/theme_materialab/static/src/img/snippets/s_contact.png" />
+            <t t-snippet="theme_materialab.s_footer_social" t-thumbnail="/theme_materialab/static/src/img/snippets/s_footer_social.png" />
+        </xpath>
+        <xpath expr="//div[@id='snippet_content']/div[contains(@class, 'o_panel_body')]" position="inside">
+            <t t-snippet="theme_materialab.s_about_us" t-thumbnail="/theme_materialab/static/src/img/snippets/s_about_us.png" />
+        </xpath>
+        <xpath expr="//div[@id='snippet_feature']/div[contains(@class, 'o_panel_body')]" position="inside">
+            <t t-snippet="theme_materialab.s_feature_area" t-thumbnail="/theme_materialab/static/src/img/snippets/s_feature_area.png" />
+            <t t-snippet="theme_materialab.s_social_btn" t-thumbnail="/theme_materialab/static/src/img/snippets/s_social_btn.png" />
+            <t t-snippet="theme_materialab.s_pricing_table" t-thumbnail="/theme_materialab/static/src/img/snippets/s_pricing_table.png" />
+            <t t-snippet="theme_materialab.s_blog_area" t-thumbnail="/theme_materialab/static/src/img/snippets/s_blog_area.png" />
+        </xpath>
+        <xpath expr="//div[@id='snippet_effect']/div[contains(@class, 'o_panel_body')]" position="inside">
+            <t t-snippet="theme_materialab.s_process_area" t-thumbnail="/theme_materialab/static/src/img/snippets/s_process_area.png" />
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="sos_project_guards_wizard_view" model="ir.ui.view">
+        <field name="name">Projects Detail Report</field>
+        <field name="model">sos.project.guards.wizard</field>
+        <field name="arch" type="xml">
+			<form string="Project Guards Detail Report Wizard">
+				<group>	
+					<field name="project_ids" widget="many2many_checkboxes"/>		
+				</group>
+				
+				<footer>
+						<button string="Print" name="print_report" type="object" class="oe_highlight"  />
+						<button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+			</form>
+		</field>
+    </record>
+            
+     <act_window
+            id="action_sos_project_guards_wizard"
+            name="Projects Detail"
+            res_model="sos.project.guards.wizard"
+            src_model="sos.project"
+            view_mode="form"
+            multi="True"
+            target="new"
+            key2="client_print_multi"
+        /> 
+</odoo>

@@ -1,0 +1,225 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* company_wizard_base
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-08-06 13:43+0000\n"
+"PO-Revision-Date: 2018-08-06 13:43+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: company_wizard_base
+#: model:ir.ui.view,arch_db:company_wizard_base.view_res_company_create_wizard_form
+msgid "Address"
+msgstr "Adresse"
+
+#. module: company_wizard_base
+#: model:ir.ui.view,arch_db:company_wizard_base.view_res_company_create_wizard_form
+msgid "Administrative information"
+msgstr "information administrative"
+
+#. module: company_wizard_base
+#: model:ir.ui.view,arch_db:company_wizard_base.view_res_company_create_wizard_form
+msgid "Basic Accounting Settings"
+msgstr "Paramétrage comptable simple"
+
+#. module: company_wizard_base
+#: model:ir.ui.view,arch_db:company_wizard_base.view_res_company_create_wizard_form
+msgid "Cancel"
+msgstr "Annuler"
+
+#. module: company_wizard_base
+#: model:ir.model.fields,field_description:company_wizard_base.field_res_company_create_wizard_company_city
+#: model:ir.ui.view,arch_db:company_wizard_base.view_res_company_create_wizard_form
+msgid "City"
+msgstr "Ville"
+
+#. module: company_wizard_base
+#: model:ir.model.fields,field_description:company_wizard_base.field_res_company_code
+#: model:ir.model.fields,field_description:company_wizard_base.field_res_company_create_wizard_company_code
+msgid "Code"
+msgstr "Code"
+
+#. module: company_wizard_base
+#: model:ir.model,name:company_wizard_base.model_res_company
+msgid "Companies"
+msgstr "Sociétés"
+
+#. module: company_wizard_base
+#: model:ir.ui.view,arch_db:company_wizard_base.view_res_company_create_wizard_form
+msgid "Company Contact"
+msgstr "Contact de la société"
+
+#. module: company_wizard_base
+#: model:ir.model.fields,field_description:company_wizard_base.field_res_company_create_wizard_company_registry
+msgid "Company Registry"
+msgstr "Registre du commerce et des Sociétés"
+
+#. module: company_wizard_base
+#: model:ir.model.fields,field_description:company_wizard_base.field_res_company_create_wizard_company_id
+msgid "Company id"
+msgstr "Company id"
+
+#. module: company_wizard_base
+#: model:ir.model.fields,field_description:company_wizard_base.field_res_company_create_wizard_company_country_id
+#: model:ir.ui.view,arch_db:company_wizard_base.view_res_company_create_wizard_form
+msgid "Country"
+msgstr "Pays"
+
+#. module: company_wizard_base
+#: model:ir.ui.view,arch_db:company_wizard_base.view_res_company_create_wizard_form
+msgid "Create Company"
+msgstr "Créer une société"
+
+#. module: company_wizard_base
+#: model:ir.actions.act_window,name:company_wizard_base.action_res_company_create_wizard
+#: model:ir.ui.menu,name:company_wizard_base.menu_res_company_create_wizard
+msgid "Create New Company"
+msgstr "Creer une nouvelle société"
+
+#. module: company_wizard_base
+#: model:ir.model.fields,field_description:company_wizard_base.field_res_company_create_wizard_create_user
+msgid "Create User"
+msgstr "Créer un utilisateur"
+
+#. module: company_wizard_base
+#: model:ir.model.fields,field_description:company_wizard_base.field_res_company_create_wizard_create_uid
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: company_wizard_base
+#: model:ir.model.fields,field_description:company_wizard_base.field_res_company_create_wizard_create_date
+msgid "Created on"
+msgstr "Créé le"
+
+#. module: company_wizard_base
+#: model:ir.model.fields,field_description:company_wizard_base.field_res_company_create_wizard_display_name
+msgid "Display Name"
+msgstr "Nom affiché"
+
+#. module: company_wizard_base
+#: model:ir.model.fields,field_description:company_wizard_base.field_res_company_create_wizard_company_email
+#: model:ir.model.fields,field_description:company_wizard_base.field_res_company_create_wizard_user_email
+msgid "Email"
+msgstr "Courriel"
+
+#. module: company_wizard_base
+#: model:ir.ui.view,arch_db:company_wizard_base.view_res_company_create_wizard_form
+msgid "General Information"
+msgstr "Information générale"
+
+#. module: company_wizard_base
+#: model:ir.model.fields,field_description:company_wizard_base.field_res_company_create_wizard_id
+msgid "ID"
+msgstr "ID"
+
+#. module: company_wizard_base
+#: model:ir.model.fields,field_description:company_wizard_base.field_res_company_create_wizard___last_update
+msgid "Last Modified on"
+msgstr "Dernière Modification le"
+
+#. module: company_wizard_base
+#: model:ir.model.fields,field_description:company_wizard_base.field_res_company_create_wizard_write_uid
+msgid "Last Updated by"
+msgstr "Dernière mise à jour par"
+
+#. module: company_wizard_base
+#: model:ir.model.fields,field_description:company_wizard_base.field_res_company_create_wizard_write_date
+msgid "Last Updated on"
+msgstr "Dernière mise à jour le"
+
+#. module: company_wizard_base
+#: model:ir.model.fields,help:company_wizard_base.field_res_company_create_wizard_user_login
+msgid "Let empty to use the email as login"
+msgstr "Let empty to use the email as login"
+
+#. module: company_wizard_base
+#: model:ir.model.fields,field_description:company_wizard_base.field_res_company_create_wizard_user_login
+msgid "Login"
+msgstr "Identifiant"
+
+#. module: company_wizard_base
+#: model:ir.model.fields,field_description:company_wizard_base.field_res_company_create_wizard_company_name
+#: model:ir.model.fields,field_description:company_wizard_base.field_res_company_create_wizard_user_name
+msgid "Name"
+msgstr "Nom"
+
+#. module: company_wizard_base
+#: model:ir.model.fields,field_description:company_wizard_base.field_res_company_create_wizard_parent_company_id
+msgid "Parent Company"
+msgstr "Société mère"
+
+#. module: company_wizard_base
+#: model:ir.model.fields,field_description:company_wizard_base.field_res_company_create_wizard_user_password
+msgid "Password"
+msgstr "Mot de passe"
+
+#. module: company_wizard_base
+#: model:ir.model.fields,field_description:company_wizard_base.field_res_company_create_wizard_company_phone
+msgid "Phone"
+msgstr "Téléphone"
+
+#. module: company_wizard_base
+#: model:ir.model.fields,field_description:company_wizard_base.field_res_company_create_wizard_company_state_id
+#: model:ir.ui.view,arch_db:company_wizard_base.view_res_company_create_wizard_form
+msgid "State"
+msgstr "État"
+
+#. module: company_wizard_base
+#: model:ir.model.fields,field_description:company_wizard_base.field_res_company_create_wizard_company_street
+msgid "Street"
+msgstr "Rue"
+
+#. module: company_wizard_base
+#: model:ir.ui.view,arch_db:company_wizard_base.view_res_company_create_wizard_form
+msgid "Street 2..."
+msgstr "Rue 2..."
+
+#. module: company_wizard_base
+#: model:ir.model.fields,field_description:company_wizard_base.field_res_company_create_wizard_company_street2
+msgid "Street complement"
+msgstr "Complément d'adresse"
+
+#. module: company_wizard_base
+#: model:ir.ui.view,arch_db:company_wizard_base.view_res_company_create_wizard_form
+msgid "Street..."
+msgstr "Rue..."
+
+#. module: company_wizard_base
+#: model:ir.model.fields,field_description:company_wizard_base.field_res_company_create_wizard_company_vat
+msgid "Tax ID"
+msgstr "Numéro de TVA"
+
+#. module: company_wizard_base
+#: model:ir.ui.view,arch_db:company_wizard_base.view_res_company_create_wizard_form
+msgid "User Information"
+msgstr "Information sur l'utilisateur"
+
+#. module: company_wizard_base
+#: model:ir.model.fields,field_description:company_wizard_base.field_res_company_create_wizard_user_id
+msgid "User id"
+msgstr "Identifiant"
+
+#. module: company_wizard_base
+#: model:ir.model.fields,field_description:company_wizard_base.field_res_company_create_wizard_company_website
+msgid "Website"
+msgstr "Site Web"
+
+#. module: company_wizard_base
+#: model:ir.model.fields,field_description:company_wizard_base.field_res_company_create_wizard_company_zip
+#: model:ir.ui.view,arch_db:company_wizard_base.view_res_company_create_wizard_form
+msgid "ZIP"
+msgstr "Code postal"
+
+#. module: company_wizard_base
+#: model:ir.model,name:company_wizard_base.model_res_company_create_wizard
+msgid "res.company.create.wizard"
+msgstr "res.company.create.wizard"
+

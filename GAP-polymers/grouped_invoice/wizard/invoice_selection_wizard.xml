@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        
+        <record id="view_invoice_selection_wizard_form" model="ir.ui.view">
+            <field name="name">invoice.selection.wizard.form</field>
+            <field name="model">invoice.selection.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="partner_id" invisible="True"/>
+                            <field name="invoice_type" invisible="True"/>
+                            <field name="invoice_ids" domain="[('type','=',invoice_type),('state','!=','draft'),('account_invoice_group_id','=',False),('partner_id','=',partner_id)]" options="{'no_create': True,'no_quick_create': True, 'no_create_edit' : True}"/>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button name="action_confirm"   string="Confirm" type="object" class="oe_highlight"/>
+                        <button string="Cancel" special="cancel" class="oe_link"/>
+                    </footer>
+                </form>
+
+            </field>
+        </record>
+        
+        <record id="view_invoice_selection_wizard_action" model="ir.actions.act_window">
+            <field name="name">Add/Remove Invoices</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">invoice.selection.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>    
+        </record>
+    
+    </data>
+</odoo>

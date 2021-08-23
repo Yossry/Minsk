@@ -1,0 +1,20 @@
+id,name,partner_id/id
+project.project_task_12,Söka-jobbkurs,base.res_partner_address_31
+project.project_task_11,Aktivitetsrapportering,base.res_partner_address_24
+project.project_task_10,Aktivitetsrapportering,base.res_partner_address_28
+project.project_task_9,Granska CV,base.res_partner_address_28
+project.project_task_7,Arbetsplatsanpassning,base.partner_demo_portal
+project.project_task_6,Plan för Arbetsplatsintroduktion,base.partner_demo_portal
+project.project_task_24,Göra kreditbedömning,base.partner_demo_portal
+project.project_task_22,Söka-jobbkurs,base.res_partner_address_25
+project.project_task_21,Granska CV,base.res_partner_address_24
+project.project_task_20,Aktivitetsrapportering,base.res_partner_address_31
+project.project_task_19,Granska CV,base.res_partner_address_27
+project.project_task_8,Kontroll av medgivande för mamman,base.res_partner_address_24
+project.project_task_5,Läsa Sius rapport,base.partner_demo_portal
+project.project_task_4,Kontrollera tidigare resultat av stöd,base.partner_demo_portal
+project.project_task_3,Firmateckningskontroll,base.partner_demo_portal
+project.project_task_2,Kontakta chef om utrymme i budget,base.partner_demo_portal
+project.project_task_1,Göra arbetsgivarbesök,base.partner_demo_portal
+project.project_task_26,Söka jobbkurs,base.res_partner_address_24
+project.project_task_25,Boka in ersättare för Sius,base.partner_demo_portal

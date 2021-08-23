@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_res_partner_wizard" model="ir.ui.view">
+        <field name="name">res.partner.wizard.form</field>
+        <field name="model">res.partner.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <field name="partner_id" invisible="1"/>
+                    <field name="is_company" invisible="1"/>
+                    <div class="oe_title">
+                        <field name="company_type" widget="radio"
+                               class="oe_edit_only"
+                               options="{'horizontal': true}"/>
+                        <h1>
+                            <field name="name" readonly="1" force_save="1" placeholder="Name"/>
+                        </h1>
+                    </div>
+                    <div class="o_row oe_edit_only">
+                        <field name="first_name" placeholder="First name"
+                               attrs="{'invisible': [('company_type', '=', 'company')],
+                           'required': [('company_type', '!=', 'company')]}"/>
+                        <field name="last_name" placeholder="Last name"
+                               attrs="{'invisible': [('company_type', '=', 'company')],
+                           'required': [('company_type', '!=', 'company')]}"/>
+                    </div>
+                    <div class="o_row oe_edit_only">
+                        <field name="middle_name" placeholder="Middle name"
+                               attrs="{'invisible': [('company_type', '=', 'company')]}"/>
+                        <field name="second_last_name" placeholder="Second last name"
+                               attrs="{'invisible': [('company_type', '=', 'company')]}"/>
+                    </div>
+                    <div class="o_row oe_edit_only">
+                        <field name="company_name" placeholder="Company name"
+                               attrs="{'invisible': [('company_type', '!=', 'company')],
+                           'required': [('company_type', '=', 'company')]}"/>
+                        <field name="company_nature"
+                               attrs="{'invisible': [('company_type', '!=', 'company')],
+                           'required': [('company_type', '=', 'company')]}"/>
+                    </div>
+                    <label for="field_1" string="Address fields"/>
+                    <div class="o_row oe_edit_only">
+                        <field name="field_1" options="{'no_open': True, 'no_create': True}"/>
+                        <field name="field_2"/>
+                        <field name="field_3"/>
+                        <field name="field_4" options="{'no_open': True, 'no_create': True}"/>
+                        <field name="field_5"/>
+                        <field name="field_6"/>
+                        <field name="field_7" options="{'no_open': True, 'no_create': True}"/>
+                        <field name="field_8"/>
+                        <field name="field_9" options="{'no_open': True, 'no_create': True}"/>
+                        <field name="field_10"/>
+                        <field name="field_11" options="{'no_open': True, 'no_create': True}"/>
+                        <field name="field_12"/>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="street" placeholder="Street..." class="o_address_street" readonly="1"
+                                   force_save="1"/>
+                            <label for="city" string=" "/>
+                            <div class="o_row">
+                                <field name="city" placeholder="City" class="o_address_city" required="1"/>
+                                <field name="state_id" class="o_address_state" placeholder="State"
+                                       options='{"no_open": True, "no_create": True}' required="1"
+                                       context="{'country_id': country_id, 'zip': zip}"/>
+                                <field name="zip" placeholder="ZIP" class="o_address_zip" required="1"/>
+                            </div>
+                            <field name="country_id" placeholder="Country" class="o_address_country"
+                                   options='{"no_open": True, "no_create": True}' required="1"/>
+                            <field name="l10n_co_document_type" required="1"/>
+                            <label for="nit" string="NIT"/>
+                            <div class="o_row">
+                                <field name="nit" required="1"/>
+                                <label for="dv" string="DV"/> <field name="dv" required="1"/>
+                            </div>
+                            <field name="ciiu" required="1" widget="many2many_tags"/>
+
+                        </group>
+                        <group>
+                            <field name="phone" required="1"/>
+                            <field name="mobile" required="1"/>
+                            <field name="email" required="1"/>
+                            <field name="l10n_co_edi_obligation_type_ids" required="1" widget="many2many_tags"/>
+                            <field name="l10n_co_edi_large_taxpayer" required="1"/>
+                            <field name="l10n_co_edi_simplified_regimen" required="1"/>
+                        </group>
+                    </group>
+                    <group>
+
+
+                    </group>
+                    <footer>
+                        <button string="Confirm" name="action_save" type="object" default_focus="1"
+                                class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+</odoo>

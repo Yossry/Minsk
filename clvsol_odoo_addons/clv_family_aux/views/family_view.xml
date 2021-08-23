@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+        
+    <record id="clv_family_aux_view_form_family" model="ir.ui.view">
+        <field name="name">clv.family_aux.form</field>
+        <field name="model">clv.family_aux</field>
+        <field name="inherit_id" ref="clv_family_aux.clv_family_aux_view_form"/>
+        <field name="priority" eval="6"/>
+        <field name="arch" type="xml">
+            <group name="group_top" position="after">
+                <group name="group_bottom" string="Related Family">
+                    <group name="group_bottom_left">
+                        <field name="related_family_is_unavailable" attrs="{'invisible': ['&amp;',('related_family_is_unavailable','=',False),('related_family_id','!=',False)]}"/>
+                        <field name="related_family_id" options='{"no_open": False, "no_create": True}'/>
+                        <field name="related_family_name" invisible="True"/>
+                        <field name="related_family_code" invisible="True"/>
+                        <field name="related_family_category_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_open': False, 'no_create': True}"/>
+                        <field name="related_family_ref_address_id"/>
+                        <field name="related_family_ref_address_code"/>
+                        <field name="related_family_ref_address_category_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_open': False, 'no_create': True}"/>
+                    </group>
+                    <group name="group_bottom_right">
+                        <button name="do_family_aux_get_related_family_data"
+                                type="object"
+                                class="oe_stat_button, oe_edit_only"
+                                icon="fa-download"
+                                string=" Get Related Family Data"
+                                confirm="Are you sure you want to copy the 'Related Family' data?"
+                                attrs="{'invisible': [('related_family_id', '=', False)]}"
+                                >
+                        </button>
+                    </group>
+                </group>
+            </group>
+        </field>
+    </record>
+
+    <record id="clv_family_aux_view_tree_family" model="ir.ui.view">
+        <field name="name">clv.family_aux.tree</field>
+        <field name="model">clv.family_aux</field>
+        <field name="inherit_id" ref="clv_family_aux_view_tree"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="code" position="after">
+                <field name="related_family_id"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="clv_family_aux_view_search_family" model="ir.ui.view">
+        <field name="name">clv.family_aux.search</field>
+        <field name="model">clv.family_aux</field>
+        <field name="inherit_id" ref="clv_family_aux.clv_family_aux_view_search"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="code" position="after">
+                <field name="related_family_id"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

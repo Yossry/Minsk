@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="clv_abstract_row_view_tree" model="ir.ui.view">
+        <field name="name">clv.abstract.row.tree</field>
+        <field name="model">clv.abstract.row</field>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <tree name="rows" string="Rows">
+                <field name="name" invisible="True"/>
+                <field name="c001"/>
+                <field name="c002"/>
+                <field name="c003"/>
+                <field name="c004"/>
+                <field name="c005"/>
+                <field name="c006"/>
+                <field name="c007"/>
+                <field name="c008"/>
+                <field name="c009"/>
+                <field name="c010"/>
+                <field name="c011"/>
+                <field name="c012"/>
+                <field name="c013"/>
+                <field name="c014"/>
+                <field name="c015"/>
+                <field name="c016"/>
+                <field name="c017"/>
+                <field name="c018"/>
+                <field name="c019"/>
+                <field name="c020"/>
+                <field name="c021"/>
+                <field name="c022"/>
+                <field name="c023"/>
+                <field name="c024"/>
+                <field name="c025"/>
+                <field name="c026"/>
+                <field name="c027"/>
+                <field name="c028"/>
+                <field name="c029"/>
+                <field name="c030"/>
+                <field name="c031"/>
+                <field name="c032"/>
+                <field name="c033"/>
+                <field name="c034"/>
+                <field name="c035"/>
+                <field name="c036"/>
+                <field name="c037"/>
+                <field name="c038"/>
+                <field name="c039"/>
+                <field name="c040"/>
+                <field name="c041"/>
+                <field name="c042"/>
+                <field name="c043"/>
+                <field name="c044"/>
+                <field name="c045"/>
+                <field name="c046"/>
+                <field name="c047"/>
+                <field name="c048"/>
+                <field name="c049"/>
+                <field name="c050"/>
+                <field name="c051"/>
+                <field name="c052"/>
+                <field name="c053"/>
+                <field name="c054"/>
+                <field name="c055"/>
+                <field name="c056"/>
+                <field name="c057"/>
+                <field name="c058"/>
+                <field name="c059"/>
+                <field name="c060"/>
+                <field name="c061"/>
+                <field name="c062"/>
+                <field name="c063"/>
+                <field name="c064"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="clv_abstract_row_action" model="ir.actions.act_window">
+        <field name="name">Rows</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">clv.abstract.row</field>
+        <field name="view_type">form</field>
+        <!--field name="view_mode">tree,form</field-->
+        <field name="view_mode">tree</field>
+        <!--field name="search_view_id" ref="clv_abstract_row_view_search"/-->
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Click to add a new row.
+          </p>
+        </field>
+    </record>
+
+</odoo>

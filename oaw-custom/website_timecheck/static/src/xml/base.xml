@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates>
+    <t t-extend="UserMenu.Actions">
+        <t t-jquery="a[data-menu*='documentation']" t-operation="replace" />
+        <t t-jquery="a[data-menu*='support']" t-operation="replace" />
+        <t t-jquery="a[data-menu*='account']" t-operation="replace" />
+        <t t-jquery="a[data-menu*='shortcuts']" t-operation="replace" />
+        <t t-jquery=".dropdown-divider" t-operation="attributes">
+            <attribute name="style">display: none;</attribute>
+        </t>
+    </t>
+</templates>

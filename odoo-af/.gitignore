@@ -1,0 +1,16 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*~
+base_afdemo/data/calendar.event2.csv
+base_afdemo/data/calendar_event.csv
+base_afdemo/data/res.partner.kpi.csv
+base_afdemo/data/res.partner.kpi.xls
+base_afdemo/data/res.partner.xls
+base_afdemo/data/testdata_2020-04-07/calendar_event.csv
+base_afdemo/data/testdata_2020-04-07/hr.employee.csv
+base_afdemo/data/testdata_2020-04-07/prestandatest.csv
+base_afdemo/data/testdata_2020-04-07/res.partner.csv
+base_afdemo/data/testdata_2020-04-07/res.partner.notes.csv
+base_afdemo/data/testdata_2020-04-07/res.user.csv

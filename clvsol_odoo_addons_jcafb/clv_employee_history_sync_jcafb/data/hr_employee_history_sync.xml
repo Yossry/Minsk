@@ -1,0 +1,81 @@
+<?xml version="1.0" ?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo noupdate="0">
+ 
+	<record id="hr_employee_history_hr_employee_history_template" model="clv.external_sync.template">
+		<field name="name" eval="&quot;&quot;&quot;hr.employee.history (hr.employee.history)&quot;&quot;&quot;"/>
+		<field name="model" eval="&quot;&quot;&quot;hr.employee.history&quot;&quot;&quot;"/>
+		<field name="method" eval="&quot;&quot;&quot;_object_external_sync&quot;&quot;&quot;"/>
+		<field name="external_model" eval="&quot;&quot;&quot;hr.employee.history&quot;&quot;&quot;"/>
+		<field name="external_disable_check_missing" eval="True"/>
+	</record>
+	 
+	<record id="hr_employee_history_hr_employee_history_template_object_field_phase_id" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;history_marker_id&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;phase_id&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="hr_employee_history_hr_employee_history_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="hr_employee_history_hr_employee_history_template_object_field_date_sign_in" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;sign_in_date&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;date_sign_in&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="hr_employee_history_hr_employee_history_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="hr_employee_history_hr_employee_history_template_object_field_date_sign_out" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;sign_out_date&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;date_sign_out&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="hr_employee_history_hr_employee_history_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="hr_employee_history_hr_employee_history_template_object_field_employee_id" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;employee_id&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;employee_id&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="hr_employee_history_hr_employee_history_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="hr_employee_history_hr_employee_history_template_object_field_department_id" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;department_id&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;department_id&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="hr_employee_history_hr_employee_history_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="hr_employee_history_hr_employee_history_template_object_field_job_id" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;job_id&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;job_id&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="hr_employee_history_hr_employee_history_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="hr_employee_history_hr_employee_history_template_object_field_active" model="clv.external_sync.object_field">
+		<field name="external_object_field" eval="&quot;&quot;&quot;active&quot;&quot;&quot;"/>
+		<field name="local_object_field" eval="&quot;&quot;&quot;active&quot;&quot;&quot;"/>
+		<field name="synchronization" eval="True"/>
+		<field name="template_id" eval="hr_employee_history_hr_employee_history_template"/>
+		<field name="sequence" eval="10"/>
+	</record>
+	 
+	<record id="hr_employee_history_hr_employee_history_schedule" model="clv.external_sync.schedule">
+		<field name="name" eval="&quot;&quot;&quot;hr.employee.history (hr.employee.history)&quot;&quot;&quot;"/>
+		<field name="template_id" eval="hr_employee_history_hr_employee_history_template"/>
+	</record>
+	 
+	<record id="clv_external_sync_batch_member_hr_employee_history" model="clv.external_sync.batch.member">
+		<field name="external_sync_batch_id" ref="clv_external_sync_jcafb.clv_external_sync_batch_default"/>
+		<field name="ref_id" ref="hr_employee_history_hr_employee_history_schedule"/>
+	</record>
+	 
+</odoo>

@@ -1,0 +1,32 @@
+/**********************************************************************************
+* Copyright (C) 2019 UNIBRAVO
+**********************************************************************************/
+
+$font-path: '../fonts';
+
+@mixin uni-font-face($name, $weight, $style) {
+    @font-face {
+        font-family: 'Roboto';
+        src: url('#{$font-path}/Roboto-#{$name}-webfont.eot');
+        src: local('Roboto #{$name}'), local('Roboto-#{$name}'),
+        	 url('#{$font-path}/Roboto-#{$name}-webfont.eot?#iefix') format('embedded-opentype'),
+             url('#{$font-path}/Roboto-#{$name}-webfont.woff') format('woff'),
+             url('#{$font-path}/Roboto-#{$name}-webfont.ttf') format('truetype'),
+             url('#{$font-path}/Roboto-#{$name}-webfont.svg#Roboto') format('svg');
+        font-weight: $weight;
+        font-style: $style;
+    }
+}
+
+@include uni-font-face('Thin', 100, normal);
+@include uni-font-face('ThinItalic', 100, italic);
+@include uni-font-face('Light', 300, normal);
+@include uni-font-face('LightItalic', 300, italic);
+@include uni-font-face('Regular', 400, normal);
+@include uni-font-face('Italic', 400, italic);
+@include uni-font-face('Medium', 500, normal);
+@include uni-font-face('MediumItalic', 500, italic);
+@include uni-font-face('Bold', 700, normal);
+@include uni-font-face('BoldItalic', 700, italic);
+@include uni-font-face('Black', 900, normal);
+@include uni-font-face('BlackItalic', 900, italic);

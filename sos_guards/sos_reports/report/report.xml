@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>             
+    <data>
+		 
+        
+        <!-- Salary Invoice Comparsion Qweb Report -->
+		<report
+			id="report_salary_invoice_comp"
+			string= "Salary Invoice Comparsion Report"
+			model = "sos_reports.salary.invoice.comp"
+			report_type="qweb-pdf"
+			file="sos_reports.report_salary_invoicecomp"
+			name="sos_reports.report_salary_invoicecomp"
+		/>
+		
+		<!-- Salary Comparsion Summary Center Qweb Report -->
+		<report
+			id="report_comp_summary_center"
+			string= "Salary Comparsion Summary Center Wise"
+			model = "sos_reports.salary.comp.summary"
+			report_type="qweb-pdf"
+			file="sos_reports.report_compsummarycenter"
+			name="sos_reports.report_compsummarycenter"
+		/>
+		<!-- Salary Comparsion Summary Project Qweb Report -->
+		<report
+			id="report_comp_summary_project"
+			string= "Salary Comparsion Summary Project Wise"
+			model = "sos_reports.salary.comp.summary"
+			report_type="qweb-pdf"
+			file="sos_reports.report_compsummaryproject"
+			name="sos_reports.report_compsummaryproject"
+		/>
+		
+		
+		<!-- Salary Comparsion Summary post Qweb Report -->
+		<report
+			id="report_comp_summary_post"
+			string= "Salary Comparsion Summary Post Wise"
+			model = "sos_reports.salary.comp.summary"
+			report_type="qweb-pdf"
+			file="sos_reports.report_compsummarypost"
+			name="sos_reports.report_compsummarypost"
+		/>
+		
+		
+		<!-- Invoice Comparsion Summary Project Qweb Report -->
+		<report
+			id="report_invoice_comp_summary_project"
+			string= "Invoice Comparsion Summary Project Wise"
+			model = "sos_reports.invoices.comp.summary"
+			report_type="qweb-pdf"
+			file="sos_reports.report_invoice_compsummaryproject"
+			name="sos_reports.report_invoice_compsummaryproject"
+		/>
+		<!-- Invoice Comparsion Summary Center Qweb Report -->
+		<report
+			id="report_invoice_comp_summary_center"
+			string= "Invoice Comparsion Summary Center Wise"
+			model = "sos_reports.invoices.comp.summary"
+			report_type="qweb-pdf"
+			file="sos_reports.report_invoice_compsummarycenter"
+			name="sos_reports.report_invoice_compsummarycenter"
+		/>
+		<!-- Invoice Comparsion Summary Post Qweb Report -->
+		<report
+			id="report_invoice_comp_summary_post"
+			string= "Invoice Comparsion Summary Post Wise"
+			model = "sos_reports.invoices.comp.summary"
+			report_type="qweb-pdf"
+			file="sos_reports.report_invoice_compsummarypost"
+			name="sos_reports.report_invoice_compsummarypost"
+		/>
+		
+		
+		<!-- Invoice Project Status Qweb Report -->
+		<report
+			id="report_invoice_project_status"
+			string= "Invoice Status Project Wise"
+			model = "sos_reports.invoices.status.report"
+			report_type="qweb-pdf"
+			file="sos_reports.report_invoice_projectstatus"
+			name="sos_reports.report_invoice_projectstatus"
+		/>
+		<!-- Invoice Center Status Qweb Report -->
+		<report
+			id="report_invoice_center_status"
+			string= "Invoice Status Center Wise"
+			model = "sos_reports.invoices.status.report"
+			report_type="qweb-pdf"
+			file="sos_reports.report_invoice_centerstatus"
+			name="sos_reports.report_invoice_centerstatus"
+		/>
+		<!-- Invoice Post Status Qweb Report -->
+		<report
+			id="report_invoice_post_status"
+			string= "Invoice Status Post Wise"
+			model = "sos_reports.invoices.status.report"
+			report_type="qweb-pdf"
+			file="sos_reports.report_invoice_poststatus"
+			name="sos_reports.report_invoice_poststatus"
+		/>
+		
+		
+		<!-- Invoices Verification Qweb Report -->
+		<report
+			id="report_invoices_verification"
+			string= "Invoices Verification"
+			model = "sos_reports.invoices.verification"
+			report_type="qweb-pdf"
+			file="sos_reports.report_invoicesverification"
+			name="sos_reports.report_invoicesverification"
+		/>
+		
+		
+		
+		
+		<!--
+		<record id="sos_payslips_summary_rep" model="ir.actions.report.xml">
+			<field name="name">Payslips Summary</field>
+			<field name="type">ir.actions.report.xml</field>
+			<field name="model">guards.payslip</field>
+			<field name="report_name">payslips_summary_aeroo</field>
+			<field name="report_type">aeroo</field>
+			<field name="in_format">oo-odt</field>				
+			<field name="parser_loc">sos_reports/report/parser.py</field>
+			<field name="report_rml">sos_reports/report/payslips_summary.odt</field>
+			<field name="parser_state">loc</field>
+			<field name="tml_source">file</field>			
+		</record>
+		
+		-->
+		
+		 
+		
+		 <!-- BioMetric Attendance Qweb Report -->
+		<report
+			id="report_biometric_attendance"
+			string= "Bio-MetricAttendance Report"
+			model = "sos_reports.biometric.attendance.wizard"
+			report_type="qweb-pdf"
+			file="sos_reports.report_biometricattendance"
+			name="sos_reports.report_biometricattendance"
+		/>
+		
+		<!-- BioMetric Attendance Summary Qweb Report -->
+		<report
+			id="report_biometric_attendance_summary"
+			string= "Attendance Summary"
+			model = "sos_reports.biometric.attendance.summary.wizard"
+			report_type="qweb-pdf"
+			file="sos_reports.report_biometric_attendancesummary"
+			name="sos_reports.report_biometric_attendancesummary"
+		/>
+		
+		 
+		
+		<!-- Guards Salary Expense Region Wise -->
+		<report
+			id="guards_salary_region_wise_report"
+			string= "Region Wise Salary Expense"
+			model = "sos_reports.guards.salary.expense.wizard"
+			report_type="qweb-pdf"
+			file="sos_reports.report_guards_salary_regionwise"
+			name="sos_reports.report_guards_salary_regionwise"
+		/>
+		
+		<!-- Guards Salary Expense Project Wise -->
+		<report
+			id="guards_salary_project_wise_report"
+			string= "Project Wise Salary Expense"
+			model = "sos_reports.guards.salary.expense.wizard"
+			report_type="qweb-pdf"
+			file="sos_reports.report_guards_salary_projectwise"
+			name="sos_reports.report_guards_salary_projectwise"
+		/>
+		  
+	</data>
+</openerp>

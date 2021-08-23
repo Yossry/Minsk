@@ -1,0 +1,15 @@
+<!-- Copyright 2019 Jesus Ramoneda <jesus.ramoneda@qubiq.es>
+    License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+    <data>
+        <menuitem id="webservice_main_menu"
+            name="Webservices" groups='webservice_manager_group' web_icon="webservice_integration,static/description/logo_webservice.png"/>
+        <menuitem id="data_webservice_menu"
+            parent='webservice_main_menu' name="Data"
+            sequence='1'/>
+        <menuitem id="configuration_webservice_menu"
+            parent='webservice_main_menu' name="Configuration"
+            sequence='99'/>
+    </data>
+</odoo>

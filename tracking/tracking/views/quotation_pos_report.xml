@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="view_quotation_pos_report" model="ir.ui.view">
+            <field name="name">Reporte de carga</field>
+            <field name="model">quotation.pos.report</field>
+            <field name="arch" type="xml">
+                <form string="Reporte de carga">
+                    <header>
+                        <button name="action_process" states="draft" type="object" string="Calcular Carga"/>
+                        <button name="action_validate" states="draft" type="object" string="Validar"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <p class="oe_grey">
+                            <h3>Reporte de carga # <field name="name" readonly="1"/></h3>
+                        </p>
+                        
+                        <group>
+                            <field name="employee_id" attrs="{'readonly': [('state', 'in', ['validate'])]}"/>
+                            <field name="date" attrs="{'readonly': [('state', 'in', ['validate'])]}"/>
+                        </group>
+                        <notebook>
+                            <page string="Cotizaciones">
+                                <field name="pos_quotation_report_line" readonly="1">
+                                    <tree editable="bottom">
+                                        <field name="quotation_id" />
+                                        <field name="quotation_pos_report_id" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Productos">
+                                <field name="pos_quotation_report_products" readonly="1">
+                                    <tree editable="bottom">
+                                        <field name="product_id" />
+                                        <field name="qty" />
+                                        <field name="quotation_pos_report_id" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_quotation_pos_report_tree" model="ir.ui.view">
+            <field name="name">Reporte de carga</field>
+            <field name="model">quotation.pos.report</field>
+            <field name="arch" type="xml">
+                <tree string="Reporte de carga">
+                    <field name="employee_id"/>
+                    <field name="date"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_quotation_pos_report">
+            <field name="name">Action Reporte de carga</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">quotation.pos.report</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="Reporte de carga" id="reporte_carga_quot_pos" action="action_quotation_pos_report" parent="point_of_sale.menu_point_rep"/>
+
+
+</odoo>

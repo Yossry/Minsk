@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- # Main contract types -->
+        <record id="hr_contract_type_cdi" model="hr.contract.type">
+            <field name="name">CDI</field>
+            <field name="echelon">main</field>
+            <field name="sequence">101</field>
+        </record>
+
+        <record id="hr_contract_type_cdd" model="hr.contract.type">
+            <field name="name">CDD</field>
+            <field name="echelon">main</field>
+            <field name="sequence">102</field>
+        </record>
+
+        <record id="hr_contract_type_cape" model="hr.contract.type">
+            <field name="name">CAPE</field>
+            <field name="echelon">main</field>
+            <field name="sequence">102</field>
+        </record>
+
+        <!--Accompagnement-->
+        <record id="hr_contract_type_support" model="hr.contract.type">
+            <field name="name">Support</field>
+            <field name="echelon">main</field>
+            <field name="sequence">103</field>
+        </record>
+
+        <!--Stage-->
+        <record id="hr_contract_type_internship" model="hr.contract.type">
+            <field name="name">Internship</field>
+            <field name="echelon">main</field>
+            <field name="sequence">104</field>
+        </record>
+
+        <!-- # Amendment contract types -->
+        <!--Prime-->
+        <record id="hr_contract_type_bonus" model="hr.contract.type">
+            <field name="name">Bonus</field>
+            <field name="echelon">amendment</field>
+            <field name="sequence">201</field>
+        </record>
+
+        <!--Premier salaire-->
+        <record id="hr_contract_type_firstsalary" model="hr.contract.type">
+            <field name="name">First Salary</field>
+            <field name="echelon">amendment</field>
+            <field name="sequence">202</field>
+        </record>
+
+        <!--Evolution de salaire-->
+        <record id="hr_contract_type_salary_evolution" model="hr.contract.type">
+            <field name="name">Salary Evolution</field>
+            <field name="echelon">amendment</field>
+            <field name="sequence">203</field>
+        </record>
+
+        <!--Rappel de salaire (= après une fin de contrat, si un client a payé en retard, il faut reverser l’argent à l’entrepreneur sorti)-->
+        <record id="hr_contract_type_salary_reminder" model="hr.contract.type">
+            <field name="name">Salary Reminder</field>
+            <field name="echelon">amendment</field>
+            <field name="sequence">204</field>
+        </record>
+
+        <!--Congé sans solde-->
+        <record id="hr_contract_type_lwop" model="hr.contract.type">
+            <field name="name">Leave Without Pay (LWOP)</field>
+            <field name="echelon">amendment</field>
+            <field name="sequence">205</field>
+        </record>
+
+        <!--Reprise après congé sans solde-->
+        <record id="hr_contract_type_lwop_resumption" model="hr.contract.type">
+            <field name="name">Resumption after LWOP</field>
+            <field name="echelon">amendment</field>
+            <field name="sequence">206</field>
+        </record>
+
+        <!--Renouvellement CAPE-->
+        <record id="hr_contract_type_cape_renewal" model="hr.contract.type">
+            <field name="name">CAPE Renewal</field>
+            <field name="echelon">amendment</field>
+            <field name="max_usage">2</field>
+            <field name="sequence">207</field>
+        </record>
+
+        <!--Rémunération CAPE-->
+        <record id="hr_contract_cape_remuneration" model="hr.contract.type">
+            <field name="name">CAPE Remuneration</field>
+            <field name="echelon">amendment</field>
+            <field name="sequence">208</field>
+        </record>
+
+        <!-- # Termination contract types -->
+        <!--Termination-->
+        <record id="hr_contract_type_termination" model="hr.contract.type">
+            <field name="name">Termination</field>
+            <field name="echelon">termination</field>
+            <field name="sequence">301</field>
+        </record>
+
+    </data>
+</odoo>

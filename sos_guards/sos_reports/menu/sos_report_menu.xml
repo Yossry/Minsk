@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+  		
+  		<!-- Invoices Reports Menu -->
+	  <menuitem name="Invoice Status" parent="sos_payroll.menu_invoices_reporting" action="action_invoices_status_report" sequence="1" id="menu_sos_invoice_status"/>
+	  <menuitem name="Comparison Summary" parent="sos_payroll.menu_invoices_reporting" sequence="6" action="action_invoices_comp_summary" id="menu_invoices_comp_summary"/>
+	  <menuitem name="GST Summary" parent="sos_payroll.menu_invoices_reporting" sequence="8" action="action_gst_summary" id="menu_gst_summary"/>
+	  <menuitem name="Tax At Source" parent="sos_payroll.menu_invoices_reporting" sequence="10" action="action_tax_at_source_wiz" id="menu_tax_at_source"/>
+	  <menuitem name="Verification" parent="sos_payroll.menu_invoices_reporting" sequence="21" action="action_invoices_verification" id="menu_invoices_verification"/>
+
+	  <!--
+	  	<menuitem name="Bank Charges Summary" parent="sos_payroll.menu_invoices_reporting" sequence="10" action="action_bankcharges_summary" id="menu_bankcharges_summary"/>
+		<menuitem name="Pending Recovery Report" parent="sos_payroll.menu_invoices_reporting" sequence="25" action="action_sos_pending_recovery_report" id="menu_pending_recovery_report"/>
+		-->
+		
+		<!--
+		<menuitem name="Comparison Summary" parent="sos_payroll.menu_salary_reporting" sequence="31" action="action_salary_comp_summary" id="menu_salary_comp_summary"/>
+		<menuitem name="Profitability Summary" parent="sos_payroll.menu_salary_reporting" sequence="32" action="action_profitability_summary" id="menu_profitability_summary"/>
+		
+		<menuitem name="Guard Salary Expense" parent="sos_payroll.menu_salary_reporting" sequence="35" action="action_sos_guards_salary_expense" id="menu_guard_salary_expense"/>
+		-->
+		
+		<!-- Guards Working Detail -->
+		<!--
+		<menuitem name="Guards Working Detail Report" parent="sos.menu_gms_other_reports" sequence="20" action="action_guards_working_detail_wizard" id="menu_guards_working_Detail_rep"/>
+		-->
+  </data>
+</odoo>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- A page -->
+    <template id="survey.page" name="Page">
+        <div class="page-header">
+            <p class="pull-right">Page <span t-raw='page_nr + 1'/> of <span t-raw="len(survey.page_ids)"/></p>
+            <h1 t-field='page.title' />
+            <div t-field='page.description' class="oe_no_empty"/>
+        </div>
+
+        <form role="form" method="post" class="js_surveyform" t-att-name="'%s_%s' % (survey.id, page.id)" t-att-action="'/survey/fill/%s/%s' % (slug(survey), token)" t-att-data-prefill="'/survey/prefill/%s/%s/%s' % (slug(survey), token, slug(page))" t-att-data-validate="'/survey/validate/%s' % (slug(survey))" t-att-data-submit="'/survey/submit/%s' % (slug(survey))">
+            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+            <input type="hidden" name="page_id" t-att-value="page.id" />
+            <input type="hidden" name="token" t-att-value="token" />
+            <t t-foreach='page.question_ids' t-as='question'>
+                <t t-set="prefix" t-value="'%s_%s_%s' % (survey.id, page.id, question.id)" />
+                <div class="js_question-wrapper" t-att-id="prefix">
+                    <h2>
+                        <span t-field='question.question' />
+                        <span t-if="question.constr_mandatory" class="text-danger">*</span>
+                    </h2>
+                    <div t-field='question.description' class="text-muted oe_no_empty"/>
+                    <t t-if="question.type == 'free_text'"><t t-call="survey.free_text"/></t>
+                    <t t-if="question.type == 'textbox'"><t t-call="survey.textbox"/></t>
+                    <t t-if="question.type == 'numerical_box'"><t t-call="survey.numerical_box"/></t>
+                    <t t-if="question.type == 'date'"><t t-call="survey.date"/></t>
+                    <t t-if="question.type == 'simple_choice'"><t t-call="survey.simple_choice"/></t>
+                    <t t-if="question.type == 'multiple_choice'"><t t-call="survey.multiple_choice"/></t>
+                    <t t-if="question.type == 'matrix'"><t t-call="survey.matrix"/></t>
+                    <t t-if="question.type == 'upload_file'"><t t-call="survey_attachment.upload_file"/></t>
+                    <div class="js_errzone alert alert-danger" style="display:none;"></div>
+                </div>
+            </t>
+            <div class="text-center mt16 mb16">
+                <button t-if="survey.users_can_go_back and page_nr > 0" type="submit" class="btn btn-default" name="button_submit" value="previous">Previous page</button>
+                <button t-if="not last" type="submit" class="btn btn-primary" name="button_submit" value="next">Next page</button>
+                <button t-if="last" type="submit" class="btn btn-primary" name="button_submit" value="finish">Submit survey</button>
+            </div>
+        </form>
+
+        <!-- Modal used to display error message, i.c.o. ajax error -->
+        <div class="modal fade" id="AJAXErrorModal" role="dialog" aria-labelledby="AJAXErrorModal" aria-hidden="true" >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&amp;times;</button>
+                        <h4 class="modal-title">A problem has occured</h4>
+                    </div>
+                    <div class="modal-body"><p>Something went wrong while contacting survey server. <strong class="text-danger">Your answers have probably not been recorded.</strong> Try refreshing.</p></div>
+                    <div class="modal-footer"><button type="button" class="btn btn-primary" data-dismiss="modal">Close</button></div>
+                </div>
+            </div>
+        </div>
+
+    </template>
+
+    <!-- Printable view of a survey (all pages) -->
+    <template id="survey.survey_print" name="Survey">
+        <t t-call="survey.layout">
+            <div class="wrap">
+                <div class="container">
+                    <t t-call="survey.back" />
+                    <div class="row">
+                        <div class='jumbotron mt32' style="width:100%;">
+                            <h1><span t-field='survey.title'/></h1>
+                            <t t-if="survey.description"><div t-field='survey.description' class="oe_no_empty"/></t>
+                        </div>
+                        <div role="form" class="js_surveyform" t-att-name="'%s' % (survey.id)" t-att-data-prefill="'/survey/prefill/%s/%s' % (slug(survey), token)" style="width: -moz-available;">
+                            <t t-foreach="survey.page_ids" t-as="page">
+                                <div class="page-header">
+                                    <h1 t-field='page.title' />
+                                    <t t-if="page.description"><div t-field='page.description' class="oe_no_empty"/></t>
+                                </div>
+                                <t t-foreach='page.question_ids' t-as='question'>
+                                    <t t-set="prefix" t-value="'%s_%s_%s' % (survey.id, page.id, question.id)" />
+                                    <div class="js_question-wrapper" t-att-id="prefix">
+                                        <h2>
+                                            <span t-field='question.question' />
+                                            <span t-if="question.constr_mandatory" class="text-danger">*</span>
+                                            <span t-if="quizz_correction" class="badge" t-att-data-score-question="question.id"></span>
+                                        </h2>
+                                        <t t-if="question.description"><div class="text-muted oe_no_empty" t-field='question.description'/></t>
+                                        <t t-if="question.type == 'free_text'"><t t-call="survey.free_text"/></t>
+                                        <t t-if="question.type == 'textbox'"><t t-call="survey.textbox"/></t>
+                                        <t t-if="question.type == 'numerical_box'"><t t-call="survey.numerical_box"/></t>
+                                        <t t-if="question.type == 'date'"><t t-call="survey.date"/></t>
+                                        <t t-if="question.type == 'simple_choice'"><t t-call="survey.simple_choice"/></t>
+                                        <t t-if="question.type == 'multiple_choice'"><t t-call="survey.multiple_choice"/></t>
+                                        <t t-if="question.type == 'matrix'"><t t-call="survey.matrix"/></t>
+                                        <t t-if="question.type == 'upload_file'"><t t-call="survey_attachment.upload_file"/></t>
+                                        <div class="js_errzone alert alert-danger" style="display:none;"></div>
+                                    </div>
+                                </t>
+                                <hr/>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="upload_file" name="Upload file">
+        <div class="input-file-container">
+
+            <t t-if="user_input_line_upload_file">
+                <t t-foreach="user_input_line_upload_file" t-as="upload_file" t-if="upload_file.question_id.id == question.id">
+                    <t t-if="upload_file.file_type == 'pdf'">
+                        <a width="100px" height="100px" t-att-href="'data:application/pdf;base64,%s' % to_text(upload_file.file)" target="_blank">Telecharger</a>
+                    </t>
+                    <t t-if="upload_file.file_type == 'image'">
+                        <img width="100px" style="height: 100px;" class="img-thumbnail" t-att-src="'data:image/*;base64,%s' % to_text(upload_file.file)"/>
+                    </t>
+                </t>
+            </t>
+            <t t-else="">
+                <div class="file-field" >
+                    <input class="input-file" id="my-file" type="file" accept="image/*,application/pdf" t-att-name="prefix"/>
+                </div>
+                <br/>
+            </t>
+        </div>
+
+        <script>
+            $(document).ready(function(){
+                $(".img-thumbnail").click(function(){
+                    if ( $(this).height() == 240) {
+                        console.log('test small image');
+                        $(this).animate({
+                            opacity: '0.8',
+                            height: '100px',
+                            width: '100px',
+                        }, "slow");
+                    } else {
+                        $(this).animate({
+                            opacity: '0.8',
+                            height: '250px',
+                            width: '250px',
+                        }, "slow");
+                    }
+                });
+            });
+        </script>
+    </template>
+</odoo>

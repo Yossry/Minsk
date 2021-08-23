@@ -1,0 +1,45 @@
+@keyframes oe_backgroundfade {
+    from {background-color: rgba($brand-secondary, 0.5);}
+    to {background-color: $border;}
+}
+
+.o_web_client{
+    .o_main_content.ad_rightbar{
+        .o_content{
+            .o_view_controller{
+                .o_calendar_container{
+                    @for $index from 1 through $o-nb-calendar-colors {
+                        .o_calendar_color_#{$index} {
+                            color: $white;
+                            background-color: adjust-hue($brand-primary-light, (360/($o-nb-calendar-colors+1) * $index) * 1deg);
+                            border-color:  adjust-hue($brand-primary-light, (360/($o-nb-calendar-colors+1) * $index) * 1deg);
+                            opacity: 0.7;
+                            &.o_event_hightlight {
+                                font-weight: bold;
+                                opacity: 0.9;
+                            }
+                            &:hover {
+                                color: $white !important;
+                            }
+                        }
+                        .o_underline_color_#{$index} {
+                            border-bottom: 4px solid adjust-hue($brand-primary-light, (360/($o-nb-calendar-colors+1) * $index) * 1deg);
+                        }
+                    }
+
+                    .o_calendar_view {
+                        .ui-datepicker {
+                            table {
+                                .o_selected_range.o_color {
+                                    background: none;
+                                    background-color: $brand-secondary;
+                                    animation: oe_backgroundfade 3s forwards;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html) -->
+
+<templates id="form_view" xml:space="preserve">
+
+    <t t-name="web_bravo12.icon_button">
+        <i t-attf-class="fa fa-#{icon}"
+           t-att-title="label"/>
+        <span class="d-none d-sm-inline" t-esc="label"/>
+    </t>
+
+    <t t-name="web_bravo12.MenuStatusbarButtons">
+        <div class="dropdown">
+            <button class="o_statusbar_buttons_dropdown btn btn-secondary dropdown-toggle"
+                    type="button"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false">
+                <t t-call="web_bravo12.icon_button">
+                    <t t-set="icon" t-value="'cogs'"/>
+                    <t t-set="label">Quick actions</t>
+                </t>
+            </button>
+        </div>
+    </t>
+
+    <t t-extend="Sidebar">
+        <t t-jquery=".o_dropdown_toggler_btn t[t-esc='section.label']"
+           t-operation="replace">
+            <t t-set="label" t-value="section.label"/>
+            <t t-if="section.name == 'files'">
+                <t t-call="web_bravo12.icon_button">
+                    <t t-set="icon" t-value="'paperclip'"/>
+                </t>
+            </t>
+            <t t-elif="section.name == 'print'">
+                <t t-call="web_bravo12.icon_button">
+                    <t t-set="icon" t-value="'print'"/>
+                </t>
+            </t>
+            <t t-elif="section.name == 'other'">
+                <t t-call="web_bravo12.icon_button">
+                    <t t-set="icon" t-value="'wrench'"/>
+                </t>
+            </t>
+            <t t-else="">
+                <span t-esc="label"/>
+            </t>
+        </t>
+    </t>
+
+</templates>

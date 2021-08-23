@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_order_form_inherit_purchase_order_line_quant" model="ir.ui.view">
+        <field name="name">sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="purchase_order_line_quant.view_order_form" />
+        <field name="arch" type="xml">
+            <xpath
+                expr="//field[@name='order_line']//tree//field[@name='purchase_order_id']"
+                position="attributes"
+            >
+                <attribute
+                    name="groups"
+                >sales_team.group_sale_salesman_all_leads</attribute>
+            </xpath>
+            <xpath
+                expr="//field[@name='order_line']//tree//button[@name='action_view_purchase_open']"
+                position="attributes"
+            >
+                <attribute
+                    name="groups"
+                >sales_team.group_sale_salesman_all_leads</attribute>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_order_form_inherit_sale_stock" model="ir.ui.view">
+        <field name="name">sale.order.form.sale.stock</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale_stock.view_order_form_inherit_sale_stock" />
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_view_delivery']" position="attributes">
+                <attribute name="groups">stock.group_stock_manager</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_view_delivery']" position="after">
+                <button
+                    type="object"
+                    name="action_supplier_view_delivery"
+                    class="oe_stat_button"
+                    icon="fa-truck"
+                    attrs="{'invisible': [('delivery_count', '=', 0)]}"
+                    groups="supplier_user_access.group_supplier_fm"
+                >
+                    <field name="delivery_count" widget="statinfo" string="Delivery" />
+                </button>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_order_form" model="ir.ui.view">
+        <field name="name">sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//*/header/button[@name='print_quotation']" position="after">
+                <button
+                    name="print_supplier_quotation"
+                    string="Print Supplier Quotation"
+                    type="object"
+                    states="draft"
+                    class="oe_highlight"
+                    groups="supplier_user_access.group_supplier_fm"
+                />
+                <button
+                    name="print_supplier_quotation"
+                    string="Print Supplier Quotation"
+                    type="object"
+                    states="sent,progress,manual"
+                    class="oe_highlight"
+                    groups="supplier_user_access.group_supplier_fm/"
+                />
+            </xpath>
+            <xpath expr="//button[@name='print_quotation'][1]" position="attributes">
+                <attribute name="groups">sales_team.group_sale_manager</attribute>
+            </xpath>
+            <xpath expr="//button[@name='print_quotation'][2]" position="attributes">
+                <attribute name="groups">sales_team.group_sale_manager</attribute>
+            </xpath>
+        </field>
+    </record>
+    <!--New search view for supplier -->
+    <record id="view_sales_order_filter_supplier" model="ir.ui.view">
+        <field name="name">sale.order.list.select</field>
+        <field name="model">sale.order</field>
+        <field name="priority" eval="45" />
+        <field name="arch" type="xml">
+            <search string="Search Sales Order">
+                <field
+                    name="name"
+                    string="Sales Order"
+                    filter_domain="['|','|',('name','ilike',self),('client_order_ref','ilike',self),('partner_id','child_of',self)]"
+                />
+                <field name="partner_id" operator="child_of" />
+                <field name="user_id" />
+                <field name="team_id" string="Sales Team" />
+                <field
+                    name="order_line"
+                    string="Product"
+                    filter_domain="[('order_line.product_id', 'ilike', self)]"
+                />
+                <filter
+                    string="My Orders"
+                    domain="[('user_id','=',uid)]"
+                    name="my_sale_orders_filter"
+                />
+                <separator />
+                <filter
+                    string="Quotations"
+                    name="draft"
+                    domain="[('state','in',('draft', 'sent'))]"
+                />
+                <filter
+                    string="Sales Orders"
+                    name="sales"
+                    domain="[('state','in',('sale','done'))]"
+                />
+                <separator />
+                <group expand="0" string="Group By">
+                    <filter
+                        string="Salesperson"
+                        name="salesperson"
+                        domain="[]"
+                        context="{'group_by':'user_id'}"
+                    />
+                    <filter
+                        name="customer"
+                        string="Customer"
+                        domain="[]"
+                        context="{'group_by':'partner_id'}"
+                    />
+                    <filter
+                        string="Order Date"
+                        name="order_month"
+                        domain="[]"
+                        context="{'group_by':'date_order'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="action_sales_orders_supplier" model="ir.actions.act_window">
+        <field name="name">Quotations</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_type">form</field>
+        <field name="view_id" ref="sale.view_quotation_tree" />
+        <field name="view_mode">tree,form,calendar,graph</field>
+        <field name="search_view_id" ref="view_sales_order_filter_supplier" />
+        <field name="domain">[('supplier_user_ids', 'in', [uid])]</field>
+    </record>
+</odoo>

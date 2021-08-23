@@ -1,0 +1,104 @@
+<h1 id="global-vendor-payments-for-businesses">Global Payments for Businesses</h1>
+<h2>(12.0.5.1)</h2>
+<p>This module allows vendor banks to be synchronised with AFEX to create AFEX Beneficiaries. It also allows payments within Odoo to book payments to vendors through AFEX.</p>
+<p>You must have an AFEX account, and request/receive an API Key from AFEX before this module can be used. AFEX's terms and conditions apply.</p>
+<p>AFEX homepage: <a href="https://www.afex.com/">https://www.afex.com/</a></p>
+<h1 id="setup">Setup for Odoo v12</h1>
+<ul>
+<li><p><em>Settings &gt; Users &amp; Companies &gt; Companies &gt; General Information Tab</em>
+<blockquote>
+<p>These settings must be set for each Odoo defined company which will trade with AFEX.</p>
+<ul>
+<li><strong>AFEX API Key</strong> - Supplied by AFEX and entered here.</li>
+<li><strong>Allow Earliest Value Date</strong> - Leave this disabled if your trade requests should always choose the <em>Two business days</em> rate. If you wish users to be able to choose <em>Today</em> or <em>Next business day</em> rates, then enable this option.</li>
+<li><strong>Default Value Date</strong> - If users can choose rates other than <em>Two business days</em>, then this will be required to be the default rate.</li>
+</ul>
+</blockquote></li>
+<li><p><em>Accounting &gt; Configuration &gt; Journals</em></p>
+<blockquote>
+<p>A new Cash/Bank Journal can be created which will be used for AFEX payments. A single journal will suffice if settlement will always be in the local currency. If settlement will be made in other currencies, then a journal will be required per currency. The settlement currency is the currency used to pay AFEX, not the currency used to pay the vendor.</p>
+<ul>
+<li><strong>Journal Entries</strong>
+<ul>
+<li><strong>Default Debit / Credit Account</strong> - G/L account for AFEX clearing. Should be set up as a non reconcilable liability account which is reviewed periodically. It could also be a revenue or expense account. The balance which accumulates in here will be the difference between the Odoo anticipated settlement from stored currency rates, and the actual settlement value to AFEX. It may be treated as a straight expense, or it may be allocated to other areas of the accounts.</li>
+<li><strong>Currency</strong> - Leave blank for settlement in the company currency, or enter a currency if settling in another in-between currency. The payment will use the currency from here when posting to the clearing account defined above.</li>
+<li><strong>AFEX Journal</strong> - Enabled.</li>
+<li><strong>AFEX Scheduled Payment</strong> - If journal type is <em>Bank</em>, then this can be enabled to create transactions using pre-purchased funding balances.</li>
+<li><strong>AFEX Invoicing Partner</strong> - This is the partner to which the liability will be posted when making an AFEX trade.</li>
+<li><strong>AFEX Fees Account</strong> - Select an account for expensing AFEX fees.</li>
+<li><strong>Direct Debit Journal</strong> - If this journal settles in Australian Dollars, then settlement can be by direct debit. Choose the Odoo Journal used for direct debit payments if you wish this to use this option. The account number for direct debit payments will be picked up from this journal.</li>
+<li><strong>Direct Debit by Default</strong> - Enable this if you want direct debit to be the default settlment option.</li>
+</ul></li>
+<li><strong>Advanced Settings</strong>
+<ul>
+<li><strong>For Incoming Payments</strong> - None should be selected.</li>
+<li><strong>For Outgoing Payments</strong> - Enable manual.</li>
+</ul></li>
+</ul>
+</blockquote></li>
+<li><p><em>Partner &gt; Accounting Tab &gt; Bank Accounts</em></p>
+<blockquote>
+<p>Vendors have an option available against their bank accounts to allow them to be marked as bank accounts to be associated with AFEX. There should only be one for any currency for a given vendor.</p>
+<ul>
+<li><strong>AFEX Beneficiary</strong></li>
+<li><strong>Currency</strong></li>
+</ul>
+<p>Other values will depend on the beneficiary. Generally, attempting to sync beneficiaries with incomplete information will tell you of missing required data, but it varies due to many factors.</p>
+<p>Remittance Line 2 options are based on <strong>Currency</strong>, <strong>AFEX Bank Country</strong> and <strong>Partner Country</strong>.</p>
+<ul>
+<li><strong>AFEX Corporate</strong> - If the beneficiary is not an individual.</li>
+<li><strong>AFEX Bank Country</strong></li>
+<li><strong>AFEX Intermediary Bank Country</strong></li>
+<li><strong>Payment Notification Email Address</strong></li>
+<li><strong>Remittance Line 2</strong> - Options supplied by AFEX.</li>
+<li><strong>AFEX Sync Information</strong> - Various values.</li>
+</ul>
+<p>Other required values are picked up from the partner address area.</p>
+<p>Bank Accounts have a <strong>Retrieve Beneficiary Information from AFEX</strong> option available in their <strong>Action Drop Down</strong> to allow the Bank Account and its Partner details to be retrieved from AFEX to Odoo.</p>
+</blockquote></li>
+<li><p><em>Partner</em></p>
+<blockquote>
+<p>Partners have an <strong>AFEX Sync</strong> option available in their <strong>Action Drop Down</strong> to allow the Partner and their Bank Accounts to be synced to AFEX, which will create <strong>AFEX Beneficiaries</strong>.</p>
+<ul>
+<li><strong>Action</strong>
+<ul>
+<li><strong>AFEX Sync</strong></li>
+</ul></li>
+</ul>
+<p>The <strong>AFEX Beneficiary</strong> should be confirmed <strong>by AFEX</strong> before any payments are made.</p>
+<p>A general indication of the status is shown on the <em>Accounting</em> Tab.</p>
+<ul>
+<li><strong>AFEX Status</strong> - Either <em>Sync Needed</em> or <em>Synchronised</em>.</li>
+</ul>
+</blockquote></li>
+<li><p><em>Settings &gt; Technical &gt; System Parameters</em></p>
+<blockquote>
+<p>The URL defaults to the live URL (https://api.afex.com:7890/api/).  If need be, it can be changed in the System Parameters.</p>
+<ul>
+<li><strong>Key</strong> - afex.url</li>
+<li><strong>Value</strong> - the URL <em>(e.g. <a href="https://api.afex.com:7890/api/">https://api.afex.com:7890/api/</a>)</em></li>
+</ul>
+</blockquote></li>
+</ul>
+<h1 id="usage">Usage for Odoo v12</h1>
+<ul>
+<li><dl>
+<dt><em>Accounting &gt; Vendors &gt; Bills &gt; [Open Bill] &gt; Register Payment</em> or <em>*Accounting &gt; Vendors &gt; Bills &gt; [Select Multiple] &gt; [Action Drop Down and Register Payment]</em> or <em>*Accounting &gt; Vendors &gt; Payments &gt; [Create]</em></dt>
+<p>To make a foreign currency payment using an <strong>AFEX Journal</strong> for a vendor who has an associated <strong>confirmed AFEX Beneficiary</strong>. Choose the correct payment journal, which will determine the settlement currency. The payment amount and currency can be chosen. If part or overpaying a single bill, an option will be given to choose if the balance is to be kept open or if it is to be written off.</p>
+<p>The <strong>Purpose of Payment</strong> can be selected if a different one is needed for this payment.</p>
+<p>If the payment journal can use direct debit payment, then this can be enabled or disabled for the trade in question.</p>
+<p>If the system configuration allows users to select <strong>Today</strong> or <strong>Next business day</strong> rates, as well as <strong>Two business days</strong>, then this can be selected for the trade in question.</q>
+<p>If the payment journal has a funding balance, a button will be displayed to retrieve the current balance for that currency.</p>
+<p>If the payment journal is a trade journal, a button will be displayed to retrieve a quote. The system will retrieve the exchange rate from AFEX and display the <strong>payment amount</strong> conversion using the exchange rate. Quote information is displayed on the payment screen.</p>
+<p>If applicable, the AFEX fee amount(s) and currency will be displayed as well.</p>
+<p>Each <strong>Payment Quote</strong> is valid for 30 seconds.</p>
+<p>The <strong>Re-Quote</strong> button on the payment screen can be used to refresh the quote.</p>
+<p>When the payment is <strong>Validated</strong>, the system will send information to AFEX to book and schedule a payment to the vendor.</p>
+<p>The vendor will be marked as paid to the level selected, and a bill will be raised to the AFEX partner. Any fee(s) in the same currency as the settlement currency will be included in the same bill. Otherwise, separate bill(s) will be raised for the fee(s).</p>
+<p>If direct debit settlement was selected, then the AFEX bill will be marked as paid.</p>
+<p>Information about the booked payment will be displayed on the AFEX bill, and on the Odoo payment record.</p>
+<p>If not settled by direct debit, and if not using a funding balance, then you must remit settlement funding for the payment to AFEX within 24 hours of booking the payment to ensure the foreign currency payment can be sent to the vendor on the scheduled date.</p>
+<p>Upon AFEX receiving payment, the booked payment to the vendor will be confirmed for the scheduled time.</p>
+</dd>
+</dl></li>
+</ul>

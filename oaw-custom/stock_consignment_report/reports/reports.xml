@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <report
+        id="stock_consignment_report_xlsx"
+        string="Consignment Report"
+        model="stock.consignment.report"
+        report_type="xlsx"
+        file="stock_consignment_report.consignment_report"
+        name="stock_consignment_report.stock_consignment_report"
+    />
+</odoo>

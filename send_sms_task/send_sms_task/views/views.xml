@@ -1,0 +1,22 @@
+<odoo>
+    <data>
+        <record id="view_company_form_inherit" model="ir.ui.view">
+        <field name="name">res.company.form</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="SMS">
+                    <group>
+                <field name="account_sid"/>
+                <field name="auth_token"/>
+                <field name="from_"/>
+                    </group>
+</page>
+            </xpath>
+
+
+        </field>
+        </record>
+    </data>
+</odoo>

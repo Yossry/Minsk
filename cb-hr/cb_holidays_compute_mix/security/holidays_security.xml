@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hr_holidays.hr_leave_rule_employee" model="ir.rule">
+        <field name="active" eval="False"/>
+    </record>
+
+    <record id="hr_holidays.hr_leave_rule_employee_update" model="ir.rule">
+        <field name="name">Leaves: employee: only see own</field>
+        <field name="domain_force">[('employee_id.user_id','=',user.id)]</field>
+        <field name="perm_read" eval="True"/>
+    </record>
+
+    <record id="hr_holidays.hr_leave_rule_officer_read" model="ir.rule">
+        <field name="active" eval="False"/>
+    </record>
+
+    <record id="hr_holidays.hr_leave_rule_officer_update" model="ir.rule">
+        <field name="domain_force">['|', ('employee_id.department_id.manager_id.user_id', '=', user.id), ('employee_id.user_id', '=', user.id)]</field>
+        <field name="perm_read" eval="True"/>
+    </record>
+
+</odoo>

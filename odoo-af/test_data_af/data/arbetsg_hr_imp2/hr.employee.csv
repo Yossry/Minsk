@@ -1,0 +1,222 @@
+id,name,login,,,address_id/id,Address name,work_phone,work_email,department_id/id,parent_id/id,job_id/id,user_id/id,User Name
+empl_*sys*,Handläggare ,,,,,,,,,,,empl_,Handläggare *sys*
+empl_aaaaa,Handläggare ,,,,,,,,,,,user_aaaaa,Handläggare aaaaa
+empl_abdra,Handläggare ,,,,,,,,,,,user_abdra,Handläggare abdra
+empl_agnan,Handläggare ,,,,,,,,,,,user_agnan,Handläggare agnan
+empl_aikxx,Handläggare ,,,,,,,,,,,user_aikxx,Handläggare aikxx
+empl_albae,Handläggare ,,,,,,,,,,,user_albae,Handläggare albae
+empl_almai,Handläggare ,,,,,,,,,,,user_almai,Handläggare almai
+empl_almka,Handläggare ,,,,,,,,,,,user_almka,Handläggare almka
+empl_almmi,Handläggare ,,,,,,,,,,,user_almmi,Handläggare almmi
+empl_almpe,Handläggare ,,,,,,,,,,,user_almpe,Handläggare almpe
+empl_almth,Handläggare ,,,,,,,,,,,user_almth,Handläggare almth
+empl_anadd,Handläggare ,,,,,,,,,,,user_anadd,Handläggare anadd
+empl_andcn,Handläggare ,,,,,,,,,,,user_andcn,Handläggare andcn
+empl_anper,Handläggare ,,,,,,,,,,,user_anper,Handläggare anper
+empl_aptst,Handläggare ,,,,,,,,,,,user_aptst,Handläggare aptst
+empl_attfr,Handläggare ,,,,,,,,,,,user_attfr,Handläggare attfr
+empl_bahme,Handläggare ,,,,,,,,,,,user_bahme,Handläggare bahme
+empl_barma,Handläggare ,,,,,,,,,,,user_barma,Handläggare barma
+empl_berer,Handläggare ,,,,,,,,,,,user_berer,Handläggare berer
+empl_berri,Handläggare ,,,,,,,,,,,user_berri,Handläggare berri
+empl_bjobn,Handläggare ,,,,,,,,,,,user_bjobn,Handläggare bjobn
+empl_bohag,Handläggare ,,,,,,,,,,,user_bohag,Handläggare bohag
+empl_bouga,Handläggare ,,,,,,,,,,,user_bouga,Handläggare bouga
+empl_brole,Handläggare ,,,,,,,,,,,user_brole,Handläggare brole
+empl_bysmr,Handläggare ,,,,,,,,,,,user_bysmr,Handläggare bysmr
+empl_carvi,Handläggare ,,,,,,,,,,,user_carvi,Handläggare carvi
+empl_danne,Handläggare ,,,,,,,,,,,user_danne,Handläggare danne
+empl_elhja,Handläggare ,,,,,,,,,,,user_elhja,Handläggare elhja
+empl_engal,Handläggare ,,,,,,,,,,,user_engal,Handläggare engal
+empl_engni,Handläggare ,,,,,,,,,,,user_engni,Handläggare engni
+empl_erijs,Handläggare ,,,,,,,,,,,user_erijs,Handläggare erijs
+empl_ernto,Handläggare ,,,,,,,,,,,user_ernto,Handläggare ernto
+empl_frebj,Handläggare ,,,,,,,,,,,user_frebj,Handläggare frebj
+empl_friie,Handläggare ,,,,,,,,,,,user_friie,Handläggare friie
+empl_friln,Handläggare ,,,,,,,,,,,user_friln,Handläggare friln
+empl_gunua,Handläggare ,,,,,,,,,,,user_gunua,Handläggare gunua
+empl_gushe,Handläggare ,,,,,,,,,,,user_gushe,Handläggare gushe
+empl_hagal,Handläggare ,,,,,,,,,,,user_hagal,Handläggare hagal
+empl_hajoh,Handläggare ,,,,,,,,,,,user_hajoh,Handläggare hajoh
+empl_hakjo,Handläggare ,,,,,,,,,,,user_hakjo,Handläggare hakjo
+empl_hamho,Handläggare ,,,,,,,,,,,user_hamho,Handläggare hamho
+empl_hanpp,Handläggare ,,,,,,,,,,,user_hanpp,Handläggare hanpp
+empl_harac,Handläggare ,,,,,,,,,,,user_harac,Handläggare harac
+empl_hulbe,Handläggare ,,,,,,,,,,,user_hulbe,Handläggare hulbe
+empl_hurma,Handläggare ,,,,,,,,,,,user_hurma,Handläggare hurma
+empl_ikrha,Handläggare ,,,,,,,,,,,user_ikrha,Handläggare ikrha
+empl_isejo,Handläggare ,,,,,,,,,,,user_isejo,Handläggare isejo
+empl_jakbi,Handläggare ,,,,,,,,,,,user_jakbi,Handläggare jakbi
+empl_janie,Handläggare ,,,,,,,,,,,user_janie,Handläggare janie
+empl_janni,Handläggare ,,,,,,,,,,,user_janni,Handläggare janni
+empl_jilca,Handläggare ,,,,,,,,,,,user_jilca,Handläggare jilca
+empl_johpe,Handläggare ,,,,,,,,,,,user_johpe,Handläggare johpe
+empl_jomon,Handläggare ,,,,,,,,,,,user_jomon,Handläggare jomon
+empl_jonms,Handläggare ,,,,,,,,,,,user_jonms,Handläggare jonms
+empl_kalas,Handläggare ,,,,,,,,,,,user_kalas,Handläggare kalas
+empl_kalul,Handläggare ,,,,,,,,,,,user_kalul,Handläggare kalul
+empl_kamat,Handläggare ,,,,,,,,,,,user_kamat,Handläggare kamat
+empl_kanhh,Handläggare ,,,,,,,,,,,user_kanhh,Handläggare kanhh
+empl_kivpe,Handläggare ,,,,,,,,,,,user_kivpe,Handläggare kivpe
+empl_klath,Handläggare ,,,,,,,,,,,user_klath,Handläggare klath
+empl_kvaul,Handläggare ,,,,,,,,,,,user_kvaul,Handläggare kvaul
+empl_laana,Handläggare ,,,,,,,,,,,user_laana,Handläggare laana
+empl_larsn,Handläggare ,,,,,,,,,,,user_larsn,Handläggare larsn
+empl_liche,Handläggare ,,,,,,,,,,,user_liche,Handläggare liche
+empl_liggg,Handläggare ,,,,,,,,,,,user_liggg,Handläggare liggg
+empl_lilma,Handläggare ,,,,,,,,,,,user_lilma,Handläggare lilma
+empl_linjo,Handläggare ,,,,,,,,,,,user_linjo,Handläggare linjo
+empl_linsn,Handläggare ,,,,,,,,,,,user_linsn,Handläggare linsn
+empl_lunpe,Handläggare ,,,,,,,,,,,user_lunpe,Handläggare lunpe
+empl_lytlo,Handläggare ,,,,,,,,,,,user_lytlo,Handläggare lytlo
+empl_magbr,Handläggare ,,,,,,,,,,,user_magbr,Handläggare magbr
+empl_marli,Handläggare ,,,,,,,,,,,user_marli,Handläggare marli
+empl_marur,Handläggare ,,,,,,,,,,,user_marur,Handläggare marur
+empl_memas,Handläggare ,,,,,,,,,,,user_memas,Handläggare memas
+empl_menak,Handläggare ,,,,,,,,,,,user_menak,Handläggare menak
+empl_nasan,Handläggare ,,,,,,,,,,,user_nasan,Handläggare nasan
+empl_nmama,Handläggare ,,,,,,,,,,,user_nmama,Handläggare nmama
+empl_nybmt,Handläggare ,,,,,,,,,,,user_nybmt,Handläggare nybmt
+empl_olohs,Handläggare ,,,,,,,,,,,user_olohs,Handläggare olohs
+empl_palmk,Handläggare ,,,,,,,,,,,user_palmk,Handläggare palmk
+empl_pauad,Handläggare ,,,,,,,,,,,user_pauad,Handläggare pauad
+empl_perha,Handläggare ,,,,,,,,,,,user_perha,Handläggare perha
+empl_petkl,Handläggare ,,,,,,,,,,,user_petkl,Handläggare petkl
+empl_piand,Handläggare ,,,,,,,,,,,user_piand,Handläggare piand
+empl_radvi,Handläggare ,,,,,,,,,,,user_radvi,Handläggare radvi
+empl_redad,Handläggare ,,,,,,,,,,,user_redad,Handläggare redad
+empl_rosch,Handläggare ,,,,,,,,,,,user_rosch,Handläggare rosch
+empl_sanhe,Handläggare ,,,,,,,,,,,user_sanhe,Handläggare sanhe
+empl_sanur,Handläggare ,,,,,,,,,,,user_sanur,Handläggare sanur
+empl_schaa,Handläggare ,,,,,,,,,,,user_schaa,Handläggare schaa
+empl_segro,Handläggare ,,,,,,,,,,,user_segro,Handläggare segro
+empl_silru,Handläggare ,,,,,,,,,,,user_silru,Handläggare silru
+empl_sodso,Handläggare ,,,,,,,,,,,user_sodso,Handläggare sodso
+empl_stanl,Handläggare ,,,,,,,,,,,user_stanl,Handläggare stanl
+empl_strae,Handläggare ,,,,,,,,,,,user_strae,Handläggare strae
+empl_strgu,Handläggare ,,,,,,,,,,,user_strgu,Handläggare strgu
+empl_sunlg,Handläggare ,,,,,,,,,,,user_sunlg,Handläggare sunlg
+empl_talle,Handläggare ,,,,,,,,,,,user_talle,Handläggare talle
+empl_tenro,Handläggare ,,,,,,,,,,,user_tenro,Handläggare tenro
+empl_testf,Handläggare ,,,,,,,,,,,user_testf,Handläggare testf
+empl_thuyl,Handläggare ,,,,,,,,,,,user_thuyl,Handläggare thuyl
+empl_uljoh,Handläggare ,,,,,,,,,,,user_uljoh,Handläggare uljoh
+empl_ulrlu,Handläggare ,,,,,,,,,,,user_ulrlu,Handläggare ulrlu
+empl_xxaaa,Handläggare ,,,,,,,,,,,user_xxaaa,Handläggare xxaaa
+empl_xxaad,Handläggare ,,,,,,,,,,,user_xxaad,Handläggare xxaad
+empl_xxaae,Handläggare ,,,,,,,,,,,user_xxaae,Handläggare xxaae
+empl_xxaap,Handläggare ,,,,,,,,,,,user_xxaap,Handläggare xxaap
+empl_xxaar,Handläggare ,,,,,,,,,,,user_xxaar,Handläggare xxaar
+empl_xxaas,Handläggare ,,,,,,,,,,,user_xxaas,Handläggare xxaas
+empl_xxaaw,Handläggare ,,,,,,,,,,,user_xxaaw,Handläggare xxaaw
+empl_xxaay,Handläggare ,,,,,,,,,,,user_xxaay,Handläggare xxaay
+empl_xxabc,Handläggare ,,,,,,,,,,,user_xxabc,Handläggare xxabc
+empl_xxabd,Handläggare ,,,,,,,,,,,user_xxabd,Handläggare xxabd
+empl_xxabf,Handläggare ,,,,,,,,,,,user_xxabf,Handläggare xxabf
+empl_xxabn,Handläggare ,,,,,,,,,,,user_xxabn,Handläggare xxabn
+empl_xxabo,Handläggare ,,,,,,,,,,,user_xxabo,Handläggare xxabo
+empl_xxabq,Handläggare ,,,,,,,,,,,user_xxabq,Handläggare xxabq
+empl_xxabr,Handläggare ,,,,,,,,,,,user_xxabr,Handläggare xxabr
+empl_xxabs,Handläggare ,,,,,,,,,,,user_xxabs,Handläggare xxabs
+empl_xxabt,Handläggare ,,,,,,,,,,,user_xxabt,Handläggare xxabt
+empl_xxabv,Handläggare ,,,,,,,,,,,user_xxabv,Handläggare xxabv
+empl_xxaby,Handläggare ,,,,,,,,,,,user_xxaby,Handläggare xxaby
+empl_xxabz,Handläggare ,,,,,,,,,,,user_xxabz,Handläggare xxabz
+empl_xxacb,Handläggare ,,,,,,,,,,,user_xxacb,Handläggare xxacb
+empl_xxacd,Handläggare ,,,,,,,,,,,user_xxacd,Handläggare xxacd
+empl_xxadz,Handläggare ,,,,,,,,,,,user_xxadz,Handläggare xxadz
+empl_xxaea,Handläggare ,,,,,,,,,,,user_xxaea,Handläggare xxaea
+empl_xxaec,Handläggare ,,,,,,,,,,,user_xxaec,Handläggare xxaec
+empl_xxaee,Handläggare ,,,,,,,,,,,user_xxaee,Handläggare xxaee
+empl_xxaef,Handläggare ,,,,,,,,,,,user_xxaef,Handläggare xxaef
+empl_xxaeh,Handläggare ,,,,,,,,,,,user_xxaeh,Handläggare xxaeh
+empl_xxaff,Handläggare ,,,,,,,,,,,user_xxaff,Handläggare xxaff
+empl_xxafg,Handläggare ,,,,,,,,,,,user_xxafg,Handläggare xxafg
+empl_xxafh,Handläggare ,,,,,,,,,,,user_xxafh,Handläggare xxafh
+empl_xxafv,Handläggare ,,,,,,,,,,,user_xxafv,Handläggare xxafv
+empl_xxafx,Handläggare ,,,,,,,,,,,user_xxafx,Handläggare xxafx
+empl_xxaif,Handläggare ,,,,,,,,,,,user_xxaif,Handläggare xxaif
+empl_xxaig,Handläggare ,,,,,,,,,,,user_xxaig,Handläggare xxaig
+empl_xxaix,Handläggare ,,,,,,,,,,,user_xxaix,Handläggare xxaix
+empl_xxaiy,Handläggare ,,,,,,,,,,,user_xxaiy,Handläggare xxaiy
+empl_xxaiz,Handläggare ,,,,,,,,,,,user_xxaiz,Handläggare xxaiz
+empl_xxaja,Handläggare ,,,,,,,,,,,user_xxaja,Handläggare xxaja
+empl_xxaju,Handläggare ,,,,,,,,,,,user_xxaju,Handläggare xxaju
+empl_xxakx,Handläggare ,,,,,,,,,,,user_xxakx,Handläggare xxakx
+empl_xxaky,Handläggare ,,,,,,,,,,,user_xxaky,Handläggare xxaky
+empl_xxalb,Handläggare ,,,,,,,,,,,user_xxalb,Handläggare xxalb
+empl_xxale,Handläggare ,,,,,,,,,,,user_xxale,Handläggare xxale
+empl_xxalh,Handläggare ,,,,,,,,,,,user_xxalh,Handläggare xxalh
+empl_xxalr,Handläggare ,,,,,,,,,,,user_xxalr,Handläggare xxalr
+empl_xxals,Handläggare ,,,,,,,,,,,user_xxals,Handläggare xxals
+empl_xxaly,Handläggare ,,,,,,,,,,,user_xxaly,Handläggare xxaly
+empl_xxamo,Handläggare ,,,,,,,,,,,user_xxamo,Handläggare xxamo
+empl_xxaob,Handläggare ,,,,,,,,,,,user_xxaob,Handläggare xxaob
+empl_xxaoc,Handläggare ,,,,,,,,,,,user_xxaoc,Handläggare xxaoc
+empl_zzfff,Handläggare ,,,,,,,,,,,user_zzfff,Handläggare zzfff
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,

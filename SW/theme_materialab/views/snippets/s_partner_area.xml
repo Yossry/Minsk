@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template name="Partner Area" id="s_partner_area">
+        <!-- ====START PARTNER==== -->
+        <section class="partner_area oe_structure">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="partner_slider">
+                            <div class="item">
+                                <img src="/theme_materialab/static/src/img/partner_1.png" alt="partner slider" />
+                            </div>
+                            <div class="item">
+                                <img src="/theme_materialab/static/src/img/partner_2.png" alt="partner slider" />
+                            </div>
+                            <div class="item">
+                                <img src="/theme_materialab/static/src/img/partner_3.png" alt="partner slider" />
+                            </div>
+                            <div class="item">
+                                <img src="/theme_materialab/static/src/img/partner_4.png" alt="partner slider" />
+                            </div>
+                            <div class="item">
+                                <img src="/theme_materialab/static/src/img/partner_5.png" alt="partner slider" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ====END PARTNER==== -->
+    </template>
+</odoo>

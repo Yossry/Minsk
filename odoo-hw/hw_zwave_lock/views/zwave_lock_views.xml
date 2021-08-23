@@ -1,0 +1,27 @@
+<odoo>
+    <record id="view_zwave_lock_form" model="ir.ui.view">
+        <field name="name">zwave.lock.form</field>
+        <field name="model">zwave.node</field>
+        <field name="priority">30</field>
+        <field name="inherit_id" ref="hw_zwave.view_zwave_node_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="/form/sheet" position='before'>
+                <header attrs="{'invisible':[('node_type', '!=', 'lock')]}">
+                    <button name="alert_state" string="Locked state" type="object" class="oe_highlight"  />
+                    <button name="lock" string="Lock" type="object" class="oe_highlight" confirm="Lock the lock?"/>
+                    <button name="unlock" string="Unlock" type="object" class="oe_highlight" confirm="Unlock the lock?"/>
+                    <button name="alert_autolock" string="Autolock value" type="object" class="oe_highlight"/>
+                    <button name="set_autolock" string="Set autolock" type="object" class="oe_highlight"/>
+                </header>
+            </xpath>
+
+            <xpath expr="/form/sheet/group[@id='zwave_node_group']" position="inside">
+                <group string="Lock Information" attrs="{'invisible':[('node_type', '!=', 'lock')]}">
+                    <field name="lock_delay"/>
+                    <field name="lock_value"/>
+                </group>
+            </xpath>
+        </field>
+
+    </record>
+</odoo>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="seq_inquiry" model="ir.sequence">
+			<field name="name">inquiry seq</field>
+			<field name="code">inquiry.seq</field>
+			<field name="prefix">INQ/%(y)s/%(month)s/</field>
+			<field name="padding">4</field>
+			<field name="company_id" eval="False" />
+		</record>
+	</data>
+    <data>
+        <record id="seq_job" model="ir.sequence">
+            <field name="name">job seq</field>
+            <field name="code">job.seq</field>
+            <field name="prefix">JOB/%(y)s/%(month)s/</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False" />
+        </record>
+    </data>
+    <data>
+        <record id="seq_courier" model="ir.sequence">
+            <field name="name">DHLLogistic seq</field>
+            <field name="code">courier.seq</field>
+            <field name="prefix">COURIER/%(y)s/%(month)s/</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False" />
+        </record>
+    </data>
+</odoo>

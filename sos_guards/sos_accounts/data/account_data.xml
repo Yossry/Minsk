@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+      
+        <!-- Account-related subtypes for messaging / Chatter -->
+      <!--  <record id="account.mt_invoice_checked" model="mail.message.subtype">
+            <field name="name">Checked</field>
+            <field name="res_model">account.invoice</field>
+            <field name="description">Invoice cheked</field>
+        </record>
+ -->
+		<!-- <record id="account.sequence_payment_multi_partner" model="ir.sequence">
+            <field name="name">Payments Multi-Partner Sequence</field>
+            <field name="code">account.payment.multi.partner</field>
+            <field name="prefix">MULT.IN/%(range_year)s/</field>
+            <field eval="1" name="number_next"/>
+            <field eval="1" name="number_increment"/>
+            <field eval="True" name="use_date_range"/>
+            <field name="padding">4</field>
+        </record> -->
+    </data>
+</openerp>

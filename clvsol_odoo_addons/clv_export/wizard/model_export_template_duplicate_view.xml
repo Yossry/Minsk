@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="clv_model_export_template_duplicate_view_form" model="ir.ui.view">
+        <field name="name">clv.model_export.template.duplicate.form</field>
+        <field name="model">clv.model_export.template.duplicate</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_right">
+                    </div>
+                    <label for="model_export_template_ids"/>
+                    <field name="model_export_template_ids"/>
+                    <group  name="group_top">
+                        <field name="new_name"/>
+                        <field name="new_label"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button 
+                        type="object"
+                        name="do_model_export_template_duplicate"
+                        string="Duplicate"
+                        class="oe_highlight"
+                        />
+                    <button special="cancel" string="Cancel"/>
+                </footer>
+            </form>
+
+        </field>
+    </record>
+
+    <!-- More button Action -->
+    <act_window 
+        id="clv_model_export_template_duplicate_action"
+        name="Model Export Template Duplicate"
+        src_model="clv.model_export.template"
+        res_model="clv.model_export.template.duplicate"
+        view_mode="form"
+        target="new"
+    />
+
+</odoo>

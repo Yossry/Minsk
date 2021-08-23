@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo noupdate="0">
+ 
+	<record id="clv_model_export_method_csv_clv_person" model="clv.model_export.method">
+		<field name="name" eval="&quot;&quot;&quot;clv.person&quot;&quot;&quot;"/>
+		<field name="export_type" eval="&quot;&quot;&quot;csv&quot;&quot;&quot;"/>
+		<field name="method" eval="&quot;&quot;&quot;do_model_export_execute_csv_person&quot;&quot;&quot;"/>
+	</record>
+
+	<record id="clv_model_export_method_sqlite_clv_person" model="clv.model_export.method">
+		<field name="name" eval="&quot;&quot;&quot;clv.person&quot;&quot;&quot;"/>
+		<field name="export_type" eval="&quot;&quot;&quot;sqlite&quot;&quot;&quot;"/>
+		<field name="method" eval="&quot;&quot;&quot;do_model_export_execute_sqlite_person&quot;&quot;&quot;"/>
+	</record>
+
+	<record id="clv_model_export_method_xls_clv_person" model="clv.model_export.method">
+		<field name="name" eval="&quot;&quot;&quot;clv.person&quot;&quot;&quot;"/>
+		<field name="export_type" eval="&quot;&quot;&quot;xls&quot;&quot;&quot;"/>
+		<field name="method" eval="&quot;&quot;&quot;do_model_export_execute_xls_person&quot;&quot;&quot;"/>
+	</record>
+
+</odoo>

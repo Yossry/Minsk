@@ -1,0 +1,9 @@
+﻿id;name;category_id/id;implied_ids/id;implied_ids/id
+group_crm_2nd_line;AF CRM 2nd line support;FALSE;group_crm_officer_emp_stro,group_crm_officer_jobs_stro,group_crm_teamleds;
+group_crm_auto_dig_cust_dia;AF CRM Automatic Digital Customer Dialogue;FALSE;base.group_user;
+group_crm_mark_autm;AF CRM Market Automation;FALSE;base.group_user;
+group_crm_officer_emp_norm;AF CRM Officer Employers Normal;FALSE;base.group_user;
+group_crm_officer_emp_stro;AF CRM Officer Employers Strong;FALSE;group_crm_officer_emp_norm,base.group_partner_manager;
+group_crm_officer_jobs_norm;AF CRM Officer Jobseekers Normal;FALSE;base.group_user;
+group_crm_officer_jobs_stro;AF CRM Officer Jobseekers Strong;FALSE;group_crm_officer_jobs_norm,base.group_partner_manager;
+group_crm_teamleds;AF CRM Teamleads;FALSE;group_crm_officer_emp_stro,group_crm_officer_jobs_stro;

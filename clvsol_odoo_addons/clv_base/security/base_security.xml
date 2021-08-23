@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo noupdate="0">
+
+    <record id="module_base_category" model="ir.module.category">
+        <field name="name">Base</field>
+    </record>
+
+    <record id="clv_base.group_user" model="res.groups">
+        <field name="name">User (Base)</field>
+        <field name="category_id" ref="module_base_category"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+    <record id="clv_base.group_supuser" model="res.groups">
+        <field name="name">Super User (Base)</field>
+        <field name="category_id" ref="module_base_category"/>
+        <field name="implied_ids" eval="[(4, ref('clv_base.group_user'))]"/>
+    </record>
+
+    <record id="clv_base.group_annuser" model="res.groups">
+        <field name="name">Annotation User (Base)</field>
+        <field name="category_id" ref="module_base_category"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="users" eval="[(4, ref('base.user_root')),
+                                   (4, ref('base.user_admin'))]"/>
+    </record>
+
+    <record id="clv_base.group_reguser" model="res.groups">
+        <field name="name">Register User (Base)</field>
+        <field name="category_id" ref="module_base_category"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="users" eval="[(4, ref('base.user_root')),
+                                   (4, ref('base.user_admin'))]"/>
+    </record>
+
+    <record id="clv_base.group_loguser" model="res.groups">
+        <field name="name">Log User (Base)</field>
+        <field name="category_id" ref="module_base_category"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="users" eval="[(4, ref('base.user_root')),
+                                   (4, ref('base.user_admin'))]"/>
+    </record>
+
+    <record id="clv_base.group_manager" model="res.groups">
+        <field name="name">Manager (Base)</field>
+        <field name="category_id" ref="module_base_category"/>
+        <field name="implied_ids" eval="[(4, ref('clv_base.group_supuser'))]"/>
+    </record>
+
+    <record id="clv_base.group_supmanager" model="res.groups">
+        <field name="name">Super Manager (Base)</field>
+        <field name="category_id" ref="module_base_category"/>
+        <field name="implied_ids" eval="[(4, ref('clv_base.group_manager'))]"/>
+        <field name="users" eval="[(4, ref('base.user_root')),
+                                   (4, ref('base.user_admin'))]"/>
+    </record>
+
+    <record id="clv_base.make_invisible" model="res.groups">
+        <field name="name">Make Invisible (Base - do not use!)</field>
+        <field name="category_id" ref="module_base_category"/>
+    </record>
+
+    <record id="clv_base.group_data_admin" model="res.groups">
+        <field name="name">Data Admin User</field>
+        <field name="category_id" ref="module_base_category"/>
+        <field name="implied_ids" eval="[(4, ref('clv_base.group_user')),
+                                         (4, ref('clv_base.group_annuser')),
+                                         (4, ref('clv_base.group_reguser')),
+                                         (4, ref('clv_base.group_loguser')),
+                                         (4, ref('clv_base.group_manager'))]"/>
+    </record>
+
+    <record id="clv_base.group_admin" model="res.groups">
+        <field name="name">Admin User</field>
+        <field name="category_id" ref="module_base_category"/>
+        <field name="implied_ids" eval="[(4, ref('clv_base.group_data_admin')),
+                                         (4, ref('clv_base.group_supmanager'))]"/>
+    </record>
+
+</odoo>

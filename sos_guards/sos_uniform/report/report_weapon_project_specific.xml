@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>	
+		<template id ="sos_uniform.report_weaponprojectspecific">
+			<t t-call="web.html_container">
+				<t t-call="web.external_layout" style="font-family:georgia,garamond,serif;font-size:10px">
+					<div class="page">
+						<style>
+							 tr:nth-child(even) {background-color: #FFEBCD;}
+							 tr:nth-child(odd) {background-color: #cdcdcd;}
+						</style>
+						
+						<h4>Weapon Project Wise Report </h4>
+						<h5>
+							From: <span t-esc="get_date_formate(data['date_from'])"/><br></br>
+							To: <span t-esc="get_date_formate(data['date_to'])"/><br></br>
+						</h5>
+						
+						<table class="table table-condensed" width="100%">
+							
+							<tr style="font-size:12px; font-weight:bold; background-color:#E5E8E8;">
+								<td colspan="2"> Project </td>
+								<td colspan="5" style="text-align:left;"> <span t-esc="data['project_id'][1]" /> </td>
+								<td> DATE: </td>
+								<td colspan="3" style="text-align:left;">
+									<t t-esc="context_timestamp(datetime.datetime.now()).strftime('%H:%M:%S')"/> </td>
+							</tr>
+							
+							<tr style="font-size:12px; font-weight:bold; background-color:#A6ACAF;">
+								<td>SR#. </td>
+								<td>Issue Date </td>
+								<td>New Post </td>
+								<td>Post </td>
+								<td>No. of Guards </td>
+								<td>Reason for Demand </td>
+								<td>Item </td>
+								<td>Qty </td>
+								<td>Status </td>
+							</tr>
+							
+							<t t-set="i" t-value="1"/>
+							<t t-foreach="Project" t-as="project">
+								<tr  style="font-size:14px; font-weight:bold;">
+									<td colspan="11"> <span t-esc="project['center_name']" /> </td>
+								</tr>
+								<t t-foreach="project['weapons']" t-as="weap">
+									
+									<t t-foreach="weap.weapon_demand_line" t-as="line">
+								 		<tr style="font-size:10px;">
+								 			<td> <span t-esc="i" /> </td>
+								 			<td> <span t-field="weap.date" t-field-options='{"format": "d-MM-y"}' /> </td>
+								 
+								 			<t  t-if="weap.is_new_post == True">
+								 				<td> New </td>
+								 			</t>
+								 			<t  t-if="weap.is_new_post == False">
+								 				<td> Existing </td>
+								 			</t>
+								 			
+								 			<td> <span t-esc="weap.post_id.name" /> </td>
+								 			<td> <span t-esc="weap.post_id.guards" /> </td>
+								 			<td> <span t-esc="weap.reason" /> </td>
+								 			<td> <span t-esc="line.item_id.name" /> </td>
+								 			<td> <span t-esc="line.qty" /> </td>
+								 			<td> <span t-esc="weap.state" /> </td>
+								 		</tr>
+								 		<t t-set="i" t-value="i+1"/>
+								 	</t>
+								 		
+								 </t>
+								 
+							</t> 
+								
+						</table>
+								
+					</div>
+				</t>		 
+			</t>
+		</template>
+		
+	</data>
+</odoo>
+

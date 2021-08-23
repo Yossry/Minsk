@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2015-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- "License URL : <https://store.webkul.com/license.html/>" -->
+
+<odoo>
+    <data>
+
+        <record id="wk_vendor_history_view" model="ir.ui.view">
+            <field name="name">vendor.rfq..qouted.history</field>
+            <field name="model">vendor.rfqhistory</field>
+            <field name="arch" type="xml">
+                <form string="Vendor Qouted Details">
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="quoted_price" widget="monetary"/>
+                            <field name="quoted_note"/>
+                        </group>
+                        <group>
+                            <field name="quoted_del_date"/>
+                            <field name="vendorrfq_id"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="wk_vendor_done_action_wzard" model="ir.actions.act_window">
+            <field name="name">Vendor Qouted History</field>
+            <field name="res_model">vendor.rfqhistory</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="wk_vendor_history_view"/>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</odoo>

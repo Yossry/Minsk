@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <menuitem name="Reports" id="clv_report.menu_reports_report_reports" 
+        parent="clv_base.menu_reports_report"
+        groups="clv_report.group_user"
+        sequence="10"
+        action="clv_report.clv_report_action"/>
+
+    <menuitem name="Report" id="clv_report.menu_reports_report_report"
+        parent="clv_base.menu_reports_report"
+        groups="clv_report.group_user"
+        sequence="20"/>
+
+    <menuitem name="Schedules" id="clv_report.menu_reports_report_report_schedules" 
+        parent="clv_report.menu_reports_report_report"
+        groups="clv_report.group_user"
+        sequence="40"
+        action="clv_report.clv_report_schedule_action"/>
+
+    <menuitem name="Batches" id="clv_report.menu_reports_report_report_batches" 
+        parent="clv_report.menu_reports_report_report"
+        groups="clv_report.group_user"
+        sequence="50"
+        action="clv_report.clv_report_batch_action"/>
+
+    <menuitem name="Report" id="clv_report.menu_reports_config_report"
+        parent="clv_base.menu_reports_config"
+        groups="clv_report.group_user"
+        sequence="10"/>
+
+    <menuitem name="Templates" id="clv_report.menu_reports_config_report_templates" 
+        parent="clv_report.menu_reports_config_report"
+        groups="clv_report.group_user"
+        sequence="30"
+        action="clv_report.clv_report_template_action"/>
+
+    <menuitem name="Batch Members" id="clv_report.menu_reports_config_report_batch_members" 
+        parent="clv_report.menu_reports_config_report"
+        groups="clv_report.group_user"
+        sequence="60"
+        action="clv_report.clv_report_batch_member_actions"/>
+
+</odoo>

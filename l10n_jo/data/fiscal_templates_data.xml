@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Fiscal Position Templates -->
+
+    <record id="fiscal_position_template_ex" model="account.fiscal.position.template">
+        <field name="name">Exempt</field>
+        <field name="chart_template_id" ref="l10njo_chart_template"/>
+    </record>
+
+    <record id="fiscal_position_template_0" model="account.fiscal.position.template">
+        <field name="name">0%</field>
+        <field name="chart_template_id" ref="l10njo_chart_template"/>
+    </record>
+
+
+	<!-- Tax Mapping Exempt -->
+	
+    <record id="fiscal_position_tax_template_po16" model="account.fiscal.position.tax.template">
+        <field name="position_id" ref="fiscal_position_template_ex"/>
+        <field name="tax_src_id" ref="tax_po_16"/>
+        <field name="tax_dest_id" ref="tax_po_ex"/>
+    </record>
+
+    <record id="fiscal_position_tax_template_po8" model="account.fiscal.position.tax.template">
+        <field name="position_id" ref="fiscal_position_template_ex"/>
+        <field name="tax_src_id" ref="tax_po_8"/>
+        <field name="tax_dest_id" ref="tax_po_ex"/>
+    </record>
+
+    <record id="fiscal_position_tax_template_po4" model="account.fiscal.position.tax.template">
+        <field name="position_id" ref="fiscal_position_template_ex"/>
+        <field name="tax_src_id" ref="tax_po_4"/>
+        <field name="tax_dest_id" ref="tax_po_ex"/>
+    </record>
+	
+    <record id="fiscal_position_tax_template_so16" model="account.fiscal.position.tax.template">
+        <field name="position_id" ref="fiscal_position_template_ex"/>
+        <field name="tax_src_id" ref="tax_so_16"/>
+        <field name="tax_dest_id" ref="tax_so_ex"/>
+    </record>
+
+    <record id="fiscal_position_tax_template_so8" model="account.fiscal.position.tax.template">
+        <field name="position_id" ref="fiscal_position_template_ex"/>
+        <field name="tax_src_id" ref="tax_so_8"/>
+        <field name="tax_dest_id" ref="tax_so_ex"/>
+    </record>
+
+    <record id="fiscal_position_tax_template_so4" model="account.fiscal.position.tax.template">
+        <field name="position_id" ref="fiscal_position_template_ex"/>
+        <field name="tax_src_id" ref="tax_so_4"/>
+        <field name="tax_dest_id" ref="tax_so_ex"/>
+    </record>
+    
+    
+    <!-- Tax Mapping 0% -->
+    
+    <record id="fiscal_position_tax_template_po016" model="account.fiscal.position.tax.template">
+        <field name="position_id" ref="fiscal_position_template_0"/>
+        <field name="tax_src_id" ref="tax_po_16"/>
+        <field name="tax_dest_id" ref="tax_po_0"/>
+    </record>
+
+    <record id="fiscal_position_tax_template_po08" model="account.fiscal.position.tax.template">
+        <field name="position_id" ref="fiscal_position_template_0"/>
+        <field name="tax_src_id" ref="tax_po_8"/>
+        <field name="tax_dest_id" ref="tax_po_0"/>
+    </record>
+
+    <record id="fiscal_position_tax_template_po04" model="account.fiscal.position.tax.template">
+        <field name="position_id" ref="fiscal_position_template_0"/>
+        <field name="tax_src_id" ref="tax_po_4"/>
+        <field name="tax_dest_id" ref="tax_po_0"/>
+    </record>
+	
+    <record id="fiscal_position_tax_template_so016" model="account.fiscal.position.tax.template">
+        <field name="position_id" ref="fiscal_position_template_0"/>
+        <field name="tax_src_id" ref="tax_so_16"/>
+        <field name="tax_dest_id" ref="tax_so_0"/>
+    </record>
+
+    <record id="fiscal_position_tax_template_so08" model="account.fiscal.position.tax.template">
+        <field name="position_id" ref="fiscal_position_template_0"/>
+        <field name="tax_src_id" ref="tax_so_8"/>
+        <field name="tax_dest_id" ref="tax_so_0"/>
+    </record>
+
+    <record id="fiscal_position_tax_template_so04" model="account.fiscal.position.tax.template">
+        <field name="position_id" ref="fiscal_position_template_0"/>
+        <field name="tax_src_id" ref="tax_so_4"/>
+        <field name="tax_dest_id" ref="tax_so_0"/>
+    </record>
+
+</odoo>

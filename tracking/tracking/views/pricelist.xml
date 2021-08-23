@@ -1,0 +1,58 @@
+<odoo>
+    <data>
+        <record id="view_inherit_pricelist_form" model="ir.ui.view">
+            <field name="name">view_inherit_pricelist_form</field>
+            <field name="model">product.pricelist.item</field>
+            <field name="inherit_id" ref="product.product_pricelist_item_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[2]" position="after">
+                    <group>
+                        <group>
+                            <field name="price_with_ieps"/>
+                            <field name="price_tax"/>
+                            <field name="price_total"/>
+                            <field name="percent_tax"/>
+                            <field name="ieps_taxes" widget="many2many_tags"/>
+                        </group>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+        <record id="view_inherit_pos_order_form" model="ir.ui.view">
+            <field name="name">view_inherit_pos_order_form</field>
+            <field name="model">pos.order</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header" position="inside">
+                    <button name="action_pos_order_invoicepayment_create" string="Crear Factura" type="object" />
+                </xpath>
+            </field>
+        </record>
+    <record id="view_pos_order_credit_form_inherit" model="ir.ui.view">
+            <field name="name">view_pos_order_credit_form_inherit</field>
+            <field name="model">pos.order</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='pos_reference']" position="after">
+                   <field name="monto_credito" />
+                   <field name="abono_credito" />
+                   <field name="orden_ruta_id" />
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="after">
+                   <field name="folio_venta" />
+                   <field name="direccion_cliente_id" />
+                </xpath>
+            </field>
+    </record>
+    <record id="view_sale_cupon_program_form_type_disc_inherit" model="ir.ui.view">
+            <field name="name">view_sale_cupon_program_form_inherit</field>
+            <field name="model">sale.coupon.program</field>
+            <field name="inherit_id" ref="sale_coupon.sale_coupon_program_view_form_common"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='discount_type']" position="replace">
+                  <field name="discount_type" class="oe_inline" attrs="{'required': [('reward_type','=','discount')]}" invisible="1"/>
+                </xpath>
+            </field>
+    </record>
+    </data>
+</odoo>

@@ -1,0 +1,42 @@
+body.o_web_client.o_ui_blocked {
+    .blockUI.blockOverlay {
+        opacity: 0.3 !important;
+        background-color: $bg-light !important;
+    }
+    .blockUI.blockMsg.blockPage {
+        .oe_blockui_spin_container {
+            .oe_blockui_spin {
+                & > svg {
+                    & > g:nth-child(1), g:nth-child(4) {
+                        & > rect {
+                            fill: $brand-primary;
+                        }
+                    }
+                    & > g:nth-child(2), g:nth-child(3) {
+                        & > rect {
+                            fill: $brand-secondary;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .oe_throbber_message {
+        color: $brand-primary !important;
+    }
+}
+
+body.o_web_client {
+    & > .o_loading {
+        width: 100px;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: auto;
+        text-align: center;
+        margin: auto;
+        background-color: $brand-primary;
+        border-radius: 0px;
+        z-index: 999;
+    }
+}

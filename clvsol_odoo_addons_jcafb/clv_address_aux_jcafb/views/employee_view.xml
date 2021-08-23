@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+        
+    <record id="clv_address_aux_view_form_employee" model="ir.ui.view">
+        <field name="name">clv.address_aux.form</field>
+        <field name="model">clv.address_aux</field>
+        <field name="inherit_id" ref="clv_address_aux.clv_address_aux_view_form"/>
+        <field name="priority" eval="8" />
+        <field name="arch" type="xml">
+            <group name="group_top_left" position="inside">
+                <field name="employee_id" placeholder="Responsible Empĺoyee..." options="{'no_open': False, 'no_create': True}"/>
+            </group>
+        </field>
+    </record>
+   
+    <record id="clv_address_aux_view_tree_employee" model="ir.ui.view">
+        <field name="name">clv.address_aux.tree</field>
+        <field name="model">clv.address_aux</field>
+        <field name="inherit_id" ref="clv_address_aux.clv_address_aux_view_tree"/>
+        <field name="priority" eval="8" />
+        <field name="arch" type="xml">
+            <field name="code" position="after">
+                <field name="employee_id"/>
+            </field>
+        </field>
+    </record>
+   
+    <record id="clv_address_aux_view_search_employee" model="ir.ui.view">
+        <field name="name">clv.address_aux.search</field>
+        <field name="model">clv.address_aux</field>
+        <field name="inherit_id" ref="clv_address_aux.clv_address_aux_view_search"/>
+        <field name="priority" eval="8" />
+        <field name="arch" type="xml">
+            <field name="code" position="after">
+                <field name="employee_id"/>
+            </field>
+            <filter name="filter_deactivated" position="after">
+                <filter string="Responsible Empĺoyee not defined" name="no_employee_id" domain="[('employee_id','=',False)]"/>
+            </filter>
+            <group name="group_by" position="inside">
+                <filter name="group_by_employee_id" string="Responsible Empĺoyee" domain="[]"  context="{'group_by': 'employee_id'}"/>
+            </group>
+        </field>
+    </record>
+   
+</odoo>

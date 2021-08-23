@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_supplier_picking_tree" model="ir.ui.view">
+        <field name="name">stock.picking.tree</field>
+        <field name="model">stock.picking</field>
+        <field name="priority" eval="30" />
+        <field name="arch" type="xml">
+            <tree
+                colors="blue:state == 'draft';grey:state == 'cancel';red:state not in ('cancel', 'done') and min_date &lt; current_date"
+                string="Picking list"
+                create="false"
+            >
+                <field name="name" />
+                <field name="location_dest_id" />
+                <field name="partner_id" />
+                <field name="date" />
+                <field name="origin" />
+                <field name="group_id" invisible="1" />
+                <field name="backorder_id" />
+                <field name="state" />
+                <field name="priority" invisible="1" />
+                <field name="picking_type_id" invisible="1" />
+            </tree>
+        </field>
+    </record>
+    <record id="view_picking_form" model="ir.ui.view">
+        <field name="name">stock.picking.form</field>
+        <field name="model">stock.picking</field>
+        <field name="groups_id" eval="[(6, 0, [ref('group_supplier')])]" />
+        <field name="inherit_id" ref="stock.view_picking_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="attributes">
+                <attribute name="create">0</attribute>
+            </xpath>
+        </field>
+    </record>
+    <record id="action_picking_tree_all" model="ir.actions.act_window">
+        <field name="name">Stock Operations</field>
+        <field name="res_model">stock.picking</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain" />
+        <field
+            name="view_ids"
+            eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('view_supplier_picking_tree')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('stock.view_picking_form')})]"
+        />
+    </record>
+</odoo>

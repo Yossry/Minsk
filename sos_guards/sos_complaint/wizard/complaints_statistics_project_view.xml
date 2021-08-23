@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_complaints_statistics_project" model="ir.ui.view">
+            <field name="name">complaints.statistics.project</field>
+            <field name="model">complaints.statistics.project</field>
+            <field name="arch" type="xml">
+            <form string="Complaints Statistics Project">
+                <label for="start_date" string="This wizard will print report which displays Complaints Statistics (Project) for specified dates."/>
+                <footer>
+                    <button name="print_report" string="Print" type="object" class="oe_highlight"/>
+                        
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+                <group>
+                    <field name="start_date"/>
+                    <field name="end_date"/>                     
+		    
+                </group>                
+                
+            </form>
+            </field>
+        </record>
+		 
+		<act_window
+            id="action_complaints_statistics_project"
+            name="Complaints Statistics Project"
+            res_model="complaints.statistics.project"
+            src_model="sos.complaint"
+            view_mode="form"
+            multi="False"
+            target="new"
+            key2="client_print_multi"
+        /> 
+        
+    </data>
+</odoo>

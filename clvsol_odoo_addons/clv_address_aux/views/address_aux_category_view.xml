@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="clv_address_aux_view_tree_category" model="ir.ui.view">
+        <field name="name">clv.address_aux.tree</field>
+        <field name="model">clv.address_aux</field>
+        <field name="inherit_id" ref="clv_address_aux_view_tree"/>
+        <field name="priority" eval="20"/>
+        <field name="arch" type="xml">
+            <field name="code" position="after">
+                <field name="category_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                <field name="category_names_suport" invisible="True"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="clv_address_aux_view_form_category" model="ir.ui.view">
+        <field name="name">clv.address_aux.form</field>
+        <field name="model">clv.address_aux</field>
+        <field name="inherit_id" ref="clv_address_aux_view_form"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <label for="name" position="before">
+                <label for="category_ids" class="oe_edit_only"/>
+                <h4><field name="category_ids" widget="many2many_tags" placeholder="Categories..." options="{'color_field': 'color', 'no_open': False, 'no_create': True}"/></h4>
+            </label>
+        </field>
+    </record>
+
+    <record id="clv_address_aux_view_search_category" model="ir.ui.view">
+        <field name="name">clv.address_aux.search</field>
+        <field name="model">clv.address_aux</field>
+        <field name="inherit_id" ref="clv_address_aux_view_search"/>
+        <field name="priority" eval="20"/>
+        <field name="arch" type="xml">
+            <field name="code" position="after">
+                <field name="category_ids"/>
+            </field>
+            <group name="group_by" position="inside">
+                <filter name="filter_category_names" string="Categories" context="{'group_by': 'category_names'}"/>
+            </group>
+        </field>
+    </record>
+
+</odoo>

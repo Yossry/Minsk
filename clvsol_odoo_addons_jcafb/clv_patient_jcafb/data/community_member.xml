@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo noupdate="1">
+
+    <record id="clv_referenceable_model_community_member" model="clv.referenceable.model">
+        <field name="base_model">clv.community.member</field>
+        <field name="name">Patient</field>
+        <field name="model">clv.patient</field>
+        <field name="priority">10</field>
+    </record>
+
+</odoo>

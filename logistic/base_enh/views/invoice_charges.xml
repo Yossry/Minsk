@@ -1,0 +1,81 @@
+<odoo>
+	<data>
+		<record model="ir.ui.view" id="invoice_charges_tree">
+			<field name="name">product.product</field>
+			<field name="model">product.product</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="name" />
+				</tree>
+			</field>
+
+		</record>
+
+
+		<record model="ir.ui.view" id="invoice_charges_view">
+			<field name="name">product.product</field>
+			<field name="model">product.product</field>
+			<field name="arch" type="xml">
+				<form>
+					<sheet>
+
+						<field name="image_medium" widget="image" class="oe_avatar" />
+						<div class="oe_title">
+							<label class="oe_edit_only" for="name"
+								string="Product Name" />
+							<h1>
+								<field name="name" placeholder="Product Name" />
+							</h1>
+							<div name="options" groups="base.group_user">
+								<div>
+									<field name="sale_ok" />
+									<label for="sale_ok" />
+								</div>
+								<div>
+									<field name="purchase_ok" />
+									<label for="purchase_ok" />
+								</div>
+							</div>
+						</div>
+
+						<group>
+
+							<group>
+								<field name="categ_id" string="Product Category" options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+								<field name="default_code" />
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+
+		<record id="invoice_charges_action"
+			model="ir.actions.act_window">
+			<field name="name">Invoice Charges</field>
+			<field name="res_model">product.product</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[('is_inv_charges','=',True)]</field>
+			<field name="context">{'default_is_inv_charges':True}</field>
+		</record>
+
+		<record id="invoice_charges_tree_action"
+			model="ir.actions.act_window.view">
+			<field name="view_mode">tree</field>
+			<field name="view_id" ref="invoice_charges_tree" />
+			<field name="act_window_id" ref="invoice_charges_action" />
+		</record>
+
+		<record id="invoice_charges_form_action"
+			model="ir.actions.act_window.view">
+			<field name="view_mode">form</field>
+			<field name="view_id" ref="invoice_charges_view" />
+			<field name="act_window_id" ref="invoice_charges_action" />
+		</record>
+
+		<menuitem id="menu_invoice_charges"
+			parent="sale.product_menu_catalog" action="invoice_charges_action" />
+	</data>
+</odoo>

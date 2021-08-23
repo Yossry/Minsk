@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright 2019 Coop IT Easy
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+     <record id="view_promotion_form" model="ir.ui.view">
+        <field name="name">hr.promotion.form</field>
+        <field name="model">hr.promotion</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state" widget="statusbar" clickable="True"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Name"/>
+                        </h1>
+                    </div>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_get_attachment_tree_view" class="oe_stat_button" icon="fa-book" type="object">
+                            <field name="attachment_number" widget="statinfo" string="Documents"/>
+                        </button>
+                        <button name="toggle_active" type="object"
+                                class="oe_stat_button" icon="fa-archive">
+                            <field name="active" widget="boolean_button"
+                                   options='{"terminology": "archive"}'/>
+                        </button>
+                    </div>
+                    <group>
+                        <group name="about" string="About">
+                            <field name="date_start"/>
+                            <field name="description"/>
+                            <field name="user_id"/>
+                            <field name="hr_responsible_id"/>
+                        </group>
+                        <group name="occupation" string="Occupation">
+                            <field name="spots_regime" widget='radio'/>
+                            <field name="spots_max" attrs="{'invisible': [('spots_regime', '=', 'unlimited')], 'required': [('spots_regime', '=', 'limited')]}"/>
+                            <field name="spots_taken"/>
+                            <field name="spots_available" attrs="{'invisible': [('spots_regime', '=', 'unlimited')]}"/>
+                            <field name="no_of_applicants"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="employees" string="Employees">
+                            <field name="employee_ids" mode="kanban" widget="many2many" no_create="1" nolabel="1">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="job_id"/>
+                                    <field name="date_start"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page name="applicants" string="Applicants">
+                            <field name="applicant_ids" mode="kanban" widget="many2many" no_create="1" nolabel="1">
+                                <tree>
+                                    <field name="partner_name"/>
+                                    <field name="job"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+     </record>
+
+    <record id="view_promotion_tree" model="ir.ui.view">
+        <field name="name">hr.promotion.tree</field>
+        <field name="model">hr.promotion</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="description"/>
+                <field name="date_start"/>
+                <field name="spots_regime"/>
+                <field name="spots_max" attrs="{'invisible': [('spots_regime', '=', 'unlimited')]}"/>
+                <field name="spots_taken"/>
+                <field name="spots_available" attrs="{'invisible': [('spots_regime', '=', 'unlimited')]}"/>
+                <field name="no_of_applicants"/>
+                <field name="state"/>
+            </tree>
+        </field>
+     </record>
+
+    <record id="open_view_promotion_tree" model="ir.actions.act_window">
+        <field name="name">Promotions</field>
+        <field name="res_model">hr.promotion</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="menu_view_promotion_tree_human_resources"
+        action="open_view_promotion_tree"
+        parent="hr.menu_hr_root"
+        groups="hr.group_hr_user"
+        sequence="10"/>
+
+    <menuitem
+        id="menu_view_promotion_tree_recruitment"
+        action="open_view_promotion_tree"
+        parent="hr_recruitment.menu_hr_recruitment_root"
+        groups="hr.group_hr_user"
+        sequence="10"/>
+</odoo>

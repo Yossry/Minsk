@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="publish_product_action" model="ir.actions.server">
+        <field name="name">Publish Product(s)</field>
+        <field name="model_id" ref="supplier_stock.model_supplier_stock" />
+        <field name="binding_model_id" ref="supplier_stock.model_supplier_stock" />
+        <field name="state">code</field>
+        <field name="code">records.sudo().write({'website_published': True})</field>
+    </record>
+    <record id="unpublish_product_action" model="ir.actions.server">
+        <field name="name">Unpublish Product(s)</field>
+        <field name="model_id" ref="supplier_stock.model_supplier_stock" />
+        <field name="binding_model_id" ref="supplier_stock.model_supplier_stock" />
+        <field name="state">code</field>
+        <field name="code">records.sudo().write({'website_published': False})</field>
+    </record>
+</odoo>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <menuitem name="Media Files" id="clv_mfile.menu_mfiles_media_files"
+        parent="clv_base.menu_mfiles"
+        groups="clv_mfile.group_user"
+        sequence="50"/>
+
+    <menuitem name="Media Files" id="clv_mfile.menu_mfiles_media_files_media_files" 
+        parent="clv_mfile.menu_mfiles_media_files"
+        groups="clv_mfile.group_user"
+        sequence="10"
+        action="clv_mfile.clv_mfile_action"/>
+
+    <menuitem name="New Files Search" id="clv_mfile.menu_mfiles_media_files_new_files_search" 
+        parent="clv_mfile.menu_mfiles_media_files"
+        groups="clv_mfile.group_user"
+        sequence="20"
+        action="clv_mfile.clv_mfile_new_files_search_action"/>
+
+    <menuitem name="Media File Categories" id="clv_mfile.menu_mfiles_config_media_file_categories" 
+        parent="clv_base.menu_mfiles_config"
+        groups="clv_mfile.group_user"
+        sequence="50"
+        action="clv_mfile.clv_mfile_category_action"/>
+
+</odoo>

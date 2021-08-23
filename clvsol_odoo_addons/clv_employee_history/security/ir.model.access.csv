@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_hr_employee_history_emp,hr.employee.history.emp,model_hr_employee_history,base.group_user,1,0,0,0
+access_hr_employee_history_user,hr.employee.history.user,model_hr_employee_history,hr.group_hr_user,1,1,1,1

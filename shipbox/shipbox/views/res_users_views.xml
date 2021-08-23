@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_shipbox_user_config" model="ir.ui.view">
+        <field name="name">shipbox.users.preferences.form</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form_simple_modif"/>
+        <field name="arch" type="xml">
+            <data>
+                <footer position="before">
+                    <group name="shipbox_config" string="ShipBox Configuration" col="4" groups="base.group_user">
+                        <field name="shipbox_id" readonly="0"/>
+                    </group>
+                </footer>
+            </data>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_users_form">
+        <field name="name">Users Preferences</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <data>
+                <group name="preferences" position="after">
+                    <group name="shipbox_config" string="ShipBox Configuration">
+                        <field name="shipbox_id"/>
+                    </group>
+                </group>
+            </data>
+        </field>
+    </record>
+</odoo>

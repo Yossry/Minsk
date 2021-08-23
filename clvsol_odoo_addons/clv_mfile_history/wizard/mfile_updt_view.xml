@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="clv_mfile_updt_view_form_enmployee_history" model="ir.ui.view">
+            <field name="name">clv.mfile.updt.form</field>
+            <field name="model">clv.mfile.updt</field>
+            <field name="inherit_id" ref="clv_mfile.clv_mfile_updt_view_form"/>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <group name="date_inclusion" position="after">
+                    <group>
+                        <field name="history_marker_id_selection"/>
+                    </group>
+                    <group name="history_marker_id">
+                        <field name="history_marker_id" options="{'no_open': False, 'no_create': True}" nolabel='1'/>
+                    </group>
+                </group>
+            </field>
+        </record>
+
+    </data>
+</odoo>

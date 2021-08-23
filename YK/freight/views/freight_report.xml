@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report
+            id="bill_of_lading_report"
+            model="freight.operation"
+            string="Bill Of Lading"
+            report_type="qweb-html"
+			name="freight.bill_of_lading"
+			file="freight.bill_of_lading"/>
+
+        <report
+            id="airway_bill_report"
+            model="freight.operation"
+            string="Airway Bill"
+            report_type="qweb-html"
+			name="freight.airway_bill"
+			file="freight.airway_bill"/>
+    </data>
+</odoo>

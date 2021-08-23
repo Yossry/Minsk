@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="clv_document_items_edit_view_form" model="ir.ui.view">
+        <field name="name">clv.document.items_edit.form</field>
+        <field name="model">clv.document.items_edit</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_right">
+                    </div>
+                    <group  name="group_top">
+                        <field name="document_id" options="{'no_open': True, 'no_create': True, 'readonly': True}"/>
+                        <field name="document_type_id" options="{'no_open': True, 'no_create': True, 'readonly': True}"/>
+                    </group>
+                    <group  name="group_bottom">
+                    </group>
+                </sheet>
+                <footer>
+                    <button 
+                        type="object"
+                        name="do_document_updt"
+                        string="Document Update"
+                        class="oe_highlight"
+                        />
+                    <button special="cancel" string="Cancel"/>
+                </footer>
+            </form>
+
+        </field>
+    </record>
+
+    <!-- More button Action -->
+    <act_window 
+        id="clv_document_items_edit_action"
+        name="Document Items Edit"
+        src_model="clv.document"
+        res_model="clv.document.items_edit"
+        view_mode="form"
+        target="new"
+    />
+
+</odoo>

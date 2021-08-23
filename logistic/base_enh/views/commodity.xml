@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="commodity_list_view">
+            <field name="name">Commodity</field>
+            <field name="model">commodity</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                    <field name="temperature" />
+                    <field name="commodity_category" />
+                    <field name="warehouse_condition" />
+                    <field name="warehouse_condition_att" />
+                    <field name="transport_condition" />
+                    <field name="transport_condition_att" />
+                    <field name="port_condition" />
+                    <field name="port_condition_att" />
+                    <field name="other_condition" />
+                    <field name="other_condition_att" />
+                    <field name="UN_No" />
+                    <field name="IMCO_Class" />
+                    <field name="HS_Code" />
+                    <field name="active" />
+
+                </tree>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="commodity_form_view">
+            <field name="name">Commodity</field>
+            <field name="model">commodity</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" />
+                                <field name="package_ids" widget="many2many_tags" 
+                                        options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"
+                                        attrs="{'invisible':[('is_category','=',True)],'required':[('is_category','=',False)]}"/>
+                            </group>
+                            <group>
+                                <field name="is_category"
+                                       />
+                                <field name="commodity_category" 
+                                    attrs="{'invisible':[('is_category','=',True)],'required':[('is_category','=',False)]}"
+                                    options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+                                <field name="active" />
+                                <field name="is_document" />
+                            </group>
+                        </group>
+                        <group attrs="{'invisible':[('is_document','=',True)]}" string="Conditions" style="font-weight: bold">
+
+                            <group>
+                                <field name="temperature" />
+                                <field name="warehouse_condition" />
+                                <field name="warehouse_condition_att" />
+                                <field name="transport_condition" />
+                                <field name="transport_condition_att" />
+                            </group>
+                            <group>
+                                <field name="port_condition" />
+                                <field name="port_condition_att" />
+                                <field name="other_condition" />
+                                <field name="other_condition_att" />
+                            </group>
+                        </group>
+                        <group attrs="{'invisible':[('is_document','=',True)]}" string="Setup Codes" style="font-weight: bold">
+                            <group>
+                                <field name="IMCO_Class" />
+                                <field name="UN_No" />
+                                <field name="HS_Code" />
+                            </group>
+                        </group>
+                        
+                      <label for="note"/> 
+                      <field name="note" />
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                 </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window"
+            id="commodity_action">
+            <field name="name">Commodity</field>
+            <field name="res_model">commodity</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+
+
+    </data>
+</odoo>

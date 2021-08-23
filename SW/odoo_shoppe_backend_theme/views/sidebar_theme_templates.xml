@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="osbt_assets" inherit_id="web.assets_backend" name="OSBT Assets">
+  <xpath expr="." position="inside">
+    <link type="text/css" rel="stylesheet" media="screen,projection" href="/odoo_shoppe_backend_theme/static/src/css/materialize.css"/>
+    <link type="text/scss" rel="stylesheet" href="/odoo_shoppe_backend_theme/static/src/scss/theme_style.scss"/>
+    <link type="text/scss" rel="stylesheet" href="/odoo_shoppe_backend_theme/static/src/scss/theme_switcher.scss"/>
+    <link type="text/css" rel="stylesheet" href="/odoo_shoppe_backend_theme/static/src/css/partner_kanban.css"/>
+    <script type="text/javascript" src="/odoo_shoppe_backend_theme/static/src/js/materialize.js"></script>
+    <script type="text/javascript" src="/odoo_shoppe_backend_theme/static/src/js/theme_scripts.js"/>
+  </xpath>
+</template>
+
+<template id="osbt_favicon" inherit_id="web.layout" name="OSBT Favicon">
+  <xpath expr="//link[@rel='shortcut icon']" position="replace">
+    <link type="image/x-icon" rel="shortcut icon" href="/odoo_shoppe_backend_theme/static/src/img/favicon.ico"/>
+  </xpath>
+</template>
+
+<template id="osbt_theme_assets" name="OSBT Theme Assets">
+  <link rel="stylesheet" type="text/scss" href="/odoo_shoppe_backend_theme/static/src/scss/themes/orange.scss"/>
+  <link rel="stylesheet" type="text/scss" href="/odoo_shoppe_backend_theme/static/src/scss/themes/blue.scss"/>
+  <link rel="stylesheet" type="text/scss" href="/odoo_shoppe_backend_theme/static/src/scss/themes/prussian.scss"/>
+  <link rel="stylesheet" type="text/scss" href="/odoo_shoppe_backend_theme/static/src/scss/themes/dark_red.scss"/>
+  <link rel="stylesheet" type="text/scss" href="/odoo_shoppe_backend_theme/static/src/scss/themes/gray_black.scss"/>
+  <link rel="stylesheet" type="text/scss" href="/odoo_shoppe_backend_theme/static/src/scss/themes/grey.scss"/>
+  <link rel="stylesheet" type="text/scss" href="/odoo_shoppe_backend_theme/static/src/scss/themes/pink.scss"/>
+  <link rel="stylesheet" type="text/scss" href="/odoo_shoppe_backend_theme/static/src/scss/themes/white.scss"/>
+  <link rel="stylesheet" type="text/scss" href="/odoo_shoppe_backend_theme/static/src/scss/themes/yellow_green.scss"/>
+</template>
+
+<template id="web.webclient_bootstrap">
+  <t t-call="web.layout">
+    <t t-set="head_web">
+      <script type="text/javascript">
+        odoo.session_info = <t t-raw="session_info"/>;
+      </script>
+
+      <t t-call-assets="web.assets_common" t-js="false"/>
+      <t t-call-assets="web.assets_backend" t-js="false"/>
+      <t t-call-assets="web.assets_common" t-css="false"/>
+      <t t-call-assets="web.assets_backend" t-css="false"/>
+
+      <![CDATA[
+        <!--[if lt IE 10]>
+            <body class="ie9">
+        <![endif]-->
+      ]]>
+      <t t-call-assets="odoo_shoppe_backend_theme.osbt_theme_assets" t-js="false"/>
+      <script type="text/javascript">
+        odoo.define('web.web_client', function (require) {
+          var WebClient = require('web.WebClient');
+          var web_client = new WebClient();
+          $(function() {
+            web_client.setElement($(document.body));
+            web_client.start();
+          });
+          return web_client;
+        });
+      </script>
+    </t>
+    <t t-set="head" t-value="head_web + (head or '')"/>
+    <t t-set="body_classname" t-value="'o_web_client sidebar'"/>
+
+    <div class="o_main">
+      <div class="o_sub_menu" groups="base.group_user,base.group_portal">
+        <t t-call="odoo_shoppe_backend_theme.menu_secondary"/>
+      </div>
+      <div class="o_main_content">
+      </div>
+    </div>
+  </t>
+</template>
+
+<template id="menu_secondary">
+  <a class="o_sub_menu_logo" t-att-href="'/web/?debug' if debug else '/web'">
+    <span class="oe_logo_edit">Edit Company data</span>
+    <img src='/web/binary/company_logo'/>
+  </a>
+  <div class="user"></div>
+  <div class="o_sub_menu_content">
+    <t t-foreach="menu_data['children']" t-as="menu">
+      <div class="cssmenu">
+        <h3 class="menu_heading" t-if="menu['children']" t-att-title="menu['name']">
+          <i t-att-class="menu['menu_icon'] or 'fa fa-file-text-o'"></i>
+          <span class="menu_title"><t t-esc="menu['name']"/></span>
+        </h3>
+        <h3 class="menu_heading" t-if="not menu['children']" t-att-title="menu['name']">
+          <t t-if="debug and debug == 'assets'">
+            <t t-set="debug_param" t-value="'?&amp;debug=assets'"/>
+          </t>
+          <t t-if="debug and debug == '1'">
+            <t t-set="debug_param" t-value="'?&amp;debug=1'"/>
+          </t>
+          <t t-if="not debug">
+            <t t-set="debug_param" t-value="''"/>
+          </t>
+          <a t-att-href="'/web%s#menu_id=%s&amp;action=%s' % (debug_param, menu['id'], menu['action'] and menu['action'].split(',')[1] or '')"
+            t-att-data-menu="menu['id']"
+            t-att-data-action-model="menu['action'] and menu['action'].split(',')[0] or ''"
+            t-att-data-action-id="menu['action'] and menu['action'].split(',')[1] or ''"
+            t-att-debug="debug_param">
+            <i t-att-class="menu['menu_icon'] or 'fa fa-file-text-o'"></i>
+            <span class="menu_title"><t t-esc="menu['name']"/></span>
+          </a>
+        </h3>
+        <div style="display: none" class="oe_secondary_menu" t-att-data-menu-parent="menu['id']">
+          <h6 class="side_menu_heading" t-if="menu['children']" t-att-title="menu['name']">
+            <span><t t-esc="menu['name']"/></span>
+          </h6>
+          <t t-foreach="menu['children']" t-as="menu">
+            <div class="oe_secondary_menu_section">
+              <t t-if="menu['children']"><t t-esc="menu['name']" /></t>
+              <t t-if="not menu['children']"><t t-call="odoo_shoppe_backend_theme.menu_link" /></t>
+            </div>
+            <t t-call="odoo_shoppe_backend_theme.menu_secondary_submenu" />
+          </t>
+        </div>
+      </div>
+    </t>
+  </div>
+</template>
+
+<template id="menu_secondary_submenu">
+  <ul t-if="menu['children']" class="oe_secondary_submenu nav nav-pills nav-stacked">
+    <li t-foreach="menu['children']" t-as="menu">
+      <t t-call="odoo_shoppe_backend_theme.menu_link"/>
+      <t t-call="odoo_shoppe_backend_theme.menu_secondary_submenu"/>
+    </li>
+  </ul>
+</template>
+
+<template id="menu_link">
+  <t t-set="debug_param" t-value="'?&amp;debug=' if debug else ''"/>
+  <a t-att-href="'/web%s#menu_id=%s&amp;action=%s' % (debug_param, menu['id'], menu['action'] and menu['action'].split(',')[1] or '')"
+    t-att-class="'oe_menu_toggler' if menu.get('children') else 'oe_menu_leaf'"
+    t-att-data-menu="menu['id']"
+    t-att-data-menu-xmlid="menu.get('xmlid')"
+    t-att-data-action-model="menu['action'] and menu['action'].split(',')[0] or None"
+    t-att-data-action-id="menu['action'] and menu['action'].split(',')[1] or None">
+    <span class="oe_menu_text">
+      <t t-esc="menu['name']"/>
+    </span>
+  </a>
+</template>
+</odoo>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="clv_lab_test_result_edit_eev20_view_form" model="ir.ui.view">
+        <field name="name">clv.lab_test.result.edit_eev20.form</field>
+        <field name="model">clv.lab_test.result.edit_eev20</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_right">
+                    </div>
+                    <group  name="group_top">
+                        <field name="result_id" options="{'no_open': True, 'no_create': True, 'readonly': True}"/>
+                        <field name="lab_test_type_id" options="{'no_open': True, 'no_create': True, 'readonly': True}"/>
+                        <field name="lab_test_request_id" options="{'no_open': True, 'no_create': True, 'readonly': True}"/>
+                    </group>
+                    <group name="group_bottom">
+                        <group>
+                            <field name="EEV20_data_entrada_material"/>
+                            <field name="EEV20_liberacao_resultado"/>
+                            <field name="EEV20_resultado"/>
+                            <field name="EEV20_examinador"/>
+                            <field name="EEV20_metodo_utilizado"/>
+                            <field name="EEV20_obs"/>
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button 
+                        type="object"
+                        name="do_result_updt_EEV20"
+                        string="Result Update"
+                        class="oe_highlight"
+                        />
+                    <button special="cancel" string="Cancel"/>
+                </footer>
+            </form>
+
+        </field>
+    </record>
+
+    <act_window 
+        id="clv_lab_test_result_edit_eev20_action"
+        name="Lab Test Result Edit (EEV20)"
+        res_model="clv.lab_test.result.edit_eev20"
+        view_mode="form"
+        target="new"
+    />
+
+</odoo>

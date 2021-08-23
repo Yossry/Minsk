@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_issue_log,issue.log,model_issue_log,base.group_user,1,1,1,1
+access_task_type,task.type,model_task_type,base.group_user,1,1,1,1

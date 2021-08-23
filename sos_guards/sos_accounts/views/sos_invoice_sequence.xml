@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data noupdate="1">
+		<!-- Sequences for sos.invoice -->
+<!--	
+	<record id="seq_type_sos_invoice" model="ir.sequence.type">
+			<field name="name">SOS Invoice</field>
+			<field name="code">sos.invoice</field>
+		</record>
+		<record id="seq_sos_invoice" model="ir.sequence">
+			<field name="name">SOS Invoice</field>
+			<field name="code">sos.invoice</field>
+			<field name="prefix">INV/%(year)s/</field>
+			<field name="padding">5</field>
+			<field name="company_id" eval="False" />
+		</record>
+-->
+	</data>
+</odoo>

@@ -1,0 +1,9 @@
+.pos .check-detail-input {
+    margin: 5px;
+}
+.pos .check-details {
+    cursor: pointer;
+}
+.pos .check-detail-input {
+    height: 50px;
+}

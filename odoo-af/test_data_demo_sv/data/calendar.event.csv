@@ -1,0 +1,8 @@
+id,name,location,start,stop,duration,partner_ids/id,description
+calendar.calendar_event_1,Uppföljning implementation,,2020-04-03 12:20:00,2020-04-03 18:30:00,6.3,base.res_partner_1,Möte för att diskutera projektplanen och detaljer för implementation.
+calendar.calendar_event_2,Intitial diskussion,,2020-04-05 14:00:00,2020-04-05 21:00:00,7,"base.res_partner_4,base.res_partner_3",Diskussion med kund angående produkt
+calendar.calendar_event_3,Prisdiskussion,,2020-04-12 17:55:05,2020-04-12 20:55:05,3,base.user_admin_res_partner,Internt möte angående nya priser för produkter och tjänster.
+calendar.calendar_event_4,Kravgenomgång,,2020-04-20 10:00:00,2020-04-20 12:30:00,2.5,"base.res_partner_1,base.partner_demo",
+calendar.calendar_event_5,Förändringar i design,,2020-04-22 02:00:00,2020-04-22 02:00:00,1,"base.res_partner_12,base.user_admin_res_partner",
+calendar.calendar_event_6,Presentation av nya tjänster,,2020-04-18 04:00:00,2020-04-18 12:30:00,8.5,"base.res_partner_4,base.res_partner_12,base.res_partner_1",
+calendar.calendar_event_7,Presentation av den nya kalendern,,2020-04-16 02:00:00,2020-04-16 02:00:00,8.5,base.res_partner_4,

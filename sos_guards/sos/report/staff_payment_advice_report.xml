@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<template id ="sos.report_staff_payment_advice">
+			<t t-call="web.html_container">
+				<t t-foreach="docs" t-as="doc">
+					<t t-call="web.external_layout" style="font-family:georgia,garamond,serif;font-size:10px;">
+						<div class="page">
+							<div class="row" style="font-family:georgia,garamond,serif;font-size:8px;font-weight:bold;">
+								To,
+							</div>
+							
+							<div class="row" style="font-family:georgia,garamond,serif;font-size:8px;font-weight:bold;">
+								The Manager
+							</div>
+							<div class="row" style="font-family:georgia,garamond,serif;font-size:8px;font-weight:bold;">
+								Bank
+							</div>
+							<br/>
+							
+							<div class="row" style="font-family:georgia,garamond,serif;font-size:10px;">
+								Payment Advice from A/C no. 
+								<t t-if="doc.bank_id.acc_number"> 
+									<span t-field="doc.bank_id.acc_number"/> 
+								</t>	
+								From period <span t-esc="doc.batch_id.date_start"/> to <span t-esc="doc.batch_id.date_end"/>
+							</div>
+							
+							<div class="row" style="font-family:georgia,garamond,serif;font-size:10px;">
+								Please make the payroll transfer from above account number to the below mentioned account numbers towards employee salaries:
+							</div>
+							
+							<br/>
+							
+						<table class="table table-condensed" width="100%">
+						<thead>
+							<tr style="font-size:10px; font-weight:bold;">
+								<th class="text-left">Sr#</th>
+								<th class="text-left">Center Name</th>
+								<th class="text-left">Name of the Employe</th>
+								<th class="text-left">Bank Account No.</th>
+								<th class="text-left">By Salary</th>
+								<th class="text-left">C/D</th>
+							</tr>
+						</thead>
+						
+						<tbody>
+							<t t-foreach="doc.line_ids" t-as="line">
+								<tr style="font-size:10px;">
+									<td class="text-left">
+										<span t-esc="line_index + 1" />
+									</td>
+									<td class="text-left">
+										<span t-field="line.employee_id.center_id.name"/>
+									</td>
+									<td class="text-left">
+										<span t-field="line.employee_id.name"/>
+									</td>
+									<td class="text-left">
+										<span t-field="line.name"/>
+									</td>
+									<td class="text-left">
+										<span t-field="line.bysal"/>
+									</td>
+									
+									<td class="text-left">
+										<span t-field="line.debit_credit"/>
+									</td>
+								</tr>
+							</t>		
+						</tbody>			
+
+					</table>
+						
+						</div>
+					</t>
+				</t>
+			</t>
+		</template>
+	
+	</data>
+</odoo>

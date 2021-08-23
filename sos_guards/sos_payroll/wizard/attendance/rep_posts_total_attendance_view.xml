@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="sos_posts_total_attendance_view" model="ir.ui.view">
+        <field name="name">Posts Total Attendance Wizard</field>
+        <field name="model">sos.posts.total.attendance</field>
+        <field name="arch" type="xml">
+			<form string="Posts Total Attendance Wizard">
+					<group>
+						<group>
+							<field name="date_from"/>
+							<field name="date_to"/>
+						</group>
+						<group>
+							<field name="project_id" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}" attrs="{'readonly':[('center_id','!=',False)]}"/>
+							<field name="center_id" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}" attrs="{'readonly':[('project_id','!=',False)]}"/>
+						</group>
+					</group>
+				
+				<footer>
+						<button string="Print" name="print_report" type="object" class="oe_highlight"  />
+						<button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+			</form>
+		</field>
+    </record>
+
+    <record id="action_sos_posts_total_attendance" model="ir.actions.act_window">
+        <field name="name">Posts Attendance Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sos.posts.total.attendance</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="sos_posts_total_attendance_view"/>
+        <field name="target">new</field>
+    </record>
+</odoo>

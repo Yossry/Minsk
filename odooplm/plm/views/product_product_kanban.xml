@@ -1,0 +1,106 @@
+<odoo>
+    <record id="plm_component_kanban" model="ir.ui.view">
+        <field name="name">plm.component.kanban</field>
+        <field name="model">product.product</field>
+        <field name="arch" type="xml">
+            <kanban class="oe_background_grey o_kanban_dashboard o_account_kanban" create="0">
+                <field name="id"/>
+                <field name="image_small"/>
+                <field name="name"/>
+                <field name="engineering_code"/>
+                <field name="description" invisible="1"/>
+                <field name="engineering_revision"/>
+                <field name="engineering_writable"/>
+                <field name="engineering_material"/>
+                <field name="engineering_surface"/>
+                <field name="state"/>
+                <field name="linkeddocuments"/>
+                <field name="father_part_ids"/>
+                <field name="kanban_dashboard"/>
+                <templates>
+                 <t t-name="kanban-box">
+                            <div >
+                            <t t-value="record.state.raw_value" t-set="stateToUse"/>
+                                <div t-attf-class="o_kanban_card_header">
+                                    <div class="o_kanban_card_header_title">
+                                        <div class="o_primary">
+                                            <field name="name"/>-<field name="engineering_revision"/>-
+                                            <t t-if="stateToUse == 'draft'">
+                                                <span style="color: rgb(110, 51, 197);padding-left: 5px;">
+                                                    <b>
+                                                        <field name="state"/>
+                                                    </b>
+                                                </span>
+                                            </t>
+                                            <t t-if="stateToUse == 'confirmed'">
+                                                <span style="color: blue;padding-left: 5px;">
+                                                    <b>
+                                                        <field name="state"/>
+                                                    </b>
+                                                </span>
+                                            </t>
+                                            <t t-if="stateToUse == 'released'">
+                                                <span style="color: rgba(0, 170, 34, 0.66);padding-left: 5px;">
+                                                    <b>
+                                                        <field name="state"/>
+                                                    </b>
+                                                </span>
+                                            </t>
+                                            <t t-if="stateToUse == 'undermodify'">
+                                                <span style="color: rgb(218, 159, 34);padding-left: 5px;">
+                                                    <b>
+                                                        <field name="state"/>
+                                                    </b>
+                                                </span>
+                                            </t>
+                                            <t t-if="stateToUse == 'obsoleted'">
+                                                <span style="color: rgb(231, 43, 26);padding-left: 5px;">
+                                                    <b>
+                                                        <field name="state"/>
+                                                    </b>
+                                                </span>
+                                            </t>
+                                        </div>
+                                        <div class="o_secondary"><field name="name" /></div>
+                                    </div>
+                                    <div class="o_kanban_manage_button_section">
+                                        <a class="o_kanban_manage_toggle_button" href="#"><i class="fa fa-ellipsis-v" /></a>
+                                    </div>
+                                </div>
+                                <div class="container o_kanban_card_content">
+                                    <div class="row">
+                                    <div class="col-xs-6 o_kanban_primary_left">
+                                    <div style="display: -webkit-inline-box;" class="linked_document_container">
+			                            <t t-foreach="record.linkeddocuments.raw_value" t-as="documentId">
+			                                <div>
+			                                    <a type="object"
+			                                       role="button" 
+			                                       class="a_preview "
+			                                       name="action_show_reference"
+			                                       href="#"
+			                                       t-attf-data-context='{"ir_attachment_id": {{documentId}}}'
+			                                       >
+			                                       <img class="image_component_kanban"
+			                                            alt="No Image"
+			                                            t-att-src="kanban_image('ir.attachment', 'preview', documentId)"/>
+					                             </a>
+			                                </div>
+			                            </t>
+                                    </div>
+                                    </div>
+                                    </div>
+                                </div>
+                                <div class="container o_kanban_card_manage_pane dropdown-menu" role="menu">
+								  <a type="object" name="open_normal_bom"                        class="dropdown-item oe_kanban_action oe_kanban_action_a">Normal Boms</a>
+								  <a type="object" name="action_used_in_bom"                     class="dropdown-item oe_kanban_action oe_kanban_action_a">Where Used</a>
+								  <a type="action" name="plm.report_all_product_product_pdf"     class="dropdown-item oe_kanban_action oe_kanban_action_a">Print Bom All Levels</a>
+                                     <a type="action" name="plm.report_one_product_product_pdf"     class="dropdown-item oe_kanban_action oe_kanban_action_a">Print Bom One Level</a>
+                                     <a type="action" name="plm.report_product_product_pdf"         class="dropdown-item oe_kanban_action oe_kanban_action_a">Print Attached PDF</a>
+                                </div>
+                            </div>
+                        </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+</odoo>

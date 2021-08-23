@@ -1,0 +1,3 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+analytic_plan_mass_create_template_manager,analytic.plan.mass.create.template manager,model_analytic_plan_mass_create_template,account.group_account_manager,1,1,1,1
+analytic_plan_mass_create_template_user,analytic.plan.mass.create.template manager,model_analytic_plan_mass_create_template,analytic.group_analytic_accounting,1,0,0,0

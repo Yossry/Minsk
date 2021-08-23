@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <menuitem id="asset_disposal_report_sub_menu" parent="odoo_account_asset_extend_ce.asset_report_sub_top_menu" name="Assets Disposal" action="odoo_disposal_extend_ce.act_asset_disposal_report" groups="odoo_account_asset_extend_ce.group_asset_manager"/>
+    </data>
+</odoo>

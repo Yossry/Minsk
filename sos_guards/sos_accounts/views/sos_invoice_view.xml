@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>     
+		<record id="account.invoice_tree" model="ir.ui.view">
+			<field name="name">account.invoice.tree</field>
+			<field name="model">account.invoice</field>
+			<field name="arch" type="xml">
+				<tree decoration-info="state == 'draft'" decoration-muted="state == 'cancel'" string="Invoice">
+					<field name="post_id"/>
+					<field name="partner_id" invisible="1"/>
+					<field name="date_invoice"/>
+					<field name="number"/>
+					<field name="reference" invisible="1"/>
+					<field name="name" invisible="1"/>
+					<field name="journal_id" invisible="1"/> 
+			
+					<field name="project_id" invisible="1"/>
+					<field name="center_id" invisible="1"/>
+				  	<field name="for_month"/>
+				  	<field name="user_id" string="Prepared By"/>
+					<field name="date_due"/>
+			
+					<field name="amount_total_signed" sum="Total Amount"/>
+					<field name="residual_signed" sum="Residual Amount"/>
+					<field name="amount_tax" sum="Taxed Amount" string="Tax"/>
+					<field name="amount_untaxed" sum="Untaxed Amount"/>
+			
+					<field name="state"/>
+		
+				 	<field name="currency_id" invisible="1"/>
+				    <field name="company_currency_id" invisible="1"/>
+					<field name="type" invisible="context.get('type',True)"/>
+				</tree>
+			</field>	
+		</record>
+
+	<record id="sos_account_invoice_form" model="ir.ui.view">
+		<field name="name">sos.account.invoice.form</field>
+		<field name="model">account.invoice</field>
+		<field name="inherit_id" ref="account.invoice_form"/>
+		<field name="arch" type="xml">
+			<data>
+				<xpath  expr="//header/button[@name='action_invoice_open']" position="replace">
+					<button name="action_invoice_open" string="Approve"  attrs="{'invisible':['|',('type', '!=', 'out_refund'),('state', '!=', 'draft')]}" class="oe_highlight" groups="account.group_account_finance_manager"/>
+				</xpath>
+
+				<xpath expr="//header/button[@name='action_invoice_open']" position="before">
+					<button name="invoice_check" string="Checked"   attrs="{'invisible':['|',('type', 'in', ('in_invoice','in_refund')),('state', '!=', 'draft')]}" type="object" groups="sos.group_account_auditor,account.group_account_manager" class="oe_highlight"/>
+					<button name="invoice_draft" states="checked" string="Turn to Draft" type="object"  groups="account.group_account_manager,account.group_account_user,sos.group_account_auditor"/>
+					<button name="test_recompute" string="Test..." type="object"/>
+				</xpath>
+
+				<xpath expr="//header/field[@name='state']" position="replace">
+					<field name="state" widget="statusbar" nolabel="1" statusbar_visible="draft,checked,open,paid"/>
+				</xpath>
+				<xpath expr="/form/sheet/group[1]/group[1]" position="replace">
+					<group>
+						<field name="post_id"/>
+						<field name="partner_id" string="Customer" domain="[('customer', '=', True)]" invisible="1"/>
+						<field name="for_month"/>
+						<field name="invoice_type" />
+						<field name="inv_type" />
+						<field name="period_id" />
+						<field name="payment_term_id" invisible="1"/>
+						<field name="cash_rounding_id" groups="account.group_cash_rounding" invisible="1"/>
+					</group>
+				</xpath>
+				<xpath expr="/form/sheet/group[1]/group[2]" position="replace">
+					<group>
+						<field name="date_from"/>
+						<field name="date_to"/>
+						<field name="date_invoice" string="Invoice Accounting Date" help="Accounting Entry will be posted for this Date"/>
+						<field name="date_due"/>
+						<field name="create_date" string="Invoice Generate Date"/>
+						<field name="move_name" invisible="1"/>
+						<field name="account_id" domain="[('company_id', '=', company_id),('internal_type','=', 'receivable')]" groups="account.group_account_invoice,account.group_account_user"/>
+
+						<label for="currency_id" groups="base.group_multi_currency"/>
+						<div groups="base.group_multi_currency">
+							<field name="currency_id" options="{'no_create': True, 'no_open': True}" class="oe_inline"/>
+						</div>
+				  	</group>
+				</xpath>
+
+				<xpath expr="/form/sheet/notebook/page/field[@name='invoice_line_ids']/tree/field[@name='name']" position="after">
+						<field name="guardrate" string="Rate P/G"/>
+						<field name="guards" string="No of Guards"/>
+						<field name="month_days" invisible="1"/>
+				</xpath>
+
+				<field name="quantity" position="attributes">
+                    <attribute name="string">No of Days</attribute>
+                </field>
+
+				<field name="price_unit" position="attributes">
+                    <attribute name="string">Rate P/D</attribute>
+                </field>
+
+				<field name="discount" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </field>
+
+
+			</data>
+		</field>
+	</record>
+
+		
+	<!-- Partner Kanban View -->
+	<!-- SARFRAZ
+	<record model="ir.ui.view" id="base.res_partner_kanban_view">
+		<field name="name">res.partner.kanban</field>
+		<field name="model">res.partner</field>
+		<field name="arch" type="xml">
+		    <kanban class="o_res_partner_kanban">
+		        <field name="color"/>
+		        <field name="display_name"/>
+		        <field name="title"/>
+		        <field name="email"/>
+		        <field name="parent_id"/>
+		        <field name="is_company"/>
+		        <field name="function"/>
+		        <field name="phone"/>
+		        <field name="street"/>
+		        <field name="street2"/>
+		        <field name="zip"/>
+		        <field name="city"/>
+		        <field name="country_id"/>
+		        <field name="mobile"/>
+		        <field name="state_id"/>
+		        <field name="category_id"/>
+		        <field name="image"/>
+		        <field name="type"/>
+		        <templates>
+		            <t t-name="kanban-box">
+		                <div class="oe_kanban_global_click o_res_partner_kanban">
+		                    <div class="o_kanban_tags_section oe_kanban_partner_categories"/>
+		                    <div class="o_kanban_image">
+		                        <t t-if="record.image.raw_value">
+		                            <img t-att-src="kanban_image('res.partner', 'image_small', record.id.value)"/>
+		                        </t>
+		                        <t t-if="!record.image.raw_value">
+		                            <t t-if="record.type.raw_value === 'delivery'">
+		                                <img t-att-src='_s + "/base/static/src/img/truck.png"' class="o_kanban_image oe_kanban_avatar_smallbox"/>
+		                            </t>
+		                            <t t-if="record.type.raw_value === 'invoice'">
+		                                <img t-att-src='_s + "/base/static/src/img/money.png"' class="o_kanban_image oe_kanban_avatar_smallbox"/>
+		                             </t>
+		                            <t t-if="record.type.raw_value != 'invoice' &amp;&amp; record.type.raw_value != 'delivery'">
+		                                <t t-if="record.is_company.raw_value === true">
+		                                    <img t-att-src='_s + "/base/static/src/img/company_image.png"'/>
+		                                </t>
+		                                <t t-if="record.is_company.raw_value === false">
+		                                    <img t-att-src='_s + "/base/static/src/img/avatar.png"'/>
+		                                </t>
+		                            </t>
+		                        </t>
+		                    </div>
+		                    <div class="oe_kanban_details">
+		                        <strong class="oe_partner_heading"><field name="display_name"/></strong>
+							
+									<ul>
+				                        <li t-if="record.name.raw_value"><field name="name"/></li>
+										<li t-if="record.street.raw_value"><field name="street"/></li>
+				                        <li t-if="record.city.raw_value and !record.country_id.raw_value"><field name="city"/></li>
+				                        <li t-if="!record.city.raw_value and record.country_id.raw_value"><field name="country_id"/></li>
+				                        <li t-if="record.city.raw_value and record.country_id.raw_value"><field name="city"/>, <field name="country_id"/></li>
+				                        <li t-if="record.email.raw_value" class="o_text_overflow"><field name="email"/></li>
+				                    </ul>
+							
+		                        <div class="oe_kanban_partner_links"/>
+		                    </div>
+		                </div>
+
+		            </t>
+		        </templates>
+		    </kanban>
+		</field>
+	</record>
+	-->
+
+
+	<!-- ***** Filter View Of account_invoice ***** -->
+	<record id="view_account_invoice_filter" model="ir.ui.view">
+		<field name="name">account.invoice.select</field>
+		<field name="model">account.invoice</field>
+		<field name="arch" type="xml">
+			<search string="Search Invoice">
+				<field name="number" string="Invoice" filter_domain="['|','|','|', ('number','ilike',self), ('origin','ilike',self), ('reference', 'ilike', self), ('post_id', 'ilike', self)]"/>
+				<filter name="draft" string="Draft" domain="[('state','=','draft')]" help="Draft Invoices"/>
+				<filter name="checked" string="Checked" domain="[('state','=','checked')]" help="Checked Invoices"/>	
+				<filter name="invoices" string="Invoices" domain="[('state','in',['open','paid']),('type','in',('out_invoice','in_invoice'))]" help="Open and Paid Invoices"/>
+				<filter name="unpaid" string="Unpaid" domain="[('state','=','open')]" help="Unpaid Invoices"/>
+				<separator/>
+				<filter name="sale" string="Sale" domain="[('type','=','out_invoice')]" help="Sale Invoices"/>
+				<filter name="refund" string="Refund" domain="[('type','=','out_refund')]" help="Refund Invoices"/>
+				<filter name="late" string="Overdue" domain="[('date_due', '&lt;', time.strftime('%%Y-%%m-%%d')), ('state', '=', 'open')]" help="Overdue invoices, maturity date passed"/>
+				<separator/>
+				<field name="post_id" string="Post"/>
+				<field name="user_id" string="Salesperson"/>
+				<field name="for_month" string="Invoice Month"/>
+				<field name="project_id"/>
+				<field name="center_id"/>
+				<field name="date" string="Period"/>
+				<separator/>
+				<filter name="user_id" domain="[('user_id','=',uid)]" help="My Invoices"/>
+				<group expand="0" string="Group By">
+					<filter string="Partner" name="group_by_partner_id" context="{'group_by':'post_id'}"/>
+					<filter string="Salesperson" name="user_id" context="{'group_by':'user_id'}"/>
+					<filter string="Project" name="project_id" context="{'group_by':'project_id'}"/>
+					<filter string="Center" name="center_id" context="{'group_by':'center_id'}"/>
+					<filter string="Status" name="status" context="{'group_by':'state'}"/>
+					<separator/>
+					<filter string="Invoice Month" name="date_invoice" context="{'group_by':'date_invoice:month'}"/>				
+					<filter string="Invoice Year" name="date_invoice" context="{'group_by':'date_invoice:year'}"/>
+					<filter string="For Month" name="for_month" context="{'group_by':'for_month'}"/>
+					<filter string="Due Date" name="date_due" context="{'group_by':'date_due'}"/>
+					<filter string="Period" name="period_id" context="{'group_by':'period_id'}"/>
+					<separator/>
+				<filter string="Inv Accounting Date" name="date_invoice" context="{'group_by':'date_invoice'}"/>
+				</group>
+		   </search>
+		</field>
+	</record>  
+
+	<record id="account.action_invoice_tree" model="ir.actions.act_window">
+		<field name="name">Invoices</field>
+		<field name="res_model">account.invoice</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form,calendar,graph</field>
+		<field name="view_id" ref="account.invoice_tree"/>
+		<field name="context">{'type':'out_invoice'}</field>
+		<field name="search_view_id" ref="view_account_invoice_filter"/>
+	</record>
+
+	<record id="account.action_invoice_refund_out_tree" model="ir.actions.act_window">
+		<field name="name">Invoices</field>
+		<field name="res_model">account.invoice</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form,kanban,calendar,graph,pivot</field>
+		<field name="view_id" ref="account.invoice_tree"/>
+		<field name="domain">[('type','in', ['out_invoice', 'out_refund']), ('state', 'not in', ['draft', 'cancel'])]</field>
+		<field name="context">{'default_type':'out_invoice', 'type':'out_invoice', 'journal_type': 'sale'}</field>
+		<field name="search_view_id" ref="view_account_invoice_filter"/>
+	</record>
+
+	<record id="account.action_invoice_tree1" model="ir.actions.act_window">
+		<field name="name">Customer Invoices</field>
+		<field name="res_model">account.invoice</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,kanban,form,calendar,pivot,graph</field>
+		<field eval="False" name="view_id"/>
+		<field name="domain">[('type','in',('out_invoice', 'out_refund'))]</field>
+		<field name="context">{'default_type':'out_invoice', 'type':'out_invoice', 'journal_type': 'sale'}</field>
+		<field name="search_view_id" ref="view_account_invoice_filter"/>
+		<field name="help" type="html">
+		  <p class="oe_view_nocontent_create">
+		    Click to create a customer invoice.
+		  </p><p>
+		    Odoo's electronic invoicing allows to ease and fasten the
+		    collection of customer payments. Your customer receives the
+		    invoice by email and he can pay online and/or import it
+		    in his own system.
+		  </p><p>
+		    The discussions with your customer are automatically displayed at
+		    the bottom of each invoice.
+		  </p>
+		</field>
+	</record>
+	
+	
+	<!-- ***** Account Incentive Form View ***** -->
+	<record id="incentive_form" model="ir.ui.view">
+		<field name="name">account.incentive.form</field>
+		<field name="model">account.invoice</field>
+		<field name="arch" type="xml">
+		    <form string="Invoice">
+		    <header>
+		         <button name="action_invoice_sent" type="object" string="Send by Email" attrs="{'invisible':['|',('sent','=',True), ('state', '!=', 'open')]}" class="oe_highlight" groups="base.group_user"/>
+			  <button name="invoice_print" string="Print" type="object" attrs="{'invisible':['|',('sent','=',True), ('state', '!=', 'open')]}" class="oe_highlight" groups="base.group_user"/>		      
+			  <button name="action_invoice_sent" type="object" string="Send by Email" attrs="{'invisible':['|',('sent','=',False), ('state', '!=', 'open')]}" groups="base.group_user"/>
+			  		  
+			  <button name="invoice_check" string="Checked"   attrs="{'invisible':['|',('type', '!=', 'out_invoice'),('state', '!=', 'draft')]}" class="oe_highlight" groups="sos.group_account_auditor"/>		      
+			  <button name="invoice_open" states="checked" string="Validate" class="oe_highlight" groups="account.group_account_manager"/>
+		  	  <button name="invoice_open" string="Approve"  attrs="{'invisible':['|',('type', '!=', 'out_refund'),('state', '!=', 'draft')]}" class="oe_highlight" groups="account.group_account_manager"/>
+			  
+			  <button name="invoice_draft" states="checked" string="Turn to Draft" type="object"  groups="account.group_account_manager,account.group_account_user,sos.group_account_auditor"/>
+			  <button name="%(account.action_account_invoice_refund)d" type='action' string='Refund Invoice' states='open,paid' groups="base.group_user"/>
+			  <button name="%(account.action_account_invoice_payment)d" type="action" states="open" string="Register Payment" groups="account.group_account_invoice" class="oe_highlight"/>
+			  
+			  <button name="invoice_cancel" states="draft,open" string="Cancel" groups="base.group_no_one"/>
+			  <button name="action_cancel_draft" states="cancel" string="Reset to Draft" type="object" groups="base.group_user"/>
+				<field name="state" widget="statusbar" nolabel="1" statusbar_visible="draft,checked,open,paid"/>
+		    </header>
+		    <div class="alert alert-info" role="alert" style="margin-bottom:0px;" attrs="{'invisible': [('has_outstanding','=',False)]}">
+		        You have <bold><a class="alert-link" href="#outstanding" role="button">outstanding payments</a></bold> for this customer. You can allocate them to mark this invoice as paid.
+		    </div>
+		    <field name="has_outstanding" invisible="1"/>
+		    <sheet string="Invoice">
+		        
+		        <label for="refund" string="Refund" attrs="{'invisible': ['|',('state','in',('draft')), ('type','&lt;&gt;','out_refund')]}"/>
+		        <h1 class="mt0">
+		            <label for="state" string="Draft Invoice" attrs="{'invisible': ['|',('state','not in',('draft',)), ('type','&lt;&gt;','out_invoice')]}"/>
+		            <label  for="state" string="Draft Refund" attrs="{'invisible': ['|',('state','not in',('draft',)), ('type','&lt;&gt;','out_refund')]}"/>
+		            <field name="number" readonly="1" class="oe_inline" attrs="{'invisible': [('state','in',('draft',))]}"/>
+		        </h1>
+		        <field name="type" invisible="1"/>
+		        <group>
+		            <group>
+		                <field name="post_id"/>					
+						<field name="partner_id" string="Customer" domain="[('customer', '=', True)]" invisible="1"/>
+		                <field name="payment_term_id"/>
+						<field name="incentive"/>
+		            </group>
+		            <group>
+		                <field name="date_invoice"/>
+		                <field name="move_name" invisible="1"/>
+		                <field name="user_id" groups="base.group_user" context="{'default_groups_ref': ['base.group_user', 'base.group_partner_manager', 'account.group_account_invoice']}"/>
+		                <label for="currency_id" groups="base.group_multi_currency"/>
+		                <div groups="base.group_multi_currency">
+		                    <field name="currency_id" options="{'no_create': True, 'no_open': True}" class="oe_inline"/>
+		                    <field name="company_currency_id" invisible="1"/>
+		                </div>
+						<field domain="[('company_id', '=', company_id),('internal_type','=', 'receivable'), ('deprecated', '=', False)]"
+		                    name="account_id"/>
+		            </group>
+		        </group>
+		        <field name="sent" invisible="1"/>
+		        <notebook colspan="4">
+		            <page string="Invoice Lines">
+		                <field name="invoice_line_ids" nolabel="1" widget="one2many_list" mode="tree,kanban" context="{'type': type, 'journal_id': journal_id, 'default_invoice_id': id}">
+		                    <tree string="Invoice Lines" editable="bottom">
+		                        <field name="sequence" widget="handle"/>
+		                        <field name="product_id"/>
+		                        <field name="name"/>
+		                        <field name="company_id" invisible="1"/>
+		                        <field name="account_id" domain="[('company_id', '=', parent.company_id), ('internal_type', '=', 'other')]"/> 
+		                        <field name="account_analytic_id" domain="[('company_id', '=', parent.company_id), ('account_type', '=', 'normal')]"/>   
+		                        <field name="quantity"/>
+		                        <field name="uom_id" groups="product.group_uom"/>
+		                        <field name="price_unit"/>
+		                        <field name="discount" groups="sale.group_discount_per_so_line"/>
+		                        <field name="invoice_line_tax_ids" widget="many2many_tags" context="{'type':parent.type}"
+		                            domain="[('type_tax_use','=','sale'),('company_id', '=', parent.company_id)]" options="{'no_create': True}"/>
+		                        <field name="price_subtotal"/>
+		                        <field name="currency_id" invisible="1"/>
+		                    </tree>
+		                    <kanban class="o_kanban_mobile">
+		                        <field name="product_id"/>
+		                        <field name="price_subtotal"/>
+		                        <field name="quantity"/>
+		                        <field name="uom_id" groups="product.group_uom"/>
+		                        <templates>
+		                            <t t-name="kanban-box">
+		                                <div t-attf-class="oe_kanban_card oe_kanban_global_click">
+		                                    <div class="row">
+		                                        <div class="col-xs-12">
+		                                            <strong><span><t t-esc="record.product_id.value or 'None'"/></span></strong>
+		                                        </div>
+		                                    </div>
+		                                    <div class="row">
+		                                        <div class="col-xs-8 text-muted">
+		                                            <span><t t-esc="record.quantity.value"/> <t t-esc="record.uom_id.value"/></span>
+		                                        </div>
+		                                        <div class="col-xs-4 text-muted">
+		                                            <span class="text-right"><t t-esc="record.price_subtotal.value"/></span>
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                            </t>
+		                        </templates>
+		                    </kanban>
+		                </field>
+		                <group class="oe_subtotal_footer oe_right">
+		                    <field name="amount_untaxed"/>
+		                    <field name="amount_tax"/>
+		                    <field name="amount_total" class="oe_subtotal_footer_separator"/>
+		                    <field name="payments_widget" colspan="2" nolabel="1" widget="payment"/>
+		                    <field name="residual" class="oe_subtotal_footer_separator" attrs="{'invisible': [('state', '=', 'draft')]}"/>
+		                    <field name="reconciled" invisible="1"/>
+		                    <field name="outstanding_credits_debits_widget" colspan="2" nolabel="1" widget="payment" attrs="{'invisible': [('state', 'not in', 'open')]}"/>
+		                </group>
+		                <field name="comment" placeholder="Terms and conditions..."/>
+		            </page>
+		            <page string="Other Info">
+		                <group>
+		                    <group>
+		                        <field name="journal_id" groups="account.group_account_user"
+		                        options="{'no_create': True}" attrs="{'readonly':[('move_name','!=',False)]}"/>
+		                        <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>
+		                        <field domain="[('partner_id.ref_company_ids', 'in', [company_id])]" name="partner_bank_id" invisible="1"/>
+		                        <field name="date_due" groups="base.group_no_one"/>
+		                    </group>
+		                    <group>                            
+		                        <field name="origin" groups="base.group_user" attrs="{'invisible': [('origin', '=', False)]}"/>
+		                        <field name="name"/>
+		                        <field name="move_id" groups="account.group_account_manager" attrs="{'invisible': [('move_id', '=', False)]}"/>
+		                        <field name="fiscal_position_id" options="{'no_create': True}" />
+		                    </group>
+		                </group>
+
+		                <field name="tax_line_ids">
+		                    <tree editable="bottom" string="Taxes" create="0">
+		                        <field name="name"/>
+								<!--Need invisible fields for on_change to create all necessary info -->
+		                        <field name="tax_id" invisible="1"/>
+		                        <field name="account_analytic_id" invisible="1"/>
+		                        <field name="sequence" invisible="1"/>
+		                        <field name="manual" invisible="1"/>
+		                        <field name="account_id" groups="account.group_account_user"/>
+		                        <field name="amount" invisible="1"/>
+								<field name="account_analytic_id" domain="[('company_id', '=', parent.company_id)]" groups="analytic.group_analytic_accounting"/>
+								<field name="analytic_tag_ids" groups="analytic.group_analytic_tags" widget="many2many_tags" options="{'color_field': 'color'}"/>
+								<field name="amount_rounding" invisible="1"/>
+								<field name="amount_total"/>
+								<field name="currency_id" invisible="1" force_save="1"/>
+		                    </tree>
+		                </field>
+		            </page>
+		        </notebook>
+		    </sheet>
+		    <div class="oe_chatter">
+		         <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+		    </div>
+		    </form>
+		</field>
+	</record>
+	
+
+	<!-- ***** Account Incentive Tree View ***** -->
+	<record id="incentive_tree" model="ir.ui.view">
+		<field name="name">account.invoice.tree</field>
+		<field name="model">account.invoice</field>
+		<field name="arch" type="xml">
+		    <tree decoration-info="state == 'draft'" decoration-muted="state == 'cancel'" string="Invoice">
+		        <field name="partner_id" groups="base.group_user" string="Customer"/>
+		        <field name="date_invoice"/>
+		        <field name="number"/>
+		        <field name="commercial_partner_id" invisible="1"/>
+		        <field name="reference" invisible="1"/>
+		        <field name="name" invisible="1"/>
+		        <field name="journal_id" invisible="1"/>
+		        <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
+		        <field name="user_id"/>
+		        <field name="date_due"/>
+		        <field name="origin"/>
+		        <field name="amount_total_signed"/>
+		        <field name="residual_signed"/>
+		        <field name="currency_id" invisible="1"/>
+		        <field name="company_currency_id" invisible="1"/>
+		        <field name="state"/>
+		        <field name="type" invisible="context.get('type',True)"/>
+		    </tree>
+		</field>
+	</record>
+
+	<!-- ***** Account Incentive ACTION VIEW ***** -->
+	 <record id="action_incentive_invoice" model="ir.actions.act_window">
+		<field name="name">Incentives</field>
+		<field name="res_model">account.invoice</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form</field>
+		<field name="view_id" eval="False"/>
+		<field name="domain">[('incentive', '=', True)]</field>		
+		<field name="context">{'type':'out_invoice','default_incentive':True}</field>    
+	</record>
+	
+	<record id="action_incentive_tree1" model="ir.actions.act_window.view">
+		<field eval="1" name="sequence"/>
+		<field name="view_mode">tree</field>
+		<field name="view_id" ref="incentive_tree"/>
+		<field name="act_window_id" ref="action_incentive_invoice"/>
+	</record>
+
+	<record id="action_incentive_tree2" model="ir.actions.act_window.view">
+		<field eval="2" name="sequence"/>
+		<field name="view_mode">form</field>
+		<field name="view_id" ref="incentive_form"/>
+		<field name="act_window_id" ref="action_incentive_invoice"/>
+	</record>
+
+ <menuitem id="menu_account_customer" name="Accounts" parent="sos.menu_gms_root" sequence="2"  groups="sos.group_coordinator,account.group_account_manager"/>
+	 <menuitem action="account.action_invoice_tree1" id="menu_action_invoice_tree1" parent="menu_account_customer" sequence="1"/>
+
+	 <menuitem action="action_incentive_invoice" name="Incentives" id="menu_action_invoice_tree" parent="menu_account_customer" sequence="2"/>
+		
+	 
+</data>
+</odoo>

@@ -1,0 +1,9 @@
+@mixin graph_view() {
+    .o_graph {
+        padding: 10px;
+        background-color: $white;
+        & > .o_graph_svg_container {
+            border: none;
+        }
+    }
+}

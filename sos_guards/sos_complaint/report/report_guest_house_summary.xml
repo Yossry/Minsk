@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<template id ="report_guest_house_summary">
+			<t t-call="web.html_container">
+					<t t-call="web.external_layout" style="font-family:georgia,garamond,serif;font-size:10px">
+						<div class="page">
+							<style>
+									.tabhead{font-family:georgia,garamond,serif;font-size:10px;}
+									.tabcol{font-size:14px;}
+									table th { background-color:#d4e3e5;}
+									tr:nth-child(even) {background-color: #FFEBCD;}
+									tr:nth-child(odd) {background-color: #cdcdcd;}
+							</style>
+							<div width="100%"><center><h3> Guest House Summary Report </h3></center> </div>
+							
+							<t t-if="data['need_full_report']==False"> 
+								<div width="100%"><center><h4> From <span t-esc="get_date_formate(data['check_in'])"/> To  <span t-esc="get_date_formate(data['check_out'])"/> </h4></center> </div>
+							</t>
+							<t t-if="data['need_full_report']==True"> 
+								<div width="100%"><center><h4> Complete Report </h4></center> </div>
+							</t>
+							
+							<table class="table table-condensed" width="100%">
+								<tr style="font-size:12px; font-weight:bold">
+									<td>SR#. </td>
+									<td class="text-right">Check In </td>
+									<td class="text-right">Check Out </td>
+									<td class="text-right">Days </td>
+									<td class="text-right">Rent Per Day </td>
+									<td class="text-right">Total Rent </td>
+									<td>Food </td>
+									<td class="text-right">Food Amount </td>
+									<td>Traveler Name </td>
+									<td>Guest House Name </td>
+									<td>City </td>
+									<td class="text-right">Total Amount</td>
+								</tr>
+								
+								<t t-foreach="recs" t-as="rec">
+									<tr style="font-size:12px;">
+										<td> <span t-esc="rec_index + 1" /> </td>
+										<td class="text-right"> <span t-field="rec.check_in"  t-field-options='{"format": "d-MM-Y"}'/> </td>
+										<td class="text-right"> <span t-field="rec.check_out" t-field-options='{"format": "d-MM-Y"}'/> </td>
+										<td class="text-right"> <span t-field="rec.days" /> </td>
+										<td class="text-right"> <span t-field="rec.rent_per_day" /> </td>
+										<td class="text-right"> <span t-field="rec.total_rent" /> </td>
+										<td> <span t-field="rec.food" /> </td>
+										<td class="text-right"> <span t-field="rec.food_amount" /> </td>
+										
+										<td>
+											<t t-if="rec.traveler_type=='SOS Employees'"> 
+												<span t-esc="rec.sos_traveler_name.name" />
+											</t>
+											<t t-if="rec.traveler_type=='Other Then SOS'"> 
+												<span t-esc="rec.vistor_name" />
+											</t>
+										</td>
+										
+										<td> <span t-field="rec.guest_house_name" /> </td>
+										<td> <span t-field="rec.city" /> </td>
+										<td class="text-right"> <span t-field="rec.total_amount" /> </td>
+									</tr>
+								</t>
+								
+								<tr style="font-size:12px; font-weight:bold">
+									<td colspan="5">Total</td>
+									<td class="text-right"> <span t-esc="'{0:,.1f}'.format(stat['total_rent'])"/> </td>
+									<td colspan="2" class="text-right"> <span t-esc="'{0:,.1f}'.format(stat['total_food'])" /> </td>
+									<td colspan="4" class="text-right"> <span t-esc="'{0:,.1f}'.format(stat['total_amt'])" /> </td>
+								</tr>	
+							</table>
+							
+							
+						</div>
+					</t>
+			</t>
+		</template>
+	
+	</data>
+</odoo>

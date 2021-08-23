@@ -1,0 +1,141 @@
+<odoo>
+	<data>
+<!-- List View-->
+    	<record id="insurance_comp_view_list" model="ir.ui.view">
+        	<field name="name">Insurance Company</field>
+        	<field name="model">insurance.comp</field>
+        	<field name="arch" type="xml">
+	            <tree>
+                	<field name="name"/>
+                	<field name="emp_perc"/>
+                	<field name="comp_perc"/>
+                	<field name="total"/>
+            	</tree>
+        	</field>
+    	</record>
+
+    <!-- Form View -->
+    	<record id="insurance_comp_view_form" model="ir.ui.view">
+	        <field name="name">Insurance Company Form</field>
+    	    <field name="model">insurance.comp</field>
+        	<field name="arch" type="xml">
+	            <form string="Insurance Company">
+                    <group>
+                      	<field name="name"/>
+                       	<field name="emp_perc"/>
+                       	<field name="comp_perc"/>
+                       	<field name="total"/>
+                    </group>
+            	</form>
+        	</field>
+    	</record>
+
+	    <!-- actions opening views on models -->
+    	<record id="insurance_comp_action" model="ir.actions.act_window">
+	        <field name="name">Insurance Company</field>
+        	<field name="res_model">insurance.comp</field>
+        	<field name="view_mode">tree,form</field>
+    	</record>
+	
+	    <!-- Menu Items -->
+	    <menuitem
+        	action="insurance_comp_action"
+        	name="Insurance Company"
+        	id="insurance_comp_menu"
+        	parent="hr.menu_human_resources_configuration"
+        	groups="hr.group_hr_manager"
+        	sequence="19"
+        	/>
+
+	    <!-- List View-->
+    	<record id="social_year_view_list" model="ir.ui.view">
+        	<field name="name">Social Security Year</field>
+        	<field name="model">social.year</field>
+        	<field name="arch" type="xml">
+	            <tree>
+                	<field name="name"/>
+                	<field name="emp_perc"/>
+                	<field name="comp_perc"/>
+            	</tree>
+        	</field>
+    	</record>
+
+    <!-- Form View -->
+    	<record id="social_year_view_form" model="ir.ui.view">
+	        <field name="name">Social Security Form</field>
+    	    <field name="model">social.year</field>
+        	<field name="arch" type="xml">
+	            <form string="Social Security">
+                    <group>
+                      	<field name="name"/>
+                       	<field name="emp_perc"/>
+                       	<field name="comp_perc"/>
+                    </group>
+            	</form>
+        	</field>
+    	</record>
+
+	    <!-- actions opening views on models -->
+    	<record id="social_year_action" model="ir.actions.act_window">
+	        <field name="name">Social Security Year</field>
+        	<field name="res_model">social.year</field>
+        	<field name="view_mode">tree,form</field>
+    	</record>
+	
+	    <!-- Menu Items -->
+	    <menuitem
+        	action="social_year_action"
+        	name="Social Security"
+        	id="social_security_menu"
+        	parent="hr.menu_human_resources_configuration"
+        	groups="hr.group_hr_manager"
+        	sequence="19"
+        	/>
+
+
+
+        <record id="hr_contract_view_insured" model="ir.ui.view">
+             <field name="name">hr_contract_view_social</field>
+             <field name="model">hr.contract</field>
+             <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+             <field name="arch" type="xml">
+				<notebook>
+					<page string="Social Security And Health Insurance">
+						<group string="Social Security">
+							<field name="social_year"/>
+							<field name="employee_social"/>
+							<field name="company_social"/>
+						</group>
+						<group string ="Health Insurance">
+							<field name="no_of_persons"/>
+							<field name="family_perc"/>
+							<field name="insurance_comp"/>
+							<field name="employee_insurance"/>
+							<field name="company_insurance"/>
+						</group>
+					</page>								
+                    <page string="Income Tax" invisible="0">
+						<group string="Income Tax">
+							<group>
+								<field name="taxable_wage"/>
+								<field name="legal_exemption"/>
+                       		</group>
+                       	</group>
+                       	<group>
+                 	  		<group>
+								<field name="yearly_income_taxes"/>
+								<field name="monthly_income_taxes"/>                         			
+                       		</group>
+                     		<group>
+								<field name="income1" invisible="1"/>
+								<field name="income2" invisible="1"/>
+								<field name="income3" invisible="1"/>
+								<field name="income4" invisible="1"/>
+                       		</group>
+                       	</group>
+                   	</page>
+                  </notebook>	
+				</field>
+		</record>
+	</data>
+</odoo>

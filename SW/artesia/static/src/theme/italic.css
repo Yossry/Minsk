@@ -1,0 +1,64 @@
+h1.brand {
+  font-style: italic !important;
+}
+.heading-block h1, .heading-block h2, .heading-block h3, .heading-block h4 {
+	font-style: italic !important;
+}
+h1>span:not(.nocolor):not(.badge) {
+	font-style: italic !important;
+}
+.inner_about_title h2 {
+	font-style: italic !important;
+}
+#service-second h2 {
+	font-style: italic !important;
+}
+#customize-second .title {
+	font-style: italic !important;
+}
+#our-blog-second h2 {
+	font-style: italic !important;
+}
+#contact-us-second h3.tittle {
+	font-style: italic !important;
+}
+#contact-us-second h4.info {
+	font-style: italic !important;
+}
+.slider_area .home_slider .slingle_home_slider .slider_area_inner h1 {
+	font-style: italic !important;
+}
+#about-third h3 {
+	font-style: italic !important;	
+}
+#about-third h3 {
+	font-style: italic !important;	
+}
+#optimized-third .about-more .section-title h2 {
+	font-style: italic !important;
+}
+#contact-us-third .contact-area .heading > h2 {
+	font-style: italic !important;
+}
+#about-fouth .section-title h2 {
+	font-style: italic !important;
+}
+#feature-fourth .tab-pane h2 {
+	font-style: italic !important;
+}
+#customize-fourth .about-text h4 {
+	font-style: italic !important;
+}
+#contact-us-fourth .contact-us h3 {
+	font-style: italic !important;
+}
+.section-title h2{
+	font-style: italic !important;
+}
+.fame-cap-text h1 {
+	font-style: italic !important;
+	
+}
+#footer h4 {
+    font-style: italic !important;
+}

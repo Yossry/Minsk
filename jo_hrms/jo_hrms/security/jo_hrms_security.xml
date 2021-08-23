@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<odoo>
+    <record id="property_rule_jo" model="ir.rule">
+        <field name="name">JO Multi Company</field>
+        <field name="model_id" ref="model_social_year"/>
+        <field eval="True" name="global"/>
+        <field name="domain_force">[]</field>
+    </record>
+
+    <record id="property_rule_jo_req" model="ir.rule">
+        <field name="name">Jo Request Multi Company</field>
+        <field name="model_id" ref="model_insurance_comp"/>
+        <field eval="True" name="global"/>
+        <field name="domain_force">[]</field>
+    </record>
+</odoo>

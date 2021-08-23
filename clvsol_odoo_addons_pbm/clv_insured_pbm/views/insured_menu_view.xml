@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <menuitem name="Insureds" id="clv_insured.menu_insurance_insurance_insureds"
+        parent="clv_base.menu_insurance_insurance"
+        groups="clv_insured.group_user"
+        sequence="10"
+        action="clv_insured.clv_insured_action"/>
+
+    <menuitem name="Insured" id="clv_insured.menu_insurance_config_insured" 
+        parent="clv_base.menu_insurance_config"
+        groups="clv_insured.group_user"
+        sequence="10"/>
+
+    <menuitem name="Categories" id="clv_insured.menu_insurance_config_insured_categories" 
+        parent="clv_insured.menu_insurance_config_insured"
+        groups="clv_insured.group_user"
+        sequence="10"
+        action="clv_insured.clv_insured_category_action"/>
+
+    <menuitem name="Markers" id="clv_insured.menu_insurance_config_insured_markers" 
+        parent="clv_insured.menu_insurance_config_insured"
+        groups="clv_insured.group_user"
+        sequence="20"
+        action="clv_insured.clv_insured_marker_action"/>
+
+</odoo>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+        <record id="acquirer_form_paystack" model="ir.ui.view">
+            <field name="name">acquirer.form.paystack</field>
+            <field name="model">payment.acquirer</field>
+            <field name="inherit_id" ref="payment.acquirer_form"/>
+            <field name="arch" type="xml">
+                <xpath expr='//group[@name="acquirer"]' position='after'>
+                    <group attrs="{'invisible': [('provider', '!=', 'paystack')]}">
+                        <field name="terminal_id"/>
+                        <field name="paystack_secret_key"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+
+        <record id="transaction_form_paystack" model="ir.ui.view">
+            <field name="name">acquirer.transaction.form.paystack</field>
+            <field name="model">payment.transaction</field>
+            <field name="inherit_id" ref="payment.transaction_form"/>
+            <field name="arch" type="xml">
+                <xpath expr='//group[last()]' position='after'>
+                    <notebook>
+                    <page string="Paystack TX Details">
+                        <group>
+                            <field name="paystack_txn_id"/>
+                                <field name="trans_num"/>
+                                <field name="card_holder"/>
+                                <field name="card_no"/>
+                                <field name="debited_amount"/>
+                                <field name="debit_currency"/>
+                                <field name="msg"/>
+                        </group>
+                    </page>
+                </notebook>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

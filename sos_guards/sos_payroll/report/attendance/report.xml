@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+	
+	<!--
+	
+	<record id="guards_daily_attendance_rep" model="ir.actions.report.xml">
+		<field name="name">Guards Daily Attendance</field>
+		<field name="type">ir.actions.report.xml</field>
+		<field name="model">guards.daily.attendance.wizard</field>
+		<field name="report_name">guards_daily_attendance_report_aeroo</field>
+		<field name="report_type">aeroo</field>
+		<field name="in_format">oo-ods</field>
+		<field name="parser_loc">sos_payroll/report/attendance/parser.py</field>
+		<field name="report_rml">sos_payroll/report/attendance/guards_daily_attendance.ods</field>
+		<field name="parser_state">loc</field>
+		<field name="tml_source">file</field>			
+	</record>
+		
+	<record id="guarda_consolidated_attendance_rep" model="ir.actions.report.xml">
+		<field name="name">Guards Consolidated Attendance</field>
+		<field name="type">ir.actions.report.xml</field>
+		<field name="model">guards.consolidated.attendance.wizard</field>
+		<field name="report_name">guards_consolidated_attendance_report_aeroo</field>
+		<field name="report_type">aeroo</field>
+		<field name="in_format">oo-ods</field>
+		<field name="parser_loc">sos_payroll/report/attendance/parser.py</field>
+		<field name="report_rml">sos_payroll/report/attendance/guards_consolidated_attendance.ods</field>
+		<field name="parser_state">loc</field>
+		<field name="tml_source">file</field>			
+	</record>
+
+	
+		
+	<record id="guards_daily_absent_rep" model="ir.actions.report.xml">
+		<field name="name">Guards Daily Absent</field>
+		<field name="type">ir.actions.report.xml</field>
+		<field name="model">guards.daily.absent.wizard</field>
+		<field name="report_name">guards_daily_absent_report_aeroo</field>
+		<field name="report_type">aeroo</field>
+		<field name="in_format">oo-ods</field>
+		<field name="parser_loc">sos_payroll/report/attendance/parser.py</field>
+		<field name="report_rml">sos_payroll/report/attendance/guards_daily_absent.ods</field>
+		<field name="parser_state">loc</field>
+		<field name="tml_source">file</field>			
+	</record>
+
+    <record id="guards_attendance_register_rep" model="ir.actions.report.xml">
+		<field name="name">Guards Attendance Register Report</field>
+		<field name="type">ir.actions.report.xml</field>
+		<field name="model">guards.attendance.register.wizard</field>
+		<field name="report_name">guards_attendance_register_report_aeroo</field>
+		<field name="report_type">aeroo</field>
+		<field name="in_format">oo-ods</field>
+		<field name="parser_loc">sos_payroll/report/attendance/parser.py</field>
+		<field name="report_rml">sos_payroll/report/attendance/guards_attendance_register.ods</field>
+		<field name="parser_state">loc</field>
+		<field name="tml_source">file</field>			
+	</record>
+	-->
+	
+	<!-- Guards ShortFall Center Qweb Report -->
+	<report
+		id="report_shortfall_center"
+		string= "Guards ShortFall Center Report"
+		model = "sos_payroll.guards.shortfall.wizard"
+		report_type="qweb-pdf"
+		file="sos_payroll.report_shortfallcenter"
+		name="sos_payroll.report_shortfallcenter"
+	/>
+	
+	<!-- Guards ShortFall Project Qweb Report -->
+	<report
+		id="report_shortfall_project"
+		string= "Guards ShortFall Project Report"
+		model = "sos_payroll.guards.shortfall.wizard"
+		report_type="qweb-pdf"
+		file="sos_payroll.report_shortfallproject"
+		name="sos_payroll.report_shortfallproject"
+	/>
+	
+	<!-- Guards ShortFall Post Qweb Report -->
+	<report
+		id="report_shortfall_post"
+		string= "Guards ShortFall Post Report"
+		model = "sos_payroll.guards.shortfall.wizard"
+		report_type="qweb-pdf"
+		file="sos_payroll.report_shortfallpost"
+		name="sos_payroll.report_shortfallpost"
+	/>   
+	
+	<!-- Guards Attendance Qweb Report -->
+	<report
+		id="report_guard_attendance"
+		string= "Attendance Report"
+		model = "sos_payroll.guards.attendance.wizard"
+		report_type="qweb-pdf"
+		file="sos_payroll.report_guardattendance"
+		name="sos_payroll.report_guardattendance"
+	/>
+	
+	<!-- Post Attendance Register Qweb Report -->
+	<report
+		id="report_posts_attendance_register"
+		string= "Posts Attendance Register Report"
+		model = "sos_payroll.posts.attendance.register.wizard"
+		report_type="qweb-pdf"
+		file="sos_payroll.report_postsattendance_register"
+		name="sos_payroll.report_postsattendance_register"
+	/> 
+	
+	<!-- Guards Attendance Register Qweb Report -->
+	<report
+		id="report_guards_attendance_register"
+		string= "Guards Attendance Register Report"
+		model = "sos_payroll.guards.attendance.register.wizard"
+		report_type="qweb-pdf"
+		file="sos_payroll.report_guardsattendance_register"
+		name="sos_payroll.report_guardsattendance_register"
+	/>
+	
+	<!-- Guards Consolidated Attendance Qweb Report -->
+	<report
+		id="report_guards_consolidated_attendance"
+		string= "Guards Consolodated Attendance Report"
+		model = "sos_payroll.guards.consolidated.attendance.wizard"
+		report_type="qweb-pdf"
+		file="sos_payroll.report_guards_consolodatedattendance"
+		name="sos_payroll.report_guards_consolidatedattendance"
+	/>   
+
+<!-- PSS Attendance -->
+	<report
+		id="report_pss_attendance"
+		string= "PSS Attendance Report"
+		model = "sos_payroll.sos.pss.attendance.wizard"
+		report_type="qweb-pdf"
+		file="sos_payroll.report_pssattendance"
+		name="sos_payroll.report_pssattendance"
+	/>
+
+	<!-- PSS Attendance Summary -->
+	<report
+		id="report_pss_attendance_summary"
+		string= "PSS Attendance Summary"
+		model = "sos_payroll.sos.pss.attendance.summary.wizard"
+		report_type="qweb-pdf"
+		file="sos_payroll.report_pssattendance_summary"
+		name="sos_payroll.report_pssattendance_summary"
+	/>
+	
+	
+    </data>
+</odoo>

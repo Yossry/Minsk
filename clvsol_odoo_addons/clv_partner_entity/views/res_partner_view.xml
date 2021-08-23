@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+        
+    <record id="view_res_partner_form_entity" model="ir.ui.view">
+        <field name="name">res.partner.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="priority" eval="8" />
+        <field name="arch" type="xml">
+            <label for="street" position="before">
+                <field name="entity_code"/>
+            </label>
+            <page name="sales_purchases" position="after">
+                <page name="settings" string="Settings" groups="clv_base.group_reguser" invisible="False">
+                    <group name="settings">
+                        <field name="id"/>
+                        <field name="type" readonly="True"/>
+                    </group>
+                </page>
+            </page>
+        </field>
+    </record>
+
+    <record id="view_res_partner_tree_entity" model="ir.ui.view">
+        <field name="name">res.partner.tree</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="priority" eval="8" />
+        <field name="arch" type="xml">
+            <field name="display_name" position="after">
+                <field name="entity_code"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_res_partner_filter_entity" model="ir.ui.view">
+        <field name="name">res.partner.select</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter" />
+        <field name="priority" eval="8" />
+        <field name="arch" type="xml">
+            <field name="parent_id" position="after">
+                <field name="id"/>
+                <field name="entity_code"/>
+            </field>
+            <filter name="group_country" position="after">
+                <filter name="group_by_type" string="Address Type" context="{'group_by': 'type'}"/>
+            </filter>
+        </field>
+    </record>
+
+	<record id="contacts.action_contacts" model="ir.actions.act_window">
+		<field name="view_mode">tree,form,kanban,activity</field>
+		<!--field name="context">{'group_by':'type'}</field-->
+		<field name="context">{'search_default_group_by_type':1}</field>
+	</record>
+
+	<record id="contacts.action_contacts_view_kanban" model="ir.actions.act_window.view">
+		<field name="sequence" eval="4"/>
+		<field name="view_mode">kanban</field>
+		<field name="view_id" ref="base.res_partner_kanban_view"/>
+		<field name="act_window_id" ref="contacts.action_contacts"/>
+	</record>
+
+</odoo>

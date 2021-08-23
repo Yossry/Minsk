@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="website_sale.product_template_public" model="ir.rule">
+        <field name="name">Public product template</field>
+        <field name="model_id" ref="product.model_product_template" />
+        <field
+            name="domain_force"
+        >[('categ_id', 'in', user.product_all_category_ids.ids), ('website_published', '=', True), ("sale_ok", "=", True), ("partner_offer_checked", "=", "True"), '|', ('local_stock_not_reserved', '>', 0), ('qty_overseas', '>', '0')]</field>
+        <field
+            name="groups"
+            eval="[(4, ref('base.group_public')), (4, ref('base.group_portal'))]"
+        />
+        <field name="perm_read" eval="True" />
+        <field name="perm_write" eval="False" />
+        <field name="perm_create" eval="False" />
+        <field name="perm_unlink" eval="False" />
+    </record>
+</odoo>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="clv_mfile_verify_view_form" model="ir.ui.view">
+        <field name="name">clv.mfile.verify.form</field>
+        <field name="model">clv.mfile.verify</field>
+        <field name="arch" type="xml">
+            <form>
+                <div class="oe_right">
+                </div>
+                <label for="mfile_ids"/>
+                <field name="mfile_ids"/>
+                <group>
+                    <!--field name="dir_path"/-->
+                    <!--field name="verify_dir_path"/-->
+                </group>
+                <footer>
+                    <button 
+                        type="object"
+                        name="do_mfile_verify"
+                        string="Media Files Verify"
+                        class="oe_highlight"
+                        />
+                    <button special="cancel" string="Cancel"/>
+                </footer>
+            </form>
+
+        </field>
+    </record>
+
+    <!-- More button Action -->
+    <act_window 
+        id="clv_mfile_verify_action"
+        name="Media File Verify"
+        src_model="clv.mfile"
+        res_model="clv.mfile.verify"
+        view_mode="form, tree"
+        key2="client_action_multi"
+        target="new"
+    />
+
+</odoo>

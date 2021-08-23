@@ -1,0 +1,1671 @@
+// customize list in [form view]
+@mixin customize_list(){
+    .o_field_domain{
+        .o_domain_selector{
+            .o_domain_node_children_container{
+                .o_domain_selector_row{
+                    .o_domain_leaf_edition{
+                        .o_field_selector_popover{
+                            .o_field_selector_popover_header{
+                                background: $brand-secondary;
+                                &:before{
+                                    border-bottom: 7px solid $brand-secondary;
+                                }
+                                .o_field_selector_popover_option{
+                                    border-left: none;
+                                    &:hover{
+                                        background-color:$brand-secondary;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Field Widget
+@mixin o_widget_field($padding_left) {
+    -webkit-box-ordinal-group: 2;
+    -moz-box-ordinal-group: 2;
+    -ms-flex-order: 2;
+    -webkit-order: 2;
+    order: 2;
+    padding-left: $padding_left;
+}
+
+// Field Icon
+@mixin o_widget_icon($font_size) {
+    position: absolute;
+    left: 3px;
+    padding: 0;
+    font-size: $font_size;
+    width: 16px;
+    vertical-align: top;
+    float: left;
+    cursor: auto;
+    -webkit-box-ordinal-group: 1;
+    -moz-box-ordinal-group: 1;
+    -ms-flex-order: 1;
+    -webkit-order: 1;
+    order: 1;
+    color: $Label;
+    &:hover {
+        color: darken($Label, 7%);
+    }
+}
+
+// notbook -editer
+@mixin ad-notbook-editer() {
+    .oe_form_field {
+        .note-editor {
+            border-radius: 0;
+            border: 1px solid $border;
+            box-shadow: none;
+            .note-toolbar {
+                background-color: transparent;
+                border-bottom: 1px solid $border;
+                .btn-group {
+                    button {
+                        border: none;
+                        background-color: transparent;
+                        color: $icon;
+                        box-shadow: none;
+                        &:hover {
+                            color: darken($icon, 7%);
+                        }
+                    }
+                }
+            }
+            .note-statusbar {
+                background-color: transparent;
+            }
+        }
+    }
+}
+
+// Form -stausbar
+@mixin form-statusbar() {
+    .o_form_statusbar {
+        margin: 0 0 15px 0;
+        border-bottom: none;
+        flex-wrap: wrap;
+        padding: 0;
+        .o_statusbar_buttons {
+            .btn-default {
+                background-color: $white;
+                color: $brand-secondary;
+                border: 1px solid $brand-secondary;
+                box-shadow: none;
+                outline: none;
+                font-size: $font-size-1;
+                &:hover {
+                    background-color: $brand-secondary;
+                    border-color: $brand-secondary;
+                    color: $white;
+                }
+            }
+            .btn-primary {
+                background-color: $brand-secondary;
+                border-radius: 0;
+                font-size: $font-size-1;
+                border: 1px solid $brand-secondary;
+                outline: none;
+                box-shadow: none;
+                padding: 6px 10px;
+                color: $white;
+                &:hover {
+                    background-color: darken($brand-secondary, 7%);
+                }
+            }
+            & > button {
+                height: 35px;
+                border-radius: 0;
+                &.oe_highlight {
+                    background-color: $brand-secondary;
+                    border-color: $brand-secondary;
+                    color: $white;
+                    &:hover {
+                        background-color: darken($brand-secondary, 7%);
+                    }
+                }
+            }
+        }
+        .o_statusbar_status {
+            -webkit-align-self: center;
+            align-self: center;
+            -webkit-align-items: center;
+            align-items: center;
+            overflow-x: inherit;
+            button.o_arrow_button {
+                font-weight: $font-weight-4;
+                font-size: $font-size-1;
+                text-transform: uppercase;
+                color: $Label;
+                background-color: rgba($button-box, .03);
+                border: none;
+                padding: 6px 15px;
+                &:before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    float: right;
+                    border-style: solid;
+                    border-width: 17px 8px 17px 0;
+                    border-color: white transparent white transparent;
+                    right: 0px;
+                    -ms-transform: rotate(180deg);
+                    -webkit-transform: rotate(180deg);
+                    transform: rotate(180deg);
+                    height: 100%;
+                }
+                &:after {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    float: left;
+                    border-style: solid;
+                    border-width: 17px 8px 17px 0;
+                    border-color: transparent white transparent white;
+                    left: -1px;
+                    -ms-transform: rotate(180deg);
+                    -webkit-transform: rotate(180deg);
+                    transform: rotate(180deg);
+                    height: 100%;
+                    margin-left: 0px;
+                }
+                &.o_arrow_button.btn-primary {
+                    background-color: $brand-secondary;
+                    color: $white;
+                }
+                &:first-child {
+                    overflow-x: inherit;
+                }
+                &:not(.disabled) {
+                    &:hover {
+                        color: $white;
+                        background-color: $brand-primary;
+                    }
+                }
+                &.o_arrow_button.tag-primary {
+                    background-color: $text-primary;
+                }
+                &.o_arrow_button.tag-info {
+                    background-color: $text-info;
+                }
+                &.o_arrow_button.tag-danger {
+                    background-color: $text-danger;
+                }
+                &.o_arrow_button.tag-success {
+                    background-color: $text-success;
+                }
+                &.o_arrow_button.tag-warning {
+                    background-color: $text-warning;
+                }
+                &.o_arrow_button.tag-muted {
+                    background-color: $text-muted;
+                }
+            }
+            ul.o-status-more {
+                padding: 5px;
+                & > li {
+                    float: left;
+                }
+            }
+        }
+    }
+}
+
+// Form -stausbar
+
+// Note book form view[start]
+@mixin note-form-view() {
+    &.o_note_form_view{
+        .o_form_sheet_bg{
+            .o_form_sheet{
+                .oe_memo{
+                    margin: 0px;
+                }
+            }
+        }
+    }
+}
+//
+
+//flex display
+@mixin o-flex-display() {
+    display: -ms-flexbox;
+    display: -moz-box;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+}
+
+//flex display
+
+// Create Form view function to used in wizard and form both - Start
+@mixin form_view() {
+    @include list-view();
+    @include kanban_view();
+    @include ad-notbook-editer();
+    @include form-statusbar();
+    @include note-form-view();
+    @include account-view();
+    .o_form_sheet_bg {
+        padding: 10px;
+        background-image: none;
+        background-color: $white;
+        border: none;
+        .o_form_sheet {
+            min-width: 100%;
+            max-width: 100%;
+            margin-top: 0;
+            margin-bottom: 0;
+            box-shadow: none;
+            padding: 0;
+            border: none;
+            background-color: transparent;
+            .o_cu_panel{
+                @include customize_list();
+            }
+            @include form_panel();
+            .oe_pad {
+                .oe_editing {
+                    box-shadow: none;
+                    border: 1px solid $border;
+                }
+            }
+            .o_notebook {
+                .panel-ul {
+                    padding: 0;
+                    margin-bottom: 0;
+                    & > li {
+                        display: table;
+                        width: 100%;
+                        background-color: $white;
+                        & > a {
+                            padding: 10px 0px;
+                            display: block;
+                            border: none;
+                            text-transform: uppercase;
+                            color: $notbook;
+                            font-weight: $font-weight-b;
+                            &:before {
+                                content: '';
+                                display: inline-block;
+                                width: 0;
+                                height: 0;
+                                vertical-align: middle;
+                                border-bottom: 0;
+                                border-left: 8px solid transparent;
+                                border-right: 8px solid transparent;
+                                border-top: 8px solid;
+                                float: left;
+                                margin: 6px 10px 0px 0px;
+                                -webkit-transition-duration: 0.1s;
+                                -moz-transition-duration: 0.1s;
+                                -o-transition-duration: 0.1s;
+                                transition-duration: 0.1s;
+                            }
+                        }
+                        & > a:first-child {
+                            font-size: $font-size-0;
+                        }
+                        & > .tab-pane {
+                            min-height: 50px;
+                            padding: 10px;
+                        }
+                        &.ad_close {
+                            & > a {
+                                &:before {
+                                    transform: rotate(-90deg);
+                                    margin: 8px 10px 0px 0px;
+                                    font-size: $font-size-0;
+                                    -webkit-transition-duration: 0.1s;
+                                    -moz-transition-duration: 0.1s;
+                                    -o-transition-duration: 0.1s;
+                                    transition-duration: 0.1s;
+                                }
+                            }
+                            & > .tab-pane {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+            // Field view change - [start]
+            .o_field_many2manytags {
+                & > .badge {
+                    font-size: $font-size-1;
+                    font-weight: $font-weight-7;
+                    border-radius: 0;
+                }
+            }
+            .o_field_widget.o_field_many2one {
+                .o_external_button {
+                    padding: 2px;
+                    margin: 0;
+                    color: $brand-secondary;
+                    background-color: transparent;
+                    box-shadow: none;
+                    &:hover {
+                        color: darken($brand-secondary, 7%);
+                        background-color: transparent;
+                    }
+                }
+            }
+            .o_field_widget{
+                outline: none;
+            }
+            .o_input {
+                &:focus {
+                    @include border-animation();
+                }
+            }
+            // Required fields
+            .o_field_invalid {
+                &.o_input, .o_input, &.o_form_label {
+                    color: $text-danger !important;
+                    border-color: $text-danger !important;
+                }
+            }
+            .o_required_modifier {
+                &.o_input {
+                    border-bottom: 1px solid $brand-primary;
+                    border-radius: 0;
+                }
+                .o_input {
+                    border-radius: 0;
+                    border-bottom: 1px solid $brand-primary;
+                }
+            }
+            // Field view chage - [stop]
+        }
+        .o_timesheet_plan_sale_timesheet_dashboard {
+            @include form_panel();
+            .table {
+                tbody {
+                    tr {
+                        a[type='action'] {
+                            color: $brand-secondary;
+                        }
+                        .o_timesheet_plan_dashboard_cell {
+                            color: $Label-value;
+                            font-weight: normal;
+                        }
+                        td {
+                            color: $Label;
+                            font-weight: bold;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .oe_chatter.o_chatter {
+        min-width: 100%;
+        max-width: 100%;
+        border: none;
+        border-top: 1px solid $border;
+        background-color: $white;
+        padding: 10px !important;
+        margin-bottom: 10px;
+        display: table;
+        .o_thread_message_avatar {
+            @include round-border();
+        }
+        & > .o_chatter_topbar {
+            margin-top: 0;
+            height: 40px;
+            & > button.o_active {
+                background-color: transparent;
+                border: none;
+                color: darken($link, 7%);
+                @include border-animation();
+            }
+            & > button {
+                height: 40px;
+                border-bottom: none;
+                color: $link;
+                &:hover {
+                    color: darken($link, 7%);
+                }
+            }
+            & > .o_followers {
+                height: 40px;
+                border-bottom: none;
+                .o_followers_title_box {
+                    .o_followers_list {
+                        padding: 5px;
+                        border-radius: 0;
+                        & > li {
+                            & > a {
+                                &:hover {
+                                    background-color: $tr-hover;
+                                }
+                            }
+                            &.o_partner {
+                                .o_edit_subtype, .o_remove_follower {
+                                    color: $icon;
+                                }
+                            }
+                        }
+                    }
+                }
+                .o_followers_actions {
+                    .o_subtypes_list {
+                        .o_followers_following {
+                            width: auto;
+                        }
+                        & > .dropdown-menu {
+                            border-radius: 0;
+                        }
+                    }
+                }
+            }
+            & > .o_topbar_right_area {
+                border-bottom: none;
+            }
+        }
+        & > .o_thread_composer {
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid $border;
+            .o_composer_container {
+                .o_composer {
+                    border: none;
+                    .o_chatter_composer_tools {
+                        border: none;
+                        button {
+                            &:focus, &:active, &:hover {
+                                box-shadow: none;
+                                background-color: transparent;
+                                color: $brand-primary;
+                            }
+                        }
+                        & > button {
+                            opacity: 1;
+                            color: $brand-primary;
+                        }
+                    }
+                    .o_composer_input {
+                        textarea {
+                            border-bottom: 1px solid $border;
+                            &:focus {
+                                @include border-animation();
+                            }
+                        }
+                    }
+                    .o_mail_emoji_container {
+                        position: absolute;
+                        bottom: 45%;
+                        width: 250px;
+                        left: 0;
+                        background: $white;
+                        border: 1px solid $border;
+                        padding: 10px;
+                        overflow-y: auto;
+                        & > button {
+                            margin: 0 0 8px 0;
+                            padding: 0;
+                            height: 25px;
+                            width: 25px;
+                            img {
+                                width: 20px;
+                                height: 20px;
+                            }
+                        }
+                    }
+                }
+                .o_composer_attachments_list {
+                    .o_attachments {
+                        .o_image_box {
+                            &:hover {
+                                background-color: $tr-hover;
+                            }
+                        }
+                        .o_attachment_delete {
+                            color: $icon;
+                            background: $brand-secondary;
+                        }
+                    }
+                }
+            }
+        }
+        & > .o_mail_activity {
+            .o_thread_date_separator {
+                .o_thread_date.btn {
+                    box-shadow: none;
+                    border: none;
+                    .o_chatter_planned_activities_summary {
+                        .label-danger {
+                            background-color: $text-danger;
+                        }
+                        .label-warning {
+                            background-color: $text-warning;
+                        }
+                        .label-sucess {
+                            background-color: $text-success;
+                        }
+                    }
+                }
+                .o_thread_date {
+                    color: $Label;
+                }
+            }
+            #o_chatter_planned_activities {
+                .o_thread_message {
+                    .o_thread_message_sidebar {
+                        .bg-warning-full {
+                            background-color: $text-warning;
+                        }
+                        .bg-success-full {
+                            background-color: $text-success;
+                        }
+                        .bg-danger-full {
+                            background-color: $text-danger;
+                        }
+                    }
+                    .o_thread_message_core {
+                        .o_mail_info {
+                            strong {
+                                .o_activity_color_today {
+                                    color: $text-warning;
+                                }
+                                .o_activity_color_planned {
+                                    color: $text-success;
+                                }
+                                .o_activity_color_overdue {
+                                    color: $text-danger;
+                                }
+                            }
+                            .o_activity_info {
+                                background-color: transparent;
+                                color: $text-muted;
+                                opacity: 1;
+                                &[aria-expanded="true"] {
+                                    .fa {
+                                        color: $brand-secondary;
+                                    }
+                                }
+                            }
+                            .o_thread_message_collapse {
+                                .dl-horizontal {
+                                    background-color: $tr-hover;
+                                    border-radius: 0px;
+                                    box-shadow: none;
+                                    border: 1px solid $border;
+                                    padding: 19px;
+                                    .o_activity_color_today {
+                                        color: $text-warning;
+                                    }
+                                    .o_activity_color_planned {
+                                        color: $text-success;
+                                    }
+                                    .o_activity_color_overdue {
+                                        color: $text-danger;
+                                    }
+                                    dt, b, strong {
+                                        color: $form-label-color;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        & > .o_mail_thread {
+            .o_mail_thread_content {
+                .o_thread_date_separator {
+                    border-bottom: 1px solid $border;
+                    .o_thread_date {
+                        color: $Label;
+                    }
+                }
+                .o_thread_message {
+                    background-color: $white;
+                    .o_mail_note {
+                        background-color: transparent;
+                        border: none;
+                    }
+                    .o_thread_message_core {
+                        .o_mail_info {
+                            color: $normal-color;
+                            strong {
+                                color: $Label-value;
+                                & > a {
+                                    color: $Label-value;
+                                }
+                            }
+                            .o_thread_icons {
+                                .o_thread_message_star {
+                                    color: gold;
+                                    opacity: 1;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .o_td_label {
+        border: none;
+        label.o_form_label {
+            color: $Label-value;
+            &.o_label_help:after {
+                content: "\f059";
+                font-family: FontAwesome;
+                margin-left: 5px;
+                color: $tooltip;
+            }
+        }
+    }
+    .o_horizontal_separator {
+        color: $heading;
+        font-size: $font-size-0;
+    }
+    // Common fields - [start]
+    .o_field_many2manytags {
+        .badge {
+            font-size: $font-size-1;
+            font-weight: $font-weight-7;
+            border-radius: 0;
+        }
+    }
+    // Widget URL
+    .o_url_block {
+        position: relative;
+        @include o-flex-display();
+        input.o_field_url {
+            @include o_widget_field(23px);
+        }
+        .o_url_globe {
+            @include o_widget_icon(16px);
+        }
+    }
+    // Widget Email
+    .o_email_block {
+        position: relative;
+        @include o-flex-display();
+        input.o_field_email {
+            @include o_widget_field(23px);
+        }
+        .o_email_envelope {
+            @include o_widget_icon(14px);
+        }
+    }
+    // Widget Phone
+    .o_phone_block {
+        position: relative;
+        @include o-flex-display();
+        input.o_field_phone {
+            @include o_widget_field(23px);
+        }
+        .o_phone_phone {
+            @include o_widget_icon(16px);
+        }
+    }
+    // Field Date
+    .o_date_block {
+        position: relative;
+        @include o-flex-display();
+        .o_field_date {
+            @include o_widget_field(0px);
+            & > input.o_input {
+                padding-left: 25px;
+            }
+        }
+        .o_date_calender {
+            @include o_widget_icon(16px);
+            width: 18px;
+            left: 2px;
+        }
+    }
+    // Field Datetime
+    .o_date_time_block {
+        position: relative;
+        @include o-flex-display();
+        .o_field_date {
+            @include o_widget_field(0px);
+            & > input.o_input {
+                padding-left: 23px;
+            }
+        }
+        .o_date_calender {
+            @include o_widget_icon(16px);
+            width: 18px;
+        }
+    }
+    .o_field_image {
+        .o_form_image_controls {
+            background-color: $brand-secondary;
+            button.fa {
+                color: $white;
+            }
+        }
+    }
+    .oe_title {
+        h1 {
+            color: $Label-value;
+        }
+    }
+    td.o_td_label {
+        .o_form_label {
+            color: $Label;
+        }
+    }
+    .o_form_uri:first-line, .oe_link, .btn-link {
+        color: $link;
+    }
+    .o_dropdown_button, .o_datepicker_button {
+        color: $icon;
+    }
+    .oe_form_box_info {
+        background-color: $tr-hover !important;
+        color: $Label-value;
+        margin-bottom: 10px;
+    }
+    .o_field_many2manytags {
+        padding: 0;
+        min-height: 23px;
+        .o_field_many2one {
+            min-height: 23px;
+        }
+        .o_tag_color_0{
+            color: $white;
+            background-color: #777777;
+        }
+    }
+    .o_notebook{
+        .panel-ul{
+            padding: 0px;
+            list-style: none;
+        }
+    }
+    .o_field_binary_file.o_field_widget{
+        .btn-secondary{
+            margin-left: 5px;
+        }
+    }
+    // Common fields - [stop]
+}
+
+// Create Form view function to used in wizard and form both - Stop
+
+// Form Panel view  function to used in no sheet form [start]
+@mixin form_panel() {
+    .oe_button_box {
+        width: 100%;
+        margin-bottom: 15px;
+        display: flex;
+        justify-content: flex-end;
+        &.o_full {
+            & > button {
+                width: 100% !important;
+            }
+            div.o_dropdown_more {
+                border-radius: 0;
+                box-shadow: none;
+                border: none;
+                left: auto !important;
+                right: 5px;
+                margin-top: 5px;
+                top: 100% !important;
+                transform: none !important;
+                z-index: 999;
+                & > button {
+                    width: 160px !important;
+                    border: none;
+                    margin-bottom: 5px;
+                }
+            }
+        }
+        .oe_stat_button {
+            background-color: rgba($button-box, .03);
+            box-shadow: none;
+            min-height: 50px;
+            color: $button-box;
+            margin-left: 5px;
+            border-color: transparent;
+            min-width: 50px;
+            overflow: hidden;
+            .o_button_icon {
+                color: $button-box;
+                font-size: $font-size-7;
+            }
+            .o_stat_value {
+                color: $button-box;
+            }
+            &:hover {
+                background-color: rgba($button-box, .07);
+            }
+            &.o_button_more {
+                text-align: center;
+                &:after{
+                    vertical-align: middle;
+                }
+            }
+        }
+        .o_pie {
+            background-color: $brand-secondary;
+            .o_pie_value {
+                color: $brand-secondary;
+            }
+        }
+    }
+    .o_field_image {
+        float: right;
+        & > img {
+            box-shadow: none;
+            @include round-border();
+        }
+        & > .o_form_image_controls {
+            background-color: $brand-secondary;
+        }
+    }
+    .oe_title {
+        padding-left: 0;
+        padding-right: 105px;
+        width: 100%;
+        margin: 0;
+        h1 {
+            color: $Label-value;
+        }
+    }
+
+    @include ad-notbook-editer();
+
+    #o_employee_container {
+        #o_employee_right {
+            border-left: 1px solid $border;
+            .o_org_chart_title {
+                color: $brand-secondary;
+            }
+            .o_org_chart_group_up, .o_org_chart_entry {
+                .media-body {
+                    .o_employee_redirect {
+                        color: $normal-color;
+                        font-weight: $font-weight-b;
+                        .media-heading {
+                            color: $brand-secondary;
+                        }
+                        strong {
+                            color: $normal-color;
+                            font-weight: $font-weight-b;
+                        }
+                    }
+                    .badge {
+                        color: $white;
+                        border-color: $brand-secondary;
+                        background-color: $brand-secondary;
+                    }
+                    strong {
+                        color: $normal-color;
+                        font-weight: $font-weight-b;
+                    }
+                }
+            }
+            .o_field_widget {
+                & > .o_org_chart_entry {
+                    .media-left {
+                        .media-object {
+                            border: 2px solid $brand-secondary;
+                        }
+                    }
+                }
+                & > .o_org_chart_group_up, & > .o_org_chart_group_down {
+                    .o_org_chart_entry {
+                        &:hover {
+                            .media-left {
+                                .media-object.o_employee_redirect {
+                                    box-shadow: 0 0 0 2px darken($brand-secondary, 10%);
+                                    border: none;
+                                }
+                            }
+                        }
+                        .media-left {
+                            .media-object.o_employee_redirect {
+                                box-shadow: 0 0 0 1px $brand-secondary;
+                                border: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Form Panel view  function to used in no sheet form [stop]
+
+// Form view - [start]
+.o_web_client {
+    .o_main {
+        .o_main_content.ad_rightbar {
+            & > .o_content {
+                .o_view_controller, .o_reconciliation {
+                    .o_form_view {
+                        background-color: $white;
+                        @include form_view();
+                        // Configration setting view - [start]
+                        &.oe_form_configuration.o_base_settings {
+                            padding: 0px !important;
+                            & > .o_control_panel {
+                                padding: 8px 15px 15px 42px;
+                                height: 53px;
+                                .o_panel {
+                                    margin: 0;
+                                    .title {
+                                        color: $heading;
+                                        font-size: $font-size-8;
+                                        margin: 0px !important;
+                                        font-weight: normal;
+                                        padding-top: 9px;
+                                    }
+                                }
+                                .o_form_statusbar {
+                                    border-top: 1px solid $border;
+                                    position: fixed;
+                                    display: block;
+                                    bottom: 0;
+                                    right: 0;
+                                    left: 65px;
+                                    height: 52px;
+                                    background: $white;
+                                    padding: 4px 15px;
+                                    margin: 0;
+                                    @include slide-animation();
+                                    & > .o_statusbar_buttons {
+                                        float: right;
+                                    }
+                                }
+                            }
+                        }
+                        // Configration setting view - [stop]
+                        .o_form_sheet_bg {
+                            .o_form_sheet {
+                                .o_cu_panel {
+                                    @include account_view();
+                                }
+                            }
+                        }
+                    }
+                    .o_form_nosheet {
+                        background-color: $white;
+                        border: none;
+                        padding: 10px;
+                        @include form_panel();
+                        .o_external_button {
+                            color: $brand-secondary;
+                            &:hover {
+                                color: darken($brand-secondary, 7%);
+                            }
+                        }
+                    }
+                }
+                .o_project_plan {
+                    @include form_view();
+                }
+                // Website Deshboard View - [start]
+                .o_dashboards {
+                    .o_website_dashboard {
+                        background-color: $white;
+                        & > .o_dashboard_common {
+                            & > .o_box {
+                                padding-top: 5px;
+                                padding-left: 5px;
+                                margin-bottom: 0px;
+                                box-shadow: none;
+                                & > .o_box_item {
+                                    margin: 0;
+                                }
+                                .o_inner_box {
+                                    background-color: $brand-secondary;
+                                    margin-right: 5px;
+                                }
+                            }
+                        }
+                    }
+                    .o_website_dashboard_content {
+                        .o_dashboard_sales, .o_dashboard_visits {
+                            .o_box {
+                                box-shadow: none;
+                                h2, h4 {
+                                    color: $heading;
+                                }
+                                .o_dashboard_action {
+                                    .o_link_enable {
+                                        border-right: 1px solid $border;
+                                        &:hover {
+                                            background-color: $brand-primary;
+                                            color: $white;
+                                            .o_highlight {
+                                                color: $white;
+                                            }
+                                        }
+                                    }
+                                }
+                                .o_link_disable {
+                                    border-right: 1px solid $border;
+                                    color: $text-muted;
+                                    .o_highlight {
+                                        color: $text-muted;
+                                    }
+                                }
+                                .o_link_enable {
+                                    .o_highlight {
+                                        color: $brand-primary;
+                                    }
+                                }
+                                .table-responsive {
+                                    tbody {
+                                        tr {
+                                            height: 50px;
+                                            th {
+                                                vertical-align: middle;
+                                                background: $white;
+                                                color: $font-color;
+                                                border: none;
+                                                text-transform: uppercase;
+                                            }
+                                            &.o_product_template {
+                                                &:nth-child(even) {
+                                                    background-color: $white;
+                                                }
+                                                td {
+                                                    border-top: 1px solid $border;
+                                                    vertical-align: middle;
+                                                    color: $normal-color;
+                                                    font-size: $font-size-1;
+                                                }
+                                                &:hover {
+                                                    background-color: $tr-hover;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            .o_demo_background {
+                                z-index: 3;
+                            }
+                        }
+                        .o_dashboard_sales .o_demo_background {
+                            background: url("/uppercrust_backend_theme/static/src/img/website_deshboard_sale.png") no-repeat
+                        }
+                        .o_dashboard_visits .o_demo_background {
+                            background: url("/uppercrust_backend_theme/static/src/img/website_google_analytics.png") no-repeat
+                        }
+                    }
+                }
+                // Website Deshboard View - [Stop]
+
+                // Setting Deshboard View - [Start]
+                .o_web_settings_dashboard {
+                    background-color: $white;
+                    .o_web_settings_dashboard_col{
+                        & > div{
+                            box-shadow: none;
+                            border: 1px solid $border;
+                            .fa{
+                                color: $icon !important;
+                            }
+                            .o_setup_theme{
+                                & > strong{
+                                    color: $white;
+                                }
+                            }
+                        }
+                    }
+                }
+                // Setting Deshboard View - [stop]
+
+                // App View - [start]
+                .o_cannot_create {
+                    .o_form_view {
+                        .o_form_sheet_bg {
+                            .o_form_sheet {
+                                .oe_title {
+                                    button {
+                                        margin-right: 5px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                // App View - [stop]
+            }
+        }
+    }
+}
+
+// Form view - [start]
+
+// Wizard form view - [stop]
+.o_web_client.modal-open, .o_web_client {
+    .modal-backdrop.in {
+        opacity: 1;
+        background-color: $bg-light;
+    }
+    .modal-dialog {
+        .modal-content {
+            box-shadow: $box-shadow;
+            .modal-body.o_act_window {
+                @include list-view();
+                @include account-view();
+                .o_form_view {
+                    @include form_view();
+                }
+                .o_modal_header {
+                    .o_searchview {
+                        padding: 0;
+                        border: none;
+                        border-radius: 0;
+                        margin-bottom: 10px;
+                        border-bottom: none;
+                        position: relative;
+                        .o_searchview_input_container{
+                            .o_searchview_autocomplete{
+                                left: 0;
+                                right: 0;
+                            }
+                        }
+                        &.show {
+                            & > .o_search_recs {
+                                border: 1px solid $border;
+                                border-bottom: none;
+                                background: $white;
+                            }
+                            & > ul.o_search_rec_ul {
+                                z-index: 101;
+                                padding: 10px 10px 5px 10px;
+                                & > .o_searchview_facet {
+                                    display: inline-flex;
+                                    margin-bottom: 5px;
+                                }
+                            }
+                        }
+                        & > ul.o_search_rec_ul {
+                            left: 0 !important;
+                            right: -10px;
+                            transform: none !important;
+                            top: 100% !important;
+                        }
+                        .hidden{
+                            display: none;
+                        }
+                        & > .o_search_recs {
+                            order: 1;
+                            position: absolute;
+                            right: -10px;
+                            top: 2px;
+                            left: auto;
+                            padding: 10px;
+                            z-index: 1002;
+                            &:after{
+                                display: none;
+                            }
+                        }
+                        .o_searchview_input {
+                            margin: 4px 0 8px 0;
+                            padding: 0;
+                        }
+                        &.active {
+                            @include border-animation();
+                        }
+                        .o_searchview_facet {
+                            border: none;
+                            background: transparent;
+                            padding: 0;
+                            margin: 0;
+                            margin-bottom: 3px;
+                            margin-right: 5px;
+                            line-height: 26px;
+                            position: relative;
+                            .o_searchview_facet_label {
+                                border: none;
+                                background-color: $brand-primary;
+                                padding: 0 7px;
+                                font-size: $font-size-2;
+                                color: $white;
+                                border-radius: 0;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                            }
+                            .o_facet_values {
+                                border: 1px solid $brand-primary;
+                                border-left: none;
+                                font-size: $font-size-2;
+                                color: $brand-primary;
+                                padding: 0 18px 0 5px;
+                            }
+                            .o_facet_remove {
+                                color: $brand-primary;
+                                font-size: $font-size-3;
+                                flex: 0 0 auto;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                position: absolute;
+                                top: 0;
+                                left: auto;
+                                bottom: 0;
+                                right: 0;
+                                width: 18px;
+                                cursor: pointer;
+                            }
+                        }
+                        .o_searchview_more {
+                            display: none;
+                        }
+                        .o_searchview_autocomplete {
+                            border-radius: 0;
+                            box-shadow: none;
+                            .o-selection-focus {
+                                background-color: $tr-hover;
+                                color: $normal-color;
+                                font-size: $font-size-1;
+                                & > a {
+                                    color: $normal-color;
+                                }
+                            }
+                        }
+                        .fa-search-minus {
+                            &:before {
+                                content: "\f0d8";
+                            }
+                        }
+                        .fa-search-plus {
+                            &:before {
+                                content: "\f0d7";
+                            }
+                        }
+                    }
+                    .o_search_options {
+                        & > .btn-group {
+                            margin-right: 5px;
+                            & > button {
+                                box-shadow: none;
+                                background-color: transparent;
+                                border: none;
+                                color: $icon;
+                            }
+                            ul.dropdown-menu {
+                                border-radius: 0;
+                                box-shadow: none;
+                                & > li {
+                                    &:hover {
+                                        & > a {
+                                            background-color: $tr-hover;
+                                        }
+                                    }
+                                    &.o_open_menu {
+                                        background-color: $tr-hover;
+                                    }
+                                    select, input {
+                                        border: none;
+                                        border-bottom: 1px solid $border;
+                                        border-radius: 0;
+                                        box-shadow: none;
+                                        &:focus {
+                                            @include border-animation();
+                                        }
+                                    }
+                                    &:not(.o_closed_menu):not(.o_open_menu) {
+                                        & > a:not(.add-to-spreadsheet) {
+                                            padding: 3px 20px 3px 30px;
+                                            &:before {
+                                                content: "";
+                                                height: 20px;
+                                                width: 20px;
+                                                position: absolute;
+                                                left: 6px;
+                                                border: 1px solid $border;
+                                                color: transparent;
+                                                background-color: transparent;
+                                                text-align: center;
+                                            }
+                                        }
+                                        &.selected {
+                                            & > a:not(.add-to-spreadsheet) {
+                                                &:before {
+                                                    content: "\f00c";
+                                                    color: $white;
+                                                    background-color: $brand-primary;
+                                                    text-align: center;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            &.open {
+                                & > button {
+                                    color: $brand-primary;
+                                    @include border-animation();
+                                }
+                            }
+                        }
+                    }
+                    .o_pager {
+                        .btn-group {
+                            .o_pager_previous, .o_pager_next {
+                                color: $icon;
+                                border: none;
+                            }
+                        }
+                    }
+                }
+                .o_form_nosheet {
+                    padding: 10px;
+                    @include form_panel();
+                    .o_external_button {
+                        color: $brand-secondary;
+                        box-shadow: none;
+                        background-color: transparent;
+                        &:hover, &:focus, &:active {
+                            color: darken($brand-secondary, 7%);
+                            box-shadow: none;
+                            background-color: transparent;
+                        }
+                    }
+                }
+            }
+            .modal-body.o_export{
+                .o_export_panel{
+                    display: flex;
+                    width: 100%;
+                    position: relative;
+                    height: 100%;
+                    .o_left_panel, .o_center_panel, .o_right_panel{
+                        flex: 1 1 auto;
+                        position: relative;
+                        padding: 15px;
+                        left: auto;
+                        right: auto;
+                        height: auto;
+                        border: 1px solid $border;
+                        .o_left_field_panel, .o_right_field_paneo_tree_columnl{
+                            border: none;
+                            .o_field_tree_structure{
+                                .o_required{
+                                    border-bottom: none;
+                                    @include border-animation();
+                                }
+                                .o_selected{
+                                    & > .o_tree_column{
+                                        background-color: $brand-secondary;
+                                    }
+                                }
+                            }
+                        }
+                        .o_fields_list{
+                            color: $Label-value;
+                            border: none;
+                        }
+                        .o_save_list{
+                            input{
+                                margin: 0 10px;
+                                border: none;
+                                border-bottom: 1px solid $border;
+                                &:focus{
+                                    @include border-animation();
+                                }
+                            }
+                        }
+                    }
+                    .o_center_panel{
+                        margin: 0 15px;
+                        border: none;
+                    }
+                }
+            }
+            .modal-footer {
+                text-align: right;
+                justify-content: flex-end;
+                table.o_group.o_inner_group{
+                    width: 100%;
+                }
+                button{
+                    margin-left: 5px;
+                }
+                .o_external_button{
+                    color:  $brand-secondary;
+                    &:active, &:hover, &:focus{
+                        background-color: transparent;
+                        color: darken($brand-secondary, 7%);
+                    }
+                }
+            }
+            .modal-header {
+                .close {
+                    color: $icon;
+                    opacity: 1;
+                    font-size: $font-size-4;
+                    &:focus {
+                        outline: none;
+                    }
+                }
+            }
+        }
+        &.o_select_media_dialog{
+            .modal-content{
+                .modal-body{
+                    .nav.nav-tabs{
+                        .nav-item.ml-auto.search{
+                            margin: 0;
+                            width: 50%;
+                            .form-group{
+                                margin: 0;
+                            }
+                        }
+                        .nav-item.search:not(.ml-auto){
+                            display: table;
+                            text-align: right;
+                            width: 100%;
+                            padding: 10px 0px;
+                            .btn-group{
+                                a:first-child{
+                                    margin-right: 5px;
+                                }
+                                a{
+                                    color: $brand-secondary;
+                                    &:hover{
+                                        background-color: $brand-secondary;
+                                        color: $white;
+                                    }
+                                    &.disable{
+                                        cursor: not-allowed;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .tab-content{
+                        .tab-pane.fade{
+                            .form-inline{
+                                .card{
+                                    border: none;
+                                    .form-inline{
+                                        .btn-group{
+                                            width: 100%;
+                                            padding: 10px 0;
+                                        }
+                                        .input-group{
+                                            .input-group-append{
+                                                margin-left: 15px;
+                                            }
+                                        }
+                                        input{
+                                            /*border: 1px solid $border;
+                                            border-top-style: none;
+                                            border-right-style: none;
+                                            border-left-style: none;*/
+                                            border: none;
+                                            border-bottom: 1px solid $border;
+                                            border-radius: 0;
+                                            color: $Label-value;
+                                            padding: 0;
+                                            min-height: 24px;
+                                            &:focus {
+                                                box-shadow: none;
+                                                @include border-animation();
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .o_planner_dialog {
+        & > .modal-dialog > .modal-content > .modal-header {
+            background-color: $brand-primary;
+            .close {
+                color: $white;
+            }
+            .modal-title {
+                .progress {
+                    .progress-bar {
+                        background-color: $brand-secondary;
+                        border: 1px solid $white;
+                    }
+                }
+            }
+        }
+        & > .modal-dialog > .modal-content > .modal-body {
+            & > .o_planner_menu {
+                & > li {
+                    text-indent: 0px;
+                    padding: 5px 18px;
+                    a {
+                        padding-left: 10px;
+                    }
+                    &.active {
+                        & > a {
+                            color: $link;
+                            &:hover {
+                                color: darken($link, 7%);
+                            }
+                        }
+                    }
+                    & > a {
+                        &:hover {
+                            color: darken($link, 7%);
+                        }
+                    }
+                }
+                h4 {
+                    color: $text-muted;
+                }
+                .fa-check {
+                    &:before {
+                        content: "\f00c";
+                        height: 20px;
+                        width: 20px;
+                        position: absolute;
+                        left: 0px;
+                        border: 2px solid $Label;
+                        color: $Label-value;
+                        background-color: transparent;
+                        text-align: center;
+                    }
+                }
+            }
+            & > .o_planner_page {
+                &.marked {
+                    &:after {
+                        color: $brand-primary;
+                    }
+                }
+                h1 {
+                    font-weight: bold;
+                    &[data-icon]:before {
+                        color: $icon;
+                    }
+                }
+                .panel.panel-success {
+                    border-color: $border;
+                    .panel-heading {
+                        background-color: rgba($brand-success, .10);
+                        border-radius: 0px;
+                        color: $brand-success;
+                        /*border-top-right-radius: 0px;
+                        border-top-left-radius: 0px;*/
+                    }
+                }
+                .alert-info, .well {
+                    background-color: $tr-hover;
+                    border: none;
+                    color: $Label-value;
+                }
+                .label.odoo_purple, .btn.odoo_purple {
+                    background-color: $brand-secondary;
+                    color: $white;
+                    .fa {
+                        color: $white;
+                    }
+                }
+                .o_planner_notebook {
+                    background-color: $tr-hover;
+                    border: none;
+                    color: $Label-value;
+                    font-family: 'Roboto';
+                    & > li {
+                        border: none;
+                        &:hover {
+                            background-color: rgba($brand-primary, .10);
+                        }
+                        span {
+                            color: $brand-secondary;
+                        }
+                    }
+                }
+                .o_planner_notebook_line_separator {
+                    border: none;
+                }
+                .o_planner_notebook_header select, .o_planner_notebook_container .o_planner_notebook textarea, .o_planner_notebook_container .o_planner_notebook input[type="text"] {
+                    background-color: transparent;
+                    background: transparent;
+                    border: none;
+                    height: 34px !important;
+                    border-bottom: 1px solid $border;
+                    color: $Label-value;
+                    &:focus {
+                        @include border-animation();
+                    }
+                }
+                .o_planner_notebook_header a {
+                    color: $Label-value;
+                }
+                .o_planner_paragraphs {
+                    & > .icon {
+                        color: $icon;
+                    }
+                }
+                .fa {
+                    color: $icon;
+                }
+                table, thead, td, tr, th {
+                    border-color: $border;
+                }
+                h1, h2, h3, h4, h5, h6, strong {
+                    color: $Label-value;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}
+
+// Wizard form view - [stop]

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record model="ir.ui.view" id="invoice_supplier_form">
+        <field name="name">account.invoice.supplier</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account.invoice_supplier_form" />
+        <field name="arch" type="xml">
+            <xpath
+                expr="//field[@name='invoice_line_ids']/tree//field[@name='product_id']"
+                position="after"
+            >
+                <field name="lot_id" />
+            </xpath>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="invoice_form">
+        <field name="name">account.invoice.form</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account.invoice_form" />
+        <field name="arch" type="xml">
+            <xpath
+                expr="//field[@name='invoice_line_ids']/tree//field[@name='product_id']"
+                position="after"
+            >
+                <field name="lot_id" />
+            </xpath>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="view_account_invoice_filter">
+        <field name="name">account.invoice.search.inherit</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account.view_account_invoice_filter" />
+        <field name="arch" type="xml">
+            <field name="date" position="after">
+                <field name="lot_id" />
+            </field>
+        </field>
+    </record>
+</odoo>

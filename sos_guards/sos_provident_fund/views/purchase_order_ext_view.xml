@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+	
+		 <record id="sos_purchase_order_ext_view_form" model="ir.ui.view">
+		        <field name="name">sos.purchase.order.ext.view</field>
+		        <field name="model">purchase.order</field>
+		        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+		        <field name="arch" type="xml">
+				    <data>
+						<field name="partner_id" position="attributes"  options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}" />
+					
+						<field name="product_id" position="attributes"  options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}" />
+						
+						
+					</data>	
+		        </field>
+		</record>
+	</data> 
+</odoo> 

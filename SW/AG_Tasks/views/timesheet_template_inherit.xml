@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="assets_backend" name="sale timesheet assets" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/sale_timesheet/static/src/js/timesheet_plan.js"></script>
+            <link rel="stylesheet" type="text/scss" href="/sale_timesheet/static/src/scss/sale_timesheet.scss"/>
+        </xpath>
+    </template>
+
+
+    <template id="qunit_suite" name="timesheet plan tests" inherit_id="web.qunit_suite">
+        <xpath expr="//script[contains(@src, '/web/static/tests/views/kanban_tests.js')]" position="after">
+            <script type="text/javascript" src="/sale_timesheet/static/tests/timesheet_plan_tests.js"></script>
+        </xpath>
+    </template>
+	<template id="timesheet_plan" name="Timesheet Plan" inherit_id="sale_timesheet.timesheet_plan">
+		<xpath expr="//div[hasclass('o_timesheet_plan_stat_buttons')]" position="inside">
+			<t t-foreach="stat_buttonss" t-as="result">
+				<button class="btn oe_stat_button" t-att-data-domain="result.get('domain')" t-att-data-res-model="result['res_model']">
+                    <div class="o_field_widget o_stat_info o_readonly_modifier" t-att-title="result['name']">
+                        <span class="o_stat_value" t-if="result.get('count')">
+                            <t t-esc="result['count']"/>
+                        </span>
+                        <span class="o_stat_text">
+                            <t t-esc="result['name']"/>
+                        </span>
+                    </div>
+                </button>
+            </t>
+        </xpath>
+		
+        
+    </template>
+
+
+</odoo>

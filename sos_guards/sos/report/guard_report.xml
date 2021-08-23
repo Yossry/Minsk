@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		
+		<report
+			id="report_guard_profile"
+			string= "New Profile (PDF)"
+			model = "hr.employee"
+			report_type="qweb-pdf"
+			file="sos.profile"
+			name="sos.profile"
+		/>
+		
+		<report
+			id="report_guard_profile_html"
+			string= "New Profile (HTML)"
+			model = "hr.employee"
+			report_type="qweb-html"
+			file="sos.profile"
+			name="sos.profile"
+		/>
+	</data>
+</odoo>

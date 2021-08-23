@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="template_list_events" name="Committee chart assets">
+        <t t-call="website.layout">
+            <section>
+                <div class="container" style="background:white; border-radius:20px;">
+                    <div class="row mt32 mb32">
+                        <div class="col-md-12">
+                            <t t-foreach="gallery_data" t-as="gal_data">
+                                <h2>
+                                    <a t-attf-href="/page/show_photos?id={{gal_data.event_id.name}}">
+                                        <b>
+                                            <span t-field="gal_data.event_id.name"/>
+                                        </b>
+                                    </a>
+                                </h2>
+                                <h4>
+                                    <span t-field="gal_data.event_id.date_begin" t-options="{'widget': 'date'}"/>
+                                </h4>
+                                <div>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+ 	
+		<!-- Address Form View -->	
+		<record id="view_sos_partner_form" model="ir.ui.view">
+			<field name="name">sos.partneraddress.form</field>
+			<field name="model">sos.partneraddress</field>
+			<field eval="1" name="priority"/>
+			<field name="arch" type="xml">
+				<form string="Partner Address">				
+					<sheet>			
+						 <field name="image" widget='image' class="oe_avatar" options='{"preview_image":"image_medium"}'/>					
+						<div class="oe_title">
+							<label for="name"/> 
+							<h1>
+								<field name="name" default_focus="1" placeholder="Name" />
+							</h1>	
+							<field name="sos_category_ids" widget="many2many_tags" placeholder="Tags..."/>
+							<field name="color" invisible="1"/>	
+						</div>
+				
+						<group>
+							<group>
+								<label for="type" />
+								<div name="div_type">
+									<field class="oe_inline" name="type"/>
+								</div>
+				
+								<label for="street" string="Address"/>
+								<div>
+									<field name="street" placeholder="Street..."/>
+									<field name="street2"/>
+									<div class="address_format">
+										<field name="city" placeholder="City" style="width: 40%%"/>							
+										<field name="zip" placeholder="ZIP" style="width: 30%%"/>
+									</div>
+									<field name="country_id" placeholder="Country" class="oe_no_button" options='{"no_open": True}'/>
+								</div>					
+							</group>
+							<group>
+								<field name="cnic" />
+								<field name="profession" placeholder="e.g. Manager" />
+								<field name="phone" placeholder="e.g. +92 51 2821317"/>
+								<field name="mobile" placeholder="e.g. +92 321 6630800"/>					
+								<field name="email" widget="email"/>	
+								<field name="fax"/>
+							</group>					
+						</group>
+					</sheet>				
+				</form>
+			</field>
+		</record>
+	  
+		<!--guard post	 -->  
+		  
+		<record model="ir.ui.view" id="sos_guard_post_tree_view">
+			<field name="name">sos.guard.post.tree.view</field>
+			<field name="model">sos.guard.post</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Guard" create="false" edit="false" delete="false">
+					<field name="employee_id" string='Employee' context="{'form_view_ref':'sos.view_guard_form'}"/>
+					<field name="post_id" context="{'form_view_ref':'sos.sos_post_form_view'}"/>
+					<field name="center_id" />
+					<field name="project_id" />		
+					<field name="fromdate" />
+					<field name="todate" />
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="sos_guard_post_form_view">
+			<field name="name">sos.guard.post.form.view</field>
+			<field name="model">sos.guard.post</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">	
+				<form string="Guard">
+					<sheet>
+						<group>
+							<group>
+								<field name="employee_id" string='Guard' placeholder="Guard Name..." context="{'form_view_ref':'sos.view_guard_form'}"/>
+								<field name="post_id" placeholder="Post..." context="{'form_view_ref':'sos.sos_post_form_view'}"/>
+								<field name="current" />
+							</group>
+							<group>  							
+								<field name="fromdate" />
+								<field name="todate" />
+							</group>
+						</group>
+						<group>
+							<field name="remarks" />
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="sos_guard_post_filter_view" model="ir.ui.view">
+			<field name="name">sos.guard.post.select</field>
+			<field name="model">sos.guard.post</field>
+			<field name="arch" type="xml">
+				<search string="Search Record">
+				   <field name="employee_id" string='Employee'/>
+				   <field name="post_id" />
+				   		   
+				   <filter string="Current" name="current" icon="terp-personal+" domain="[('current','=',True)]" help="View Active Guards"/>
+				   <separator/>
+				  		   
+				   <group expand="0" string="Group By...">
+					   <filter string="Center" name="center_id" icon="terp-personal" domain="[]" context="{'group_by' : 'center_id'}" />		
+						<filter string="Project" name="project_id" icon="terp-personal" domain="[]" context="{'group_by' : 'project_id'}" />
+					   <filter string="Post" name="post_id" icon="terp-personal" domain="[]" context="{'group_by' : 'post_id'}" />
+					   <filter string="Guard" name="employee_id" icon="terp-personal" domain="[]" context="{'group_by' : 'employee_id'}" />
+					   <filter string="Current" name="current" icon="terp-personal" domain="[]" context="{'group_by' : 'current'}" />
+					   
+				   </group>
+				   
+			   </search>
+			</field>
+		</record>
+
+		<record id="sos_guard_post_action" model="ir.actions.act_window">
+			<field name="name">Gurad Post</field>
+			<field name="res_model">sos.guard.post</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree</field>
+			<field name="search_view_id" ref="sos_guard_post_filter_view"/> 
+			<field name="context">{'current': True,'search_default_current':1}</field>	
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+					Click to create a new Guard Post.
+				</p>
+			</field>
+		 </record> 
+
+
+		<!--Blood Group-->
+		<record model="ir.ui.view" id="sos_bloodgroup_tree_view">
+			<field name="name">sos.bloodgroup.tree.view</field>
+			<field name="model">sos.bloodgroup</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Center">
+					<field name="name" />
+				</tree>
+			</field>
+		</record>
+		
+		<record model="ir.ui.view" id="sos_bloodgroup_form_view">
+			<field name="name">sos.bloodgroup.form.view</field>
+			<field name="model">sos.bloodgroup</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">	
+				<form string="Center">
+				<sheet>
+					<group>
+						<group>
+							<field name="name" placeholder="Name..."/>
+						</group>
+					</group>
+				</sheet>
+				</form>
+			</field>
+		</record>
+		  
+		<record id="sos_bloodgroup_action" model="ir.actions.act_window">
+			<field name="name">Blood Groups</field>
+			<field name="res_model">sos.bloodgroup</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+					Click to create a new Blood Group.
+				</p>
+			</field>
+		</record> 
+
+		<!--SOS Cities-->
+		<record model="ir.ui.view" id="sos_city_tree_view">
+			<field name="name">sos.city.tree.view</field>
+			<field name="model">sos.city</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Center" editable="top">
+					<field name="name" />
+					<field name="center_id" />
+				</tree>
+			</field>
+		</record>
+		
+		
+		<record model="ir.ui.view" id="sos_city_form_view">
+			<field name="name">sos.city.form.view</field>
+			<field name="model">sos.city</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">	
+				<form string="Center">
+				<sheet>
+					<group>
+						<group>
+							<field name="name" placeholder="City Name..."/>
+						</group>
+					</group>
+				</sheet>
+				</form>
+			</field>
+		</record>
+  
+		<record id="sos_city_action" model="ir.actions.act_window">
+			<field name="name">Cities</field>
+			<field name="res_model">sos.city</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+					Click to create a new City.
+				</p>
+			</field>
+		</record> 
+
+		<!--Education-->
+		<record model="ir.ui.view" id="sos_education_tree_view">
+			<field name="name">sos.education.tree.view</field>
+			<field name="model">sos.education</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Center"  editable="top">
+					<field name="name" />
+				</tree>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="sos_education_form_view">
+			<field name="name">sos.education.form.view</field>
+			<field name="model">sos.education</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">	
+				<form string="Center">
+					<sheet>
+						<group>
+							<group>
+								<field name="name" placeholder="Name..."/>
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+  
+		<record id="sos_education_action" model="ir.actions.act_window">
+			<field name="name">Education</field>
+				<field name="res_model">sos.education</field>
+				<field name="view_type">form</field>
+				<field name="view_mode">tree,form</field>
+				<field name="help" type="html">
+					<p class="oe_view_nocontent_create">
+						Click to create a new Education Record.
+					</p>
+			</field>
+		</record> 
+
+
+		<record model="ir.ui.view" id="sos_childs_tree_view">
+			<field name="name">sos.guard.childs.tree.view</field>
+			<field name="model">sos.guard.childs</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Center"  editable="top">
+					<field name="name" />
+				</tree>
+			</field>
+		</record>
+  
+		<record id="sos_childs_action" model="ir.actions.act_window">
+			<field name="name">Childs</field>
+				<field name="res_model">sos.guard.childs</field>
+				<field name="view_type">form</field>
+				<field name="view_mode">tree,form</field>
+				<field name="help" type="html">
+					<p class="oe_view_nocontent_create">
+						Click to create a new Education Record.
+					</p>
+			</field>
+		</record> 
+
+
+
+		<!--                
+		<record id="sos_view_partner_bank_form" model="ir.ui.view">
+			<field name="name">res.partner.bank.form</field>
+			<field name="model">res.partner.bank</field>
+			<field name="type">form</field>
+			<field name="inherit_id" ref="base.view_partner_bank_form"/>
+			<field name="arch" type="xml">
+			<data>
+				<xpath expr="//field[@name='company_id']" position="after">
+					<field name="open_date" />                 
+					<field name="signatury_name" />  
+					<field name="signatury_designation" />  
+				</xpath>
+				
+			 </data>
+			 </field>
+		</record> 
+		-->
+
+
+		<!--SOS Region-->
+		<record model="ir.ui.view" id="sos_region_tree_view">
+			<field name="name">sos.region.tree.view</field>
+			<field name="model">sos.region</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Regions">
+					<field name="name" />
+					<field name="code" />
+					<field name="center_ids" />
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="sos_region_form_view">
+			<field name="name">sos.region.form.view</field>
+			<field name="model">sos.region</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">	
+				<form string="Regions">
+					<sheet>
+						<group>
+							<group>
+								<field name="name" placeholder="Name..."/>
+							</group>
+							<group>
+								<field name="code" placeholder="Code..."/>
+							</group>
+						</group>
+						<notebook>
+							 <page name="center_ids" string="Centers">
+							 	<field name="center_ids"/>
+							 </page>
+							 <page name="user_ids" string="Users">
+							 	<field name="user_ids"/>
+							 </page>
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+  
+		<record id="sos_region_action" model="ir.actions.act_window">
+			<field name="name">Regions</field>
+				<field name="res_model">sos.region</field>
+				<field name="view_type">form</field>
+				<field name="view_mode">tree,form</field>
+				<field name="help" type="html">
+					<p class="oe_view_nocontent_create">
+						Click to create a new Region Record.
+					</p>
+			</field>
+		</record>
+ 
+
+		
+	</data>
+</odoo>

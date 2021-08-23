@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+	<template id ="report_mbldeduction">
+		<t t-call="web.html_container">
+			 <t t-call="web.internal_layout">
+				<div class="page">
+				<style>
+						 table th { background-color:#d4e3e5;}
+						.tabhead{font-family:georgia,garamond,serif;font-size:14px;}
+						.tabcol{font-family:georgia,garamond,serif;font-size:14px;}
+						tr:nth-child(even) {background-color: #FFEBCD;}
+						tr:nth-child(odd) {background-color: #cdcdcd;}
+				</style>
+				
+				<div width="100%"><center><h3>Guards MBL Deduction Report</h3></center> </div>
+				
+				
+				<table class="table" width="100%">
+					<tr class="tabcol">
+						<td class="text-center">
+							<h3> From
+							<span t-esc="get_date_formate(data['date_from'])" />
+							To
+							<span t-esc="get_date_formate(data['date_to'])" />
+							</h3> 
+						</td>
+					</tr>
+				</table>
+				
+			<div class="col-xs-12 pull-right" style="padding-left:0px; padding-right:0px; page-break-inside: avoid;">
+				<table class="table" width="100%">
+					<thead>
+						<tr class="tabhead">
+							<th class="text-center"  style="border: 1px solid black">SR.No</th>
+							<th class="text-center"  style="border: 1px solid black">Project Name</th>
+							<th class="text-center"  style="border: 1px solid black">Amount</th>
+						</tr>
+					</thead>
+					<tbody>	
+						<t t-foreach="Project" t-as="p">
+							<tr class="tabcol">
+								<td class="text-left">
+									<span t-esc="p_index + 1" />
+								</td>
+								<td class="text-left">
+									<span t-esc="p['name']" />
+								</td>
+								<td class="text-center">
+									<span t-esc="p['amount'] and '{0:,.0f}'.format(int(abs(p['amount']))) or '-'" />
+								</td>
+							</tr>
+						</t>
+							<tr style="font-size:20px;">
+								<td class="text-right" colspan="2">
+									Total:
+								</td>
+								<td class="text-center">
+									<span t-esc="Pro_Total and '{0:,.0f}'.format(int(Pro_Total)) or '-'" />
+								</td>
+							</tr>
+					</tbody>	
+				</table>
+			</div>	
+							
+			<!-- Lines Table -->
+			<div class="col-xs-12 pull-right" style="padding-left:0px; padding-right:0px; page-break-inside: avoid;">					
+				<table class="table" width="100%">
+					<thead>
+						<tr class="tabhead" style="font-size:12px;">
+							<th>Sr.No</th>
+							<th>Ref.</th>
+							<th>Name</th>
+							<th>Appointment Date</th>
+							<th>Project</th>
+							<th>Center</th>
+							<th>Post</th>
+							<th>Amount</th>
+							<th>Deposited Amt</th>
+							<th>Remaining Amt</th>
+						</tr>
+					</thead>
+					<tbody style="font-size:12px;">
+						<tr t-foreach="PayslipLines" t-as="line">
+							<td>
+								<span t-esc="line_index+1" />
+							</td>
+							<td>
+								<span t-esc="line['ref']" />
+							</td>	
+							<td>
+								<span t-esc="line['name']" />
+							</td>
+							<td>
+								<span t-esc="get_date_formate(line['appoint_date'])" />
+							</td>
+							<td>
+								<span t-esc="line['project']" />
+							</td>
+							<td>
+								<span t-esc="line['center']" />
+							</td>
+							<td>
+								<span t-esc="line['post']" />
+							</td>
+							<td>
+								<span t-esc="line['amount'] and '{0:,.0f}'.format(int(abs(line['amount']))) or '-'" />
+							</td>
+							<td>
+								<span t-esc="line['deposit_amount'] and '{0:,.0f}'.format(int(line['deposit_amount'])) or '-'" />
+							</td>
+							<td>
+								<span t-esc="(TotalDeposited) - line['deposit_amount'] and '{0:,.0f}'.format(int((TotalDeposited) - line['deposit_amount']))" />
+							</td>
+						</tr>
+					</tbody>	
+				</table>
+			<div style="width:400px;background:#d4e3e5; margin-left:400px;"><h4>Total:<span style="margin-left:250px;" t-esc="Total and '{0:,.0f}'.format(int(Total)) or '-'" /></h4></div>
+		</div>
+		</div>
+		</t>
+		</t>
+	</template>
+	
+	</data>
+</odoo>

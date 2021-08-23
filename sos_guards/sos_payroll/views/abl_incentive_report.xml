@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<!-- ABL Incentive Report-->
+		<report
+			id="report_abl_incentive"
+			string= "ABL Incentive"
+			model = "abl.incentive.wizard"
+			report_type="qweb-pdf"
+			file="sos_payroll.report_ablincentive"
+			name="sos_payroll.report_ablincentive"
+		/>
+		
+		<!-- Guards Security Deposit Report-->
+		<report
+			id="report_security_deposit"
+			string= "Guards Security Deposit"
+			model = "sos.guards.security.deposit"
+			report_type="qweb-pdf"
+			file="sos_payroll.report_securitydeposit"
+			name="sos_payroll.report_securitydeposit"
+		/>
+		
+		<!--Posts Total Attendance Report-->
+		<report
+			id="report_posts_total_attendance"
+			string= "Posts Total Attendance"
+			model = "sos.posts.total.attendance"
+			report_type="qweb-pdf"
+			file="sos_payroll.report_poststotalattendance"
+			name="sos_payroll.report_poststotalattendance"
+		/>
+		
+		
+		<!-- Guards MBL Deduction Report-->
+		<report
+			id="sos_payroll.report_mbl_deduction"
+			string= "Guards MBL Deduction"
+			model = "sos.guards.mbl.deduction"
+			report_type="qweb-pdf"
+			file="sos_payroll.report_mbldeduction"
+			name="sos_payroll.report_mbldeduction"
+		/>
+	</data>
+</odoo>

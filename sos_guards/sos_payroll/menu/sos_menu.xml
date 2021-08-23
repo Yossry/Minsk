@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>	
+			<!-- Attendance Mark -->	
+			<menuitem action="open_view_sos_center_attendance" id="menu_open_view_sos_center_attendance" parent="menu_gms_attendance" sequence="5" 
+				groups="sos.group_hr_master,sos.group_coordinator,account.group_account_invoice"/>		
+			<menuitem action="open_view_sos_guard_attendance" id="menu_open_view_sos_guard_attendance" parent="menu_gms_attendance" sequence="10" 
+				groups="sos.group_hr_master,sos.group_coordinator,sos.group_regional_manager,account.group_account_invoice"/>
+				
+			<!-- Device Attendance1 Menu -->
+			<menuitem parent="menu_gms_attendance" id="sos_guards_attendance1_mi" name="Guards Device attendance" sequence="12" action="open_view_sos_guard_attendance1" 
+				groups="sos.group_hr_master,sos.group_coordinator,sos.group_regional_manager,account.group_account_invoice"/>
+			
+			<!-- on the request of Zahid
+			<menuitem action="action_guards_attendance_mark" id="menu_open_guards_attendance_mark" parent="menu_gms_attendance" sequence="20" groups="base.group_no_one"/>
+			-->
+			<menuitem action="action_guards_extra_attendance" id="menu_open_extra_guards_attendance" parent="menu_gms_attendance" sequence="30"  
+				groups="sos.group_hr_master,sos.group_coordinator,sos.group_regional_manager"/> 
+			<menuitem action="open_view_sos_guard_shortfall" id="menu_open_view_sos_guard_shortfall" parent="menu_gms_attendance" sequence="40" 
+				groups="sos.group_hr_master,sos.group_coordinator,sos.group_regional_manager,account.group_account_invoice"/>
+			<menuitem action="open_view_sos_guard_replacement" id="menu_open_view_sos_guard_replacement" parent="menu_gms_attendance" sequence="50" 
+				groups="sos.group_superusers"/>
+				
+			<menuitem action="act_attendance_close_view" id="menu_sos_attendance_close" parent="menu_gms_attendance" sequence="60" 
+				groups="sos.group_hr_master,sos.group_coordinator,account.group_account_invoice"/>
+			<menuitem action="act_attendance_log_view" id="menu_sos_attendance_log" parent="menu_gms_attendance" sequence="62" 
+				groups="sos.group_superusers"/>
+			<menuitem action="action_guards_attendance_date_setting" id="menu_guards_attendance_date_setting" parent="menu_gms_attendance" sequence="65" 
+				groups="sos.group_superusers"/>				
+				
+			<!-- Attendance Reports -->
+			<menuitem action="action_sos_guards_attendance" name="Attendance" id="menu_sos_guards_attendance_report" parent="menu_gms_attendance_reports" sequence="10" groups="sos.group_hr_master,base.group_user" />
+			<menuitem action="action_sos_guards_daily_attendance" name="Daily Attendance" id="menu_sos_guards_daily_attendance_report" parent="menu_gms_attendance_reports" sequence="20" groups="sos.group_hr_master,base.group_user" />
+			<menuitem action="action_sos_guards_consolidated_attendance" name="Consolidated Attendance" id="menu_sos_guards_consolidated_attendance_report" parent="menu_gms_attendance_reports" sequence="30" groups="sos.group_hr_master,base.group_user" />
+			<menuitem action="action_sos_guards_daily_absent" name="Daily Absent" id="menu_sos_guards_daily_absent_report" parent="menu_gms_attendance_reports" sequence="40" groups="sos.group_hr_master,base.group_user" />
+			<menuitem action="action_sos_guards_shortfall" name="ShortFall" id="menu_sos_guards_shortfall_report" parent="menu_gms_attendance_reports" sequence="50" groups="sos.group_hr_master,base.group_user" />
+			
+			<menuitem name="Attendance Register" id="menu_sos_attendance_register_report" parent="menu_gms_attendance_reports" sequence="60" groups="sos.group_hr_master,base.group_user" />
+				<menuitem action="action_posts_attendance_register" name="Posts Register" id="menu_sos_posts_attendance_register_report" parent="menu_sos_attendance_register_report" sequence="70" groups="sos.group_hr_master,base.group_user" />
+				<menuitem action="action_guards_attendance_register" name="Guards Register" id="menu_sos_guards_attendance_register_report" parent="menu_sos_attendance_register_report" sequence="80" groups="sos.group_hr_master,base.group_user" />
+			
+			<menuitem action="action_sos_posts_total_attendance" name="Posts Attendance Report" id="menu_sos_posts_attendance_report" parent="menu_gms_attendance_reports" sequence="65" groups="sos.group_hr_master,base.group_user" />
+			
+			
+    		<!-- Payslips -->
+        	<menuitem action="act_view_guards_payslip" id="menu_guards_payslip" parent="menu_gms_root_payroll" groups="account.group_account_invoice,sos.group_coordinator" sequence="10"/> 
+			<menuitem action="act_view_guards_payslip_line" id="menu_guards_payslip_line" parent="menu_gms_root_payroll" groups="account.group_account_invoice" sequence="20"/> 
+			<menuitem id="menu_guards_arrears" name="Arrears / Fine" parent="menu_gms_root_payroll" action="act_guards_arrears_view" groups="account.group_account_invoice,sos.group_regional_manager" sequence="30"/>
+
+			<menuitem action="action_guards_payslip_run" id="menu_guards_payslip_run" parent="menu_gms_root_payroll"  sequence="40" groups="account.group_account_invoice"/>		
+			<menuitem action="action_view_guards_bank_advice_tree" id="guards_menu_payment_advice" parent="menu_gms_root_payroll"  sequence="50" groups="account.group_account_invoice"/>
+			<menuitem action="act_guards_payslip_audit_view" id="menu_guards_payslips_audit" parent="menu_gms_root_payroll"  sequence="55"/>
+		
+
+			<menuitem action="act_guards_payslip_cron_view" id="menu_guards_payslips_cron" parent="menu_gms_root_payroll"  sequence="61"/>
+			<menuitem action="act_posts_payslip_cron_view" id="menu_posts_payslips_cron" parent="menu_gms_root_payroll"  sequence="62"/>
+			<menuitem action="action_guards_payslips_cron_wizard" id="menu_guards_payslips_cron_wizard" parent="menu_gms_root_payroll"  sequence="63" groups="base.group_no_one,account.group_account_invoice"/>
+			<menuitem action="act_guards_salary_difference_view" id="menu_guards_salary_difference" parent="menu_gms_root_payroll"  sequence="65" groups="base.group_no_one,account.group_account_invoice"/>
+
+       		
+			<menuitem action="action_sos_salary_report" name="Guards Salary" id="menu_sos_guards_salary_report" parent="menu_gms_payroll_reports" sequence="100" groups="account.group_account_invoice,sos.group_coordinator" />	
+			
+			<!--
+				<menuitem action="action_guards_payslip_lines_contribution_register" id="menu_guards_payslip_lines_contribution_register" parent="menu_gms_payroll_reports"  sequence="110"/>
+		-->	
+				<menuitem action="action_abl_incentive_wizard" id="menu_abl_incentive_wizard" parent="menu_gms_payroll_reports"  sequence="115"/>
+				<menuitem action="action_sos_guards_security_deposit" id="menu_guards_security_deposit" parent="menu_gms_payroll_reports"  sequence="116"/>
+				<menuitem action="action_sos_guards_mbl_deduction" id="menu_guards_mbl_deduction" parent="menu_gms_payroll_reports"  sequence="120"/>
+				<menuitem action="action_guards_no_contract_wizard" id="menu_guards_no_contract" parent="menu_gms_payroll_reports"  sequence="122"/>	
+
+		<menuitem parent="sos.menu_gms_configuration" id="sos_advances_mi" name="Advances" sequence="112" action="sos_advances_action" /> 
+		<menuitem parent="sos.menu_gms_configuration" id="sos_project_salary_pending_mi" name="Pending Salary" sequence="113" action="act_project_salary_pending_view" /> 
+		<menuitem parent="sos.menu_gms_configuration" id="sos_guards_leave_policy_mi" name="Guards Leaves Policy" sequence="115" action="act_view_guards_leave_policy" />
+
+		<!-- New Menu -->
+		<menuitem id="staff_attendance_main_menu" name="Attendances" parent="hr.menu_hr_root" sequence="50" groups="hr.group_hr_manager"/>
+		
+	
+	</data>
+</odoo>

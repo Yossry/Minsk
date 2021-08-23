@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+	<template id ="report_guardsnocontract">
+		<t t-call="web.html_container">
+				<t t-call="web.external_layout" style="font-family:georgia,garamond,serif;font-size:10px">
+					<div class="page">
+						<style>
+							tr:nth-child(even) {background-color: #FFEBCD;}
+							tr:nth-child(odd) {background-color: #cdcdcd;}
+						</style>
+						<div width="100%"><center><h3>No Contracts Guard Report</h3></center> </div>
+						
+							<table width="100%">
+								<thead>
+									<tr style="font-size:10px; font-weight:bold;background-color:#A6ACAF; border:1px solid;">
+										<th style="border:1px solid; padding-left:5px;">Sr.No</th>
+										<th style="border:1px solid; padding-left:5px;">ID</th>
+										<th style="border:1px solid; padding-left:5px;">Guard Name</th>
+										<th style="border:1px solid; padding-left:5px;">Post</th>
+										<th style="border:1px solid; padding-left:5px;">Center</th>
+										<th style="border:1px solid; padding-left:5px;">Project </th>
+										<th style="border:1px solid; padding-left:5px;">Appointment Date </th>
+									</tr>
+								</thead>
+								<tbody>
+									<t t-foreach="Employee" t-as="emp">
+										<tr  style="font-size:10px; border:1px solid;">
+											<td style="border:1px solid; padding-left:5px;">
+												<span t-esc="emp_index + 1" />
+											</td>
+											<td style="border:1px solid; padding-left:5px;">
+												<span t-esc="emp.code" />
+											</td>
+											<td style="border:1px solid; padding-left:5px;">
+												<span t-esc="emp.name" />
+											</td>
+											<td style="border:1px solid; padding-left:5px;">
+												<span t-esc="emp.current_post_id.name" />
+											</td>
+											<td style="border:1px solid; padding-left:5px;">
+												<span t-esc="emp.center_id.name" />
+											</td>
+											<td style="border:1px solid; padding-left:5px;">
+												<span t-esc="emp.project_id.name" />
+											</td>
+											<td style="border:1px solid; padding-left:5px;">
+												<span t-esc="emp.appointmentdate" /> 
+											</td>
+										</tr>
+									</t>
+								</tbody>	
+							</table>
+					</div>
+				</t>
+		</t>
+	</template>
+	
+	</data>
+</odoo>

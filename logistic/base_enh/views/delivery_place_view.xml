@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>	<data>
+
+		<record model="ir.ui.view" id="delivery_place_list_view">
+			<field name="name">delivery_place</field>
+			<field name="model">delivery.place</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="zip" />
+					<field name="country_id" />
+					<field name="city_id" />
+					<field name="state_id"/>
+				</tree>
+			</field>
+		</record>
+
+
+		<record model="ir.ui.view" id="delivery_place_form_view">
+			<field name="name">delivery_place</field>
+			<field name="model">delivery.place</field>
+			<field name="arch" type="xml">
+				<form>
+					<sheet>
+						<group>
+							<group>
+								<field name="zip" />
+							<field name="country_id" options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+							</group>
+							<group>
+								<field name="city_id" domain="[('country_id','=',country_id)]" options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+								<field name="state_id" domain="[('country_id','=',country_id)]" options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+							</group>
+							
+							<group>
+								<field name="address"/>
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="delivery_place_action">
+			<field name="name">Place Of Delivery</field>
+			<field name="res_model">delivery.place</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+
+		<menuitem  id="delivery_place_menu"
+			parent="location_menu" action="delivery_place_action" />
+
+	</data>
+</odoo>

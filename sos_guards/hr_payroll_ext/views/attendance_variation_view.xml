@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="hr_employee_month_attendance_variations_tree_view" model="ir.ui.view">
+			<field name="name">hr.employee.month.attendance.variations.tree</field>
+			<field name="model">hr.employee.month.attendance.variations</field>
+			<field name="arch" type="xml">
+				<tree string="Attendance Variations">
+				    <field name="period_id"/>
+				    <field name="from_date"/>
+				    <field name="to_date"/> 
+				    <field name="employee_id"/>
+				    <field name="days"/>
+				    <field name="state"/>
+				    <field name="contract_id"/>
+				</tree>
+			</field>
+		</record>
+	
+		<record id="hr_employee_month_attendance_variations_form_view" model="ir.ui.view">
+			<field name="name">hr.employee.month.attendance.variations.form</field>
+			<field name="model">hr.employee.month.attendance.variations</field>
+			<field name="arch" type="xml">
+				<form string="Attendance Variations">          
+				<header>
+					<button name="variation_confirm" type="object" string="Confirm" states="draft" groups="hr.group_hr_manager" class="oe_highlight"/>
+					 <field name="state" widget="statusbar"/>
+				</header>
+				<sheet>     
+				    <group>
+				    	<group>
+				    		<field name="period_id" options="{'no_quick_create':True,'no_create_edit':True}"/>
+				    		<field name="from_date"/>
+						    <field name="to_date"/> 
+				    	</group>
+				    	<group>
+				    		<field name="employee_id" options="{'no_quick_create':True,'no_create_edit':True}"/>
+						    <field name="days"/> 
+						    <field name="contract_id" domain="[('employee_id','=', employee_id)]" options="{'no_quick_create':True,'no_create_edit':True}"/>
+				    	</group>            	
+				    </group>
+				    <group string="Description">
+				        <field name="note"/>                 
+				    </group>
+				</sheet>    
+				</form>
+			</field>
+		</record>
+
+		<record id="hr_employee_month_attendance_variations_action_view" model="ir.actions.act_window">
+			<field name="name">Attendance Variations</field>
+			<field name="res_model">hr.employee.month.attendance.variations</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+		
+	</data>
+</odoo>
+

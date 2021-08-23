@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+        
+    <record id="clv_lab_test_report_view_form_lab_test_report" model="ir.ui.view">
+        <field name="name">clv.lab_test.report.form</field>
+        <field name="model">clv.lab_test.report</field>
+        <field name="inherit_id" ref="clv_lab_test.clv_lab_test_report_view_form"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <group name="group_middle" position="after">
+                <button
+                    type="action"
+                    name="%(clv_lab_test_report_edit_ean20_action)d"
+                    string="Lab Test Report Edit"
+                    class="oe_stat_button"
+                    icon="fa-edit"
+                    help="Lab Test Report Edit"
+                    attrs="{'invisible': ['|', ('lab_test_type_code', '!=', 'EAN20'), ('approved', '!=', False)]}"
+                />
+                <button
+                    type="action"
+                    name="%(clv_lab_test_report_edit_ecp20_action)d"
+                    string="Lab Test Report Edit"
+                    class="oe_stat_button"
+                    icon="fa-edit"
+                    help="Lab Test Report Edit"
+                    attrs="{'invisible': ['|', ('lab_test_type_code', '!=', 'ECP20'), ('approved', '!=', False)]}"
+                />
+                <button
+                    type="action"
+                    name="%(clv_lab_test_report_edit_edh20_action)d"
+                    string="Lab Test Report Edit"
+                    class="oe_stat_button"
+                    icon="fa-edit"
+                    help="Lab Test Report Edit"
+                    attrs="{'invisible': ['|', ('lab_test_type_code', '!=', 'EDH20'), ('approved', '!=', False)]}"
+                />
+                <button
+                    type="action"
+                    name="%(clv_lab_test_report_edit_eev20_action)d"
+                    string="Lab Test Report Edit"
+                    class="oe_stat_button"
+                    icon="fa-edit"
+                    help="Lab Test Report Edit"
+                    attrs="{'invisible': ['|', ('lab_test_type_code', '!=', 'EEV20'), ('approved', '!=', False)]}"
+                />
+                <button
+                    type="action"
+                    name="%(clv_lab_test_report_edit_eur20_action)d"
+                    string="Lab Test Report Edit"
+                    class="oe_stat_button"
+                    icon="fa-edit"
+                    help="Lab Test Report Edit"
+                    attrs="{'invisible': ['|', ('lab_test_type_code', '!=', 'EUR20'), ('approved', '!=', False)]}"
+                />
+            </group>
+        </field>
+    </record>
+   
+</odoo>

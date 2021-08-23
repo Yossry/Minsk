@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_guards_payslip_by_runs" model="ir.ui.view">
+            <field name="name">guards_payroll_payslip_runs</field>
+            <field name="model">guards.payslip.runs</field>
+            <field name="arch" type="xml">
+                <form string="Payslips by Payslip Batches" version="7.0">
+                    <header>
+                        <button icon="gtk-execute" string="Generate" name="compute_sheet" type="object" class="oe_highlight"  />
+                    </header>
+                    <group>
+                        <label for="payslip_run_ids" colspan="4" nolabel="1" string="This wizard will generate payslips for all selected Payslip Batch(s) based on the dates and credit note specified on Payslips Run." />
+                    </group>
+                    <group colspan="4" >
+                        <separator string="Payslip Batches" colspan="4"/>
+                        <newline/>
+                        <field name="payslip_run_ids" nolabel="1" widget="many2many"/>
+                    </group>
+               </form>
+            </field>
+        </record>
+
+        <record id="action_guards_payslip_by_runs" model="ir.actions.act_window">
+            <field name="name">Generate Payslips</field>
+            <field name="res_model">guards.payslip.runs</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_guards_payslip_by_runs"/>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</odoo>

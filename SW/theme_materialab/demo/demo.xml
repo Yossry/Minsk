@@ -1,0 +1,1198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template name="Demo" id="website.demo_page">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure">
+            	 <!-- ====SLIDER START==== -->
+                <section class="slider_area">
+                    <div class="container">
+                        <div class="mainSlider">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="dtable">
+                                        <div class="dcell">
+                                            <div class="slider_caption text-left">
+                                                <h4 class="fadeInDown_slide animated" style="animation-delay: .1s">We design</h4>
+                                                <h1 class="fadeInRight_slide animated" style="animation-delay: .6s"><span>Creative</span> website</h1>
+                                                <p class="colorWh fadeInUp_slide animated" style="animation-delay: .4s">If you’ve followed along and done the , you’ve created a good starting place. You’re going to
+                                                    <br/> need to make sure your pages are optimized properly.</p>
+                                            </div>
+                                            <a class="th_bt btn waves-effect waves-light fadeInRight_slide animated" style="animation-delay: .8s" href="#">
+                                            PURCHASE
+                                    </a>
+                                            <a class="th_bt slider_learn btn waves-effect fadeInRight_slide animated" style="animation-delay: 1s" href="#">
+                                            Learn More
+                                    </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="dtable">
+                                        <div class="dcell">
+                                            <div class="slider_caption text-left">
+                                                <h4 class="fadeInDown_slide animated" style="animation-delay: .1s">We design</h4>
+                                                <h1 class="fadeInRight_slide animated" style="animation-delay: .6s"><span>Creative</span> website</h1>
+                                                <p class="colorWh fadeInUp_slide animated" style="animation-delay: .4s">If you’ve followed along and done the , you’ve created a good starting place. You’re going to
+                                                    <br/> need to make sure your pages are optimized properly.</p>
+                                            </div>
+                                            <a class="th_bt btn waves-effect waves-light fadeInRight_slide animated" style="animation-delay: .8s" href="#">
+                                            PURCHASE
+                                    </a>
+                                            <a class="th_bt slider_learn btn waves-effect fadeInRight_slide animated" style="animation-delay: 1s" href="#">
+                                            Learn More
+                                    </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="dtable">
+                                        <div class="dcell">
+                                            <div class="slider_caption text-left">
+                                                <h4 class="fadeInDown_slide animated" style="animation-delay: .1s">We design</h4>
+                                                <h1 class="fadeInRight_slide animated" style="animation-delay: .6s"><span>Creative</span> website</h1>
+                                                <p class="colorWh fadeInUp_slide animated" style="animation-delay: .4s">If you’ve followed along and done the , you’ve created a good starting place. You’re going to
+                                                    <br/> need to make sure your pages are optimized properly.</p>
+                                            </div>
+                                            <a class="th_bt btn waves-effect waves-light fadeInRight_slide animated" style="animation-delay: .8s" href="#">
+                                            PURCHASE
+                                    </a>
+                                            <a class="th_bt slider_learn btn waves-effect fadeInRight_slide animated" style="animation-delay: 1s" href="#">
+                                            Learn More
+                                    </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- ====SLIDER END==== -->
+                <!-- ====FEATURE AERE==== -->
+                <section class="feature_area" id="services">
+                    <div class="container">
+                        <div class="row fix_m">
+                            <div class="col-xs-12 col-sm-6 col-md-3 fix_p">
+                                <div class="single_feature text-center">
+                                    <i class="zmdi zmdi-devices"></i>
+                                    <h4>Branding</h4>
+                                    <div class="single_cap">
+                                        <p>As a bu siness owner or manager, the decision to opt faor offshore software can be difficult.</p>
+                                        <a class="th_bt btn waves-effect" href="#">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-3 fix_p">
+                                <div class="single_feature text-center">
+                                    <i class="zmdi zmdi-globe-alt"></i>
+                                    <h4>Web Development</h4>
+                                    <div class="single_cap">
+                                        <p>As a bu siness owner or manager, the decision to opt faor offshore software can be difficult.</p>
+                                        <a class="th_bt btn waves-effect" href="#">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-3 fix_p">
+                                <div class="single_feature text-center">
+                                    <i class="zmdi zmdi-apple"></i>
+                                    <h4>Mobile Application</h4>
+                                    <div class="single_cap">
+                                        <p>As a bu siness owner or manager, the decision to opt faor offshore software can be difficult.</p>
+                                        <a class="th_bt btn waves-effect" href="#">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-3 fix_p">
+                                <div class="single_feature text-center">
+                                    <i class="zmdi zmdi-camera"></i>
+                                    <h4>Photography</h4>
+                                    <div class="single_cap">
+                                        <p>As a bu siness owner or manager, the decision to opt faor offshore software can be difficult.</p>
+                                        <a class="th_bt btn waves-effect" href="#">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- ====FEATURE AERE END==== -->
+                <!-- ====ABOUT US==== -->
+                <section id="about" class="about_area section-padding">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="about_left">
+                                    <img src="/theme_materialab/static/src/img/about_left.png" alt="" />
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="section_title">
+                                    <h5 class="smallHd">Know something</h5>
+                                    <h2 class="secHd">About materialAB</h2>
+                                </div>
+                                <div class="about_text">
+                                    <p>RSS, (Really Simple Syndication) has become so popular today and is being referred to by internet users as Pull Technology rather Technology. Utilizing RSS “Pull” technology has become a popular.</p>
+                                    <p class="ab_text">If you’ve followed along and done the steps above, you’ve created a good starting place. You’re going to need to make sure your pages are optimized properly.</p>
+                                    <a class="th_bt btn waves-effect waves-light" href="#">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- ====ABOUT US==== -->
+                <!-- ====START PROJECT AREA==== -->
+                <section class="project_area section-padding">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 col-md-3">
+                                <div class="single_fact text-center">
+                                    <div class="fact_icon">
+                                        <div class="RXcircleEffect"></div>
+                                        <i class="zmdi zmdi-case-check"></i>
+                                    </div>
+                                    <h2><span class="counter">900</span>+</h2>
+                                    <p>total projects</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-3">
+                                <div class="single_fact text-center">
+                                    <div class="fact_icon">
+                                        <div class="RXcircleEffect"></div>
+                                        <i class="zmdi zmdi-code-smartphone"></i>
+                                    </div>
+                                    <h2><span class="counter">300</span>+</h2>
+                                    <p>Development</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-3">
+                                <div class="single_fact text-center">
+                                    <div class="fact_icon">
+                                        <div class="RXcircleEffect"></div>
+                                        <i class="zmdi zmdi-palette"></i>
+                                    </div>
+                                    <h2><span class="counter">400</span>+</h2>
+                                    <p>Graphic Design</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-3">
+                                <div class="single_fact text-center">
+                                    <div class="fact_icon">
+                                        <div class="RXcircleEffect"></div>
+                                        <i class="zmdi zmdi-accounts"></i>
+                                    </div>
+                                    <h2><span class="counter">895</span></h2>
+                                    <p>Happy clients</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- ====END START PROJECT AREA==== -->
+                <!-- ====PROTFOLIO AREA==== -->
+                <section id="Portfolio" class="protfolio_area section-padding">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="section_title mb80">
+                                    <h5 class="smallHd text-center">Here are some of</h5>
+                                    <h2 class="secHd text-center">our awesome works</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="work_trigge">
+                                    <ul class="trigger mb80 text-center">
+                                        <li class="filter active" data-filter="">ALL</li>
+                                        <li class="filter" data-filter=".html">HTML</li>
+                                        <li class="filter" data-filter=".wordpress">Wordpress</li>
+                                        <li class="filter" data-filter=".ui_ux">UI/UX</li>
+                                        <li class="filter" data-filter=".print">PRINT</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="all_work_item">
+                                <div class="col-xs-12 col-sm-6 col-md-4 mix all ui_ux">
+                                    <figure>
+                                        <div class="RXcircleEffect"></div>
+                                        <img src="/theme_materialab/static/src/img/mixtup1.jpg" alt="" />
+                                        <figcaption>
+                                            <div class="capCont">
+                                                <ul class="iconlink">
+                                                    <li>
+                                                        <a data-gall="group_1" class="veno vbox-item" href="/theme_materialab/static/src/img/mixtup1.jpg">
+                                                            <i class="zmdi zmdi-zoom-in btn waves-effect waves-dark"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">
+                                                            <i class="zmdi zmdi-link btn waves-effect waves-dark"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                                <h4>Banner Design</h4>
+                                                <p>Print/ Design</p>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 mix all wordpress print">
+                                    <figure>
+                                        <div class="RXcircleEffect"></div>
+                                        <img src="/theme_materialab/static/src/img/mixtup3.jpg" alt="" />
+                                        <figcaption>
+                                            <div class="capCont">
+                                                <ul class="iconlink">
+                                                    <li>
+                                                        <a data-gall="group_1" class="veno vbox-item" href="/theme_materialab/static/src/img/mixtup3.jpg">
+                                                            <i class="zmdi zmdi-zoom-in btn waves-effect waves-dark"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">
+                                                            <i class="zmdi zmdi-link btn waves-effect waves-dark"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                                <h4>Website</h4>
+                                                <p>Web Design / Development</p>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 mix all wordpress html">
+                                    <figure>
+                                        <div class="RXcircleEffect"></div>
+                                        <img src="/theme_materialab/static/src/img/mixtup6.jpg" alt="" />
+                                        <figcaption>
+                                            <div class="capCont">
+                                                <ul class="iconlink">
+                                                    <li>
+                                                        <a data-gall="group_1" class="veno vbox-item" href="/theme_materialab/static/src/img/mixtup6.jpg">
+                                                            <i class="zmdi zmdi-zoom-in btn waves-effect waves-dark"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">
+                                                            <i class="zmdi zmdi-link btn waves-effect waves-dark"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                                <h4>WordPress</h4>
+                                                <p>Development</p>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 mix print">
+                                    <figure>
+                                        <div class="RXcircleEffect"></div>
+                                        <img src="/theme_materialab/static/src/img/mixtup4.jpg" alt="" />
+                                        <figcaption>
+                                            <div class="capCont">
+                                                <ul class="iconlink">
+                                                    <li>
+                                                        <a data-gall="group_1" class="veno vbox-item" href="/theme_materialab/static/src/img/mixtup4.jpg">
+                                                            <i class="zmdi zmdi-zoom-in btn waves-effect waves-dark"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">
+                                                            <i class="zmdi zmdi-link btn waves-effect waves-dark"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                                <h4>Mobile Application</h4>
+                                                <p>Design/Development</p>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 mix all ui_ux">
+                                    <figure>
+                                        <div class="RXcircleEffect"></div>
+                                        <img src="/theme_materialab/static/src/img/mixtup2.jpg" alt="" />
+                                        <figcaption>
+                                            <div class="capCont">
+                                                <ul class="iconlink">
+                                                    <li>
+                                                        <a data-gall="group_1" class="veno vbox-item" href="/theme_materialab/static/src/img/mixtup2.jpg">
+                                                            <i class="zmdi zmdi-zoom-in btn waves-effect waves-dark"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">
+                                                            <i class="zmdi zmdi-link btn waves-effect waves-dark"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                                <h4>seo</h4>
+                                                <p>SEO/Optimization</p>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 mix html">
+                                    <figure>
+                                        <div class="RXcircleEffect"></div>
+                                        <img src="/theme_materialab/static/src/img/mixtup7.jpg" alt="" />
+                                        <figcaption>
+                                            <div class="capCont">
+                                                <ul class="iconlink">
+                                                    <li>
+                                                        <a data-gall="group_1" class="veno vbox-item" href="/theme_materialab/static/src/img/mixtup7.jpg">
+                                                            <i class="zmdi zmdi-zoom-in btn waves-effect waves-dark"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">
+                                                            <i class="zmdi zmdi-link btn waves-effect waves-dark"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                                <h4>Marketing</h4>
+                                                <p>Online Marketing</p>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 mix wordpress">
+                                    <figure>
+                                        <div class="RXcircleEffect"></div>
+                                        <img src="/theme_materialab/static/src/img/mixtup5.jpg" alt="" />
+                                        <figcaption>
+                                            <div class="capCont">
+                                                <ul class="iconlink">
+                                                    <li>
+                                                        <a data-gall="group_1" class="veno vbox-item" href="/theme_materialab/static/src/img/mixtup5.jpg">
+                                                            <i class="zmdi zmdi-zoom-in btn waves-effect waves-dark"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">
+                                                            <i class="zmdi zmdi-link btn btn-link btn waves-effect waves-dark"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                                <h4>Logo Design</h4>
+                                                <p>Print/ Design</p>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 trigger_bottom">
+                                <a href="#" class="th_bt btn waves-effect waves-light">View All
+                            <i class="zmdi zmdi-long-arrow-right"></i>
+                        </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- ====END PROTFOLIO AREA==== -->
+                <!-- ====START WHY CHOOSE==== -->
+                <section class="whychoose">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="section_title mb80">
+                                    <h5 class="smallHd text-center">check out </h5>
+                                    <h2 class="secHd text-center">Our features</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row checkBGFull">
+                            <div class="col-xs-12 col-sm-6 ourFeaturesContent section-padding">
+                                <div class="single_checkCont">
+                                    <div class="checkIcon">
+                                        <i class="zmdi zmdi-star"></i>
+                                    </div>
+                                    <div class="checkText">
+                                        <h4>cost effectiveness</h4>
+                                        <p>All the rumors have finally died down and many iPod does support video its fifth generation. </p>
+                                    </div>
+                                </div>
+                                <div class="single_checkCont">
+                                    <div class="checkIcon">
+                                        <i class="zmdi zmdi-lamp"></i>
+                                    </div>
+                                    <div class="checkText">
+                                        <h4>unique ideas</h4>
+                                        <p>All the rumors have finally died down and many iPod does support video its fifth generation. </p>
+                                    </div>
+                                </div>
+                                <div class="single_checkCont">
+                                    <div class="checkIcon">
+                                        <i class="zmdi zmdi-alarm-check"></i>
+                                    </div>
+                                    <div class="checkText">
+                                        <h4>Timely Delivery </h4>
+                                        <p>All the rumors have finally died down and many iPod does support video its fifth generation. </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="checkfeature_contbg hidden-xs" style="background-image: url(/theme_materialab/static/src/img/feature_post_img_1.jpg);"></div>
+                        </div>
+                        <div class="row checkBGFull">
+                            <div class="col-xs-12 col-sm-6 ourFeaturesContent section-padding">
+                                <div class="single_checkCont">
+                                    <div class="checkIcon">
+                                        <i class="zmdi zmdi-account-add"></i>
+                                    </div>
+                                    <div class="checkText">
+                                        <h4>reliability</h4>
+                                        <p>All the rumors have finally died down and many iPod does support video its fifth generation. </p>
+                                    </div>
+                                </div>
+                                <div class="single_checkCont">
+                                    <div class="checkIcon">
+                                        <i class="zmdi zmdi-accounts"></i>
+                                    </div>
+                                    <div class="checkText">
+                                        <h4>customer relationship</h4>
+                                        <p>All the rumors have finally died down and many iPod does support video its fifth generation. </p>
+                                    </div>
+                                </div>
+                                <div class="single_checkCont">
+                                    <div class="checkIcon">
+                                        <i class="zmdi zmdi-sun"></i>
+                                    </div>
+                                    <div class="checkText">
+                                        <h4>quality assurance</h4>
+                                        <p>All the rumors have finally died down and many iPod does support video its fifth generation. </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="checkfeature_contbg hidden-xs" style="background-image: url(/theme_materialab/static/src/img/feature_post_img_2.jpg);"></div>
+                        </div>
+                    </div>
+                </section>
+                <!-- ====END WHY CHOOSE==== -->
+                <!-- ====START SERVICE AREA==== -->
+                <section class="service_area section-padding">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="section_title mb80">
+                                    <h5 class="smallHd text-center">here are services</h5>
+                                    <h2 class="secHd text-center">We also offer</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 col-md-4">
+                                <div class="single_service text-center">
+                                    <i class="zmdi zmdi-edit"></i>
+                                    <h3>Creative Writing</h3>
+                                    <p>EPROM or Erasable Programmable Read Only Memory is rewritable memory chip that can hold its data without power. A programmed.</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-4">
+                                <div class="single_service text-center">
+                                    <i class="zmdi zmdi-print"></i>
+                                    <h3>Print Design</h3>
+                                    <p>EPROM or Erasable Programmable Read Only Memory is rewritable memory chip that can hold its data without power. A programmed.</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-4">
+                                <div class="single_service text-center">
+                                    <i class="zmdi zmdi-favorite"></i>
+                                    <h3>Social Media</h3>
+                                    <p>EPROM or Erasable Programmable Read Only Memory is rewritable memory chip that can hold its data without power. A programmed.</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-4">
+                                <div class="single_service text-center">
+                                    <i class="zmdi zmdi-tab-unselected"></i>
+                                    <h3>Pixel Perfect Web</h3>
+                                    <p>EPROM or Erasable Programmable Read Only Memory is rewritable memory chip that can hold its data without power. A programmed.</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-4">
+                                <div class="single_service text-center">
+                                    <i class="zmdi zmdi-code-setting"></i>
+                                    <h3>Front End Development</h3>
+                                    <p>EPROM or Erasable Programmable Read Only Memory is rewritable memory chip that can hold its data without power. A programmed.</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-4">
+                                <div class="single_service text-center">
+                                    <i class="zmdi zmdi-brush"></i>
+                                    <h3>Graphic Design</h3>
+                                    <p>EPROM or Erasable Programmable Read Only Memory is rewritable memory chip that can hold its data without power. A programmed.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- ====END SERVICE AREA==== -->
+                <!-- ====START SOCIAL LINK==== -->
+                <section class="social_btn">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-8 col-md-7">
+                                <h3>Liked Our Service  and works?</h3>
+                            </div>
+                            <div class="col-xs-12 col-sm-4 col-md-5">
+                                <a class="th_bt btn waves-effect waves-light" href="#">Hire Us
+                            <i class="zmdi zmdi-long-arrow-right"></i>
+                        </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- ====END SOCIAL LINK==== -->
+                <!-- ====START OUR TEAM AREA==== -->
+                <section class="our_team">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="section_title mb80">
+                                    <h5 class="smallHd text-center">meet with the</h5>
+                                    <h2 class="secHd text-center">crazy team</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row team_details_area">
+                            <div class="col-xs-12 col-sm-6 fix_p">
+                                <div class="team_content">
+                                    <div class="team_cotent_slid">
+                                        <div class="item">
+                                            <h1>Timothy<br/>Dean</h1>
+                                            <h6>Creative Director</h6>
+                                            <p>If you’ve followed along and done the steps above, you’ve created good starting place. You’re going to need to make sure your pages are optimized properly. This will ensure you get your page ranked high in the search engines.</p>
+                                            <ul class="team_social">
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="zmdi zmdi-facebook btn waves-effect"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="zmdi zmdi-twitter btn waves-effect"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="zmdi zmdi-dribbble btn waves-effect"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="zmdi zmdi-behance btn waves-effect"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="zmdi zmdi-pinterest btn waves-effect"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <a class="th_bt btn waves-effect waves-light" href="#">Learn More
+                                        <i class="zmdi zmdi-long-arrow-right"></i>
+                                    </a>
+                                        </div>
+                                        <div class="item">
+                                            <h1>Ralph <br/>Ramirez</h1>
+                                            <h6>Creative Director</h6>
+                                            <p>If you’ve followed along and done the steps above, you’ve created good starting place. You’re going to need to make sure your pages are optimized properly. This will ensure you get your page ranked high in the search engines.</p>
+                                            <ul class="team_social">
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="zmdi zmdi-facebook btn waves-effect"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="zmdi zmdi-twitter btn waves-effect"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="zmdi zmdi-dribbble btn waves-effect"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="zmdi zmdi-behance btn waves-effect"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="zmdi zmdi-pinterest btn waves-effect"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <a class="th_bt btn waves-effect waves-light" href="#">Learn More
+                                        <i class="zmdi zmdi-long-arrow-right"></i>
+                                    </a>
+                                        </div>
+                                        <div class="item">
+                                            <h1>Alexander<br/>Harper</h1>
+                                            <h6>Creative Director</h6>
+                                            <p>If you’ve followed along and done the steps above, you’ve created good starting place. You’re going to need to make sure your pages are optimized properly. This will ensure you get your page ranked high in the search engines.</p>
+                                            <ul class="team_social">
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="zmdi zmdi-facebook btn waves-effect"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="zmdi zmdi-twitter btn waves-effect"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="zmdi zmdi-dribbble btn waves-effect"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="zmdi zmdi-behance btn waves-effect"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="zmdi zmdi-pinterest btn waves-effect"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <a class="th_bt btn waves-effect waves-light" href="#">Learn More
+                                        <i class="zmdi zmdi-long-arrow-right"></i>
+                                    </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 fix_p_r">
+                                <div class="team_member_photo">
+                                    <div class="team_slid">
+                                        <div class="item waves-effect">
+                                            <img src="/theme_materialab/static/src/img/team_member_1.jpg" alt="" />
+                                            <div class="memberPhoto_border bg1"></div>
+                                            <div class="memberPhoto_border bg2"></div>
+                                            <div class="memberPhoto_border bg3"></div>
+                                            <div class="memberPhoto_border bg4"></div>
+                                        </div>
+                                        <div class="item waves-effect">
+                                            <img src="/theme_materialab/static/src/img/team_member_3.jpg" alt="" />
+                                            <div class="memberPhoto_border bg1"></div>
+                                            <div class="memberPhoto_border bg2"></div>
+                                            <div class="memberPhoto_border bg3"></div>
+                                            <div class="memberPhoto_border bg4"></div>
+                                        </div>
+                                        <div class="item waves-effect">
+                                            <img src="/theme_materialab/static/src/img/team_member_2.jpg" alt="" />
+                                            <div class="memberPhoto_border bg1"></div>
+                                            <div class="memberPhoto_border bg2"></div>
+                                            <div class="memberPhoto_border bg3"></div>
+                                            <div class="memberPhoto_border bg4"></div>
+                                        </div>
+                                    </div>
+                                    <div class="teamslide_nav">
+                                        <i class="zmdi zmdi-long-arrow-left testi_prev"></i>
+                                        <i class="zmdi zmdi-long-arrow-right testi_next"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- ====START OUR TEAM AREA==== -->
+                <!-- ====START PROCESS TABLE==== -->
+                <section class="process_area section-padding">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="section_title mb80">
+                                    <h5 class="smallHd text-center">the simple step of</h5>
+                                    <h2 class="secHd text-center">our working process</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10 col-md-offset-1 text-center">
+                                <div class="tab_trigger_img">
+                                    <img src="/theme_materialab/static/src/img/pro_bg.svg" alt="" class="waveBg svg" />
+                                    <div class="tab_trigger_icon">
+                                        <div class="singleTabIcon">
+                                            <i class="zmdi zmdi-settings" data-index="0"></i>
+                                        </div>
+                                        <div class="singleTabIcon">
+                                            <i class="zmdi zmdi-gesture" data-index="1"></i>
+                                        </div>
+                                        <div class="singleTabIcon">
+                                            <i class="zmdi zmdi-desktop-mac" data-index="2"></i>
+                                        </div>
+                                        <div class="singleTabIcon">
+                                            <i class="zmdi zmdi-rotate-cw" data-index="3"></i>
+                                        </div>
+                                        <div class="singleTabIcon">
+                                            <i class="zmdi zmdi-thumb-up" data-index="4"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-8 col-sm-offset-2">
+                                <div class="pro_content">
+                                    <div class="single_pro_content">
+                                        <fieldset>
+                                            <legend>DEVELOPMENT</legend>
+                                            <p>RSS, (Really Simple Syndication) has become so popular today and is being referred to by internet users as Pull Technology rather than “Push” Technology. Utilizing RSS “Pull” technology has become a popular source of income for webmasters that use RSS Feeds on their websites. </p>
+                                        </fieldset>
+                                    </div>
+                                    <div class="single_pro_content">
+                                        <fieldset>
+                                            <legend>Graphic Design </legend>
+                                            <p>RSS, (Really Simple Syndication) has become so popular today and is being referred to by internet users as Pull Technology rather than “Push” Technology. Utilizing RSS “Pull” technology has become a popular source of income for webmasters that use RSS Feeds on their websites. </p>
+                                        </fieldset>
+                                    </div>
+                                    <div class="single_pro_content">
+                                        <fieldset>
+                                            <legend>WordPress </legend>
+                                            <p>RSS, (Really Simple Syndication) has become so popular today and is being referred to by internet users as Pull Technology rather than “Push” Technology. Utilizing RSS “Pull” technology has become a popular source of income for webmasters that use RSS Feeds on their websites. </p>
+                                        </fieldset>
+                                    </div>
+                                    <div class="single_pro_content">
+                                        <fieldset>
+                                            <legend>Banner Design</legend>
+                                            <p>RSS, (Really Simple Syndication) has become so popular today and is being referred to by internet users as Pull Technology rather than “Push” Technology. Utilizing RSS “Pull” technology has become a popular source of income for webmasters that use RSS Feeds on their websites. </p>
+                                        </fieldset>
+                                    </div>
+                                    <div class="single_pro_content">
+                                        <fieldset>
+                                            <legend>Logo Design</legend>
+                                            <p>RSS, (Really Simple Syndication) has become so popular today and is being referred to by internet users as Pull Technology rather than “Push” Technology. Utilizing RSS “Pull” technology has become a popular source of income for webmasters that use RSS Feeds on their websites. </p>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- ====END PROCESS TABLE==== -->
+                <!-- ====START SKILL AND VEDIO TABLE==== -->
+                <section class="skill_and_video">
+                    <div class="video_area">
+                        <div class="video_control">
+                            <div class="dtable">
+                                <div class="dcell">
+                                    <a href="https://youtu.be/ScMzIvxBSi4?rel=0&amp;autoplay=1" data-type="youtube" id="control" class="btn waves-effect waves-light veno">
+                                        <i class="zmdi zmdi-play"></i>
+                                    </a>
+                                    <h4>Check out the Video</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container fix_p">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-offset-5 col-sm-7 section-padding skillBg">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="all_skill_item">
+                                            <div class="single_progress">
+                                                <h4>Web Design</h4>
+                                                <div class="progress">
+                                                    <div class="progress-bar wow animated" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 95%;">
+                                                        <span>95%</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="single_progress">
+                                                <h4>PHP</h4>
+                                                <div class="progress">
+                                                    <div class="progress-bar wow animated" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">
+                                                        <span>80%</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="single_progress">
+                                                <h4>Adobe photoshop</h4>
+                                                <div class="progress">
+                                                    <div class="progress-bar wow animated" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">
+                                                        <span>90%</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3 col-xs-6">
+                                        <div class="single_skill">
+                                            <input type="text" class="knob" value="0" data-rel="90" data-width="100" data-height="100" data-bgcolor="#4073ff" data-fgcolor="#d3dfff" data-thickness=".12" data-readonly="true" data-angleOffset="0" disabled="True" />
+                                            <h3>HTML5</h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-xs-6">
+                                        <div class="single_skill">
+                                            <input type="text" class="knob" value="0" data-rel="80" data-width="100" data-height="100" data-bgcolor="#4073ff" data-fgcolor="#d3dfff" data-thickness=".12" data-readonly="true" data-angleOffset="0" disabled="True" />
+                                            <h3>UI/UX</h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-xs-6">
+                                        <div class="single_skill">
+                                            <input type="text" class="knob" value="0" data-rel="90" data-width="100" data-height="100" data-bgcolor="#4073ff" data-fgcolor="#d3dfff" data-thickness=".12" data-readonly="true" data-angleOffset="0" disabled="True" />
+                                            <h3>Wordpress</h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-xs-6">
+                                        <div class="single_skill">
+                                            <input type="text" class="knob" value="0" data-rel="80" data-width="100" data-height="100" data-bgcolor="#4073ff" data-fgcolor="#d3dfff" data-thickness=".12" data-readonly="true" data-angleOffset="0" disabled="True" />
+                                            <h3>Branding</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- ====END SKILL AND VEDIO TABLE==== -->
+                <!-- ====START PRICING TABLE==== -->
+                <section class="pricing_table section-padding">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="section_title mb80">
+                                    <h5 class="smallHd text-center">check out our</h5>
+                                    <h2 class="secHd text-center">pricing plan</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row all_pricing_table">
+                            <div class="col-xs-12 col-sm-4">
+                                <div class="single_pricing">
+                                    <h5 class="text-center">Basic</h5>
+                                    <h1 class="text-center"><sup>$</sup>300</h1>
+                                    <hr/>
+                                    <ul class="pricing_list">
+                                        <li>2 UNIQUE CONCEPTS</li>
+                                        <li>5 REVISTIONS</li>
+                                        <li>LOGO DESIGN</li>
+                                        <li>24/7 CUSTOMER SUPPORT</li>
+                                        <li>3-5 BUSINESS DAYS</li>
+                                    </ul>
+                                    <a class="th_bt btn waves-effect" href="#">ORDER</a>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-4">
+                                <div class="single_pricing special active">
+                                    <i class="fa fa-trophy" aria-hidden="true"></i>
+                                    <h5 class="text-center">Standard</h5>
+                                    <h1 class="text-center"><sup>$</sup>399</h1>
+                                    <hr/>
+                                    <ul class="pricing_list">
+                                        <li>3 UNIQUE CONCEPTS</li>
+                                        <li>5 REVISTIONS</li>
+                                        <li>LOGO DESIGN</li>
+                                        <li>24/7 CUSTOMER SUPPORT</li>
+                                        <li>3-5 BUSINESS DAYS</li>
+                                    </ul>
+                                    <a class="th_bt btn waves-effect" href="#">ORDER</a>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-4">
+                                <div class="single_pricing">
+                                    <h5 class="text-center">Premium</h5>
+                                    <h1 class="text-center"><sup>$</sup>799</h1>
+                                    <hr/>
+                                    <ul class="pricing_list">
+                                        <li>4 UNIQUE CONCEPTS</li>
+                                        <li>5 REVISTIONS</li>
+                                        <li>LOGO DESIGN</li>
+                                        <li>24/7 CUSTOMER SUPPORT</li>
+                                        <li>3-5 BUSINESS DAYS</li>
+                                    </ul>
+                                    <a class="th_bt btn waves-effect" href="#">ORDER</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- ====END PRICING TABLE==== -->
+                <!-- ====START CLIENT PART==== -->
+                <section class="client_part">
+                    <div class="container">
+                        <div class="client_slider_area">
+                            <div class="client-caro">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-3">
+                                        <div class="client_img">
+                                            <div class="singleClientImg">
+                                                <img src="/theme_materialab/static/src/img/client_1.jpg" alt="" />
+                                                <h6><a href="#">Karen E. Roser </a></h6>
+                                                <p>CEO, Omuk Group </p>
+                                            </div>
+                                            <div class="singleClientImg">
+                                                <img src="/theme_materialab/static/src/img/client_2.jpg" alt="" />
+                                                <h6><a href="#">Johnny Peters</a></h6>
+                                                <p>MD, CTS Group </p>
+                                            </div>
+                                            <div class="singleClientImg">
+                                                <img src="/theme_materialab/static/src/img/client_3.jpg" alt="" />
+                                                <h6><a href="#">William Morales</a></h6>
+                                                <p>CEO, Lorem Group </p>
+                                            </div>
+                                        </div>
+                                        <div class="clientslide_nav">
+                                            <i class="zmdi zmdi-long-arrow-left testi_prev"></i>
+                                            <i class="zmdi zmdi-long-arrow-right testi_next"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-9">
+                                        <div class="section_title">
+                                            <h5 class="smallHd text-left">some of inspiration</h5>
+                                            <h2 class="secHd text-left">what our clients say</h2>
+                                        </div>
+                                        <div class="clientTestiSlider">
+                                            <div class="singleClientTesti">
+                                                <div class="cleint-testi">
+                                                    <p>If you’ve followed along and done the steps above, you’ve created a good starting place. You’re going to need to make sure your pages are optimized properly. This will ensure you get your page ranked high in the search engines. ou’re going to need to make sure your pages are optimized properly.This will ensure high in the search properly.</p>
+                                                </div>
+                                            </div>
+                                            <div class="singleClientTesti">
+                                                <div class="cleint-testi">
+                                                    <p>If you’ve followed along and done the steps above, you’ve created a good starting place. You’re going to need to make sure your pages are optimized properly. This will ensure you get your page ranked high in the search engines. ou’re going to need to make sure your pages are optimized properly.This will ensure high in the search properly.</p>
+                                                </div>
+                                            </div>
+                                            <div class="singleClientTesti">
+                                                <div class="cleint-testi">
+                                                    <p>If you’ve followed along and done the steps above, you’ve created a good starting place. You’re going to need to make sure your pages are optimized properly. This will ensure you get your page ranked high in the search engines. ou’re going to need to make sure your pages are optimized properly.This will ensure high in the search properly.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- ====END CLIENT PART==== -->
+                <!-- ====START PARTNER==== -->
+                <div class="partner_area">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="partner_slider">
+                                    <div class="item">
+                                        <img src="/theme_materialab/static/src/img/partner_1.png" alt="partner slider" />
+                                    </div>
+                                    <div class="item">
+                                        <img src="/theme_materialab/static/src/img/partner_2.png" alt="partner slider" />
+                                    </div>
+                                    <div class="item">
+                                        <img src="/theme_materialab/static/src/img/partner_3.png" alt="partner slider" />
+                                    </div>
+                                    <div class="item">
+                                        <img src="/theme_materialab/static/src/img/partner_4.png" alt="partner slider" />
+                                    </div>
+                                    <div class="item">
+                                        <img src="/theme_materialab/static/src/img/partner_5.png" alt="partner slider" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ====END PARTNER==== -->
+                <!-- ====START BLOG TABLE==== -->
+                <section id="blog" class="blog_area section-padding">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="section_title mb80">
+                                    <h5 class="smallHd text-center">latest news</h5>
+                                    <h2 class="secHd text-center">from the blog</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 fix_p_r">
+                                <div class="blog_slid">
+                                    <div class="item">
+                                        <a href="#">
+                                            <div class="blog_img waves-effect">
+                                                <img src="/theme_materialab/static/src/img/blog_1.jpg" alt="" />
+                                            </div>
+                                        </a>
+                                        <div class="blog_cont">
+                                            <ul class="blog_s">
+                                                <li><a href="#"><i class="zmdi zmdi-account"></i>Admin</a></li>
+                                                <li><a href="#"><i class="zmdi zmdi-calendar-alt"></i>June 18,2015</a></li>
+                                            </ul>
+                                            <h4>
+                                        <a href="#">What is minimal Design</a>
+                                    </h4>
+                                            <p>If you’ve followed along and done the steps above, you’ve created a good starting place.</p>
+                                            <a class="th_bt btn waves-effect waves-light" href="#">Full Story</a>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <a href="#">
+                                            <div class="blog_img waves-effect">
+                                                <img src="/theme_materialab/static/src/img/blog_3.jpg" alt="" />
+                                            </div>
+                                        </a>
+                                        <div class="blog_cont">
+                                            <ul class="blog_s">
+                                                <li><a href="#"><i class="zmdi zmdi-account"></i>Admin</a></li>
+                                                <li><a href="#"><i class="zmdi zmdi-calendar-alt"></i>June 18,2015</a></li>
+                                            </ul>
+                                            <h4><a href="#">What is minimal Design</a></h4>
+                                            <p>If you’ve followed along and done the steps above, you’ve created a good starting place.</p>
+                                            <a class="th_bt btn waves-effect waves-light" href="#">Full Story</a>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <a href="#">
+                                            <div class="blog_img waves-effect">
+                                                <img src="/theme_materialab/static/src/img/blog_1.jpg" alt="" />
+                                            </div>
+                                        </a>
+                                        <div class="blog_cont">
+                                            <ul class="blog_s">
+                                                <li><a href="#"><i class="zmdi zmdi-account"></i>admin</a></li>
+                                                <li><a href="#"><i class="zmdi zmdi-calendar-alt"></i>June 18,2015</a></li>
+                                            </ul>
+                                            <h4>
+                                        <a href="#">What is minimal Design</a>
+                                    </h4>
+                                            <p>If you’ve followed along and done the steps above, you’ve created a good starting place.</p>
+                                            <a class="th_bt btn waves-effect waves-light" href="#">Full Story</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- ====END BLOG TABLE==== -->
+                <!-- ====START SUBSCRIBE==== -->
+                <section class="subscribe_area section-padding">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="section_title mb80">
+                                    <h5 class="smallHd text-center">SUBSCRIBE TO</h5>
+                                    <h2 class="secHd text-center">get latest news from us</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-8 col-sm-offset-2">
+                                <div class="subform">
+                                    <form action="index.html" method="get">
+                                        <div class="input-field">
+                                            <input id="last_name" type="email" class="validate" />
+                                            <label for="last_name"><i class="zmdi zmdi-email"></i>Enter your email</label>
+                                        </div>
+                                        <button class="th_bt btn waves-effect waves-light" type="submit">
+                                            Subscribe<i class="zmdi zmdi-cloud-done"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- ====END SUBSCRIBE==== -->
+                <!-- ====START CONTACT AREA==== -->
+                <section id="contact" class="map-area">
+                    <div class="contact_google_map">
+                        <div id="contactgoogleMap"></div>
+                    </div>
+                    <div class="contact-area">
+                        <div class="container">
+                            <div class="contact_text col-md-6">
+                                <div class="section_title">
+                                    <h2 class="text-left">Get in touch</h2>
+                                    <p>feel free to contact us with any questions</p>
+                                </div>
+                                <form action="http://themeebit.com/demos/html/materialab-v2.01/mail-process.php" method="post">
+                                    <div class="row jsSubmit_button">
+                                        <div class="input-field col-md-6">
+                                            <input id="contact_name" type="text" class="validate" name="your_name" required="True" />
+                                            <label for="contact_name">
+                                                <i class="zmdi zmdi-account"></i>Your Name
+                                                <span>*</span>
+                                            </label>
+                                        </div>
+                                        <div class="input-field col-md-6">
+                                            <input id="contact_email" type="email" class="validate" name="your_mail" required="True" />
+                                            <label for="contact_email"><i class="zmdi zmdi-email"></i>Your Email
+                                                <span>*</span>
+                                            </label>
+                                        </div>
+                                        <div class="input-field col-md-12">
+                                            <textarea id="textarea1" name="your_text" class="materialize-textarea" required="True"></textarea>
+                                            <label for="textarea1"><i class="zmdi zmdi-border-color"></i>Your Massage
+                                                <span>*</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <button type="submit" class="th_bt btn waves-effect" name="submit_btn">
+                                                send<i class="zmdi zmdi-mail-send"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- ====END CONTACT==== -->
+                <!-- ====START SOCIAL Link==== -->
+                <div class="footer_social">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <ul class="ft_top clearfix">
+                                <li class="waves-effect waves-light">
+                                    <a href="#" target="_blank">
+                                        <i class="zmdi zmdi-facebook "></i>Facebook
+                                    </a>
+                                </li>
+                                <li class="waves-effect waves-light">
+                                    <a href="#" target="_blank">
+                                        <i class="zmdi zmdi-twitter"></i>Twitter
+                                    </a>
+                                </li>
+                                <li class="waves-effect waves-light">
+                                    <a href="#" target="_blank">
+                                        <i class="zmdi zmdi-flickr"></i>Flickr
+                                    </a>
+                                </li>
+                                <li class="waves-effect waves-light">
+                                    <a href="#" target="_blank">
+                                        <i class="zmdi zmdi-linkedin"></i>LinkedIn
+                                    </a>
+                                </li>
+                                <li class="waves-effect waves-light">
+                                    <a href="#" target="_blank">
+                                        <i class="zmdi zmdi-dribbble"></i>Dribble
+                                    </a>
+                                </li>
+                                <li class="waves-effect waves-light">
+                                    <a href="#" target="_blank">
+                                        <i class="zmdi zmdi-vimeo"></i>Vimeo
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- ====END FOOTER TOP==== -->
+            </div>
+        </t>
+    </template>
+</odoo>

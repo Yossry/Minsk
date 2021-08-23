@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_staff_arrear_wizard" model="ir.ui.view">
+            <field name="name">Employee Arrears Wizard</field>
+            <field name="model">staff.arrear.wizard</field>
+            <field name="arch" type="xml">
+            <form string="Employee Arreas Wizard">
+                <footer>
+                    <button name="generate_entries" string="Generate Slips Cron" type="object" class="oe_highlight"/>
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+                <group>
+                    <group>
+						<field name="employee_id" required="1" domain="[('department_id','!=', 29),('is_guard','=', False)]" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>
+						<field name="center_id" required="1" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/> 						
+                    </group>
+                    <group>
+                    	<field name="date" required="1"/>
+                    	<field name="state"/>
+                    </group>                    
+                </group>
+                
+				<notebook colspan="4">                   				                    
+					<page string="Arrear Lines" name="arrear_lines">
+						<group>
+							<field name="line_ids" nolabel="1">
+								<tree editable="bottom">
+									<field name="name"/>
+									<field name="amount"/>
+									<field name="description"/>
+								</tree>
+							</field>
+						</group>							
+					</page>           
+				</notebook>
+            
+            </form>
+		</field>
+	</record>
+
+    <record id="action_staff_arrear_wizard" model="ir.actions.act_window">
+        <field name="name">Multiple Arrears</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">staff.arrear.wizard</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem action="action_staff_arrear_wizard" id="menu_staff_arrear_wizard" parent="hr.menu_hr_main"  sequence="20"/>
+
+    </data>
+</odoo>

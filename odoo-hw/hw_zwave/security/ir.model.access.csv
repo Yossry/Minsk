@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_zwave_node,zwave.node,model_zwave_node,base.group_system,1,1,1,1
+access_zwave_network,zwave.network,model_zwave_network,base.group_system,1,1,1,1

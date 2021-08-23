@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<odoo>
+<data>
+<function name="create_users" model="res.users">
+</function>
+</data>
+</odoo>

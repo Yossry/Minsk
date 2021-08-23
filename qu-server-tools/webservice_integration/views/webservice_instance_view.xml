@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2019 Jesus Ramoneda <jesus.ramoneda@qubiq.es>
+    License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <data>
+        <record id="webservice_instance_form_view" model="ir.ui.view">
+            <field name="name">webservice.form</field>
+            <field name="model">webservice.instance</field>
+            <field name="arch" type="xml">
+                <form string="Webservice">
+                    <header>
+                        <button name="check_connection_webservice" type="object" class="oe_highlight"
+                            string="Check Connection" attrs="{'invisible': [('webservice_active', '=', False)]}"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+
+                        <group>
+                            <field name="company_id"/>
+                            <field name="webservice_active"/>
+                        </group>
+                        <group name="main" attrs="{'invisible': [('webservice_active', '=', False)]}">
+                            <group>
+                                <field name="ws_type" attrs="{'required': [('webservice_active', '=', True)]}"/>
+                                <field name="ws_url"/>
+                                <field name="ws_db"/>
+                                <field name="ws_username"/>
+                                <field name="ws_password" password="True"/>
+                            </group>
+                        </group>
+
+                        <notebook attrs="{'invisible': [('webservice_active', '=', False)]}">
+                            <page string="Mappers">
+                                <field name="mapper_ids">
+                                    <tree>
+                                        <field name="name"/>
+                                        <field name="source_model"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="webservice_instance_tree_view" model="ir.ui.view">
+            <field name="name">webservice.tree</field>
+            <field name="model">webservice.instance</field>
+            <field name="arch" type="xml">
+                <tree string="Webservice Instances">
+                    <field name="name"/>
+                    <field name="ws_type"/>
+                    <field name="ws_url"/>
+                    <field name="ws_db"/>
+                    <field name="webservice_active"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="webservice_instance_action" model="ir.actions.act_window">
+            <field name="name">Webservice Instances</field>
+            <field name="res_model">webservice.instance</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="instances_webservice_menu"
+            action="webservice_instance_action"
+            parent="data_webservice_menu"
+            name="Instances" sequence='1'/>
+
+    </data>
+</odoo>

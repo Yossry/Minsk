@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>	
+		<template id ="sos_reports.report_gst_summaryproject">
+			<t t-call="web.html_container">
+				<t t-call="web.external_layout">
+					<div class="page">
+						<div class="row" style="font-size:14px; font-weight:bold; text-align:center; align:left;">
+							<div class="col-xs-12">
+								GST Report – Project Wise  From
+									<span t-esc="get_date_formate(data['date_from'])"/> To <span t-esc="get_date_formate(data['date_to'])"/>
+							</div>
+						</div>
+
+						 <table class="table table-bordered">
+							<thead>
+								<tr style="font-size:10px; font-weight:bold;background-color:#A6ACAF;">
+									<th>Sr#.</th>
+									<th>Project Name</th>
+									<th>GST Amount</th>
+									<th>GST withheld by Clients</th>
+									<th>Received GST</th>
+									<th>Pending GST</th>
+								</tr>
+							</thead>
+
+							<tbody>
+								<t t-foreach="Projects" t-as="project">
+									<tr style="font-size:10px;">
+										<td class="text-left">
+											<span t-esc="project_index + 1" />
+										</td>
+										<td class="text-left">
+											<span t-esc="project['project_name']" />
+										</td>
+										<td class="text-left">
+											<span t-esc="project['taxed'] and '{0:,.0f}'.format(int(project['taxed'])) or '-'" />
+										</td>
+										<td class="text-left">
+											<span t-esc="project['withheld'] and '{0:,.0f}'.format(int(project['withheld'])) or '-'" />
+										</td>
+										<td class="text-left">
+											<span t-esc="project['received'] and '{0:,.0f}'.format(int(project['received'])) or '-'" />
+										</td>
+										<td class="text-left">
+											<span t-esc="project['pending'] and '{0:,.0f}'.format(int(project['pending'])) or '-'" />
+										</td>
+									</tr>
+								</t>
+
+								<tr style="font-size:10px; font-weight:bold;background-color:#707B7C;">
+									<td class="text-center" colspan="2">
+											TOTALS:
+									</td>
+									<td class="text-left">
+										<span t-esc="Taxed and '{0:,.0f}'.format(int(Taxed)) or '-'" />
+									</td>
+									<td class="text-left">
+										<span t-esc="Withheld and '{0:,.0f}'.format(int(Withheld)) or '-'" />
+									</td>
+									<td class="text-left">
+										<span t-esc="Received and '{0:,.0f}'.format(int(Received)) or '-'" />
+									</td>
+									<td class="text-left">
+										<span t-esc="Pending and '{0:,.0f}'.format(int(Pending)) or '-'" />
+									</td>
+								</tr>
+
+							</tbody>
+						 </table>
+					</div>
+				</t>
+			</t>
+		</template>
+		
+	</data>
+</odoo>
+

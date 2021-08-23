@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Inherit Form View -->
+        <record id="survey_attachment_inherit_survey_user_input_line_form" model="ir.ui.view">
+            <field name="name">add upload to user input</field>
+            <field name="model">survey.user_input_line</field>
+            <field name="inherit_id" ref="survey.survey_user_input_line_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='answer_type']" position="after">
+                    <field name="file"/>
+                </xpath>
+
+            </field>
+        </record>
+    </data>
+</odoo>

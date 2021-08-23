@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id ="sos_payroll.report_guardattendance">
+		<t t-call="web.html_container">
+			<t t-call="web.basic_layout">
+				<div class="page">
+					<style>
+						table th { background-color:#d4e3e5;}
+					</style>
+					
+					 <div class="row">
+					 	 <div class="col-xs-4">
+							<img width="40%" style="max-height:125px;margin-top:10px;" class="img img-responsive" src="/sos_payroll/static/src/img/logo.png"/>
+					 	 </div>
+					 	 <div class="col-xs-3">
+					 	 </div>
+					 	 
+					 	 <div class="col-xs-5" style="font-size:14px; font-weight:bold; text-align:right; align:left;margin-top:20px;">
+					 	 	SECURITY ORGANIZING SYSTEM (PVT) LIMITED
+					 	 </div>
+					 </div>
+				
+					 <div class="row" style="font-size:12px; font-weight:bold; text-align:center; align:left;">
+					 	<div class="col-xs-12">
+					 		Guards Attendance Report From  <span t-esc="get_date_formate(data['date_from'])"/> To <span t-esc="get_date_formate(data['date_to'])"/> 
+					 	</div>
+					 </div>
+					 
+					 
+					 <table class="table table-bordered">
+					 	<tbody>
+					 	
+					 		<!-- Group By Posts -->
+					 		
+					 		<t  t-if="data['group_by'] == 'posts'">
+					 			<t t-foreach="Post_Att" t-as="post">
+						 			<tr>
+						 				<td colspan="13" style="text-align:left"> 
+						 					<span t-esc="post['post_name']" />
+						 				</td>
+						 			</tr>
+					 			
+						 			<tr>
+						 				<table class="table table-bordered" width="100%" style="border:1px solid;">
+						 					<tr style="font-size:8px; font-weight:bold; background-color:#d4e3e5;">
+									 			<td class="text-center">Name </td>
+									 			<td class="text-center">Account Title </td>
+									 			<td class="text-center">Acc.Number </td>
+									 			<td class="text-center">Bank </td>
+									 			<td class="text-center">Status </td>
+									 			<td class="text-center">Ref ID </td>
+									 			<td class="text-center">Present </td>
+									 			<td class="text-center">Extra </td>
+									 			<td class="text-center">Double </td>
+									 			<td class="text-center">Ex-Double </td>
+									 			<td class="text-center">Absent </td>
+									 			<td class="text-center">Paid L. </td>
+									 			<td class="text-center">Total </td>
+										 	</tr>
+						 				 	 <div class="col-xs-12 pull-right" style="padding-left:0px; padding-right:0px; page-break-inside: avoid;">
+						 				 	<t t-foreach="post['att_recs']" t-as="att_rec">
+						 				 		<tr style="font-size:9px;page-break-inside: avoid;">
+						 				 			<td><span t-esc="att_rec['emp_name']" /> </td>
+						 				 			<td><span t-esc="att_rec['bankacctitle']" /> </td>
+						 				 			<td><span t-esc="att_rec['bankacc']" /> </td>
+						 				 			<td><span t-esc="att_rec['bank1_name']" /> </td>
+						 				 			<td><span t-esc="att_rec['contract']" /> </td>
+						 				 			<td><span t-esc="att_rec['code']" /> </td>
+						 				 			<td><span t-esc="att_rec['present']" /> </td>
+						 				 			<td><span t-esc="att_rec['extra']" /> </td>
+						 				 			<td><span t-esc="att_rec['double']" /> </td>
+						 				 			<td><span t-esc="att_rec['extra_double']" /> </td>
+						 				 			<td><span t-esc="att_rec['absent']" /> </td>
+						 				 			<td><span t-esc="att_rec['paid_leaves']" /> </td>
+						 				 			<td><span t-esc="att_rec['total']" /> </td>
+						 				 		</tr>
+						 				 	</t>
+						 				 	</div>
+						 				 	<tr style="font-size:9px; font-weight:bold;">
+						 				 		<td colspan="6" > TOTAL</td>
+						 				 		<td><span t-esc="post['p_total_present']" /> </td>
+						 				 		<td><span t-esc="post['p_total_extra']" /> </td>
+						 				 		<td><span t-esc="post['p_total_double']" /> </td>
+						 				 		<td><span t-esc="post['p_total_ex_double']" /> </td>
+						 				 		<td><span t-esc="post['p_total_absent']" /> </td>
+						 				 		<td><span t-esc="post['p_total_paid']" /> </td>
+						 				 		<td><span t-esc="post['p_total']" /> </td>
+						 				 	</tr>
+						 				 	
+						 				 </table>
+					 				</tr>
+					 			
+					 			</t>
+					 		</t>
+					 		
+					 		<!-- Group By Guards -->
+					 		<t  t-if="data['group_by'] == 'guards'">
+					 			<t t-foreach="Guard_Att" t-as="guard">
+						 			<tr>
+						 				<td colspan="13" style="text-align:left"> 
+						 				<span t-esc="guard['code']" /> - <span t-esc="guard['guard_name']" />
+						 				</td>
+						 			</tr>
+					 			
+						 			<tr>
+						 				<table class="table table-bordered" width="100%" style="border:1px solid;">
+						 					<tr style="font-size:8px; font-weight:bold; background-color:#d4e3e5;">
+									 			<td class="text-center">Name </td>
+									 			<td class="text-center">Account Title </td>
+									 			<td class="text-center">Acc.Number </td>
+									 			<td class="text-center">Bank </td>
+									 			<td class="text-center">Status </td>
+									 			<td class="text-center">Ref ID </td>
+									 			<td class="text-center">Present </td>
+									 			<td class="text-center">Extra </td>
+									 			<td class="text-center">Double </td>
+									 			<td class="text-center">Ex-Double </td>
+									 			<td class="text-center">Absent </td>
+									 			<td class="text-center">Paid L. </td>
+									 			<td class="text-center">Total </td>
+										 	</tr>
+						 				 	 <div class="col-xs-12 pull-right" style="padding-left:0px; padding-right:0px; page-break-inside: avoid;">
+						 				 	<t t-foreach="guard['att_recs']" t-as="att_rec">
+						 				 		<tr style="font-size:9px;">
+						 				 			<td><span t-esc="att_rec['name']" /> </td>
+						 				 			<td><span t-esc="att_rec['bankacctitle']" /> </td>
+						 				 			<td><span t-esc="att_rec['bankacc']" /> </td>
+						 				 			<td><span t-esc="att_rec['bank1_name']" /> </td>
+						 				 			<td><span t-esc="att_rec['contract']" /> </td>
+						 				 			<td><span t-esc="att_rec['code']" /> </td>
+						 				 			<td><span t-esc="att_rec['present']" /> </td>
+						 				 			<td><span t-esc="att_rec['extra']" /> </td>
+						 				 			<td><span t-esc="att_rec['double']" /> </td>
+						 				 			<td><span t-esc="att_rec['extra_double']" /> </td>
+						 				 			<td><span t-esc="att_rec['absent']" /> </td>
+						 				 			<td><span t-esc="att_rec['paid_leaves']" /> </td>
+						 				 			<td><span t-esc="att_rec['total']" /> </td>
+						 				 		</tr>
+						 				 	</t>
+						 				 	</div>
+						 				 	<tr style="font-size:9px; font-weight:bold;">
+						 				 		<td colspan="6" > TOTAL</td>
+						 				 		<td><span t-esc="guard['g_total_present']" /> </td>
+						 				 		<td><span t-esc="guard['g_total_extra']" /> </td>
+						 				 		<td><span t-esc="guard['g_total_double']" /> </td>
+						 				 		<td><span t-esc="guard['g_total_ex_double']" /> </td>
+						 				 		<td><span t-esc="guard['g_total_absent']" /> </td>
+						 				 		<td><span t-esc="guard['g_total_paid']" /> </td>
+						 				 		<td><span t-esc="guard['g_total']" /> </td>
+						 				 	</tr>
+						 				 	
+						 				 </table>
+					 				</tr>
+					 			
+					 			</t>
+					 		</t>
+					 	</tbody>
+					 	
+					 </table>				
+					
+						
+				  <div class="row" style="text-align:right; border:1px solid;margin-left:10px;margin-right:10px;">
+				 	 <div class="col-xs-12" style="font-size:14px; font-weight:bold;">
+				 	GRAND TOTAL:
+				 	 	<span style="margin-left:30px;font-size:14px; font-weight:bold;" t-esc="Grand_Total" />
+				 	 </div>
+				 </div> 
+					
+			</div>
+				
+			</t>	 			 	
+		</t>
+	</template>
+</odoo>
+

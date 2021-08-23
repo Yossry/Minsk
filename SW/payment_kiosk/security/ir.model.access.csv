@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_payment_kiosk,access_payment_kiosk,model_payment_kiosk,base.group_user,1,1,1,1
+access_kiosk_terminal,access_kiosk_terminal,model_kiosk_terminal,base.group_user,1,1,1,1
+access_kiosk_rates,access_kiosk_rates,model_kiosk_rates,base.group_user,1,1,1,1
+access_kiosk_service,access_kiosk_service,model_kiosk_service,base.group_user,1,1,1,1

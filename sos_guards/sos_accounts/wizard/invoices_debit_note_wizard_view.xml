@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_invoices_debit_note_wizard" model="ir.ui.view">
+            <field name="name">Invoices Debit Note Wizard</field>
+            <field name="model">invoices.debit.note.wizard</field>
+            <field name="arch" type="xml">
+            <form string="Invoices Debit Note Wizard">
+                <label for="name" string="This wizard will Generate Invoices Credit Note Entries."/>
+                <footer>
+                    <button name="generate_debit_entries" string="Generate Entry" type="object" class="oe_highlight"/>
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+                <group>
+                	<group>
+                		<field name="name"/>
+						<field name="date_from" required="1"/>
+						<field name="date_to" required="1"/> 
+                    </group>
+                    <group>
+                    	<field name="for_month"/>
+						<field name="due_date"/>    
+                    </group>                    
+                </group>
+                
+                 <notebook colspan="4">
+					<page string="Posts" name="posts">
+							<field name="debit_line_ids">
+								<tree editable="top">
+									<field name="post_id" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>
+									<field name="invoice_amount" />
+									<field name="tax_amount" />
+									<field name="invoice_total" />
+								</tree>
+							</field>							
+					</page>
+				                    
+                </notebook>
+                
+                <field name="total"/> 
+            </form>
+            </field>
+        </record>
+
+        <record id="action_invoices_debit_note_wizard" model="ir.actions.act_window">
+            <field name="name">Create Invoices Debit Note</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">invoices.debit.note.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+	    <menuitem action="action_invoices_debit_note_wizard" id="menu_invoices_debit_note_wizard" parent="menu_account_customer"  sequence="64" groups="sos.group_superusers,account.group_account_user,account.group_account_invoice"/>
+
+    </data>
+</odoo>

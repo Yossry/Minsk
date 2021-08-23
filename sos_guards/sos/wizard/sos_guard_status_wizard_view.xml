@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        
+        <record id="view_sos_guard_status_wizard" model="ir.ui.view">
+            <field name="name">sos.guard.status.wizard.view</field>
+            <field name="model">sos.guard.status.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Guard Profile Status Wizard">
+		            	<group>
+							<field name="status" />
+						</group>
+					<footer>
+						<button name="guard_status" string="OK" type="object" default_focus="1" class="oe_highlight"/>
+						<button string="Cancel" class="oe_link" special="cancel" />
+					</footer> 
+                </form>
+            </field>
+        </record>
+		
+		<act_window
+            id="act_sos_guard_status_wizard"
+            name="Status Wizard"
+            res_model="sos.guard.status.wizard"
+            src_model="hr.employee"
+            view_mode="form"
+            multi="False"
+            target="new"
+            key2="client_action_multi"
+        />
+        
+	</data>
+</odoo>

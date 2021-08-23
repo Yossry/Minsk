@@ -1,0 +1,616 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2019-     Coop IT Easy SCRLfs <http://coopiteasy.be>
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+<odoo>
+
+    <template id="portal_menu"
+        name="Portal My Wallet"
+        inherit_id="portal.portal_my_home" priority="20">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Share Wallet</t>
+                <t t-set="url" t-value="'/my/wallet/share'"/>
+                <t t-set="count" t-value="monetary_to_text(share_amount)"/>
+            </t>
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Loan Wallet</t>
+                <t t-set="url" t-value="'/my/wallet/loan'"/>
+                <t t-set="count" t-value="monetary_to_text(loan_amount)"/>
+            </t>
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Share History</t>
+                <t t-set="url" t-value="'/my/history/share'"/>
+                <t t-set="count" t-value="pending_share"/>
+            </t>
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Loan History</t>
+                <t t-set="url" t-value="'/my/history/loan'"/>
+                <t t-set="count" t-value="pending_loan"/>
+            </t>
+        </xpath>
+    </template>
+
+
+    <template id="portal_menu_breadcrumb"
+        name="Portal layout : wallet menu entries"
+        inherit_id="portal.portal_breadcrumbs"
+        priority="20">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li t-if="page_name == 'structures'"
+                t-attf-class="breadcrumb-item active">
+                Structures
+            </li>
+            <li t-if="page_name == 'share_wallet'"
+                t-attf-class="breadcrumb-item active">
+                Share Wallet
+            </li>
+            <li t-if="page_name == 'share_history'"
+                t-attf-class="breadcrumb-item active">
+                Share History
+            </li>
+            <li t-if="page_name == 'loan_wallet'"
+                t-attf-class="breadcrumb-item active">
+                Loan Wallet
+            </li>
+            <li t-if="page_name == 'loan_history'"
+                t-attf-class="breadcrumb-item active">
+                Loan History
+            </li>
+            <li t-if="page_name == 'investor_details'"
+                t-attf-class="breadcrumb-item active">
+                Investor Details
+            </li>
+        </xpath>
+    </template>
+
+
+    <template id="portal_my_wallet_share" name="My Share Wallet">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="False"/>
+
+            <p t-if="back_from_delete_share and delete_share_success"
+                class="alert alert-success alert-dismissible mt-4">
+                The share has been deleted.
+                <button type="button"
+                    class="close"
+                    data-dismiss="alert"
+                    aria-label="Close">
+                    <i class="fa fa-times"/>
+                </button>
+            </p>
+            <p t-if="back_from_delete_share and not delete_share_success"
+                class="alert alert-danger alert-dismissible mt-4"
+                role="alert">
+                Error when deleting a share.
+                <button type="button"
+                    class="close"
+                    data-dismiss="alert"
+                    aria-label="Close">
+                    <i class="fa fa-times"/>
+                </button>
+            </p>
+
+            <t t-if="not data">
+                <p>
+                    There are currently no finacial product for your account.
+                </p>
+            </t>
+            <t t-if="data">
+                <t t-foreach="data" t-as="elem"
+                    t-call="iwp_website.share_wallet_content"/>
+            </t>
+        </t>
+    </template>
+
+
+    <template id="share_wallet_content" name="Share Wallet Content">
+        <div class="shareline_head d-flex bg-white rounded mt-4">
+            <div class="head_content flex-grow-1 px-3 py-2">
+                <span class="struct_name" t-esc="elem.structure.name"/>
+                <div class="share_actions mx-2 btn-group" role="group"
+                    aria-label="Share Actions">
+                    <a t-if="elem.display_buy_url"
+                        t-att-href="elem.buy_url"
+                        class="btn btn-sm btn-secondary">
+                        Subscribe
+                    </a>
+                    <!-- Hide "Sell back" button temporarily -->
+                    <a t-if="False" t-att-href="elem.sell_url"
+                        class="btn btn-sm btn-secondary">
+                        Sell Back
+                    </a>
+                </div>
+                <span class="amount float-right">
+                    <t t-esc="elem.total_amount" t-options="{'widget': 'monetary', 'display_currency': currency}"/>
+                </span>
+            </div>
+            <div class="head_button">
+                <a class="toggle-collapse px-3 d-flex align-items-center btn-primary"
+                    role="button"
+                    data-toggle="collapse"
+                    t-attf-href="#sharelist-{{elem.structure.id}}"
+                    aria-expanded="false"
+                    t-attf-aria-controls="sharelist-{{elem.structure.id}}">
+                    <span class="text-expanded fa fa-angle-up"/>
+                    <span class="text-collapsed fa fa-angle-down"/>
+                </a>
+            </div>
+        </div>
+        <div t-attf-id="sharelist-{{elem.structure.id}}" class="collapse">
+            <t t-call="portal.portal_table">
+                <thead>
+                    <tr class="active">
+                        <th>Name</th>
+                        <th class="text-right">Date</th>
+                        <th class="text-right">Creation</th>
+                        <th class="text-right">Quantity</th>
+                        <th class="text-right">Amount</th>
+                        <th class="text-right">Total Amount</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <t t-foreach="elem.lines" t-as="finprod">
+                    <tr>
+                        <td>
+                            <span t-field="finprod.share_product_id.name"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="finprod.effective_date"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="finprod.creation_mode"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="finprod.share_number"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="finprod.share_unit_price"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="finprod.total_amount_line"/>
+                        </td>
+                        <td class="text-right">
+                            <button type="button"
+                                class="btn btn-default"
+                                t-if="finprod.creation_mode == 'manual'"
+                                data-toggle="modal"
+                                t-attf-data-target="#confirm-delete-{{finprod.id}}">
+                                <i class="fa fa-trash"/>
+                            </button>
+                        </td>
+                    </tr>
+                    <div class="modal fade"
+                        t-if="finprod.creation_mode == 'manual'"
+                        t-attf-id="confirm-delete-{{finprod.id}}"
+                        tabindex="-1"
+                        role="dialog"
+                        aria-labelledby="ConfirmDeleteShare"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Delete share</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <i class="fa fa-times"/>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    Do you realy want to delete this share from the system?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button"
+                                        class="btn btn-secondary"
+                                        data-dismiss="modal">
+                                        Cancel
+                                    </button>
+                                    <a t-attf-href="/share/{{finprod.id}}/delete?nexturl=/my/wallet/share"
+                                        class="btn btn-primary">
+                                        Confirm suppression
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </t>
+            </t>
+        </div>
+    </template>
+
+
+    <template id="portal_my_history_share" name="Share History">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Share History</t>
+            </t>
+
+            <h3 t-if="subreqs" class="mt-4">Subscription Request</h3>
+
+            <t t-if="subreqs" t-call="portal.portal_table">
+                <thead>
+                    <tr class="active">
+                        <th>Structure Name</th>
+                        <th class="text-right">Date</th>
+                        <th class="text-right">Share Name</th>
+                        <th class="text-right">Quantity</th>
+                        <th class="text-right">Amount</th>
+                        <th class="text-right">Total Amount</th>
+                        <th class="text-right">State</th>
+                    </tr>
+                </thead>
+                <t t-foreach="subreqs" t-as="subreq">
+                    <tr>
+                        <td><t t-esc="subreq.structure.name"/></td>
+                        <td class="text-right">
+                            <span t-field="subreq.date"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="subreq.share_product_id.name"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="subreq.ordered_parts"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="subreq.share_unit_price"
+                                t-options="{'widget': 'monetary', 'display_currency': subreq.company_currency_id}"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="subreq.subscription_amount"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="subreq.state"/>
+                        </td>
+                    </tr>
+                </t>
+            </t>
+
+            <h3 t-if="opreqs" class="mt-4">Sell Back Request</h3>
+
+            <t t-if="opreqs" t-call="portal.portal_table">
+                <thead>
+                    <tr class="active">
+                        <th>Structure Name</th>
+                        <th class="text-right">Date</th>
+                        <th class="text-right">Share Name</th>
+                        <th class="text-right">Quantity</th>
+                        <th class="text-right">Amount</th>
+                        <th class="text-right">Total Amount</th>
+                        <th class="text-right">State</th>
+                    </tr>
+                </thead>
+                <t t-foreach="opreqs" t-as="opreq">
+                    <tr>
+                        <td><t t-esc="opreq.structure.name"/></td>
+                        <td class="text-right">
+                            <span t-field="opreq.request_date"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="opreq.share_product_id.name"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="opreq.quantity"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="opreq.share_unit_price"
+                                t-options="{'widget': 'monetary', 'display_currency': opreq.company_id.currency_id}"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="opreq.subscription_amount"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="opreq.state"/>
+                        </td>
+                    </tr>
+                </t>
+            </t>
+
+            <h3 class="mt-4">Share History</h3>
+
+            <t t-if="not registers">
+                <p>You currently owns no shares.</p>
+            </t>
+            <t t-if="registers" t-call="portal.portal_table">
+                <thead>
+                    <tr class="active">
+                        <th>Structure Name</th>
+                        <th class="text-right">Date</th>
+                        <th class="text-right">Operation</th>
+                        <th class="text-right">Share Name</th>
+                        <th class="text-right">Quantity</th>
+                        <th class="text-right">Amount</th>
+                        <th class="text-right">Total Amount</th>
+                    </tr>
+                </thead>
+                <t t-foreach="registers" t-as="register">
+                    <tr>
+                        <td><t t-esc="register.structure.name"/></td>
+                        <td class="text-right">
+                            <span t-field="register.date"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="register.type"/>
+                            <span t-if="register.type == 'transfer'">
+                                to <t t-esc="register.partner_id_to.name"/>
+                            </span>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="register.share_product_id.name"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="register.quantity"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="register.share_unit_price"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="register.total_amount_line"/>
+                        </td>
+                    </tr>
+                </t>
+            </t>
+        </t>
+    </template>
+
+
+    <template id="portal_my_wallet_loan" name="My Loan Wallet">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="False"/>
+
+            <p t-if="back_from_delete_loan and delete_loan_success"
+                class="alert alert-success alert-dismissible mt-4">
+                The loan has been deleted.
+                <button type="button"
+                    class="close"
+                    data-dismiss="alert"
+                    aria-label="Close">
+                    <i class="fa fa-times"/>
+                </button>
+            </p>
+            <p t-if="back_from_delete_loan and not delete_loan_success"
+                class="alert alert-danger alert-dismissible mt-4"
+                role="alert">
+                Error when deleting a loan.
+                <button type="button"
+                    class="close"
+                    data-dismiss="alert"
+                    aria-label="Close">
+                    <i class="fa fa-times"/>
+                </button>
+            </p>
+
+            <t t-if="not data">
+                <p>
+                    There are currently no loans paid for your account.
+                </p>
+            </t>
+            <t t-if="data">
+                <t t-foreach="data" t-as="elem"
+                    t-call="iwp_website.loan_wallet_content"/>
+            </t>
+        </t>
+    </template>
+
+
+    <template id="loan_wallet_content" name="Loan Wallet Content">
+        <div class="shareline_head d-flex bg-white rounded mt-4">
+            <div class="head_content flex-grow-1 px-3 py-2">
+                <span class="struct_name" t-esc="elem.structure.name"/>
+                <div class="share_actions mx-2 btn-group" role="group"
+                    aria-label="Share Actions">
+                </div>
+                <span class="amount float-right">
+                    <t t-esc="elem.total_amount" t-options="{'widget': 'monetary', 'display_currency': currency}"/>
+                </span>
+            </div>
+            <div class="head_button">
+                <a class="toggle-collapse px-3 d-flex align-items-center btn-primary"
+                    role="button"
+                    data-toggle="collapse"
+                    t-attf-href="#sharelist-{{elem.structure.id}}"
+                    aria-expanded="false"
+                    t-attf-aria-controls="sharelist-{{elem.structure.id}}">
+                    <span class="text-expanded fa fa-angle-up"/>
+                    <span class="text-collapsed fa fa-angle-down"/>
+                </a>
+            </div>
+        </div>
+        <div t-attf-id="sharelist-{{elem.structure.id}}" class="collapse">
+            <t t-call="portal.portal_table">
+                <thead>
+                    <tr class="active">
+                        <th>Structure</th>
+                        <th>Loan issue</th>
+                        <th class="text-right">Subscription Date</th>
+                        <th>Creation</th>
+                        <th class="text-right">Quantity</th>
+                        <th class="text-right">Facial Value</th>
+                        <th class="text-right">Amount</th>
+                        <th class="text-right">State</th>
+                        <th class="text-right"></th>
+                    </tr>
+                </thead>
+                <t t-foreach="elem.lines" t-as="lil">
+                    <tr>
+                        <td><t t-esc="lil.structure.name"/></td>
+                        <td><t t-esc="lil.loan_issue_id.name"/></td>
+                        <td class="text-right">
+                            <span t-field="lil.date"/>
+                        </td>
+                        <td>
+                            <span t-field="lil.creation_mode"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="lil.quantity"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="lil.face_value"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="lil.amount"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="lil.state"/>
+                        </td>
+                        <td class="text-right">
+                            <button type="button"
+                                class="btn btn-default"
+                                t-if="lil.creation_mode == 'manual'"
+                                data-toggle="modal"
+                                t-attf-data-target="#confirm-delete-{{lil.id}}">
+                                <i class="fa fa-trash"/>
+                            </button>
+                        </td>
+                    </tr>
+                    <div class="modal fade"
+                        t-if="lil.creation_mode == 'manual'"
+                        t-attf-id="confirm-delete-{{lil.id}}"
+                        tabindex="-1"
+                        role="dialog"
+                        aria-labelledby="ConfirmDeleteLoan"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Delete loan</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <i class="fa fa-times"/>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    Do you realy want to delete this loan from the system?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button"
+                                        class="btn btn-secondary"
+                                        data-dismiss="modal">
+                                        Cancel
+                                    </button>
+                                    <a t-attf-href="/loan/{{lil.id}}/delete?nexturl=/my/wallet/loan"
+                                        class="btn btn-primary">
+                                        Confirm suppression
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </div>
+    </template>
+
+
+    <template id="portal_my_history_loan" name="My Loan History">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+            <t t-call="portal.portal_searchbar"/>
+
+            <t t-if="not issuelines">
+                <p>
+                    There are currently no loan for your account.
+                </p>
+            </t>
+            <t t-if="issuelines" t-call="portal.portal_table">
+                <thead>
+                    <tr class="active">
+                        <th>Structure</th>
+                        <th class="text-right">Loan issue</th>
+                        <th class="text-right">Subscription Date</th>
+                        <th class="text-right">Quantity</th>
+                        <th class="text-right">Facial Value</th>
+                        <th class="text-right">Amount</th>
+                        <th class="text-right">State</th>
+                    </tr>
+                </thead>
+                <t t-foreach="issuelines" t-as="lil">
+                    <tr>
+                        <td><t t-esc="lil.structure.name"/></td>
+                        <td class="text-right">
+                            <t t-esc="lil.loan_issue_id.name"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="lil.date"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="lil.quantity"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="lil.face_value"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="lil.amount"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="lil.state"/>
+                        </td>
+                    </tr>
+                </t>
+            </t>
+        </t>
+    </template>
+
+
+    <template id="structures" name="Structures">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+            <t t-call="portal.portal_searchbar"/>
+
+            <t t-if="not data">
+                <p>There are currently no structures.</p>
+            </t>
+            <t t-if="data" t-call="portal.portal_table">
+                <thead>
+                    <tr class="active">
+                        <th>Name</th>
+                        <th>Structure Type</th>
+                        <th class="text-right">Invest</th>
+                        <th class="text-right">Wallet</th>
+                    </tr>
+                </thead>
+                <t t-foreach="data" t-as="elem">
+                    <tr>
+                        <td><t t-esc="elem.structure.name"/></td>
+                        <td>
+                            <span t-field="elem.structure.structure_type"/>
+                        </td>
+                        <td class="text-right">
+                            <a t-att-style="'visibility: hidden;' if not elem.display_share_action else None"
+                                t-attf-href="/struct/{{ elem.structure.id }}/share/subscription"
+                                class="btn btn-secondary btn-sm">
+                                Shares
+                            </a>
+                            <a t-att-style="'visibility: hidden;' if not elem.display_loan_action else None"
+                                t-attf-href="/struct/{{ elem.structure.id }}/loan/subscription"
+                                class="btn btn-secondary btn-sm">
+                                Loans
+                            </a>
+                        </td>
+                        <td class="text-right">
+                            <a t-attf-href="/struct/{{ elem.structure.id }}/share/manual/new"
+                                class="btn btn-secondary btn-sm">
+                                Existing shares
+                            </a>
+                            <a t-attf-href="/struct/{{ elem.structure.id }}/loan/manual/new"
+                                class="btn btn-secondary btn-sm">
+                                Existing loans
+                            </a>
+                        </td>
+                    </tr>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <template id="structure_menu"
+        name="Structures"
+        inherit_id="portal.portal_my_home">
+        <xpath expr="//div[hasclass('o_portal_my_home')]" position="after">
+            <a href="/structure" class="btn btn-primary mt-2">
+                Invest
+            </a>
+        </xpath>
+    </template>
+
+
+</odoo>

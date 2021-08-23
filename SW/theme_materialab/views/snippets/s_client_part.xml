@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template name="Client Part" id="s_client_part">
+        <!-- ====START CLIENT PART==== -->
+        <section class="client_part oe_structure">
+            <div class="container">
+                <div class="client_slider_area">
+                    <div class="client-caro">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-3">
+                                <div class="client_img">
+                                    <div class="singleClientImg">
+                                        <img src="/theme_materialab/static/src/img/client_1.jpg" alt="" />
+                                        <h6><a href="#">Karen E. Roser </a></h6>
+                                        <p>CEO, Omuk Group </p>
+                                    </div>
+                                    <div class="singleClientImg">
+                                        <img src="/theme_materialab/static/src/img/client_2.jpg" alt="" />
+                                        <h6><a href="#">Johnny Peters</a></h6>
+                                        <p>MD, CTS Group </p>
+                                    </div>
+                                    <div class="singleClientImg">
+                                        <img src="/theme_materialab/static/src/img/client_3.jpg" alt="" />
+                                        <h6><a href="#">William Morales</a></h6>
+                                        <p>CEO, Lorem Group </p>
+                                    </div>
+                                </div>
+                                <div class="clientslide_nav">
+                                    <i class="zmdi zmdi-long-arrow-left testi_prev"></i>
+                                    <i class="zmdi zmdi-long-arrow-right testi_next"></i>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-9">
+                                <div class="section_title">
+                                    <h5 class="smallHd text-left">some of inspiration</h5>
+                                    <h2 class="secHd text-left">what our clients say</h2>
+                                </div>
+                                <div class="clientTestiSlider">
+                                    <div class="singleClientTesti">
+                                        <div class="cleint-testi">
+                                            <p>If you’ve followed along and done the steps above, you’ve created a good starting place. You’re going to need to make sure your pages are optimized properly. This will ensure you get your page ranked high in the search engines. ou’re going to need to make sure your pages are optimized properly.This will ensure high in the search properly.</p>
+                                        </div>
+                                    </div>
+                                    <div class="singleClientTesti">
+                                        <div class="cleint-testi">
+                                            <p>If you’ve followed along and done the steps above, you’ve created a good starting place. You’re going to need to make sure your pages are optimized properly. This will ensure you get your page ranked high in the search engines. ou’re going to need to make sure your pages are optimized properly.This will ensure high in the search properly.</p>
+                                        </div>
+                                    </div>
+                                    <div class="singleClientTesti">
+                                        <div class="cleint-testi">
+                                            <p>If you’ve followed along and done the steps above, you’ve created a good starting place. You’re going to need to make sure your pages are optimized properly. This will ensure you get your page ranked high in the search engines. ou’re going to need to make sure your pages are optimized properly.This will ensure high in the search properly.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ====END CLIENT PART==== -->
+    </template>
+</odoo>

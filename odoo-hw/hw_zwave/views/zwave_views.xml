@@ -1,0 +1,99 @@
+<odoo>
+
+
+
+
+   <record id="view_zwave_network_form" model="ir.ui.view">
+        <field name="name">zwave.network.form</field>
+        <field name="model">zwave.network</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <header>
+                        <button name="start" string="Start Network" type="object" class="oe_highlight" />
+                        <button name="stop" string="Stop Network" type="object" class="oe_highlight" confirm="Are you sure you want to stop the network?"/>
+                        <button name="alert_state" string="Get network state" type="object" class="oe_highlight" style="margin-right:30px;"/>
+                        <button name="add_secure_node" string="Add node secure" type="object" class="oe_highlight" confirm="Put controller in secure inclusion mode?"/>
+                        <button name="remove_node" string="Remove node" type="object" class="oe_highlight" confirm="Put controller in exclusion mode"/>
+                        <button name="map_nodes" string="Map nodes in network" type="object" class="oe_highlight"/>
+                    </header>
+                    <group string="Zwave Network" col="4">
+
+                        <group string="Information" colspan="2">
+                                <field name="name"/>
+                        </group>
+
+                        <group string="Identification" colspan="2">
+                            <field name="home_id"/>
+                        </group>
+                    </group>
+                    <field name="node_ids" string="Nodes on network:"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+     <record id="view_zwave_node_form" model="ir.ui.view">
+            <field name="name">zwave.node.form</field>
+            <field name="model">zwave.node</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group id="zwave_node_group" string="Zwave Node" col="4">
+
+                            <group string="Information" colspan="2">
+                                    <field name="name"/>
+                                    <field name="node_type"/>
+                            </group>
+                            <group string="Identification" colspan="2">
+                                <field name="node_id"/>
+                                <field name="network_id"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    <record id="view_zwave_network_tree" model="ir.ui.view">
+        <field name="name">Zwave Networks</field>
+        <field name="model">zwave.network</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="home_id"/>
+                <field name="node_ids"/>
+
+            </tree>
+        </field>
+    </record>
+
+
+<!--  -->
+
+
+    <record model="ir.actions.act_window" id="open_view_zwave_network_form">
+            <field name="name">Zwave Networks</field>
+            <field name="res_model">zwave.network</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <!-- <field name="view_id" ref="view_zwave_network_form"/> -->
+            <!-- <field name="search_view_id" ref="view_zwave_form"/> -->
+    </record>
+
+
+<!--     <record model="ir.actions.act_window" id="open_view_zwave_network_tree">
+            <field name="name">Zwave Network</field>
+            <field name="res_model">zwave.network</field>
+            <field name="view_type">tree</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_zwave_network_tree"/>
+            <field name="search_view_id" ref="view_zwave_tree"/>
+        </record> -->
+    
+
+    <menuitem id="menu_view_zwave_form" name="Z-Wave" action="open_view_zwave_network_form"  />
+
+
+</odoo>

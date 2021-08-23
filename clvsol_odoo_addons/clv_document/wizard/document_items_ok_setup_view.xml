@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="clv_document_items_ok_setup_view_form" model="ir.ui.view">
+        <field name="name">clv.document.items_ok_setup.form</field>
+        <field name="model">clv.document.items_ok_setup</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_right">
+                    </div>
+                    <label for="document_ids"/>
+                    <field name="document_ids" options="{'no_open': False, 'no_create': True}"/>
+                    <group  name="group_top">
+                    </group>
+                </sheet>
+                <footer>
+                    <button 
+                        type="object"
+                        name="do_document_items_ok_setup"
+                        string="Items Ok Set Up"
+                        class="oe_highlight"
+                        />
+                    <button special="cancel" string="Cancel"/>
+                </footer>
+            </form>
+
+        </field>
+    </record>
+
+    <!-- More button Action -->
+    <act_window 
+        id="clv_document_items_ok_setup_action"
+        name="Document Items Ok Set Up"
+        src_model="clv.document"
+        res_model="clv.document.items_ok_setup"
+        view_mode="form"
+        key2="client_action_multi"
+        target="new"
+    />
+
+</odoo>

@@ -1,0 +1,21 @@
+id,name,work_phone,work_email,tz,work_location,department_id/id,parent_id/id,job_id/id,category_ids,image_small,gender
+hr.employee_jod,Alexandra Jansson,073 267 37 35,alexandra.jansson@organisation.se,Europe/Stockholm,"Byggnad 1, Andra Våningen",hr.dep_sales,,hr.job_marketing,,,Kvinna
+hr.employee_ngh,Andrea Olofsson,073 264 73 62,andrea.olofsson@organisation.se,Europe/Stockholm,"Byggnad 1, Andra Våningen",hr.dep_sales,hr.employee_admin,hr.job_marketing,Sälj,,Kvinna
+hr.employee_jve,Elias Jonsson,073 262 16 07,elias.jonsson@organisation.se,Europe/Stockholm,"Byggnad 1, Andra Våningen",hr.dep_rd,,hr.job_developer,,,Man
+hr.employee_jep,Ellen Lundberg,073 331 53 78,ellen.lundberg@organisation.se,Europe/Stockholm,"Byggnad 1, Andra Våningen",hr.dep_ps,,hr.job_consultant,,,Kvinna
+hr.employee_hne,Emma Bergman,073 233 33 93,emma.bergman@organisation.se,Europe/Stockholm,"Byggnad 1, Andra Våningen",hr.dep_ps,,hr.job_consultant,,,Kvinna
+hr.employee_jth,Filip Holmström,073 707 84 51,filip.holmstrom@organisation.se,Europe/Stockholm,"Byggnad 1, Andra Våningen",hr.dep_ps,hr.employee_admin,hr.job_consultant,Anställd,,Man
+hr.employee_al,Gustaf Sjöberg,073 310 78 63,gustaf.sjoberg@organisation.se,Europe/Stockholm,"Byggnad 1, Andra Våningen",hr.dep_rd,,hr.job_cto,Praktikant,,Kvinna
+hr.employee_niv,Hanna Klasson,073 719 41 82,hanna.klasson@organisation.se,Europe/Stockholm,"Byggnad 1, Andra Våningen",hr.dep_rd,hr.employee_al,hr.job_developer,Anställd,,Kvinna
+hr.employee_mit,Ida Holmberg,073 497 48 04,ida.holmberg@organisation.se,Europe/Stockholm,"Byggnad 1, Andra Våningen",hr.dep_rd,,hr.job_developer,Anställd,,Kvinna
+hr.employee_chs,Jessica Eriksson,073 363 82 29,jessica.eriksson@organisation.se,Europe/Stockholm,"Byggnad 1, Andra Våningen",hr.dep_rd,hr.employee_al,hr.job_developer,Anställd,,Kvinna
+hr.employee_jgo,Johan Lundqvist,073 518 82 32,johan.lundqvist@organisation.se,Europe/Stockholm,"Byggnad 1, Andra Våningen",hr.dep_ps,,hr.job_consultant,,,Man
+hr.employee_han,Jonas Sandborg,073 912 12 01,jonas.sandborg@organisation.se,Europe/Stockholm,"Byggnad 1, Andra Våningen",hr.dep_rd,,hr.job_developer,,,Man
+hr.employee_jog,Linda Sandberg,073 532 38 41,linda.sandberg@organisation.se,Europe/Stockholm,"Byggnad 1, Andra Våningen",hr.dep_rd,,hr.job_developer,,,Kvinna
+hr.employee_fpi,Magnus Löfgren,073 276 79 03,magnus.lofgren@organisation.se,Europe/Stockholm,"Byggnad 1, Andra Våningen",hr.dep_ps,hr.employee_admin,hr.job_consultant,Anställd,,Man
+hr.employee_qdp,Marc Demo,073 181 37 00,marc.demo@organisation.se,Europe/Stockholm,"Byggnad 1, Andra Våningen",hr.dep_rd,hr.employee_al,hr.job_developer,Anställd,,Man
+hr.employee_admin,Mitchell Admin,073 125 23 89,mitchell.admin@organisation.se,Europe/Stockholm,"Byggnad 1, Andra Våningen",hr.dep_management,,hr.job_ceo,Praktikant,,Man
+hr.employee_fme,Niklas Pettersson,073 505 51 46,niklas.pettersson@organisation.se,Europe/Stockholm,"Byggnad 1, Andra Våningen",hr.dep_rd,hr.employee_al,hr.job_developer,Anställd,,Man
+hr.employee_vad,Pia Wallin,073 694 72 66,pia.wallin@organisation.se,Europe/Stockholm,"Byggnad 1, Andra Våningen",hr.dep_administration,hr.employee_admin,hr.job_hrm,Anställd,,Kvinna
+hr.employee_stw,Robin Larsson,073 775 66 60,robin.larsson@organisation.se,Europe/Stockholm,"Byggnad 1, Andra Våningen",hr.dep_rd,hr.employee_al,hr.job_developer,Anställd,,Man
+hr.employee_lur,Stefan Holm,073 169 13 52,stefan.holm@organisation.se,Europe/Stockholm,"Byggnad 1, Andra Våningen",hr.dep_sales,,hr.job_marketing,,,Man

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+        
+    <record id="clv_patient_view_form_community_member" model="ir.ui.view">
+        <field name="name">clv.patient.form</field>
+        <field name="model">clv.patient</field>
+        <field name="inherit_id" ref="clv_patient.clv_patient_view_form"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <page name="settings" position="before">
+                <page string="Communities">
+                    <group>
+                        <field name="count_communities"/>
+                    </group>
+                    <field name="community_member_ids" colspan="4" nolabel="1"/>
+                </page>
+            </page>
+        </field>
+    </record>
+
+    <record id="clv_patient_view_tree_community_member" model="ir.ui.view">
+        <field name="name">clv.patient.tree</field>
+        <field name="model">clv.patient</field>
+        <field name="inherit_id" ref="clv_patient.clv_patient_view_tree"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="email" position="before">
+                <field name="count_communities"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

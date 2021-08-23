@@ -1,0 +1,9 @@
+id,ipf_num,name,additional_booking,channel/id,ipf_id
+calendar_meeting_type.type_21,21,"Första planeringssamtal PDM",True,calendar_channel.channel_pdm,ded72445-e5d3-4e21-a356-aad200dac83d
+calendar_meeting_type.type_22,22,"Uppföljande planeringssamtal PDM",False,calendar_channel.channel_pdm,f203b91b-bdbe-46e8-b6ae-aad200df9884
+calendar_meeting_type.type_23,23,"Fördjupat planeringssamtal PDM",False,calendar_channel.channel_pdm,93557f15-d25a-4f40-8a6b-aad200e1d2a0
+calendar_meeting_type.type_24,24,"Första planeringssamtal KROM PDM",True,calendar_channel.channel_pdm,162b978b-f167-4837-a3d7-ab6700de6aff
+calendar_meeting_type.type_25,25,"Uppföljande planeringssamtal KROM PDM",False,calendar_channel.channel_pdm,a919ed37-5094-4124-bf7b-ab6700df390a
+calendar_meeting_type.type_31,31,"Första planeringssamtal",False,calendar_channel.channel_local,"n/a"
+calendar_meeting_type.type_32,32,"Uppföljande planeringssamtal",False,calendar_channel.channel_local,"n/a"
+calendar_meeting_type.type_33,33,"Fördjupat planeringssamtal",False,calendar_channel.channel_local,"n/a"

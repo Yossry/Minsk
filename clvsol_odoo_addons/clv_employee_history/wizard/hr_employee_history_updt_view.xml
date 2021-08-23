@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="hr_employee_history_updt_view_form" model="ir.ui.view">
+        <field name="name">hr.employee.history_updt.form</field>
+        <field name="model">hr.employee.history_updt</field>
+        <field name="arch" type="xml">
+            <form>
+                <div class="oe_right">
+                </div>
+                <label for="employee_ids"/>
+                <field name="employee_ids"/>
+                <group>
+                    <group>
+                        <field name="date_sign_out"/>
+                    </group>
+                    <group>
+                        <field name="date_sign_in"/>
+                    </group>
+                </group>
+                <footer>
+                    <button 
+                        type="object"
+                        name="do_employee_history_updt"
+                        string="Employee History Update"
+                        class="oe_highlight"
+                        />
+                    <button special="cancel" string="Cancel"/>
+                </footer>
+            </form>
+
+        </field>
+    </record>
+
+    <!-- More button Action -->
+    <act_window 
+        id="hr_employee_history_updt_action"
+        name="Employee History Update"
+        src_model="hr.employee"
+        res_model="hr.employee.history_updt"
+        view_mode="form"
+        key2="client_action_multi"
+        target="new"
+    />
+
+</odoo>

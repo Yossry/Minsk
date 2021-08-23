@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+
+    <record id="view_bank_balance_computation" model="ir.ui.view">
+        <field name="name">bank_balance_computation</field>
+        <field name="model">bank.balance.computation</field>
+        <field name="arch" type="xml">
+            <form string="Compute bank balances" class="oe_form_configuration">
+              <header>
+                <button string="Compute" type="object" name="compute_bank_balances" class="oe_highlight"/>
+                <button string="Export Table" type="object" name="export_table"/>
+              </header>
+               <group string="Compute bank balances" name="compute_bank_balances" col="12">
+                <field name="date_start" colspan="3"/>
+                <field name="date_end" colspan="3"/>
+                <field name="default_id" colspan="3"/>
+                <field name="forecast_options" colspan="3"/>
+              </group >
+               <group attrs="{'invisible':[('forecast_options', '!=', True)]}"  col="12">
+                   <group col="4">
+                      <field name="journal_ids" widget="many2many_tags"/>
+                   </group>
+                   <group colspan="3">
+                       <field name="detailed_balance"/>
+                       <field name="show_table"/>
+                       <field name="show_chart"/>
+                  </group>
+                  <group colspan="3">
+                      <field name="include_bank_fc_line" />
+                      <field name="include_account_moves"/>
+                      <field name="include_draft_invoices"/>
+                  </group>
+              </group>
+             <notebook>
+                <page string="Output">
+                  <field name="bank_balances"
+                         widget="html"
+                         readonly="True"
+                         nolabel="True"/>
+                </page>
+                <page string="Query" groups="base.group_no_one">
+                  <field name="final_query"
+                         readonly="True"
+                         nolabel="True"/>
+                </page>
+                <page string="Graph">
+                    <div>
+                        <field name="bank_balance_chart"
+                        widget="bokeh_chart" nolabel="1"
+                        />
+                    </div>
+                </page>
+                <page name="settings" string="Settings">
+                    <group col="12">
+                        <group string="Main" colspan="3">
+                            <field name="chart_height"/>
+                            <field name="chart_width"/>
+                        </group>
+                        <group string="Line Chart" colspan="3">
+                            <field name="line_y_bottom"/>
+                            <field name="line_y_top"/>
+                        </group>
+                        <group string="Bar Chart" colspan="3">
+                            <field name="bar_char_height"/>
+                            <field name="bar_size"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="fc_css_dict"/>
+                    </group>
+                </page>
+
+              </notebook>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_compute_bank_balances" model="ir.actions.act_window">
+        <field name="name">Compute Bank Balances</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">bank.balance.computation</field>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+    </record>
+
+    <menuitem id="menu_compute_bank_balances" name="Compute bank balances"
+        parent="treasury_forecast.menu_treasury_forecast_group" sequence="30"
+        action="action_compute_bank_balances"/>
+
+    <!-- Bank balance computation default settings -->
+
+    <record id="bank_balance_configuration_tree" model="ir.ui.view">
+        <field name="name">bank.balance.configuration.tree</field>
+        <field name="model">bank.balance.configuration</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="bank_balance_configuration_form" model="ir.ui.view">
+        <field name="name">bank.balance.configuration.form</field>
+        <field name="model">bank.balance.configuration</field>
+        <field name="arch" type="xml">
+        <form string="Compute bank balances" class="oe_form_configuration">
+            <sheet>
+                <group>
+                    <field name="name"/>
+                    <field name="active"/>
+                </group>
+                <group string="Forecast parameters">
+                    <group>
+                        <field name="journal_ids" widget="many2many_tags"/>
+                        <field name="detailed_balance"/>
+                        <field name="show_table"/>
+                        <field name="show_chart"/>
+                        <field name="include_bank_fc_line" />
+                        <field name="include_account_moves"/>
+                        <field name="include_draft_invoices"/>
+                    </group>
+                    <group>
+                        <field name="fc_css_dict"/>
+                    </group>
+                </group>
+                <group string="Chart Parameters">
+                    <field name="chart_height"/>
+                    <field name="chart_width"/>
+                    <field name="line_y_bottom"/>
+                    <field name="line_y_top"/>
+                    <field name="bar_char_height"/>
+                    <field name="bar_size"/>
+                </group>
+            </sheet>
+            </form>
+        </field>
+    </record>
+
+
+</data>
+</odoo>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+        
+    <record id="clv_family_view_form_person_aux" model="ir.ui.view">
+        <field name="name">clv.family.form</field>
+        <field name="model">clv.family</field>
+        <field name="inherit_id" ref="clv_family.clv_family_view_form"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <page name="settings" position="before">
+                <page string="Persons (Aux)">
+                    <group>
+                        <group>
+                            <button name="clv_person_aux.clv_person_aux_action"
+                                    type="action"
+                                    class="oe_stat_button"
+                                    icon="fa-list"
+                                    context="{'search_default_family_id': id}"
+                                    >
+                                <div class="o_form_field o_stat_info">
+                                    <span class="o_stat_value">
+                                        <field name="count_persons_aux"/>
+                                    </span>
+                                    <span class="o_stat_text"> Person(s) (Aux)</span>
+                                </div>
+                            </button>
+                        </group>
+                    </group>
+                    <field name="person_aux_ids" colspan="4" nolabel="1"/>
+                </page>
+            </page>
+        </field>
+    </record>
+
+    <record id="clv_family_view_tree_person_aux" model="ir.ui.view">
+        <field name="name">clv.family.tree</field>
+        <field name="model">clv.family</field>
+        <field name="inherit_id" ref="clv_family.clv_family_view_tree"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="code" position="after">
+                <field name="count_persons_aux" sum="Total Number of Persons (Aux)"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="clv_person_aux_view_form_family" model="ir.ui.view">
+        <field name="name">clv.person_aux.form</field>
+        <field name="model">clv.person_aux</field>
+        <field name="inherit_id" ref="clv_person_aux.clv_person_aux_view_form"/>
+        <field name="priority" eval="6"/>
+        <field name="arch" type="xml">
+            <group name="group_top_right" position="inside">
+                <field name="family_is_unavailable" attrs="{'invisible': ['&amp;',('family_is_unavailable','=',False),('family_id','!=',False)]}"/>
+                <field name="family_id" options='{"no_open": False, "no_create": True}'/>
+                <field name="family_code" string="Family Code"/>
+                <field name="family_category_ids" string="Family Categories"/>
+                <!--field name="person_aux_family_role_id" options='{"no_open": False, "no_create": True}'/-->
+                <button name="do_person_aux_remove_family"
+                        type="object"
+                        class="oe_stat_button, oe_edit_only"
+                        icon="fa-eraser"
+                        string=" Remove Family"
+                        confirm="Are you sure you want to remove the 'Family'?"
+                        attrs="{'invisible': [('family_id', '=', False)]}"
+                        >
+                </button>
+            </group>
+        </field>
+    </record>
+
+    <record id="clv_person_aux_view_tree_family" model="ir.ui.view">
+        <field name="name">clv.person_aux.tree</field>
+        <field name="model">clv.person_aux</field>
+        <field name="inherit_id" ref="clv_person_aux_view_tree"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="code" position="after">
+                <field name="family_category_ids" string="Family Categories"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="clv_person_aux_view_search_family" model="ir.ui.view">
+        <field name="name">clv.person_aux.search</field>
+        <field name="model">clv.person_aux</field>
+        <field name="inherit_id" ref="clv_person_aux.clv_person_aux_view_search"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="code" position="after">
+                <field name="family_id"/>
+                <field name="family_category_ids"/>
+            </field>
+            <group name="group_by" position="inside">
+                <filter name="group_by_family_id" string="Family" context="{'group_by': 'family_id'}"/>
+                <filter name="group_by_family_category_ids" string="Family Categories" context="{'group_by': 'family_category_ids'}"/>
+            </group>
+        </field>
+    </record>
+
+</odoo>

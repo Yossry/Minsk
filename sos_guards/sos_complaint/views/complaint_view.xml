@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+
+		<!--Complaint form view -->
+		<record id="view_complaint_form" model="ir.ui.view">
+			<field name="name">sos.complaint.form</field>
+			<field name="model">sos.complaint</field>
+			<field name="arch" type="xml">
+				<form string="Complaint">
+				   <header>
+						<button name="complaint_open" states="draft" string="Open Complaint" class="oe_highlight"  type="object"/>
+						<button name="complaint_close" states="open" string="Close Complaint" class="oe_highlight" type="object"/>
+						<field name="state" widget="statusbar" nolabel="1" />
+				   </header>
+				   <sheet>
+					   <div class="oe_title">
+						   <h1>
+							   <field name="name" readonly="1" nolabel="1"/>
+						   </h1>
+						</div>
+					   <div class="oe_right oe_button_box" name="button_box">
+					   </div>
+					   <group colspan="4" cols="4">
+							<field name="complaint_nature" style="display: inline;"/>
+							<field name="category_ids"  widget="many2many_tags" style="display: inline;" invisible="1"/>
+					   </group>
+					   <group>
+							<group string="Complainant">
+								<field name="complainant"/>
+								<field name="contact_no"/>
+								<field name="phone_no"/>
+								<field name="email"/>
+								<field name="source"/>
+							</group>
+
+							<group string="Branch Location">
+								<field name="center_id" options="{'no_create': True, 'limit': 10}"/>
+								<field name="project_id" options="{'no_create': True, 'limit': 10}"/>
+								<field name="post_id" options="{'no_create': True, 'limit': 10}"/>
+							</group>
+
+							<group string="Related Staff">
+							<!--
+								<field name="coordinator_id"  domain="[('is_guard','=',False),('category_ids','in',[58])]"/>
+								<field name="supervisor_id" domain="[('is_guard','=',False),('category_ids','in',[11])]"/>
+							-->
+								<field name="coordinator_id"  domain="[('is_guard','=',False)]" options="{'no_create': True, 'limit': 10}" />
+								<field name="supervisor_id" domain="[('is_guard','=',False)]" options="{'no_create': True, 'limit': 10}"/>
+
+								<field name="employee_id" options="{'no_create': True, 'limit': 10}"/>
+							</group>
+
+							<group string="Resolved">
+								<field name="received_by" options="{'no_create': True, 'limit': 10}"/>
+								<field name="actioned_by" options="{'no_create': True, 'limit': 10}"/>
+							</group>
+
+							<group string="Time">
+								<field name="complaint_time"/>
+								<field name="action_time"/>
+							</group>
+					   </group>
+					   <div class="oe_clear">
+						   <label for="complaint_detail"/>
+					   </div>
+					   <field name="complaint_detail"/>
+						<div class="oe_clear">
+							<label for="action_detail"/>
+					   </div>
+					   <field name="action_detail"/>
+
+				   </sheet>
+			   </form>
+		   </field>
+		</record>
+   
+		<record id="view_complaint_tree" model="ir.ui.view">
+		   <field name="name">sos.complaint.tree</field>
+		   <field name="model">sos.complaint</field>
+		   <field name="arch" type="xml">
+			   <tree colors="black:state == 'draft';red:state  == 'open';green:state == 'done';" string="Complaints">
+				   <field name="name"/>
+				   <field name="complainant"/>
+				   <field name="category_ids" invisible="1"/>
+					<field name="complaint_nature"/>
+				   <field name="contact_no"/>
+				   <field name="center_id" options="{'no_create': True, 'limit': 10}"/>
+				   <field name="project_id" options="{'no_create': True, 'limit': 10}"/>
+				   <field name="post_id" options="{'no_create': True, 'limit': 10}"/>
+				   <field name="complaint_time" />
+				   <field name="action_time" />
+				   <field name="state" />
+				   <field name="received_by" invisible="1" />
+				   <field name="actioned_by" invisible="1" />
+			   </tree>
+		   </field>
+		</record>
+
+		<record id="view_complaint_filter" model="ir.ui.view">
+			<field name="name">sos.complaint.select</field>
+			<field name="model">sos.complaint</field>
+			<field name="arch" type="xml">
+				<search string="Complaint">
+					<field name="name" string="Complaint"
+						filter_domain="['|','|','|', ('name','ilike',self), ('complainant','ilike',self), ('contact_no', 'ilike', self), ('received_by', 'ilike', self)]"/>
+				   <separator/>
+
+				   <field name="contact_no" string="Mobile Phone"/>
+				   <field name="received_by" string="Received By"/>
+				   <field name="project_id" string="Project"/>
+				   <field name="center_id" string="Center"/>
+				   <field name="post_id" string="Post"/>
+				   <filter string="Today" name="today" domain="[('complaint_time','&gt;=',current_date),('complaint_time','&lt;=',current_date)]" />
+				   <filter string="Draft" name="draft" domain="[('state','=','draft')]" />
+				   <filter string="Open" name="open" domain="[('state','=','open')]" />
+				   <filter string="Closed" name="closed" domain="[('state','=','done')]" />
+				   <separator/>
+
+				   <group expand="0" string="Group By...">
+						<filter string="Project" name="project_id" context="{'group_by': 'project_id'}"/>
+						<filter string="Center" name="center_id" context="{'group_by': 'center_id'}"/>
+						<filter string="Post" name="post_id" context="{'group_by': 'post_id'}"/>
+						<separator/>
+						<filter string="Received By" name="received_by" context="{'group_by': 'received_by'}"/>
+						<filter string="Action Taken" name="actioned_by" context="{'group_by': 'actioned_by'}"/>
+						<separator/>
+						<filter string="Complaint (Year)" name="complaint_time" domain="[]" context="{'group_by':'complaint_time:year'}"/>
+						<filter string="Complaint (Month)" name="complaint_time" domain="[]" context="{'group_by':'complaint_time:month'}"/>
+
+						<separator/>
+						<filter string="Complaint Nature"  name="complaint_nature" domain="[]" context="{'group_by': 'complaint_nature'}"/>
+
+				   </group>
+			   </search>
+			</field>
+		</record>
+
+		<record id="open_view_complaint_list_my" model="ir.actions.act_window">
+			<field name="name">Complaints</field>
+			<field name="res_model">sos.complaint</field>
+			<field name="view_type">form</field>
+			<field eval="False" name="view_id"/>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="search_view_id" ref="view_complaint_filter"/>
+			<field name="help" type="html">
+			  <p class="oe_view_nocontent_create">
+				Click to add a new Complaint.
+			  </p><p>
+				With just a quick glance on the AARSOL ERP screen, you
+				can easily find all the information you need for each Complaint;
+				contact data, Current Status, etc.
+			  </p>
+			</field>
+		</record>
+	
+	
+		<record id="open_view_complaint_list_my_view1" model="ir.actions.act_window.view">
+			<field eval="1" name="sequence"/>
+			<field name="view_mode">tree</field>
+			<field name="view_id" ref="view_complaint_tree"/>
+			<field name="act_window_id" ref="open_view_complaint_list_my"/>
+		</record>
+
+		<record id="open_view_complaint_list_my_view2" model="ir.actions.act_window.view">
+			<field eval="2" name="sequence"/>
+			<field name="view_mode">form</field>
+			<field name="view_id" ref="view_complaint_form"/>
+			<field name="act_window_id" ref="open_view_complaint_list_my"/>
+		</record>
+
+		<menuitem parent="sos.menu_gms_main" id="sos_complaint_mi" name="Complaints" sequence="110" action="open_view_complaint_list_my" />
+
+	</data>
+</odoo>

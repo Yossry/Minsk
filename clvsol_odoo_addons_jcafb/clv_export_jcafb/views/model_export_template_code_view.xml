@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+        
+    <record id="clv_model_export_template_view_form_code" model="ir.ui.view">
+        <field name="name">clv.model_export.template.form</field>
+        <field name="model">clv.model_export.template</field>
+        <field name="inherit_id" ref="clv_export.clv_model_export_template_view_form"/>
+        <field name="priority" eval="8" />
+        <field name="arch" type="xml">
+            <field name="code" position="after">
+                <field name="code_sequence" invisible="True"/>
+            </field>
+        </field>
+    </record>
+       
+</odoo>

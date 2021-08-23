@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_invoice_line2" model="ir.ui.view">
+        <field name="name">view.invoice.line2</field>
+        <field name="model">account.invoice.line</field>
+        <field
+            name="inherit_id"
+            ref="account_invoice_line_view_oaw.view_invoice_line2"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='product_id']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+            <xpath expr="//field[@name='product_id']" position="after">
+                <field name="prod_ref" />
+                <field name="prod_code" />
+            </xpath>
+        </field>
+    </record>
+    <record id="account_invoice_line_search" model="ir.ui.view">
+        <field name="name">account.invoice.line.search</field>
+        <field name="model">account.invoice.line</field>
+        <field
+            name="inherit_id"
+            ref="account_invoice_line_view_oaw.account_invoice_line_search"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='reference']" position="after">
+                <field name="prod_ref" />
+                <field name="prod_code" />
+            </xpath>
+        </field>
+    </record>
+</odoo>

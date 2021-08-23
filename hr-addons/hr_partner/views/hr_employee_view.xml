@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="hr_employee_form_view" model="ir.ui.view">
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form" />
+        <field name="arch" type="xml">
+            <field name="address_id" position="after">
+                <button name="button_find_or_create_address_id"
+                        type="object" class="oe_link"
+                        string="(find or create address)"
+                        attrs="{'invisible': [('address_id', '!=', False)]}"/>
+            </field>
+            <div name="button_box" position="inside">
+                <button name="button_find_or_create_user_id"
+                        type="object" class="oe_stat_button"
+                        icon="fa-user" string="Create User"
+                        attrs="{'invisible': [('user_id', '!=', False)]}" />
+            </div>
+        </field>
+    </record>
+</odoo>

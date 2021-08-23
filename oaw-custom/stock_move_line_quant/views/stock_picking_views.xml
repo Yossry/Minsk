@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_picking_form" model="ir.ui.view">
+        <field name="name">stock.picking.form</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form" />
+        <field name="arch" type="xml">
+            <xpath
+                expr="//field[@name='move_line_ids_without_package']//field[@name='lot_name']"
+                position="after"
+            >
+                <field
+                    name="purchase_price_unit"
+                    attrs="{'readonly': [('state', '=', 'done')], 'invisible': [('lots_visible', '=', False)]}"
+                />
+                <field
+                    name="currency_id"
+                    options="{'no_open': True, 'no_create': True}"
+                    attrs="{'readonly': [('state', '=', 'done')], 'invisible': [('lots_visible', '=', False)]}"
+                />
+                <field
+                    name="exchange_rate"
+                    attrs="{'readonly': [('state', '=', 'done')], 'invisible': [('lots_visible', '=', False)]}"
+                />
+                <field
+                    name="price_unit"
+                    attrs="{'readonly': [('state', '=', 'done')], 'invisible': [('lots_visible', '=', False)]}"
+                />
+            </xpath>
+            <xpath
+                expr="//field[@name='move_ids_without_package']//field[@name='product_id']"
+                position="after"
+            >
+                <field name="currency_id" />
+                <field name="purchase_price_unit" />
+                <field name="exchange_rate" />
+                <field name="price_unit" />
+            </xpath>
+        </field>
+    </record>
+</odoo>

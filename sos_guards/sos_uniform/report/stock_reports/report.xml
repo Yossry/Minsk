@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    
+		<!-- Daily Stock Report -->
+		<report
+			id="daily_stock_report"
+			string= "Daily Stock Report"
+			model = "daily.stock.wizard"
+			report_type="qweb-pdf"
+			file="sos_uniform.report_dailystock"
+			name="sos_uniform.report_dailystock"
+		/>
+		
+		<!-- Uniform Report -->
+		<report
+			id="uniform_report"
+			string= "Uniform Report"
+			model = "uniform.wizard"
+			report_type="qweb-pdf"
+			file="sos_uniform.report_uniform"
+			name="sos_uniform.report_uniform"
+		/>
+		
+		<!-- Shoes Report -->
+		<report
+			id="shoes_report"
+			string= "Shoes Report"
+			model = "shoes.wizard"
+			report_type="qweb-pdf"
+			file="sos_uniform.report_shoes"
+			name="sos_uniform.report_shoes"
+		/>
+		
+		<!-- Accessories Report -->
+		<report
+			id="accessories_report"
+			string= "Accessories Report"
+			model = "accessories.wizard"
+			report_type="qweb-pdf"
+			file="sos_uniform.report_accessories"
+			name="sos_uniform.report_accessories"
+		/>
+		
+		<!-- Ammunition Report -->
+		<report
+			id="ammunition_report"
+			string= "Ammunition Report"
+			model = "accessories.wizard"
+			report_type="qweb-pdf"
+			file="sos_uniform.report_ammunition"
+			name="sos_uniform.report_ammunition"
+		/>
+		
+		<!-- stationary Report -->
+		<report
+			id="stationary_report"
+			string= "Stationary Report"
+			model = "stationary.wizard"
+			report_type="qweb-pdf"
+			file="sos_uniform.report_stationary"
+			name="sos_uniform.report_stationary"
+		/>
+		
+		<!-- lady uniform Report -->
+		<report
+			id="lady_uniform_report"
+			string= "Lady Uniform Report"
+			model = "lady.uniform.wizard"
+			report_type="qweb-pdf"
+			file="sos_uniform.report_ladyuniform"
+			name="sos_uniform.report_ladyuniform"
+		/>
+		
+		<!-- trouser Report -->
+		<report
+			id="trouser_report"
+			string= "Trouser Report"
+			model = "trouser.wizard"
+			report_type="qweb-pdf"
+			file="sos_uniform.report_trouser"
+			name="sos_uniform.report_trouser"
+		/>
+		
+		<!-- tshirt Report -->
+		<report
+			id="tshirt_report"
+			string= "T-Shirt Report"
+			model = "tshirt.wizard"
+			report_type="qweb-pdf"
+			file="sos_uniform.report_tshirt"
+			name="sos_uniform.report_tshirt"
+		/>
+	
+    </data>
+</odoo>

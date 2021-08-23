@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_res_partner_form_inherit_address_config" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.address.conf</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="replace">
+                <div></div>
+            </xpath>
+            <xpath expr="//field[@name='company_type']" position="after">
+                <div class="oe_title">
+                    <!--<label for="name" class="oe_edit_only"/>-->
+                    <h1>
+                        <field name="name" placeholder="Full name" force_save="1" readonly="1"/>
+                        <!--attrs="{'readonly': [('company_type', '=', 'person')]}"/>-->
+                    </h1>
+                </div>
+                <div class="o_row oe_edit_only">
+                    <field name="first_name" placeholder="First name"
+                           attrs="{'invisible': [('company_type', '=', 'company')],
+                           'required': [('company_type', '!=', 'company')]}"/>
+                    <field name="last_name" placeholder="Last name"
+                           attrs="{'invisible': [('company_type', '=', 'company')],
+                           'required': [('company_type', '!=', 'company')]}"/>
+                </div>
+                <div class="o_row oe_edit_only">
+                    <field name="middle_name" placeholder="Middle name"
+                           attrs="{'invisible': [('company_type', '=', 'company')]}"/>
+                    <field name="second_last_name" placeholder="Second last name"
+                           attrs="{'invisible': [('company_type', '=', 'company')]}"/>
+                </div>
+                <div class="o_row oe_edit_only">
+                    <field name="company_name" placeholder="Company name"
+                           attrs="{'invisible': [('company_type', '!=', 'company')],
+                           'required': [('company_type', '=', 'company')]}"/>
+                    <field name="company_nature"
+                           attrs="{'invisible': [('company_type', '!=', 'company')],
+                           'required': [('company_type', '=', 'company')]}"/>
+                </div>
+            </xpath>
+            <xpath expr="//div[hasclass('oe_title')]" position="after">
+                <label for="field_1" string="Address fields"/>
+                <div class="o_row oe_edit_only">
+                    <field name="field_1" options="{'no_open': True, 'no_create': True}"/>
+                    <field name="field_2"/>
+                    <field name="field_3"/>
+                    <field name="field_4" options="{'no_open': True, 'no_create': True}"/>
+                    <field name="field_5"/>
+                    <field name="field_6"/>
+                    <field name="field_7" options="{'no_open': True, 'no_create': True}"/>
+                    <field name="field_8"/>
+                    <field name="field_9" options="{'no_open': True, 'no_create': True}"/>
+                    <field name="field_10"/>
+                    <field name="field_11" options="{'no_open': True, 'no_create': True}"/>
+                    <field name="field_12"/>
+                </div>
+            </xpath>
+
+            <xpath expr="//field[@name='vat']" position="before">
+                    <label for="nit" string="NIT"/>
+                    <div class="o_row">
+                         <field  name="nit"/>
+                        <label for="dv" string="DV"/>   <field name="dv"/>
+                    </div>
+                    <field name="ciiu" placeholder="CIIU" widget="many2many_tags"/>
+            </xpath>
+        </field>
+    </record>
+
+
+</odoo>

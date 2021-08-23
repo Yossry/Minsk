@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		 <record id="sos_damage_demand_tree" model="ir.ui.view">
+			<field name="name">Damage Demand Tree</field>
+			<field name="model">sos.damage.demand</field>
+			<field name="priority" eval="15"/>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="name"/>
+					<field name="date"/>
+					<field name="center_id"/>
+					<field name="project_id"/>
+					<field name="post_id"/>
+					<field name="employee_id"/>
+					<field name="state"/>
+				</tree>
+			</field>
+		</record>
+
+		 <record id="sos_damage_demand_form" model="ir.ui.view">
+			<field name="name">Damage Demand Form</field>
+			<field name="model">sos.damage.demand</field>
+			<field name="priority" eval="15"/>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Damage Demand">
+					<header>
+						<button name="demand_approved" type="object" states="draft" string="Submit" class="oe_highlight" groups="sos.group_regional_manager,sos.group_coordinator"/>
+						<button name="demand_discard" type="object" states="approve" string="Discard" class="oe_highlight" groups="sos.group_regional_manager,sos.group_coordinator" />
+						<button name="demand_rejected" type="object" states="draft,approved" string="Rejected" class="oe_highlight" groups="base.group_user"/>
+						<field name="state" widget="statusbar" nolabel="1" statusbar_visible="draft,approved,done,rejected"/>
+					 </header>
+					<sheet string="Damage Demand">
+						<group colspan="4">
+							<group>
+								<field name="name"/>
+								<field name="date"/>
+								<field name="employee_id" options="{'no_create': True, 'limit': 10}"/>
+							 </group>
+							 <group>
+								<field name="center_id" options="{'no_create': True, 'limit': 10}"/>
+								<field name="project_id" attrs="{'readonly':[('state','!=','draft')]}" options="{'no_create': True, 'limit': 10}"/>
+								<field name="post_id" domain="[('center_id', '=', center_id),('project_id', '=', project_id),('active', '=', True)]" attrs="{'readonly':[('state','!=','draft')]}" options="{'no_create': True, 'limit': 10}"/>
+							 </group>
+						 </group>
+
+						<group colspan="4">
+							<group>
+								<field name="remarks"/>
+							</group>
+						</group>
+
+						<field name="damage_line" string="Items Received">
+							<tree editable="top" >
+								<field name="item"/>
+								<field name="qty"/>
+								<field name="size"/>
+							</tree>
+						</field>
+
+					</sheet>
+					<div class="oe_chatter">
+						<field name="message_follower_ids" widget="mail_followers" groups="base.group_user" />
+						<field name="message_ids" widget="mail_thread" />
+					</div>
+				</form>
+			</field>
+		</record>
+
+		<record id="sos_damage_demand_filter" model="ir.ui.view">
+			<field name="name">sos.damage.demand.filter</field>
+			<field name="model">sos.damage.demand</field>
+			<field name="arch" type="xml">
+				<search string="Search jacket Demand">
+					<filter icon="terp-go-today" string="Draft" name="draft" domain="[('state','=','draft')]" />
+					<filter icon="terp-go-today" string="Done" name="done" domain="[('state','=','done')]" />
+					<filter icon="terp-go-today" string="Approved" name="done" domain="[('state','=','approved')]" />
+					<filter icon="terp-go-today" string="Rejected" name="done" domain="[('state','=','rejected')]" />
+					<separator/>
+
+					<field name="name"/>
+					<field name="center_id"/>
+					<field name="project_id"/>
+					<field name="date"/>
+					<field name="state"/>
+
+					<separator/>
+					<group expand="0" string="Group By">
+						<filter string="Center" name="center_id" icon="terp-partner" domain="[]" context="{'group_by':'center_id'}"/>
+						<filter string="Project" name="project_id" icon="terp-partner" domain="[]" context="{'group_by':'project_id'}"/>
+						<filter string="Date" name="date" icon="terp-partner" domain="[]" context="{'group_by':'date'}"/>
+						<filter string="State" name="state" icon="terp-partner" domain="[]" context="{'group_by':'state'}"/>
+					</group>
+
+				</search>
+			</field>
+		</record>
+
+		<record id="sos_damage_demand_action" model="ir.actions.act_window">
+			<field name="name">Damage Demand</field>
+			<field name="res_model">sos.damage.demand</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+					Click to create a new Damage Demand.
+			</p>
+			</field>
+		</record>
+
+		</data>
+</odoo>

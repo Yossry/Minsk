@@ -1,0 +1,8 @@
+#singup_modal {
+    background-color: #212b35;
+    color: white;
+}
+#singup_modal #store-create-form input:not([type='checkbox']), #singup_modal #store-create-form select{
+    background: white;
+    height: 55px;
+}

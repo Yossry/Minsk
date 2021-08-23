@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record model="ir.actions.act_window" id="stock.quantsact">
+        <field
+            name="context"
+        >{'search_default_internal_loc': 1, 'partner_sudo_search': 1}</field>
+    </record>
+</odoo>

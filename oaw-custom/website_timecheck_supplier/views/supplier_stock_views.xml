@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_supplier_stock_tree" model="ir.ui.view">
+        <field name="name">view.supplier.stock.tree</field>
+        <field name="model">supplier.stock</field>
+        <field name="inherit_id" ref="supplier_stock.view_supplier_stock_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='product_id']" position="after">
+                <field name="custom_image" widget="image" />
+            </xpath>
+            <xpath expr="//field[@name='partner_note']" position="before">
+                <field name="special_offer" />
+                <field name="new_arrival" />
+            </xpath>
+        </field>
+    </record>
+    <record id="view_supplier_access_tree" model="ir.ui.view">
+        <field name="name">view.supplier.access.tree</field>
+        <field name="model">supplier.stock</field>
+        <field name="inherit_id" ref="supplier_user_access.view_supplier_access_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='product_id']" position="after">
+                <field name="custom_image" widget="image" />
+            </xpath>
+            <xpath expr="//field[@name='partner_note']" position="before">
+                <field name="special_offer" />
+                <field name="new_arrival" />
+            </xpath>
+        </field>
+    </record>
+</odoo>

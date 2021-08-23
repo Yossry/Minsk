@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+		<record id="view_slip_process" model="ir.ui.view">
+			<field name="name">slip_process</field>
+			<field name="model">slip.process</field>
+			<field name="arch" type="xml">
+				<form string="Slip Process">  
+					<group>
+						<field name="slip_ids" colspan="4" nolabel="1"/>								
+							
+					</group>
+					<footer>
+						<button icon="gtk-execute" string="Process" name="slip_processed" type="object" class="oe_highlight"  />
+						<label for="slip_ids" string="or"/>
+						<button string="Cancel" class="oe_link" special="cancel" />
+					</footer>
+			   </form>
+			</field>
+		</record>
+		
+		<act_window
+            id="action_slip_process"
+            name="Slip Process"
+            res_model="slip.process"
+            src_model="guards.payslip"
+            view_mode="form"
+            multi="True"
+            target="new"
+            key2="client_action_multi"
+        />   
+		
+		
+		
+    </data>
+</odoo>

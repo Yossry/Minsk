@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+
+<template id ="report_complaintdetail">
+	<t t-call="web.html_container">
+		<t t-foreach="docs" t-as="doc">
+			<t t-call="web.external_layout" style="font-family:georgia,garamond,serif;font-size:10px">
+				<div class="page">
+					<style>
+							.tabcol{font-size:10px;}
+							.tabtot{font-size:12px;}
+							 tr:nth-child(even) {background-color: #FFEBCD;}
+							 tr:nth-child(odd) {background-color: #cdcdcd;}
+					</style>
+					
+					<div class="row">
+					 	 <div class="col-xs-4">
+					 	 	 <img width="40%" style="max-height:125px;" class="img img-responsive" src="/sos_complaint/static/img/logo.png"/>
+					 	 </div>
+					 	 <div class="col-xs-2">
+					 	 </div>
+					 	 
+					 	 <div class="col-xs-6" style="font-style: cambria; font-size:13px; font-weight:bold; text-align:right; align:left;margin-top:20px; padding-right:20px;">
+					 	 	SECURITY ORGANIZING SYSTEM (PVT) LIMITED
+					 	 </div>
+					 </div>		
+					
+					
+					<div class="col-xs-12" style="font-style: cambria; font-size:10px; font-weight:bold; text-align:center; text-decoration: underline;"> 
+						<h3>Complaint Report</h3>
+					</div>
+					
+					<br> </br >
+					<br> </br >
+					
+					<table class="table table-bordered" width="100%">
+						<tr>
+							<td  style="font-style: cambria; font-size:10px; font-weight:bold;"> Complaint Number: </td>
+							<td  style="font-style: cambria; font-size:10px;"> <span t-esc="doc.name" /> </td>
+							<td  style="font-style: cambria; font-size:10px; font-weight:bold;"> Complaint Time: </td>
+							<td  style="font-style: cambria; font-size:10px;"> <span t-field="doc.complaint_time" t-field-options='{"format": "d-MM-Y H:M"}' /> </td>
+						</tr>
+						<tr>
+							<td  style="font-style: cambria; font-size:10px; font-weight:bold;">  Nature: </td>
+							<td  style="font-style: cambria; font-size:10px;"> <span t-esc="doc.complaint_nature" /> </td>
+							<td  style="font-style: cambria; font-size:10px; font-weight:bold;"> Status: </td>
+							<td  style="font-style: cambria; font-size:10px;"> <span t-esc="doc.state" /> </td>
+						</tr>
+					</table>
+					
+					<br> </br >
+					
+					<table class="table table-bordered" width="100%">
+						<tr>
+							<td  style="font-style: cambria; font-size:10px; font-weight:bold;"> Complainant: </td>
+							<td  style="font-style: cambria; font-size:10px;"> <span t-esc="doc.complainant" /> </td>
+							<td  style="font-style: cambria; font-size:10px; font-weight:bold;"> Email: </td>
+							<td  style="font-style: cambria; font-size:10px;"> <span t-esc="doc.email" /> </td>
+						</tr>
+						<tr>
+							<td  style="font-style: cambria; font-size:10px; font-weight:bold;"> Mobile Number: </td>
+							<td  style="font-style: cambria; font-size:10px;"> <span t-esc="doc.contact_no" /> </td>
+							<td  style="font-style: cambria; font-size:10px; font-weight:bold;"> Phone Number: </td>
+							<td  style="font-style: cambria; font-size:10px;"> <span t-esc="doc.phone_no" /> </td>
+						</tr>
+						<tr>
+							<td colspan="4"> </td>
+						</tr>
+						<tr>
+							<td  style="font-style: cambria; font-size:10px; font-weight:bold;"> Center: </td>
+							<td  style="font-style: cambria; font-size:10px;"> <span t-esc="doc.center_id.name" /> </td>
+							<td  style="font-style: cambria; font-size:10px; font-weight:bold;"> Project </td>
+							<td  style="font-style: cambria; font-size:10px;"> <span t-esc="doc.project_id.name" /> </td>
+						</tr>
+						<tr>
+							<td  style="font-style: cambria; font-size:10px; font-weight:bold;"> Post: </td>
+							<td  style="font-style: cambria; font-size:10px;"> <span t-esc="doc.post_id.name" /> </td>
+							<td  style="font-style: cambria; font-size:10px; font-weight:bold;"> Coordinator </td>
+							<td  style="font-style: cambria; font-size:10px;"> <span t-esc="doc.coordinator_id.name" /> </td>
+						</tr>
+						<tr>
+							<td colspan="4"> </td>
+						</tr>
+						<tr>
+							<td  style="font-style: cambria; font-size:10px; font-weight:bold;"> Supervisor: </td>
+							<td  style="font-style: cambria; font-size:10px;"> <span t-esc="doc.supervisor_id.name" /> </td>
+							<td  style="font-style: cambria; font-size:10px; font-weight:bold;"> Employee </td>
+							<td  style="font-style: cambria; font-size:10px;"> <span t-esc="doc.employee_id.name" /> </td>
+						</tr>
+						<tr>
+							<td  style="font-style: cambria; font-size:10px; font-weight:bold;"> Received by: </td>
+							<td  style="font-style: cambria; font-size:10px;"> <span t-esc="doc.received_by.name" /> </td>
+							<td> - </td>
+							<td> </td>
+						</tr>
+						<tr>
+							<td colspan="4"> </td>
+						</tr>
+						
+						<tr>
+							<td  style="font-style: cambria; font-size:10px; font-weight:bold;"> Action-ed by: </td>
+							<td  style="font-style: cambria; font-size:10px;"> <span t-esc="doc.actioned_by.name" /> </td>
+							<td  style="font-style: cambria; font-size:10px; font-weight:bold;"> Action Time </td>
+							<td  style="font-style: cambria; font-size:10px;"> <span t-esc="doc.action_time" /> </td>
+						</tr>
+						
+						<tr>
+							<td  style="font-style: cambria; font-size:10px; font-weight:bold;">Complaint Detail: </td>
+							<td colspan="3"  style="font-style: cambria; font-size:10px;"> <span t-esc="doc.complaint_detail" /> </td>
+						</tr>
+						
+						<tr>
+							<td  style="font-style: cambria; font-size:10px; font-weight:bold;">Action Detail: </td>
+							<td colspan="3"  style="font-style: cambria; font-size:10px;"> <span t-esc="doc.action_detail" /> </td>
+						</tr>
+						
+					</table>
+					
+					<br> </br>
+					<div class="col-xs-12" style="padding-left:0px; padding-right:0px; margin-top:10px; page-break-inside: avoid;">
+				    <table class="table table-condensed">
+					<tbody>
+				        <tr t-attf-style="border-top: 1px solid " >
+				            <td t-attf-style="border-top: 1px solid  !important;text-align:center;"><strong>Supervisor</strong></td>
+							<td t-attf-style="border-top: 1px solid  !important;text-align:center;"><strong>Project Coordinator</strong></td>				            
+				            <td t-attf-style="border-top: 1px solid  !important;text-align:center;"><strong>Regional Manager</strong></td>
+				        </tr>
+				        
+					</tbody>
+				    </table>
+				   </div>	
+				</div>
+			</t>
+		</t>
+	</t>
+</template>
+	
+</data>
+</odoo>

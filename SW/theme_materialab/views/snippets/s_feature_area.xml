@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template name="Feature Area" id="s_feature_area">
+        <!-- ====FEATURE AERE==== -->
+        <section class="feature_area oe_structure" id="services">
+            <div class="container">
+                <div class="row fix_m">
+                    <div class="col-xs-12 col-sm-6 col-md-3 fix_p">
+                        <div class="single_feature text-center">
+                            <i class="zmdi zmdi-devices"></i>
+                            <h4>Branding</h4>
+                            <div class="single_cap">
+                                <p>As a bu siness owner or manager, the decision to opt faor offshore software can be difficult.</p>
+                                <a class="th_bt btn waves-effect" href="#">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3 fix_p">
+                        <div class="single_feature text-center">
+                            <i class="zmdi zmdi-globe-alt"></i>
+                            <h4>Web Development</h4>
+                            <div class="single_cap">
+                                <p>As a bu siness owner or manager, the decision to opt faor offshore software can be difficult.</p>
+                                <a class="th_bt btn waves-effect" href="#">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3 fix_p">
+                        <div class="single_feature text-center">
+                            <i class="zmdi zmdi-apple"></i>
+                            <h4>Mobile Application</h4>
+                            <div class="single_cap">
+                                <p>As a bu siness owner or manager, the decision to opt faor offshore software can be difficult.</p>
+                                <a class="th_bt btn waves-effect" href="#">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3 fix_p">
+                        <div class="single_feature text-center">
+                            <i class="zmdi zmdi-camera"></i>
+                            <h4>Photography</h4>
+                            <div class="single_cap">
+                                <p>As a bu siness owner or manager, the decision to opt faor offshore software can be difficult.</p>
+                                <a class="th_bt btn waves-effect" href="#">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ====FEATURE AERE END==== -->
+    </template>
+</odoo>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="clv_mfile_category_view_form" model="ir.ui.view">
+        <field name="name">clv.mfile.category.form</field>
+        <field name="model">clv.mfile.category</field>
+        <field name="inherit_id" ref="clv_base.clv_abstract_category_view_form"/>
+        <field name="mode">primary</field>
+        <field name="priority" eval="100"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="attributes">
+                <attribute name="string">Media File Category</attribute>
+            </xpath>
+            <page name="settings" position="before">
+                <page string="Media Files">
+                    <group>
+                        <field name="mfile_ids" colspan="4" nolabel="1"/>
+                    </group>
+                </page>
+            </page>
+        </field>
+    </record>
+
+    <record id="clv_mfile_category_view_tree" model="ir.ui.view">
+        <field name="name">clv.mfile.category.tree</field>
+        <field name="model">clv.mfile.category</field>
+        <field name="inherit_id" ref="clv_base.clv_abstract_category_view_tree" />
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="attributes">
+                <attribute name="string">Media File Categories</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="clv_mfile_category_view_search" model="ir.ui.view">
+        <field name="name">clv.mfile.category.search</field>
+        <field name="model">clv.mfile.category</field>
+        <field name="inherit_id" ref="clv_base.clv_abstract_category_view_search" />
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <xpath expr="//search" position="attributes">
+                <attribute name="string">Media File Categories</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="clv_mfile_category_action" model="ir.actions.act_window">
+        <field name="name">Media File Categories</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">clv.mfile.category</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="clv_mfile_category_view_search"/>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="view_id" eval="False"/>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Click to add a new mfile category.
+          </p>
+        </field>
+    </record>
+    
+    <record id="clv_mfile_view_tree_category" model="ir.ui.view">
+        <field name="name">clv.mfile.tree</field>
+        <field name="model">clv.mfile</field>
+        <field name="inherit_id" ref="clv_mfile_view_tree"/>
+        <field name="priority" eval="20"/>
+        <field name="arch" type="xml">
+            <field name="code" position="before">
+                <field name="category_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                <field name="category_names_suport" invisible="True"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="clv_mfile_view_form_category" model="ir.ui.view">
+        <field name="name">clv.mfile.form</field>
+        <field name="model">clv.mfile</field>
+        <field name="inherit_id" ref="clv_mfile_view_form"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <label for="name" position="before">
+                <label for="category_ids" class="oe_edit_only"/>
+                <h4><field name="category_ids" widget="many2many_tags" placeholder="Categories..." options="{'color_field': 'color', 'no_open': False, 'no_create': True}"/></h4>
+            </label>
+        </field>
+    </record>
+
+    <record id="clv_mfile_view_search_category" model="ir.ui.view">
+        <field name="name">clv.mfile.search</field>
+        <field name="model">clv.mfile</field>
+        <field name="inherit_id" ref="clv_mfile_view_search"/>
+        <field name="priority" eval="20"/>
+        <field name="arch" type="xml">
+            <field name="code" position="after">
+                <field name="category_ids"/>
+            </field>
+            <group name="group_by" position="inside">
+                <filter name="filter_category_names" string="Categories" context="{'group_by': 'category_names'}"/>
+            </group>
+        </field>
+    </record>
+
+</odoo>

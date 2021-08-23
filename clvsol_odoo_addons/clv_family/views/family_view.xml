@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="clv_family_view_tree" model="ir.ui.view">
+        <field name="name">clv.family.tree</field>
+        <field name="model">clv.family</field>
+        <field name="inherit_id" ref="clv_partner_entity.clv_abstract_partner_entity_view_tree"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="attributes">
+                <attribute name="string">Families</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="clv_family_view_form" model="ir.ui.view">
+        <field name="name">clv.family.form</field>
+        <field name="model">clv.family</field>
+        <field name="inherit_id" ref="clv_partner_entity.clv_abstract_partner_entity_view_form"/>
+        <field name="mode">primary</field>
+        <field name="priority" eval="100"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="attributes">
+                <attribute name="string">Family</attribute>
+            </xpath>
+            <!--label for="name" position="before">
+                <h1><separator string="[  Family  ]"/></h1>
+            </label-->
+            <field name="code" position="after">
+                <h1><separator string="[  Family  ]"/></h1>
+                <field name="notes" placeholder="Notes..." colspan="4" style="color:Red; background:White;"/>
+            </field>
+            <!--xpath expr="//group[@name='main_data']">
+                <group name="main">
+                    <field name="parent_id"
+                           colspan="2"
+                           string="Legal Representative"
+                           domain="[('customer','=',True)]"
+                           />
+                </group>
+            </xpath-->
+            <xpath expr="//img[@name='kanban_image_default_person']" position="replace">
+                <img name="kanban_image_default_person"
+                     t-if="record.is_company.raw_value === false"
+                     t-attf-src='{{ _s }}/clv_family/static/src/img/family-avatar.png'
+                />
+            </xpath>
+            <field name="type" position="before">
+                <separator/>
+                <button name="do_family_clear_address_data"
+                        type="object"
+                        class="oe_stat_button, oe_edit_only"
+                        icon="fa-eraser"
+                        string=" Clear Address Data"
+                        confirm="Are you sure you want to clear the 'Address' data?"
+                        >
+                </button>
+            </field>
+        </field>
+    </record>
+
+    <record id="clv_family_view_kanban" model="ir.ui.view">
+        <field name="name">clv.family.kanban</field>
+        <field name="model">clv.family</field>
+        <field name="inherit_id" ref="clv_partner_entity.clv_abstract_partner_entity_view_kanban"/>
+        <field name="mode">primary</field>
+        <field name="priority" eval="100"/>
+        <field name="arch" type="xml">
+            <xpath expr="//kanban" position="attributes">
+                <attribute name="string">Families</attribute>
+            </xpath>
+            <!--xpath expr="//img[@name='kanban_image_entity']" position="replace">
+                <img name="kanban_image_entity"
+                     t-att-src="kanban_image('clv.family', 'image_small', record.id.raw_value)" alt="Family Image"
+                />
+            </xpath>
+            <xpath expr="//img[@name='kanban_image_default_person']" position="replace">
+                <img name="kanban_image_default_person"
+                     t-if="record.is_company.raw_value === false"
+                     t-attf-src='{{ _s }}/clv/static/src/img/family-avatar.png' alt="Family Image"
+                />
+            </xpath-->
+        </field>
+    </record>
+
+    <record id="clv_family_view_search" model="ir.ui.view">
+        <field name="name">clv.family.search</field>
+        <field name="model">clv.family</field>
+        <field name="inherit_id" ref="clv_partner_entity.clv_abstract_partner_entity_view_search"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <xpath expr="//search" position="attributes">
+                <attribute name="string">Families</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="clv_family_action" model="ir.actions.act_window">
+        <field name="name">Families</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">clv.family</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="search_view_id" ref="clv_family_view_search"/>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Click to add a new family.
+          </p>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,57 @@
+<odoo>
+    <data>
+
+        <!-- Access Group Category -->
+        <record id="post_access_categ" model="ir.module.category">
+            <field name="name">Post</field>
+        </record>
+
+        <!-- Group of Machine User -->
+        <record id="group_machine_user" model="res.groups">
+            <field name="name">Machine User</field>
+            <field name="category_id" ref="post_access_categ"/>
+        </record>
+
+        <!-- Group of Machine Supervisor -->
+        <record id="group_machine_supervisor" model="res.groups">
+            <field name="name">Machine Supervisor</field>
+            <field name="category_id" ref="post_access_categ"/>
+            <field name="implied_ids" eval="[(4, ref('group_machine_user'))]"/>
+        </record>
+
+        <!-- Group of Unit Manager -->
+        <record id="group_unit_manager" model="res.groups">
+            <field name="name">Unit Manager</field>
+            <field name="category_id" ref="post_access_categ"/>
+            <field name="implied_ids" eval="[(4, ref('group_machine_supervisor'))]"/>
+            <field name="users" eval="[(4, ref('base.user_admin'))]"/>
+        </record>
+
+        <!-- Record Rules -->
+        
+        <!-- Machine access for Machine Users -->
+        <record id="machine_users_product_template_access_rule" model="ir.rule">
+            <field name="name">Machine:Machine Users</field>
+            <field name="model_id" ref="model_product_template"/>
+            <field name="groups" eval="[(4, ref('group_machine_user'))]"/>
+            <field name="domain_force">[('machine_users_ids.partner_id.id','=',user.partner_id.id)]</field>
+        </record>
+
+        <!-- Machine access for Machine Supervisor -->
+        <record id="machine_supervisor_product_template_access_rule" model="ir.rule">
+            <field name="name">Machine:Machine Supervisor</field>
+            <field name="model_id" ref="model_product_template"/>
+            <field name="groups" eval="[(4, ref('group_machine_supervisor'))]"/>
+            <field name="domain_force">[('machine_supervisor_id.partner_id.id','=',user.partner_id.id)]</field>
+        </record>
+        
+        <!-- Machine access for Unit Manager -->
+        <record id="unit_manager_product_template_access_rule" model="ir.rule">
+            <field name="name">Machine:Unit Manager</field>
+            <field name="model_id" ref="model_product_template"/>
+            <field name="groups" eval="[(4, ref('group_unit_manager'))]"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+        </record> 
+
+    </data>
+</odoo>

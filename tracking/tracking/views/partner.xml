@@ -1,0 +1,121 @@
+<openerp>
+    <data>
+        <record id="view_partnerres_form_inherit" model="ir.ui.view">
+            <field name="name">view.partneres.form.add.text.field</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='user_id']" position="replace">
+                    <field name="user_id" string="Agente de ventas"/>
+                </xpath>
+                <xpath expr="//form/sheet/group/group/field[@name='type']" position="after">
+                    <field name="name_commercial"/>
+                </xpath>
+                <xpath expr="//form/sheet/group/group/field[@name='lang']" position="after">
+                    <field name="sector_id"/>
+                    <field name="categorysector_id"/>
+                    <field name="channelsales_id"/>
+                </xpath>
+                <xpath expr="//notebook" position="inside">
+                    <page string="Preventa/Venta">
+                        <group>
+                            <group>
+                                <field name="partner_type_lx"/>
+                                <field name="usa_folio"/>
+                            </group>
+                            <group>
+                                <field name="zona"/>
+                                <field name="zonalac"/>
+                                <field name="zona2"/>
+                            </group>
+                            <!-- <field name="day1" invisible="1"/>
+                            <field name="day2" invisible="1"/>
+                            <field name="day3" invisible="1"/>
+                            <field name="day4" invisible="1"/>
+                            <field name="day5" invisible="1"/>
+                            <field name="day6" invisible="1"/>
+                            <field name="day7" invisible="1"/> -->
+                            <group>
+                                <field name="dia_lunes"/>
+                                <field name="dia_martes"/>
+                                <field name="dia_miercoles"/>
+                                <field name="dia_jueves"/>
+                                <field name="dia_viernes"/>
+                                <field name="dia_sabado"/>
+                                <field name="dia_domingo"/>
+                            </group>
+                            <group>
+                                <field name="dia_ruta2_lunes"/>
+                                <field name="dia_ruta2_martes"/>
+                                <field name="dia_ruta2_miercoles"/>
+                                <field name="dia_ruta2_jueves"/>
+                                <field name="dia_ruta2_viernes"/>
+                                <field name="dia_ruta2_sabado"/>
+                                <field name="dia_ruta2_domingo"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+                <xpath expr="//sheet/notebook/page[@name='sales_purchases']/group/group/field[@name='ref']" position="after">
+                    <field name="sellersecundary_id"/>
+                    <field name="process"/>
+                    <field name="date"/>
+                </xpath>
+        </field>
+        </record>
+        <record id="view_partnerres_form_inherit_two" model="ir.ui.view">
+            <field name="name">view.partneres.form.add.text.field</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="account.view_partner_property_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='accounting']/group/group[@name='banks']/field[@name='bank_ids']" position="after">
+                    <field name="whithout_invoice"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="view_codigo_comprador_form" model="ir.ui.view">
+            <field name="name">Codigo Comprador</field>
+            <field name="model">codigo.comprador</field>
+            <field name="arch" type="xml">
+                <form string="Codigo Comprador">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_codigo_comprador_tree" model="ir.ui.view">
+            <field name="name">Codigo Comprador</field>
+            <field name="model">codigo.comprador</field>
+            <field name="arch" type="xml">
+                <tree string="Codigo Comprador">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_codigo_comprador">
+            <field name="name">Action Codigo Comprador</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">codigo.comprador</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="Codigo Comprador" id="codigo_comprador_menu" action="action_codigo_comprador" parent="contacts.res_partner_menu_config"/>
+        <record id="view_partnerres_form_inherit_thre" model="ir.ui.view">
+            <field name="name">view_partnerres_form_inherit_thre</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="purchase.view_partner_property_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='property_purchase_currency_id']" position="after">
+                    <field name="codigo_comprador"/>
+                    <field name="plaza"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</openerp>

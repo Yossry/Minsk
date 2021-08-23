@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="sos_guards_security_deposit_view" model="ir.ui.view">
+        <field name="name">Security Deposit Wizard</field>
+        <field name="model">sos.guards.security.deposit</field>
+        <field name="arch" type="xml">
+			<form string="Guards Security Deposit Wizard">
+					<group>
+						<group>
+							<field name="date_from"/>
+							<field name="date_to"/>
+						</group>
+						<group>
+						</group>
+					</group>
+				
+				<footer>
+						<button string="Print" name="print_report" type="object" class="oe_highlight"  />
+						<button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+			</form>
+		</field>
+    </record>
+
+    <record id="action_sos_guards_security_deposit" model="ir.actions.act_window">
+        <field name="name">Security Deposit Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sos.guards.security.deposit</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="sos_guards_security_deposit_view"/>
+        <field name="target">new</field>
+    </record>
+</odoo>

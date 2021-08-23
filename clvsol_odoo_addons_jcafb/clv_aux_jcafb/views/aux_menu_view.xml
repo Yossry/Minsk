@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <menuitem name="Auxiliary" id="clv_aux.menu_base_config_aux" 
+        parent="clv_base.menu_base_config"
+        groups="clv_aux.group_user"
+        sequence="90"/>
+
+    <menuitem name="Instances" id="clv_aux.menu_base_config_aux_instances" 
+        parent="clv_aux.menu_base_config_aux"
+        groups="clv_aux.group_user"
+        sequence="10"
+        action="clv_aux.clv_aux_instance_action"/>
+
+    <menuitem name="Codes" id="clv_aux.menu_base_config_aux_codes" 
+        parent="clv_aux.menu_base_config_aux"
+        groups="clv_aux.group_user"
+        sequence="20"
+        action="clv_aux.clv_aux_code_action"/>
+
+</odoo>

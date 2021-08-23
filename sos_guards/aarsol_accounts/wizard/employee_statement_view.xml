@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+<data>
+       
+        <record id="view_employee_statement_wizard" model="ir.ui.view">
+            <field name="name">employee.statement.wizard.view</field>
+            <field name="model">employee.statement.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Employee Statement Wizard">
+					<sheet>
+                    <group>
+                        <group>
+                            <field name="date_from"/>
+                            <field name="date_to"/>
+                        </group>						
+                        <group>
+							<field name="employee_id" options="{'no_quick_create':True,'no_create_edit':True}"/>
+                        </group>						
+                    </group>
+					</sheet>
+					<footer>
+						<button name="print_report" string="Generate Employee Statement" type="object" default_focus="1" class="oe_highlight"/>
+						<button string="Cancel" class="btn btn-default" special="cancel" />
+					</footer> 
+                </form>
+            </field>
+        </record>
+        
+        <record id="act_employee_statement_wizard" model="ir.actions.act_window">
+            <field name="name">Employee Statement</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">employee.statement.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_employee_statement_wizard"/>
+            <field name="target">new</field>
+        </record>
+
+		<!--
+		<record model="ir.values" id="employee_statement_value">
+            <field name="model_id" ref="base.model_res_partner" />
+            <field name="name">Odoo Employee Statement</field>
+            <field name="key2">client_print_multi</field>
+            <field name="value" eval="'ir.actions.act_window,' + str(ref('act_employee_statement_wizard'))" />
+            <field name="key">action</field>
+            <field name="model">hr.employee</field>
+        </record>
+        -->
+        <menuitem name="Employee Statement" parent="account.menu_finance_legal_statement" sequence="30" action="act_employee_statement_wizard" id="menu_employee_statement_report"/> 
+        
+</data>
+</odoo>

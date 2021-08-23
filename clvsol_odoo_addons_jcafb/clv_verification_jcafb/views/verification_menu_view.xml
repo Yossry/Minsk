@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <menuitem name="Verification Outcomes" id="clv_verification.menu_verification_verification_verification_outcomes" 
+        parent="clv_base.menu_verification_verification"
+        groups="clv_verification.group_user"
+        sequence="10"
+        action="clv_verification.clv_verification_outcome_action"/>
+
+    <!--menuitem name="Verification" id="clv_verification.menu_verification_verification_verification"
+        parent="clv_base.menu_verification_verification"
+        groups="clv_verification.group_user"
+        sequence="20"/-->
+
+    <!--menuitem name="Schedules" id="clv_verification.menu_verification_verification_verification_schedules" 
+        parent="clv_verification.menu_verification_verification_verification"
+        groups="clv_verification.group_user"
+        sequence="40"
+        action="clv_verification.clv_verification_schedule_action"/-->
+
+    <!--menuitem name="Batches" id="clv_verification.menu_verification_verification_verification_batches" 
+        parent="clv_verification.menu_verification_verification_verification"
+        groups="clv_verification.group_user"
+        sequence="50"
+        action="clv_verification.clv_verification_batch_action"/-->
+
+    <menuitem name="Verification" id="clv_verification.menu_verification_config_verification"
+        parent="clv_base.menu_verification_config"
+        groups="clv_verification.group_user"
+        sequence="10"/>
+
+    <menuitem name="Markers" id="clv_verification.menu_verification_config_verification_markers" 
+        parent="clv_verification.menu_verification_config_verification"
+        groups="clv_verification.group_user"
+        sequence="20"
+        action="clv_verification.clv_verification_marker_action"/>
+
+    <menuitem name="Templates" id="clv_verification.menu_verification_config_verification_templates" 
+        parent="clv_verification.menu_verification_config_verification"
+        groups="clv_verification.group_user"
+        sequence="30"
+        action="clv_verification.clv_verification_template_action"/>
+
+    <!--menuitem name="Batch Members" id="clv_verification.menu_verification_config_verification_batch_members" 
+        parent="clv_verification.menu_verification_config_verification"
+        groups="clv_verification.group_user"
+        sequence="60"
+        action="clv_verification.clv_verification_batch_member_actions"/-->
+
+</odoo>

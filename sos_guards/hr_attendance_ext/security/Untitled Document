@@ -1,0 +1,3 @@
+
+access_hr_payslip_amendment_hruser,access_hr_payslip_amendment,model_hr_payslip_amendment,base.group_hr_user,1,1,1,1
+access_hr_payslip_amendment_user,access_hr_payslip_amendment,model_hr_payslip_amendment,hr_ext.group_payroll_user,1,1,1,1

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_project_bid_filter" model="ir.ui.view">
+        <field name="name">project.bid.select</field>
+        <field name="model">project.bid</field>
+        <field name="inherit_id" ref="project_bid.view_project_bid_filter"/>
+        <field name="type">search</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']"
+                   position="before">
+                <field name="project_id"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_project_bid_tree" model="ir.ui.view">
+        <field name="name">project.bid.tree</field>
+        <field name="model">project.bid</field>
+        <field name="inherit_id" ref="project_bid.view_project_bid_tree"/>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='parent_id']" position="after">
+                <field name="project_id"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_project_bid_form" model="ir.ui.view">
+        <field name="name">project.bid.form</field>
+        <field name="model">project.bid</field>
+        <field name="inherit_id" ref="project_bid.view_project_bid_form"/>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="action_button_transfer_to_project"
+                        states="approve"
+                        string="Transfer to Project"
+                        type="object"/>
+                <button name="action_button_create_quotation"
+                        states="approve"
+                        string="Create Quotation"
+                        type="object"/>                        
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="Analytic Plan"
+                      name="analytic_plan">
+                    <group>
+                        <field name="project_id"/>
+                    </group>
+                    <group>
+                        <field name="plan_lines" readonly="1"
+                               nolabel="1"/>
+                    </group>
+                </page>
+                <page string="Quotations"
+                      name="quote">
+                    <group>
+                        <field name="sale_ids"/>
+                    </group>
+                </page>                
+            </xpath>
+        </field>
+    </record>
+</odoo>

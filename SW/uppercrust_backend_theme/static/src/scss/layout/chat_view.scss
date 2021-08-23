@@ -1,0 +1,165 @@
+.o_web_client {
+    .o_thread_window {
+        z-index: 1050;
+        background-color: $white;
+        .o_thread_window_header {
+            background-color: $brand-primary;
+            border-radius: 0;
+            .o_thread_window_title {
+                .o_user_online {
+                    color: $brand-success;
+                }
+                .o_user_idle {
+                    color: $brand-warning;
+                }
+            }
+        }
+        .o_thread_search_input {
+            background-color: $white;
+            .ui-autocomplete-input {
+                border: none;
+                border-bottom: 1px solid $border;
+                &:focus {
+                    @include border-animation();
+                }
+            }
+        }
+        .o_mail_thread {
+            background-color: $white;
+            padding: 0px 10px;
+            .o_mail_thread_content{
+                .o_thread_date_separator {
+                    .o_thread_date {
+                        background-color: $white;
+                        color: $heading;
+                    }
+                }
+                .o_thread_message {
+                    padding: 5px 0px;
+                    background-color: transparent;
+                    .o_thread_message_core {
+                        .o_mail_info {
+                            & > strong {
+                                color: $heading;
+                            }
+                            .o_mail_timestamp {
+                                float: right;
+                            }
+                            .o_thread_icons {
+                                i {
+                                    opacity: 0.6;
+                                    color: gold;
+                                }
+                            }
+                        }
+                    }
+                    &:hover {
+                        .o_thread_message_core {
+                            .o_thread_icons {
+                                i {
+                                    opacity: 1;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .o_thread_composer {
+            .o_composer_container {
+                .o_composer {
+                    .o_composer_input {
+                        .o_input o_composer_text_field {
+                            .ui-autocomplete-input {
+                                border-bottom: 1px solid $border;
+                                &:focus {
+                                    @include border-animation();
+                                }
+                            }
+                        }
+                        .o_chatter_composer_tools {
+                            & > button.btn {
+                                background-color: transparent;
+                                color: $icon;
+                                &:hover, &:active, &:focus {
+                                    background-color: transparent;
+                                    box-shadow: none;
+                                }
+                            }
+                        }
+                    }
+                    .o_mail_emoji_container {
+                        background: $white;
+                        overflow: auto;
+                        & > button {
+                            margin: 0 0 8px 0;
+                            padding: 0;
+                            height: 25px;
+                            width: 25px;
+                            padding: 5px;
+                            img {
+                                width: 20px;
+                                height: 20px;
+                            }
+                        }
+                    }
+                }
+                .o_composer_attachments_list{
+                    .o_attachments{
+                        .o_attachment_wrap{
+                            min-width: 200px;
+                            background-color: $white;
+                            margin-left: 5px;
+                            border-radius: 0;
+                            border: 1px solid $border;
+                            .o_attachment_delete{
+                                background-color: $brand-danger;
+                                &:hover{
+                                    background-color: $brand-secondary;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.ad-chat-window:not(.o_no_thread_window_window):not(.ad_mobile) {
+        .o_main {
+            .ad_rightbar {
+                background: $white;
+                .o_control_panel {
+                    .ad_bottom_panel {
+                        bottom: 42px;
+                        border-bottom: 1px solid $border;
+                    }
+                }
+                .o_content {
+                    margin-bottom: 102px;
+                    & > .o_view_controller {
+                        .o_form_view.oe_form_configuration.o_base_settings {
+                            & > .o_control_panel {
+                                .o_form_statusbar {
+                                    bottom: 50px;
+                                    border-bottom: 1px solid $border;
+                                    border-radius: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .o_main_navbar {
+            .nav_menu {
+                #oe_main_menu_navbar {
+                    .navbar-collapse {
+                        ul#av_full_view {
+                            bottom: 50px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

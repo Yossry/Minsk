@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_stock_config_settings" model="ir.ui.view">
+        <field name="name">Ventor/mERP Picking Wave - Stock Settings</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="merp_picking_wave_base.view_stock_config_settings" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='batch_settings']" position="inside" >
+                <div class="col-xs-12 col-md-6 o_setting_box">
+                    <div class="o_setting_left_pane"/>
+                    <div class="o_setting_right_pane">
+                        <label for="outgoing_wave_behavior_on_confirm"/>
+                        <div class="text-muted">
+                            Picking Batches
+                        </div>
+                        <div class="mt8">
+                            <field name="outgoing_wave_behavior_on_confirm"
+                                class="o_light_label"
+                                widget="radio"
+                                attrs="{'invisible': [('module_merp_picking_wave','=',False)]}"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-6 o_setting_box"
+                     attrs="{'invisible': [('module_merp_picking_wave','=',False)]}">
+                    <div class="o_setting_left_pane">
+                        <field name="outgoing_wave_remove_not_moved"/>
+                    </div>
+                    <div class="o_setting_right_pane">
+                        <label for="outgoing_wave_remove_not_moved"/>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

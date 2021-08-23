@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+        
+    <record id="clv_phase_view_form_log" model="ir.ui.view">
+        <field name="name">clv.phase.form</field>
+        <field name="model">clv.phase</field>
+        <field name="inherit_id" ref="clv_phase.clv_phase_view_form"/>
+        <field name="priority" eval="8" />
+        <field name="arch" type="xml">
+            <page name="settings" position="after">
+                <!--page string="Log" groups="clv_base.group_loguser" attrs="{'invisible': ['|', ('active_log', '=', False)]}"-->
+                <page string="Log" groups="clv_base.group_loguser">
+                    <group name="record_log">
+                        <group name="creation">
+                            <field name="create_uid" readonly="True"/>
+                            <field name="create_date" readonly="True"/>
+                        </group>
+                        <group name="last_update">
+                            <field name="write_uid" readonly="True"/>
+                            <field name="write_date" readonly="True"/>
+                        </group>
+                        <group name="log_model">
+                            <field name="log_model" readonly="True"/>
+                            <field name="object_model" invisible="True"/>
+                            <field name="object_res_id" invisible="True"/>
+                            <field name="object_reference"/>
+                            <button name="clv_global_log.clv_global_log_action"
+                                    type="action"
+                                    class="oe_stat_button"
+                                    icon="fa-list"
+                                    context="{'search_default_reference': object_reference, 'search_default_model': object_model, 'search_default_res_id': object_res_id}"
+                                    target='new'
+                                    >
+                                <div class="o_form_field o_stat_info">
+                                    <span class="o_stat_value">
+                                        <field name="count_logs"/>
+                                    </span>
+                                    <span class="o_stat_text"> Global Log(s)</span>
+                                </div>
+                            </button>
+                        </group>
+                        <field name="log_ids" colspan="4" nolabel="1">
+                            <tree string="Phase Log">
+                                <field name="user_id"/>
+                                <field name="date_log"/>
+                                <field name="values"/>
+                                <field name="action"/>
+                                <field name="notes"/>
+                                <!--field name="model"/-->
+                                <!--field name="res_id"/-->
+                                <!--field name="reference"/-->
+                            </tree>
+                        </field>
+                    </group>
+                </page>
+            </page>
+            <group name="settings_left" position="inside">
+                <field name="active_log"/>
+            </group>
+            <page name="settings" position="attributes">
+                <attribute name="invisible">False</attribute>
+            </page>
+        </field>
+    </record>
+
+</odoo>

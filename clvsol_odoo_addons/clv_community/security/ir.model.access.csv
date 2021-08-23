@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_clv_community_user,clv.community.user,model_clv_community,clv_community.group_user,1,0,0,0
+access_clv_community_manager,clv.community.manager,model_clv_community,clv_community.group_manager,1,1,1,0
+access_clv_community_supmanager,clv.community.supmanager,model_clv_community,clv_community.group_supmanager,1,1,1,1
+
+access_clv_community_category_user,clv.community.category.user,model_clv_community_category,clv_community.group_user,1,0,0,0
+access_clv_community_category_manager,clv.community.manager.category,model_clv_community_category,clv_community.group_manager,1,1,1,0
+access_clv_community_category_supmanager,clv.community.category.supmanager,model_clv_community_category,clv_community.group_supmanager,1,1,1,1
+
+access_clv_community_member_user,clv.community.member.user,model_clv_community_member,clv_community.group_user,1,0,0,0
+access_clv_community_member_manager,clv.community.manager.member,model_clv_community_member,clv_community.group_manager,1,1,1,0
+access_clv_community_member_supmanager,clv.community.member.supmanager,model_clv_community_member,clv_community.group_supmanager,1,1,1,1

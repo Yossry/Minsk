@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <menuitem name="Insured Groups" id="clv_insured_group.menu_insurance_insurance_insured_groups"
+            parent="clv_base.menu_insurance_insurance"
+            groups="clv_insured_group.group_user"
+            sequence="20"
+            action="clv_insured_group.clv_insured_group_action"/>
+
+    </data>
+</odoo>

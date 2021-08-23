@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="product_product_tree_view_z1" model="ir.ui.view">
+        <field name="name">product.product.tree.view.z1</field>
+        <field name="model">product.product</field>
+        <field
+            name="inherit_id"
+            ref="product_listprice_list_view.product_product_internal_tree"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='sale_hkd_ac_so']" position="after">
+                <field name="special_offer_limit" />
+                <field name="website_product_seq_date" />
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+	<data>
+
+		<record id="view_account_form" model="ir.ui.view">
+			<field name="name">account.account.form.inherit</field>
+			<field name="model">account.account</field>
+			<field name="inherit_id" ref="aarsol_common.view_account_form"/>
+			<field name="arch" type="xml">
+				<data>
+					<xpath expr="//field[@name='account_section']" position="after">
+						<field name="nd_ids"/>
+					</xpath>
+				</data>
+			</field>
+		</record>
+
+		<record id="view_analytic_dimension_inherit" model="ir.ui.view">
+			<field name="name">analytic.dimension.view.form.inherit</field>
+			<field name="model">analytic.dimension</field>
+			<field name="inherit_id" ref="analytic_structure.view_analytic_dimension"/>
+			<field name="arch" type="xml">
+				<data>
+					<xpath expr="//page[@name='codes']" position="after">
+						<page name="accounts" string="GL Accounts">
+							<group>
+							   <field name="account_ids" nolabel="1"/>
+							</group>
+						</page>
+					</xpath>
+				</data>
+			</field>
+		</record>
+
+		<record id="view_auto_dimensions_entry_tree" model="ir.ui.view">
+			<field name="name">auto.dimensions.entry.tree</field>
+			<field name="model">auto.dimensions.entry</field>
+			<field name="arch" type="xml">
+			<tree string="Auto Dimensions Entry" editable="bottom" delete="false">
+				<field name="sequence" />
+				<field name="model_id" />
+				<field name="src_col"  domain="[('model_id', '=', model_id)]"/>
+				<field name="dimension_id" />
+				<field name="dst_col" readonly="1"/>
+				<field name="src_fnc" />
+				<field name="active" />
+			</tree>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="act_auto_dimensions_entry">
+			<field name="name">Auto Dimensions Entry</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">auto.dimensions.entry</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[]</field>
+		</record>
+
+		<record id="ledger_dimension_view" model="ir.ui.view">
+			<field name="name">Ledger Dimensions</field>
+			<field name="model">ledger.dimension</field>
+			<field name="arch" type="xml">
+			<form string="Ledger Dimension">
+				<sheet>
+					<group>
+						<field name="name"/>
+						<field name="ac_lines">
+							<tree string="Ledger Dimensions" editable="top">
+								<field name="ac_id" invisible="1"/>
+								<field name="nd_id" options="{'no_create': True, 'limit': 10}"/>
+								<field name="code_id" domain="[('nd_id','=',nd_id)]" options="{'no_create': True, 'limit': 10}"/>
+							</tree>
+						</field>
+					</group>
+				</sheet>
+			</form>
+			</field>
+		</record>
+
+		<record id="view_account_payment_form_journal" model="ir.ui.view">
+			<field name="name">account.payment.form.inherit</field>
+			<field name="model">account.payment</field>
+			<field name="inherit_id" ref="account.view_account_payment_form" />
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='journal_id']" position="before">
+					<field name="user_company_id" invisible="1"/>
+				</xpath>
+				<xpath expr="//sheet" position="inside">
+				<notebook>
+					<page name="payment_lines" string="Payment Lines" attrs="{'invisible': [('payment_type', 'in', ('outbound','inbound','transfer'))]}">
+						<field name="payment_lines" widget="one2many_list">
+							<tree>
+								<field name="account_id" domain="[('deprecated', '=', False)]"/>
+								<field name="name" string="Description"/>
+								<field name="amount" sum="Total Amount"/>
+
+								<field name="a1_id" attrs="{'invisible': [('H1_id', '!=', 1),('a1_id','=',False)], 'required': [('H1_id', '=', 1)]}"/>
+								<field name="a2_id" attrs="{'invisible': [('H2_id', '!=', 1),('a2_id','=',False)], 'required': [('H2_id', '=', 1)]}"/>
+								<field name="a3_id" attrs="{'invisible': [('H3_id', '!=', 1),('a3_id','=',False)], 'required': [('H3_id', '=', 1)]}"/>
+								<field name="a4_id" attrs="{'invisible': [('H4_id', '!=', 1),('a4_id','=',False)], 'required': [('H4_id', '=', 1)]}"/>
+								<field name="a5_id" attrs="{'invisible': [('H5_id', '!=', 1),('a5_id','=',False)], 'required': [('H5_id', '=', 1)]}"/>
+								<field name="a6_id" attrs="{'invisible': [('H6_id', '!=', 1),('a6_id','=',False)], 'required': [('H6_id', '=', 1)]}"/>
+								<field name="a7_id" attrs="{'invisible': [('H7_id', '!=', 1),('a7_id','=',False)], 'required': [('H7_id', '=', 1)]}"/>
+								<field name="a8_id" attrs="{'invisible': [('H8_id', '!=', 1),('a8_id','=',False)], 'required': [('H8_id', '=', 1)]}"/>
+
+								<field name="a9_id" invisible="1"/>
+								<field name="a10_id" invisible="1"/>
+
+								<field name="amount_currency" groups="base.group_multi_currency" invisible="1"/>
+								<field name="company_currency_id" invisible="1"/>
+								<field name="currency_id" options="{'no_create': True}" groups="base.group_multi_currency" invisible="1"/>
+
+								<field name="d_bin" invisible="1"/>
+								<field name="H1_id" invisible="1"/>
+								<field name="H2_id" invisible="1" />
+								<field name="H3_id" invisible="1" />
+								<field name="H4_id" invisible="1"/>
+								<field name="H5_id" invisible="1"/>
+								<field name="H6_id" invisible="1"/>
+								<field name="H7_id" invisible="1"/>
+								<field name="H8_id" invisible="1"/>
+								<field name="H9_id" invisible="1"/>
+								<field name="H10_id" invisible="1"/>
+
+							</tree>
+						</field>
+					</page>
+				</notebook>
+
+				</xpath>
+			</field>
+		</record>
+
+		<record id="account_payment_line_form" model="ir.ui.view">
+			<field name="name">account.payment.line.form</field>
+			<field name="model">account.payment.line</field>
+			<field eval="2" name="priority"/>
+			<field name="arch" type="xml">
+				<form string="Payment Line">
+					<sheet>
+						<group>
+							<group string="Payment Entry">
+								<field name="account_id" domain="[('company_id', '=', company_id), ('deprecated', '=', False)]" options="{'no_create': True, 'limit': 10}"/>
+								<field name="name" string="Description"/>
+								<field name="amount"/>
+								<field name="company_id" invisible="1"/>
+							</group>
+
+							<group string="Accounting Dimensions">
+								<field name="a1_id" attrs="{'invisible': [('H1_id', '!=', 1),('a1_id','=',False)], 'required': [('H1_id', '=', 1)]}" options="{'no_create': True, 'limit': 10}"/>
+								<field name="a2_id" attrs="{'invisible': [('H2_id', '!=', 1),('a2_id','=',False)], 'required': [('H2_id', '=', 1)]}" options="{'no_create': True, 'limit': 10}"/>
+								<field name="a3_id" attrs="{'invisible': [('H3_id', '!=', 1),('a3_id','=',False)], 'required': [('H3_id', '=', 1)]}" options="{'no_create': True, 'limit': 10}"/>
+								<field name="a4_id" attrs="{'invisible': [('H4_id', '!=', 1),('a4_id','=',False)], 'required': [('H4_id', '=', 1)]}" options="{'no_create': True, 'limit': 10}"/>
+								<field name="a5_id" attrs="{'invisible': [('H5_id', '!=', 1),('a5_id','=',False)], 'required': [('H5_id', '=', 1)]}" options="{'no_create': True, 'limit': 10}"/>
+								<field name="a6_id" attrs="{'invisible': [('H6_id', '!=', 1),('a6_id','=',False)], 'required': [('H6_id', '=', 1)]}" options="{'no_create': True, 'limit': 10}"/>
+								<field name="a7_id" attrs="{'invisible': [('H7_id', '!=', 1),('a7_id','=',False)], 'required': [('H7_id', '=', 1)]}" options="{'no_create': True, 'limit': 10}"/>
+								<field name="a8_id" attrs="{'invisible': [('H8_id', '!=', 1),('a8_id','=',False)], 'required': [('H8_id', '=', 1)]}" options="{'no_create': True, 'limit': 10}"/>
+								<field name="a9_id" attrs="{'invisible': [('H9_id', '!=', 1),('a8_id','=',False)], 'required': [('H9_id', '=', 1)]}" options="{'no_create': True, 'limit': 10}"/>
+								<field name="a10_id" attrs="{'invisible': [('H10_id', '!=', 1),('a10_id','=',False)], 'required': [('H10_id', '=', 1)]}" options="{'no_create': True, 'limit': 10}"/>
+
+								<field name="d_bin" invisible="1"/>
+								<field name="H1_id" invisible="1"/>
+								<field name="H2_id" invisible="1" />
+								<field name="H3_id" invisible="1" />
+								<field name="H4_id" invisible="1"/>
+								<field name="H5_id" invisible="1"/>
+								<field name="H6_id" invisible="1"/>
+								<field name="H7_id" invisible="1"/>
+								<field name="H8_id" invisible="1"/>
+								<field name="H9_id" invisible="1"/>
+								<field name="H10_id" invisible="1"/>
+
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<!-- Menu items. -->
+		<menuitem id="menu_analytic_config_root" name="Analytic Dimensions" parent="account.menu_finance" sequence="14" />
+			<menuitem id="menu_analytic_dimension" name="Dimensions" parent="menu_analytic_config_root" sequence="10" action="analytic_structure.action_analytic_dimension" />
+			<menuitem id="menu_analytic_structure" name="Structures" parent="menu_analytic_config_root" sequence="15" action="analytic_structure.action_analytic_structure" />
+			<menuitem id="menu_analytic_code" name="Codes" parent="menu_analytic_config_root" sequence="20" action="analytic_structure.action_analytic_code" />
+			<menuitem id="menu_analytic_auto_dimensions_entry" name="Auto Dimensions Entry" parent="menu_analytic_config_root" sequence="30" action="act_auto_dimensions_entry"/>
+		</data>
+</odoo>

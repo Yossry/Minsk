@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<record id="view_hr_employee_month_attendance_form" model="ir.ui.view">
+			<field name="name">hr.employee.month.attendance.form</field>
+			<field name="model">hr.employee.month.attendance</field>
+			<field name="type">form</field>	
+			<field name="arch" type="xml">
+				<form string="Employee Month Attendance">
+					 <header>
+					 		<button name="attendance_confirm" type="object" states="draft" string="Confirm" class="oe_highlight" groups="account.group_account_user"/>
+							<field name="state" widget="statusbar"/>
+					</header>
+					 <sheet string="Attendances">
+					 	<group>
+					 		<group>
+					 			<field name="date"/>
+								<field name="employee_id" options="{'no_quick_create':True,'no_create_edit':True}"/>
+								<field name="contract_id" domain="[('employee_id','=', employee_id)]" options="{'no_quick_create':True,'no_create_edit':True}"/>
+						
+					 		</group>
+					 		<group>
+								<field name="total_days"/>
+								<field name="present_days"/>
+					 		</group>
+					 	</group>
+					 </sheet>
+					<div class="oe_chatter">
+						<field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+						<field name="message_ids" widget="mail_thread" placeholder="Share a note..."/>
+				  	</div>
+				</form> 
+			</field>
+		</record>	
+		
+		<record id="view_hr_employee_month_attendance_tree" model="ir.ui.view">
+			<field name="name">hr.employee.month.attendance.tree</field>
+			<field name="model">hr.employee.month.attendance</field>
+			<field name="arch" type="xml">
+				<tree string="Employee Month Attendance">
+					<field name="date"/>
+					<field name="employee_id"/>
+					<field name="total_days"/>
+					<field name="present_days"/>
+					<field name="company_id"/>
+					<field name="state" readonly="1"/>
+					<field name="slip_id" readonly="1"/>
+					<field name="contract_id" invisible="1"/>
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="view_hr_employee_month_attendance_filter">
+			<field name="name">view_hr_employee_month_attendance_filter</field>
+			<field name="model">hr.employee.month.attendance</field>
+			<field name="arch" type="xml">
+				<search string="Hr Month Attendance Search">
+					<field name="date" string="Attendance"/>
+					<filter icon="terp-go-today" string="Draft" name="draft" domain="[('state','=','draft')]" />
+					<filter icon="terp-go-today" string="Counted" name="counted" domain="[('state','=','counted')]" />
+					<filter icon="terp-go-today" string="Done" name="done" domain="[('state','=','done')]" />
+					<separator/>
+					<field name="employee_id"/>
+			
+					<group expand="0" string="Group By...">				
+						<filter name="company" string="Company" icon="terp-personal" domain="[]" context="{'group_by':'company_id'}"/>
+						<separator/>
+						<filter name="employee" string="Employee" icon="terp-personal" domain="[]" context="{'group_by':'employee_id'}"/>
+						<separator/>
+						<filter name='group_month' string="Date" icon="terp-go-today" domain="[]" context="{'group_by':'date'}"/>
+						<separator/>
+						<filter name="status" string="Status" icon="terp-personal" domain="[]" context="{'group_by':'state'}"/>
+					</group>
+				</search>
+			</field>
+		</record>
+
+		<record id="open_view_hr_employee_month_attendance" model="ir.actions.act_window">
+			<field name="name">Employee Month Attendance</field>
+			<field name="res_model">hr.employee.month.attendance</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="context">{"search_default_draft":1}</field>
+			<field name="search_view_id" ref="view_hr_employee_month_attendance_filter" />
+			<field name="help">Employee Monthly Attendance.</field>
+		</record>
+	
+		
+		<record id="act_employee_month_attendance_list" model="ir.actions.act_window">
+		   <field name="res_model">hr.employee.month.attendance</field>
+		   <field name="name">Monthly Atendance</field>
+		   <field name="view_type">form</field>
+		   <field name="view_mode">tree,form</field>
+		   <field name="context">{'search_default_employee_id': [active_id], 'default_employee_id': active_id}</field>
+		</record>  
+
+		<act_window 
+			id="action_employee_month_attendance_confirm" multi="True"
+			key2="client_action_multi" name="Confirm Draft Monthly Attendance"
+			res_model="hr.employee.month.attendance" src_model="hr.employee.month.attendance"
+			view_mode="form" target="new" view_type="form" />
+
+
+	</data>
+</odoo>
+
+

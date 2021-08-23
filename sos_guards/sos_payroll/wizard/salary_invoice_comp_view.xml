@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+<record id="view_salary_invoice_comp" model="ir.ui.view">
+	<field name="name">Salary Invoice Comparison</field>
+	<field name="model">salary.invoice.comp</field>            
+	<field name="arch" type="xml">
+		<form string="Report Options" version="7.0">
+			<label for="target_move" string="This wizard will print report which display a pay breakup for a specified Advice Line."/>
+			<group col="4">
+			   <field name="target_move"/>
+			</group>
+
+			<notebook tabpos="up" colspan="4">
+				<page string="Time Filters" name="filters">
+					<group>
+						<field name="filters"/>
+					</group>
+					<group string="Dates"  attrs="{'invisible':[('filters', '!=', 'filter_date')], 'required':[('filters', '=', 'filter_date')]}">
+						<field name="date_from" />
+						<field name="date_to" />
+					</group>                        
+				</page>
+				
+				<page string="Project Filters" name="projects">
+					<separator string="Print only" colspan="4"/>
+					<field name="project_ids"  widget="many2many_tags"/>
+				</page>
+
+
+				<page string="Center Filters" name="centers">
+					<separator string="Print only" colspan="4"/>
+					<field name="center_ids"  widget="many2many_tags"/>
+				</page>
+				
+			</notebook>
+			
+			<footer>
+				<button name="print_report" string="Generate Report" type="object" default_focus="1" class="oe_highlight"/>
+				<button string="Cancel" class="oe_link" special="cancel" />
+			</footer>
+		</form>
+
+	</field>
+</record>
+
+<record id="action_salary_invoice_comp" model="ir.actions.act_window">
+	<field name="name">Salary Invoice Comparison</field>
+	<field name="type">ir.actions.act_window</field>
+	<field name="res_model">salary.invoice.comp</field>
+	<field name="view_type">form</field>
+	<field name="view_mode">form</field>
+	<field name="view_id" ref="view_salary_invoice_comp"/>
+	<field name="target">new</field>
+</record>
+
+<menuitem
+	name="Salary Invoice Comparison" parent="sos_payroll.menu_gms_payroll_reports"
+	action="action_salary_invoice_comp"
+	sequence="20" icon="STOCK_PRINT"
+	id="menu_action_salary_invoice_comp"
+/>
+
+
+
+</data>
+</openerp>

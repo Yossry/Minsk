@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="survey_user_input_mass_edit_view_form" model="ir.ui.view">
+        <field name="name">survey.user_input.mass_edit.form</field>
+        <field name="model">survey.user_input.mass_edit</field>
+        <field name="arch" type="xml">
+            <form>
+                <div class="oe_right">
+                </div>
+                <label for="survey_user_input_ids"/>
+                <field name="survey_user_input_ids"/>
+                <group>
+                    <group name="state_selection">
+                        <field name="state_selection"/>
+                    </group>
+                    <group name="state">
+                        <field name="state" nolabel="1"/>
+                    </group>
+                </group>
+                <footer>
+                    <button 
+                        type="object"
+                        name="do_survey_user_input_mass_edit"
+                        string="Mass Edit"
+                        class="oe_highlight"
+                        />
+                    <button special="cancel" string="Cancel"/>
+                </footer>
+            </form>
+
+        </field>
+    </record>
+
+    <!-- More button Action -->
+    <act_window 
+        id="survey_user_input_mass_edit_action"
+        name="Survey User Input Mass Edit"
+        src_model="survey.user_input"
+        res_model="survey.user_input.mass_edit"
+        view_mode="form"
+        key2="client_action_multi"
+        target="new"
+    />
+
+</odoo>

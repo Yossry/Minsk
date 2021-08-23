@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_supplier_location_tree" model="ir.ui.view">
+        <field name="name">view.supplier.location.tree</field>
+        <field name="model">supplier.location</field>
+        <field name="arch" type="xml">
+            <tree string="Supplier Locations">
+                <field name="name" />
+                <field name="owner_id" />
+                <field name="supplier_lead_time" />
+                <field name="hk_location" />
+                <field name="currency_id" />
+            </tree>
+        </field>
+    </record>
+    <record id="view_supplier_location_form" model="ir.ui.view">
+        <field name="name">view.supplier.location.form</field>
+        <field name="model">supplier.location</field>
+        <field name="arch" type="xml">
+            <form string="Supplier Locations">
+                <group>
+                    <group>
+                        <field name="name" />
+                        <field name="owner_id" />
+                        <field name="supplier_lead_time" />
+                        <field name="hk_location" />
+                    </group>
+                    <group>
+                        <field name="active" />
+                        <field name="currency_id" />
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+    <record id="action_supplier_location" model="ir.actions.act_window">
+        <field name="name">Supplier Locations</field>
+        <field name="res_model">supplier.location</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem
+        action="action_supplier_location"
+        id="menu_supplier_location"
+        parent="stock.menu_warehouse_config"
+        sequence="2"
+    />
+</odoo>

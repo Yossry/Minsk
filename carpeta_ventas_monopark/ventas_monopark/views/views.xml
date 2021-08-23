@@ -1,0 +1,182 @@
+<odoo>
+  <data>
+    <!--  AGREGAMOS NUEVO CAMPOS A LA VISTA DE VENTAS -->
+    <record id="fields_report_cot" model="ir.ui.view">
+      <field name="name">Fields.Report.Cot</field>
+      <field name="model">sale.order</field>
+      <field name="inherit_id" ref="sale.view_order_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//form/sheet/group[1]" position="replace">
+          <group>
+            <group>
+              <field name="partner_id" widget="res_partner_many2one" domain="[('customer','=',True)]" context="{'search_default_customer':1, 'show_address': 1, 'show_vat': True, 'show_email':1}" options='{"always_reload": True}' string="Razón social"/>
+              <field name="partner_invoice_id" groups="sale.group_delivery_invoice_address" context="{'default_type':'invoice'}" options='{"always_reload": True}'/>
+              <field name="partner_shipping_id" groups="sale.group_delivery_invoice_address" context="{'default_type':'delivery'}" options='{"always_reload": True}'/>
+              <field name="validity_date" attrs="{'invisible': [('state', 'in', ['sale', 'done'])]}"/>
+              <field name="confirmation_date" attrs="{'invisible': [('state', 'in', ['draft', 'sent', 'cancel'])]}"/>
+              <field name="pricelist_id" groups="product.group_sale_pricelist"/>
+              <field name="currency_id" invisible="1"/>
+              <field name="payment_term_id" options="{'no_create': True}" string="Términos de pago"/>
+              <field name="cargo_envio"/>
+              <field name="instalacion"/>
+              <field name="entrega" widget="many2many_tags" options="{'no_create_edit': True}"/>
+              <field name="forma_pago"/>
+              <field name="proyecto" invisible="1"/>
+            </group>
+            <group>
+              <field name="observaciones" widget="many2many_tags" options="{'no_create_edit': True}"/>
+              <field name="aditional_comment"/>
+            </group>
+          </group>
+        </xpath>
+        <!--  AGREGAMOS UN CAMPO PARA LAS NOTAS --> 
+        <xpath expr="//group[@name='technical']" position="after">
+          <group string="Acerca de la venta" name="info_sale">
+            <field name="nota_venta" readonly="1"/>
+          </group>
+        </xpath>
+        <!--  AGREGAMOS UN NUEVO CAMPO AL FORMULARIO DE VENTAS -->
+        <xpath expr="//field[@name='partner_id']" position="before">
+          <field name="proyecto_sale_dos"/>
+        </xpath>
+        <!--  AGREGAMOS DOS COLUMNAS A LA TABLA DE  ORDER_LINES DE VENTAS  -->
+        <xpath expr="//notebook/page/field[@name='order_line']/tree/field[@name='name']" position="after">
+          <field name="tiempo_entrega_tabla" widget="many2many_tags" options="{'no_create_edit': True}"/>
+        </xpath>
+        <!--  MODIFICAMOS LA COLUMNA DESCRIPCION PARA QUE SEA INVISIBLE  -->
+        <xpath expr="//notebook/page/field[@name='order_line']/tree/field[@name='name']" position="replace">
+          <field name="name" invisible="1"/>
+        </xpath>
+        <!--  AGREGAMOS LA COLUMNA DE IMAGEN A LA TABLA  -->
+        <xpath expr="//notebook/page/field[@name='order_line']/tree/field[@name='product_id']" position="before">
+          <field name="imagen_producto" options="{&quot;size&quot;: [70, 70]}" widget="image" string="Imagen"/>
+        </xpath>
+        <!--  AGREGAMOS LA COLUMNA DE PRECIO ESPECIAL  -->
+        <xpath expr="//notebook/page/field[@name='order_line']/tree/field[@name='price_subtotal']" position="before">
+          <field name="precio_publico_reporte" widget="monetary" invisible="1"/>
+          <field name="precio_distribuidor_reporte" widget="monetary" invisible="1"/>
+          <field name="precio_especial" widget="monetary"/>
+        </xpath>
+        <!--  AGREGAMOS UNA NUEVA PAGIAN PARA LOS COMENTARIOS  -->
+        <xpath expr="//page[@name='other_information']" position="after">
+          <page string="Comentarios" name="comentarios" groups="sales_team.group_sale_manager">
+            <field name="comentarios"/>
+          </page>
+        </xpath>
+        <!--  MODIFICAMOS LA COLUMNA IMPUESTOS PARA QUE SEA INVISIBLE  -->
+        <xpath expr="//notebook/page/field[@name='order_line']/tree/field[@name='tax_id']" position="replace">
+          <field name="tax_id" invisible="1"/>
+        </xpath>
+        <!--  MODIFICAMOS EN CAMPO PRICE_UNIT DE LA TABLA SALE_ORDER_LINE PARA AGREGAR UN WIDGET DE TIPO MONETARY  -->
+        <xpath expr="//notebook/page/field[@name='order_line']/tree/field[@name='price_unit']" position="attributes">
+          <attribute name="widget">monetary</attribute>
+        </xpath>
+      </field>
+    </record>
+    <record id="fields_tiempo_entrega_inherit" model="ir.ui.view">
+      <field name="name">fields_tiempo_entrega_inherit</field>
+      <field name="model">stock.picking</field>
+      <field name="inherit_id" ref="stock.view_picking_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//form[1]/sheet[1]/notebook[1]/page[2]/field[@name='move_ids_without_package']/tree[1]/field[@name='product_id']" position="after">
+          <field name="tiempo_entrega_tabla" widget="many2many_tags" options="{'no_create_edit': True}"/>
+        </xpath>
+      </field>
+    </record>
+    <record id="check_inherit_form_tarifa" model="ir.ui.view">
+      <field name="name">Form.inherit.check</field>
+      <field name="model">product.pricelist</field>
+      <field name="inherit_id" ref="product.product_pricelist_view"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='currency_id']" position="after" >
+          <field name="tipotarifa"/>
+        </xpath>
+      </field>
+    </record>
+
+    <record id="tiempo_entrega_form" model="ir.ui.view">
+      <field name="name">tiempo entrega</field>
+      <field name="model">tiempo.entrega</field>
+      <field name="arch" type="xml">
+        <form>
+          <header></header>
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="description"/>
+              <field name="cedis_selection"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    <!--  CAMPOS EN LA VISTA DE ARBOL PARA EL MODELO DE TIEMPOS DE ENTREGA  -->
+    <record id="tiempo_entrega_tree" model="ir.ui.view">
+      <field name="name">Lista tiempo entrega</field>
+      <field name="model">tiempo.entrega</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name" />
+          <field name="description" />
+              <field name="cedis_selection"/>
+        </tree>
+      </field>     
+    </record>
+
+    <record id="action_tiempo_entrega" model="ir.actions.act_window">
+      <field name='name'>Tiempos de entrega</field>
+      <field name='res_model'>tiempo.entrega</field>
+      <field name='view_mode'>tree,form</field>
+    </record>
+    <!--  MENUITEM PARA LA OPCION DE TIEMPOS DE ENTREGA EN EL SUBMENU DE CONFIGURACIONES  -->
+    <menuitem id="menu_tiempo_entrega" name="Tiempos de entrega" parent="sale.menu_sale_config" action="action_tiempo_entrega" sequence="70"/>
+
+    <!--  CAMPOS EN LA VISTA DEL FORMULARIO PARA EL MODELO DE OBSERVACIONES  -->
+    <record id="view_observaciones_form" model="ir.ui.view">
+      <field name="name">Observaciones</field>
+      <field name="model">obser.sale</field>
+      <field name="arch" type="xml">
+        <form>
+          <header></header>
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="description"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    <!--  CAMPOS EN LA VISTA DE ARBOL PARA EL MODELO DE OBSERVACIONES  -->
+    <record id="view_observaciones_tree" model="ir.ui.view">
+      <field name="name">Observacines</field>
+      <field name="model">obser.sale</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="description"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="action_observaciones" model="ir.actions.act_window">
+      <field name='name'>Observaciones</field>
+      <field name='res_model'>obser.sale</field>
+      <field name='view_mode'>tree,form</field>
+    </record>
+    <!--  MENUITEM PARA LA OPCION DE OBSERVACIONES EN EL SUBMENU DE CONFIGURACIONES -->
+    <menuitem id="menu_observaciones" name="Observaciones" parent="sale.menu_sale_config" action="action_observaciones" sequence="70"/>
+
+    <record id="fields_tiempo_entrega_inherit" model="ir.ui.view">
+      <field name="name">fields_tiempo_entrega_inherit</field>
+      <field name="model">stock.picking</field>
+      <field name="inherit_id" ref="stock.view_picking_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//form[1]/sheet[1]/notebook[1]/page[2]/field[@name='move_ids_without_package']/tree[1]/field[@name='product_id']" position="after">
+          <field name="tiempo_entrega_tabla" widget="many2many_tags" options="{'no_create_edit': True}"/>
+        </xpath>
+      </field>
+    </record>
+
+  </data>
+</odoo>

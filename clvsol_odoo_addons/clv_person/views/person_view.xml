@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="clv_person_view_tree" model="ir.ui.view">
+        <field name="name">clv.person.tree</field>
+        <field name="model">clv.person</field>
+        <field name="inherit_id" ref="clv_partner_entity.clv_abstract_partner_entity_view_tree"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="attributes">
+                <attribute name="string">Persons</attribute>
+            </xpath>
+            <xpath expr="//field[@name='code']" position="after">
+                <!--field name="identification_code" /-->
+                <field name="is_absent"/>
+                <field name="gender"/>
+                <field name="age_years"/>
+                <field name="age_reference_years"/>
+                <field name="force_is_deceased"/>
+                <field name="is_deceased"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="clv_person_view_form" model="ir.ui.view">
+        <field name="name">clv.person.form</field>
+        <field name="model">clv.person</field>
+        <field name="inherit_id" ref="clv_partner_entity.clv_abstract_partner_entity_view_form"/>
+        <field name="mode">primary</field>
+        <field name="priority" eval="100"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="attributes">
+                <attribute name="string">Person</attribute>
+            </xpath>
+            <!--label for="name" position="before">
+                <h1><separator string="[  Person  ]"/></h1>
+            </label-->
+            <field name="code" position="after">
+                <h1><separator string="[  Person  ]"/></h1>
+                <field name="notes" placeholder="Notes..." colspan="4" style="color:Red; background:White;"/>
+            </field>
+            <!--xpath expr="//group[@name='main_data']">
+                <group name="main">
+                    <field name="parent_id"
+                           colspan="2"
+                           string="Legal Representative"
+                           domain="[('customer','=',True)]"
+                           />
+                </group>
+            </xpath-->
+            <xpath expr="//img[@name='kanban_image_default_person']" position="replace">
+                <img name="kanban_image_default_person"
+                     t-if="record.is_company.raw_value === false"
+                     t-attf-src='{{ _s }}/clv_person/static/src/img/person-avatar.png'
+                />
+            </xpath>
+            <page name="page_general_info" position="after">
+                <page name="personal_information" string="Personal Information" groups="clv_base.group_supuser">
+                    <group>
+                        <group name="person_status">
+                            <field name="is_absent"/>
+                            <field name="gender" widget="radio"/>
+                            <field name="marital" widget="radio"/>
+                        </group>
+                        <group name="birth">
+                            <field name="estimated_age"/>
+                            <field name="birthday"/>
+                            <field name="date_death"/>
+                            <field name="date_reference"/>
+                            <field name="force_is_deceased"/>
+                            <field name="is_deceased"/>
+                            <field name="age"/>
+                            <field name="age_years"/>
+                            <field name="age_reference"/>
+                            <field name="age_reference_years"/>
+                            <!--field name="age_suport" invisible="True"/-->
+                            <!--field name="age_reference_suport" invisible="True"/-->
+                        </group>
+                        <group name="other_info">
+                            <!--field name="country_id" options='{"no_open": True}'/-->
+                            <!--field name="identification_id"/-->
+                            <!--field name="otherid"/-->
+                        </group>
+                        <group name="family">
+                            <field name="spouse_id" options="{'no_open': False, 'no_create': True}"/>
+                            <field name="father_id" options="{'no_open': False, 'no_create': True}"/>
+                            <field name="mother_id" options="{'no_open': False, 'no_create': True}"/>
+                            <field name="responsible_id" options="{'no_open': False, 'no_create': True}"/>
+                            <field name="caregiver_id" options="{'no_open': False, 'no_create': True}"/>
+                        </group>
+                    </group>
+                </page>
+            </page>
+            <!--xpath expr="//notebook" position="inside">
+                <page name="clv_person" string="Person" autofocus="True">
+                    <group name="group_clv_buttons" class="oe_button_box" col="6">
+                        <button name="toggle_is_pregnant"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-venus"
+                            >
+                            <field name="is_pregnant"
+                                   widget="boolean_button"
+                                   options='{"terminology": {"string_true": "Pregnant",
+                                                             "string_hover_true": "Switch to Not Pregnant",
+                                                             "string_false": "Not Pregnant",
+                                                             "string_hover_false": "Switch to Pregnant"}}'
+                            />
+                        </button>
+                    </group>
+                    <group name="group_clv_general" string="General">
+                        <group name="group_clv_general_left">
+                            <field name="identification_code" />
+                            <field name="gender" />
+                        </group>
+                        <group name="group_clv_general_right">
+                            <field name="birthdate_date" />
+                            <field name="date_death" />
+                            <field name="age" />
+                        </group>
+                    </group>
+                </page>
+            </xpath-->
+            <!--xpath expr="//field[@name='age']" position="after">
+                <label for="weight"/>
+                <div>
+                    <field name='weight' class="oe_inline"/>
+                    <field name='weight_uom'
+                           class="oe_inline"
+                           placeholder="UoM"/>
+                </div>
+            </xpath-->
+        </field>
+    </record>
+
+    <record id="clv_person_view_kanban" model="ir.ui.view">
+        <field name="name">clv.person.kanban</field>
+        <field name="model">clv.person</field>
+        <field name="inherit_id" ref="clv_partner_entity.clv_abstract_partner_entity_view_kanban"/>
+        <field name="mode">primary</field>
+        <field name="priority" eval="100"/>
+        <field name="arch" type="xml">
+            <xpath expr="//kanban" position="attributes">
+                <attribute name="string">Persons</attribute>
+            </xpath>
+            <xpath expr="//templates" position="before">
+                <!--field name="birthdate_date" /-->
+            </xpath>
+            <xpath expr="//ul[@name='entity_details']/li" position="before">
+                <!--li name="field_dob" t-if="record.birthdate_date.raw_value">
+                    <strong>DOB:</strong> <field name="birthdate_date"/>
+                </li-->
+                <!--li name="field_age_gender" t-if="record.birthdate_date.raw_value &amp;&amp; record.gender.raw_value">
+                    <field name="age"/> - <field name="gender"/>
+                </li-->
+                <!--li name="field_gender" t-if="! record.birthdate_date.raw_value &amp;&amp; record.gender.raw_value">
+                    <field name="gender"/>
+                </li-->
+            </xpath>
+            <!--xpath expr="//img[@name='kanban_image_entity']" position="replace">
+                <img name="kanban_image_entity"
+                     t-att-src="kanban_image('clv.person', 'image_small', record.id.raw_value)" alt="Person Image"
+                />
+            </xpath>
+            <xpath expr="//img[@name='kanban_image_default_person']" position="replace">
+                <img name="kanban_image_default_person"
+                     t-if="record.is_company.raw_value === false"
+                     t-attf-src='{{ _s }}/clv/static/src/img/person-avatar.png' alt="Person Image"
+                />
+            </xpath-->
+        </field>
+    </record>
+
+    <record id="clv_person_view_search" model="ir.ui.view">
+        <field name="name">clv.person.search</field>
+        <field name="model">clv.person</field>
+        <field name="inherit_id" ref="clv_partner_entity.clv_abstract_partner_entity_view_search"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <xpath expr="//search" position="attributes">
+                <attribute name="string">Persons</attribute>
+            </xpath>
+            <xpath expr="//field[@name='category_id']" position="after">
+                <!--field name="birthdate_date" /-->
+                <field name="age_reference_years"/>
+                <!--field name="identification_code" /-->
+            </xpath>
+            <xpath expr="//filter" position="after">
+                <!--filter string="DoB"
+                        domain="[]"
+                        context="{'group_by':'birthdate_date'}" /-->
+            </xpath>
+            <field name="entity_code" position="after">
+                <field name="is_deceased"/>
+                <field name="is_absent"/>
+            </field>
+            <filter name="filter_deactivated" position="after">
+                <filter string="Is Deceased" name="filter_is_deceased" domain="[('is_deceased','=',True)]"/>
+                <filter string="Is Absent" name="filter_is_absent" domain="[('is_absent','=',True)]"/>
+            </filter>
+            <group name="group_by" position="inside">
+                <filter name="group_by_age_reference_years" string="Reference Age (years old)" context="{'group_by': 'age_reference_years'}"/>
+            </group>
+        </field>
+    </record>
+
+    <record id="clv_person_action" model="ir.actions.act_window">
+        <field name="name">Persons</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">clv.person</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="search_view_id" ref="clv_person_view_search"/>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Click to add a new person.
+          </p>
+        </field>
+    </record>
+
+</odoo>

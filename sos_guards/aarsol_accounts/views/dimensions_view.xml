@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+	<data>
+		<!-- ACCOUNT MOVE LINE FORM -->
+		<record id="account.view_move_line_form" model="ir.ui.view">
+			<field name="name">account.move.line.form</field>
+			<field name="model">account.move.line</field>
+			<field eval="2" name="priority"/>
+			<field name="arch" type="xml">
+				<form string="Journal Item">
+					<sheet>
+						<group>
+							<group string="Accounting Entry">									
+								<field name="account_id" domain="['|',('company_id', '=', company_id),('company_id', '=', False), ('deprecated', '=', False)]" 
+									options="{'no_create': True, 'limit': 10}"/>
+								<field name="name" string="Description"/>						
+								<field name="debit"/>
+								<field name="credit"/>
+								<field name="section_id"/>
+							</group>
+
+							<group string="Accounting Dimensions">
+								<field name="req_dimensions" invisible="1"/>
+								<field name="a1_id" attrs="{'invisible': [('H1_id', '!=', 1),('a1_id','=',False)], 'required': [('H1_id', '=', 1)]}" 
+									options="{'no_create': True, 'limit': 10}"/>
+								<field name="a2_id" attrs="{'invisible': [('H2_id', '!=', 1),('a2_id','=',False)], 'required': [('H2_id', '=', 1)]}" 
+									options="{'no_create': True, 'limit': 10}"/>
+								<field name="a3_id" attrs="{'invisible': [('H3_id', '!=', 1),('a3_id','=',False)], 'required': [('H3_id', '=', 1)]}" 
+									options="{'no_create': True, 'limit': 10}"/>
+								<field name="a4_id" attrs="{'invisible': [('H4_id', '!=', 1),('a4_id','=',False)], 'required': [('H4_id', '=', 1)]}" 
+									options="{'no_create': True, 'limit': 10}"/>
+								<field name="a5_id" attrs="{'invisible': [('H5_id', '!=', 1),('a5_id','=',False)], 'required': [('H5_id', '=', 1)]}" 
+									options="{'no_create': True, 'limit': 10}"/>
+								<field name="a6_id" attrs="{'invisible': [('H6_id', '!=', 1),('a6_id','=',False)], 'required': [('H6_id', '=', 1)]}" 
+									options="{'no_create': True, 'limit': 10}"/>
+								<field name="a7_id" attrs="{'invisible': [('H7_id', '!=', 1),('a7_id','=',False)], 'required': [('H7_id', '=', 1)]}" 
+									options="{'no_create': True, 'limit': 10}"/>
+								<field name="a8_id" attrs="{'invisible': [('H8_id', '!=', 1),('a8_id','=',False)], 'required': [('H8_id', '=', 1)]}" 
+									options="{'no_create': True, 'limit': 10}"/>
+								<field name="a9_id" attrs="{'invisible': [('H9_id', '!=', 1),('a8_id','=',False)], 'required': [('H9_id', '=', 1)]}" 
+									options="{'no_create': True, 'limit': 10}"/>
+								<field name="a10_id" attrs="{'invisible': [('H10_id', '!=', 1),('a10_id','=',False)], 'required': [('H10_id', '=', 1)]}" 
+									options="{'no_create': True, 'limit': 10}"/>
+
+								<field name="d_bin" invisible="1"/>
+								<field name="H1_id" invisible="1"/>
+								<field name="H2_id" invisible="1" />
+								<field name="H3_id" invisible="1" />
+								<field name="H4_id" invisible="1"/>
+								<field name="H5_id" invisible="1"/>
+								<field name="H6_id" invisible="1"/>
+								<field name="H7_id" invisible="1"/>
+								<field name="H8_id" invisible="1"/>
+								<field name="H9_id" invisible="1"/>
+								<field name="H10_id" invisible="1"/> 
+						
+								<button name="refresh_dimensions" string="Refresh Dimensions" type="object" class="oe_link"/>	
+							</group>							
+						</group>
+
+						<notebook colspan="4">
+							<page string="Information">
+								<group>					       
+									<group string="Reconciliation">
+									    <label for="reconciled"/>
+									    <div>
+											<field name="partner_id" domain="['|', ('parent_id', '=', False), ('is_company', '=', True)]"/>
+									        <field name="reconciled"/>
+									        <field name="matched_debit_ids" invisible="1"/>
+									        <field name="matched_credit_ids" invisible="1"/>
+									        <button name="open_reconcile_view"
+									            class="oe_link"
+									            type="object"
+									            string="-> View reconciled entries"
+									            attrs="{'invisible': [('matched_debit_ids', '=', []),('matched_credit_ids', '=', [])]}">
+									        </button>
+									    </div>
+									</group>
+									<group>
+										<field name="company_id" readonly="1"/>
+										<field name="journal_id" readonly="1"/>
+										<field name="date" readonly="1"/>
+									</group>
+								</group>							    
+								<field name="narration" colspan="4" nolabel="1" placeholder="Add an internal note..."/>
+							</page>               
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<!-- ACCOUNT MOVE FORM -->
+		<record id="view_move_form" model="ir.ui.view">
+			<field name="name">account.move.form.inherit</field>
+			<field name="model">account.move</field>
+			<field name="inherit_id" ref="account.view_move_form"/>
+			<field name="arch" type="xml">
+				<data>
+					<xpath expr="//field[@name='line_ids']" position="replace">
+						<field name="line_ids" widget="one2many_list"
+				          context="{'line_ids': line_ids, 'journal_id': journal_id,'company_id': company_id,
+				          		'tree_view_ref' : 'aarsol_accounts.view_move_line_dimension_tree',
+				          		'form_view_ref' : 'account.view_move_line_form'
+				          	}"/>              	                  
+					</xpath>		
+			
+				</data>
+			</field>
+		</record>
+
+		<!-- MOVE LINE TREE-->
+		<record id="view_move_line_dimension_tree" model="ir.ui.view">
+			<field name="name">account.move.line.tree.dimension</field>
+			<field name="model">account.move.line</field>
+			<field name="priority">32</field>
+			<field name="arch" type="xml">
+			<tree string="Journal Items" default_order="id desc">
+				<field name="sequence" widget="handle"/>
+				<field name="account_id" domain="[('company_id', '=', parent.company_id), ('deprecated', '=', False)]" options="{'no_create': True, 'no_open': True}"/>
+
+				<field name="name" string="Description"/>
+				<field name="debit" sum="Total Debit"/>
+				<field name="credit" sum="Total Credit"/>
+
+				<field name="analytic_dimensions"/>
+
+				<field name="analytic_account_id" groups="analytic.group_analytic_accounting" domain="[('account_type', '=', 'normal')]"/>
+				<field name="amount_currency" groups="base.group_multi_currency" invisible="1"/>
+				<field name="company_currency_id" invisible="1"/>
+				<field name="currency_id" options="{'no_create': True}" groups="base.group_multi_currency" invisible="1"/>
+
+				<field name="req_dimensions" invisible="1"/>
+				<button name="dimensions_input" string="Cost Center and Dimensions" type="object" icon="fa-list"
+					attrs="{'invisible': [('req_dimensions', '=', False)]}"/>
+
+			</tree>
+			</field>
+		</record>
+
+		<record id="view_move_line_tree" model="ir.ui.view">
+			<field name="name">account.move.line.tree.inherit</field>
+			<field name="model">account.move.line</field>
+			<field name="inherit_id" ref="account.view_move_line_tree"/>
+			<field name="arch" type="xml">
+				<data>
+					<xpath expr="//field[@name='date_maturity']" position="replace">
+						<field name="analytic_dimensions"/>
+					</xpath>
+				</data>
+			</field>
+		</record>
+
+		<!--
+		<record id="view_bank_statement_form" model="ir.ui.view">
+			<field name="name">account.bank.statement.form</field>
+			<field name="model">account.bank.statement</field>
+			<field name="inherit_id" ref="account.view_bank_statement_form"/>
+			<field name="arch" type="xml">
+				<data>
+					<xpath expr="//field[@name='line_ids']" position="replace">
+						<field name="line_ids" widget="one2many_list"
+				          context="{'line_ids': line_ids, 'journal_id': journal_id,'company_id': company_id,
+				          		'tree_view_ref' : 'account.view_bank_statement_line_dimension_tree',
+				          		'form_view_ref' : 'account.view_bank_statement_line_form'
+				          	}"/>              	                  
+					</xpath>		
+				</data>
+			</field>
+		</record>
+		-->
+
+		<!--
+		<record id="account.view_bank_statement_line_dimension_tree" model="ir.ui.view">
+			<field name="name">account.bank.statement.line.dimension</field>
+			<field name="model">account.bank.statement.line</field>
+			<field name="priority">32</field>
+			<field name="arch" type="xml">
+			<tree string="Statement lines" editable="bottom">
+				<field name="sequence"  widget="handle"/>
+				<field name="journal_entry_ids" invisible="1"/>
+				<field name="date" attrs="{'readonly' : [('journal_entry_ids', '!=', [])] }"/>
+				<field name="name" attrs="{'readonly' : [('journal_entry_ids', '!=', [])] }"/>
+				<field name="partner_id" domain="['|',('parent_id','=',False),('is_company','=',True)]"
+				     context="{'default_supplier': 1}"
+				     attrs="{'readonly' : [('journal_entry_ids', '!=', [])] }"/>
+				<field name="ref" attrs="{'readonly' : [('journal_entry_ids', '!=', [])] }" groups="base.group_no_one"/>
+				
+				<field name="account_id" domain="[('company_id', '=', parent.company_id), ('deprecated', '=', False)]" options="{'no_create': True, 'limit': 10}"/>
+				
+				<field name="amount" attrs="{'readonly' : [('journal_entry_ids', '!=', [])] }"/>
+				<field name="journal_currency_id" invisible="1"/>
+				<field name="amount_currency" invisible="1" attrs="{'readonly' : [('journal_entry_ids', '!=', [])] }"/>
+				<field name="currency_id" options="{'no_create': True}" invisible="1" attrs="{'readonly' : [('journal_entry_ids', '!=', [])] }"/>
+				<field name="bank_account_id" invisible="1" attrs="{'readonly' : [('journal_entry_ids', '!=', [])] }"
+				    domain="['|', ('partner_id', '=', partner_id), ('partner_id', '=', False)]"/>
+
+				<field name="analytic_dimensions"/>
+				<field name="voucher_seq"/>
+				<field name="req_dimensions" invisible="1"/>		
+				<button name="dimensions_input" string="Cost Center and Dimensions" type="object" icon="fa-list" 
+					attrs="{'invisible': [('req_dimensions', '=', False)]}"/>             
+			</tree>
+			</field>
+		</record>
+		-->
+		
+		<record id="view_bank_statement_form" model="ir.ui.view">
+			<field name="name">account.bank.statement.form.inherit</field>
+			<field name="model">account.bank.statement</field>
+			<field name="inherit_id" ref="account.view_bank_statement_form"/>
+			<field name="arch" type="xml">
+				<data>			
+					<xpath expr="//field[@name='line_ids']" position="replace">
+						<field name="line_ids" context="{'date':date}">
+				            <tree string="Statement lines" decoration-muted="journal_entry_ids">
+				                <field name="sequence"  widget="handle"/>
+				                <field name="journal_entry_ids" invisible="1"/>
+				                <field name="entry_date"/>	
+				                <field name="date" string="Financial Date" attrs="{'readonly' : [('journal_entry_ids', '!=', [])] }"/>
+				                <field name="ref" attrs="{'readonly' : [('journal_entry_ids', '!=', [])] }"/>
+				                <field name="account_id" domain="[('deprecated', '=', False)]" options="{'no_create': True, 'limit': 10}"/>
+				                <field name="partner_id" domain="['|',('parent_id','=',False),('is_company','=',True)]" context="{'default_supplier': 1}"
+				                     attrs="{'readonly' : [('journal_entry_ids', '!=', [])] }" invisible="1"/>
+				                <field name="name" attrs="{'readonly' : [('journal_entry_ids', '!=', [])] }"/>
+				                <field name="amount" attrs="{'readonly' : [('journal_entry_ids', '!=', [])] }"/>
+				                <field name="journal_currency_id" invisible="1"/>
+				                <field name="amount_currency" invisible="1" attrs="{'readonly' : [('journal_entry_ids', '!=', [])] }"/>
+				                <field name="currency_id" options="{'no_create': True}" invisible="1" attrs="{'readonly' : [('journal_entry_ids', '!=', [])] }"/>
+				                <field name="bank_account_id" invisible="1" attrs="{'readonly' : [('journal_entry_ids', '!=', [])] }"
+				                    domain="['|', ('partner_id', '=', partner_id), ('partner_id', '=', False)]"/>
+
+								<field name="a1_id" attrs="{'invisible': [('H1_id', '!=', 1),('a1_id','=',False)], 'required': [('H1_id', '=', 1)]}"/>
+								<field name="a2_id" attrs="{'invisible': [('H2_id', '!=', 1),('a2_id','=',False)], 'required': [('H2_id', '=', 1)]}"/>
+								<field name="a3_id" attrs="{'invisible': [('H3_id', '!=', 1),('a3_id','=',False)], 'required': [('H3_id', '=', 1)]}"/>
+								<field name="a4_id" attrs="{'invisible': [('H4_id', '!=', 1),('a4_id','=',False)], 'required': [('H4_id', '=', 1)]}"/>
+								<field name="a5_id" attrs="{'invisible': [('H5_id', '!=', 1),('a5_id','=',False)], 'required': [('H5_id', '=', 1)]}"/>
+								<field name="a6_id" attrs="{'invisible': [('H6_id', '!=', 1),('a6_id','=',False)], 'required': [('H6_id', '=', 1)]}"/>
+								<field name="a7_id" attrs="{'invisible': [('H7_id', '!=', 1),('a7_id','=',False)], 'required': [('H7_id', '=', 1)]}"/>
+								<field name="a8_id" invisible="1"/>
+								<field name="a9_id" invisible="1"/>
+								<field name="a10_id" invisible="1"/>
+
+								<field name="d_bin" invisible="1"/>
+								<field name="H1_id" invisible="1"/>
+								<field name="H2_id" invisible="1" />
+								<field name="H3_id" invisible="1" />
+								<field name="H4_id" invisible="1"/>
+								<field name="H5_id" invisible="1"/>
+								<field name="H6_id" invisible="1"/>
+								<field name="H7_id" invisible="1"/>
+								<field name="H8_id" invisible="1"/>
+								<field name="H9_id" invisible="1"/>
+								<field name="H10_id" invisible="1"/>
+				            </tree>
+				        </field>				
+					</xpath>			
+				</data>
+			</field>
+		</record>
+		
+		
+		<record id="account.view_bank_statement_line_form" model="ir.ui.view">
+			<field name="name">bank.statement.line.form</field>
+			<field name="model">account.bank.statement.line</field>
+			<field name="priority">8</field>
+			<field name="arch" type="xml">
+			<form string="Statement Line" create="false">
+				<group>
+					<group string="General">
+						<field name="entry_date"/>
+						<field name="date" string="Financial Date"/>			
+						<field name="account_id" required="1" options="{'no_create': True, 'no_open': True}"/>		
+						 <field name="journal_entry_ids" invisible="1"/>
+						<field name="sequence"/>
+						<field name="name"/>
+						<field name="ref"/> 
+						<field name="amount"/>
+						<field name="journal_currency_id" invisible="1"/>
+					</group>
+					
+					<group string="Accounting Dimensions">
+						<field name="a1_id" attrs="{'invisible': [('H1_id', '!=', 1),('a1_id','=',False)], 'required': [('H1_id', '=', 1)]}"/>
+						<field name="a2_id" attrs="{'invisible': [('H2_id', '!=', 1),('a2_id','=',False)], 'required': [('H2_id', '=', 1)]}"/>
+						<field name="a3_id" attrs="{'invisible': [('H3_id', '!=', 1),('a3_id','=',False)], 'required': [('H3_id', '=', 1)]}"/>
+						<field name="a4_id" attrs="{'invisible': [('H4_id', '!=', 1),('a4_id','=',False)], 'required': [('H4_id', '=', 1)]}"/>
+						<field name="a5_id" attrs="{'invisible': [('H5_id', '!=', 1),('a5_id','=',False)], 'required': [('H5_id', '=', 1)]}"/>
+						<field name="a6_id" attrs="{'invisible': [('H6_id', '!=', 1),('a6_id','=',False)], 'required': [('H6_id', '=', 1)]}"/>
+						<field name="a7_id" attrs="{'invisible': [('H7_id', '!=', 1),('a7_id','=',False)], 'required': [('H7_id', '=', 1)]}"/>
+						<field name="a8_id" attrs="{'invisible': [('H8_id', '!=', 1),('a8_id','=',False)], 'required': [('H8_id', '=', 1)]}"/>
+						<field name="a9_id" attrs="{'invisible': [('H9_id', '!=', 1),('a8_id','=',False)], 'required': [('H9_id', '=', 1)]}"/>
+						<field name="a10_id" attrs="{'invisible': [('H10_id', '!=', 1),('a10_id','=',False)], 'required': [('H10_id', '=', 1)]}"/>
+					
+						<field name="d_bin" invisible="1"/>
+						<field name="H1_id" invisible="1"/>
+						<field name="H2_id" invisible="1" />
+						<field name="H3_id" invisible="1" />
+						<field name="H4_id" invisible="1"/>
+						<field name="H5_id" invisible="1"/>
+						<field name="H6_id" invisible="1"/>
+						<field name="H7_id" invisible="1"/>
+						<field name="H8_id" invisible="1"/>
+						<field name="H9_id" invisible="1"/>
+						<field name="H10_id" invisible="1"/>
+					</group>	 
+				</group>
+				<group>
+					<field name="note" placeholder="Note..."/>
+				</group>	
+			</form>
+		</field>
+	</record>
+		
+	</data>
+</odoo>

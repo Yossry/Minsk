@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<record model="ir.ui.view" id="invoice_supplier_form">
+    <field name="name">Supplier Invoice Afex</field>
+    <field name="model">account.invoice</field>
+    <field name="inherit_id" ref="account.invoice_supplier_form"/>
+    <field name="arch" type="xml">
+        <button name="%(account.action_account_invoice_payment)d" position="attributes">
+            <attribute name="name">%(account.action_account_payment_from_invoices)d</attribute>
+            <attribute name="context">{'from_invoice_form': True}</attribute>
+        </button>
+        <xpath expr="//notebook//page[1]" position="after">
+            <page name="afex_ssi" string="AFEX Information" attrs="{'invisible': [('is_afex', '=', False)]}">
+                <field name="is_afex" invisible="1"/>
+                <field name="afex_payment_id" invisible="1"/>
+                <field name="afex_ssi_details_display"/>
+            </page>
+        </xpath>
+    </field>
+</record>
+
+</odoo>

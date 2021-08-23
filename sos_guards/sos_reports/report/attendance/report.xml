@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>             
+    <data>
+    
+    	<!-- Attendance Invoice Comparsion -->
+		<report
+			id="report_attendance_invoice_comp"
+			string= "Attendance Invoice Comparsion Report"
+			model = "sos_reports.attendance.invoice.comp"
+			report_type="qweb-pdf"
+			file="sos_reports.report_attendance_invoicecomp"
+			name="sos_reports.report_attendance_invoicecomp"
+		/>
+		
+		 <!-- BioMetric Attendance -->
+		<report
+			id="action_report_biometric_attendance"
+			string= "Bio-MetricAttendance Report"
+			model = "sos_reports.biometric.attendance.wizard"
+			report_type="qweb-html"
+			file="sos_reports.report_biometricattendance"
+			name="sos_reports.report_biometricattendance"
+		/>
+		
+		<!-- BioMetric Attendance Summary -->
+		<report
+			id="action_report_biometric_attendance_summary"
+			string= "Attendance Summary"
+			model = "sos_reports.biometric.attendance.summary.wizard"
+			report_type="qweb-pdf"
+			file="sos_reports.report_biometric_attendancesummary"
+			name="sos_reports.report_biometric_attendancesummary"
+		/>
+		
+		<!-- BioMetric Guard Attendance -->
+		<!--
+		<report
+			id="report_biometric_guard_attendance"
+			string= "Bio-MetricAttendance(Guard)"
+			model = "sos_reports.biometric.attendance.wizard"
+			report_type="qweb-pdf"
+			file="sos_reports.report_guard_biometricattendance"
+			name="sos_reports.report_guard_biometricattendance"
+		/>
+		 --> 
+	</data>
+</odoo>

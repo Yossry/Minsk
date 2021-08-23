@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<record model="ir.actions.act_window" id="sos_product_uniform_quants">
+			<field name="context">{'search_default_internal_loc': 1, 'search_default_locationgroup':1, 'search_default_productgroup':1}</field>
+			<field name="domain">[('product_id.categ_id', '=', 9)]</field>
+			<field name="name">Current Stock</field>
+			<field name="res_model">stock.quant</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="sos_product_weapon_quants">
+			<field name="context">{'search_default_internal_loc': 1, 'search_default_locationgroup':1, 'search_default_productgroup':1}</field>
+			<field name="domain">[('product_id.categ_id', '=', 6)]</field>
+			<field name="name">Weapon Stock</field>
+			<field name="res_model">stock.quant</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="sos_product_stationery_quants">
+			<field name="context">{'search_default_internal_loc': 1, 'search_default_locationgroup':1, 'search_default_productgroup':1}</field>
+			<field name="domain">[('product_id.categ_id', '=', 7)]</field>
+			<field name="name">Stationery Stock</field>
+			<field name="res_model">stock.quant</field>
+		</record>
+
+		<record id="sos_stock_view_move_form" model="ir.ui.view">
+			<field name="name">sos.stock.move.form</field>
+			<field name="model">stock.move</field>
+			<field name="inherit_id" ref="stock.view_move_form"/>
+			<field name="arch" type="xml">
+			<data>
+				 <xpath expr="//field[@name='location_id']" position="replace">
+					<field name="location_id" domain="[('usage', '!=', 'view'),('usage', '!=', 'inventory')]"/>
+				 </xpath>
+
+				 <xpath expr="//field[@name='location_dest_id']" position="replace">
+					<field name="location_dest_id" domain="[('usage', '!=', 'view')]"/>
+				 </xpath>
+
+				 <xpath expr="//field[@name='location_dest_id']" position="after">
+					<field name="post_id"/>
+					<field name="emp_id" domain="[('is_guard', '=', True)]"/>
+				 </xpath>
+
+
+			</data>
+			</field>
+		</record>
+
+		<record id="sos_stock_view_location_form" model="ir.ui.view">
+			<field name="name">sos.stock.location.form</field>
+			<field name="model">stock.location</field>
+			<field name="inherit_id" ref="stock.view_location_form"/>
+			<field name="arch" type="xml">
+			<data>
+				 <xpath expr="//field[@name='comment']" position="before">
+					<field name="user_ids"/>
+				 </xpath>
+			</data>
+			</field>
+		</record>
+
+		<record id="sos_stock_view_move_search" model="ir.ui.view">
+			<field name="name">sos.stock.move.search</field>
+			<field name="model">stock.move</field>
+			<field name="inherit_id" ref="stock.view_move_search"/>
+			<field name="arch" type="xml">
+			<data>
+				 <xpath expr="//filter[@name='by_product']" position="before">
+					<filter string="Post" name="by_post" icon="terp-accessories-archiver" domain="[]"  context="{'group_by':'post_id'}"/>
+				 </xpath>
+			</data>
+			</field>
+		</record>
+
+		<!--
+		<record id="sos_stock_view_move_tree" model="ir.ui.view">
+			<field name="name">sos.stock.move.tree</field>
+			<field name="model">stock.move</field>
+			<field name="inherit_id" ref="stock.view_move_tree"/>
+			<field name="arch" type="xml">
+			<data>
+				 <xpath expr="//field[@name='date_expected']" position="replace">
+					<field name="post_id"/>
+				 </xpath>
+			</data>
+			</field>
+		</record>
+		-->
+
+		<record id="sos_stock_center_form" model="ir.ui.view">
+			<field name="name">sos.stock.center.form</field>
+			<field name="model">sos.center</field>
+			<field name="inherit_id" ref="sos.sos_center_form_view"/>
+			<field name="arch" type="xml">
+			<data>
+				 <xpath expr="//field[@name='supervisor_id']" position="after">
+					<field name="stock_location_id"  domain="[('usage', '=', 'internal')]"/>
+				 </xpath>
+			</data>
+			</field>
+		</record>
+		<record id="sos_stock_center_tree" model="ir.ui.view">
+			<field name="name">sos.stock.center.tree</field>
+			<field name="model">sos.center</field>
+			<field name="inherit_id" ref="sos.sos_center_tree_view"/>
+			<field name="arch" type="xml">
+			<data>
+				 <xpath expr="//field[@name='name']" position="after">
+					<field name="stock_location_id"/>
+				 </xpath>
+			</data>
+			</field>
+		</record>
+
+
+		<record id="account.action_account_moves_all_tree" model="ir.actions.act_window">
+			<field name="name">Journal Items</field>
+			<field name="res_model">account.move.line</field>
+			<field name="context">{'search_default_partner_id': [active_id], 'default_partner_id': active_id}</field>
+			<field name="domain">[('account_id.type', 'in', ['receivable', 'payable'])]</field>
+			<field name="view_id" ref="account.view_move_line_tree"/>
+		</record>
+
+
+
+		<record id="action_account_moves_reconcile_tree" model="ir.actions.act_window">
+			<field name="name">Reconcible Items</field>
+			<field name="res_model">account.move.line</field>
+			<field name="context">{'search_default_unreconciled':True, 'search_default_partner_id': [active_id], 'default_partner_id': active_id}</field>
+			<field name="domain">[('account_id.reconcile', '=', False),('account_id.type', 'in', ['receivable', 'payable'])]</field>
+			<field name="view_id" ref="account.view_move_line_tree"/>
+		</record>
+
+		<!--
+		<record model="ir.ui.view" id="sos_partner_view_buttons">
+			<field name="name">partner.view.buttons</field>
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="base.view_partner_form" />
+			<field name="priority" eval="20"/>
+			<field name="arch" type="xml">
+				<xpath expr="//div[@name='buttons']" position="inside">
+
+					<button type="action" class="oe_stat_button" name="%(action_account_moves_reconcile_tree)d" groups="account.group_account_user" icon="fa-tasks">
+						<field string="Reconcibles" name="reconcible_item_count" widget="statinfo"/>
+					</button>
+
+				</xpath>
+			</field>
+		</record>
+		-->
+
+		<!--
+		<record id="sos_stock_guard_form" model="ir.ui.view">
+			<field name="name">sos.stock.guard.form</field>
+			<field name="model">hr.guard</field>
+			<field name="inherit_id" ref="sos.view_guard_form"/>
+			<field name="arch" type="xml">
+			<data>
+				 <xpath expr="//page[@string='Posts']" position="after">
+					<page string="Inventory">
+						<field name="stock_lines" readonly="1">
+							<tree colors="grey:state == 'cancel'" string="Moves" create="false">
+								<field name="product_id"/>
+								<field name="product_uom_qty"/>
+								<field name="product_uom"  string="Unit of Measure" groups="product.group_uom"/>
+								<field name="location_id"/>
+								<field name="location_dest_id"/>
+								<field name="date" string="Date"/>
+								<field name="state" invisible="1"/>
+							</tree>
+						</field>
+					</page>
+				 </xpath>
+			</data>
+			</field>
+		</record>
+		-->
+
+		<!--
+		<record id="sos_stock_post_form" model="ir.ui.view">
+			<field name="name">sos.stock.post.form</field>
+			<field name="model">sos.post</field>
+			<field name="inherit_id" ref="sos.sos_post_form_view"/>
+			<field name="arch" type="xml">
+			<data>
+				 <xpath expr="//page[@string='Guards']" position="after">
+					<page string="Inventory">
+						<field name="stock_lines" readonly="1">
+							<tree colors="grey:state == 'cancel'" string="Moves" create="false">
+								<field name="product_id"/>
+								<field name="product_uom_qty"/>
+								<field name="product_uom"  string="Unit of Measure" groups="product.group_uom"/>
+								<field name="location_id"/>
+								<field name="location_dest_id"/>
+								<field name="date" string="Date"/>
+								<field name="state" invisible="1"/>
+							</tree>
+						</field>
+					</page>
+				 </xpath>
+			</data>
+			</field>
+		</record>
+
+
+		<record id="sos_stock_center_form" model="ir.ui.view">
+			<field name="name">sos.stock.center.form</field>
+			<field name="model">sos.center</field>
+			<field name="inherit_id" ref="sos.sos_center_form_view"/>
+			<field name="arch" type="xml">
+			<data>
+				 <xpath expr="//page[@string='Users']" position="after">
+					<page string="Stationery">
+						<field name="stat_stock_lines" readonly="1">
+							<tree colors="grey:state == 'cancel'" string="Moves" create="false">
+								<field name="product_id"/>
+								<field name="product_uom_qty"/>
+								<field name="product_uom"  string="Unit of Measure" groups="product.group_uom"/>
+								<field name="location_id"/>
+								<field name="location_dest_id"/>
+								<field name="date" string="Date"/>
+								<field name="state" invisible="1"/>
+
+							</tree>
+						</field>
+					</page>
+				 </xpath>
+			</data>
+			</field>
+		</record>
+		-->
+
+		<!--
+		<record id="sos_stock_view_move_withweight_form" model="ir.ui.view">
+			<field name="name">sos.stock.view.move.withweight.form</field>
+			<field name="model">stock.move</field>
+			<field name="inherit_id" ref="delivery.view_move_withweight_form"/>
+			<field name="arch" type="xml">
+			<data>
+
+
+				<xpath expr="//field[@name='weight']" position="attributes">
+					<attribute name="invisible">True</attribute>
+				</xpath>
+				<xpath expr="//field[@name='weight_uom_id']" position="attributes">
+					<attribute name="invisible">True</attribute>
+				</xpath>
+				<xpath expr="//field[@name='weight_net']" position="attributes">
+					<attribute name="invisible">True</attribute>
+				</xpath>
+
+			</data>
+			</field>
+		</record>
+		-->
+
+		<!--
+		<record id="sos_stock_stock_move_sale" model="ir.ui.view">
+			<field name="name">sos.stock.move.form</field>
+			<field name="model">stock.move</field>
+			<field name="inherit_id" ref="sale_stock.stock_move_sale"/>
+			<field name="arch" type="xml">
+			<data>
+				<xpath expr="//field[@name='sale_line_id']" position="attributes">
+					<attribute name="invisible">True</attribute>
+				</xpath>
+
+			</data>
+			</field>
+		</record>
+		-->
+
+		<!--
+		<record id="sos_stock_view_move_tree" model="ir.ui.view">
+			<field name="name">sos.stock.move.tree</field>
+			<field name="model">stock.move</field>
+			<field name="inherit_id" ref="stock.view_move_tree"/>
+			<field name="arch" type="xml">
+			<data>
+				<xpath expr="//field[@name='date_expected']" position="attributes">
+					<attribute name="invisible">True</attribute>
+				</xpath>
+
+				<xpath expr="//field[@name='date']" position="after">
+					<field name="post_id"/>
+					<field name="emp_id" domain="[('is_guard', '=', True)]"/>
+				 </xpath>
+			</data>
+			</field>
+		</record>
+		-->
+
+
+
+		<!-- MArked wheb converted into 11 -->
+		<!-- <record id="stock.view_pack_operation_lot_form" model="ir.ui.view">
+			<field name="name">stock.pack.operation.lots.form</field>
+			<field name="model">stock.pack.operation</field>
+			<field eval="20" name="priority"/>
+			<field name="arch" type="xml">
+				<form>
+					<group>
+						<group>
+							<field name="product_id" readonly="1"/>
+							<label for="qty_done"/>
+							<span>
+								<field name="qty_done" class="oe_inline" readonly="1"/>
+								<field name="product_qty" class="oe_inline" readonly="1"/>
+								<field name="product_uom_id" class="oe_inline" groups="product.group_uom" readonly="1"/>
+								<field name="state" invisible="1"/>
+							</span>
+						</group>
+						<group>
+							<field name="rf_id"/>
+						</group>
+					</group>
+					<group>
+						<field name="pack_lot_ids" nolabel="1" attrs="{'readonly': [('state', '=', 'done')]}">
+							<tree create="false" edit="false" delete="true" decoration-success="qty_todo==qty" decoration-danger="(qty_todo &gt; 0) and (qty&gt;qty_todo)">
+								<field name="lot_name" invisible="not context.get('only_create', False)"/>
+								<field name="lot_id" invisible="context.get('only_create', False)"
+									   domain="[('product_id','=', parent.product_id)]"
+									   context="{'product_id': parent.product_id}"/>
+								<field name="qty_todo" invisible="not context.get('show_reserved') or context.get('serial') or context.get('state_done')" readonly="1"/>
+								<field name="qty" invisible="context.get('serial')"/>
+								<button name="do_minus" type="object" icon="fa-minus-square" attrs="{'invisible': [('qty', '&lt;=', 0.99)]}" invisible="not context.get('show_reserved') or context.get('state_done')"/>
+								<button name="do_plus" type="object" icon="fa-plus-square" attrs="{'invisible': [('plus_visible', '=', False)]}" invisible="not context.get('show_reserved') or context.get('state_done')"/>
+								<field name="plus_visible" invisible="1"/>
+							</tree>
+						</field>
+					</group>
+					<footer>
+						<button name="save" type="object" string="Save" class="oe_highlight" attrs="{'invisible':[('state','=','done')]}"/>
+						<button string="Discard" special="cancel"/>
+					</footer>
+				</form>
+			</field>
+		</record> -->
+	</data>
+</odoo>
+

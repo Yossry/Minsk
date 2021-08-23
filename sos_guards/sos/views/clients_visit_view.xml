@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data> 
+			<record model="ir.ui.view" id="sos_clients_visit_tree_view">
+			<field name="name">sos.clients_visit.tree.view</field>
+			<field name="model">sos.clients.visit</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Clients Visit">
+					<field name="date"/>					
+					<field name="person_name" />
+					<field name="post_id" />
+					<field name="designation"/>
+					<field name="contract_no"/>
+					<field name="state" invisible="1"/>
+					<field name="type"/>
+				</tree>
+			</field>
+		</record>
+
+
+		<record model="ir.ui.view" id="sos_clients_visit_form_view">
+			<field name="name">sos.clients.visit.form.view</field>
+			<field name="model">sos.clients.visit</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">	
+				<form string="Clients Visit">
+					<header>
+						<button name="visit_approved" type="object" states="draft" string="Approved" class="oe_highlight"/>		
+						<field name="state" widget="statusbar" nolabel="1" />
+					</header>
+					<sheet>
+					<group>
+						<group>
+							<field name="name" placeholder=" Name..." invisible='1'/>
+							<field name="date"/>
+							<field name="person_name" placeholder="Name to whom meet"/>
+							<field name="contract_no" placeholder="Contact No...."/>
+							<field name="type"/>
+							<field name="point_category_ids" widget="many2many_tags"/>
+							<field name="action_category_ids" widget="many2many_tags"/>
+						</group>
+						<group>	
+								<field name="project_id" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}" />
+								<field name="center_id" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>
+								<field name="post_id" domain="[('center_id','=',center_id),('project_id','=',project_id)]" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>
+								<field name="employee_id" options="{'limit': 10, 'no_create': 1, 'no_create_edit': 1}"/>
+								<field name="designation" placeholder="Designation to whom meets..."/>
+								<field name="next_visit_date"/>
+								
+						</group>
+					</group>
+						<field name="remarks" placeholder="Please Enter your Remarks about the Visit......."/>
+				</sheet>
+				<div class="oe_chatter">
+					<field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+					<field name="message_ids" widget="mail_thread" placeholder="Share a note..."/>
+	      		</div>
+				</form>
+			</field>
+		</record>
+		
+		
+		<record id="sos_clients_visit_filter" model="ir.ui.view">
+		<field name="name">sos.clients.visit.filter</field>
+		<field name="model">sos.clients.visit</field>
+		<field name="arch" type="xml">
+			<search string="Clients Visit Filter">
+				<filter icon="terp-go-today"  string="Draft" name="draft" domain="[('state','=','draft')]" />			
+				<filter icon="terp-go-today" string="Approve" name="approve" domain="[('state','=','approve')]" />
+				<field name="date"/>
+				<field name="person_name"/>
+				<field name="contract_no"/>
+				<field name="center_id"/>
+				<field name="project_id"/>
+				<field name="post_id"/>
+				<field name="employee_id"/>
+				<field name="next_visit_date"/>
+				<separator/>
+					<group expand="0" string="Group By">
+						<filter string="Center" name="center_id" icon="terp-partner" domain="[]" context="{'group_by':'center_id'}"/>
+						<filter string="Project" name="project_id" icon="terp-partner" domain="[]" context="{'group_by':'project_id'}"/>
+						<filter string="Post" name="post_id" icon="terp-partner" domain="[]" context="{'group_by':'post_id'}"/>
+						<filter string="Date"  name="date" icon="terp-partner" domain="[]" context="{'group_by':'date'}"/>
+						<filter string="State" name="state" icon="terp-partner" domain="[]" context="{'group_by':'state'}"/>
+						<filter string="Type" name="type" icon="terp-partner" domain="[]" context="{'group_by':'type'}"/>
+					</group>
+			
+			</search>
+		</field>
+		</record>
+
+		<record id="sos_client_visit_action" model="ir.actions.act_window">
+			<field name="name">Client Visits</field>
+			<field name="res_model">sos.clients.visit</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+					Click to create a new Visit.
+				</p>
+			</field>
+	</record>
+
+	<!-- App Message Form-->
+   <record id="view_app_message_form" model="ir.ui.view">
+       <field name="name">app.messsage.form</field>
+       <field name="model">app.message</field>
+       <field name="arch" type="xml">
+           <form string="App Messages">
+               <sheet>
+                    <group>
+                        <group>
+                            <field name="sender_id"/>
+                            <field name="date"/>
+                            <field name="message"/>
+                        </group>
+                        <group>
+                             <field name="receive_id"/>
+                             <field name="title"/>
+                            <field name="type"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- App Message  Tree-->
+   <record id="view_app_message_tree" model="ir.ui.view">
+       <field name="name">app.messsage.tree</field>
+       <field name="model">app.message</field>
+       <field name="arch" type="xml">
+           <tree string="App Messages">
+               <field name="sender_id"/>
+               <field name="receive_id"/>
+               <field name="date"/>
+               <field name="title"/>
+               <field name="message"/>
+               <field name="type"/>
+            </tree>
+        </field>
+    </record>
+
+   <!--  Search -->
+   <record id="view_app_message_filter" model="ir.ui.view">
+       <field name="name">app.message.filter.view</field>
+       <field name="model">app.message</field>
+       <field name="arch" type="xml">
+                <search>
+                   <field name="sender_id"/>
+                    <field name="receive_id"/>
+                    <field name="date"/>
+                    <field name="title"/>
+                     <field name="message"/>
+                <newline />
+                    <group expand="0" string="Group By...">
+                        <filter string="Date" domain="[]" name="group_date" context="{'group_by':'date'}" />
+                        <filter string="Type" domain="[]" name="group_typ" context="{'group_by':'type'}" />
+                    </group>
+                </search>
+            </field>
+       </record>
+
+       <record model="ir.actions.act_window" id="act_app_message">
+			<field name="name">App Message</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">app.message</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="search_view_id" ref="view_app_message_filter" />
+			<field name="domain">[]</field>
+       </record>
+  
+    </data>
+</odoo>

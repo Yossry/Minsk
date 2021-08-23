@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_guards_subadvice_salary" model="ir.ui.view">
+            <field name="name">Subadvice Salary</field>
+            <field name="model">guards.subadvice.salary</field>
+            <field name="arch" type="xml">
+            <form string="Pay Advice Breakup">
+                <label for="date_from" string="This wizard will print report which display a pay breakup for a specified Advice Line."/>
+                <footer>
+                    <button name="print_report" string="Print" type="object" class="oe_highlight"/>
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+                <group>
+                	<group>                   
+                	    <field name="advice_id" options="{'no_quick_create':True, 'no_create_edit': True, 'limit': 10}"/> 
+                	    <field name="acc" domain="[('advice_id','=',advice_id)]" options="{'no_quick_create':True, 'no_create_edit': True, 'limit': 10}"/> 	
+                	</group>
+                	<group>
+                		<field name="acc2"/> 
+                		<field name="date_from"/> 
+                		<field name="date_to"/> 
+                	</group>
+                </group>	
+            </form>
+            </field>
+        </record>
+
+        <record id="action_guards_subadvice_salary" model="ir.actions.act_window">
+            <field name="name">Subadvice Salary</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">guards.subadvice.salary</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem
+            name="Subadvice Salary" parent="menu_gms_payroll_reports"
+            action="action_guards_subadvice_salary"
+            sequence="10"
+            id="menu_guards_subadvice_salary"
+           />
+   
+
+	</data>
+</odoo>

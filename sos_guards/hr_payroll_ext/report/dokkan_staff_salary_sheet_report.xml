@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+
+	<template id ="report_dokkan_staffsalarysheet">
+		<t t-call="web.html_container">
+				<t t-call="web.internal_layout" style="font-family:georgia,garamond,serif;font-size:10px">
+					<div class="page">
+						<style>
+								.tabhead{font-size:9px;}
+								.tabcol{font-size:9px;}
+								.tabtot{font-size:10px;}
+								 table th { background-color:#d4e3e5;}
+								 tr:nth-child(even) {background-color: #FFEBCD;}
+								 tr:nth-child(odd) {background-color: #cdcdcd;}
+						</style>
+						<h4>Salary Sheet</h4>	 							
+						<h5>	
+							From: <span t-esc="get_date_formate(data['date_from'])"/><br></br>
+							To: <span t-esc="get_date_formate(data['date_to'])"/><br></br>							
+						</h5>	
+
+							<table class="table table-condensed" width="100%">
+								<thead>
+									<tr class="tabhead">
+										<th class="text-center" colspan="4" style="background-color:#cdcdcd;font-size:10px;border: 1px solid black;">EMPLOYEE DETAILS</th>
+										<th class="text-center" colspan="5" style="background-color:#cdcdcd;font-size:10px;border: 1px solid black;">SALARY PACKAGE</th>
+										<th class="text-center" colspan="3" style="background-color:#cdcdcd;font-size:10px;border: 1px solid black;">WORKING DAYS</th>
+										<th class="text-center" colspan="4" style="background-color:#cdcdcd;font-size:10px;border: 1px solid black;">GOSI</th>
+										<th class="text-center" colspan="3" style="background-color:#cdcdcd;font-size:10px;border: 1px solid black;">D E D U C T I O N S</th>
+										<th class="text-center" colspan="1" style="background-color:#cdcdcd;font-size:10px;border: 1px solid black;">EXTRA PAY</th>												
+										<th class="text-center" colspan="1" style="background-color:#cdcdcd;font-size:10px;border: 1px solid black;">NET SALARY</th>
+									</tr>
+									<tr class="tabhead">
+										<th class="text-center">S.No</th>
+										<th class="text-center">Name</th>
+										<th class="text-center">No.</th>
+										<th class="text-left">Joining Date</th>
+										
+
+										<th class="text-center">Basic Salary</th>
+										<th class="text-center">Housing</th>
+										<th class="text-center">Transport</th>
+										<th class="text-center">COLA</th>
+										<th class="text-center">Total</th>
+										
+										<th class="text-right">M. Days</th>
+										<th class="text-right">Absence</th>
+										<th class="text-right">Net </th>
+										
+										<th class="text-right">2% Co.</th>
+										<th class="text-right">10% Co.</th>
+										<th class="text-right">10% Emp.</th>
+										<th class="text-right">Total Gosi</th>
+
+										<th class="text-right">Deductions</th>
+										<th class="text-right">Installment</th>
+										<th class="text-right">Total Deductions</th>
+										
+										<th class="text-right">OT/Additional</th>
+										<th class="text-right">Net Wage</th>
+									</tr>
+								</thead>
+								<tbody>
+									<t t-foreach="Payslip" t-as="rec">
+										<tr class="tabcol">
+											<td class="text-left" style="font-size:12px;font-weight:bold;" colspan="22">
+												<span t-esc="rec['department']" />
+											</td>
+										</tr>	
+										
+										<t t-foreach="rec['payslips']" t-as="payslip">
+											
+											<t t-set="salary_package" t-value="SALARY_PACKAGE(payslip.id,'total')"/>
+											
+											<tr style="font-size:10px;">
+												<td class="text-center">
+													<span t-esc="payslip_index + 1" />
+												</td>
+												<td class="text-left">
+													<span t-esc="payslip.employee_id.english_name" />
+												</td>
+												<td class="text-left">
+													<span t-esc="payslip.employee_id.code" />
+												</td>
+												<td class="text-left">
+													<span t-esc="payslip.employee_id.joining_date" />
+												</td>
+												
+												<td class="text-right">
+													<span t-esc="Lines(payslip.id,'payslip_line','BASIC') and '{0:,.2f}'.format(int(Lines(payslip.id,'payslip_line','BASIC'))) or '-'" />													
+												</td>
+												<td class="text-right">
+													<span t-esc="Lines(payslip.id,'payslip_line','Housing') and '{0:,.2f}'.format(int(Lines(payslip.id,'payslip_line','Housing'))) or '-'" />													
+												</td>
+												<td class="text-right">
+													<span t-esc="Lines(payslip.id,'payslip_line','TRA') and '{0:,.2f}'.format(int(Lines(payslip.id,'payslip_line','TRA'))) or '-'" />													
+												</td>
+												<td class="text-right">
+													<span t-esc="Lines(payslip.id,'payslip_line','OA') and '{0:,.2f}'.format(int(Lines(payslip.id,'payslip_line','OA'))) or '-'" />	
+												</td>
+												<td class="text-right">
+													<span t-esc="salary_package['total'] and '{0:,.2f}'.format(int(salary_package['total'])) or '-'" />	
+												</td>
+												
+												
+												<td class="text-right">
+													<span t-esc="Working_Days(payslip.id,'WORK100')" />
+												</td>
+												<td class="text-right">
+												</td>
+												<td class="text-right">
+													<span t-esc="Working_Days(payslip.id,'WORK100')" />
+												</td>
+												
+												<!-- GOSI -->
+												<td class="text-right">
+													<span t-esc="salary_package['comp_2percent'] and '{0:,.2f}'.format(int(salary_package['comp_2percent'])) or '-'" />	
+												</td>
+												<td class="text-right">
+													<span t-esc="salary_package['comp_10percent'] and '{0:,.2f}'.format(int(salary_package['comp_10percent'])) or '-'" />	
+												</td>
+												<td class="text-right">
+													<span t-esc="salary_package['emp_10percent'] and '{0:,.2f}'.format(int(salary_package['comp_10percent'])) or '-'" />	
+												</td>
+												<td class="text-right">
+													<span t-esc="salary_package['total_gosi'] and '{0:,.2f}'.format(int(salary_package['total_gosi'])) or '-'" />	
+												</td>
+												
+												<!-- Deductions -->
+												<td class="text-right">
+													<span t-esc="Lines(payslip.id,'input_line','FINE') and '{0:,.2f}'.format(int(Lines(payslip.id,'input_line','FINE'))) or '-'" />													
+												</td>
+												<td class="text-right">
+													<span t-esc="Lines(payslip.id,'input_line','ADV') and '{0:,.2f}'.format(int(Lines(payslip.id,'input_line','ADV'))) or '-'" />													
+												</td>
+												<td class="text-right">
+													<span t-esc="(Lines(payslip.id,'input_line','FINE') or Lines(payslip.id,'input_line','ADV')) and  '{0:,.2f}'.format(int(Lines(payslip.id,'input_line','ADV') + Lines(payslip.id,'input_line','FINE'))) or '-'" />													
+												</td>
+												
+												
+												<td class="text-right">
+													<span t-esc="Lines(payslip.id,'payslip_line','OT') and '{0:,.2f}'.format(int(abs(Lines(payslip.id,'payslip_line','OT')))) or '-'" />	
+												</td>
+												<td class="text-right">
+													<span t-esc="Lines(payslip.id,'payslip_line','NET') and '{0:,.2f}'.format(int(Lines(payslip.id,'payslip_line','NET'))) or '-'" />	
+												</td>
+												
+											</tr>
+										</t>
+										
+										
+										<!-- Department Totals -->
+										<tr style="font-size:12px;">
+											<td class="text-right" colspan="4">
+												Totals:
+											</td>
+											<td class="text-right">
+												<span t-esc="rec['dept_basic'] and '{0:,.2f}'.format(int(rec['dept_basic'])) or '-'" />													
+											</td>
+											<td class="text-right">
+												<span t-esc="rec['dept_housing'] and '{0:,.2f}'.format(int(rec['dept_housing'])) or '-'" />													
+											</td>
+											<td class="text-right">
+												<span t-esc="rec['dept_trans'] and '{0:,.2f}'.format(int(rec['dept_trans'])) or '-'" />													
+											</td>
+											<td class="text-right">
+												<span t-esc="rec['dept_other_allow'] and '{0:,.2f}'.format(int(rec['dept_other_allow'])) or '-'" />													
+											</td>
+											<td class="text-right">
+												<span t-esc="rec['dept_total'] and '{0:,.2f}'.format(int(rec['dept_total'])) or '-'" />	
+											</td>
+											
+											<td class="text-right">
+											</td>
+											<td class="text-right">
+											</td>
+											<td class="text-right">
+											</td>
+											
+											<td class="text-right">
+												<span t-esc="rec['dept_gosi_comp_2percent'] and '{0:,.2f}'.format(int(rec['dept_gosi_comp_2percent'])) or '-'" />												
+											</td>
+											<td class="text-right">
+												<span t-esc="rec['dept_gosi_comp_10percent'] and '{0:,.2f}'.format(int(rec['dept_gosi_comp_10percent'])) or '-'" />												
+											</td>
+											<td class="text-right">
+												<span t-esc="rec['dept_gosi_emp_10percent'] and '{0:,.2f}'.format(int(rec['dept_gosi_emp_10percent'])) or '-'" />													
+											</td>
+											<td class="text-right">
+												<span t-esc="rec['dept_gosi_total'] and '{0:,.2f}'.format(int(rec['dept_gosi_total'])) or '-'" />																								
+											</td>
+											
+											<!-- Deductions -->
+											<td class="text-right">
+												<span t-esc="rec['dept_fine'] and '{0:,.2f}'.format(int(rec['dept_fine'])) or '-'" />																								
+											</td>
+											<td class="text-right">
+												<span t-esc="rec['dept_advance'] and '{0:,.2f}'.format(int(rec['dept_advance'])) or '-'" />																								
+											</td>
+											<td class="text-right">
+												<span t-esc="rec['dept_total_deduction'] and '{0:,.2f}'.format(int(rec['dept_total_deduction'])) or '-'" />																								
+											</td>
+											
+											<td class="text-right">
+												<span t-esc="rec['dept_over_time'] and '{0:,.2f}'.format(int(rec['dept_over_time'])) or '-'" />																								
+											</td>
+											<td class="text-right">
+												<span t-esc="rec['dept_net'] and '{0:,.2f}'.format(int(rec['dept_net'])) or '-'" />																								
+											</td>
+												
+										</tr>	
+									</t>
+									
+									
+									<!-- Over All Totals -->
+									<tr style="font-size:12px;">
+										<td class="text-right" colspan="4">
+											Grand Totals:
+										</td>
+										
+										<td class="text-right">
+											<span t-esc="BASIC and '{0:,.2f}'.format(int(BASIC)) or '-'" />													
+										</td>
+										<td class="text-right">
+											<span t-esc="HOUSING and '{0:,.2f}'.format(int(HOUSING)) or '-'" />													
+										</td>
+										<td class="text-right">
+											<span t-esc="TRANS and '{0:,.2f}'.format(int(TRANS)) or '-'" />													
+										</td>
+										<td class="text-right">
+											<span t-esc="OTHER_ALLOW and '{0:,.2f}'.format(int(OTHER_ALLOW)) or '-'" />													
+										</td>
+										<td class="text-right">
+											<span t-esc="TOTAL and '{0:,.2f}'.format(int(TOTAL)) or '-'" />													
+										</td>
+										
+										<td class="text-right">											
+										</td>
+										<td class="text-right">
+										</td>
+										<td class="text-right">
+										</td>
+										
+										<!-- GOSSI -->
+										<td class="text-right">
+											<span t-esc="COMP_2PERCENT and '{0:,.2f}'.format(int(COMP_2PERCENT)) or '-'" />													
+										</td>
+										<td class="text-right">
+											<span t-esc="COMP_10PERCENT and '{0:,.2f}'.format(int(COMP_10PERCENT)) or '-'" />													
+										</td>
+										<td class="text-right">
+											<span t-esc="EMP_10PERCENT and '{0:,.2f}'.format(int(EMP_10PERCENT)) or '-'" />													
+										</td>
+										<td class="text-right">
+											<span t-esc="GOSI_TOTAL and '{0:,.2f}'.format(int(GOSI_TOTAL)) or '-'" />													
+										</td>
+										
+										<!-- DEDDUCTIONS-->
+										<td class="text-right">
+											<span t-esc="FINE and '{0:,.2f}'.format(int(FINE)) or '-'" />													
+										</td>
+										<td class="text-right">
+											<span t-esc="ADVANCE and '{0:,.2f}'.format(int(ADVANCE)) or '-'" />													
+										</td>
+										<td class="text-right">
+											<span t-esc="TOTAL_DEDUCTION and '{0:,.2f}'.format(int(TOTAL_DEDUCTION)) or '-'" />													
+										</td>
+										
+										<!-- OT -->
+										<td class="text-right">
+											<span t-esc="OVER_TIME and '{0:,.2f}'.format(int(OVER_TIME)) or '-'" />													
+										</td>
+										
+										<!-- Net Salary -->
+										<td class="text-right">
+											<span t-esc="NET and '{0:,.2f}'.format(int(NET)) or '-'" />													
+										</td>
+										
+									</tr>
+										
+								</tbody>
+                			</table>
+               				
+					</div>
+				</t>
+		</t>
+	</template>
+	
+	</data>
+</openerp>

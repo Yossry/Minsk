@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>	
+		<template id ="sos_uniform.report_uniform">
+			<t t-call="web.html_container">
+				<t t-call="web.external_layout" style="font-family:georgia,garamond,serif;font-size:10px">
+					<div class="page">
+						<style>
+							 tr:nth-child(even) {background-color: #FFEBCD;}
+							 tr:nth-child(odd) {background-color: #cdcdcd;}
+						</style>
+						
+						<h4>Uniform Issuance Report</h4>
+						<h5>
+							From: <span t-esc="get_date_formate(data['date_from'])"/><br></br>
+							To: <span t-esc="get_date_formate(data['date_to'])"/><br></br>
+						</h5>
+						
+						<!-- New Deployment-->
+						<h4 style="page-break-inside: avoid;">NEW Deployment</h4>
+						<table class="table table-condensed" width="100%" style="page-break-inside: avoid;">
+							<tr style="font-size:10px; font-weight:bold; background-color:#A6ACAF;">
+								<td>Date </td>
+								<td>Post </td>
+								<td>Region </td>
+								<td>Type </td>
+								<td>Demand NO </td>
+								<td>32 </td>
+								<td>34 </td>
+								<td>36 </td>
+								<td>38 </td>
+								<td>40 </td>
+								<td>42 </td>
+								<td>44 </td>
+								<td>46 </td>
+								<td>48 </td>
+								<td>50 </td>
+							</tr>
+							<tbody>
+								<tr t-foreach="New_Demands" t-as="demand" style="font-size:12px; page-break-inside: avoid;">
+									<td> <span t-esc="demand['date']" /></td>
+									<td> <span t-esc="demand['post']" /></td>
+									<td> <span t-esc="demand['center']" /></td>
+									<td> <span t-esc="demand['type']" /></td>
+									<td> <span t-esc="demand['demand_no']" /></td>
+									<td> <span t-esc="demand['32']" /></td>
+									<td> <span t-esc="demand['34']" /></td>
+									<td> <span t-esc="demand['36']" /></td>
+									<td> <span t-esc="demand['38']" /></td>
+									<td> <span t-esc="demand['40']" /></td>
+									<td> <span t-esc="demand['42']" /></td>
+									<td> <span t-esc="demand['44']" /></td>
+									<td> <span t-esc="demand['46']" /></td>
+									<td> <span t-esc="demand['48']" /></td>
+									<td> <span t-esc="demand['50']" /></td>
+								</tr>
+								
+								<tr style="font-size:10px; font-weight:bold; background-color:#A6ACAF; page-break-inside: avoid;">
+									<td colspan="5" class="text-center">T   O   T   A    L   S</td>
+									<td class="text-left"><span t-esc="New_Demand_Total['total_32']"/> </td> 
+									<td class="text-left"><span t-esc="New_Demand_Total['total_34']"/> </td>
+					  	 			<td class="text-left"><span t-esc="New_Demand_Total['total_36']"/> </td>
+					  	 			<td class="text-left"><span t-esc="New_Demand_Total['total_38']"/> </td>
+					  	 			<td class="text-left"><span t-esc="New_Demand_Total['total_40']"/> </td>
+					  	 			<td class="text-left"><span t-esc="New_Demand_Total['total_42']"/> </td>
+					  	 			<td class="text-left"><span t-esc="New_Demand_Total['total_44']"/> </td>
+					  	 			<td class="text-left"><span t-esc="New_Demand_Total['total_46']"/> </td>
+					  	 			<td class="text-left"><span t-esc="New_Demand_Total['total_48']"/> </td>
+					  	 			<td class="text-left"><span t-esc="New_Demand_Total['total_50']"/> </td>
+								</tr>
+							</tbody>
+							
+						</table>
+						
+						
+						
+						<!--Complains -->
+						<h4 style="page-break-inside: avoid;">Complain</h4>
+						<table class="table table-condensed" width="100%" style="page-break-inside: avoid;">
+							<tr style="font-size:10px; font-weight:bold; background-color:#A6ACAF;">
+								<td>Date </td>
+								<td>Post </td>
+								<td>Region </td>
+								<td>Type </td>
+								<td>Demand NO </td>
+								<td>32 </td>
+								<td>34 </td>
+								<td>36 </td>
+								<td>38 </td>
+								<td>40 </td>
+								<td>42 </td>
+								<td>44 </td>
+								<td>46 </td>
+								<td>48 </td>
+								<td>50 </td>
+							</tr>
+							<tbody>
+								<tr t-foreach="Complain_Demands" t-as="demand" style="font-size:12px; page-break-inside: avoid;">
+									<td> <span t-esc="demand['date']" /></td>
+									<td> <span t-esc="demand['post']" /></td>
+									<td> <span t-esc="demand['center']" /></td>
+									<td> <span t-esc="demand['type']" /></td>
+									<td> <span t-esc="demand['demand_no']" /></td>
+									<td> <span t-esc="demand['32']" /></td>
+									<td> <span t-esc="demand['34']" /></td>
+									<td> <span t-esc="demand['36']" /></td>
+									<td> <span t-esc="demand['38']" /></td>
+									<td> <span t-esc="demand['40']" /></td>
+									<td> <span t-esc="demand['42']" /></td>
+									<td> <span t-esc="demand['44']" /></td>
+									<td> <span t-esc="demand['46']" /></td>
+									<td> <span t-esc="demand['48']" /></td>
+									<td> <span t-esc="demand['50']" /></td>
+								</tr>
+								
+								<tr style="font-size:10px; font-weight:bold; background-color:#A6ACAF; page-break-inside: avoid;">
+									<td colspan="5" class="text-center">T   O   T   A    L   S</td>
+									<td class="text-left"><span t-esc="Complain_Demand_Total['total_32']"/> </td> 
+									<td class="text-left"><span t-esc="Complain_Demand_Total['total_34']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Complain_Demand_Total['total_36']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Complain_Demand_Total['total_38']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Complain_Demand_Total['total_40']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Complain_Demand_Total['total_42']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Complain_Demand_Total['total_44']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Complain_Demand_Total['total_46']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Complain_Demand_Total['total_48']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Complain_Demand_Total['total_50']"/> </td>
+								</tr>
+							</tbody>
+							
+						</table>
+						
+						
+						
+						
+						<!-- Additional Guard -->
+						<h4 style="page-break-inside: avoid">Additional Guard</h4>
+						<table class="table table-condensed" width="100%" style="page-break-inside: avoid;">
+							<tr style="font-size:10px; font-weight:bold; background-color:#A6ACAF; page-break-inside: avoid;">
+								<td>Date </td>
+								<td>Post </td>
+								<td>Region </td>
+								<td>Type </td>
+								<td>Demand NO </td>
+								<td>32 </td>
+								<td>34 </td>
+								<td>36 </td>
+								<td>38 </td>
+								<td>40 </td>
+								<td>42 </td>
+								<td>44 </td>
+								<td>46 </td>
+								<td>48 </td>
+								<td>50 </td>
+							</tr>
+							<tbody>
+								<tr t-foreach="Add_Guard_Demands" t-as="demand" style="font-size:12px; page-break-inside: avoid;">
+									<td> <span t-esc="demand['date']" /></td>
+									<td> <span t-esc="demand['post']" /></td>
+									<td> <span t-esc="demand['center']" /></td>
+									<td> <span t-esc="demand['type']" /></td>
+									<td> <span t-esc="demand['demand_no']" /></td>
+									<td> <span t-esc="demand['32']" /></td>
+									<td> <span t-esc="demand['34']" /></td>
+									<td> <span t-esc="demand['36']" /></td>
+									<td> <span t-esc="demand['38']" /></td>
+									<td> <span t-esc="demand['40']" /></td>
+									<td> <span t-esc="demand['42']" /></td>
+									<td> <span t-esc="demand['44']" /></td>
+									<td> <span t-esc="demand['46']" /></td>
+									<td> <span t-esc="demand['48']" /></td>
+									<td> <span t-esc="demand['50']" /></td>
+								</tr>
+								
+								<tr style="font-size:10px; font-weight:bold; background-color:#A6ACAF; page-break-inside: avoid;">
+									<td colspan="5" class="text-center">T   O   T   A    L   S</td>
+									<td class="text-left"><span t-esc="Add_Guard_Demand_Total['total_32']"/> </td> 
+									<td class="text-left"><span t-esc="Add_Guard_Demand_Total['total_34']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Add_Guard_Demand_Total['total_36']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Add_Guard_Demand_Total['total_38']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Add_Guard_Demand_Total['total_40']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Add_Guard_Demand_Total['total_42']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Add_Guard_Demand_Total['total_44']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Add_Guard_Demand_Total['total_46']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Add_Guard_Demand_Total['total_48']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Add_Guard_Demand_Total['total_50']"/> </td>
+								</tr>
+							</tbody>
+							
+						</table>
+						
+						
+						
+						
+						
+						
+						<!-- Replacement -->
+						<h4 style="page-break-inside: avoid">Replacement</h4>
+						<table class="table table-condensed" width="100%" style="page-break-inside: avoid;">
+							<tr style="font-size:10px; font-weight:bold; background-color:#A6ACAF; page-break-inside: avoid;">
+								<td>Date </td>
+								<td>Post </td>
+								<td>Region </td>
+								<td>Type </td>
+								<td>Demand NO </td>
+								<td>32 </td>
+								<td>34 </td>
+								<td>36 </td>
+								<td>38 </td>
+								<td>40 </td>
+								<td>42 </td>
+								<td>44 </td>
+								<td>46 </td>
+								<td>48 </td>
+								<td>50 </td>
+							</tr>
+							<tbody>
+								<tr t-foreach="Replacement_Demands" t-as="demand" style="font-size:12px; page-break-inside: avoid;">
+									<td> <span t-esc="demand['date']" /></td>
+									<td> <span t-esc="demand['post']" /></td>
+									<td> <span t-esc="demand['center']" /></td>
+									<td> <span t-esc="demand['type']" /></td>
+									<td> <span t-esc="demand['demand_no']" /></td>
+									<td> <span t-esc="demand['32']" /></td>
+									<td> <span t-esc="demand['34']" /></td>
+									<td> <span t-esc="demand['36']" /></td>
+									<td> <span t-esc="demand['38']" /></td>
+									<td> <span t-esc="demand['40']" /></td>
+									<td> <span t-esc="demand['42']" /></td>
+									<td> <span t-esc="demand['44']" /></td>
+									<td> <span t-esc="demand['46']" /></td>
+									<td> <span t-esc="demand['48']" /></td>
+									<td> <span t-esc="demand['50']" /></td>
+								</tr>
+								
+								<tr style="font-size:10px; font-weight:bold; background-color:#A6ACAF; page-break-inside: avoid;">
+									<td colspan="5" class="text-center">T   O   T   A    L   S</td>
+									<td class="text-left"><span t-esc="Replacement_Demand_Total['total_32']"/> </td> 
+									<td class="text-left"><span t-esc="Replacement_Demand_Total['total_34']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Replacement_Demand_Total['total_36']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Replacement_Demand_Total['total_38']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Replacement_Demand_Total['total_40']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Replacement_Demand_Total['total_42']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Replacement_Demand_Total['total_44']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Replacement_Demand_Total['total_46']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Replacement_Demand_Total['total_48']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Replacement_Demand_Total['total_50']"/> </td>
+								</tr>
+							</tbody>
+							
+						</table>
+						
+						
+									
+					</div>
+				</t>		 
+			</t>
+		</template>
+		
+	</data>
+</odoo>
+

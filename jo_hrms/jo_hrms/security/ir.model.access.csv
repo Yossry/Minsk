@@ -1,0 +1,3 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_social_year_hr","social.year.hr","model_social_year","hr.group_hr_manager",1,1,1,1
+"access_insurance_comp_hr","insurance.comp.hr","model_insurance_comp","hr.group_hr_manager",1,1,1,1

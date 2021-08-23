@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+        
+    <record id="clv_phase_view_form_survey" model="ir.ui.view">
+        <field name="name">clv.phase.form</field>
+        <field name="model">clv.phase</field>
+        <field name="inherit_id" ref="clv_phase.clv_phase_view_form"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <page name="phase_for" position="inside">
+                <group string="Surveys">
+                    <group>
+                        <button name="survey.survey_survey_action"
+                                type="action"
+                                class="oe_stat_button"
+                                icon="fa-list"
+                                context="{'search_default_phase_id': id}"
+                                attrs="{'invisible': [('survey_ids', '=', [])]}"
+                                >
+                            <div class="o_form_field o_stat_info">
+                                <span class="o_stat_value">
+                                    <field name="count_surveys"/>
+                                </span>
+                                <span class="o_stat_text"> Document(s)</span>
+                            </div>
+                        </button>
+                    </group>
+                    <group>
+                    </group>
+                    <field name="survey_ids" colspan="4" nolabel="1"/>
+                </group>
+            </page>
+        </field>
+    </record>
+
+    <record id="survey_form_phase" model="ir.ui.view">
+        <field name="name">survey.survey.form</field>
+        <field name="model">survey.survey</field>
+        <field name="inherit_id" ref="survey.survey_form"/>
+        <field name="priority" eval="6"/>
+        <field name="arch" type="xml">
+            <field name="title" position="replace">
+            </field>
+            <label for="title" position="replace">
+                <label for="title" class="oe_edit_only"/>
+                <h1><field name="title" placeholder="Survey Title"/></h1>
+                <label for="phase_id" class="oe_edit_only"/>
+                <h2><field name="phase_id" options='{"no_open": True, "no_create": True}'/></h2>
+            </label>
+        </field>
+    </record>
+
+    <record id="survey_tree_phase" model="ir.ui.view">
+        <field name="name">survey.survey.tree</field>
+        <field name="model">survey.survey</field>
+        <field name="inherit_id" ref="survey.survey_tree"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="title" position="after">
+                <field name="phase_id" />
+            </field>
+        </field>
+    </record>
+
+    <record id="survey_survey_view_search_phase" model="ir.ui.view">
+        <field name="name">survey.survey.search</field>
+        <field name="model">survey.survey</field>
+        <field name="inherit_id" ref="survey.survey_survey_view_search"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="title" position="after">
+                <field name="phase_id"/>
+            </field>
+            <filter name="inactive" position="after">
+                <group name="group_by" expand="0" string="Group By...">
+                    <filter name="filter_phase_id" string="Phase" context="{'group_by': 'phase_id'}"/>
+                </group>
+            </filter>
+        </field>
+    </record>
+
+</odoo>

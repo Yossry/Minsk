@@ -1,0 +1,4 @@
+# for web_dashboard_tile
+web
+# for report_pdf_preview
+ingadhoc-aeroo_reports https://github.com/ingadhoc/aeroo_reports.git

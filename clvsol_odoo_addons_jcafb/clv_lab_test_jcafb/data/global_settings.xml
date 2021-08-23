@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo noupdate="1">
+
+    <record id="clv_global_settings_lab_test_result_files_directory_xls" model="ir.config_parameter">
+        <field name="key" eval="&quot;&quot;&quot;clv.global_settings.current_lab_test_result_files_directory_xls&quot;&quot;&quot;"/>
+        <field name="value" eval="&quot;&quot;&quot;lab_test_files/results/xls&quot;&quot;&quot;"/>
+    </record>
+
+    <record id="clv_global_settings_lab_test_result_file_name_xls" model="ir.config_parameter">
+        <field name="key" eval="&quot;&quot;&quot;clv.global_settings.current_lab_test_result_file_name_xls&quot;&quot;&quot;"/>
+        <field name="value" eval="&quot;&quot;&quot;Resultado_&lt;type&gt;_&lt;request_code&gt;.xls&quot;&quot;&quot;"/>
+    </record>
+
+    <record id="clv_global_settings_lab_test_result_files_directory_templates" model="ir.config_parameter">
+        <field name="key" eval="&quot;&quot;&quot;clv.global_settings.current_lab_test_result_files_directory_templates&quot;&quot;&quot;"/>
+        <field name="value" eval="&quot;&quot;&quot;lab_test_files/results/templates&quot;&quot;&quot;"/>
+    </record>
+
+    <record id="clv_global_settings_lab_test_report_file_name_xls" model="ir.config_parameter">
+        <field name="key" eval="&quot;&quot;&quot;clv.global_settings.current_lab_test_report_file_name_xls&quot;&quot;&quot;"/>
+        <field name="value" eval="&quot;&quot;&quot;Laudo_&lt;type&gt;_&lt;request_code&gt;.xls&quot;&quot;&quot;"/>
+    </record>
+
+    <record id="clv_global_settings_lab_test_report_files_directory_xls" model="ir.config_parameter">
+        <field name="key" eval="&quot;&quot;&quot;clv.global_settings.current_lab_test_report_files_directory_xls&quot;&quot;&quot;"/>
+        <field name="value" eval="&quot;&quot;&quot;lab_test_files/reports/xls&quot;&quot;&quot;"/>
+    </record>
+
+    <record id="clv_global_settings_lab_test_report_files_directory_templates" model="ir.config_parameter">
+        <field name="key" eval="&quot;&quot;&quot;clv.global_settings.current_lab_test_report_files_directory_templates&quot;&quot;&quot;"/>
+        <field name="value" eval="&quot;&quot;&quot;lab_test_files/reports/templates&quot;&quot;&quot;"/>
+    </record>
+
+</odoo>

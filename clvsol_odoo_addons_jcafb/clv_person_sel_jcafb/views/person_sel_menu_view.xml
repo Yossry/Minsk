@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <menuitem name="Person Selection" id="menu_community_config_person_sel" 
+        parent="clv_base.menu_community_config"
+        groups="clv_person_sel_jcafb.group_user"
+        sequence="15"/>
+
+    <menuitem name="Age-Groups" id="menu_community_config_person_sel_age_groups" 
+        parent="menu_community_config_person_sel"
+        groups="clv_person_sel_jcafb.group_user"
+        sequence="10"
+        action="clv_person_sel_jcafb.clv_person_sel_age_group_action"/>
+
+    <menuitem name="Districts" id="menu_community_config_person_sel_districts" 
+        parent="menu_community_config_person_sel"
+        groups="clv_person_sel_jcafb.group_user"
+        sequence="20"/>
+
+    <menuitem name="Districts" id="menu_community_config_person_sel_districts_districts" 
+        parent="menu_community_config_person_sel_districts"
+        groups="clv_person_sel_jcafb.group_user"
+        sequence="10"
+        action="clv_person_sel_jcafb.clv_person_sel_district_action"/>
+
+    <menuitem name="Set Up" id="menu_community_config_person_sel_districts_setup" 
+        parent="menu_community_config_person_sel_districts"
+        groups="clv_person_sel_jcafb.group_user"
+        sequence="20"
+        action="clv_person_sel_jcafb.clv_person_sel_district_district_setup_action"/>
+
+    <menuitem name="Groups" id="menu_community_config_person_sel_groups" 
+        parent="menu_community_config_person_sel"
+        groups="clv_person_sel_jcafb.group_user"
+        sequence="30"/>
+
+    <menuitem name="Groups" id="menu_community_config_person_sel_groups_groups" 
+        parent="menu_community_config_person_sel_groups"
+        groups="clv_person_sel_jcafb.group_user"
+        sequence="10"
+        action="clv_person_sel_jcafb.clv_person_sel_group_action"/>
+
+    <menuitem name="Set Up" id="menu_community_config_person_sel_groups_setup" 
+        parent="menu_community_config_person_sel_groups"
+        groups="clv_person_sel_jcafb.group_user"
+        sequence="20"
+        action="clv_person_sel_jcafb.clv_person_sel_group_group_setup_action"/>
+
+    <!--menuitem name="Summary" id="menu_community_config_person_sel_summary" 
+        parent="menu_community_config_person_sel"
+        groups="clv_person_sel_jcafb.group_user"
+        sequence="40"
+        action="clv_person_sel_jcafb.clv_person_sel_summary_action"/-->
+
+    <!--menuitem name="Set Up" id="menu_community_config_person_sel_summary_setup" 
+        parent="clv_person_sel_jcafb.menu_community_config_person_sel_summary"
+        groups="clv_person_sel_jcafb.group_user"
+        sequence="10"
+        action="clv_person_sel_jcafb.clv_person_sel_summary_setup_action"/-->
+
+    <menuitem name="Person Selection" id="menu_community_community_person_selection" 
+        parent="clv_base.menu_community_community"
+        groups="clv_person_sel_jcafb.group_user"
+        sequence="200"/>
+
+    <menuitem name="Summary" id="menu_community_community_person_selection_summary" 
+        parent="menu_community_community_person_selection"
+        groups="clv_person_sel_jcafb.group_user"
+        sequence="10"
+        action="clv_person_sel_jcafb.clv_person_sel_summary_action"/>
+
+    <menuitem name="Set Up" id="menu_community_community_person_selection_setup" 
+        parent="menu_community_community_person_selection"
+        groups="clv_person_sel_jcafb.group_user"
+        sequence="20"
+        action="clv_person_sel_jcafb.clv_person_sel_summary_setup_action"/>
+
+</odoo>

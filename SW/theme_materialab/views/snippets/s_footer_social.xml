@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template name="Footer Social" id="s_footer_social">
+        <!-- ====START SOCIAL Link==== -->
+        <section class="footer_social oe_structure">
+            <div class="container-fluid">
+                <div class="row">
+                    <ul class="ft_top clearfix">
+                        <li class="waves-effect waves-light">
+                            <a href="http://facebook.com/ezeselling" target="_blank">
+                                <i class="zmdi zmdi-facebook "></i>Facebook
+                            </a>
+                        </li>
+                        <li class="waves-effect waves-light">
+                            <a href="http://twitter.com/ezeselling" target="_blank">
+                                <i class="zmdi zmdi-twitter"></i>Twitter
+                            </a>
+                        </li>
+                        <li class="waves-effect waves-light">
+                            <a href="http://flicker.com/ezeselling" target="_blank">
+                                <i class="zmdi zmdi-flickr"></i>Flickr
+                            </a>
+                        </li>
+                        <li class="waves-effect waves-light">
+                            <a href="#" target="_blank">
+                                <i class="zmdi zmdi-linkedin"></i>LinkedIn
+                            </a>
+                        </li>
+                        <li class="waves-effect waves-light">
+                            <a href="#" target="_blank">
+                                <i class="zmdi zmdi-dribbble"></i>Dribble
+                            </a>
+                        </li>
+                        <li class="waves-effect waves-light">
+                            <a href="#" target="_blank">
+                                <i class="zmdi zmdi-vimeo"></i>Vimeo
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- ====END FOOTER TOP==== -->
+    </template>
+</odoo>

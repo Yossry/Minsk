@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="af_rest_occasions" model="ir.actions.server">
+        <field name="name">AF REST Occasions</field>
+        <field name="model_id" ref="base.model_ir_actions_server"/>
+        <field name="state">code</field>
+        <field name="code">start = datetime.datetime.today()
+stop = start + datetime.timedelta(days=1)
+
+env['af.appointment'].get_occasions(from_date = start, to_date = stop, appointment_channel = "SPD", appointment_type = "24", max_depth = "1")</field>
+    </record>
+
+    <record id="af_rest_schedule" model="ir.actions.server">
+        <field name="name">AF REST Schedules</field>
+        <field name="model_id" ref="base.model_ir_actions_server"/>
+        <field name="state">code</field>
+        <field name="code">start = datetime.datetime.now()
+stop = start + datetime.timedelta(days=7)
+type_ids = env['calendar.appointment.type'].search([('ipf_id','in',['ded72445-e5d3-4e21-a356-aad200dac83d', 'f203b91b-bdbe-46e8-b6ae-aad200df9884', '93557f15-d25a-4f40-8a6b-aad200e1d2a0'])])
+
+schedule_ids = env['af.appointment'].get_schedules(start, stop, type_ids)
+schedule_ids.create_occasions()</field>
+    </record>
+
+    <record id="af_rest_appointments" model="ir.actions.server">
+        <field name="name">AF REST Appointments</field>
+        <field name="model_id" ref="base.model_ir_actions_server"/>
+        <field name="state">code</field>
+        <field name="code">#user_id = env['res.users'].search([('af_signature', '=', 'eridd')])
+start = datetime.datetime.today()
+stop = start + datetime.timedelta(days=7)
+
+#env['af.appointment'].get_appointments(from_date = start, to_date = stop, user = user_id)
+env['af.appointment'].get_appointments(from_date = start, to_date = stop, pnr = '123456789012')</field>
+    </record>
+</odoo>

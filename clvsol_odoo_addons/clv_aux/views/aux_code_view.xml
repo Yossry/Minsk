@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="clv_aux_code_view_form" model="ir.ui.view">
+        <field name="name">clv.aux.code.form</field>
+        <field name="model">clv.aux.code</field>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <form>
+                <header name="header">
+                    <!-- To add buttons and status widget -->
+                </header>
+                <sheet name="aux_code">
+                    <div name="button_box" class="oe_right oe_button_box">
+                        <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive" groups="clv_base.group_reguser">
+                            <field name="active" widget="boolean_button" options='{"terminology": "archive"}'/>
+                        </button>
+                    </div>
+                    <div name="center" class="oe_center">
+                        <label for="code" class="oe_edit_only"/>
+                        <h1><field name="code" default_focus="1" placeholder="Code..."/></h1>
+                    </div>
+                    <group>
+                        <group name="aux_code">
+                            <field name="code_sequence"/>
+                            <field name="aux_instance_id" options="{'no_open': False, 'no_create': True}"/>
+                        </group>
+                        <group name="group_right">
+                        </group>
+                    </group>
+                    <field name="notes" placeholder="Notes..." colspan="4"/>
+                    <notebook>
+                        <page name="settings" string="Settings" groups="clv_base.group_reguser" invisible="True">
+                            <group name="settings">
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="clv_aux_code_view_tree" model="ir.ui.view">
+        <field name="name">clv.aux.code.tree</field>
+        <field name="model">clv.aux.code</field>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <tree name="person_codes" string="Auxiliary Codes">
+                <field name="code"/>
+                <field name="code_sequence"/>
+                <field name="aux_instance_id"/>
+                <field name="active" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="clv_aux_code_view_search" model="ir.ui.view">
+        <field name="name">clv.aux.code.search</field>
+        <field name="model">clv.aux.code</field>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <search>
+                <field name="code"/>
+                <field name="code_sequence"/>
+                <field name="aux_instance_id"/>
+                <separator/>
+                <filter string="Archived" name="inactive" domain="[('active','=',False)]"/>
+                <group name="group_by" expand="0" string="Group By...">
+                    <filter name="group_by_code_sequence" string="Code Sequence" context="{'group_by': 'code_sequence'}"/>
+                    <filter name="group_by_aux_instance_id" string="Auxiliary Instance" context="{'group_by': 'aux_instance_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    
+    <record id="clv_aux_code_action" model="ir.actions.act_window">
+        <field name="name">Auxiliary Codes</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">clv.aux.code</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="clv_aux_code_view_search"/>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Click to add a new aux code.
+          </p>
+        </field>
+    </record>
+        
+</odoo>

@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>	
+		<template id ="sos_uniform.report_tshirt">
+			<t t-call="web.html_container">
+				<t t-call="web.external_layout" style="font-family:georgia,garamond,serif;font-size:10px">
+					<div class="page">
+						<style>
+							 tr:nth-child(even) {background-color: #FFEBCD;}
+							 tr:nth-child(odd) {background-color: #cdcdcd;}
+						</style>
+						
+						<h4>T-Shirt Issuance Report</h4>
+						<h5>
+							From: <span t-esc="get_date_formate(data['date_from'])"/><br></br>
+							To: <span t-esc="get_date_formate(data['date_to'])"/><br></br>
+						</h5>
+						
+						
+						<!-- New Deployment-->
+						<h4 style="page-break-inside: avoid;">NEW Deployment</h4>					
+						<table class="table table-condensed" width="100%">
+							<tr style="font-size:10px; font-weight:bold; background-color:#A6ACAF;">
+								<td>Date </td>
+								<td>Post </td>
+								<td>Region </td>
+								<td>Type </td>
+								<td>Demand NO </td>
+								<td>T-Shirt Small </td>
+								<td>T-Shirt Medium</td>
+								<td>T-Shirt Large</td>
+								<td>T-Shirt XL</td>
+								<td>T-Shirt XXL  </td>
+							</tr>
+							
+							<tbody>
+								<tr t-foreach="New_Demands" t-as="demand" style="font-size:12px; page-break-inside: avoid;">
+									<td> <span t-esc="demand['date']" /></td>
+									<td> <span t-esc="demand['post']" /></td>
+									<td> <span t-esc="demand['center']" /></td>
+									<td> <span t-esc="demand['type']" /></td>
+									<td> <span t-esc="demand['demand_no']" /></td>
+									<td> <span t-esc="demand['small']" /></td>
+									<td> <span t-esc="demand['medium']" /></td>
+									<td> <span t-esc="demand['large']" /></td>
+									<td> <span t-esc="demand['extra_large']" /></td>
+									<td> <span t-esc="demand['ee_large']" /></td>
+								</tr>
+								
+								<tr style="font-size:10px; font-weight:bold; background-color:#A6ACAF; page-break-inside: avoid;">
+									<td colspan="5" class="text-center">T   O   T   A    L   S</td>
+									<td class="text-left"><span t-esc="New_Demand_Total['total_small']"/> </td> 
+									<td class="text-left"><span t-esc="New_Demand_Total['total_medium']"/> </td>
+					  	 			<td class="text-left"><span t-esc="New_Demand_Total['total_large']"/> </td>
+					  	 			<td class="text-left"><span t-esc="New_Demand_Total['total_extra_large']"/> </td>
+					  	 			<td class="text-left"><span t-esc="New_Demand_Total['total_ee_large']"/> </td>
+								</tr>
+							</tbody>
+						</table>
+						
+						
+						<!--Complains -->
+						<h4 style="page-break-inside: avoid;">Complain</h4>
+						<table class="table table-condensed" width="100%" style="page-break-inside: avoid;">
+							<tr style="font-size:10px; font-weight:bold; background-color:#A6ACAF;">
+								<td>Date </td>
+								<td>Post </td>
+								<td>Region </td>
+								<td>Type </td>
+								<td>Demand NO </td>
+								<td>T-Shirt Small </td>
+								<td>T-Shirt Medium</td>
+								<td>T-Shirt Large</td>
+								<td>T-Shirt XL</td>
+								<td>T-Shirt XXL  </td>
+							</tr>
+							<tbody>
+								<tr t-foreach="Complain_Demands" t-as="demand" style="font-size:12px; page-break-inside: avoid;">
+									<td> <span t-esc="demand['date']" /></td>
+									<td> <span t-esc="demand['post']" /></td>
+									<td> <span t-esc="demand['center']" /></td>
+									<td> <span t-esc="demand['type']" /></td>
+									<td> <span t-esc="demand['demand_no']" /></td>
+									<td> <span t-esc="demand['small']" /></td>
+									<td> <span t-esc="demand['medium']" /></td>
+									<td> <span t-esc="demand['large']" /></td>
+									<td> <span t-esc="demand['extra_large']" /></td>
+									<td> <span t-esc="demand['ee_large']" /></td>
+								</tr>
+								
+								<tr style="font-size:10px; font-weight:bold; background-color:#A6ACAF; page-break-inside: avoid;">
+									<td colspan="5" class="text-center">T   O   T   A    L   S</td>
+									<td class="text-left"><span t-esc="Complain_Demand_Total['total_small']"/> </td> 
+									<td class="text-left"><span t-esc="Complain_Demand_Total['total_medium']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Complain_Demand_Total['total_large']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Complain_Demand_Total['total_extra_large']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Complain_Demand_Total['total_ee_large']"/> </td>
+								</tr>
+							</tbody>
+							
+						</table>
+						
+						
+						
+						
+						<!-- Additional Guard -->
+						<h4 style="page-break-inside: avoid">Additional Guard</h4>
+						<table class="table table-condensed" width="100%" style="page-break-inside: avoid;">
+							<tr style="font-size:10px; font-weight:bold; background-color:#A6ACAF; page-break-inside: avoid;">
+								<td>Date </td>
+								<td>Post </td>
+								<td>Region </td>
+								<td>Type </td>
+								<td>Demand NO </td>
+								<td>T-Shirt Small </td>
+								<td>T-Shirt Medium</td>
+								<td>T-Shirt Large</td>
+								<td>T-Shirt XL</td>
+								<td>T-Shirt XXL  </td>
+							</tr>
+							<tbody>
+								<tr t-foreach="Add_Guard_Demands" t-as="demand" style="font-size:12px; page-break-inside: avoid;">
+									<td> <span t-esc="demand['date']" /></td>
+									<td> <span t-esc="demand['post']" /></td>
+									<td> <span t-esc="demand['center']" /></td>
+									<td> <span t-esc="demand['type']" /></td>
+									<td> <span t-esc="demand['demand_no']" /></td>
+									<td> <span t-esc="demand['small']" /></td>
+									<td> <span t-esc="demand['medium']" /></td>
+									<td> <span t-esc="demand['large']" /></td>
+									<td> <span t-esc="demand['extra_large']" /></td>
+									<td> <span t-esc="demand['ee_large']" /></td>
+								</tr>
+								
+								<tr style="font-size:10px; font-weight:bold; background-color:#A6ACAF; page-break-inside: avoid;">
+									<td colspan="5" class="text-center">T   O   T   A    L   S</td>
+									<td class="text-left"><span t-esc="Add_Guard_Demand_Total['total_small']"/> </td> 
+									<td class="text-left"><span t-esc="Add_Guard_Demand_Total['total_medium']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Add_Guard_Demand_Total['total_large']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Add_Guard_Demand_Total['total_extra_large']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Add_Guard_Demand_Total['total_ee_large']"/> </td>
+								</tr>
+							</tbody>
+							
+						</table>
+						
+						
+						
+						
+						
+						
+						<!-- Replacement -->
+						<h4 style="page-break-inside: avoid">Replacement</h4>
+						<table class="table table-condensed" width="100%" style="page-break-inside: avoid;">
+							<tr style="font-size:10px; font-weight:bold; background-color:#A6ACAF; page-break-inside: avoid;">
+								<td>Date </td>
+								<td>Post </td>
+								<td>Region </td>
+								<td>Type </td>
+								<td>Demand NO </td>
+								<td>T-Shirt Small </td>
+								<td>T-Shirt Medium</td>
+								<td>T-Shirt Large</td>
+								<td>T-Shirt XL</td>
+								<td>T-Shirt XXL  </td>
+							</tr>
+							<tbody>
+								<tr t-foreach="Replacement_Demands" t-as="demand" style="font-size:12px; page-break-inside: avoid;">
+									<td> <span t-esc="demand['date']" /></td>
+									<td> <span t-esc="demand['post']" /></td>
+									<td> <span t-esc="demand['center']" /></td>
+									<td> <span t-esc="demand['type']" /></td>
+									<td> <span t-esc="demand['demand_no']" /></td>
+									<td> <span t-esc="demand['small']" /></td>
+									<td> <span t-esc="demand['medium']" /></td>
+									<td> <span t-esc="demand['large']" /></td>
+									<td> <span t-esc="demand['extra_large']" /></td>
+									<td> <span t-esc="demand['ee_large']" /></td>
+								</tr>
+								
+								<tr style="font-size:10px; font-weight:bold; background-color:#A6ACAF; page-break-inside: avoid;">
+									<td colspan="5" class="text-center">T   O   T   A    L   S</td>
+									<td class="text-left"><span t-esc="Replacement_Demand_Total['total_small']"/> </td> 
+									<td class="text-left"><span t-esc="Replacement_Demand_Total['total_medium']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Replacement_Demand_Total['total_large']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Replacement_Demand_Total['total_extra_large']"/> </td>
+					  	 			<td class="text-left"><span t-esc="Replacement_Demand_Total['total_ee_large']"/> </td>
+					  			</tr>
+							</tbody>
+							
+						</table>
+						
+									
+					</div>
+				</t>		 
+			</t>
+		</template>
+		
+	</data>
+</odoo>
+

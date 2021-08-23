@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+	    <!--
+		<record id="sos_view_account_asset_asset_form" model="ir.ui.view">
+			<field name="name">sos_view_account_asset_form</field>
+			<field name="model">account.asset.asset</field>
+			<field name="type">form</field>
+			<field name="inherit_id" ref="account_asset.view_account_asset_asset_form"/>
+			<field name="arch" type="xml">
+			<data>		      
+				<xpath expr="//field[@name='code']" position="before">
+					<field name="center_id"/>			
+				</xpath>
+			</data>
+			</field>
+		</record> 
+
+		<record id="sos_view_account_asset_asset_tree" model="ir.ui.view">
+			<field name="name">sos_view_account_asset_tree</field>
+			<field name="model">account.asset.asset</field>
+			<field name="type">form</field>
+			<field name="inherit_id" ref="account_asset.view_account_asset_asset_purchase_tree"/>
+			<field name="arch" type="xml">
+			<data>		      
+				<xpath expr="//field[@name='partner_id']" position="before">
+					<field name="center_id"/>			
+				</xpath>
+			</data>
+			</field>
+		</record> 
+
+
+		<record id="sos_assets_inherits_view" model="ir.ui.view">
+			<field name="name">sos.assets.inherits.form</field>
+			<field name="model">asset.asset</field>
+			<field name="type">form</field>
+			<field name="inherit_id" ref="asset.assets_form_view"/>
+			<field name="arch" type="xml">
+			<data>		      
+				<xpath expr="//field[@name='location_id']" position="replace">
+					<field name="center_id"/>			
+				</xpath>
+			</data>
+			</field>
+		</record> 
+		-->
+		
+		<record id="sos_view_account_journal_form" model="ir.ui.view">
+			<field name="name">sos.account.journal.form</field>
+			<field name="model">account.journal</field>
+			<field name="type">form</field>
+			<field name="inherit_id" ref="account.view_account_journal_form"/>
+			<field name="arch" type="xml">
+			<data>	
+				<xpath expr="//page[@name='advanced_settings']/group[1]/group[2]" position="replace">
+					<group string="Payment Method Types" attrs="{'invisible': [('type', 'not in', ['bank', 'cash','deduction'])]}">
+                        <field name="inbound_payment_method_ids" widget="many2many_checkboxes"/>
+                        <field name="outbound_payment_method_ids" widget="many2many_checkboxes"/>
+                    </group>
+					
+				</xpath>	      
+			   
+			</data>
+			</field>
+		</record> 
+
+		
+		<record id="sos_view_move_form" model="ir.ui.view">
+			<field name="name">sos_view_move_form</field>
+			<field name="model">account.move</field>
+			<field name="type">form</field>
+			<field name="inherit_id" ref="account.view_move_form"/>
+			<field name="arch" type="xml">
+			<data>	
+				<xpath expr="//field[@name='date']" position="before">
+					<field name="entry_date"/>						
+				</xpath>
+				<xpath expr="//field[@name='ref']" position="replace">
+					<field name="ref"/>						
+				</xpath>
+
+			</data>
+			</field>
+		</record> 
+
+		<record id="sos_view_move_tree" model="ir.ui.view">
+			<field name="name">sos.account.move.tree</field>
+			<field name="model">account.move</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+			<data>	
+				<xpath expr="//field[@name='date']" position="before">
+					<field name="entry_date"/>						
+				</xpath>	      
+			</data>
+			</field>
+		</record>
+
+		<record id="sos_view_account_payment_invoice_form" model="ir.ui.view">
+			<field name="name">sos.account.payment.invoice.form</field>
+			<field name="model">account.payment</field>
+			<field name="type">form</field>
+			<field name="inherit_id" ref="account.view_account_payment_invoice_form"/>
+			<field name="arch" type="xml">
+			<data>	
+				<xpath expr="//field[@name='payment_date']" position="replace">
+					<field name="entry_date" string="Payment Date"/>						
+					<field name="payment_date" string="Financial Date"/>									
+				</xpath>	      
+			</data>
+			</field>
+		</record> 
+
+		<record id="sos_view_account_payment_from_invoices" model="ir.ui.view">
+			<field name="name">account.register.payments.wizard</field>
+			<field name="model">account.register.payments</field>
+			<field name="type">form</field>
+			<field name="inherit_id" ref="account.view_account_payment_from_invoices"/>
+			<field name="arch" type="xml">
+			<data>	
+				<xpath expr="//field[@name='payment_date']" position="replace">
+					<field name="entry_date" string="Payment Date"/>						
+					<field name="payment_date" string="Financial Date"/>									
+				</xpath>	      
+			</data>
+			</field>
+		</record> 
+
+		<record id="view_account_multi_payment_tree" model="ir.ui.view">
+			<field name="name">account.multi.partner.payments.tree</field>
+			<field name="model">account.multi.partner.payments</field>
+			<field name="arch" type="xml">
+				<tree decoration-info="state=='draft'" decoration-muted="state=='posted'">
+				    <field name="payment_date"/>
+				    <field name="name"/>
+				    <field name="journal_id"/>
+				    <field name="payment_method_id"/>
+				    <field name="amount"/>
+				    <field name="state"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="view_account_multi_payment_form" model="ir.ui.view">
+			<field name="name">account.multi.partner.payments.form</field>
+			<field name="model">account.multi.partner.payments</field>
+			<field name="arch" type="xml">
+				<form string="Register Multi-Partner Payment">
+				    <header>
+				        <button name="create_payment" class="oe_highlight" states="draft" string="Confirm" type="object"/>
+				        <field name="state" widget="statusbar"/>
+				    </header>
+				    <sheet>               
+				        <field name="id" invisible="1"/>
+				        <div class="oe_title" attrs="{'invisible': [('state', '=', 'draft')]}">
+				            <h1><field name="name"/></h1>
+				        </div>
+				      
+				        <group>
+				            <group>
+				                <field name="payment_type" invisible="1"/>
+				                <field name="partner_type" invisible="1"/>
+				                <field name="partner_id" readonly="1"/>
+				                <field name="journal_id" widget="selection" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+				                <field name="hide_payment_method" invisible="1"/>
+				                <field name="payment_method_id" invisible="1"/>
+				                <field name="payment_method_code" invisible="1"/>
+				                <field name="amount" attrs="{'readonly': [('state', '!=', 'draft')]}"/>                        
+				            </group>
+				            <group>
+								<field name="entry_date" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+				                <field name="payment_date" string="Financial Date" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+				                <field name="communication" attrs="{'invisible': [('state', '!=', 'draft'), ('communication', '=', False)], 'readonly': [('state', '!=', 'draft')]}"/>
+				            </group>
+				        </group>
+				       
+						<notebook colspan="4">
+					  		<page string="Payment Lines">		  	 
+						  		<field name="multi_partner_payments_ids" nolabel="1" widget="one2many_list">				      
+									<tree string="Payment Lines" editable="bottom">
+										<field name="invoice_id" domain="[('state','=','open')]"/>
+										<field name="post_id" />
+										<field name="amount_original"/>			
+										<field name="amount_paid"  sum="Paid Amount"/>			
+										<field name="amount_residual" sum="Residual Amount"/>		
+									</tree>
+								</field>
+							</page>
+						</notebook>
+				    </sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="action_account_multi_payment" model="ir.actions.act_window">
+			<field name="name">Multi-Partner Payments</field>
+			<field name="res_model">account.multi.partner.payments</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="context">{'default_payment_type': 'inbound'}</field>
+			<field name="domain">[('partner_type', '=', 'customer')]</field>
+			<field name="view_id" ref="view_account_multi_payment_tree"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+				  Click to register a Multi-Partner Payment
+				</p><p>
+				  Payments are used to register liquidity movements (send, collect or transfer money).
+				  You can then process those payments by your own means or by using installed facilities.
+				</p>
+			</field>
+		</record>
+
+		<menuitem action="action_account_multi_payment" id="menu_account_multi_payment" parent="account.menu_finance_receivables" sequence="25"/>
+		<menuitem action="action_account_multi_payment" id="menu_account_multi_payment_" parent="menu_account_customer" sequence="50"/>
+		
+		<act_window
+			id="action_account_multi_payment_client"
+			name="Multi-Partner Payment"
+			res_model="account.multi.partner.payments"
+			src_model="account.invoice"
+			view_mode="form"
+			multi="True"    
+			target="current"
+			key2="client_action_multi"
+		/>
+
+
+		<record id="act_post_invoices_list" model="ir.actions.act_window">
+			 <field name="res_model">account.invoice</field>
+			 <field name="name">Invoices</field>
+			 <field name="view_type">form</field>
+			 <field name="view_mode">tree,form</field>
+			 <field name="search_view_id" ref="view_account_invoice_filter"/>
+			 <field name="context">{'search_default_post_id': [active_id], 'default_post_id': active_id}</field>
+		</record>  
+
+		<record id="act_post_aged_invoices_list" model="ir.actions.act_window">
+			 <field name="res_model">account.invoice</field>
+			 <field name="name">Aged Invoices</field>
+			 <field name="view_type">form</field>
+			 <field name="view_mode">tree,form</field>
+			 <field name="search_view_id" ref="view_account_invoice_filter"/>
+			 <field name="domain">[('date_due','&lt;=', ((context_today()).strftime('%Y-%m-%d')))]</field>	
+			 <field name="context">{'search_default_post_id': [active_id], 'default_post_id': active_id}</field>
+		</record> 
+
+		<record id="sos_post_form_view_inherited" model="ir.ui.view">
+			<field name="name">sos_post_form_view_inherited</field>
+			<field name="model">sos.post</field>
+			<field name="type">form</field>
+			<field name="inherit_id" ref="sos.sos_post_form_view"/>
+			<field name="arch" type="xml">
+			<data>
+					  
+				<xpath expr="//div[@name='button_box']" position="inside">
+					<button name="%(act_post_invoices_list)d" 
+						class="oe_stat_button" 
+						icon="fa-pencil-square" 
+						type="action"  groups="hr.group_hr_user">
+						<field name="invoices_count" widget="statinfo" string="Invoices" help="Invoices Details" groups="hr.group_hr_user"/>
+					</button>	
+			
+					<!--
+					<button  name="%(act_post_aged_invoices_list)d"
+						class="oe_inline oe_stat_button" 
+						icon="fa-database"
+						type="action" groups="hr.group_hr_user">
+						<field name="aged_balance" widget="statinfo" string="Aged Balance" help="Aged Balance Detail" groups="hr.group_hr_user"/>
+					</button>
+			        -->
+				 </xpath>				 
+			</data>
+			</field>
+		</record> 
+
+
+		<!-- Move Line Inheritance  -->
+		<record id="sos_view_move_line_tree" model="ir.ui.view">
+			<field name="name">sos_view_move_line_tree</field>
+			<field name="model">account.move.line</field>
+			<field name="type">tree</field>
+			<field name="inherit_id" ref="account.view_move_line_tree"/>
+			<field name="arch" type="xml">
+			<data>		      
+				<xpath expr="//field[@name='partner_id']" position="after">
+					<field name="post_id" string="Post"/>
+				</xpath>
+			</data>
+			</field>
+		</record> 
+
+		<record id="sos_view_move_line_filter" model="ir.ui.view">
+			<field name="name">sos_view_move_line_filter</field>
+			<field name="model">account.move.line</field>
+			<field name="type">search</field>
+			<field name="inherit_id" ref="account.view_account_move_line_filter"/>
+			<field name="arch" type="xml">
+			<data>		      
+				<xpath expr="//field[@name='partner_id']" position="before">
+					<field name="post_id" string="Post"/>
+				</xpath>
+				<xpath expr="//group/filter" position="inside">
+					<filter string="Post" name="post_id" icon="terp-partner" domain="[]" context="{'group_by':'post_id'}"/>
+				</xpath>
+			</data>
+			</field>
+		</record> 
+
+ <!-- res.partner links -->
+		<act_window
+			context="{'search_default_unreconciled':1, 'search_default_post_id':[active_id], 'default_post_id': active_id}"
+			domain="[('account_id.reconcile', '=', True),('account_id.internal_type', 'in', ['receivable', 'payable'])]"
+			id="act_post_account_move_all"
+			name="Receivables &amp; Payables"
+			res_model="account.move.line"
+			src_model="sos.post"/>
+
+		<act_window 
+			context="{'search_default_post_id':[active_id], 'default_post_id': active_id}"
+			id="act_post_account_move"
+			name="Journal Items"
+			res_model="account.move.line"
+			src_model="sos.post"
+			groups="account.group_account_user"/>
+
+		 
+		<act_window
+			context="{'search_default_unreconciled':True, 'search_default_emp_id':[active_id], 'default_emp_id': active_id}"
+			domain="[('account_id.reconcile', '=', True),('account_id.internal_type', 'in', ['receivable', 'payable'])]"
+			id="act_emp_account_move_all"
+			name="Receivables &amp; Payables"
+			res_model="account.move.line"
+			src_model="hr.employee"/> 
+			
+			
+	<!-- account_bank_statement validate confirm action inherit-->
+	<record id="sos_view_bank_statement_form_inherited" model="ir.ui.view">
+		<field name="name">sos_view_bank_statement_form_inherited</field>
+		<field name="model">account.bank.statement</field>
+		<field name="type">form</field>
+		<field name="inherit_id" ref="account.view_bank_statement_form"/>
+		<field name="arch" type="xml">
+		<data> 
+		    <xpath expr="//header//button[@name='check_confirm_bank']" position="replace">
+		    	 <button name="check_confirm_bank" string="Validate" type="object" class="oe_highlight" attrs="{'invisible':['|','|',('all_lines_reconciled','=',False),('line_ids','=',[]),('state', '!=', 'open')]}" groups="account.group_account_manager"/>				  	
+			 </xpath>
+		</data>	 
+		</field>	 
+	  </record>
+  
+	</data>      
+</odoo>
+

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="clv_card_updt_view_form_pbm" model="ir.ui.view">
+            <field name="name">clv.card.updt.form</field>
+            <field name="model">clv.card.updt</field>
+            <field name="inherit_id" ref="clv_card.clv_card_updt_view_form"/>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <group name="global_tag_ids_selection" position="before">
+                    <group>
+                        <field name="state_selection"/>
+                    </group>
+                    <group>
+                        <field name="state" nolabel='1'/>
+                    </group>
+                </group>
+                <group name="category_ids" position="after">
+                </group>
+            </field>
+        </record>
+
+    </data>
+</odoo>

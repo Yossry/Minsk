@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <menuitem name="File System" id="clv_file_system.menu_base_base_file_system"
+        parent="clv_base.menu_base_base"
+        groups="clv_file_system.group_user"
+        sequence="200"/>
+
+    <menuitem name="Directories" id="clv_file_system.menu_base_base_file_system_directories" 
+        parent="clv_file_system.menu_base_base_file_system"
+        groups="clv_file_system.group_user"
+        sequence="10"
+        action="clv_file_system.clv_file_system_directory_action"/>
+
+    <menuitem name="Files" id="clv_file_system.menu_base_base_file_system_files" 
+        parent="clv_file_system.menu_base_base_file_system"
+        groups="clv_file_system.group_user"
+        sequence="20"
+        action="clv_file_system.clv_file_system_file_action"/>
+
+</odoo>

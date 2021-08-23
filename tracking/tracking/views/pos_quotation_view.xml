@@ -1,0 +1,24 @@
+<openerp>
+    <data>
+        <record id="view_pos_quotation_inherit_lx" model="ir.ui.view">
+            <field name="name">view_pos_quotation_inherit_lx</field>
+            <field name="model">pos.quotation</field>
+            <field name="inherit_id" ref="pos_save_quotations.pos_quotation_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='shop_ids']" position="after">
+                    <field name="is_lx_delivery"/>
+                    <field name="delivery_date"/>
+                    <field name="employee_id"/>
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="partner_shipping_id"/>
+                    <field name="sync_lx"/>
+                </xpath>
+                <xpath expr="//field[@name='line_ids']/tree" position="inside">
+                    <field name="is_product_promo"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</openerp>

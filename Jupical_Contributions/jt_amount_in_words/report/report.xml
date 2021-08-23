@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Sale Order Report -->
+        <template id="sale_report_inherit" inherit_id="sale.report_saleorder_document">
+            <xpath expr="//div[@class='page']/p/span" position="before">
+                <div style="font-size:16px; padding-bottom:15px;">
+                    <tr class="border-black">
+                        <td><strong>Amount In Word : </strong></td>
+                        <td><span t-field="doc.num_word"/></td>
+                    </tr>
+                </div>
+            </xpath>
+        </template>
+
+        <!-- Purchase Order Report -->
+        <template id="purchse_report_inherit" inherit_id="purchase.report_purchaseorder_document">
+            <xpath expr="//div[@class='page']/p" position="before">
+                <div style="font-size:16px; padding-bottom:15px;">
+                    <tr class="border-black">
+                        <td><strong>Amount In Word : </strong></td>
+                        <td><span t-field="o.num_word"/></td>
+                    </tr>
+                </div>
+            </xpath>
+        </template>
+
+        <!-- Account Invoice Report -->
+        <template id="invoice_report_inherit" inherit_id="account.report_invoice_document">
+            <xpath expr="//div[@class='page']/p" position="before">
+                <div style="font-size:16px; padding-bottom:30px;">
+                    <tr class="border-black">
+                        <td><strong>Amount In Word : </strong></td>
+                        <td><span t-field="o.num_word"/></td>
+                    </tr>
+                </div>
+            </xpath>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="survey_question_view_form_label" model="ir.ui.view">
+        <field name="name">survey.question.form</field>
+        <field name="model">survey.question</field>
+        <field name="inherit_id" ref="survey.survey_question_form"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="sequence" position="after">
+                <field name="code"/>
+            </field>
+            <field name="labels_ids_2" position="replace">
+                <field name="labels_ids_2" context="{'default_question_id_2': active_id}" attrs="{'invisible': [('type', '!=', 'matrix')]}">
+                    <tree editable="bottom">
+                        <field name="sequence" widget="handle"/>
+                        <field name="code"/>
+                        <field name="value" string="Rows"/>
+                    </tree>
+                </field>
+            </field>
+        </field>
+    </record>
+
+    <record id="survey_label_view_tree" model="ir.ui.view">
+        <field name="name">survey.label.tree</field>
+        <field name="model">survey.label</field>
+        <field name="inherit_id" ref="survey.survey_label_tree"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="sequence" position="after">
+                <field name="code" />
+            </field>
+        </field>
+    </record>
+
+</odoo>

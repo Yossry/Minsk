@@ -1,0 +1,15 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_allowance_line_manager,hr.allowance.line,model_hr_allowance_line,base.group_user,1,1,1,1
+access_hr_payroll_transactions_manager,hr.payroll.transactions,model_hr_payroll_transactions,hr_payroll.group_hr_payroll_manager,1,1,1,1
+access_hr_payroll_transactions_line_manager,hr.payroll.transactions.line,model_hr_payroll_transactions_line,hr_payroll.group_hr_payroll_manager,1,1,1,1
+access_hr_variance_line_manager,hr.variance.line,model_hr_variance_line,base.group_user,1,1,1,1
+access_hr_payroll_tran_sheet_view_manager,hr.payroll.tran.sheet.view,model_hr_payroll_tran_sheet_view,hr_payroll.group_hr_payroll_manager,1,1,0,1
+access_hr_salary_sheet_view_manager,hr.salary.sheet.view,model_hr_salary_sheet_view,hr_payroll.group_hr_payroll_manager,1,1,0,1
+access_hr_contract_sheet_view_manager,hr.contract.sheet.view,model_hr_contract_sheet_view,hr_payroll.group_hr_payroll_manager,1,1,0,1
+access_leave_analysis_manager,leave.analysis,model_leave_analysis,base.group_user,1,1,1,1
+access_hr_airticket_manager,hr.airticket,model_hr_airticket,base.group_user,1,1,1,1
+
+
+
+
+

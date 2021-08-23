@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+      	
+	    <!-- Complaint Detail Report -->
+		<report
+			id="report_complaint_detail"
+			string= "Complaint Detail"
+			model = "sos.complaint"
+			report_type="qweb-pdf"
+			file="sos_complaint.report_complaintdetail"
+			name="sos_complaint.report_complaintdetail"
+		/>
+	    
+	    <!-- Complaint Statistics Report -->
+		<report
+			id="report_complaint_statistics"
+			string= "Complaint Statistics (Project)"
+			model = "complaints.statistics.project"
+			report_type="qweb-pdf"
+			file="sos_complaint.report_complaintstatistics"
+			name="sos_complaint.report_complaintstatistics"
+		/>
+		
+		<!-- Complaint Summary Report -->
+		<report
+			id="report_complaint_summary"
+			string= "Complaint Summary"
+			model = "complaints.summary"
+			report_type="qweb-pdf"
+			file="sos_complaint.report_complaintsummary"
+			name="sos_complaint.report_complaintsummary"
+		/>
+		
+	    <!-- Additional Guard Report -->
+		<report
+			id="report_additional_guard"
+			string= "Additional Guard Report"
+			model = "additional.guard.report"
+			report_type="qweb-pdf"
+			file="sos_complaint.report_additionalguard"
+			name="sos_complaint.report_additionalguard"
+		/>	
+
+		 <!-- Air Travel Summary Report -->
+		<report
+			id="report_airtravel_summary"
+			string= "Air Travel Summary Report"
+			model = "air.travel.summary.wiz"
+			report_type="qweb-pdf"
+			file="sos_complaint.report_air_travel_summary"
+			name="sos_complaint.report_air_travel_summary"
+		/>
+		
+		 <!-- Guest House Summary Report -->
+		<report
+			id="action_guest_house_summary"
+			string= "Guest House Summary Report"
+			model = "guest.house.summary.wiz"
+			report_type="qweb-pdf"
+			file="sos_complaint.report_guest_house_summary"
+			name="sos_complaint.report_guest_house_summary"
+		/>
+		
+		<!-- Rent Car Summary Report -->
+		<report
+			id="action_rent_car_summary"
+			string= "Rent A Car Summary Report"
+			model = "rent.car.summary.wiz"
+			report_type="qweb-pdf"
+			file="sos_complaint.report_rent_car_summary"
+			name="sos_complaint.report_rent_car_summary"
+		/>								  
+	    
+    </data>
+</odoo>

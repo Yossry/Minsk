@@ -1,0 +1,37 @@
+id,name,vat,street,street2,zip,state_id,city,country_id/id,phone,email,image_small,lang,tz,website
+base.res_partner_2,Restaurang Italiana,,Odengatan 75,,11376,,Stockholm,base.se,073 996 38 29,info@italiana.se,,sv_SE,Europe/Stockholm,http://www.restaurangitaliana.se
+base.res_partner_address_31,Maja Olsson,,Odengatan 75,,11376,,Stockholm,base.se,073 399 76 37,maja.olsson@italiana.se,,sv_SE,Europe/Stockholm,
+base.res_partner_address_3,Douglas Andersson,,Odengatan 75,,11376,,Stockholm,base.se,073 553 72 42,douglas.andersson@italiana.se,,sv_SE,Europe/Stockholm,
+base.res_partner_address_4,Kalle Karlsson,,Odengatan 75,,11376,,Stockholm,base.se,073 138 34 01,kalle.karlsson@italiana.se,,sv_SE,Europe/Stockholm,
+base.res_partner_3,Tapeter och Färg AB,,Sturegatan 24,,17231,,Sundbyberg,base.se,073 284 48 75,info@tapeterochfarg.se,,sv_SE,Europe/Stockholm,http://www.tapeterochfarg.se
+base.res_partner_address_5,Edvin Hansson,,Sturegatan 24,,17231,,Sundbyberg,base.se,073 352 25 55,edvin.hansson@tapeterochfarg.se,,sv_SE,Europe/Stockholm,
+base.res_partner_address_10,Lisa Johansson,,Sturegatan 24,,17231,,Sundbyberg,base.se,073 386 32 77,lisa.johansson@tapeterochfarg.se,,sv_SE,Europe/Stockholm,
+base.res_partner_address_25,Oskar Berg,,Sturegatan 24,,17231,,Sundbyberg,base.se,073 239 17 44,oskar.berg@tapeterochfarg.se,,sv_SE,Europe/Stockholm,
+base.res_partner_address_11,Fredrik Håkansson,,Sturegatan 24,,17231,,Sundbyberg,base.se,073 167 20 40,fredrik.hakansson@tapeterochfarg.se,,sv_SE,Europe/Stockholm,
+base.res_partner_18,Mattes Bygg AB,,Glasvingegatan 7,,72134,,Västerås,base.se,073 316 05 93,info@mattesbygg.se,,sv_SE,Europe/Stockholm,http://www.mattesbygg.se
+base.res_partner_address_30,Emelie Kvist ,,Glasvingegatan 7,,72134,,Västerås,base.se,073 648 91 55,emelie.kvist@mattesbygg.se,,sv_SE,Europe/Stockholm,
+base.res_partner_12,Medelhavsinredning AB,,Strandvägen 5,,11245,,Stockholm,base.se,073 931 05 05,info@medelhavsinredning.se,,sv_SE,Europe/Stockholm,http://www.medelhanvsinredning.se
+base.res_partner_address_15,Mats Svensson,,Strandvägen 5,,11245,,Stockholm,base.se,073 687 32 62,mats.svensson@medelhavsinredning.se,,sv_SE,Europe/Stockholm,
+base.res_partner_address_28,Nicole Nygren,,Strandvägen 5,,11245,,Stockholm,base.se,073 595 83 93,nicole.nygren@medelhavsinredning.se,,sv_SE,Europe/Stockholm,
+base.res_partner_address_16,Freja Knutsson,,Strandvägen 5,,11245,,Stockholm,base.se,073 638 60 34,freja.knutsson@medelhavsinredning.se,,sv_SE,Europe/Stockholm,
+base.res_partner_4,Matthuset AB,,Ulvsundavägen 185,,16867,,Bromma,base.se,073 873 61 26,info@matthuset.se,,sv_SE,Europe/Stockholm,http://www.matthuset.se
+base.res_partner_address_7,Peter Nyman,,Ulvsundavägen 185,,16867,,Bromma,base.se,073 498 56 11,peter.nyman@matthuset.se,,sv_SE,Europe/Stockholm,
+base.res_partner_address_14,Karl Hultman,,Ulvsundavägen 185,,16867,,Bromma,base.se,073 175 20 48,karl.hultman@matthuset.se,,sv_SE,Europe/Stockholm,
+base.res_partner_address_33,Julia Nilsson,,Ulvsundavägen 185,,16867,,Bromma,base.se,073 148 78 11,julia.nilsson@matthuset.se,,sv_SE,Europe/Stockholm,
+base.res_partner_address_13,Kim Nyström,,Ulvsundavägen 185,,16867,,Bromma,base.se,073 379 48 65,kim.nystrom@matthuset.se,,sv_SE,Europe/Stockholm,
+base.res_partner_address_32,Sandra Ekström,,Ulvsundavägen 185,,16867,,Bromma,base.se,073 371 72 93,sandra.ekstrom@matthuset.se,,sv_SE,Europe/Stockholm,
+base.res_partner_address_24,Theodor Lundin,,Ulvsundavägen 185,,16867,,Bromma,base.se,073 612 65 61,theodor.lundin@matthuset.se,,sv_SE,Europe/Stockholm,
+base.res_partner_address_34,Felix Holmberg,,Ulvsundavägen 185,,16867,,Bromma,base.se,073 944 86 61,felix.holmberg@matthuset.se,,sv_SE,Europe/Stockholm,
+base.res_partner_10,Resegruppen AB,,Ullevigatan 54,,16867,,Göteborg,base.se,073 502 10 24,info@resegruppen.se,,sv_SE,Europe/Stockholm,http://www.resegruppen.se
+base.res_partner_address_18,Daniel Söderberg,,Ullevigatan 54,,16867,,Göteborg,base.se,073 723 65 69,daniel.soderberg@resegruppen.se,,sv_SE,Europe/Stockholm,
+base.res_partner_address_17,Adam Åberg,,Ullevigatan 54,,16867,,Göteborg,base.se,073 539 49 48,adam.aberg@resegruppen.se,,sv_SE,Europe/Stockholm,
+base.res_partner_1,Träfabriken AB,,Helikoptervägen 3,,17563,,Järfälla,base.se,073 853 71 97,info@trafabriken.se,,sv_SE,Europe/Stockholm,http://www.trafabriken.se
+base.res_partner_address_2,Erik Strömberg,,Helikoptervägen 3,,17563,,Järfälla,base.se,073 397 40 91,erik.stromberg@trafabriken.se,,sv_SE,Europe/Stockholm,
+base.res_partner_address_27,Tom Ek,,Helikoptervägen 3,,17563,,Järfälla,base.se,073 834 16 02,tom.ek@trafabriken.se,,sv_SE,Europe/Stockholm,
+base.res_partner_address_1,Olof Stenberg,,Helikoptervägen 3,,17563,,Järfälla,base.se,073 523 21 11,olof.stenberg@trafabriken.se,,sv_SE,Europe/Stockholm,
+base.main_partner,Spelhuset AB,,Birger Jarlsgatan 140,,11420,,Stockholm,base.se,073 123 80 69,info@spelhuset.se,,sv_SE,Europe/Stockholm,http://www.spelhuset.se
+base.res_partner_main1,Håkan Lindblom,,Birger Jarlsgatan 140,,11420,,Stockholm,base.se,073 904 89 02,hakan.lindblom@spelhuset.se,,sv_SE,Europe/Stockholm,
+base.res_partner_main2,Albin Dahl,,Birger Jarlsgatan 140,,11420,,Stockholm,base.se,073 177 49 37,albin.dahl@spelhuset.se,,sv_SE,Europe/Stockholm,
+base.demo_user0_res_partner,Joel Willis,,Dalagatan 9,,11361,,Stockholm,base.se,073 556 51 04,joel.willis@exempel.se,,sv_SE,Europe/Stockholm,
+base.user_demo_res_partner,Marc Demo,,Nybrogatan 25,,11439,,Stockholm,base.se,073 695 23 34,marc.demo@exempel.se,,sv_SE,Europe/Stockholm,
+base.partner_admin,Mitchell Admin,,Valhallavägen 124,,11441,,Stockholm,base.se,073 555 55 55,mitchell.admin@exempel.se,,sv_SE,Europe/Stockholm,

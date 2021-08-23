@@ -1,0 +1,17 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_clv_person_sel_district_user,clv.person.district.user,model_clv_person_sel_district,clv_person_sel_jcafb.group_user,1,0,0,0
+access_clv_person_sel_district_manager,clv.person.district.manager,model_clv_person_sel_district,clv_person_sel_jcafb.group_manager,1,1,1,0
+access_clv_person_sel_district_supmanager,clv.person.district.supmanager,model_clv_person_sel_district,clv_person_sel_jcafb.group_supmanager,1,1,1,1
+
+access_clv_person_sel_age_group_user,clv.person.age_group.user,model_clv_person_sel_age_group,clv_person_sel_jcafb.group_user,1,0,0,0
+access_clv_person_sel_age_group_manager,clv.person.age_group.manager,model_clv_person_sel_age_group,clv_person_sel_jcafb.group_manager,1,1,1,0
+access_clv_person_sel_age_group_supmanager,clv.person.age_group.supmanager,model_clv_person_sel_age_group,clv_person_sel_jcafb.group_supmanager,1,1,1,1
+
+access_clv_person_sel_group_user,clv.person.group.user,model_clv_person_sel_group,clv_person_sel_jcafb.group_user,1,0,0,0
+access_clv_person_sel_group_manager,clv.person.group.manager,model_clv_person_sel_group,clv_person_sel_jcafb.group_manager,1,1,1,0
+access_clv_person_sel_group_supmanager,clv.person.group.supmanager,model_clv_person_sel_group,clv_person_sel_jcafb.group_supmanager,1,1,1,1
+
+access_clv_person_sel_summary_user,clv.person.summary.user,model_clv_person_sel_summary,clv_person_sel_jcafb.group_user,1,0,0,0
+access_clv_person_sel_summary_manager,clv.person.summary.manager,model_clv_person_sel_summary,clv_person_sel_jcafb.group_manager,1,1,1,0
+access_clv_person_sel_summary_supmanager,clv.person.summary.supmanager,model_clv_person_sel_summary,clv_person_sel_jcafb.group_supmanager,1,1,1,1

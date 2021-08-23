@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_overtime_manager,hr.overtime,model_hr_overtime,hr.group_hr_user,1,1,1,1
+access_hr_overtime_emp,hr.overtime.user,model_hr_overtime,base.group_user,1,1,1,1
+access_contract,hr.contract,hr_contract.model_hr_contract,base.group_user,1,0,0,0
+account_analytic_line,account_analytic_line,account.model_account_analytic_line,hr.group_hr_manager,1,0,1,0
+access_date_of_overtime_line,date.of.overtime.line,model_date_of_overtime_line,,1,1,1,1

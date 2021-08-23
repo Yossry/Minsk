@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <report
+        id="custom_report_sale_supplier_fm"
+        model="sale.order"
+        string="Partner Quotation/Order"
+        report_type="qweb-pdf"
+        groups="supplier_user_access.group_supplier"
+        name="supplier_user_access.report_sale_supplier_fm"
+        file="supplier_user_access.report_sale_supplier_fm"
+    />
+    <report
+        id="custom_report_picking_supplier_fm"
+        model="stock.picking"
+        string="Partner Delivery"
+        report_type="qweb-pdf"
+        groups="supplier_user_access.group_supplier"
+        name="supplier_user_access.report_picking_fm_document"
+        file="supplier_user_access.report_picking_fm_document"
+    />
+    <report
+        id="custom_report_invoice_supplier_fm"
+        model="account.invoice"
+        string="Partner Invoice"
+        report_type="qweb-pdf"
+        groups="supplier_user_access.group_supplier"
+        name="supplier_user_access.report_invoice_supplier_fm"
+        file="supplier_user_access.report_invoice_supplier_fm"
+    />
+</odoo>

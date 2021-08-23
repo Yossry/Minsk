@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright 2019 Coop IT Easy
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+
+<odoo>
+    <data noupdate="0">  <!-- fixme -->
+
+    <record id="demo_bank" model="res.bank">
+        <field name="name">Banksy Bank Inc.</field>
+        <field name="bic">BBRUBEBB</field>
+        <field name="clearing" eval="234234"/>
+    </record>
+    <record id="demo_partner_bank" model="res.partner.bank">
+        <field name="partner_id" ref="base.main_partner"/>
+        <field name="bank_id" ref="demo_bank"/>
+        <field name="bank_bic" model="res.bank" eval="obj(ref('demo_bank')).bic"/>
+        <field name="acc_number">ISR account</field>
+        <field name="l10n_ch_isrb_id_number">123456</field>
+        <field name="print_bank" eval="True"/>
+        <field name="print_account" eval="True"/>
+        <field name="print_partner" eval="True"/>
+        <field name="l10n_ch_isr_subscription_chf">01-1234-1</field>
+    </record>
+        
+    </data>
+</odoo>

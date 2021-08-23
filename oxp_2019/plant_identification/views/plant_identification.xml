@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_plant_identification_root"
+        name="Plant Identification"
+        sequence="30"
+        web_icon="utm,static/description/icon.png"/>
+
+    <record id="identification_request_action" model="ir.actions.act_window">
+        <field name="name">Identification Requests</field>
+        <field name="res_model">plant.id.request</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Submit your first request for identification using the create button!
+            </p>
+        </field>
+    </record>
+
+    <record id="plant_identification_request_view_tree" model="ir.ui.view">
+        <field name="name">plant.id.request.view.tree</field>
+        <field name="model">plant.id.request</field>
+        <field name="arch" type="xml">
+            <tree string="Identification Requests" banner_route="/plant/credit_status">
+                <field name="name"/>
+                <field name="confidence" widget="percentage"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="plant_identification_request_view_form" model="ir.ui.view">
+        <field name="name">plant.id.request.view.form</field>
+        <field name="model">plant.id.request</field>
+        <field name="arch" type="xml">
+            <form string="Identification Request" banner_route="/plant/credit_status">
+                <header>
+                    <button string="Submit Request (1 credit)" class="btn btn-primary" attrs="{'invisible': [('state','!=', '0_new')]}" type="object" name="submit_request"/>
+                    <button string="Fetch Results" class="btn" attrs="{'invisible': [('state','!=', '1_sent')]}" type="object" name="fetch_result"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <field name="image_1920" widget='image' class="oe_avatar" options='{"zoom": true, "preview_image":"image_128"}'/>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="confidence" widget="percentage" attrs="{'readonly': [('state', '!=', '2_identified')]}"/>
+                        <field name="iap_request_id" groups="base.group_no_one"  attrs="{'readonly': [('state', '=', '0_new')]}"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="plant_identification_request_view_kanban" model="ir.ui.view">
+        <field name="name">plant.id.request.view.kanban</field>
+        <field name="model">plant.id.request</field>
+        <field name="arch" type="xml">
+            <kanban class="o_plant_identification_request_kanban" default_group_by='state' banner_route="/plant/credit_status">
+                <field name="id"/>
+                <templates>
+                    <t t-name="kanban-box">
+                    <div class="oe_kanban_global_click o_kanban_record_has_image_fill">
+                        <field name="image_128" widget="image" class="o_kanban_image_fill_left" options="{'zoom': true, 'background': true, 'preventClicks': false}"/>
+
+                        <div class="oe_kanban_details">
+                            <div class="o_kanban_record_top">
+                                <div class="o_kanban_record_headings">
+                                    <strong class="o_kanban_record_title">
+                                        <field name="name"/>
+                                    </strong>
+                                </div>
+                                <field name="confidence" widget="percentage"/>
+                            </div>
+                        </div>
+                    </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <menuitem id="menu_plant_identification_request"
+        name="Identification Requests"
+        parent="menu_plant_identification_root"
+        action='identification_request_action'
+        sequence="10"/>
+
+
+
+</odoo>

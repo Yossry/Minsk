@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+    
+    	<record id="paperformat_saleinvoice" model="report.paperformat">
+			<field name="name">Sale Invoice </field>
+			<field name="default" eval="True"/>
+			<field name="format">A4</field>
+			<field name="orientation">Portrait</field>
+			<field name="margin_top">5</field>
+			<field name="margin_bottom">10</field>
+			<field name="margin_left">3</field>
+			<field name="margin_right">3</field>
+			<field name="header_line" eval="False"/>
+			<field name="header_spacing">3</field>
+			<field name="dpi">90</field>
+		</record>	
+		
+		<report
+			id="report_saleinvoice"
+			string= "Sale Invoice (NEW)"
+			model = "account.invoice"
+			report_type="qweb-pdf"
+			file="sos_accounts.report_sale_invoice"
+			name="sos_accounts.report_sale_invoice"
+		/>
+		
+		
+		<report
+			id="action_cashbook_report"
+			string= "Cash Book Report"
+			model = "account.bank.statement"
+			report_type="qweb-pdf"
+			file="sos_accounts.report_sos_cashbook"
+			name="sos_accounts.report_sos_cashbook"
+		/>
+		
+    </data>
+     
+</odoo>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo><data>
+
+    <!--
+        FINANCIAL MANAGEMENT
+    -->
+    <menuitem name="Treasury"
+        string='Treasury'
+        id="treasury_management_menu"
+        sequence="80"
+        web_icon="treasury_forecast,static/description/icon_2.png"
+        groups="account.group_account_manager"/>
+
+    <menuitem id='menu_treasury_forecast_group'
+        name='Treasury'
+        parent="treasury_management_menu"
+        sequence='10'/>
+
+    <!-- Treasury Planning menu-->
+    <act_window id="action_treasury_treasury_forecasts"
+        name="Treasury Planning"
+        res_model="treasury.forecast"
+        view_mode="tree,form,pivot"/>
+
+    <menuitem id='menu_treasury_forecasts'
+        string='Treasury Planning'
+        parent="menu_treasury_forecast_group"
+        action="action_treasury_treasury_forecasts"
+        sequence='10'/>
+
+    <!--
+        ADVISER MENU
+    -->
+    <menuitem id='menu_treasury_management_other'
+        name='Adviser'
+        parent="treasury_management_menu"
+        sequence='20'/>
+
+    <!-- Payables and Receivables -->
+    <act_window id="action_list_payables_receivables"
+        name="Payables and Receivables"
+        res_model="account.move.line"
+        domain="[('journal_id.type','!=', 'bank'),
+                 ('treasury_planning','!=', False)
+                 ]"
+        view_id="account.view_move_line_tree"
+        view_mode="tree,pivot"/>
+
+    <menuitem id='menu_list_payables_receivables'
+        string="Payables and Receivables"
+        parent="menu_treasury_management_other"
+        action="action_list_payables_receivables"
+        sequence='10'/>
+
+    <!-- Bank statements -->
+    <act_window id="action_treasury_bank_statements"
+        name="Bank statements"
+        res_model="account.bank.statement"
+        context="{'journal_type':'bank'}"
+        domain="[('journal_id.type', '=', 'bank')]"
+        view_mode="tree,form"/>
+
+    <menuitem id='menu_treasury_bank_statements'
+        string="Bank statements"
+        parent="menu_treasury_management_other"
+        action="action_treasury_bank_statements"
+        sequence='20'/>
+
+    <!-- Bank statement lines -->
+    <act_window id="action_treasury_bank_statement_lines"
+        name="Bank statement Lines"
+        res_model="account.bank.statement.line"
+        view_mode="tree"/>
+
+    <menuitem id='menu_treasury_bank_statement_lines'
+        string="Bank statements Lines"
+        parent="menu_treasury_management_other"
+        action="action_treasury_bank_statement_lines"
+        sequence='30'/>
+
+      <!--
+          REPORTS MENU
+      -->
+
+    <menuitem id='menu_treasury_management_reporting'
+        name='Reports'
+        parent="treasury_management_menu"
+        sequence='30'/>
+
+      <!--
+          SETTINGS
+      -->
+
+    <menuitem id="menu_financ_manag_settings"
+        name="Configuration"
+        parent="treasury_management_menu"
+        sequence="40"/>
+
+    <!-- Treasury Templates-->
+    <act_window id="action_treasury_forecast_template"
+        name="Forecast templates"
+        res_model='treasury.forecast.template'
+        view_mode="tree,form"/>
+
+    <menuitem id='menu_treasury_forecast_template'
+        string='Forecast templates'
+        parent="menu_financ_manag_settings"
+        action="action_treasury_forecast_template"
+        sequence='20'/>
+
+    <!-- Bank forecast defatult settings-->
+    <act_window id="action_bank_balance_default"
+        name="Bank forecast defaults"
+        res_model='bank.balance.configuration'
+        view_mode="tree,form"/>
+
+    <menuitem id='menu_bank_balance_default'
+        string='Bank forecast defaults'
+        parent="menu_financ_manag_settings"
+        action="action_bank_balance_default"
+        sequence='30'/>
+
+</data></odoo>

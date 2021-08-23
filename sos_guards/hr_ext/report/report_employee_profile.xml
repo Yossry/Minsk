@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+	<template id ="hr_ext.report_employeeprofile">
+		<t t-call="web.html_container">
+				<t t-call="web.internal_layout" style="font-family:georgia,garamond,serif;font-size:10px">
+					<div class="page">
+						<style>
+								.tabhead{font-size:7px;}
+								.tabcol{font-size:9px;}
+								.tabtot{font-size:10px;}
+								 table th { background-color:#d4e3e5;}
+								 tr:nth-child(even) {background-color: #FFEBCD;}
+								 tr:nth-child(odd) {background-color: #cdcdcd;}
+						</style>
+						<h4>Employee Profile Report of <span t-esc="data['company_id'][1]"/></h4>
+							<table class="table table-condensed" width="100%">
+								<thead style="font-size:9px;font-weight:bold;">
+									<th>S.No </th>
+									<th>Code </th>
+									<th>Employee Name </th>
+									<th>Reporting To </th>
+									<th>Iqama Company </th>
+									<th>Salary Company</th>									
+									<th>Contract Start Date</th>
+									<th>Contract End Date</th>
+									<th>Department</th>
+									<th>Designation</th>
+									<th>Reason</th>
+								</thead>
+								
+								<tbody>
+									<t t-foreach="Employee" t-as="emp">
+										<tr style="font-size:11px;">
+											<td> <span t-esc="emp_index + 1" /> </td>
+											<td> <span t-esc="emp.code" /> </td>
+											<td> <span t-esc="emp.name" /> </td>
+											<td> <span t-esc="emp.parent_id.name" /> </td>
+											<td> <span t-esc="emp.company_id.partner_id.code" /> </td>
+											<td>
+												<t t-if="get_employee_contract(emp.id)">
+													<span t-esc="get_employee_contract(emp.id).struct_id.company_id.partner_id.code" />
+												</t>
+											</td>												
+											<td>
+												<t t-if="get_employee_contract(emp.id)">
+													<span t-esc="get_employee_contract(emp.id).date_start" />
+												</t>
+											</td>
+											<td>
+												<t t-if="get_employee_contract(emp.id)">
+													<span t-esc="get_employee_contract(emp.id).date_end" />
+												</t>
+											</td>	
+											<td> <span t-esc="emp.department_id.name" /> </td>
+											<td> <span t-esc="emp.job_id.name" /></td>
+											
+											<td>
+												<t t-if="not data['emp_status'] == 'active'">	
+													<t t-if="get_terminate_reason(emp.id)">	
+														<span t-esc="get_terminate_reason(emp.id)" />
+													</t>
+												</t>	
+											</td>
+												
+										</tr>
+									</t>
+								</tbody>
+										
+							</table>
+
+					</div>
+				</t>
+		</t>
+	</template>
+	
+	</data>
+</odoo>

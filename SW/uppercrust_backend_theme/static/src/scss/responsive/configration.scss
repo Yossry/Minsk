@@ -1,0 +1,136 @@
+@mixin configration-xs() {
+    .o_main {
+        .ad_rightbar {
+            .o_content > .o_view_controller, .o_view_controller {
+                .o_form_view.oe_form_configuration.o_base_settings {
+                    padding: 0px;
+                    .o_control_panel {
+                        padding: 10px 25px 10px 35px;
+                        height: 53px;
+                        .o_form_statusbar {
+                            left: 0px;
+                            .o_statusbar_buttons {
+                                .dropdown-menu.show {
+                                    bottom: 100%;
+                                    top: auto;
+                                    right: 0;
+                                    left: auto !important;
+                                    padding: 5px;
+                                    transform: none !important;
+                                    top: auto !important;
+                                    display: table;
+                                    & > li{
+                                        button{
+                                            width: 100%;
+                                            margin-bottom: 5px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .o_setting_container {
+                        .settings_tab {
+                            background-color: $brand-secondary;
+                            .tab {
+                                .app_name {
+                                    color: $white;
+                                }
+                                &:hover {
+                                    background-color: $brand-secondary;
+                                }
+                            }
+                            .tab.current {
+                                background-color: $brand-secondary;
+                                color: $white;
+                                font-weight: $font-weight-7;
+                                height: 36px;
+                                box-shadow: none;
+                                &:after {
+                                    @include border-animation-white();
+                                }
+                            }
+                        }
+                        .settings {
+                            padding: 0px 10px;
+                            .app_settings_block {
+                                h2 {
+                                    margin: 0px;
+                                    padding: 5px;
+                                    font-size: 13px;
+                                }
+                                .o_settings_container {
+                                    margin: 10px 0px 0px 0px !important;
+                                    padding: 0px;
+                                }
+                                .o_setting_box {
+                                    padding: 0px;
+                                    .o_setting_left_pane, .o_setting_right_pane {
+                                        margin: 0px;
+                                        padding: 0px;
+                                        .row {
+                                            margin: 0px;
+                                            .o_form_label {
+                                                width: 100%;
+                                                padding: 0px;
+                                                margin: 0px;
+                                                color: $Label;
+                                                font-weight: bold;
+                                            }
+                                        }
+                                    }
+                                    .o_field_image {
+                                        width: 100%;
+                                        color: $Label-value;
+                                        img {
+                                            margin: auto;
+                                        }
+                                    }
+                                    .o_field_widget {
+                                        width: 100% !important;
+                                        display: block;
+                                        color: $Label-value;
+                                        &.o_with_button {
+                                            display: inline-flex;
+                                        }
+                                    }
+                                    .o_form_label {
+                                        width: 100%;
+                                        padding: 0px;
+                                        margin: 0px;
+                                        color: $Label;
+                                        font-weight: bold;
+                                    }
+                                    button{
+                                        margin-bottom: 5px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &:not(.ad_full_view) {
+        .o_main {
+            .ad_rightbar {
+                .o_content > .o_view_controller, .o_view_controller {
+                    .o_form_view.oe_form_configuration.o_base_settings {
+                        .o_control_panel {
+                            .o_form_statusbar {
+                                left: 65px;
+                                right: -65px;
+                                @include slide-animation;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.o_web_client.ad_mobile {
+    @include configration-xs();
+}

@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_clv_family_aux_user,clv.family_aux.user,model_clv_family_aux,clv_family_aux.group_user,1,0,0,0
+access_clv_family_aux_manager,clv.family_aux.manager,model_clv_family_aux,clv_family_aux.group_manager,1,1,1,0
+access_clv_family_aux_supmanager,clv.family_aux.supmanager,model_clv_family_aux,clv_family_aux.group_supmanager,1,1,1,1
